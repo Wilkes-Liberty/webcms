@@ -7,6 +7,26 @@ vendor/
 # Drupal core
 web/core/
 
+# Drupal root files (managed by Composer)
+web/autoload.php
+web/index.php
+web/update.php
+web/.ht.router.php
+web/.csslintrc
+web/.eslintrc*
+web/.eslintignore
+web/example.*
+web/INSTALL.*
+web/modules/README.txt
+web/profiles/README.txt
+web/sites/README.txt
+web/sites/example.*
+web/themes/README.txt
+
+# Allow important web root files
+!web/.htaccess
+!web/robots.txt
+
 # Contributed modules and themes
 web/modules/contrib/
 web/themes/contrib/
@@ -14,6 +34,10 @@ web/themes/contrib/
 # Drupal's generated files
 web/sites/*/files/
 web/sites/*/private/
+web/sites/*/files/php/
+web/sites/*/files/css/
+web/sites/*/files/js/
+web/sites/*/files/styles/
 
 # Configuration files that may contain sensitive information
 web/sites/*/settings*.php
