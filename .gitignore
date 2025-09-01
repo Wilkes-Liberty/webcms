@@ -1,0 +1,305 @@
+# Wilkes & Liberty Web CMS - Drupal 11 Headless
+# Comprehensive .gitignore for headless Drupal with DDEV local development
+
+####################
+# Drupal Core & Contrib
+####################
+
+# Ignore Drupal core files
+web/core/
+web/modules/contrib/
+web/themes/contrib/
+web/profiles/contrib/
+web/libraries/
+
+# Vendor directory (Composer dependencies)
+vendor/
+
+# Drupal configuration files that shouldn't be committed
+web/sites/*/settings.local.php
+web/sites/*/services.local.yml
+web/sites/*/settings.ddev.php
+
+# Drupal file system directories
+web/sites/*/files/
+web/sites/*/private/
+web/sites/*/tmp/
+
+# Drupal sync directory (configuration exports)
+# Note: We may want to track this for headless API configuration
+# Uncomment the line below if you want to ignore config exports
+# config/sync/
+
+####################
+# DDEV Local Development
+####################
+
+# DDEV generated files
+.ddev/
+.ddev/config.local.yaml
+.ddev/docker-compose.*.yaml
+.ddev/import-db/
+.ddev/import.sql
+.ddev/import-files/
+.ddev/.pgpass
+.ddev/homeadditions/.pgpass
+.ddev/postgres/
+.ddev/traefik/
+.ddev/redis/
+.ddev/solr/
+.ddev/elasticsearch/
+
+# DDEV logs
+.ddev/logs/
+
+####################
+# Composer & Dependency Management
+####################
+
+# Composer lock file (include this for production consistency)
+# composer.lock
+
+# Composer cache
+.composer/
+
+####################
+# Build & Deploy Artifacts
+####################
+
+# Build directories
+build/
+dist/
+public/
+
+# Node.js & NPM (for theme/frontend builds)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+.yarn/
+
+# Frontend build outputs
+*.min.css
+*.min.js
+*.map
+
+####################
+# IDE & Editor Files
+####################
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PhpStorm / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+
+####################
+# System Files
+####################
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+*.tmp
+*.temp
+desktop.ini
+
+# Linux
+.directory
+
+####################
+# Logs & Debug
+####################
+
+# Drupal logs
+web/sites/*/files/log/
+*.log
+
+# Error logs
+error_log
+php_errors.log
+
+# XDebug
+xdebug.log
+
+####################
+# Backup & Temporary Files
+####################
+
+# Database dumps
+*.sql
+*.sql.gz
+*.mysql
+*.dump
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+
+# Temporary files
+tmp/
+temp/
+cache/
+*.tmp
+*.cache
+
+####################
+# Security & Configuration
+####################
+
+# Environment files (should contain secrets)
+.env
+.env.local
+.env.production
+.env.staging
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+
+# SSH keys
+id_rsa
+id_rsa.pub
+known_hosts
+
+####################
+# API Keys & Secrets
+####################
+
+# API configuration files
+api-keys.php
+secrets.php
+local-config.php
+
+# OAuth & JWT tokens
+*.jwt
+*.token
+
+####################
+# Custom Directories
+####################
+
+# Custom private directories
+private/
+secrets/
+local/
+
+# Testing artifacts
+tests/fixtures/
+tests/coverage/
+phpunit.xml
+
+####################
+# Drupal-Specific Ignores
+####################
+
+# Drupal 8+ specific
+web/.csslintrc
+web/.eslintrc.json
+web/autoload.php
+web/web.config
+
+# Drupal multisite
+web/sites/sites.php
+
+# Drupal update files
+web/update.php
+web/install.php
+
+# Drupal maintenance files
+web/.maintenance
+
+####################
+# Performance & Optimization
+####################
+
+# CSS/JS aggregation
+web/sites/*/files/css/
+web/sites/*/files/js/
+web/sites/*/files/php/
+
+# Image styles cache
+web/sites/*/files/styles/
+
+####################
+# Documentation Builds
+####################
+
+# API documentation
+docs/api/
+docs/build/
+
+####################
+# Docker & Containers
+####################
+
+# Docker files (excluding DDEV)
+Dockerfile.local
+docker-compose.override.yml
+
+# Container volumes
+mysql/
+postgres/
+redis/
+
+####################
+# Package Managers
+####################
+
+# Yarn
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Bower
+bower_components/
+
+####################
+# Miscellaneous
+####################
+
+# Project-specific ignores
+TODO
+NOTES
+*.notes
+
+# Generated files
+generated/
+auto-generated/
