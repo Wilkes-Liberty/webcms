@@ -1,0 +1,44 @@
+# Drupal .gitignore
+# Never commit contributed code or dependencies
+
+# Composer dependencies
+vendor/
+
+# Drupal core
+web/core/
+
+# Contributed modules and themes
+web/modules/contrib/
+web/themes/contrib/
+
+# Drupal's generated files
+web/sites/*/files/
+web/sites/*/private/
+
+# Configuration files that may contain sensitive information
+web/sites/*/settings*.php
+web/sites/*/services*.yml
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# DDEV
+.ddev/db_snapshots/
+.ddev/.dbimageBuild/
