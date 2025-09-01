@@ -42,6 +42,9 @@ web/sites/*/files/styles/
 # Configuration files that may contain sensitive information
 web/sites/*/settings*.php
 web/sites/*/services*.yml
+web/sites/development.services.yml
+web/sites/local.services.yml
+web/sites/*/local.settings.php
 
 # Temporary files
 *.tmp
