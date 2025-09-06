@@ -53,6 +53,7 @@ module:
   graphql_compose_routes: 0
   graphql_compose_users: 0
   graphql_compose_views: 0
+  graphql_core_schema: 0
   graphql_webform: 0
   help: 0
   history: 0
@@ -93,6 +94,11 @@ module:
   scheduler: 0
   schema_metatag: 0
   search_api: 0
+  search_api_attachments: 0
+  search_api_autocomplete: 0
+  search_api_solr: 0
+  search_api_solr_admin: 0
+  search_api_solr_autocomplete: 0
   seckit: 0
   security_review: 0
   serialization: 0
@@ -111,7 +117,6 @@ module:
   tmgmt: 0
   tmgmt_config: 0
   tmgmt_content: 0
-  tmgmt_demo: 0
   tmgmt_file: 0
   tmgmt_language_combination: 0
   tmgmt_local: 0
