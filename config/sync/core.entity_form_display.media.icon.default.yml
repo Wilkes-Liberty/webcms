@@ -6,9 +6,11 @@ dependencies:
     - field.field.media.icon.field_caption
     - field.field.media.icon.field_credit
     - field.field.media.icon.field_license
+    - field.field.media.icon.field_media_file
     - field.field.media.icon.field_source_url
     - media.type.icon
   module:
+    - file
     - link
     - path
     - text
@@ -46,6 +48,13 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_media_file:
+    type: file_generic
+    weight: 118
+    region: content
+    settings:
+      progress_indicator: throbber
     third_party_settings: {  }
   field_source_url:
     type: link_default

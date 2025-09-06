@@ -8,6 +8,7 @@ dependencies:
     - field.field.media.audio.field_credit
     - field.field.media.audio.field_license
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_media_file
     - field.field.media.audio.field_source_url
     - media.type.audio
 _core:
@@ -30,6 +31,7 @@ hidden:
   field_credit: true
   field_license: true
   field_media_audio_file: true
+  field_media_file: true
   field_source_url: true
   name: true
   path: true

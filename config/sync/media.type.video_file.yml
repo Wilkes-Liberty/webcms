@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: video_file
 label: 'Video (File)'
-description: null
+description: 'Uploaded videos'
 source: file
 queue_thumbnail_downloads: false
 new_revision: true

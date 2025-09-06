@@ -7,6 +7,7 @@ dependencies:
     - field.field.media.audio.field_credit
     - field.field.media.audio.field_license
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_media_file
     - field.field.media.audio.field_source_url
     - media.type.audio
   module:
@@ -54,6 +55,13 @@ content:
   field_media_audio_file:
     type: file_generic
     weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_media_file:
+    type: file_generic
+    weight: 118
     region: content
     settings:
       progress_indicator: throbber

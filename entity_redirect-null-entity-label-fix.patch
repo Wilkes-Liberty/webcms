@@ -1,0 +1,18 @@
+--- a/entity_redirect.module
++++ b/entity_redirect.module
+@@ -82,13 +82,13 @@ function entity_redirect_form_alter(&$form, FormStateInterface $form_state, $fo
+       'add_form' => t('Add Form'),
+       'edit_form' => t('Return to Edit Form'),
+       'url' => t('Local Url'),
+-      'created' => t('Created %entity_label', ['%entity_label' => $entity->label()]),
++      'created' => t('Created %entity_label', ['%entity_label' => $entity->label() ?: t('Entity')]),
+       'previous_page' => t('Return to the previous page'),
+     ];
+ 
+     $no_destionation_delete = [
+       'edit_form' => t('Return to Edit Form'),
+-      'created' => t('Created %entity_label', ['%entity_label' => $entity->label()]),
++      'created' => t('Created %entity_label', ['%entity_label' => $entity->label() ?: t('Entity')]),
+     ];
+ 
+     if (\Drupal::moduleHandler()->moduleExists('layout_builder')) {

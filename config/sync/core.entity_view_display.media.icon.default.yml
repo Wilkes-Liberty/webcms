@@ -1,0 +1,75 @@
+uuid: 5b52fdb4-d532-48f4-8678-31bd28703212
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.icon.field_caption
+    - field.field.media.icon.field_credit
+    - field.field.media.icon.field_license
+    - field.field.media.icon.field_media_file
+    - field.field.media.icon.field_source_url
+    - image.style.thumbnail
+    - media.type.icon
+  module:
+    - file
+    - image
+    - user
+id: media.icon.default
+targetEntityType: media
+bundle: icon
+mode: default
+content:
+  created:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_media_file:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  uid:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_caption: true
+  field_credit: true
+  field_license: true
+  field_source_url: true
+  langcode: true
+  name: true
+  search_api_attachments: true
+  search_api_excerpt: true

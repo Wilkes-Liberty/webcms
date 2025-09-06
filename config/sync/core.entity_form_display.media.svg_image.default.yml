@@ -6,9 +6,11 @@ dependencies:
     - field.field.media.svg_image.field_caption
     - field.field.media.svg_image.field_credit
     - field.field.media.svg_image.field_license
+    - field.field.media.svg_image.field_media_file
     - field.field.media.svg_image.field_source_url
     - media.type.svg_image
   module:
+    - file
     - link
     - path
     - text
@@ -46,6 +48,13 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_media_file:
+    type: file_generic
+    weight: 118
+    region: content
+    settings:
+      progress_indicator: throbber
     third_party_settings: {  }
   field_source_url:
     type: link_default

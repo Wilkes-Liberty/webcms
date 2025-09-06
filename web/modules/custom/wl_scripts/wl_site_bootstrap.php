@@ -318,6 +318,54 @@ wl_field_instance('media', 'video_file', 'field_captions_vtt', 'Captions (WebVTT
 wl_field_instance('media', 'video_file', 'field_transcript', 'Transcript');
 wl_field_instance('media', 'remote_video', 'field_transcript', 'Transcript');
 
+// Set media type descriptions
+$media_descriptions = [
+  'svg_image' => 'Vector SVGs',
+  'icon' => 'Mono/brand icons',
+  'video_file' => 'Uploaded videos',
+  'remote_video' => 'YouTube/Vimeo URLs',
+  'audio' => 'Audio files',
+  'document' => 'Docs/PDFs',
+];
+foreach ($media_descriptions as $id => $desc) {
+  if ($t = MediaType::load($id)) {
+    $t->set('description', $desc);
+    $t->save();
+  }
+}
+
+/* ============================================================
+ * 2b) Fix Media Source Fields (ensure proper source field configuration)
+ * ============================================================ */
+
+// Repair media types to ensure they have the correct source field configuration
+$repaired = [];
+$media_source_fixes = [
+  'svg_image'    => 'field_media_file',
+  'icon'         => 'field_media_file',
+  'video_file'   => 'field_media_file',
+  'audio'        => 'field_media_file',
+  'document'     => 'field_media_file',
+  'remote_video' => 'field_media_oembed_video',
+  'image'        => 'field_media_image',
+];
+
+foreach ($media_source_fixes as $bundle => $expected_field) {
+  $mt = MediaType::load($bundle);
+  if (!$mt) {
+    continue;
+  }
+  
+  // Check and fix the source_field configuration
+  $conf = $mt->getSource()->getConfiguration();
+  if (empty($conf['source_field']) || $conf['source_field'] !== $expected_field) {
+    $conf['source_field'] = $expected_field;
+    $mt->set('source_configuration', $conf);
+    $mt->save();
+    $repaired[] = $bundle;
+  }
+}
+
 /* Optional: tidy Media form displays (basic) */
 foreach ($media_bundles as $mb) {
   $mform = wl_form_display('media', $mb);
@@ -692,4 +740,5 @@ $pform = wl_form_display('paragraph', 'p_logo_wall');   $pform->setComponent('fi
 \Drupal::service('cache.bootstrap')->invalidateAll();
 \Drupal::service('cache.render')->invalidateAll();
 
-\Drupal::messenger()->addStatus('WL full bootstrap complete: content, paragraphs, media bundles, entity browsers, widgets, pathauto, and Next.js image styles configured.');
+$repaired_msg = $repaired ? ' Media source fields repaired: ' . implode(', ', $repaired) . '.' : '';
+\Drupal::messenger()->addStatus('WL full bootstrap complete: content, paragraphs, media bundles, entity browsers, widgets, pathauto, and Next.js image styles configured.' . $repaired_msg);

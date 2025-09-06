@@ -11,8 +11,6 @@ dependencies:
     - field.field.media.remote_video.field_source_url
     - field.field.media.remote_video.field_transcript
     - media.type.remote_video
-  module:
-    - media
 _core:
   default_config_hash: ZdPcl2hPxl5pgv3pI-07R7h51OjeUeKJTy-ab1NfM34
 id: media.remote_video.default
@@ -21,15 +19,12 @@ bundle: remote_video
 mode: default
 content:
   field_media_oembed_video:
-    type: oembed
+    type: string
     label: hidden
     settings:
-      max_width: 0
-      max_height: 0
-      loading:
-        attribute: lazy
+      link_to_entity: false
     third_party_settings: {  }
-    weight: 0
+    weight: 2
     region: content
 hidden:
   created: true
