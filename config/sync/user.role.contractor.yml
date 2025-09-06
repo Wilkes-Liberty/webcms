@@ -1,0 +1,9 @@
+uuid: 612ea4e0-b277-46e2-a8e8-1b84b6c429be
+langcode: en
+status: true
+dependencies: {  }
+id: contractor
+label: Contractor
+weight: 6
+is_admin: false
+permissions: {  }

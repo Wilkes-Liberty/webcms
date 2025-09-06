@@ -1,0 +1,20 @@
+uuid: ad3c3031-47ec-4868-b247-f2ac31628704
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - gin
+id: gin_languageswitcher
+theme: gin
+region: content
+weight: -3
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: 'Language switcher'
+  label_display: '0'
+  provider: language
+visibility: {  }

@@ -1,0 +1,33 @@
+uuid: 1f318a61-2d58-4e00-99c8-59c246b526b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.webform_default
+  module:
+    - contact
+    - file
+    - filter
+    - media
+    - shortcut
+    - system
+    - tmgmt_local
+    - toolbar
+_core:
+  default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'access toolbar'
+  - 'delete own files'
+  - 'provide translation services'
+  - 'use text format basic_html'
+  - 'use text format webform_default'
+  - 'view media'
+  - 'view the administration theme'

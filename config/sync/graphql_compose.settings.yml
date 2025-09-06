@@ -1,0 +1,130 @@
+_core:
+  default_config_hash: Sd_9jXBxw3mGn9d_y94jvlitI0wpvj6x2dQ0p6aGhJo
+entity_config:
+  block_content:
+    basic:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+  image_style:
+    large:
+      enabled: false
+    linkit_result_thumbnail:
+      enabled: false
+    media_library:
+      enabled: false
+    medium:
+      enabled: false
+    thumbnail:
+      enabled: false
+    wide:
+      enabled: false
+  media:
+    audio:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    document:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    image:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    remote_video:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    video:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+  menu:
+    account:
+      enabled: false
+    admin:
+      enabled: false
+    footer:
+      enabled: false
+    main:
+      enabled: false
+    tools:
+      enabled: false
+  node:
+    article:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    page:
+      enabled: true
+      query_load_enabled: true
+  taxonomy_term:
+    tags:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+  user:
+    user:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+field_config:
+  block_content:
+    basic:
+      body:
+        enabled: true
+  media:
+    audio:
+      field_media_audio_file:
+        enabled: true
+    document:
+      field_media_document:
+        enabled: true
+    image:
+      field_media_image:
+        enabled: true
+    remote_video:
+      field_media_oembed_video:
+        enabled: true
+    video:
+      field_media_video_file:
+        enabled: true
+  node:
+    article:
+      body:
+        enabled: true
+      field_image:
+        enabled: true
+      field_tags:
+        enabled: true
+    page:
+      body:
+        enabled: true
+  user:
+    user:
+      user_picture:
+        enabled: true
+settings:
+  exclude_unpublished: true
+  expose_entity_ids: false
+  field_required_override: false
+  schema_description: 'GraphQL Compose'
+  schema_version: '1'
+  simple_queries: true
+  simple_unions: true
+  site_name: true
+  site_slogan: true
+  site_front: true
+  inflector_langcode: en
+  inflector_singularize: true
+  custom: {  }

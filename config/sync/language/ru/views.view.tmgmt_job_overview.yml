@@ -1,0 +1,60 @@
+display:
+  default:
+    display_title: Основной
+    display_options:
+      fields:
+        state:
+          label: Состояние
+          separator: ', '
+        label:
+          label: Метка
+        source_language_1:
+          label: От
+          separator: ', '
+        target_language:
+          label: Кому
+          separator: ', '
+        translator:
+          label: Поставщик
+        progress:
+          label: Прогресс
+        word_count:
+          label: Слова
+        tags_count:
+          label: Теги
+        file_count:
+          label: Файлы
+        changed:
+          label: Изменение
+        operations:
+          label: Операции
+      pager:
+        options:
+          tags:
+            next: 'следующая ›'
+            previous: '‹ предыдущая'
+            first: '« первая'
+            last: 'последняя »'
+          expose:
+            items_per_page_label: 'Элементов на страницу'
+            items_per_page_options_all_label: '- Все -'
+            offset_label: Пропустить
+      exposed_form:
+        options:
+          submit_button: Применить
+          reset_button_label: Сбросить
+          exposed_sorts_label: 'Сортировать по'
+          sort_asc_label: 'По возрастанию'
+          sort_desc_label: 'По убыванию'
+      filters:
+        state:
+          expose:
+            label: Состояние
+        source_language:
+          expose:
+            label: 'Исходный язык'
+        translator:
+          expose:
+            label: Поставщик
+  page_1:
+    display_title: Страница

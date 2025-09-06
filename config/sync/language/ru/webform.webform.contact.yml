@@ -1,0 +1,9 @@
+title: Контакт
+description: 'Основная веб-форма для связи по электронной почте.'
+settings:
+  confirmation_message: 'Ваше сообщение отправлено.'
+handlers:
+  email_confirmation:
+    label: 'Подтверждение почтой'
+  email_notification:
+    label: 'Уведомления по email'

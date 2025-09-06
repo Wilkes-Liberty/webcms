@@ -1,0 +1,9 @@
+uuid: c0fbf6fc-ad2a-4ca9-a7bb-1038d5b81e5e
+langcode: en
+status: true
+dependencies: {  }
+id: pending
+label: Pending
+weight: 7
+is_admin: false
+permissions: {  }

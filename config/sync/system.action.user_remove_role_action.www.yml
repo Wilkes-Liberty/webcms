@@ -1,0 +1,14 @@
+uuid: ff57590b-fa92-4bf1-9657-fdc863607f09
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.www
+  module:
+    - user
+id: user_remove_role_action.www
+label: 'Remove the WWW role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: www

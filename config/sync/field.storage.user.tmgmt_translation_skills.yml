@@ -1,0 +1,24 @@
+uuid: db6c14d9-8743-4340-ad78-ae5571ba74dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - tmgmt_language_combination
+    - user
+  enforced:
+    module:
+      - tmgmt_local
+_core:
+  default_config_hash: XiQFQhipbQEgKgYNFFRe_kvAjGFbo8XhW4LAjpoqtuM
+id: user.tmgmt_translation_skills
+field_name: tmgmt_translation_skills
+entity_type: user
+type: tmgmt_language_combination
+settings: {  }
+module: tmgmt_language_combination
+locked: false
+cardinality: -1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

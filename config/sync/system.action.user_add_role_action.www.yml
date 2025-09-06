@@ -1,0 +1,14 @@
+uuid: a01dabce-a746-400e-9a24-406437787421
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.www
+  module:
+    - user
+id: user_add_role_action.www
+label: 'Add the WWW role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: www
