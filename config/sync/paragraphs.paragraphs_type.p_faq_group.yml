@@ -1,0 +1,10 @@
+uuid: bd676184-c4b8-4e62-a6ee-63cc6a59ae3d
+langcode: en
+status: true
+dependencies: {  }
+id: p_faq_group
+label: 'FAQ Group'
+icon_uuid: null
+icon_default: null
+description: 'Collection of related FAQ items'
+behavior_plugins: {  }

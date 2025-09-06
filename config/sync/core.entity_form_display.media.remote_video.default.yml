@@ -3,11 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.remote_video.field_caption
+    - field.field.media.remote_video.field_credit
+    - field.field.media.remote_video.field_license
     - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.field_poster
+    - field.field.media.remote_video.field_source_url
+    - field.field.media.remote_video.field_transcript
     - media.type.remote_video
   module:
+    - link
     - media
     - path
+    - text
 _core:
   default_config_hash: pM8mGlwfpvfG_y5tZn0lGAXFLXz2_yKkL7MvWZsRqdA
 id: media.remote_video.default
@@ -21,12 +29,62 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_caption:
+    type: text_textarea
+    weight: 119
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_credit:
+    type: string_textfield
+    weight: 120
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_license:
+    type: string_textfield
+    weight: 121
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_media_oembed_video:
     type: oembed_textfield
     weight: 0
     region: content
     settings:
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_poster:
+    type: entity_reference_autocomplete
+    weight: 123
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_source_url:
+    type: link_default
+    weight: 122
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_transcript:
+    type: text_textarea
+    weight: 124
+    region: content
+    settings:
+      rows: 6
       placeholder: ''
     third_party_settings: {  }
   langcode:

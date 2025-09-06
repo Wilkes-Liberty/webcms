@@ -1,0 +1,18 @@
+uuid: fb25576d-9fec-44ef-b570-337f4ee50ffe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_faq_item.field_body
+    - field.field.paragraph.p_faq_item.field_title
+    - paragraphs.paragraphs_type.p_faq_item
+id: paragraph.p_faq_item.default
+targetEntityType: paragraph
+bundle: p_faq_item
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_body: true
+  field_title: true
+  status: true

@@ -1,0 +1,22 @@
+uuid: 741ac7ae-8e53-4a1c-9eb6-2c6ce233fd50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.article
+  module:
+    - text
+id: node.article.field_summary
+field_name: field_summary
+entity_type: node
+bundle: article
+label: 'Summary / Deck'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

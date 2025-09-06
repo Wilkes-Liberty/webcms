@@ -1,0 +1,20 @@
+uuid: d86179e9-e57b-4950-a726-da96595a801a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: pathauto_resource
+label: 'Resource pattern'
+type: 'canonical_entities:node'
+pattern: '/resources/[node:title]'
+selection_criteria:
+  341590dc-bfd7-42f5-8650-1ef1a2784fbe:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 341590dc-bfd7-42f5-8650-1ef1a2784fbe
+    bundles:
+      - resource
+selection_logic: and
+weight: 0
+relationships: {  }

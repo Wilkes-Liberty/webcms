@@ -1,0 +1,19 @@
+uuid: f05cbc72-708d-4a8a-82ab-d53ac0912400
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_breadcrumb_label
+    - node.type.landing_page
+id: node.landing_page.field_breadcrumb_label
+field_name: field_breadcrumb_label
+entity_type: node
+bundle: landing_page
+label: 'Breadcrumb Label Override'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

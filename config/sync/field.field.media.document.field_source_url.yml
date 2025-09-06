@@ -1,0 +1,23 @@
+uuid: 0e4226aa-53ae-4e3e-bd6b-5df5f5bd030b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_source_url
+    - media.type.document
+  module:
+    - link
+id: media.document.field_source_url
+field_name: field_source_url
+entity_type: media
+bundle: document
+label: 'Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

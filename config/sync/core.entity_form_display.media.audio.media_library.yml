@@ -4,7 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
+    - field.field.media.audio.field_caption
+    - field.field.media.audio.field_credit
+    - field.field.media.audio.field_license
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_source_url
     - media.type.audio
 _core:
   default_config_hash: 28vwMIYtvyjPcD4RyciZXIztxtZgmuWRCNgYemr_SZE
@@ -22,7 +26,11 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_caption: true
+  field_credit: true
+  field_license: true
   field_media_audio_file: true
+  field_source_url: true
   name: true
   path: true
   publish_on: true

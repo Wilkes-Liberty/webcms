@@ -1,0 +1,10 @@
+uuid: 01859d4e-8817-4d75-9127-294ecb3b8057
+langcode: en
+status: true
+dependencies: {  }
+id: p_faq_item
+label: 'FAQ Item'
+icon_uuid: null
+icon_default: null
+description: 'Single question and answer pair'
+behavior_plugins: {  }

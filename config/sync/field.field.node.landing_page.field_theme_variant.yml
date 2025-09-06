@@ -1,0 +1,21 @@
+uuid: 1590eba8-bb37-4a56-a623-9f49513b3ec2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_theme_variant
+    - node.type.landing_page
+  module:
+    - options
+id: node.landing_page.field_theme_variant
+field_name: field_theme_variant
+entity_type: node
+bundle: landing_page
+label: 'Design Variant'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

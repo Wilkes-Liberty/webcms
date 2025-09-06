@@ -1,0 +1,22 @@
+uuid: baec14ff-268c-4bdf-bc8e-7fddb608164e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_taxonomy
+    - node.type.case_study
+id: node.case_study.field_taxonomy
+field_name: field_taxonomy
+entity_type: node
+bundle: case_study
+label: 'Tags / Taxonomies'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    auto_create: false
+field_type: entity_reference

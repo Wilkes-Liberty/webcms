@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_browser
+    - media_library
+    - media
+name: media_image_browser
+label: 'Media Image Browser'
+display: iframe
+display_configuration:
+  width: '1024'
+  height: '700'
+  link_text: 'Select images'
+  autoclose: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  -
+    id: media_library
+    uuid: a036afc5-9108-420b-9b21-0a04d7088f03
+    label: 'Media Library (Images)'
+    weight: 0
+    settings:
+      media_types:
+        image: image
+        svg_image: svg_image
+        icon: icon
+      multiple: true

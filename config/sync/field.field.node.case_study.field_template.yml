@@ -1,0 +1,21 @@
+uuid: 7edb90ab-b249-49f4-8a9c-624d8cd0e7c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_template
+    - node.type.case_study
+  module:
+    - options
+id: node.case_study.field_template
+field_name: field_template
+entity_type: node
+bundle: case_study
+label: 'Template / Layout'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

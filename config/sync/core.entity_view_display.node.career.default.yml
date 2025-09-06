@@ -1,0 +1,166 @@
+uuid: 818ed650-978d-4087-8761-cb53e7a0d47f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.career.body
+    - field.field.node.career.field_ab_variant
+    - field.field.node.career.field_apply_url
+    - field.field.node.career.field_breadcrumb_label
+    - field.field.node.career.field_cache_tags
+    - field.field.node.career.field_campaign
+    - field.field.node.career.field_canonical
+    - field.field.node.career.field_hero_image
+    - field.field.node.career.field_job_location
+    - field.field.node.career.field_job_type
+    - field.field.node.career.field_meta_description
+    - field.field.node.career.field_noindex
+    - field.field.node.career.field_parent
+    - field.field.node.career.field_preview_token
+    - field.field.node.career.field_primary_cta
+    - field.field.node.career.field_read_time
+    - field.field.node.career.field_related
+    - field.field.node.career.field_revalidate_ttl
+    - field.field.node.career.field_reviewed_on
+    - field.field.node.career.field_secondary_cta
+    - field.field.node.career.field_seo_title
+    - field.field.node.career.field_show_toc
+    - field.field.node.career.field_social_image
+    - field.field.node.career.field_summary
+    - field.field.node.career.field_taxonomy
+    - field.field.node.career.field_template
+    - field.field.node.career.field_theme_variant
+    - field.field.node.career.field_visibility
+    - node.type.career
+  module:
+    - link
+    - options
+    - text
+    - user
+id: node.career.default
+targetEntityType: node
+bundle: career
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_apply_url:
+    type: link
+    label: inline
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 120
+    region: content
+  field_canonical:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 117
+    region: content
+  field_hero_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_job_location:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 119
+    region: content
+  field_job_type:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 118
+    region: content
+  field_primary_cta:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_related:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 116
+    region: content
+  field_secondary_cta:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 115
+    region: content
+  field_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_ab_variant: true
+  field_breadcrumb_label: true
+  field_cache_tags: true
+  field_campaign: true
+  field_meta_description: true
+  field_noindex: true
+  field_parent: true
+  field_preview_token: true
+  field_read_time: true
+  field_revalidate_ttl: true
+  field_reviewed_on: true
+  field_seo_title: true
+  field_show_toc: true
+  field_social_image: true
+  field_taxonomy: true
+  field_template: true
+  field_theme_variant: true
+  field_visibility: true
+  langcode: true
+  preview_token: true
+  search_api_attachments: true
+  search_api_excerpt: true

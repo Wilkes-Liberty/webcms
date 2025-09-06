@@ -1,0 +1,15 @@
+uuid: 8455d9f0-ee7f-4307-8e7f-bf7525f198d0
+langcode: en
+status: true
+dependencies: {  }
+name: nx_max_320
+label: 'Next Max 320'
+effects:
+  502d57be-e7c8-4abb-92d0-1ab2c0457f53:
+    uuid: 502d57be-e7c8-4abb-92d0-1ab2c0457f53
+    id: image_scale
+    weight: 1
+    data:
+      width: 320
+      height: null
+      upscale: false

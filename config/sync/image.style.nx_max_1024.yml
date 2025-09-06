@@ -1,0 +1,15 @@
+uuid: 872f760c-e581-43fc-a765-eb1948827f11
+langcode: en
+status: true
+dependencies: {  }
+name: nx_max_1024
+label: 'Next Max 1024'
+effects:
+  58873de6-01f0-4588-8db9-e081d6f644ce:
+    uuid: 58873de6-01f0-4588-8db9-e081d6f644ce
+    id: image_scale
+    weight: 1
+    data:
+      width: 1024
+      height: null
+      upscale: false

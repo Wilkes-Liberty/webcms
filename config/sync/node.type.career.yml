@@ -1,0 +1,11 @@
+uuid: 052a749d-a488-4acc-9a19-df85f114a932
+langcode: en
+status: true
+dependencies: {  }
+name: Career
+type: career
+description: 'Job posting'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,22 @@
+uuid: e89da6f1-afe3-4234-8d68-f6618750a087
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.case_study
+  module:
+    - text
+id: node.case_study.field_summary
+field_name: field_summary
+entity_type: node
+bundle: case_study
+label: 'Summary / Deck'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

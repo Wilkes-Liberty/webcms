@@ -1,0 +1,23 @@
+uuid: 54b15ddb-c01f-4ea5-8fc8-3c0e537ead1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parent
+    - node.type.basic_page
+id: node.basic_page.field_parent
+field_name: field_parent
+entity_type: node
+bundle: basic_page
+label: 'Parent Page'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      basic_page: basic_page
+field_type: entity_reference

@@ -1,0 +1,11 @@
+uuid: bae6b00a-8e09-404a-955d-93d845aaf887
+langcode: en
+status: true
+dependencies: {  }
+name: Event
+type: event
+description: 'Webinar or in-person event'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

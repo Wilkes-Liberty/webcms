@@ -1,0 +1,20 @@
+uuid: 7fc72027-56a1-4fb6-9551-66a3a1e2e743
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: pathauto_career
+label: 'Career pattern'
+type: 'canonical_entities:node'
+pattern: '/careers/[node:title]'
+selection_criteria:
+  a170967d-4b5d-4f86-be06-edcbcedacea4:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: a170967d-4b5d-4f86-be06-edcbcedacea4
+    bundles:
+      - career
+selection_logic: and
+weight: 0
+relationships: {  }

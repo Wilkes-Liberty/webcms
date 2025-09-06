@@ -1,0 +1,15 @@
+uuid: ed048095-bad8-4d94-b3ef-2fa823276e20
+langcode: en
+status: true
+dependencies: {  }
+name: nx_max_1920
+label: 'Next Max 1920'
+effects:
+  cec7cba2-d6f8-40c2-b73c-ddda4cc5d183:
+    uuid: cec7cba2-d6f8-40c2-b73c-ddda4cc5d183
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: null
+      upscale: false

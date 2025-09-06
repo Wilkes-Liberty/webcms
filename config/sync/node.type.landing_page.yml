@@ -1,0 +1,11 @@
+uuid: e3374a9a-58e9-4d19-ba22-763bb707e863
+langcode: en
+status: true
+dependencies: {  }
+name: 'Landing Page'
+type: landing_page
+description: 'Flexible marketing page using components'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

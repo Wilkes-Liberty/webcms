@@ -1,0 +1,10 @@
+uuid: 8fbc2c56-52c5-417e-993a-3722e1b3f8bf
+langcode: en
+status: true
+dependencies: {  }
+id: p_testimonial
+label: Testimonial
+icon_uuid: null
+icon_default: null
+description: 'Customer quote with attribution and logo'
+behavior_plugins: {  }

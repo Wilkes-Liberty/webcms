@@ -1,0 +1,21 @@
+uuid: 2d6afa40-887a-420b-ad08-7c8a8c78b6e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reviewed_on
+    - node.type.landing_page
+  module:
+    - datetime
+id: node.landing_page.field_reviewed_on
+field_name: field_reviewed_on
+entity_type: node
+bundle: landing_page
+label: 'Last Reviewed On'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,21 @@
+uuid: 6aab6041-201f-4cba-bb54-23aeaf7bbbd3
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_license
+field_name: field_license
+entity_type: media
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

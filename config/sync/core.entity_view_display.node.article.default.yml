@@ -4,12 +4,37 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
+    - field.field.node.article.field_ab_variant
+    - field.field.node.article.field_breadcrumb_label
+    - field.field.node.article.field_cache_tags
+    - field.field.node.article.field_campaign
+    - field.field.node.article.field_canonical
+    - field.field.node.article.field_hero_image
     - field.field.node.article.field_image
+    - field.field.node.article.field_meta_description
+    - field.field.node.article.field_noindex
+    - field.field.node.article.field_parent
+    - field.field.node.article.field_preview_token
+    - field.field.node.article.field_primary_cta
+    - field.field.node.article.field_read_time
+    - field.field.node.article.field_related
+    - field.field.node.article.field_revalidate_ttl
+    - field.field.node.article.field_reviewed_on
+    - field.field.node.article.field_secondary_cta
+    - field.field.node.article.field_seo_title
+    - field.field.node.article.field_show_toc
+    - field.field.node.article.field_social_image
+    - field.field.node.article.field_summary
     - field.field.node.article.field_tags
+    - field.field.node.article.field_taxonomy
+    - field.field.node.article.field_template
+    - field.field.node.article.field_theme_variant
+    - field.field.node.article.field_visibility
     - image.style.wide
     - node.type.article
   module:
     - image
+    - link
     - text
     - user
 _core:
@@ -24,7 +49,28 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 109
+    region: content
+  field_canonical:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_hero_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 110
     region: content
   field_image:
     type: image
@@ -36,6 +82,45 @@ content:
         attribute: eager
     third_party_settings: {  }
     weight: -1
+    region: content
+  field_primary_cta:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_related:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_secondary_cta:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
     region: content
   field_tags:
     type: entity_reference_label
@@ -51,6 +136,25 @@ content:
     weight: 100
     region: content
 hidden:
+  field_ab_variant: true
+  field_breadcrumb_label: true
+  field_cache_tags: true
+  field_campaign: true
+  field_meta_description: true
+  field_noindex: true
+  field_parent: true
+  field_preview_token: true
+  field_read_time: true
+  field_revalidate_ttl: true
+  field_reviewed_on: true
+  field_seo_title: true
+  field_show_toc: true
+  field_social_image: true
+  field_taxonomy: true
+  field_template: true
+  field_theme_variant: true
+  field_visibility: true
   langcode: true
   preview_token: true
+  search_api_attachments: true
   search_api_excerpt: true

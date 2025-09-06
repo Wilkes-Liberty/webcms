@@ -1,0 +1,21 @@
+uuid: 47233d05-d3b1-4a23-9880-0124f0db30f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_theme_variant
+    - node.type.case_study
+  module:
+    - options
+id: node.case_study.field_theme_variant
+field_name: field_theme_variant
+entity_type: node
+bundle: case_study
+label: 'Design Variant'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

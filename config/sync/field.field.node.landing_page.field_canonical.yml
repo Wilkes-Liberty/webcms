@@ -1,0 +1,23 @@
+uuid: 57713a20-8c5c-4640-b9a6-8a7e63629d97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_canonical
+    - node.type.landing_page
+  module:
+    - link
+id: node.landing_page.field_canonical
+field_name: field_canonical
+entity_type: node
+bundle: landing_page
+label: 'Canonical URL (override)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

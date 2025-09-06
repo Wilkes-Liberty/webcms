@@ -1,0 +1,23 @@
+uuid: c8a08e3f-efc5-4605-a05e-f519fdff2a25
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - media
+id: media.field_captions_vtt
+field_name: field_captions_vtt
+entity_type: media
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

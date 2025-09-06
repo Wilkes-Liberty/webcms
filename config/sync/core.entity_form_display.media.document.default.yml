@@ -3,11 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.document.field_caption
+    - field.field.media.document.field_credit
+    - field.field.media.document.field_license
     - field.field.media.document.field_media_document
+    - field.field.media.document.field_source_url
     - media.type.document
   module:
     - file
+    - link
     - path
+    - text
 _core:
   default_config_hash: aewrRkePgJzdD5kPOq8JeMcKHs6yat49nE7ZeCQzQZg
 id: media.document.default
@@ -21,12 +27,44 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_caption:
+    type: text_textarea
+    weight: 113
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_credit:
+    type: string_textfield
+    weight: 114
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_license:
+    type: string_textfield
+    weight: 115
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_media_document:
     type: file_generic
     weight: 0
     region: content
     settings:
       progress_indicator: throbber
+    third_party_settings: {  }
+  field_source_url:
+    type: link_default
+    weight: 116
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   langcode:
     type: language_select

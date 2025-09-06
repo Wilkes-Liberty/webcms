@@ -1,0 +1,21 @@
+uuid: 1f538313-33ce-4fde-9b22-f9fcc18d9da8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_type
+    - node.type.career
+  module:
+    - options
+id: node.career.field_job_type
+field_name: field_job_type
+entity_type: node
+bundle: career
+label: 'Employment Type'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

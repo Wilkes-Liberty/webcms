@@ -1,0 +1,21 @@
+uuid: 39454783-cf75-4eab-9fe0-c8e294d5630e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related
+    - node.type.event
+id: node.event.field_related
+field_name: field_related
+entity_type: node
+bundle: event
+label: 'Related Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings: {  }
+field_type: entity_reference

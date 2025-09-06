@@ -1,0 +1,21 @@
+uuid: dd97148b-269c-443c-928b-203a109fbf90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_template
+    - node.type.event
+  module:
+    - options
+id: node.event.field_template
+field_name: field_template
+entity_type: node
+bundle: event
+label: 'Template / Layout'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

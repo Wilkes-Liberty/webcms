@@ -1,0 +1,19 @@
+uuid: 1656f7a8-c006-4852-8c99-75877f04b4f7
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_canonical
+field_name: field_canonical
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

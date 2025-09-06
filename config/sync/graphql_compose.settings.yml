@@ -107,9 +107,7 @@ field_config:
         enabled: true
       field_tags:
         enabled: true
-    page:
-      body:
-        enabled: true
+    page: {  }
   user:
     user:
       user_picture:

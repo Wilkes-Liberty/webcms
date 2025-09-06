@@ -1,0 +1,23 @@
+uuid: 0911e247-6c12-48fa-81c3-2a4aa1b76430
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parent
+    - node.type.case_study
+id: node.case_study.field_parent
+field_name: field_parent
+entity_type: node
+bundle: case_study
+label: 'Parent Page'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      case_study: case_study
+field_type: entity_reference

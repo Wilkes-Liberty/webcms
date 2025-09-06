@@ -1,0 +1,23 @@
+uuid: a4012f62-f42e-4786-bff3-81113cc27189
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_revalidate_ttl
+    - node.type.event
+id: node.event.field_revalidate_ttl
+field_name: field_revalidate_ttl
+entity_type: node
+bundle: event
+label: 'Revalidate After (seconds)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

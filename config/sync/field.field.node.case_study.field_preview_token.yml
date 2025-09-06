@@ -1,0 +1,19 @@
+uuid: f44cfd55-2e86-4983-910d-d8d1b247ddf2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_preview_token
+    - node.type.case_study
+id: node.case_study.field_preview_token
+field_name: field_preview_token
+entity_type: node
+bundle: case_study
+label: 'Preview Token'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

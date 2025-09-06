@@ -1,0 +1,23 @@
+uuid: 110331b4-c413-4fe9-9500-d5ca3509a304
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_read_time
+    - node.type.case_study
+id: node.case_study.field_read_time
+field_name: field_read_time
+entity_type: node
+bundle: case_study
+label: 'Estimated Read Time (minutes)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -3,11 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.audio.field_caption
+    - field.field.media.audio.field_credit
+    - field.field.media.audio.field_license
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_source_url
     - media.type.audio
   module:
     - file
+    - link
     - path
+    - text
 _core:
   default_config_hash: G2_SKH3jmI9FQeXSUxo3KgQqiyF1hPDEkc7-3-rCSbc
 id: media.audio.default
@@ -21,12 +27,44 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_caption:
+    type: text_textarea
+    weight: 113
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_credit:
+    type: string_textfield
+    weight: 114
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_license:
+    type: string_textfield
+    weight: 115
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_media_audio_file:
     type: file_generic
     weight: 0
     region: content
     settings:
       progress_indicator: throbber
+    third_party_settings: {  }
+  field_source_url:
+    type: link_default
+    weight: 116
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   langcode:
     type: language_select

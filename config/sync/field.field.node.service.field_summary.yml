@@ -1,0 +1,22 @@
+uuid: d1e2cc3d-37e3-491d-8880-51d56b75fc8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.service
+  module:
+    - text
+id: node.service.field_summary
+field_name: field_summary
+entity_type: node
+bundle: service
+label: 'Summary / Deck'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

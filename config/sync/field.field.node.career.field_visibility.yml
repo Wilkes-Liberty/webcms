@@ -1,0 +1,21 @@
+uuid: ad3ca93a-0741-4dcd-b27a-88fa299961ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visibility
+    - node.type.career
+  module:
+    - options
+id: node.career.field_visibility
+field_name: field_visibility
+entity_type: node
+bundle: career
+label: Visibility
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

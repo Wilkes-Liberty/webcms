@@ -1,0 +1,36 @@
+uuid: 264d40ae-e3e5-4a48-bc45-5959df603969
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.media_image_browser
+    - field.field.paragraph.p_testimonial.field_attribution
+    - field.field.paragraph.p_testimonial.field_icon
+    - field.field.paragraph.p_testimonial.field_quote
+    - paragraphs.paragraphs_type.p_testimonial
+  module:
+    - entity_browser
+id: paragraph.p_testimonial.default
+targetEntityType: paragraph
+bundle: p_testimonial
+mode: default
+content:
+  field_icon:
+    type: entity_browser_entity_reference
+    weight: 2
+    region: content
+    settings:
+      entity_browser: media_image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings: {  }
+      selection_mode: selection_replace
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_attribution: true
+  field_quote: true
+  status: true

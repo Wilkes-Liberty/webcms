@@ -1,0 +1,30 @@
+uuid: e2ab502b-4e7a-4c00-b944-d237a6e43cc5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_ab_variant
+field_name: field_ab_variant
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: control
+      label: Control
+    -
+      value: variant-a
+      label: 'Variant A'
+    -
+      value: variant-b
+      label: 'Variant B'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

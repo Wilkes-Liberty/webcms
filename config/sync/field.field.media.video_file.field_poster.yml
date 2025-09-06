@@ -1,0 +1,28 @@
+uuid: d53dfcf4-d11c-4fb0-9067-d8957df80bed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_poster
+    - media.type.icon
+    - media.type.image
+    - media.type.svg_image
+    - media.type.video_file
+id: media.video_file.field_poster
+field_name: field_poster
+entity_type: media
+bundle: video_file
+label: 'Poster Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      svg_image: svg_image
+      icon: icon
+field_type: entity_reference

@@ -4,7 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
+    - field.field.media.remote_video.field_caption
+    - field.field.media.remote_video.field_credit
+    - field.field.media.remote_video.field_license
     - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.field_poster
+    - field.field.media.remote_video.field_source_url
+    - field.field.media.remote_video.field_transcript
     - image.style.medium
     - media.type.remote_video
   module:
@@ -29,8 +35,15 @@ content:
     region: content
 hidden:
   created: true
+  field_caption: true
+  field_credit: true
+  field_license: true
   field_media_oembed_video: true
+  field_poster: true
+  field_source_url: true
+  field_transcript: true
   langcode: true
   name: true
+  search_api_attachments: true
   search_api_excerpt: true
   uid: true

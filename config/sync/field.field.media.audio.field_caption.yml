@@ -1,0 +1,22 @@
+uuid: 4c2f86de-df47-4c08-aef9-15268b1b9429
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_caption
+    - media.type.audio
+  module:
+    - text
+id: media.audio.field_caption
+field_name: field_caption
+entity_type: media
+bundle: audio
+label: Caption
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

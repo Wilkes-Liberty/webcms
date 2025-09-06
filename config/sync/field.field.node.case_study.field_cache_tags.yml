@@ -1,0 +1,19 @@
+uuid: 6f966207-14c3-42bd-828a-834c03b1cd00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cache_tags
+    - node.type.case_study
+id: node.case_study.field_cache_tags
+field_name: field_cache_tags
+entity_type: node
+bundle: case_study
+label: 'CDN Cache Tags (hints)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

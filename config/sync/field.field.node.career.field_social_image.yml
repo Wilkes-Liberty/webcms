@@ -1,0 +1,24 @@
+uuid: 608ac52d-31d4-4d97-b0b4-d5da70717b54
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_image
+    - media.type.image
+    - node.type.career
+id: node.career.field_social_image
+field_name: field_social_image
+entity_type: node
+bundle: career
+label: 'Social Share Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

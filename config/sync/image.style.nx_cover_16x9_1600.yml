@@ -1,0 +1,15 @@
+uuid: 8ea998cb-fd32-4b4a-959b-01e9eb602121
+langcode: en
+status: true
+dependencies: {  }
+name: nx_cover_16x9_1600
+label: 'Next Cover 16x9 1600'
+effects:
+  05f93086-821a-4941-afc4-45a755a113ee:
+    uuid: 05f93086-821a-4941-afc4-45a755a113ee
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1600
+      height: 900
+      anchor: center-center

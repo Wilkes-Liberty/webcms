@@ -1,0 +1,21 @@
+uuid: ab09affb-fdd8-4de9-8d87-7ca50518b760
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_toc
+    - node.type.case_study
+id: node.case_study.field_show_toc
+field_name: field_show_toc
+entity_type: node
+bundle: case_study
+label: 'Show On-Page TOC'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,27 @@
+uuid: 3fe99eb0-20d8-4c1c-be3b-71db64cf053f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_captions_vtt
+    - media.type.video_file
+  module:
+    - file
+id: media.video_file.field_captions_vtt
+field_name: field_captions_vtt
+entity_type: media
+bundle: video_file
+label: 'Captions (WebVTT)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: txt
+  max_filesize: ''
+  description_field: false
+field_type: file

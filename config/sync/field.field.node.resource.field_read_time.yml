@@ -1,0 +1,23 @@
+uuid: 31e600ae-064f-4a3f-8d6e-c667b7347766
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_read_time
+    - node.type.resource
+id: node.resource.field_read_time
+field_name: field_read_time
+entity_type: node
+bundle: resource
+label: 'Estimated Read Time (minutes)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

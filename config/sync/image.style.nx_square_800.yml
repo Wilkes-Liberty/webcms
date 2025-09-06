@@ -1,0 +1,15 @@
+uuid: 129749b0-83c3-4e33-a0f0-520df5b06b91
+langcode: en
+status: true
+dependencies: {  }
+name: nx_square_800
+label: 'Next Square 800'
+effects:
+  be9a204f-7350-4db4-9b16-44a20303aa51:
+    uuid: be9a204f-7350-4db4-9b16-44a20303aa51
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 800
+      anchor: center-center

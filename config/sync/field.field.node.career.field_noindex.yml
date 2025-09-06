@@ -1,0 +1,21 @@
+uuid: 86b547c8-036e-4c60-ba4c-034ccd6382ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_noindex
+    - node.type.career
+id: node.career.field_noindex
+field_name: field_noindex
+entity_type: node
+bundle: career
+label: 'Robots: noindex'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,21 @@
+uuid: 26a16a0f-be9a-4e1d-830e-ea2a716af30e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_toc
+    - node.type.resource
+id: node.resource.field_show_toc
+field_name: field_show_toc
+entity_type: node
+bundle: resource
+label: 'Show On-Page TOC'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

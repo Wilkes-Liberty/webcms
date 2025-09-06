@@ -1,0 +1,23 @@
+uuid: 3a5c2323-5457-48a7-bfba-952688215e59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_revalidate_ttl
+    - node.type.landing_page
+id: node.landing_page.field_revalidate_ttl
+field_name: field_revalidate_ttl
+entity_type: node
+bundle: landing_page
+label: 'Revalidate After (seconds)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

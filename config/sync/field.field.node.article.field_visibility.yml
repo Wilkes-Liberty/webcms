@@ -1,0 +1,21 @@
+uuid: db1b7823-2a46-46d9-9758-8dcd70661cfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visibility
+    - node.type.article
+  module:
+    - options
+id: node.article.field_visibility
+field_name: field_visibility
+entity_type: node
+bundle: article
+label: Visibility
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

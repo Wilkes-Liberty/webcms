@@ -1,0 +1,22 @@
+uuid: 365f0dde-48ca-4eaf-82cb-78132021fef9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subtitle
+    - paragraphs.paragraphs_type.p_hero
+  module:
+    - text
+id: paragraph.p_hero.field_subtitle
+field_name: field_subtitle
+entity_type: paragraph
+bundle: p_hero
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

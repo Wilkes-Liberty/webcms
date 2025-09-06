@@ -1,0 +1,10 @@
+uuid: 934bfb70-2a0d-47a1-8d64-43ce62f05ef7
+langcode: en
+status: true
+dependencies: {  }
+id: p_stat
+label: Stat
+icon_uuid: null
+icon_default: null
+description: 'Statistic with value, label, and optional suffix'
+behavior_plugins: {  }

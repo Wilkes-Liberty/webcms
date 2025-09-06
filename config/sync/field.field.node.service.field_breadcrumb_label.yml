@@ -1,0 +1,19 @@
+uuid: a7cebb9e-1dae-4d08-98ce-a32cb4b7c79f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_breadcrumb_label
+    - node.type.service
+id: node.service.field_breadcrumb_label
+field_name: field_breadcrumb_label
+entity_type: node
+bundle: service
+label: 'Breadcrumb Label Override'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

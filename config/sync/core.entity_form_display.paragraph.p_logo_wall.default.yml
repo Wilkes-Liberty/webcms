@@ -1,0 +1,32 @@
+uuid: 2777fdc3-f230-4d6d-a36c-5748faefa2cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.media_image_browser
+    - field.field.paragraph.p_logo_wall.field_logos
+    - paragraphs.paragraphs_type.p_logo_wall
+  module:
+    - entity_browser
+id: paragraph.p_logo_wall.default
+targetEntityType: paragraph
+bundle: p_logo_wall
+mode: default
+content:
+  field_logos:
+    type: entity_browser_entity_reference
+    weight: 2
+    region: content
+    settings:
+      entity_browser: media_image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings: {  }
+      selection_mode: selection_append
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

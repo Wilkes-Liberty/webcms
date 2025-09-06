@@ -1,0 +1,135 @@
+uuid: 3da59764-eee9-4c4d-8dd5-720b5b98b63d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.body
+    - field.field.node.event.field_ab_variant
+    - field.field.node.event.field_breadcrumb_label
+    - field.field.node.event.field_cache_tags
+    - field.field.node.event.field_campaign
+    - field.field.node.event.field_canonical
+    - field.field.node.event.field_hero_image
+    - field.field.node.event.field_meta_description
+    - field.field.node.event.field_noindex
+    - field.field.node.event.field_parent
+    - field.field.node.event.field_preview_token
+    - field.field.node.event.field_primary_cta
+    - field.field.node.event.field_read_time
+    - field.field.node.event.field_related
+    - field.field.node.event.field_revalidate_ttl
+    - field.field.node.event.field_reviewed_on
+    - field.field.node.event.field_secondary_cta
+    - field.field.node.event.field_seo_title
+    - field.field.node.event.field_show_toc
+    - field.field.node.event.field_social_image
+    - field.field.node.event.field_summary
+    - field.field.node.event.field_taxonomy
+    - field.field.node.event.field_template
+    - field.field.node.event.field_theme_variant
+    - field.field.node.event.field_visibility
+    - node.type.event
+  module:
+    - link
+    - text
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_canonical:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_hero_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_primary_cta:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_related:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_secondary_cta:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_ab_variant: true
+  field_breadcrumb_label: true
+  field_cache_tags: true
+  field_campaign: true
+  field_meta_description: true
+  field_noindex: true
+  field_parent: true
+  field_preview_token: true
+  field_read_time: true
+  field_revalidate_ttl: true
+  field_reviewed_on: true
+  field_seo_title: true
+  field_show_toc: true
+  field_social_image: true
+  field_taxonomy: true
+  field_template: true
+  field_theme_variant: true
+  field_visibility: true
+  langcode: true
+  preview_token: true
+  search_api_attachments: true
+  search_api_excerpt: true

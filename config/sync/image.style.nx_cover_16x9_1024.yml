@@ -1,0 +1,15 @@
+uuid: d76715d6-dd11-4354-b130-84d4ce8cb1a2
+langcode: en
+status: true
+dependencies: {  }
+name: nx_cover_16x9_1024
+label: 'Next Cover 16x9 1024'
+effects:
+  9276cb93-ad94-454e-afa2-d2e32185f3bf:
+    uuid: 9276cb93-ad94-454e-afa2-d2e32185f3bf
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1024
+      height: 576
+      anchor: center-center

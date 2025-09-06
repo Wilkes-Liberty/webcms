@@ -1,0 +1,23 @@
+uuid: 6475eac4-dbc9-4f38-aef4-1a34f8d9fdd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parent
+    - node.type.event
+id: node.event.field_parent
+field_name: field_parent
+entity_type: node
+bundle: event
+label: 'Parent Page'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      event: event
+field_type: entity_reference

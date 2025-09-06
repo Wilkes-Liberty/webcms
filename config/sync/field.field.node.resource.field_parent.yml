@@ -1,0 +1,23 @@
+uuid: ca4319a4-4955-42df-a6b1-dd49a69c2f79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parent
+    - node.type.resource
+id: node.resource.field_parent
+field_name: field_parent
+entity_type: node
+bundle: resource
+label: 'Parent Page'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      resource: resource
+field_type: entity_reference

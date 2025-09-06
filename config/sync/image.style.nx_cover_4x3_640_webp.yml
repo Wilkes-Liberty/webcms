@@ -1,0 +1,21 @@
+uuid: a216eb96-4b08-42d9-8320-4eaaf81ce4f3
+langcode: en
+status: true
+dependencies: {  }
+name: nx_cover_4x3_640_webp
+label: 'Next Cover 4x3 640 (WebP)'
+effects:
+  a5bb2e09-03b0-46b8-88c0-10bc7ba3fcbf:
+    uuid: a5bb2e09-03b0-46b8-88c0-10bc7ba3fcbf
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 640
+      height: 480
+      anchor: center-center
+  5c5a435e-07aa-4ad6-bc0a-535cbeaef9a7:
+    uuid: 5c5a435e-07aa-4ad6-bc0a-535cbeaef9a7
+    id: image_convert
+    weight: 100
+    data:
+      extension: webp

@@ -1,0 +1,16 @@
+uuid: bd588864-2bbf-4dbd-817f-114e002d84b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_faq_group.field_items
+    - paragraphs.paragraphs_type.p_faq_group
+id: paragraph.p_faq_group.default
+targetEntityType: paragraph
+bundle: p_faq_group
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_items: true
+  status: true

@@ -1,0 +1,19 @@
+uuid: 14eae350-99cb-4cfa-b53b-833124f7b808
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_credit
+    - media.type.icon
+id: media.icon.field_credit
+field_name: field_credit
+entity_type: media
+bundle: icon
+label: Credit
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

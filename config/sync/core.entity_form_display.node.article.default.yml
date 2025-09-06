@@ -3,13 +3,41 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.media_image_browser
     - field.field.node.article.body
+    - field.field.node.article.field_ab_variant
+    - field.field.node.article.field_breadcrumb_label
+    - field.field.node.article.field_cache_tags
+    - field.field.node.article.field_campaign
+    - field.field.node.article.field_canonical
+    - field.field.node.article.field_hero_image
     - field.field.node.article.field_image
+    - field.field.node.article.field_meta_description
+    - field.field.node.article.field_noindex
+    - field.field.node.article.field_parent
+    - field.field.node.article.field_preview_token
+    - field.field.node.article.field_primary_cta
+    - field.field.node.article.field_read_time
+    - field.field.node.article.field_related
+    - field.field.node.article.field_revalidate_ttl
+    - field.field.node.article.field_reviewed_on
+    - field.field.node.article.field_secondary_cta
+    - field.field.node.article.field_seo_title
+    - field.field.node.article.field_show_toc
+    - field.field.node.article.field_social_image
+    - field.field.node.article.field_summary
     - field.field.node.article.field_tags
+    - field.field.node.article.field_taxonomy
+    - field.field.node.article.field_template
+    - field.field.node.article.field_theme_variant
+    - field.field.node.article.field_visibility
     - image.style.thumbnail
     - node.type.article
   module:
+    - datetime
+    - entity_browser
     - image
+    - link
     - path
     - text
 _core:
@@ -21,7 +49,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 2
+    weight: 149
     region: content
     settings:
       rows: 9
@@ -35,6 +63,58 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_ab_variant:
+    type: options_select
+    weight: 169
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_breadcrumb_label:
+    type: string_textfield
+    weight: 162
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_cache_tags:
+    type: string_textfield
+    weight: 166
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_campaign:
+    type: string_textfield
+    weight: 168
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_canonical:
+    type: link_default
+    weight: 160
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_hero_image:
+    type: entity_browser_entity_reference
+    weight: 173
+    region: content
+    settings:
+      entity_browser: media_image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings: {  }
+      selection_mode: selection_replace
+    third_party_settings: {  }
   field_image:
     type: image_image
     weight: 1
@@ -42,6 +122,122 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_meta_description:
+    type: string_textfield
+    weight: 159
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_noindex:
+    type: boolean_checkbox
+    weight: 161
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_parent:
+    type: entity_reference_autocomplete
+    weight: 150
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_preview_token:
+    type: string_textfield
+    weight: 167
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_primary_cta:
+    type: link_default
+    weight: 155
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_read_time:
+    type: number
+    weight: 171
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_related:
+    type: entity_reference_autocomplete
+    weight: 157
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_revalidate_ttl:
+    type: number
+    weight: 165
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_reviewed_on:
+    type: datetime_default
+    weight: 163
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_secondary_cta:
+    type: link_default
+    weight: 156
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_seo_title:
+    type: string_textfield
+    weight: 158
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_show_toc:
+    type: boolean_checkbox
+    weight: 170
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_social_image:
+    type: entity_browser_entity_reference
+    weight: 174
+    region: content
+    settings:
+      entity_browser: media_image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings: {  }
+      selection_mode: selection_replace
+    third_party_settings: {  }
+  field_summary:
+    type: text_textarea
+    weight: 148
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
     third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete_tags
@@ -52,6 +248,34 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_taxonomy:
+    type: entity_reference_autocomplete
+    weight: 172
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_template:
+    type: options_select
+    weight: 151
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_theme_variant:
+    type: options_select
+    weight: 152
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_visibility:
+    type: options_select
+    weight: 164
+    region: content
+    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -94,7 +318,7 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 147
     region: content
     settings:
       size: 60

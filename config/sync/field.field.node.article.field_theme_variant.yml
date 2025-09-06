@@ -1,0 +1,21 @@
+uuid: 4d91e3eb-d185-4a7b-abc9-cd496a6f3ba2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_theme_variant
+    - node.type.article
+  module:
+    - options
+id: node.article.field_theme_variant
+field_name: field_theme_variant
+entity_type: node
+bundle: article
+label: 'Design Variant'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

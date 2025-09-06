@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_browser
+    - media_library
+    - media
+name: media_generic_browser
+label: 'Media Generic Browser'
+display: iframe
+display_configuration:
+  width: '1200'
+  height: '800'
+  link_text: 'Select media'
+  autoclose: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  -
+    id: media_library
+    uuid: 5d5f9602-b158-4e1e-ba07-1181846e06f8
+    label: 'Media Library (All)'
+    weight: 0
+    settings:
+      media_types:
+        image: image
+        svg_image: svg_image
+        icon: icon
+        video_file: video_file
+        remote_video: remote_video
+        audio: audio
+        document: document
+      multiple: true

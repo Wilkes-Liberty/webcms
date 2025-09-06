@@ -1,0 +1,21 @@
+uuid: aec5def2-08f4-49fc-a1eb-2bfe09375ba9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reviewed_on
+    - node.type.resource
+  module:
+    - datetime
+id: node.resource.field_reviewed_on
+field_name: field_reviewed_on
+entity_type: node
+bundle: resource
+label: 'Last Reviewed On'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

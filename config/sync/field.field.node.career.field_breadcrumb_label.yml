@@ -1,0 +1,19 @@
+uuid: de5a2c83-bed9-44b1-b39d-5ebd4fcde850
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_breadcrumb_label
+    - node.type.career
+id: node.career.field_breadcrumb_label
+field_name: field_breadcrumb_label
+entity_type: node
+bundle: career
+label: 'Breadcrumb Label Override'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

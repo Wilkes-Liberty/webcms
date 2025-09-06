@@ -1,0 +1,30 @@
+uuid: 28c7026c-1f85-4568-8a16-b6e42a4454e1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_theme_variant
+field_name: field_theme_variant
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: light
+      label: Light
+    -
+      value: dark
+      label: Dark
+    -
+      value: brand-a
+      label: 'Brand A'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

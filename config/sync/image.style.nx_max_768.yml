@@ -1,0 +1,15 @@
+uuid: 55ce82aa-d3a0-4261-b738-770b5a843db7
+langcode: en
+status: true
+dependencies: {  }
+name: nx_max_768
+label: 'Next Max 768'
+effects:
+  d51c065d-3246-410a-9fc0-9ed10474f179:
+    uuid: d51c065d-3246-410a-9fc0-9ed10474f179
+    id: image_scale
+    weight: 1
+    data:
+      width: 768
+      height: null
+      upscale: false

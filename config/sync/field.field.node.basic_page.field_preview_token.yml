@@ -1,0 +1,19 @@
+uuid: d20e5446-3da7-4c63-a0fe-d9f9fa0d7ef4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_preview_token
+    - node.type.basic_page
+id: node.basic_page.field_preview_token
+field_name: field_preview_token
+entity_type: node
+bundle: basic_page
+label: 'Preview Token'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

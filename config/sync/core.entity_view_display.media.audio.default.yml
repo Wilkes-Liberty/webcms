@@ -3,7 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.audio.field_caption
+    - field.field.media.audio.field_credit
+    - field.field.media.audio.field_license
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_source_url
     - media.type.audio
   module:
     - file
@@ -27,8 +31,13 @@ content:
     region: content
 hidden:
   created: true
+  field_caption: true
+  field_credit: true
+  field_license: true
+  field_source_url: true
   langcode: true
   name: true
+  search_api_attachments: true
   search_api_excerpt: true
   thumbnail: true
   uid: true

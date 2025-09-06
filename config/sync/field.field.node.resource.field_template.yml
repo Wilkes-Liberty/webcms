@@ -1,0 +1,21 @@
+uuid: 6c6bf35b-0a3b-4fc1-b9d0-af2ed1cd96ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_template
+    - node.type.resource
+  module:
+    - options
+id: node.resource.field_template
+field_name: field_template
+entity_type: node
+bundle: resource
+label: 'Template / Layout'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

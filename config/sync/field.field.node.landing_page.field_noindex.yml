@@ -1,0 +1,21 @@
+uuid: 752a3a1f-aaaa-4f6a-bafb-c5dd10415888
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_noindex
+    - node.type.landing_page
+id: node.landing_page.field_noindex
+field_name: field_noindex
+entity_type: node
+bundle: landing_page
+label: 'Robots: noindex'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

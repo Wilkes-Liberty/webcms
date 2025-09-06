@@ -1,0 +1,11 @@
+uuid: c5dc22be-469f-4668-a2ba-9c5a4e566d88
+langcode: en
+status: true
+dependencies: {  }
+name: 'Case Study'
+type: case_study
+description: 'Customer success story'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

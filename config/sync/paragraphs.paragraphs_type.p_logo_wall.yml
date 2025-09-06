@@ -1,0 +1,10 @@
+uuid: ea6fb677-375c-4b28-9859-95c3a2fb9e85
+langcode: en
+status: true
+dependencies: {  }
+id: p_logo_wall
+label: 'Logo Wall'
+icon_uuid: null
+icon_default: null
+description: 'Grid of company or partner logos'
+behavior_plugins: {  }

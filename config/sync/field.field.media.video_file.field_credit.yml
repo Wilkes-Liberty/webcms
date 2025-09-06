@@ -1,0 +1,19 @@
+uuid: 44e01a0d-a87e-429d-9ebc-ba1590ed9562
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_credit
+    - media.type.video_file
+id: media.video_file.field_credit
+field_name: field_credit
+entity_type: media
+bundle: video_file
+label: Credit
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

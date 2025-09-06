@@ -1,0 +1,22 @@
+uuid: ffea7300-103d-458e-9351-fd3b091cdef3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_caption
+    - media.type.remote_video
+  module:
+    - text
+id: media.remote_video.field_caption
+field_name: field_caption
+entity_type: media
+bundle: remote_video
+label: Caption
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,14 @@
+uuid: 8d2af5af-35cf-4ca0-b747-ab4c873ebec5
+langcode: en
+status: true
+dependencies: {  }
+id: video_file
+label: 'Video (File)'
+description: null
+source: file
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_media_file
+  allowed_extensions: 'mp4 mov webm'
+field_map: {  }

@@ -1,0 +1,21 @@
+uuid: 1fad756a-7638-4072-ad90-97a4c57a60a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_noindex
+    - node.type.service
+id: node.service.field_noindex
+field_name: field_noindex
+entity_type: node
+bundle: service
+label: 'Robots: noindex'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

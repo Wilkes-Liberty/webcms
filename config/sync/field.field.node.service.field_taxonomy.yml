@@ -1,0 +1,22 @@
+uuid: 6544c3d3-6552-42f8-8990-6f67e6b232c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_taxonomy
+    - node.type.service
+id: node.service.field_taxonomy
+field_name: field_taxonomy
+entity_type: node
+bundle: service
+label: 'Tags / Taxonomies'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    auto_create: false
+field_type: entity_reference

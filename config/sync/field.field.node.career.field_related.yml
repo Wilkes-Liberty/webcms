@@ -1,0 +1,21 @@
+uuid: 18022b7b-f97e-4af2-9af0-c00fd577d6d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related
+    - node.type.career
+id: node.career.field_related
+field_name: field_related
+entity_type: node
+bundle: career
+label: 'Related Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings: {  }
+field_type: entity_reference

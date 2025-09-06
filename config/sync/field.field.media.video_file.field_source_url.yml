@@ -1,0 +1,23 @@
+uuid: e746572a-7701-48aa-b223-344750d8a94d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_source_url
+    - media.type.video_file
+  module:
+    - link
+id: media.video_file.field_source_url
+field_name: field_source_url
+entity_type: media
+bundle: video_file
+label: 'Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

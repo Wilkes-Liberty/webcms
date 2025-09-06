@@ -1,0 +1,21 @@
+uuid: 26a58f03-d6c0-4ca2-b586-68df30cac3f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ab_variant
+    - node.type.article
+  module:
+    - options
+id: node.article.field_ab_variant
+field_name: field_ab_variant
+entity_type: node
+bundle: article
+label: 'A/B Variant'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

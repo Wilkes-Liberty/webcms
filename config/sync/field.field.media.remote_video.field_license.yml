@@ -1,0 +1,19 @@
+uuid: d77d9166-44a9-4055-a604-5174a120a447
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_license
+    - media.type.remote_video
+id: media.remote_video.field_license
+field_name: field_license
+entity_type: media
+bundle: remote_video
+label: License
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

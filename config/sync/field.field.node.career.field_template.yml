@@ -1,0 +1,21 @@
+uuid: 5b085f18-786b-4c6e-bd4f-df555f4d0e3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_template
+    - node.type.career
+  module:
+    - options
+id: node.career.field_template
+field_name: field_template
+entity_type: node
+bundle: career
+label: 'Template / Layout'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,24 @@
+uuid: 460096a4-10a1-4f1e-9ba8-17ad194072de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_logos
+    - media.type.image
+    - paragraphs.paragraphs_type.p_logo_wall
+id: paragraph.p_logo_wall.field_logos
+field_name: field_logos
+entity_type: paragraph
+bundle: p_logo_wall
+label: Logos
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: c0c8a222-0380-40df-9aff-bf9e4dd2aa6d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: pathauto_event
+label: 'Event pattern'
+type: 'canonical_entities:node'
+pattern: '/events/[node:title]'
+selection_criteria:
+  f9bd2ae4-ae33-4f1b-895f-61b3f63e5c04:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: f9bd2ae4-ae33-4f1b-895f-61b3f63e5c04
+    bundles:
+      - event
+selection_logic: and
+weight: 0
+relationships: {  }

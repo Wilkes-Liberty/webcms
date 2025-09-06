@@ -1,0 +1,20 @@
+uuid: 38c12786-3833-49a2-bc33-df1f7683833d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_cta_banner.field_body
+    - field.field.paragraph.p_cta_banner.field_cta_links
+    - field.field.paragraph.p_cta_banner.field_title
+    - paragraphs.paragraphs_type.p_cta_banner
+id: paragraph.p_cta_banner.default
+targetEntityType: paragraph
+bundle: p_cta_banner
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_body: true
+  field_cta_links: true
+  field_title: true
+  status: true

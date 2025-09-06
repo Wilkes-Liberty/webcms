@@ -1,0 +1,22 @@
+uuid: 43136d1b-dcd7-4319-9265-9c19a072448d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_caption
+    - media.type.svg_image
+  module:
+    - text
+id: media.svg_image.field_caption
+field_name: field_caption
+entity_type: media
+bundle: svg_image
+label: Caption
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

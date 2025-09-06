@@ -1,0 +1,22 @@
+uuid: 046fb5c0-02b7-4641-bfb1-e8dd59df0249
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.p_cta_banner
+  module:
+    - text
+id: paragraph.p_cta_banner.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: p_cta_banner
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

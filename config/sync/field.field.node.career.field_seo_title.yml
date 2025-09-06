@@ -1,0 +1,19 @@
+uuid: e74c3072-02f3-4e8e-9e73-7964e8aac2cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_title
+    - node.type.career
+id: node.career.field_seo_title
+field_name: field_seo_title
+entity_type: node
+bundle: career
+label: 'SEO Title Override'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: cd81bc5c-ad28-4471-bcaa-710dc52b53a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ab_variant
+    - node.type.case_study
+  module:
+    - options
+id: node.case_study.field_ab_variant
+field_name: field_ab_variant
+entity_type: node
+bundle: case_study
+label: 'A/B Variant'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

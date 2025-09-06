@@ -1,0 +1,11 @@
+uuid: 9474887e-5f63-45e1-8ede-d43d2eb2ec40
+langcode: en
+status: true
+dependencies: {  }
+name: 'Basic Page'
+type: basic_page
+description: 'Simple content page for headless rendering'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

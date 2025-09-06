@@ -4,7 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
+    - field.field.media.remote_video.field_caption
+    - field.field.media.remote_video.field_credit
+    - field.field.media.remote_video.field_license
     - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.field_poster
+    - field.field.media.remote_video.field_source_url
+    - field.field.media.remote_video.field_transcript
     - media.type.remote_video
 _core:
   default_config_hash: TBgPW-uaXRaICBwLaVc16rXpRiLSknDIdF9q0XL7qso
@@ -22,7 +28,13 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_caption: true
+  field_credit: true
+  field_license: true
   field_media_oembed_video: true
+  field_poster: true
+  field_source_url: true
+  field_transcript: true
   name: true
   path: true
   publish_on: true

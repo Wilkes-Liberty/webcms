@@ -1,0 +1,11 @@
+uuid: 155dc23e-a8bf-46da-aa3b-662f79dfa041
+langcode: en
+status: true
+dependencies: {  }
+name: Resource
+type: resource
+description: Whitepaper/eBook/Checklist
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

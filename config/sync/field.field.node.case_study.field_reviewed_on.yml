@@ -1,0 +1,21 @@
+uuid: c5144e6d-efb3-4f7f-850c-dd7785216981
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reviewed_on
+    - node.type.case_study
+  module:
+    - datetime
+id: node.case_study.field_reviewed_on
+field_name: field_reviewed_on
+entity_type: node
+bundle: case_study
+label: 'Last Reviewed On'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

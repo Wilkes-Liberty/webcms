@@ -1,0 +1,21 @@
+uuid: 7321b8a3-30a9-4290-bea3-c9d7c638d4e4
+langcode: en
+status: true
+dependencies: {  }
+name: nx_cover_4x3_1024_webp
+label: 'Next Cover 4x3 1024 (WebP)'
+effects:
+  b1ff1466-8991-42bb-ae71-2035ed061450:
+    uuid: b1ff1466-8991-42bb-ae71-2035ed061450
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1024
+      height: 768
+      anchor: center-center
+  6dc3e7a5-3534-4d77-bf6d-752bc6f28a59:
+    uuid: 6dc3e7a5-3534-4d77-bf6d-752bc6f28a59
+    id: image_convert
+    weight: 100
+    data:
+      extension: webp

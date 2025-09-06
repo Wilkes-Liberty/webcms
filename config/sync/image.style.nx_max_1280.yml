@@ -1,0 +1,15 @@
+uuid: bab26604-70c1-4440-8a22-90098bcc9a05
+langcode: en
+status: true
+dependencies: {  }
+name: nx_max_1280
+label: 'Next Max 1280'
+effects:
+  fb2fcff0-c510-4601-a7c0-f7327608ef6d:
+    uuid: fb2fcff0-c510-4601-a7c0-f7327608ef6d
+    id: image_scale
+    weight: 1
+    data:
+      width: 1280
+      height: null
+      upscale: false

@@ -1,0 +1,21 @@
+uuid: 09a8741a-2c32-42dd-95a2-cb2603369760
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_noindex
+    - node.type.case_study
+id: node.case_study.field_noindex
+field_name: field_noindex
+entity_type: node
+bundle: case_study
+label: 'Robots: noindex'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

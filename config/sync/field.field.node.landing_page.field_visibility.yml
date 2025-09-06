@@ -1,0 +1,21 @@
+uuid: 66b3807c-849f-42dc-abd4-e9c6655cf2d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visibility
+    - node.type.landing_page
+  module:
+    - options
+id: node.landing_page.field_visibility
+field_name: field_visibility
+entity_type: node
+bundle: landing_page
+label: Visibility
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

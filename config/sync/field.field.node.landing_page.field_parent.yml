@@ -1,0 +1,23 @@
+uuid: 7253063c-95c4-4dd1-8301-5ab48eb218d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parent
+    - node.type.landing_page
+id: node.landing_page.field_parent
+field_name: field_parent
+entity_type: node
+bundle: landing_page
+label: 'Parent Page'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      landing_page: landing_page
+field_type: entity_reference

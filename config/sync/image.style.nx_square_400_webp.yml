@@ -1,0 +1,21 @@
+uuid: da07b21a-4c45-47be-8404-2acbfc2d223b
+langcode: en
+status: true
+dependencies: {  }
+name: nx_square_400_webp
+label: 'Next Square 400 (WebP)'
+effects:
+  007a9882-892c-467d-b554-411d10ca1499:
+    uuid: 007a9882-892c-467d-b554-411d10ca1499
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 400
+      height: 400
+      anchor: center-center
+  4a129f7f-5eaa-447b-acd8-98431c74765b:
+    uuid: 4a129f7f-5eaa-447b-acd8-98431c74765b
+    id: image_convert
+    weight: 100
+    data:
+      extension: webp

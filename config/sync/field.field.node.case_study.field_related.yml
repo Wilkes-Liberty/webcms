@@ -1,0 +1,21 @@
+uuid: 0d528e85-1ee5-49a7-8b69-d85fac5de2bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related
+    - node.type.case_study
+id: node.case_study.field_related
+field_name: field_related
+entity_type: node
+bundle: case_study
+label: 'Related Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings: {  }
+field_type: entity_reference

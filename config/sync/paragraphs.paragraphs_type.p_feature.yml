@@ -1,0 +1,10 @@
+uuid: 5ce10224-6bab-4456-8844-0353537224be
+langcode: en
+status: true
+dependencies: {  }
+id: p_feature
+label: Feature
+icon_uuid: null
+icon_default: null
+description: 'Feature block with icon, title, and description'
+behavior_plugins: {  }

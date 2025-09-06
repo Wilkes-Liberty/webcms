@@ -1,0 +1,10 @@
+uuid: b6f805b6-4665-4c1a-9904-8ef94fcee235
+langcode: en
+status: true
+dependencies: {  }
+id: p_hero
+label: Hero
+icon_uuid: null
+icon_default: null
+description: 'Large banner section with title, subtitle, media, and CTAs'
+behavior_plugins: {  }

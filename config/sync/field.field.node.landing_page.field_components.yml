@@ -1,0 +1,38 @@
+uuid: 43812f65-8425-4bcd-b9ef-f27a090a9848
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_components
+    - node.type.landing_page
+    - paragraphs.paragraphs_type.p_cta_banner
+    - paragraphs.paragraphs_type.p_faq_group
+    - paragraphs.paragraphs_type.p_feature
+    - paragraphs.paragraphs_type.p_hero
+    - paragraphs.paragraphs_type.p_logo_wall
+    - paragraphs.paragraphs_type.p_stat
+    - paragraphs.paragraphs_type.p_testimonial
+  module:
+    - entity_reference_revisions
+id: node.landing_page.field_components
+field_name: field_components
+entity_type: node
+bundle: landing_page
+label: Components
+description: 'Add and reorder content sections.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      p_hero: p_hero
+      p_feature: p_feature
+      p_logo_wall: p_logo_wall
+      p_testimonial: p_testimonial
+      p_faq_group: p_faq_group
+      p_stat: p_stat
+      p_cta_banner: p_cta_banner
+field_type: entity_reference_revisions

@@ -1,0 +1,23 @@
+uuid: 221a29e2-0a54-4dd5-883c-2dc713eec6c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_canonical
+    - node.type.basic_page
+  module:
+    - link
+id: node.basic_page.field_canonical
+field_name: field_canonical
+entity_type: node
+bundle: basic_page
+label: 'Canonical URL (override)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

@@ -1,0 +1,21 @@
+uuid: d1b8652c-181e-4112-97ec-6a9e1c8c45d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_template
+    - node.type.landing_page
+  module:
+    - options
+id: node.landing_page.field_template
+field_name: field_template
+entity_type: node
+bundle: landing_page
+label: 'Template / Layout'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

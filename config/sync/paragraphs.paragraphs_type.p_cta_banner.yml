@@ -1,0 +1,10 @@
+uuid: d985346a-a205-479c-a141-cfe5176ae344
+langcode: en
+status: true
+dependencies: {  }
+id: p_cta_banner
+label: 'CTA Banner'
+icon_uuid: null
+icon_default: null
+description: 'Call-to-action section with title, text, and buttons'
+behavior_plugins: {  }

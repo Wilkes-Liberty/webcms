@@ -1,0 +1,19 @@
+uuid: 96a11e10-42c3-49dd-9d7b-a1fb8b8e0a8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_license
+    - media.type.document
+id: media.document.field_license
+field_name: field_license
+entity_type: media
+bundle: document
+label: License
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

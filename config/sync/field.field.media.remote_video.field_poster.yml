@@ -1,0 +1,28 @@
+uuid: 10c141cb-3d72-4824-8cf7-fb37669c794b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_poster
+    - media.type.icon
+    - media.type.image
+    - media.type.remote_video
+    - media.type.svg_image
+id: media.remote_video.field_poster
+field_name: field_poster
+entity_type: media
+bundle: remote_video
+label: 'Poster Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      svg_image: svg_image
+      icon: icon
+field_type: entity_reference

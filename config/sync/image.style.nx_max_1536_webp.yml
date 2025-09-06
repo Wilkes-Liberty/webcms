@@ -1,0 +1,21 @@
+uuid: 6ba3e17c-3ce3-4b87-9408-56bd8b1b6cb3
+langcode: en
+status: true
+dependencies: {  }
+name: nx_max_1536_webp
+label: 'Next Max 1536 (WebP)'
+effects:
+  543a81c0-830d-471a-b3f8-d39fe742e0ad:
+    uuid: 543a81c0-830d-471a-b3f8-d39fe742e0ad
+    id: image_scale
+    weight: 1
+    data:
+      width: 1536
+      height: null
+      upscale: false
+  611dfb07-1f31-4a14-aed8-60afc52c03d8:
+    uuid: 611dfb07-1f31-4a14-aed8-60afc52c03d8
+    id: image_convert
+    weight: 100
+    data:
+      extension: webp

@@ -1,0 +1,23 @@
+uuid: d4b6f8b1-1b82-4544-b8ef-edf8845ff7f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_read_time
+    - node.type.career
+id: node.career.field_read_time
+field_name: field_read_time
+entity_type: node
+bundle: career
+label: 'Estimated Read Time (minutes)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

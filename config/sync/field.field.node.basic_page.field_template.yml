@@ -1,0 +1,21 @@
+uuid: f2ba95fc-e182-41fa-808b-258134200975
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_template
+    - node.type.basic_page
+  module:
+    - options
+id: node.basic_page.field_template
+field_name: field_template
+entity_type: node
+bundle: basic_page
+label: 'Template / Layout'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

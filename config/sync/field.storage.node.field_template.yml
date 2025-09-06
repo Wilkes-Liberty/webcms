@@ -1,0 +1,33 @@
+uuid: 3d0cfb01-1072-490c-b8bc-56ba44dc89f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_template
+field_name: field_template
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: Default
+    -
+      value: wide
+      label: Wide
+    -
+      value: no-sidebar
+      label: 'No Sidebar'
+    -
+      value: landing
+      label: Landing
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

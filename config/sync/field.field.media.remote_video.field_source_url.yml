@@ -1,0 +1,23 @@
+uuid: 404a9d63-2b9f-4457-8475-3bafdf52f116
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_source_url
+    - media.type.remote_video
+  module:
+    - link
+id: media.remote_video.field_source_url
+field_name: field_source_url
+entity_type: media
+bundle: remote_video
+label: 'Source URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

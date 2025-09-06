@@ -1,0 +1,21 @@
+uuid: a991dd97-4102-420d-a336-f8fef867ffc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ab_variant
+    - node.type.landing_page
+  module:
+    - options
+id: node.landing_page.field_ab_variant
+field_name: field_ab_variant
+entity_type: node
+bundle: landing_page
+label: 'A/B Variant'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

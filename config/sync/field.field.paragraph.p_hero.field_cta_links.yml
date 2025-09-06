@@ -1,0 +1,23 @@
+uuid: befd38fe-03a9-4bf8-a33c-3a285bc89710
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_links
+    - paragraphs.paragraphs_type.p_hero
+  module:
+    - link
+id: paragraph.p_hero.field_cta_links
+field_name: field_cta_links
+entity_type: paragraph
+bundle: p_hero
+label: 'CTA Links'
+description: 'One or more CTAs'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

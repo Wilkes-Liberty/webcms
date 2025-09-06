@@ -1,0 +1,22 @@
+uuid: 2e0aa9a6-943b-4353-a286-0617c7d34daa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_taxonomy
+    - node.type.resource
+id: node.resource.field_taxonomy
+field_name: field_taxonomy
+entity_type: node
+bundle: resource
+label: 'Tags / Taxonomies'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    auto_create: false
+field_type: entity_reference

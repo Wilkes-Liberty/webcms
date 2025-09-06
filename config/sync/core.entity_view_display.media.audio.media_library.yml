@@ -4,7 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
+    - field.field.media.audio.field_caption
+    - field.field.media.audio.field_credit
+    - field.field.media.audio.field_license
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_source_url
     - image.style.thumbnail
     - media.type.audio
   module:
@@ -29,8 +33,13 @@ content:
     region: content
 hidden:
   created: true
+  field_caption: true
+  field_credit: true
+  field_license: true
   field_media_audio_file: true
+  field_source_url: true
   langcode: true
   name: true
+  search_api_attachments: true
   search_api_excerpt: true
   uid: true

@@ -1,0 +1,21 @@
+uuid: 08c34045-cf06-40f5-8da5-f87babbfda8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visibility
+    - node.type.case_study
+  module:
+    - options
+id: node.case_study.field_visibility
+field_name: field_visibility
+entity_type: node
+bundle: case_study
+label: Visibility
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

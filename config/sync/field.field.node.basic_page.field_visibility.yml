@@ -1,0 +1,21 @@
+uuid: a978211c-d891-43a4-b8e2-9820e7c945d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visibility
+    - node.type.basic_page
+  module:
+    - options
+id: node.basic_page.field_visibility
+field_name: field_visibility
+entity_type: node
+bundle: basic_page
+label: Visibility
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

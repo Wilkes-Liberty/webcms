@@ -1,0 +1,23 @@
+uuid: 784c1d3e-29bc-4426-8369-d894fa854283
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_primary_cta
+    - node.type.career
+  module:
+    - link
+id: node.career.field_primary_cta
+field_name: field_primary_cta
+entity_type: node
+bundle: career
+label: 'Primary CTA'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

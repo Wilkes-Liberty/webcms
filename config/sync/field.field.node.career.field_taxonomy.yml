@@ -1,0 +1,22 @@
+uuid: c71bb0ac-1ebf-4894-badc-3806e3c5cd24
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_taxonomy
+    - node.type.career
+id: node.career.field_taxonomy
+field_name: field_taxonomy
+entity_type: node
+bundle: career
+label: 'Tags / Taxonomies'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    auto_create: false
+field_type: entity_reference
