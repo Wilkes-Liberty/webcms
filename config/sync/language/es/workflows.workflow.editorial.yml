@@ -7,6 +7,8 @@ type_settings:
       label: Borrador
     published:
       label: Publicado
+    review:
+      label: Revisión
   transitions:
     archive:
       label: Archivo
@@ -14,3 +16,9 @@ type_settings:
       label: 'Crear nuevo borrador'
     publish:
       label: Publicar
+    submit_for_review:
+      label: 'Enviar para revisión'
+    unpublish:
+      label: Despublicar
+    restore:
+      label: Restaurar
