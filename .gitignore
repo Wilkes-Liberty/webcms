@@ -69,3 +69,8 @@ Thumbs.db
 # DDEV
 .ddev/db_snapshots/
 .ddev/.dbimageBuild/
+.ddev/traefik/certs/
+.ddev/traefik/config/*-generated.yaml
+
+# Security sensitive files
+keys/
