@@ -99,9 +99,9 @@ function wl_view_display($entity, $bundle) {
     ]);
 }
 
-function wl_ensure_paragraph_type($id, $label) {
+function wl_ensure_paragraph_type($id, $label, $description = '') {
   if (!ParagraphsType::load($id)) {
-    ParagraphsType::create(['id' => $id, 'label' => $label])->save();
+    ParagraphsType::create(['id' => $id, 'label' => $label, 'description' => $description])->save();
   }
 }
 
@@ -153,16 +153,16 @@ function wl_ensure_image_style($name, $label, array $effects) {
  * 1) Paragraph bundles + fields
  * ============================================================ */
 $paragraphs = [
-  'p_hero'        => 'Hero',
-  'p_feature'     => 'Feature',
-  'p_logo_wall'   => 'Logo Wall',
-  'p_testimonial' => 'Testimonial',
-  'p_faq_item'    => 'FAQ Item',
-  'p_faq_group'   => 'FAQ Group',
-  'p_stat'        => 'Stat',
-  'p_cta_banner'  => 'CTA Banner',
+  'p_hero'        => ['Hero', 'Large banner section with title, subtitle, media, and CTAs'],
+  'p_feature'     => ['Feature', 'Feature block with icon, title, and description'],
+  'p_logo_wall'   => ['Logo Wall', 'Grid of company or partner logos'],
+  'p_testimonial' => ['Testimonial', 'Customer quote with attribution and logo'],
+  'p_faq_item'    => ['FAQ Item', 'Single question and answer pair'],
+  'p_faq_group'   => ['FAQ Group', 'Collection of related FAQ items'],
+  'p_stat'        => ['Stat', 'Statistic with value, label, and optional suffix'],
+  'p_cta_banner'  => ['CTA Banner', 'Call-to-action section with title, text, and buttons'],
 ];
-foreach ($paragraphs as $id => $label) { wl_ensure_paragraph_type($id, $label); }
+foreach ($paragraphs as $id => $info) { wl_ensure_paragraph_type($id, $info[0], $info[1]); }
 
 // Shared paragraph storages
 wl_field_storage('paragraph', 'field_title',        'string');
