@@ -7,12 +7,11 @@ label: 'Next Square 800 (WebP)'
 effects:
   74e73d3d-b23d-40b9-9720-27f8a05766d5:
     uuid: 74e73d3d-b23d-40b9-9720-27f8a05766d5
-    id: image_scale_and_crop
+    id: focal_point_scale_and_crop
     weight: 1
     data:
       width: 800
       height: 800
-      anchor: center-center
   f4a8474f-fd84-4b7d-9eed-b1c47046f3e3:
     uuid: f4a8474f-fd84-4b7d-9eed-b1c47046f3e3
     id: image_convert

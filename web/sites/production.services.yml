@@ -1,0 +1,26 @@
+# Production service container overrides for cms.wilkesliberty.com
+#
+# Notes:
+# - CORS is configured here (Drupal 11) via the 'cors.config' container parameter.
+# - With supportsCredentials: true you MUST list exact origins (no '*').
+# - Keep this file minimal and production-safe. Do not copy dev helpers (e.g., null cache).
+#
+parameters:
+  cors.config:
+    enabled: true
+    allowedOrigins:
+      - 'https://wilkesliberty.com'
+      - 'https://www.wilkesliberty.com'
+    allowedHeaders:
+      - 'Accept'
+      - 'Content-Type'
+      - 'Authorization'
+      - 'X-CSRF-Token'
+      - 'X-Requested-With'
+    # Keep methods tight in production. Add PATCH/PUT/DELETE only if your Next.js app legitimately writes to Drupal.
+    allowedMethods: ['GET', 'POST', 'OPTIONS']
+    exposedHeaders: ['Cache-Control', 'Content-Language', 'Content-Type', 'Expires', 'Last-Modified', 'Pragma']
+    maxAge: 86400
+    supportsCredentials: true
+
+services: {}

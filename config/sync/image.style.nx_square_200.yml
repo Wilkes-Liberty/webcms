@@ -7,9 +7,8 @@ label: 'Next Square 200'
 effects:
   bc7a2675-3cd4-4d99-b141-57f5a13c999a:
     uuid: bc7a2675-3cd4-4d99-b141-57f5a13c999a
-    id: image_scale_and_crop
+    id: focal_point_scale_and_crop
     weight: 1
     data:
       width: 200
       height: 200
-      anchor: center-center

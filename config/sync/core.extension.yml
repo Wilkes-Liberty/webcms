@@ -21,6 +21,7 @@ module:
   content_lock: 0
   content_moderation: 0
   contextual: 0
+  crop: 0
   datetime: 0
   dblog: 0
   decoupled_router: 0
@@ -41,6 +42,7 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  focal_point: 0
   gin_toolbar: 0
   graphql: 0
   graphql_compose: 0

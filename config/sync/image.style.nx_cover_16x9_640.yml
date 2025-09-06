@@ -7,9 +7,8 @@ label: 'Next Cover 16x9 640'
 effects:
   a7f81669-cfed-4169-961e-15f53071ac13:
     uuid: a7f81669-cfed-4169-961e-15f53071ac13
-    id: image_scale_and_crop
+    id: focal_point_scale_and_crop
     weight: 1
     data:
       width: 640
       height: 360
-      anchor: center-center

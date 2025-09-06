@@ -38,6 +38,7 @@
         "drupal/entity_redirect": "^2.3",
         "drupal/environment_indicator": "^4.0",
         "drupal/field_group": "^4.0",
+        "drupal/focal_point": "^2.1",
         "drupal/gin": "^5.0",
         "drupal/graphql": "^4.6",
         "drupal/graphql_compose": "^2.0",

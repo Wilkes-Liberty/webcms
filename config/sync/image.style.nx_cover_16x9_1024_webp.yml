@@ -7,12 +7,11 @@ label: 'Next Cover 16x9 1024 (WebP)'
 effects:
   9c31ba2a-2994-45eb-b987-b5f500c5bdfc:
     uuid: 9c31ba2a-2994-45eb-b987-b5f500c5bdfc
-    id: image_scale_and_crop
+    id: focal_point_scale_and_crop
     weight: 1
     data:
       width: 1024
       height: 576
-      anchor: center-center
   e56fd2cd-97f1-42f7-8321-7f50ce420244:
     uuid: e56fd2cd-97f1-42f7-8321-7f50ce420244
     id: image_convert

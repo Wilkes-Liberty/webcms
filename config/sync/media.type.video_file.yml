@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: video_file
-label: 'Video (File)'
-description: 'Uploaded videos'
+label: 'Video (Upload)'
+description: 'Uploaded videos (MP4/MOV/WEBM)'
 source: file
 queue_thumbnail_downloads: false
 new_revision: true

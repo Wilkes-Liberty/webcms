@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: icon
 label: Icon
-description: 'Mono/brand icons'
+description: 'Icons (SVG or PNG)'
 source: file
 queue_thumbnail_downloads: false
 new_revision: true

@@ -96,9 +96,7 @@ field_config:
     remote_video:
       field_media_oembed_video:
         enabled: true
-    video:
-      field_media_video_file:
-        enabled: true
+    video: {  }
   node:
     article:
       body:

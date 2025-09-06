@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: svg_image
 label: 'SVG Image'
-description: 'Vector SVGs'
+description: 'Vector images (SVG/SVGZ)'
 source: file
 queue_thumbnail_downloads: false
 new_revision: true
