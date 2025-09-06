@@ -1,0 +1,14 @@
+uuid: 5b855d63-7d67-4cb3-aea5-354b4a473f6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.seo_manager
+  module:
+    - user
+id: user_remove_role_action.seo_manager
+label: 'Remove the SEO Manager role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: seo_manager

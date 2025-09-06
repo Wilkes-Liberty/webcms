@@ -1,0 +1,86 @@
+uuid: 474f244a-875a-44ab-bb26-43da006a5ff5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - entity_browser.browser.media_generic_browser
+    - entity_browser.browser.media_image_browser
+    - filter.format.basic_html
+    - media.type.audio
+    - media.type.document
+    - media.type.icon
+    - media.type.image
+    - media.type.remote_video
+    - media.type.svg_image
+    - media.type.video_file
+    - node.type.article
+    - node.type.basic_page
+    - node.type.career
+    - node.type.case_study
+    - node.type.event
+    - node.type.landing_page
+    - node.type.resource
+    - node.type.service
+    - workflows.workflow.editorial
+  module:
+    - block_content
+    - content_moderation
+    - entity_browser
+    - filter
+    - media
+    - node
+    - system
+id: content_author
+label: 'Content Author'
+weight: 8
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access media overview'
+  - 'access media_generic_browser entity browser pages'
+  - 'access media_image_browser entity browser pages'
+  - 'create article content'
+  - 'create audio media'
+  - 'create basic block content'
+  - 'create basic_page content'
+  - 'create career content'
+  - 'create case_study content'
+  - 'create document media'
+  - 'create event content'
+  - 'create icon media'
+  - 'create image media'
+  - 'create landing_page content'
+  - 'create remote_video media'
+  - 'create resource content'
+  - 'create service content'
+  - 'create svg_image media'
+  - 'create video_file media'
+  - 'delete own article content'
+  - 'delete own audio media'
+  - 'delete own basic_page content'
+  - 'delete own career content'
+  - 'delete own case_study content'
+  - 'delete own document media'
+  - 'delete own event content'
+  - 'delete own icon media'
+  - 'delete own image media'
+  - 'delete own landing_page content'
+  - 'delete own remote_video media'
+  - 'delete own resource content'
+  - 'delete own service content'
+  - 'delete own svg_image media'
+  - 'delete own video_file media'
+  - 'edit own article content'
+  - 'edit own basic_page content'
+  - 'edit own career content'
+  - 'edit own case_study content'
+  - 'edit own event content'
+  - 'edit own landing_page content'
+  - 'edit own resource content'
+  - 'edit own service content'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition submit_for_review'
+  - 'use text format basic_html'
+  - 'view latest version'
+  - 'view media'

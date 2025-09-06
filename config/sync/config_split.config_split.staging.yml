@@ -1,0 +1,16 @@
+uuid: 4843e405-6bb5-4722-b8d5-8fc8ae4b5bcd
+langcode: en
+status: false
+dependencies: {  }
+id: staging
+label: Staging
+description: ''
+weight: 0
+stackable: false
+no_patching: false
+storage: null
+folder: splits/staging
+module: {  }
+theme: {  }
+complete_list: {  }
+partial_list: {  }

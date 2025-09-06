@@ -1,0 +1,17 @@
+uuid: 920ec065-094b-49f6-9f3a-2b92623328a3
+langcode: en
+status: false
+dependencies: {  }
+id: local
+label: Local
+description: ''
+weight: 0
+stackable: false
+no_patching: false
+storage: null
+folder: splits/local
+module:
+  devel: 0
+theme: {  }
+complete_list: {  }
+partial_list: {  }

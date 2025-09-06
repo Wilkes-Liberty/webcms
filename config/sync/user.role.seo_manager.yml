@@ -1,0 +1,14 @@
+uuid: 01e2881f-bc30-4457-a32d-26732851a9c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - path
+    - redirect
+id: seo_manager
+label: 'SEO Manager'
+weight: 10
+is_admin: false
+permissions:
+  - 'administer redirects'
+  - 'create url aliases'

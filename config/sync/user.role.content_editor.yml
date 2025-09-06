@@ -3,12 +3,34 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - entity_browser.browser.media_generic_browser
+    - entity_browser.browser.media_image_browser
+    - media.type.audio
+    - media.type.document
+    - media.type.icon
+    - media.type.image
+    - media.type.remote_video
+    - media.type.svg_image
+    - media.type.video_file
     - node.type.article
+    - node.type.basic_page
+    - node.type.career
+    - node.type.case_study
+    - node.type.event
+    - node.type.landing_page
+    - node.type.resource
+    - node.type.service
     - taxonomy.vocabulary.tags
+    - workflows.workflow.editorial
   module:
+    - block_content
+    - content_moderation
     - contextual
     - editoria11y
+    - entity_browser
     - file
+    - media
     - node
     - path
     - system
@@ -22,22 +44,72 @@ weight: 2
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access content'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access media overview'
+  - 'access media_generic_browser entity browser pages'
+  - 'access media_image_browser entity browser pages'
   - 'access toolbar'
   - 'administer url aliases'
   - 'create article content'
+  - 'create audio media'
+  - 'create basic block content'
+  - 'create basic_page content'
+  - 'create career content'
+  - 'create case_study content'
+  - 'create document media'
+  - 'create event content'
+  - 'create icon media'
+  - 'create image media'
+  - 'create landing_page content'
+  - 'create remote_video media'
+  - 'create resource content'
+  - 'create service content'
+  - 'create svg_image media'
   - 'create terms in tags'
   - 'create url aliases'
+  - 'create video_file media'
+  - 'delete any article content'
+  - 'delete any audio media'
+  - 'delete any basic block content'
+  - 'delete any basic_page content'
+  - 'delete any career content'
+  - 'delete any case_study content'
+  - 'delete any document media'
+  - 'delete any event content'
+  - 'delete any icon media'
+  - 'delete any image media'
+  - 'delete any landing_page content'
+  - 'delete any remote_video media'
+  - 'delete any resource content'
+  - 'delete any service content'
+  - 'delete any svg_image media'
+  - 'delete any video_file media'
   - 'delete article revisions'
   - 'delete own article content'
   - 'delete own files'
+  - 'edit any article content'
+  - 'edit any basic block content'
+  - 'edit any basic_page content'
+  - 'edit any career content'
+  - 'edit any case_study content'
+  - 'edit any event content'
+  - 'edit any landing_page content'
+  - 'edit any resource content'
+  - 'edit any service content'
   - 'edit own article content'
   - 'edit terms in tags'
   - 'mark as hidden in editoria11y'
   - 'revert all revisions'
+  - 'use editorial transition archive'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition restore'
+  - 'use editorial transition submit_for_review'
   - 'view all revisions'
   - 'view editoria11y checker'
+  - 'view latest version'
+  - 'view media'
   - 'view own unpublished content'
   - 'view the administration theme'

@@ -1,0 +1,55 @@
+uuid: 0b248d10-820f-4eca-8d28-a463d2efc2b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - node.type.article
+    - node.type.basic_page
+    - node.type.career
+    - node.type.case_study
+    - node.type.event
+    - node.type.landing_page
+    - node.type.resource
+    - node.type.service
+    - workflows.workflow.editorial
+  module:
+    - block_content
+    - content_moderation
+    - media
+    - node
+    - system
+id: publisher
+label: Publisher
+weight: 9
+is_admin: false
+permissions:
+  - 'access content'
+  - 'delete any article content'
+  - 'delete any basic block content'
+  - 'delete any basic_page content'
+  - 'delete any career content'
+  - 'delete any case_study content'
+  - 'delete any event content'
+  - 'delete any landing_page content'
+  - 'delete any resource content'
+  - 'delete any service content'
+  - 'edit any article content'
+  - 'edit any basic block content'
+  - 'edit any basic_page content'
+  - 'edit any career content'
+  - 'edit any case_study content'
+  - 'edit any event content'
+  - 'edit any landing_page content'
+  - 'edit any resource content'
+  - 'edit any service content'
+  - 'revert all revisions'
+  - 'use editorial transition archive'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition restore'
+  - 'use editorial transition submit_for_review'
+  - 'use editorial transition unpublish'
+  - 'view all revisions'
+  - 'view latest version'
+  - 'view media'

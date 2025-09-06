@@ -2,6 +2,15 @@ uuid: 12cc430b-6b6e-4692-abda-31156dd2dce0
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.article
+    - node.type.basic_page
+    - node.type.career
+    - node.type.case_study
+    - node.type.event
+    - node.type.landing_page
+    - node.type.resource
+    - node.type.service
   module:
     - content_moderation
 _core:
@@ -26,38 +35,62 @@ type_settings:
       weight: 0
       published: true
       default_revision: true
+    review:
+      label: Review
+      weight: -3
+      published: false
+      default_revision: false
   transitions:
     archive:
       label: Archive
       from:
+        - draft
+        - review
         - published
       to: archived
-      weight: 2
-    archived_draft:
-      label: 'Restore to Draft'
-      from:
-        - archived
-      to: draft
-      weight: 3
-    archived_published:
-      label: Restore
-      from:
-        - archived
-      to: published
       weight: 4
     create_new_draft:
-      label: 'Create New Draft'
+      label: 'Create new draft'
       from:
         - draft
+        - review
         - published
+        - archived
       to: draft
       weight: 0
     publish:
       label: Publish
       from:
         - draft
-        - published
+        - review
       to: published
+      weight: 2
+    restore:
+      label: Restore
+      from:
+        - archived
+      to: draft
+      weight: 5
+    submit_for_review:
+      label: 'Submit for review'
+      from:
+        - draft
+      to: review
       weight: 1
-  entity_types: {  }
+    unpublish:
+      label: Unpublish
+      from:
+        - published
+      to: draft
+      weight: 3
+  entity_types:
+    node:
+      - basic_page
+      - landing_page
+      - article
+      - service
+      - case_study
+      - resource
+      - event
+      - career
   default_moderation_state: draft

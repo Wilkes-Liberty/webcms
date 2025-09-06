@@ -1,0 +1,40 @@
+uuid: 5271f175-6a02-493a-859c-c3ebf9caae73
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.media_generic_browser
+    - entity_browser.browser.media_image_browser
+    - media.type.audio
+    - media.type.document
+    - media.type.icon
+    - media.type.image
+    - media.type.remote_video
+    - media.type.svg_image
+    - media.type.video_file
+  module:
+    - entity_browser
+    - media
+id: media_manager
+label: 'Media Manager'
+weight: 11
+is_admin: false
+permissions:
+  - 'access media overview'
+  - 'access media_generic_browser entity browser pages'
+  - 'access media_image_browser entity browser pages'
+  - 'create audio media'
+  - 'create document media'
+  - 'create icon media'
+  - 'create image media'
+  - 'create remote_video media'
+  - 'create svg_image media'
+  - 'create video_file media'
+  - 'delete any audio media'
+  - 'delete any document media'
+  - 'delete any icon media'
+  - 'delete any image media'
+  - 'delete any remote_video media'
+  - 'delete any svg_image media'
+  - 'delete any video_file media'
+  - 'view media'

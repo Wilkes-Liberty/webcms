@@ -1,0 +1,14 @@
+uuid: 7e9ef2b0-d5e6-406e-93bf-8eb6b5cd8800
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - system
+id: headless_client
+label: 'Headless Client'
+weight: 12
+is_admin: false
+permissions:
+  - 'access content'
+  - 'view media'

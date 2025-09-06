@@ -1,0 +1,17 @@
+uuid: 12128c50-5f56-43dd-abb4-6fa21b99d204
+langcode: en
+status: false
+dependencies: {  }
+id: production
+label: Production
+description: ''
+weight: 0
+stackable: false
+no_patching: false
+storage: null
+folder: splits/production
+module:
+  redis: 0
+theme: {  }
+complete_list: {  }
+partial_list: {  }

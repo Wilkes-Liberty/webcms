@@ -1,0 +1,14 @@
+uuid: 2e101d9f-3a19-4b3e-a084-3ce7772442c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.seo_manager
+  module:
+    - user
+id: user_add_role_action.seo_manager
+label: 'Add the SEO Manager role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: seo_manager

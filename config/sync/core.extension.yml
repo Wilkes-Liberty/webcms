@@ -25,7 +25,6 @@ module:
   datetime: 0
   dblog: 0
   decoupled_router: 0
-  devel: 0
   diff: 0
   dynamic_page_cache: 0
   editor: 0
@@ -89,7 +88,6 @@ module:
   purge_ui: 0
   redirect: 0
   redirect_404: 0
-  redis: 0
   registration_role: 0
   require_login: 0
   rest: 0

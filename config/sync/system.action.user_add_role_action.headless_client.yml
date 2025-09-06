@@ -1,0 +1,14 @@
+uuid: 013872ac-b61c-4542-91fc-5ef5b92b1843
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.headless_client
+  module:
+    - user
+id: user_add_role_action.headless_client
+label: 'Add the Headless Client role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: headless_client

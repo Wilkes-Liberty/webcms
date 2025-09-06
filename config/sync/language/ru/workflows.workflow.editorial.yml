@@ -10,10 +10,6 @@ type_settings:
   transitions:
     archive:
       label: Архивировать
-    archived_draft:
-      label: 'Восстановить из Черновика'
-    archived_published:
-      label: Восстановить
     create_new_draft:
       label: 'Создать новый черновик'
     publish:
