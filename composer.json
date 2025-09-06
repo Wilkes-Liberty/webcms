@@ -16,29 +16,82 @@
     ],
     "require": {
         "composer/installers": "^2.3",
+        "cweagans/composer-patches": "^1.7",
+        "drupal/allowed_formats": "^3.0",
+        "drupal/antibot": "^2.0",
+        "drupal/config_ignore_auto": "^3.0",
+        "drupal/config_readonly": "^1.0",
+        "drupal/config_split": "^2.0",
+        "drupal/config_update": "^2.0@alpha",
+        "drupal/content_lock": "^3.0",
         "drupal/core-composer-scaffold": "^11.2",
         "drupal/core-project-message": "^11.2",
         "drupal/core-recipe-unpack": "^11.2",
         "drupal/core-recommended": "^11.2",
         "drupal/decoupled_router": "^2.0",
+        "drupal/devel": "^5.4",
+        "drupal/diff": "^2.0@beta",
+        "drupal/dropzonejs": "^2.11",
+        "drupal/editoria11y": "^2.2",
+        "drupal/encrypt": "^3.2",
+        "drupal/entity_browser": "^2.15",
+        "drupal/entity_redirect": "^2.3",
+        "drupal/environment_indicator": "^4.0",
+        "drupal/field_group": "^4.0",
+        "drupal/gin": "^5.0",
+        "drupal/graphql": "^4.6",
+        "drupal/graphql_compose": "^2.0",
+        "drupal/graphql_compose_preview": "^1.1",
+        "drupal/graphql_webform": "^2.0@alpha",
+        "drupal/honeypot": "^2.2",
+        "drupal/inline_entity_form": "^3.0@RC",
         "drupal/jsonapi_extras": "^3.26",
+        "drupal/jwt": "3.x-dev",
+        "drupal/key": "^1.20",
+        "drupal/linkit": "^7.0",
+        "drupal/login_security": "^2.0",
+        "drupal/metatag": "^2.1",
+        "drupal/next": "^2.0",
+        "drupal/openid_connect": "^3.0@alpha",
+        "drupal/paragraphs": "^1.19",
+        "drupal/paragraphs_ee": "^10.0",
+        "drupal/pathauto": "^1.13",
+        "drupal/purge": "^3.6",
+        "drupal/redirect": "^1.12",
+        "drupal/redis": "^1.10",
+        "drupal/registration_role": "^2.0",
+        "drupal/require_login": "^3.0",
+        "drupal/scheduler": "^2.2",
+        "drupal/schema_metatag": "^3.0",
+        "drupal/search_api": "^1.38",
+        "drupal/seckit": "^2.0",
+        "drupal/security_review": "^3.1",
+        "drupal/simple_sitemap": "^4.2",
+        "drupal/simple_sitemap_extensions": "^2.0",
+        "drupal/smart_date": "^4.2",
+        "drupal/tfa": "^1.12",
+        "drupal/tmgmt": "^1.17",
+        "drupal/twig_tweak": "^3.4",
+        "drupal/webform_remote_handlers": "^3.0",
+        "drupal/webform_rest": "^4.2",
         "drush/drush": "^13.6"
     },
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "alpha",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
             "composer/installers": true,
-            "drupal/core-composer-scaffold": true,
-            "drupal/core-recipe-unpack": true,
-            "drupal/core-project-message": true,
-            "phpstan/extension-installer": true,
+            "cweagans/composer-patches": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "drupal/core-recipe-unpack": true,
             "php-http/discovery": true,
-            "php-tuf/composer-integration": true
+            "php-tuf/composer-integration": true,
+            "phpstan/extension-installer": true
         },
         "sort-packages": true
     },
@@ -100,6 +153,11 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
+        },
+        "patches": {
+            "drupal/decoupled_router": {
+                "Unable to resolve path on node in other language than default": "https://www.drupal.org/files/issues/2024-08-05/decouple_router-3111456-resolve-language-issue-63--get-translation-re-rolled-and-good-redirect.patch"
+            }
         }
     }
 }
