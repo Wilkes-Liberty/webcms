@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - metatag
     - path
     - redirect
 id: seo_manager
@@ -10,5 +11,6 @@ label: 'SEO Manager'
 weight: 10
 is_admin: false
 permissions:
+  - 'administer meta tags'
   - 'administer redirects'
   - 'create url aliases'
