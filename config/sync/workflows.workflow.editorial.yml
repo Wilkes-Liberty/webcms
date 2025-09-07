@@ -39,7 +39,7 @@ type_settings:
       label: Review
       weight: 10
       published: false
-      default_revision: false
+      default_revision: true
   transitions:
     archive:
       label: Archive
