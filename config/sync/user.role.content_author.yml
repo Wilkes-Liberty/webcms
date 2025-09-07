@@ -80,7 +80,6 @@ permissions:
   - 'edit own resource content'
   - 'edit own service content'
   - 'use editorial transition create_new_draft'
-  - 'use editorial transition submit_for_review'
   - 'use text format basic_html'
   - 'view latest version'
   - 'view media'
