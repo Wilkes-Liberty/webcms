@@ -5,16 +5,16 @@ dependencies: {  }
 name: nx_max_768_webp
 label: 'Next Max 768 (WebP)'
 effects:
-  5266fd30-856f-46aa-9ad8-d16c41fe2ad8:
-    uuid: 5266fd30-856f-46aa-9ad8-d16c41fe2ad8
+  0d9ef815-745c-4733-a836-0653762f41ad:
+    uuid: 0d9ef815-745c-4733-a836-0653762f41ad
     id: image_scale
     weight: 1
     data:
       width: 768
       height: null
       upscale: false
-  53799c35-ba6c-4eb3-be9f-9f83867c9b45:
-    uuid: 53799c35-ba6c-4eb3-be9f-9f83867c9b45
+  477b2dea-2523-4cd5-81bc-31366db6666a:
+    uuid: 477b2dea-2523-4cd5-81bc-31366db6666a
     id: image_convert
     weight: 100
     data:

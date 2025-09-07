@@ -17,8 +17,8 @@ dependencies:
     - field.field.node.resource.field_parent
     - field.field.node.resource.field_personas
     - field.field.node.resource.field_preview_token
+    - field.field.node.resource.field_primary_capability
     - field.field.node.resource.field_primary_cta
-    - field.field.node.resource.field_primary_service
     - field.field.node.resource.field_read_time
     - field.field.node.resource.field_related
     - field.field.node.resource.field_resource_type
@@ -28,13 +28,12 @@ dependencies:
     - field.field.node.resource.field_seo_title
     - field.field.node.resource.field_show_toc
     - field.field.node.resource.field_social_image
+    - field.field.node.resource.field_solutions
     - field.field.node.resource.field_summary
     - field.field.node.resource.field_taxonomy
-    - field.field.node.resource.field_tech_stack
+    - field.field.node.resource.field_technologies
     - field.field.node.resource.field_template
     - field.field.node.resource.field_theme_variant
-    - field.field.node.resource.field_topics
-    - field.field.node.resource.field_use_cases
     - field.field.node.resource.field_visibility
     - node.type.resource
   module:
@@ -51,7 +50,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 109
+    weight: 169
     region: content
   content_moderation_control:
     settings: {  }
@@ -68,7 +67,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 114
+    weight: 174
     region: content
   field_compliance:
     type: entity_reference_label
@@ -85,7 +84,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 110
+    weight: 170
     region: content
   field_industry:
     type: entity_reference_label
@@ -103,6 +102,14 @@ content:
     third_party_settings: {  }
     weight: 152
     region: content
+  field_primary_capability:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 158
+    region: content
   field_primary_cta:
     type: link
     label: above
@@ -113,15 +120,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 111
-    region: content
-  field_primary_service:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 147
+    weight: 171
     region: content
   field_related:
     type: entity_reference_label
@@ -129,7 +128,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 113
+    weight: 173
     region: content
   field_resource_type:
     type: entity_reference_label
@@ -149,38 +148,30 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 112
+    weight: 172
+    region: content
+  field_solutions:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 159
     region: content
   field_summary:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 108
+    weight: 168
     region: content
-  field_tech_stack:
+  field_technologies:
     type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    weight: 151
-    region: content
-  field_topics:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 150
-    region: content
-  field_use_cases:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 149
+    weight: 160
     region: content
   links:
     settings: {  }

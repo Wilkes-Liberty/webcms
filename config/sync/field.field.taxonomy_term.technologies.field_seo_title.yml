@@ -1,0 +1,19 @@
+uuid: 1f97356f-5e4b-4d1d-9923-8e8a616a9724
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_seo_title
+    - taxonomy.vocabulary.technologies
+id: taxonomy_term.technologies.field_seo_title
+field_name: field_seo_title
+entity_type: taxonomy_term
+bundle: technologies
+label: 'Seo Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

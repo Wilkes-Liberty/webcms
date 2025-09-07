@@ -1,0 +1,23 @@
+uuid: 09d0f3e5-9087-4fa0-95ea-165b8a7620ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_cta_links
+    - taxonomy.vocabulary.technologies
+  module:
+    - link
+id: taxonomy_term.technologies.field_cta_links
+field_name: field_cta_links
+entity_type: taxonomy_term
+bundle: technologies
+label: 'Cta Links'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

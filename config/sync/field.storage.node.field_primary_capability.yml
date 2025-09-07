@@ -1,0 +1,20 @@
+uuid: 704923f3-fa98-4681-b602-9e9bc19e1ea6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_primary_capability
+field_name: field_primary_capability
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

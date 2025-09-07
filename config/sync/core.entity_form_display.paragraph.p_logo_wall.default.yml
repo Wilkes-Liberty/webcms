@@ -15,7 +15,7 @@ mode: default
 content:
   field_logos:
     type: entity_browser_entity_reference
-    weight: 2
+    weight: 6
     region: content
     settings:
       entity_browser: media_image_browser

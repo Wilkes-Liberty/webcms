@@ -27,7 +27,7 @@ content:
     third_party_settings: {  }
   field_caption:
     type: text_textarea
-    weight: 113
+    weight: 123
     region: content
     settings:
       rows: 3
@@ -35,7 +35,7 @@ content:
     third_party_settings: {  }
   field_credit:
     type: string_textfield
-    weight: 114
+    weight: 124
     region: content
     settings:
       size: 60
@@ -43,7 +43,7 @@ content:
     third_party_settings: {  }
   field_license:
     type: string_textfield
-    weight: 115
+    weight: 125
     region: content
     settings:
       size: 60
@@ -58,7 +58,7 @@ content:
     third_party_settings: {  }
   field_source_url:
     type: link_default
-    weight: 116
+    weight: 126
     region: content
     settings:
       placeholder_url: ''

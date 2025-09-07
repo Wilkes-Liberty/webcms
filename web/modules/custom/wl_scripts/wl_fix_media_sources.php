@@ -96,6 +96,16 @@ foreach ($map as $bundle => [$expected_source, $field_name, $field_type, $storag
   ensure_storage('media', $field_name, $field_type, $storage_settings);
   ensure_instance('media', $bundle, $field_name, $label);
 
+  // Ensure the field instance has the correct file extension restrictions (if applicable)
+  if (isset($storage_settings['file_extensions'])) {
+    if ($fc = FieldConfig::load("media.$bundle.$field_name")) {
+      if ($fc->getSetting('file_extensions') !== $storage_settings['file_extensions']) {
+        $fc->setSetting('file_extensions', $storage_settings['file_extensions']);
+        $fc->save();
+      }
+    }
+  }
+
   // If the media type has a different source_field configured, align it.
   $conf = $mt->getSource()->getConfiguration();
   if (empty($conf['source_field']) || $conf['source_field'] !== $field_name) {

@@ -1,0 +1,23 @@
+uuid: 1681912b-0f33-4100-9739-80169171e382
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_external_canonical
+    - taxonomy.vocabulary.capabilities
+  module:
+    - link
+id: taxonomy_term.capabilities.field_external_canonical
+field_name: field_external_canonical
+entity_type: taxonomy_term
+bundle: capabilities
+label: 'External Canonical'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

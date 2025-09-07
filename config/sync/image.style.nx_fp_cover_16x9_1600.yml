@@ -7,8 +7,8 @@ dependencies:
 name: nx_fp_cover_16x9_1600
 label: 'Next FP Cover 16x9 1600'
 effects:
-  32abc691-56b3-47f7-88b0-d681093ba8d7:
-    uuid: 32abc691-56b3-47f7-88b0-d681093ba8d7
+  e66d66ac-42cb-4ad8-8e46-bda0b7db8d2e:
+    uuid: e66d66ac-42cb-4ad8-8e46-bda0b7db8d2e
     id: focal_point_scale_and_crop
     weight: 1
     data:

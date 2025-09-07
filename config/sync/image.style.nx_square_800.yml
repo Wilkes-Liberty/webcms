@@ -5,10 +5,11 @@ dependencies: {  }
 name: nx_square_800
 label: 'Next Square 800'
 effects:
-  be9a204f-7350-4db4-9b16-44a20303aa51:
-    uuid: be9a204f-7350-4db4-9b16-44a20303aa51
-    id: focal_point_scale_and_crop
+  074b1c50-5cca-4d47-8960-129d1aeb400c:
+    uuid: 074b1c50-5cca-4d47-8960-129d1aeb400c
+    id: image_scale_and_crop
     weight: 1
     data:
       width: 800
       height: 800
+      anchor: center-center

@@ -18,8 +18,8 @@ dependencies:
     - field.field.node.career.field_noindex
     - field.field.node.career.field_parent
     - field.field.node.career.field_preview_token
+    - field.field.node.career.field_primary_capability
     - field.field.node.career.field_primary_cta
-    - field.field.node.career.field_primary_service
     - field.field.node.career.field_read_time
     - field.field.node.career.field_related
     - field.field.node.career.field_revalidate_ttl
@@ -29,13 +29,12 @@ dependencies:
     - field.field.node.career.field_seo_title
     - field.field.node.career.field_show_toc
     - field.field.node.career.field_social_image
+    - field.field.node.career.field_solutions
     - field.field.node.career.field_summary
     - field.field.node.career.field_taxonomy
-    - field.field.node.career.field_tech_stack
+    - field.field.node.career.field_technologies
     - field.field.node.career.field_template
     - field.field.node.career.field_theme_variant
-    - field.field.node.career.field_topics
-    - field.field.node.career.field_use_cases
     - field.field.node.career.field_visibility
     - node.type.career
   module:
@@ -53,7 +52,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 112
+    weight: 168
     region: content
   content_moderation_control:
     settings: {  }
@@ -70,7 +69,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 120
+    weight: 176
     region: content
   field_canonical:
     type: link
@@ -82,7 +81,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 117
+    weight: 173
     region: content
   field_department:
     type: entity_reference_label
@@ -99,7 +98,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 113
+    weight: 169
     region: content
   field_job_location:
     type: string
@@ -107,14 +106,22 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 119
+    weight: 175
     region: content
   field_job_type:
     type: list_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    weight: 118
+    weight: 174
+    region: content
+  field_primary_capability:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 154
     region: content
   field_primary_cta:
     type: link
@@ -126,15 +133,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 114
-    region: content
-  field_primary_service:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 145
+    weight: 170
     region: content
   field_related:
     type: entity_reference_label
@@ -142,7 +141,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 116
+    weight: 172
     region: content
   field_secondary_cta:
     type: link
@@ -154,7 +153,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 115
+    weight: 171
     region: content
   field_seniority:
     type: entity_reference_label
@@ -164,36 +163,28 @@ content:
     third_party_settings: {  }
     weight: 150
     region: content
+  field_solutions:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 155
+    region: content
   field_summary:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 111
+    weight: 167
     region: content
-  field_tech_stack:
+  field_technologies:
     type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    weight: 148
-    region: content
-  field_topics:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 147
-    region: content
-  field_use_cases:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 146
+    weight: 156
     region: content
   links:
     settings: {  }

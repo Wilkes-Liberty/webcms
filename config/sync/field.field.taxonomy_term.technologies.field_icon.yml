@@ -1,0 +1,21 @@
+uuid: dec451bc-dbbb-4f09-981e-338fc9359bbe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - taxonomy.vocabulary.technologies
+id: taxonomy_term.technologies.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: technologies
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings: {  }
+field_type: entity_reference

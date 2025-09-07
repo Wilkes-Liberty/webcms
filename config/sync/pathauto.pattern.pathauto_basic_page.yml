@@ -15,6 +15,18 @@ selection_criteria:
     uuid: 8e14f57a-bb22-49f0-8d9b-38a2b5260ee7
     bundles:
       - basic_page
+  3c92e152-9ee7-412c-a0de-c3f6b176d2e6:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 3c92e152-9ee7-412c-a0de-c3f6b176d2e6
+    bundles:
+      - basic_page
+  31e51b15-9385-4068-8a33-3692db60cd1f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 31e51b15-9385-4068-8a33-3692db60cd1f
+    bundles:
+      - basic_page
 selection_logic: and
 weight: 0
 relationships: {  }

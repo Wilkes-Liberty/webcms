@@ -16,8 +16,8 @@ dependencies:
     - field.field.node.case_study.field_noindex
     - field.field.node.case_study.field_parent
     - field.field.node.case_study.field_preview_token
+    - field.field.node.case_study.field_primary_capability
     - field.field.node.case_study.field_primary_cta
-    - field.field.node.case_study.field_primary_service
     - field.field.node.case_study.field_read_time
     - field.field.node.case_study.field_related
     - field.field.node.case_study.field_revalidate_ttl
@@ -26,13 +26,12 @@ dependencies:
     - field.field.node.case_study.field_seo_title
     - field.field.node.case_study.field_show_toc
     - field.field.node.case_study.field_social_image
+    - field.field.node.case_study.field_solutions
     - field.field.node.case_study.field_summary
     - field.field.node.case_study.field_taxonomy
-    - field.field.node.case_study.field_tech_stack
+    - field.field.node.case_study.field_technologies
     - field.field.node.case_study.field_template
     - field.field.node.case_study.field_theme_variant
-    - field.field.node.case_study.field_topics
-    - field.field.node.case_study.field_use_cases
     - field.field.node.case_study.field_visibility
     - node.type.case_study
   module:
@@ -49,7 +48,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 109
+    weight: 159
     region: content
   content_moderation_control:
     settings: {  }
@@ -66,7 +65,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 114
+    weight: 164
     region: content
   field_compliance:
     type: entity_reference_label
@@ -83,7 +82,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 110
+    weight: 160
     region: content
   field_industry:
     type: entity_reference_label
@@ -92,6 +91,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 140
+    region: content
+  field_primary_capability:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 148
     region: content
   field_primary_cta:
     type: link
@@ -103,15 +110,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 111
-    region: content
-  field_primary_service:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 139
+    weight: 161
     region: content
   field_related:
     type: entity_reference_label
@@ -119,7 +118,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 113
+    weight: 163
     region: content
   field_secondary_cta:
     type: link
@@ -131,38 +130,30 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 112
+    weight: 162
+    region: content
+  field_solutions:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 149
     region: content
   field_summary:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 108
+    weight: 158
     region: content
-  field_tech_stack:
+  field_technologies:
     type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    weight: 143
-    region: content
-  field_topics:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 142
-    region: content
-  field_use_cases:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 141
+    weight: 150
     region: content
   links:
     settings: {  }

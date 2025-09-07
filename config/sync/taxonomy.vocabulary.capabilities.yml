@@ -1,0 +1,9 @@
+uuid: cf8d7bb2-47fa-460b-a3e4-8b150d58fd89
+langcode: en
+status: true
+dependencies: {  }
+name: Capabilities
+vid: capabilities
+description: 'Cross-cutting capabilities referenced across tech/services/solutions.'
+weight: 0
+new_revision: false

@@ -4,11 +4,10 @@ status: true
 dependencies: {  }
 id: svg_image
 label: 'SVG Image'
-description: 'Vector images (SVG/SVGZ)'
+description: 'Vector SVGs'
 source: file
 queue_thumbnail_downloads: false
 new_revision: true
 source_configuration:
   source_field: field_media_file
-  allowed_extensions: 'svg svgz'
 field_map: {  }

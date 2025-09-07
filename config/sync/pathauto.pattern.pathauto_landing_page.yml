@@ -15,6 +15,18 @@ selection_criteria:
     uuid: 8cb711df-ff53-4ca2-a4e3-f6f2d62c9ff8
     bundles:
       - landing_page
+  2919b2e9-054f-4581-81ba-f2ce5648ec97:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 2919b2e9-054f-4581-81ba-f2ce5648ec97
+    bundles:
+      - landing_page
+  32e343d6-29a5-4921-a97f-38ffd8a13355:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 32e343d6-29a5-4921-a97f-38ffd8a13355
+    bundles:
+      - landing_page
 selection_logic: and
 weight: 0
 relationships: {  }

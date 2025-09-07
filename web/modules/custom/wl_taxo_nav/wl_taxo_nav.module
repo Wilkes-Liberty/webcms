@@ -3,35 +3,54 @@
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 
-/** Which vocabularies to sync into the Main menu. */
-function _wl_taxo_nav_allowed_vocabs(): array { return ['services', 'industries']; }
+/**
+ * Vocabs we manage for menu sync.
+ */
+function _wl_taxo_nav_allowed_vocabs(): array {
+  return ['services', 'industries'];
+}
 
-/** Is the term top-level (no parents)? */
+/**
+ * Is this a top-level term?
+ */
 function _wl_taxo_nav_is_top_level(\Drupal\taxonomy\TermInterface $term): bool {
   $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($term->id());
   return empty($parents);
 }
 
-/** Find an existing menu link created for a term (by stored tid). */
+/**
+ * Find an existing menu link we created for a term (by our third party setting).
+ */
 function _wl_taxo_nav_find_link_for_term(int $tid): ?MenuLinkContent {
-  $ids = \Drupal::entityQuery('menu_link_content')->accessCheck(FALSE)->condition('menu_name', 'main')->execute();
+  $ids = \Drupal::entityQuery('menu_link_content')
+    ->accessCheck(FALSE)
+    ->condition('menu_name', 'main')
+    ->execute();
   if (!$ids) return NULL;
-  foreach (MenuLinkContent::loadMultiple($ids) as $link) {
-    if ((int) $link->getThirdPartySetting('wl_taxo_nav', 'tid') === $tid) return $link;
+  $links = MenuLinkContent::loadMultiple($ids);
+  foreach ($links as $link) {
+    $tp = $link->getThirdPartySetting('wl_taxo_nav', 'tid');
+    if ((int) $tp === $tid) return $link;
   }
   return NULL;
 }
 
-/** Ensure menu link exists/updated or is removed as needed. */
+/**
+ * Ensure a menu link exists/updated for the given term or remove it when not needed.
+ */
 function _wl_taxo_nav_sync_term(\Drupal\taxonomy\TermInterface $term): void {
   $vid = $term->bundle();
-  if (!in_array($vid, _wl_taxo_nav_allowed_vocabs(), TRUE)) return;
-
+  if (!in_array($vid, _wl_taxo_nav_allowed_vocabs(), TRUE)) {
+    // We only manage selected vocabs.
+    return;
+  }
   $show = (bool) ($term->get('field_show_in_nav')->value ?? FALSE);
   $top  = _wl_taxo_nav_is_top_level($term);
+
   $existing = _wl_taxo_nav_find_link_for_term((int) $term->id());
 
   if ($show && $top) {
+    // Create or update the link.
     if (!$existing) {
       $existing = MenuLinkContent::create([
         'title' => $term->label(),
@@ -46,6 +65,7 @@ function _wl_taxo_nav_sync_term(\Drupal\taxonomy\TermInterface $term): void {
       ]);
       $existing->setThirdPartySetting('wl_taxo_nav', 'tid', (int) $term->id());
     } else {
+      // Update title and link params if needed.
       $existing->set('title', $term->label());
       $existing->set('link', [
         'uri' => 'route:entity.taxonomy_term.canonical',
@@ -55,23 +75,41 @@ function _wl_taxo_nav_sync_term(\Drupal\taxonomy\TermInterface $term): void {
       $existing->set('enabled', TRUE);
     }
     $existing->save();
-  } else {
-    if ($existing) { $existing->delete(); }
+  }
+  else {
+    // Remove if it exists (either not shown or has a parent).
+    if ($existing) {
+      $existing->delete();
+    }
   }
 }
 
-/** Implements hook_entity_insert(). */
+/**
+ * Implements hook_entity_insert().
+ */
 function wl_taxo_nav_entity_insert(EntityInterface $entity) {
-  if ($entity->getEntityTypeId() === 'taxonomy_term') { _wl_taxo_nav_sync_term($entity); }
+  if ($entity->getEntityTypeId() === 'taxonomy_term') {
+    _wl_taxo_nav_sync_term($entity);
+  }
 }
-/** Implements hook_entity_update(). */
+
+/**
+ * Implements hook_entity_update().
+ */
 function wl_taxo_nav_entity_update(EntityInterface $entity) {
-  if ($entity->getEntityTypeId() === 'taxonomy_term') { _wl_taxo_nav_sync_term($entity); }
+  if ($entity->getEntityTypeId() === 'taxonomy_term') {
+    _wl_taxo_nav_sync_term($entity);
+  }
 }
-/** Implements hook_entity_delete(). */
+
+/**
+ * Implements hook_entity_delete().
+ */
 function wl_taxo_nav_entity_delete(EntityInterface $entity) {
   if ($entity->getEntityTypeId() === 'taxonomy_term') {
     $existing = _wl_taxo_nav_find_link_for_term((int) $entity->id());
-    if ($existing) { $existing->delete(); }
+    if ($existing) {
+      $existing->delete();
+    }
   }
 }

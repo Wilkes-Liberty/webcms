@@ -1,0 +1,24 @@
+uuid: 284eab9b-6b6c-4eaa-aa11-605f4accb815
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_solutions
+    - node.type.case_study
+    - taxonomy.vocabulary.solutions
+id: node.case_study.field_solutions
+field_name: field_solutions
+entity_type: node
+bundle: case_study
+label: Solutions
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      solutions: solutions
+field_type: entity_reference

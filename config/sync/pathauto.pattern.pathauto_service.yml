@@ -15,6 +15,18 @@ selection_criteria:
     uuid: 3b676eac-e60a-4ad6-93bc-ad83e3ad148a
     bundles:
       - service
+  dad156b0-d756-44b6-8254-50999ade1563:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: dad156b0-d756-44b6-8254-50999ade1563
+    bundles:
+      - service
+  2dda40f2-edbb-4f27-aca8-ef3f906866d1:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 2dda40f2-edbb-4f27-aca8-ef3f906866d1
+    bundles:
+      - service
 selection_logic: and
 weight: 0
 relationships: {  }

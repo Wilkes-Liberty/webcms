@@ -1,0 +1,9 @@
+uuid: 61bdc088-23ad-4ba4-8adb-b18d01279a42
+langcode: en
+status: true
+dependencies: {  }
+name: Solutions
+vid: solutions
+description: 'Reusable solution offerings.'
+weight: 0
+new_revision: false

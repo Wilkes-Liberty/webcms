@@ -5,15 +5,16 @@ dependencies: {  }
 name: nx_cover_16x9_640_webp
 label: 'Next Cover 16x9 640 (WebP)'
 effects:
-  0f133a7b-46d9-4be8-9867-c2a19fbc2b98:
-    uuid: 0f133a7b-46d9-4be8-9867-c2a19fbc2b98
-    id: focal_point_scale_and_crop
+  72cf0f4a-01eb-402a-8c59-892ee375abef:
+    uuid: 72cf0f4a-01eb-402a-8c59-892ee375abef
+    id: image_scale_and_crop
     weight: 1
     data:
       width: 640
       height: 360
-  4c784789-c576-4f23-a96c-af9a7b8ec679:
-    uuid: 4c784789-c576-4f23-a96c-af9a7b8ec679
+      anchor: center-center
+  a2486d7a-8dc1-4d1f-905f-2a5736624486:
+    uuid: a2486d7a-8dc1-4d1f-905f-2a5736624486
     id: image_convert
     weight: 100
     data:

@@ -5,8 +5,8 @@ dependencies: {  }
 name: nx_max_2560
 label: 'Next Max 2560'
 effects:
-  63589ff3-8630-43c9-ab3a-10d7bb160fcc:
-    uuid: 63589ff3-8630-43c9-ab3a-10d7bb160fcc
+  321f811e-097c-4ec1-adf9-75b019f63a9f:
+    uuid: 321f811e-097c-4ec1-adf9-75b019f63a9f
     id: image_scale
     weight: 1
     data:

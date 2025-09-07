@@ -30,7 +30,7 @@ content:
     third_party_settings: {  }
   field_caption:
     type: text_textarea
-    weight: 119
+    weight: 133
     region: content
     settings:
       rows: 3
@@ -38,7 +38,7 @@ content:
     third_party_settings: {  }
   field_credit:
     type: string_textfield
-    weight: 120
+    weight: 134
     region: content
     settings:
       size: 60
@@ -46,7 +46,7 @@ content:
     third_party_settings: {  }
   field_license:
     type: string_textfield
-    weight: 121
+    weight: 135
     region: content
     settings:
       size: 60
@@ -62,7 +62,7 @@ content:
     third_party_settings: {  }
   field_poster:
     type: entity_reference_autocomplete
-    weight: 123
+    weight: 137
     region: content
     settings:
       match_operator: CONTAINS
@@ -72,7 +72,7 @@ content:
     third_party_settings: {  }
   field_source_url:
     type: link_default
-    weight: 122
+    weight: 136
     region: content
     settings:
       placeholder_url: ''
@@ -80,7 +80,7 @@ content:
     third_party_settings: {  }
   field_transcript:
     type: text_textarea
-    weight: 124
+    weight: 138
     region: content
     settings:
       rows: 6

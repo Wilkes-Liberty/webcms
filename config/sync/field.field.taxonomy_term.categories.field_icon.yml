@@ -1,0 +1,21 @@
+uuid: af1accfa-92de-433d-93c2-9a73f6c14ed4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - taxonomy.vocabulary.categories
+id: taxonomy_term.categories.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: categories
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings: {  }
+field_type: entity_reference

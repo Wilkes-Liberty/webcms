@@ -5,15 +5,16 @@ dependencies: {  }
 name: nx_square_200_webp
 label: 'Next Square 200 (WebP)'
 effects:
-  e688f9dc-e430-4f4a-8246-93b1b7834139:
-    uuid: e688f9dc-e430-4f4a-8246-93b1b7834139
-    id: focal_point_scale_and_crop
+  0a738e7b-252c-4315-8804-00d28c0905d2:
+    uuid: 0a738e7b-252c-4315-8804-00d28c0905d2
+    id: image_scale_and_crop
     weight: 1
     data:
       width: 200
       height: 200
-  9881b9e1-e392-4355-ab1c-6c7939fbacc6:
-    uuid: 9881b9e1-e392-4355-ab1c-6c7939fbacc6
+      anchor: center-center
+  e26d4cf6-a624-4825-9e2c-4f4141f51b61:
+    uuid: e26d4cf6-a624-4825-9e2c-4f4141f51b61
     id: image_convert
     weight: 100
     data:

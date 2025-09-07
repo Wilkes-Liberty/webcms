@@ -1,0 +1,24 @@
+uuid: 6b28d58c-a3eb-4015-9ebf-74831edc2409
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_primary_capability
+    - node.type.case_study
+    - taxonomy.vocabulary.capabilities
+id: node.case_study.field_primary_capability
+field_name: field_primary_capability
+entity_type: node
+bundle: case_study
+label: 'Primary Capability'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      capabilities: capabilities
+field_type: entity_reference

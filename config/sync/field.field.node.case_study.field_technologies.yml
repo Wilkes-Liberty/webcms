@@ -1,0 +1,24 @@
+uuid: de723ff4-8e71-4779-b2cb-51275fc6f938
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_technologies
+    - node.type.case_study
+    - taxonomy.vocabulary.technologies
+id: node.case_study.field_technologies
+field_name: field_technologies
+entity_type: node
+bundle: case_study
+label: Technologies
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      technologies: technologies
+field_type: entity_reference

@@ -1,0 +1,9 @@
+uuid: 54b2cdb0-79c6-47f4-bd3b-f3b58b11bc4f
+langcode: en
+status: true
+dependencies: {  }
+name: Technologies
+vid: technologies
+description: 'Technology topics and sub-technologies.'
+weight: 0
+new_revision: false

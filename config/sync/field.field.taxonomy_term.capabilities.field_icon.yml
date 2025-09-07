@@ -1,0 +1,21 @@
+uuid: 06120bbb-e5e4-4b29-a9c4-de6901f934de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - taxonomy.vocabulary.capabilities
+id: taxonomy_term.capabilities.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: capabilities
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings: {  }
+field_type: entity_reference

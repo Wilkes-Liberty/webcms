@@ -1,0 +1,21 @@
+uuid: f3c230ff-e573-4fb9-8323-c94e0e8655d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_hero_image
+    - taxonomy.vocabulary.solutions
+id: taxonomy_term.solutions.field_hero_image
+field_name: field_hero_image
+entity_type: taxonomy_term
+bundle: solutions
+label: 'Hero Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings: {  }
+field_type: entity_reference

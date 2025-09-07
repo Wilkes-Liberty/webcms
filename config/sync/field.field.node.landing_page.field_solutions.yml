@@ -1,0 +1,24 @@
+uuid: 7942fe80-cb69-4098-ab1d-d3946e565150
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_solutions
+    - node.type.landing_page
+    - taxonomy.vocabulary.solutions
+id: node.landing_page.field_solutions
+field_name: field_solutions
+entity_type: node
+bundle: landing_page
+label: Solutions
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      solutions: solutions
+field_type: entity_reference

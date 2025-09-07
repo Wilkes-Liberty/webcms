@@ -1,0 +1,22 @@
+uuid: fbbeefe1-cdaf-4a46-a2ce-dc4a7efd6b26
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxo_technologies
+label: 'Technologies terms'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/tech/[term:name]'
+selection_criteria:
+  60304343-799a-47fc-aae3-fd592fdbc8e4:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 60304343-799a-47fc-aae3-fd592fdbc8e4
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      technologies: technologies
+selection_logic: and
+weight: 0
+relationships: {  }

@@ -5,8 +5,8 @@ dependencies: {  }
 name: nx_max_1920
 label: 'Next Max 1920'
 effects:
-  cec7cba2-d6f8-40c2-b73c-ddda4cc5d183:
-    uuid: cec7cba2-d6f8-40c2-b73c-ddda4cc5d183
+  1a47c4c4-bbc6-441c-9cb8-12deb98710d7:
+    uuid: 1a47c4c4-bbc6-441c-9cb8-12deb98710d7
     id: image_scale
     weight: 1
     data:

@@ -1,0 +1,24 @@
+uuid: 6d3549e1-b889-4052-9433-7887c3fe4d3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_technologies
+    - node.type.article
+    - taxonomy.vocabulary.technologies
+id: node.article.field_technologies
+field_name: field_technologies
+entity_type: node
+bundle: article
+label: Technologies
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      technologies: technologies
+field_type: entity_reference

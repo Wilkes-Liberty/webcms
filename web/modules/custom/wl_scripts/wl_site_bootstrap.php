@@ -137,7 +137,7 @@ function wl_ensure_image_style($name, $label, array $effects) {
     $style->save();
   }
   foreach ($style->getEffects()->getConfiguration() as $uuid => $conf) {
-    $style->getEffects()->removeEffect($uuid);
+    $style->getEffects()->removeInstanceId($uuid);
   }
   foreach ($effects as $ef) {
     $style->addImageEffect([
@@ -258,19 +258,16 @@ wl_ensure_media_type('image', 'Image', 'image', [
 // 2b) SVG image (file source with restrictive extension)
 wl_ensure_media_type('svg_image', 'SVG Image', 'file', [
   'source_field' => 'field_media_file',
-  'allowed_extensions' => 'svg svgz',
 ]);
 
 // 2c) Icon (SVG or PNG)
 wl_ensure_media_type('icon', 'Icon', 'file', [
   'source_field' => 'field_media_file',
-  'allowed_extensions' => 'svg svgz png',
 ]);
 
 // 2d) Video (file)
 wl_ensure_media_type('video_file', 'Video (File)', 'file', [
   'source_field' => 'field_media_file',
-  'allowed_extensions' => 'mp4 mov webm',
 ]);
 
 // 2e) Remote video (oEmbed)
@@ -281,13 +278,11 @@ wl_ensure_media_type('remote_video', 'Remote Video', 'oembed:video', [
 // 2f) Audio (file)
 wl_ensure_media_type('audio', 'Audio', 'file', [
   'source_field' => 'field_media_file',
-  'allowed_extensions' => 'mp3 ogg wav',
 ]);
 
 // 2g) Document (file)
 wl_ensure_media_type('document', 'Document', 'file', [
   'source_field' => 'field_media_file',
-  'allowed_extensions' => 'pdf doc docx xls xlsx ppt pptx txt',
 ]);
 
 // Shared media metadata fields storages
@@ -363,6 +358,24 @@ foreach ($media_source_fixes as $bundle => $expected_field) {
     $mt->set('source_configuration', $conf);
     $mt->save();
     $repaired[] = $bundle;
+  }
+}
+
+// Ensure per-bundle file extension restrictions on field_media_file
+$bundle_extensions = [
+  'svg_image' => 'svg svgz',
+  'icon' => 'svg svgz png',
+  'video_file' => 'mp4 mov webm',
+  'audio' => 'mp3 ogg wav',
+  'document' => 'pdf doc docx xls xlsx ppt pptx txt',
+];
+foreach ($bundle_extensions as $bundle => $exts) {
+  /** @var \Drupal\field\Entity\FieldConfig|null $fc */
+  if ($fc = FieldConfig::load("media.$bundle.field_media_file")) {
+    if ($fc->getSetting('file_extensions') !== $exts) {
+      $fc->setSetting('file_extensions', $exts);
+      $fc->save();
+    }
   }
 }
 

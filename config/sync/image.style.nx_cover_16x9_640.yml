@@ -5,10 +5,11 @@ dependencies: {  }
 name: nx_cover_16x9_640
 label: 'Next Cover 16x9 640'
 effects:
-  a7f81669-cfed-4169-961e-15f53071ac13:
-    uuid: a7f81669-cfed-4169-961e-15f53071ac13
-    id: focal_point_scale_and_crop
+  211e4748-8459-4b89-afa6-4c1dae8954ee:
+    uuid: 211e4748-8459-4b89-afa6-4c1dae8954ee
+    id: image_scale_and_crop
     weight: 1
     data:
       width: 640
       height: 360
+      anchor: center-center

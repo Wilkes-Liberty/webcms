@@ -1,0 +1,9 @@
+uuid: 95e43d20-4ce5-4ee9-a75c-4a36bdfe3417
+langcode: en
+status: true
+dependencies: {  }
+name: Categories
+vid: categories
+description: 'Editorial and informational categories used across the site.'
+weight: 0
+new_revision: false

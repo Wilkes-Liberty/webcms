@@ -5,8 +5,8 @@ dependencies: {  }
 name: nx_max_1024
 label: 'Next Max 1024'
 effects:
-  58873de6-01f0-4588-8db9-e081d6f644ce:
-    uuid: 58873de6-01f0-4588-8db9-e081d6f644ce
+  4b321924-964e-4ad0-af59-977f53f68783:
+    uuid: 4b321924-964e-4ad0-af59-977f53f68783
     id: image_scale
     weight: 1
     data:

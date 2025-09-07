@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: Industries
 vid: industries
-description: null
+description: 'Industry verticals.'
 weight: 0
 new_revision: false

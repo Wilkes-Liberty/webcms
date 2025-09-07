@@ -1,0 +1,24 @@
+uuid: 6ba9a83c-553d-49ea-93e2-979445e2dbbe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_solutions
+    - node.type.career
+    - taxonomy.vocabulary.solutions
+id: node.career.field_solutions
+field_name: field_solutions
+entity_type: node
+bundle: career
+label: Solutions
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      solutions: solutions
+field_type: entity_reference

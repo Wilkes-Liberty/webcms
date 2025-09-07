@@ -25,7 +25,7 @@ mode: default
 content:
   description:
     type: text_textarea
-    weight: 152
+    weight: 182
     region: content
     settings:
       rows: 4
@@ -33,7 +33,7 @@ content:
     third_party_settings: {  }
   field_cta_links:
     type: link_default
-    weight: 159
+    weight: 187
     region: content
     settings:
       placeholder_url: ''
@@ -41,7 +41,7 @@ content:
     third_party_settings: {  }
   field_external_canonical:
     type: link_default
-    weight: 160
+    weight: 188
     region: content
     settings:
       placeholder_url: ''
@@ -49,7 +49,7 @@ content:
     third_party_settings: {  }
   field_hero_image:
     type: entity_browser_entity_reference
-    weight: 155
+    weight: 189
     region: content
     settings:
       entity_browser: media_image_browser
@@ -63,7 +63,7 @@ content:
     third_party_settings: {  }
   field_icon:
     type: entity_browser_entity_reference
-    weight: 156
+    weight: 190
     region: content
     settings:
       entity_browser: media_image_browser
@@ -77,7 +77,7 @@ content:
     third_party_settings: {  }
   field_meta_description:
     type: string_textfield
-    weight: 154
+    weight: 184
     region: content
     settings:
       size: 60
@@ -85,7 +85,7 @@ content:
     third_party_settings: {  }
   field_seo_title:
     type: string_textfield
-    weight: 153
+    weight: 183
     region: content
     settings:
       size: 60
@@ -93,14 +93,14 @@ content:
     third_party_settings: {  }
   field_show_in_nav:
     type: boolean_checkbox
-    weight: 158
+    weight: 186
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_synonyms:
     type: string_textfield
-    weight: 157
+    weight: 185
     region: content
     settings:
       size: 60
@@ -115,7 +115,7 @@ content:
     third_party_settings: {  }
   name:
     type: string_textfield
-    weight: 151
+    weight: 181
     region: content
     settings:
       size: 60

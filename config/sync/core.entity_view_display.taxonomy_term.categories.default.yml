@@ -1,0 +1,68 @@
+uuid: 1a23e06f-1e8e-4d6a-9485-4d0cd9925618
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.categories.field_cta_links
+    - field.field.taxonomy_term.categories.field_external_canonical
+    - field.field.taxonomy_term.categories.field_hero_image
+    - field.field.taxonomy_term.categories.field_icon
+    - field.field.taxonomy_term.categories.field_meta_description
+    - field.field.taxonomy_term.categories.field_seo_title
+    - field.field.taxonomy_term.categories.field_show_in_nav
+    - field.field.taxonomy_term.categories.field_synonyms
+    - taxonomy.vocabulary.categories
+  module:
+    - link
+    - text
+id: taxonomy_term.categories.default
+targetEntityType: taxonomy_term
+bundle: categories
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_cta_links:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_hero_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+hidden:
+  field_external_canonical: true
+  field_meta_description: true
+  field_seo_title: true
+  field_show_in_nav: true
+  field_synonyms: true
+  langcode: true
+  search_api_attachments: true
+  search_api_excerpt: true

@@ -15,6 +15,18 @@ selection_criteria:
     uuid: a170967d-4b5d-4f86-be06-edcbcedacea4
     bundles:
       - career
+  ff563764-6185-4729-bbba-74e280afcb2c:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ff563764-6185-4729-bbba-74e280afcb2c
+    bundles:
+      - career
+  52f31dc8-1778-44cc-b5e6-a44adef7be04:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 52f31dc8-1778-44cc-b5e6-a44adef7be04
+    bundles:
+      - career
 selection_logic: and
 weight: 0
 relationships: {  }

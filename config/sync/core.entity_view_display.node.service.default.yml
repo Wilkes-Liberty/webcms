@@ -23,13 +23,12 @@ dependencies:
     - field.field.node.service.field_seo_title
     - field.field.node.service.field_show_toc
     - field.field.node.service.field_social_image
+    - field.field.node.service.field_solutions
     - field.field.node.service.field_summary
     - field.field.node.service.field_taxonomy
-    - field.field.node.service.field_tech_stack
+    - field.field.node.service.field_technologies
     - field.field.node.service.field_template
     - field.field.node.service.field_theme_variant
-    - field.field.node.service.field_topics
-    - field.field.node.service.field_use_cases
     - field.field.node.service.field_visibility
     - node.type.service
   module:
@@ -46,7 +45,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 109
+    weight: 142
     region: content
   content_moderation_control:
     settings: {  }
@@ -63,7 +62,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 114
+    weight: 147
     region: content
   field_hero_image:
     type: entity_reference_entity_view
@@ -72,7 +71,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 110
+    weight: 143
     region: content
   field_primary_cta:
     type: link
@@ -84,7 +83,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 111
+    weight: 144
     region: content
   field_related:
     type: entity_reference_label
@@ -92,7 +91,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 113
+    weight: 146
     region: content
   field_secondary_cta:
     type: link
@@ -104,38 +103,30 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 112
+    weight: 145
+    region: content
+  field_solutions:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 132
     region: content
   field_summary:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 108
+    weight: 141
     region: content
-  field_tech_stack:
+  field_technologies:
     type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    weight: 129
-    region: content
-  field_topics:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 128
-    region: content
-  field_use_cases:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 127
+    weight: 133
     region: content
   links:
     settings: {  }

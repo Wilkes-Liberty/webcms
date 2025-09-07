@@ -5,8 +5,8 @@ dependencies: {  }
 name: nx_max_320
 label: 'Next Max 320'
 effects:
-  502d57be-e7c8-4abb-92d0-1ab2c0457f53:
-    uuid: 502d57be-e7c8-4abb-92d0-1ab2c0457f53
+  ce30611d-9d29-4db2-9431-74c92e1be448:
+    uuid: ce30611d-9d29-4db2-9431-74c92e1be448
     id: image_scale
     weight: 1
     data:

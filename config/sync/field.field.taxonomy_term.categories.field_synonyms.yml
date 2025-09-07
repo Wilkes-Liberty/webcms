@@ -1,0 +1,19 @@
+uuid: 04529a9d-684c-4407-9ce3-46a259558df0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_synonyms
+    - taxonomy.vocabulary.categories
+id: taxonomy_term.categories.field_synonyms
+field_name: field_synonyms
+entity_type: taxonomy_term
+bundle: categories
+label: Synonyms
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

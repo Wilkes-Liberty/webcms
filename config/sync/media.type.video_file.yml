@@ -4,11 +4,10 @@ status: true
 dependencies: {  }
 id: video_file
 label: 'Video (Upload)'
-description: 'Uploaded videos (MP4/MOV/WEBM)'
+description: 'Uploaded videos'
 source: file
 queue_thumbnail_downloads: false
 new_revision: true
 source_configuration:
   source_field: field_media_file
-  allowed_extensions: 'mp4 mov webm'
 field_map: {  }

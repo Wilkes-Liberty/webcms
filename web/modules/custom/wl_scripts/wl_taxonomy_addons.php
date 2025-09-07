@@ -39,7 +39,7 @@ function wl_ensure_image_style($name, $label, array $effects) {
   }
   // Reset effects to ensure idempotence.
   foreach ($style->getEffects()->getConfiguration() as $uuid => $conf) {
-    $style->getEffects()->removeEffect($uuid);
+    $style->getEffects()->removeInstanceId($uuid);
   }
   foreach ($effects as $ef) {
     $style->addImageEffect([

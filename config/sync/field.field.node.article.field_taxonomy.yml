@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.storage.node.field_taxonomy
     - node.type.article
+    - taxonomy.vocabulary.tech_stack
+    - taxonomy.vocabulary.topics
 id: node.article.field_taxonomy
 field_name: field_taxonomy
 entity_type: node
 bundle: article
-label: 'Tags / Taxonomies'
+label: Tags
 description: ''
 required: false
 translatable: true
@@ -18,5 +20,8 @@ default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
+    target_bundles:
+      topics: topics
+      tech_stack: tech_stack
     auto_create: false
 field_type: entity_reference

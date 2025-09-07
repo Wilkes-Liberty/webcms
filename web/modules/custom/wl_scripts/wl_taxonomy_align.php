@@ -62,12 +62,27 @@ function set_view_formatter($entity,$bundle,$field,$type,$settings=[],$label='ab
   $vd->setComponent($field,['type'=>$type,'settings'=>$settings,'label'=>$label]); if (!DRY_RUN) $vd->save();
 }
 function pathauto_for_vocab($id,$label,$pattern,$vid){
-  $pat = PathautoPattern::load($id) ?: PathautoPattern::create(['id'=>$id,'label'=>$label,'type'=>'canonical_entities:taxonomy_term','pattern'=>$pattern]);
-  $pat->set('pattern',$pattern);
-  $pat->setSelectionCriteria([[
-    'id'=>'entity_bundle:taxonomy_term','bundles'=>[$vid=>$vid],'negate'=>FALSE,'provider'=>'entity','uuid'=>\Drupal::service('uuid')->generate(),
-  ]]);
-  if (!DRY_RUN) $pat->save();
+  $pat = PathautoPattern::load($id);
+  if (!$pat) {
+    $pat = PathautoPattern::create([
+      'id'=>$id,
+      'label'=>$label,
+      'type'=>'canonical_entities:taxonomy_term',
+      'pattern'=>$pattern,
+    ]);
+    if (!DRY_RUN) { $pat->save(); }
+    // Add selection condition for the target vocabulary bundle.
+    $pat->addSelectionCondition([
+      'id' => 'entity_bundle:taxonomy_term',
+      'bundles' => [$vid => $vid],
+      'negate' => FALSE,
+      'context_mapping' => ['taxonomy_term' => 'taxonomy_term'],
+    ]);
+  }
+  else {
+    $pat->set('pattern', $pattern);
+  }
+  if (!DRY_RUN) { $pat->save(); }
 }
 function find_term($vid,$name,$parent_tid=0):?Term{
   $q = \Drupal::entityQuery('taxonomy_term')->accessCheck(FALSE)->condition('vid',$vid)->condition('name',$name);
@@ -139,32 +154,6 @@ $keep = [
 foreach ($keep as $vid=>$def) { ensure_vocab($vid,$def['label'],$def['hier']); }
 
 /* =========================
- * 2) Merge Services → Capabilities; Use cases → Solutions
- * ========================= */
-$merges = [
-  'services'  => 'capabilities',
-  'use_cases' => 'solutions',
-];
-foreach ($merges as $src=>$dst) {
-  $sv = load_vocab($src);
-  if (!$sv) { say("[=] '$src' not present, skipping merge."); continue; }
-  ensure_vocab($dst, ucfirst($dst), in_array($dst,['capabilities','solutions']) ? 1 : 0);
-  say("[*] Merging '$src' → '$dst'…");
-
-  $ids = \Drupal::entityQuery('taxonomy_term')->accessCheck(FALSE)->condition('vid',$src)->execute();
-  if ($ids) {
-    $storage=\Drupal::entityTypeManager()->getStorage('taxonomy_term');
-    foreach ($storage->loadMultiple($ids) as $t) {
-      $path=ancestry_names($t);
-      $copy=copy_term_fields($t);
-      $new=ensure_term_path($dst,$path,$copy);
-      say("    - {$t->getName()} → {$new->getName()}");
-    }
-  }
-  say("    [info] Source vocab '$src' is NOT deleted automatically (review first).");
-}
-
-/* =========================
  * 3) Standard term fields across kept vocabs
  * ========================= */
 $termFields = [
@@ -206,6 +195,33 @@ foreach (array_keys($keep) as $vid) {
   set_view_formatter('taxonomy_term',$vid,'field_icon','entity_reference_entity_view',[], 'hidden');
   set_view_formatter('taxonomy_term',$vid,'field_cta_links','link',[], 'above');
 }
+
+/* =========================
+ * 2) Merge Services → Capabilities; Use cases → Solutions
+ * ========================= */
+$merges = [
+  'services'  => 'capabilities',
+  'use_cases' => 'solutions',
+];
+foreach ($merges as $src=>$dst) {
+  $sv = load_vocab($src);
+  if (!$sv) { say("[=] '$src' not present, skipping merge."); continue; }
+  ensure_vocab($dst, ucfirst($dst), in_array($dst,['capabilities','solutions']) ? 1 : 0);
+  say("[*] Merging '$src' → '$dst'…");
+
+  $ids = \Drupal::entityQuery('taxonomy_term')->accessCheck(FALSE)->condition('vid',$src)->execute();
+  if ($ids) {
+    $storage=\Drupal::entityTypeManager()->getStorage('taxonomy_term');
+    foreach ($storage->loadMultiple($ids) as $t) {
+      $path=ancestry_names($t);
+      $copy=copy_term_fields($t);
+      $new=ensure_term_path($dst,$path,$copy);
+      say("    - {$t->getName()} → {$new->getName()}");
+    }
+  }
+  say("    [info] Source vocab '$src' is NOT deleted automatically (review first).");
+}
+
 
 /* =========================
  * 4) Pathauto patterns (model old URLs)
@@ -433,7 +449,7 @@ use Drupal\image\Entity\ImageStyle;
 function ensure_style($name,$label,$effects){
   $s = ImageStyle::load($name) ?: ImageStyle::create(['name'=>$name,'label'=>$label]);
   if (!DRY_RUN) {
-    foreach ($s->getEffects()->getConfiguration() as $uuid=>$_){ $s->getEffects()->removeEffect($uuid); }
+    foreach ($s->getEffects() as $effect) { $s->deleteImageEffect($effect); }
     foreach ($effects as $ef){ $s->addImageEffect($ef); }
     $s->save();
   }

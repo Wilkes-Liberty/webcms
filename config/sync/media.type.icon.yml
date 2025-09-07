@@ -4,11 +4,10 @@ status: true
 dependencies: {  }
 id: icon
 label: Icon
-description: 'Icons (SVG or PNG)'
+description: 'Mono/brand icons'
 source: file
 queue_thumbnail_downloads: false
 new_revision: true
 source_configuration:
   source_field: field_media_file
-  allowed_extensions: 'svg svgz png'
 field_map: {  }

@@ -25,7 +25,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 21
+    weight: 33
     region: content
   field_cta_links:
     type: link
@@ -37,7 +37,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 24
+    weight: 36
     region: content
   field_hero_image:
     type: entity_reference_entity_view
@@ -46,7 +46,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 22
+    weight: 34
     region: content
   field_icon:
     type: entity_reference_entity_view
@@ -55,7 +55,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 23
+    weight: 35
     region: content
 hidden:
   field_external_canonical: true
