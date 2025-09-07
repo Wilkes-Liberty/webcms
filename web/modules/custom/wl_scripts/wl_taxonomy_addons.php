@@ -140,6 +140,7 @@ function _wl_taxo_nav_is_top_level(\Drupal\taxonomy\TermInterface $term): bool {
  */
 function _wl_taxo_nav_find_link_for_term(int $tid): ?MenuLinkContent {
   $ids = \Drupal::entityQuery('menu_link_content')
+    ->accessCheck(FALSE)
     ->condition('menu_name', 'main')
     ->execute();
   if (!$ids) return NULL;
@@ -245,7 +246,7 @@ if (!\Drupal::moduleHandler()->moduleExists('wl_taxo_nav')) {
 $allowed = ['services', 'industries'];
 $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
 foreach ($allowed as $vid) {
-  $tids = \Drupal::entityQuery('taxonomy_term')->condition('vid', $vid)->execute();
+  $tids = \Drupal::entityQuery('taxonomy_term')->accessCheck(FALSE)->condition('vid', $vid)->execute();
   if (!$tids) { continue; }
   /** @var \Drupal\taxonomy\Entity\Term[] $terms */
   $terms = $term_storage->loadMultiple($tids);
