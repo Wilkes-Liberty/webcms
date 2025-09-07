@@ -22,22 +22,22 @@ type_settings:
   states:
     archived:
       label: Archived
-      weight: 5
+      weight: 30
       published: false
-      default_revision: true
+      default_revision: false
     draft:
       label: Draft
-      weight: -5
+      weight: 0
       published: false
       default_revision: false
     published:
       label: Published
-      weight: 0
+      weight: 20
       published: true
       default_revision: true
     review:
       label: Review
-      weight: -3
+      weight: 10
       published: false
       default_revision: false
   transitions:
@@ -48,7 +48,7 @@ type_settings:
         - review
         - published
       to: archived
-      weight: 4
+      weight: 40
     create_new_draft:
       label: 'Create new draft'
       from:
@@ -64,25 +64,25 @@ type_settings:
         - draft
         - review
       to: published
-      weight: 2
+      weight: 20
     restore:
       label: Restore
       from:
         - archived
       to: draft
-      weight: 5
+      weight: 50
     submit_for_review:
       label: 'Submit for review'
       from:
         - draft
       to: review
-      weight: 1
+      weight: 10
     unpublish:
       label: Unpublish
       from:
         - published
       to: draft
-      weight: 3
+      weight: 30
   entity_types:
     node:
       - basic_page
