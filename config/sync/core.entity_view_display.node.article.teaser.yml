@@ -10,13 +10,17 @@ dependencies:
     - field.field.node.article.field_cache_tags
     - field.field.node.article.field_campaign
     - field.field.node.article.field_canonical
+    - field.field.node.article.field_compliance
     - field.field.node.article.field_hero_image
     - field.field.node.article.field_image
+    - field.field.node.article.field_industry
     - field.field.node.article.field_meta_description
     - field.field.node.article.field_noindex
     - field.field.node.article.field_parent
+    - field.field.node.article.field_personas
     - field.field.node.article.field_preview_token
     - field.field.node.article.field_primary_cta
+    - field.field.node.article.field_primary_service
     - field.field.node.article.field_read_time
     - field.field.node.article.field_related
     - field.field.node.article.field_revalidate_ttl
@@ -28,8 +32,11 @@ dependencies:
     - field.field.node.article.field_summary
     - field.field.node.article.field_tags
     - field.field.node.article.field_taxonomy
+    - field.field.node.article.field_tech_stack
     - field.field.node.article.field_template
     - field.field.node.article.field_theme_variant
+    - field.field.node.article.field_topics
+    - field.field.node.article.field_use_cases
     - field.field.node.article.field_visibility
     - image.style.medium
     - node.type.article
@@ -51,6 +58,11 @@ content:
       trim_length: 600
     third_party_settings: {  }
     weight: 0
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
     region: content
   field_image:
     type: image
@@ -80,12 +92,16 @@ hidden:
   field_cache_tags: true
   field_campaign: true
   field_canonical: true
+  field_compliance: true
   field_hero_image: true
+  field_industry: true
   field_meta_description: true
   field_noindex: true
   field_parent: true
+  field_personas: true
   field_preview_token: true
   field_primary_cta: true
+  field_primary_service: true
   field_read_time: true
   field_related: true
   field_revalidate_ttl: true
@@ -96,8 +112,11 @@ hidden:
   field_social_image: true
   field_summary: true
   field_taxonomy: true
+  field_tech_stack: true
   field_template: true
   field_theme_variant: true
+  field_topics: true
+  field_use_cases: true
   field_visibility: true
   langcode: true
   preview_token: true

@@ -1,0 +1,23 @@
+uuid: 4033393a-cd1c-4ebb-8c9a-48a8a38ce7cc
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: nx_fp_square_800_webp
+label: 'Next FP Square 800 (WebP)'
+effects:
+  7c733772-937c-4f96-9a12-35e29153ff23:
+    uuid: 7c733772-937c-4f96-9a12-35e29153ff23
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 800
+      crop_type: focal_point
+  e059347b-053f-4798-957d-6be72568e4cc:
+    uuid: e059347b-053f-4798-957d-6be72568e4cc
+    id: image_convert
+    weight: 100
+    data:
+      extension: webp

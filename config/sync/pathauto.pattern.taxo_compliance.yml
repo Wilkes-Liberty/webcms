@@ -1,0 +1,22 @@
+uuid: 4ffecef5-be2f-43bc-9094-0e9841d50f0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxo_compliance
+label: 'Compliance terms'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/compliance/[term:name]'
+selection_criteria:
+  06c30aa3-7aa0-47c4-81a9-b3d32b7101be:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 06c30aa3-7aa0-47c4-81a9-b3d32b7101be
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      compliance: compliance
+selection_logic: and
+weight: 0
+relationships: {  }

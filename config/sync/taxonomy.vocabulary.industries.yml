@@ -1,0 +1,9 @@
+uuid: 9963f32a-e944-4244-bdd0-489341068ddb
+langcode: en
+status: true
+dependencies: {  }
+name: Industries
+vid: industries
+description: null
+weight: 0
+new_revision: false

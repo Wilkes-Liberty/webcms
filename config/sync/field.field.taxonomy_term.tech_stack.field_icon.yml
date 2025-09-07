@@ -1,0 +1,28 @@
+uuid: 3df4d5d7-57e8-4d01-bda1-a629e38bd126
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - media.type.icon
+    - media.type.image
+    - media.type.svg_image
+    - taxonomy.vocabulary.tech_stack
+id: taxonomy_term.tech_stack.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: tech_stack
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      svg_image: svg_image
+      icon: icon
+field_type: entity_reference

@@ -1,0 +1,77 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/** Which vocabularies to sync into the Main menu. */
+function _wl_taxo_nav_allowed_vocabs(): array { return ['services', 'industries']; }
+
+/** Is the term top-level (no parents)? */
+function _wl_taxo_nav_is_top_level(\Drupal\taxonomy\TermInterface $term): bool {
+  $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($term->id());
+  return empty($parents);
+}
+
+/** Find an existing menu link created for a term (by stored tid). */
+function _wl_taxo_nav_find_link_for_term(int $tid): ?MenuLinkContent {
+  $ids = \Drupal::entityQuery('menu_link_content')->accessCheck(FALSE)->condition('menu_name', 'main')->execute();
+  if (!$ids) return NULL;
+  foreach (MenuLinkContent::loadMultiple($ids) as $link) {
+    if ((int) $link->getThirdPartySetting('wl_taxo_nav', 'tid') === $tid) return $link;
+  }
+  return NULL;
+}
+
+/** Ensure menu link exists/updated or is removed as needed. */
+function _wl_taxo_nav_sync_term(\Drupal\taxonomy\TermInterface $term): void {
+  $vid = $term->bundle();
+  if (!in_array($vid, _wl_taxo_nav_allowed_vocabs(), TRUE)) return;
+
+  $show = (bool) ($term->get('field_show_in_nav')->value ?? FALSE);
+  $top  = _wl_taxo_nav_is_top_level($term);
+  $existing = _wl_taxo_nav_find_link_for_term((int) $term->id());
+
+  if ($show && $top) {
+    if (!$existing) {
+      $existing = MenuLinkContent::create([
+        'title' => $term->label(),
+        'menu_name' => 'main',
+        'link' => [
+          'uri' => 'route:entity.taxonomy_term.canonical',
+          'title' => $term->label(),
+          'options' => ['route_parameters' => ['taxonomy_term' => (int) $term->id()]],
+        ],
+        'enabled' => TRUE,
+        'weight' => 0,
+      ]);
+      $existing->setThirdPartySetting('wl_taxo_nav', 'tid', (int) $term->id());
+    } else {
+      $existing->set('title', $term->label());
+      $existing->set('link', [
+        'uri' => 'route:entity.taxonomy_term.canonical',
+        'title' => $term->label(),
+        'options' => ['route_parameters' => ['taxonomy_term' => (int) $term->id()]],
+      ]);
+      $existing->set('enabled', TRUE);
+    }
+    $existing->save();
+  } else {
+    if ($existing) { $existing->delete(); }
+  }
+}
+
+/** Implements hook_entity_insert(). */
+function wl_taxo_nav_entity_insert(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'taxonomy_term') { _wl_taxo_nav_sync_term($entity); }
+}
+/** Implements hook_entity_update(). */
+function wl_taxo_nav_entity_update(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'taxonomy_term') { _wl_taxo_nav_sync_term($entity); }
+}
+/** Implements hook_entity_delete(). */
+function wl_taxo_nav_entity_delete(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'taxonomy_term') {
+    $existing = _wl_taxo_nav_find_link_for_term((int) $entity->id());
+    if ($existing) { $existing->delete(); }
+  }
+}

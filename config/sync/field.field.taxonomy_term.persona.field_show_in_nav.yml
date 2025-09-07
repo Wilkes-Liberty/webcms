@@ -1,0 +1,21 @@
+uuid: 4e0e301c-ac2f-420f-b3a4-b48d2fcde905
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_show_in_nav
+    - taxonomy.vocabulary.persona
+id: taxonomy_term.persona.field_show_in_nav
+field_name: field_show_in_nav
+entity_type: taxonomy_term
+bundle: persona
+label: 'Show in navigation?'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

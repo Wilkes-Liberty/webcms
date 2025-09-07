@@ -1,0 +1,21 @@
+uuid: c9b9e2ae-8a1f-4ded-b2ea-c1e0392dcc64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_show_in_nav
+    - taxonomy.vocabulary.tech_stack
+id: taxonomy_term.tech_stack.field_show_in_nav
+field_name: field_show_in_nav
+entity_type: taxonomy_term
+bundle: tech_stack
+label: 'Show in navigation?'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

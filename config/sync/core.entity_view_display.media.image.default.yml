@@ -8,6 +8,7 @@ dependencies:
     - field.field.media.image.field_license
     - field.field.media.image.field_media_image
     - field.field.media.image.field_source_url
+    - image.style.nx_fp_cover_16x9_1024
     - media.type.image
   module:
     - image
@@ -23,11 +24,11 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: ''
+      image_style: nx_fp_cover_16x9_1024
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 3
+    weight: 7
     region: content
 hidden:
   created: true

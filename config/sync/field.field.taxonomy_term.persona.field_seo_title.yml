@@ -1,0 +1,19 @@
+uuid: 71397d4b-35b2-4c9d-98a0-ad6502dbfc43
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_seo_title
+    - taxonomy.vocabulary.persona
+id: taxonomy_term.persona.field_seo_title
+field_name: field_seo_title
+entity_type: taxonomy_term
+bundle: persona
+label: 'SEO Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

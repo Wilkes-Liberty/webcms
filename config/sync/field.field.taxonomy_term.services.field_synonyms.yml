@@ -1,0 +1,19 @@
+uuid: bf0d4c87-4901-46f2-ace5-f5ecb2cb0653
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_synonyms
+    - taxonomy.vocabulary.services
+id: taxonomy_term.services.field_synonyms
+field_name: field_synonyms
+entity_type: taxonomy_term
+bundle: services
+label: 'Synonyms / Aliases'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

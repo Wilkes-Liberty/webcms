@@ -1,0 +1,17 @@
+uuid: bfac3adb-3fc2-4fd7-9d91-c6487eea7bc9
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: nx_fp_square_800
+label: 'Next FP Square 800'
+effects:
+  c6407421-1fcf-4936-9a03-704fd573563e:
+    uuid: c6407421-1fcf-4936-9a03-704fd573563e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 800
+      crop_type: focal_point

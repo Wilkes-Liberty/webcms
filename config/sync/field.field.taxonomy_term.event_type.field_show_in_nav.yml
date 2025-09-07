@@ -1,0 +1,21 @@
+uuid: 1121f010-a9ad-49ba-a7ea-6fe614d8ee19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_show_in_nav
+    - taxonomy.vocabulary.event_type
+id: taxonomy_term.event_type.field_show_in_nav
+field_name: field_show_in_nav
+entity_type: taxonomy_term
+bundle: event_type
+label: 'Show in navigation?'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

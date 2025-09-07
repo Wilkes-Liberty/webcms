@@ -1,0 +1,24 @@
+uuid: 29a87451-73ea-4d60-9cdb-daa54f1d68fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_industry
+    - node.type.landing_page
+    - taxonomy.vocabulary.industries
+id: node.landing_page.field_industry
+field_name: field_industry
+entity_type: node
+bundle: landing_page
+label: 'Primary Industry'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      industries: industries
+field_type: entity_reference

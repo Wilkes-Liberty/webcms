@@ -1,0 +1,28 @@
+uuid: 8d10cbc2-8ef1-4d33-89e8-719f4ab0fa51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_hero_image
+    - media.type.icon
+    - media.type.image
+    - media.type.svg_image
+    - taxonomy.vocabulary.tech_stack
+id: taxonomy_term.tech_stack.field_hero_image
+field_name: field_hero_image
+entity_type: taxonomy_term
+bundle: tech_stack
+label: 'Hero Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      svg_image: svg_image
+      icon: icon
+field_type: entity_reference

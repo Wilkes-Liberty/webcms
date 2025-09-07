@@ -1,0 +1,22 @@
+uuid: 546de384-44a6-4cb0-a521-02f0b817f281
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxo_resource_type
+label: 'Resource Type terms'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/resources/type/[term:name]'
+selection_criteria:
+  e475e9b6-b358-4ff9-a0a4-e71cd27b6f97:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: e475e9b6-b358-4ff9-a0a4-e71cd27b6f97
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      resource_type: resource_type
+selection_logic: and
+weight: 0
+relationships: {  }

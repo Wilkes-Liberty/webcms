@@ -1,0 +1,17 @@
+uuid: 0516cc67-6045-4667-bc69-894c476fc8a3
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: nx_fp_cover_16x9_1600
+label: 'Next FP Cover 16x9 1600'
+effects:
+  32abc691-56b3-47f7-88b0-d681093ba8d7:
+    uuid: 32abc691-56b3-47f7-88b0-d681093ba8d7
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1600
+      height: 900
+      crop_type: focal_point

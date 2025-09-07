@@ -10,12 +10,16 @@ dependencies:
     - field.field.node.event.field_cache_tags
     - field.field.node.event.field_campaign
     - field.field.node.event.field_canonical
+    - field.field.node.event.field_event_type
     - field.field.node.event.field_hero_image
+    - field.field.node.event.field_industry
     - field.field.node.event.field_meta_description
     - field.field.node.event.field_noindex
     - field.field.node.event.field_parent
+    - field.field.node.event.field_personas
     - field.field.node.event.field_preview_token
     - field.field.node.event.field_primary_cta
+    - field.field.node.event.field_primary_service
     - field.field.node.event.field_read_time
     - field.field.node.event.field_related
     - field.field.node.event.field_revalidate_ttl
@@ -26,11 +30,16 @@ dependencies:
     - field.field.node.event.field_social_image
     - field.field.node.event.field_summary
     - field.field.node.event.field_taxonomy
+    - field.field.node.event.field_tech_stack
     - field.field.node.event.field_template
     - field.field.node.event.field_theme_variant
+    - field.field.node.event.field_topics
+    - field.field.node.event.field_use_cases
     - field.field.node.event.field_visibility
     - node.type.event
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - datetime
     - entity_browser
     - link
@@ -95,6 +104,16 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_event_type:
+    type: entity_reference_autocomplete
+    weight: 209
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_hero_image:
     type: entity_browser_entity_reference
     weight: 173
@@ -108,6 +127,16 @@ content:
       open: true
       field_widget_display_settings: {  }
       selection_mode: selection_replace
+    third_party_settings: {  }
+  field_industry:
+    type: entity_reference_autocomplete
+    weight: 204
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_meta_description:
     type: string_textfield
@@ -134,6 +163,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_personas:
+    type: entity_reference_autocomplete
+    weight: 208
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_preview_token:
     type: string_textfield
     weight: 167
@@ -149,6 +188,16 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_primary_service:
+    type: entity_reference_autocomplete
+    weight: 203
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_read_time:
     type: number
@@ -235,6 +284,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_tech_stack:
+    type: entity_reference_autocomplete
+    weight: 207
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_template:
     type: options_select
     weight: 151
@@ -246,6 +305,26 @@ content:
     weight: 152
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 206
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_use_cases:
+    type: entity_reference_autocomplete
+    weight: 205
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_visibility:
     type: options_select
@@ -259,6 +338,12 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path

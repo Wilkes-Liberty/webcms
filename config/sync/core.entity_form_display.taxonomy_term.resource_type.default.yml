@@ -1,0 +1,144 @@
+uuid: 06561a99-7126-4ee2-a73a-1aaf4aedf956
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.media_image_browser
+    - field.field.taxonomy_term.resource_type.field_cta_links
+    - field.field.taxonomy_term.resource_type.field_external_canonical
+    - field.field.taxonomy_term.resource_type.field_hero_image
+    - field.field.taxonomy_term.resource_type.field_icon
+    - field.field.taxonomy_term.resource_type.field_meta_description
+    - field.field.taxonomy_term.resource_type.field_seo_title
+    - field.field.taxonomy_term.resource_type.field_show_in_nav
+    - field.field.taxonomy_term.resource_type.field_synonyms
+    - taxonomy.vocabulary.resource_type
+  module:
+    - entity_browser
+    - link
+    - path
+    - text
+id: taxonomy_term.resource_type.default
+targetEntityType: taxonomy_term
+bundle: resource_type
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 152
+    region: content
+    settings:
+      rows: 4
+      placeholder: ''
+    third_party_settings: {  }
+  field_cta_links:
+    type: link_default
+    weight: 159
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_external_canonical:
+    type: link_default
+    weight: 160
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_hero_image:
+    type: entity_browser_entity_reference
+    weight: 155
+    region: content
+    settings:
+      entity_browser: media_image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings: {  }
+      selection_mode: selection_replace
+    third_party_settings: {  }
+  field_icon:
+    type: entity_browser_entity_reference
+    weight: 156
+    region: content
+    settings:
+      entity_browser: media_image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings: {  }
+      selection_mode: selection_replace
+    third_party_settings: {  }
+  field_meta_description:
+    type: string_textfield
+    weight: 154
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_seo_title:
+    type: string_textfield
+    weight: 153
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_show_in_nav:
+    type: boolean_checkbox
+    weight: 158
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_synonyms:
+    type: string_textfield
+    weight: 157
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 151
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  publish_on: true
+  unpublish_on: true

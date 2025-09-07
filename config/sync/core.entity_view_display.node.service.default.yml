@@ -25,8 +25,11 @@ dependencies:
     - field.field.node.service.field_social_image
     - field.field.node.service.field_summary
     - field.field.node.service.field_taxonomy
+    - field.field.node.service.field_tech_stack
     - field.field.node.service.field_template
     - field.field.node.service.field_theme_variant
+    - field.field.node.service.field_topics
+    - field.field.node.service.field_use_cases
     - field.field.node.service.field_visibility
     - node.type.service
   module:
@@ -44,6 +47,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 109
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
     region: content
   field_canonical:
     type: link
@@ -104,6 +112,30 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 108
+    region: content
+  field_tech_stack:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 129
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 128
+    region: content
+  field_use_cases:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 127
     region: content
   links:
     settings: {  }

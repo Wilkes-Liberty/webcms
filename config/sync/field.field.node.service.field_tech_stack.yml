@@ -1,0 +1,24 @@
+uuid: 840b1eac-29b2-4451-9d08-48968e688a9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tech_stack
+    - node.type.service
+    - taxonomy.vocabulary.tech_stack
+id: node.service.field_tech_stack
+field_name: field_tech_stack
+entity_type: node
+bundle: service
+label: 'Tech Stack'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tech_stack: tech_stack
+field_type: entity_reference

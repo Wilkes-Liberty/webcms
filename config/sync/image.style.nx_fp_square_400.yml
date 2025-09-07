@@ -1,0 +1,17 @@
+uuid: d86a5cd3-a656-4416-9110-2899e243196f
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: nx_fp_square_400
+label: 'Next FP Square 400'
+effects:
+  ee4eacb8-db01-400f-86b2-0665bf934f5e:
+    uuid: ee4eacb8-db01-400f-86b2-0665bf934f5e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 400
+      height: 400
+      crop_type: focal_point

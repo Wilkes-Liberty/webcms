@@ -1,0 +1,19 @@
+uuid: 27ce8b99-2694-4f5a-8408-bd555c6c54ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_meta_description
+    - taxonomy.vocabulary.resource_type
+id: taxonomy_term.resource_type.field_meta_description
+field_name: field_meta_description
+entity_type: taxonomy_term
+bundle: resource_type
+label: 'Meta Description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

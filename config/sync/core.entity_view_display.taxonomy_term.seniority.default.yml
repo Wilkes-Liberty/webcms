@@ -1,0 +1,68 @@
+uuid: 21e6ad41-7399-468b-8b30-63558ff016a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.seniority.field_cta_links
+    - field.field.taxonomy_term.seniority.field_external_canonical
+    - field.field.taxonomy_term.seniority.field_hero_image
+    - field.field.taxonomy_term.seniority.field_icon
+    - field.field.taxonomy_term.seniority.field_meta_description
+    - field.field.taxonomy_term.seniority.field_seo_title
+    - field.field.taxonomy_term.seniority.field_show_in_nav
+    - field.field.taxonomy_term.seniority.field_synonyms
+    - taxonomy.vocabulary.seniority
+  module:
+    - link
+    - text
+id: taxonomy_term.seniority.default
+targetEntityType: taxonomy_term
+bundle: seniority
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_cta_links:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_hero_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 23
+    region: content
+hidden:
+  field_external_canonical: true
+  field_meta_description: true
+  field_seo_title: true
+  field_show_in_nav: true
+  field_synonyms: true
+  langcode: true
+  search_api_attachments: true
+  search_api_excerpt: true

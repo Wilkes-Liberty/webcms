@@ -1,0 +1,19 @@
+uuid: 20f043b9-2dc5-4357-84a6-be488f9bdc31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_seo_title
+    - taxonomy.vocabulary.compliance
+id: taxonomy_term.compliance.field_seo_title
+field_name: field_seo_title
+entity_type: taxonomy_term
+bundle: compliance
+label: 'SEO Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,24 @@
+uuid: 96544625-980e-4e6a-8440-9be15039a27e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_primary_service
+    - node.type.event
+    - taxonomy.vocabulary.services
+id: node.event.field_primary_service
+field_name: field_primary_service
+entity_type: node
+bundle: event
+label: 'Primary Service'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      services: services
+field_type: entity_reference

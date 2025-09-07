@@ -1,0 +1,24 @@
+uuid: b967bdb4-6015-4f28-b858-405d8f851ea4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seniority
+    - node.type.career
+    - taxonomy.vocabulary.seniority
+id: node.career.field_seniority
+field_name: field_seniority
+entity_type: node
+bundle: career
+label: Seniority
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      seniority: seniority
+field_type: entity_reference

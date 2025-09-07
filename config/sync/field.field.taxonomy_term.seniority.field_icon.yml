@@ -1,0 +1,28 @@
+uuid: 0e1b7704-2a00-4e4e-832d-63857c17e6d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - media.type.icon
+    - media.type.image
+    - media.type.svg_image
+    - taxonomy.vocabulary.seniority
+id: taxonomy_term.seniority.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: seniority
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      svg_image: svg_image
+      icon: icon
+field_type: entity_reference

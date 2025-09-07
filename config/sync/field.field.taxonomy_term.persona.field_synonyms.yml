@@ -1,0 +1,19 @@
+uuid: e479febd-d472-4607-94ee-c349b5a2636b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_synonyms
+    - taxonomy.vocabulary.persona
+id: taxonomy_term.persona.field_synonyms
+field_name: field_synonyms
+entity_type: taxonomy_term
+bundle: persona
+label: 'Synonyms / Aliases'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

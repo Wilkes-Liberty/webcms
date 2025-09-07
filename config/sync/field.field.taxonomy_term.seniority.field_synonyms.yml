@@ -1,0 +1,19 @@
+uuid: f32b4824-2eb2-4390-bbb8-507e142808d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_synonyms
+    - taxonomy.vocabulary.seniority
+id: taxonomy_term.seniority.field_synonyms
+field_name: field_synonyms
+entity_type: taxonomy_term
+bundle: seniority
+label: 'Synonyms / Aliases'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

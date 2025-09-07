@@ -1,0 +1,23 @@
+uuid: cf5bb3ea-996d-4191-9806-db56f2e611dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_cta_links
+    - taxonomy.vocabulary.resource_type
+  module:
+    - link
+id: taxonomy_term.resource_type.field_cta_links
+field_name: field_cta_links
+entity_type: taxonomy_term
+bundle: resource_type
+label: 'Default CTA Links'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

@@ -1,0 +1,9 @@
+uuid: 6e32ea41-5b74-4873-885b-4204c00f4755
+langcode: en
+status: true
+dependencies: {  }
+name: 'Tech Stack'
+vid: tech_stack
+description: null
+weight: 0
+new_revision: false

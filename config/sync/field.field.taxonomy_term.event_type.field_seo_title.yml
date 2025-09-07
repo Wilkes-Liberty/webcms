@@ -1,0 +1,19 @@
+uuid: 65628f81-50e3-4116-9453-96cd75549267
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_seo_title
+    - taxonomy.vocabulary.event_type
+id: taxonomy_term.event_type.field_seo_title
+field_name: field_seo_title
+entity_type: taxonomy_term
+bundle: event_type
+label: 'SEO Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

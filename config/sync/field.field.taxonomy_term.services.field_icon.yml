@@ -1,0 +1,28 @@
+uuid: 62c8c923-4dc5-4b7e-a136-28874fa9a1b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - media.type.icon
+    - media.type.image
+    - media.type.svg_image
+    - taxonomy.vocabulary.services
+id: taxonomy_term.services.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: services
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      svg_image: svg_image
+      icon: icon
+field_type: entity_reference

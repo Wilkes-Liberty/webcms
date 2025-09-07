@@ -1,0 +1,23 @@
+uuid: deeccfbb-cc53-4527-8401-fe9b401523a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: nx_fp_cover_16x9_1024_webp
+label: 'Next FP Cover 16x9 1024 (WebP)'
+effects:
+  5faab9fa-260a-4824-8f1d-0c14b9f77e68:
+    uuid: 5faab9fa-260a-4824-8f1d-0c14b9f77e68
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1024
+      height: 576
+      crop_type: focal_point
+  3aae14af-e33a-445a-8726-039a93a183cd:
+    uuid: 3aae14af-e33a-445a-8726-039a93a183cd
+    id: image_convert
+    weight: 100
+    data:
+      extension: webp

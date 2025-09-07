@@ -1,0 +1,19 @@
+uuid: 13548698-4a75-44eb-825a-8b801c011c81
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_seo_title
+    - taxonomy.vocabulary.use_cases
+id: taxonomy_term.use_cases.field_seo_title
+field_name: field_seo_title
+entity_type: taxonomy_term
+bundle: use_cases
+label: 'SEO Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

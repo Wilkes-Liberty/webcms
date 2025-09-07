@@ -1,0 +1,23 @@
+uuid: 59a73b79-ee75-427e-9ce8-3df454dd3b3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_external_canonical
+    - taxonomy.vocabulary.compliance
+  module:
+    - link
+id: taxonomy_term.compliance.field_external_canonical
+field_name: field_external_canonical
+entity_type: taxonomy_term
+bundle: compliance
+label: 'External Canonical URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

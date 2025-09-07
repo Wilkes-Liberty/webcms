@@ -1,0 +1,24 @@
+uuid: c58d919b-2371-487f-b818-1ba98150c0c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_personas
+    - node.type.basic_page
+    - taxonomy.vocabulary.persona
+id: node.basic_page.field_personas
+field_name: field_personas
+entity_type: node
+bundle: basic_page
+label: Personas
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      persona: persona
+field_type: entity_reference

@@ -1,0 +1,28 @@
+uuid: c13ef27d-c050-41ee-a3f0-58323fa313d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - media.type.icon
+    - media.type.image
+    - media.type.svg_image
+    - taxonomy.vocabulary.industries
+id: taxonomy_term.industries.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: industries
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      svg_image: svg_image
+      icon: icon
+field_type: entity_reference

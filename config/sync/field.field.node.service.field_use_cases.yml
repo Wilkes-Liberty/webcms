@@ -1,0 +1,24 @@
+uuid: 92d8bbe1-cbda-4077-9a51-0aa77d1b094c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_use_cases
+    - node.type.service
+    - taxonomy.vocabulary.use_cases
+id: node.service.field_use_cases
+field_name: field_use_cases
+entity_type: node
+bundle: service
+label: 'Use Cases'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      use_cases: use_cases
+field_type: entity_reference

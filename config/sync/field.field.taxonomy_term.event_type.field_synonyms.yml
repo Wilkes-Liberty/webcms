@@ -1,0 +1,19 @@
+uuid: 99eaccbc-b299-4e94-afd6-7287a920c486
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_synonyms
+    - taxonomy.vocabulary.event_type
+id: taxonomy_term.event_type.field_synonyms
+field_name: field_synonyms
+entity_type: taxonomy_term
+bundle: event_type
+label: 'Synonyms / Aliases'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.career.field_cache_tags
     - field.field.node.career.field_campaign
     - field.field.node.career.field_canonical
+    - field.field.node.career.field_department
     - field.field.node.career.field_hero_image
     - field.field.node.career.field_job_location
     - field.field.node.career.field_job_type
@@ -18,18 +19,23 @@ dependencies:
     - field.field.node.career.field_parent
     - field.field.node.career.field_preview_token
     - field.field.node.career.field_primary_cta
+    - field.field.node.career.field_primary_service
     - field.field.node.career.field_read_time
     - field.field.node.career.field_related
     - field.field.node.career.field_revalidate_ttl
     - field.field.node.career.field_reviewed_on
     - field.field.node.career.field_secondary_cta
+    - field.field.node.career.field_seniority
     - field.field.node.career.field_seo_title
     - field.field.node.career.field_show_toc
     - field.field.node.career.field_social_image
     - field.field.node.career.field_summary
     - field.field.node.career.field_taxonomy
+    - field.field.node.career.field_tech_stack
     - field.field.node.career.field_template
     - field.field.node.career.field_theme_variant
+    - field.field.node.career.field_topics
+    - field.field.node.career.field_use_cases
     - field.field.node.career.field_visibility
     - node.type.career
   module:
@@ -48,6 +54,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 112
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
     region: content
   field_apply_url:
     type: link
@@ -72,6 +83,14 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 117
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 149
     region: content
   field_hero_image:
     type: entity_reference_entity_view
@@ -109,6 +128,14 @@ content:
     third_party_settings: {  }
     weight: 114
     region: content
+  field_primary_service:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 145
+    region: content
   field_related:
     type: entity_reference_label
     label: above
@@ -129,12 +156,44 @@ content:
     third_party_settings: {  }
     weight: 115
     region: content
+  field_seniority:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 150
+    region: content
   field_summary:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 111
+    region: content
+  field_tech_stack:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 148
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 147
+    region: content
+  field_use_cases:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 146
     region: content
   links:
     settings: {  }

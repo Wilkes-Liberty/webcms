@@ -1,0 +1,22 @@
+uuid: 0abca174-3bd8-4165-bed2-2f90a9f9e12c
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxo_persona
+label: 'Persona terms'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/personas/[term:name]'
+selection_criteria:
+  81cd18cf-a99c-450b-adbc-e98444758583:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 81cd18cf-a99c-450b-adbc-e98444758583
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      persona: persona
+selection_logic: and
+weight: 0
+relationships: {  }

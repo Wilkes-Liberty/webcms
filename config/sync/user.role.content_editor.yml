@@ -21,7 +21,18 @@ dependencies:
     - node.type.landing_page
     - node.type.resource
     - node.type.service
+    - taxonomy.vocabulary.compliance
+    - taxonomy.vocabulary.department
+    - taxonomy.vocabulary.event_type
+    - taxonomy.vocabulary.industries
+    - taxonomy.vocabulary.persona
+    - taxonomy.vocabulary.resource_type
+    - taxonomy.vocabulary.seniority
+    - taxonomy.vocabulary.services
     - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.tech_stack
+    - taxonomy.vocabulary.topics
+    - taxonomy.vocabulary.use_cases
     - workflows.workflow.editorial
   module:
     - block_content
@@ -51,6 +62,7 @@ permissions:
   - 'access media overview'
   - 'access media_generic_browser entity browser pages'
   - 'access media_image_browser entity browser pages'
+  - 'access taxonomy overview'
   - 'access toolbar'
   - 'administer url aliases'
   - 'create article content'
@@ -68,7 +80,18 @@ permissions:
   - 'create resource content'
   - 'create service content'
   - 'create svg_image media'
+  - 'create terms in compliance'
+  - 'create terms in department'
+  - 'create terms in event_type'
+  - 'create terms in industries'
+  - 'create terms in persona'
+  - 'create terms in resource_type'
+  - 'create terms in seniority'
+  - 'create terms in services'
   - 'create terms in tags'
+  - 'create terms in tech_stack'
+  - 'create terms in topics'
+  - 'create terms in use_cases'
   - 'create url aliases'
   - 'create video_file media'
   - 'delete any article content'
@@ -90,6 +113,17 @@ permissions:
   - 'delete article revisions'
   - 'delete own article content'
   - 'delete own files'
+  - 'delete terms in compliance'
+  - 'delete terms in department'
+  - 'delete terms in event_type'
+  - 'delete terms in industries'
+  - 'delete terms in persona'
+  - 'delete terms in resource_type'
+  - 'delete terms in seniority'
+  - 'delete terms in services'
+  - 'delete terms in tech_stack'
+  - 'delete terms in topics'
+  - 'delete terms in use_cases'
   - 'edit any article content'
   - 'edit any basic block content'
   - 'edit any basic_page content'
@@ -100,7 +134,18 @@ permissions:
   - 'edit any resource content'
   - 'edit any service content'
   - 'edit own article content'
+  - 'edit terms in compliance'
+  - 'edit terms in department'
+  - 'edit terms in event_type'
+  - 'edit terms in industries'
+  - 'edit terms in persona'
+  - 'edit terms in resource_type'
+  - 'edit terms in seniority'
+  - 'edit terms in services'
   - 'edit terms in tags'
+  - 'edit terms in tech_stack'
+  - 'edit terms in topics'
+  - 'edit terms in use_cases'
   - 'mark as hidden in editoria11y'
   - 'revert all revisions'
   - 'use editorial transition archive'

@@ -1,0 +1,24 @@
+uuid: 2bfea7c1-e4cb-423e-855a-0dcb33075a38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_compliance
+    - node.type.case_study
+    - taxonomy.vocabulary.compliance
+id: node.case_study.field_compliance
+field_name: field_compliance
+entity_type: node
+bundle: case_study
+label: Compliance
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      compliance: compliance
+field_type: entity_reference

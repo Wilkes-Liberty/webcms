@@ -1,0 +1,17 @@
+uuid: 217ce558-fda3-4bea-a463-e105ce7d4a8f
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: nx_fp_cover_21x9_1920
+label: 'Next FP Cover 21x9 1920'
+effects:
+  1b38a8ca-2949-4989-b67b-40dc4fa5d57f:
+    uuid: 1b38a8ca-2949-4989-b67b-40dc4fa5d57f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 823
+      crop_type: focal_point

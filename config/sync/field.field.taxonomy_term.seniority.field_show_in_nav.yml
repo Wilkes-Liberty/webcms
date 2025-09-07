@@ -1,0 +1,21 @@
+uuid: 3acd9740-2c6e-49db-ab43-76faf4e6a884
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_show_in_nav
+    - taxonomy.vocabulary.seniority
+id: taxonomy_term.seniority.field_show_in_nav
+field_name: field_show_in_nav
+entity_type: taxonomy_term
+bundle: seniority
+label: 'Show in navigation?'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
