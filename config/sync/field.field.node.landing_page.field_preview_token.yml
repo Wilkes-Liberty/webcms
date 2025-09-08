@@ -10,7 +10,7 @@ field_name: field_preview_token
 entity_type: node
 bundle: landing_page
 label: 'Preview Token'
-description: ''
+description: 'Optional token to enable preview links; leave empty unless needed.'
 required: false
 translatable: true
 default_value: {  }

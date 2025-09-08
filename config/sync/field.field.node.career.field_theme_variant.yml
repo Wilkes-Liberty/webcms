@@ -12,7 +12,7 @@ field_name: field_theme_variant
 entity_type: node
 bundle: career
 label: 'Design Variant'
-description: ''
+description: 'Design variant to apply to this page.'
 required: false
 translatable: true
 default_value: {  }

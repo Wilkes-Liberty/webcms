@@ -10,7 +10,7 @@ field_name: field_campaign
 entity_type: node
 bundle: career
 label: 'UTM Bucket / Campaign'
-description: ''
+description: 'UTM bucket or campaign tag for analytics.'
 required: false
 translatable: true
 default_value: {  }

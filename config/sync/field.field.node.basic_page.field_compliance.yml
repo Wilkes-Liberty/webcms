@@ -11,7 +11,7 @@ field_name: field_compliance
 entity_type: node
 bundle: basic_page
 label: Compliance
-description: ''
+description: 'Compliance notes or classification relevant to this content.'
 required: false
 translatable: true
 default_value: {  }

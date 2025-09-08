@@ -10,7 +10,7 @@ field_name: field_noindex
 entity_type: node
 bundle: event
 label: 'Robots: noindex'
-description: ''
+description: 'Prevent search engines from indexing this page.'
 required: false
 translatable: true
 default_value: {  }

@@ -11,7 +11,7 @@ field_name: field_hero_image
 entity_type: node
 bundle: basic_page
 label: 'Hero Image'
-description: ''
+description: 'Hero image displayed at the top of the page.'
 required: false
 translatable: true
 default_value: {  }

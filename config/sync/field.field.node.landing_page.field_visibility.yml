@@ -12,7 +12,7 @@ field_name: field_visibility
 entity_type: node
 bundle: landing_page
 label: Visibility
-description: ''
+description: 'Controls visibility in navigation and listings.'
 required: false
 translatable: true
 default_value: {  }

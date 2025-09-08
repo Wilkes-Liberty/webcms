@@ -10,7 +10,7 @@ field_name: field_job_location
 entity_type: node
 bundle: career
 label: Location
-description: ''
+description: 'Location for this role (city/state or remote).'
 required: false
 translatable: true
 default_value: {  }

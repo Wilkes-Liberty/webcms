@@ -10,7 +10,7 @@ field_name: field_breadcrumb_label
 entity_type: node
 bundle: article
 label: 'Breadcrumb Label Override'
-description: ''
+description: 'Optional breadcrumb label to use instead of the page title.'
 required: false
 translatable: true
 default_value: {  }

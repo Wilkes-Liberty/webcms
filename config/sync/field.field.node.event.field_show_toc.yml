@@ -10,7 +10,7 @@ field_name: field_show_toc
 entity_type: node
 bundle: event
 label: 'Show On-Page TOC'
-description: ''
+description: 'Show an in-page table of contents for headings.'
 required: false
 translatable: true
 default_value: {  }

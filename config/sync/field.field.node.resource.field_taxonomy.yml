@@ -12,7 +12,7 @@ field_name: field_taxonomy
 entity_type: node
 bundle: resource
 label: Tags
-description: ''
+description: 'Topic tags used to categorize this content.'
 required: false
 translatable: true
 default_value: {  }

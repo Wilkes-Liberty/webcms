@@ -12,7 +12,7 @@ field_name: field_apply_url
 entity_type: node
 bundle: career
 label: 'Apply URL'
-description: ''
+description: 'External application URL for this role.'
 required: false
 translatable: true
 default_value: {  }

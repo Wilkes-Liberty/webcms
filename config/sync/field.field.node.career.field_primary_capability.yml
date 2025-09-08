@@ -11,7 +11,7 @@ field_name: field_primary_capability
 entity_type: node
 bundle: career
 label: 'Primary Capability'
-description: ''
+description: 'Main capability highlighted by this content.'
 required: false
 translatable: true
 default_value: {  }

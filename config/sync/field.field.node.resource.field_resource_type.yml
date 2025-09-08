@@ -11,7 +11,7 @@ field_name: field_resource_type
 entity_type: node
 bundle: resource
 label: 'Resource Type'
-description: ''
+description: 'Type of resource (e.g., eBook, whitepaper, checklist).'
 required: false
 translatable: true
 default_value: {  }

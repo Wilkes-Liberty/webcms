@@ -12,7 +12,7 @@ field_name: field_canonical
 entity_type: node
 bundle: career
 label: 'Canonical URL (override)'
-description: ''
+description: 'Optional canonical URL to indicate the preferred source for this content.'
 required: false
 translatable: true
 default_value: {  }

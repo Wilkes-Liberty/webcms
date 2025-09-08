@@ -10,7 +10,7 @@ field_name: field_related
 entity_type: node
 bundle: event
 label: 'Related Content'
-description: ''
+description: 'Related items to recommend to readers.'
 required: false
 translatable: true
 default_value: {  }

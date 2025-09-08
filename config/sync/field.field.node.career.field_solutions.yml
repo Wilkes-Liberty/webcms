@@ -11,7 +11,7 @@ field_name: field_solutions
 entity_type: node
 bundle: career
 label: Solutions
-description: ''
+description: 'Solutions related to this content.'
 required: false
 translatable: true
 default_value: {  }

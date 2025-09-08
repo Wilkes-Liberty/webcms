@@ -12,7 +12,7 @@ field_name: field_ab_variant
 entity_type: node
 bundle: article
 label: 'A/B Variant'
-description: ''
+description: 'Select the A/B testing variant for this page (if applicable).'
 required: false
 translatable: true
 default_value: {  }

@@ -12,7 +12,7 @@ field_name: field_template
 entity_type: node
 bundle: case_study
 label: 'Template / Layout'
-description: ''
+description: 'Layout/template to use for this content.'
 required: false
 translatable: true
 default_value: {  }

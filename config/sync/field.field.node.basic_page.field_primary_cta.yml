@@ -12,7 +12,7 @@ field_name: field_primary_cta
 entity_type: node
 bundle: basic_page
 label: 'Primary CTA'
-description: ''
+description: 'Primary call-to-action link shown prominently.'
 required: false
 translatable: true
 default_value: {  }

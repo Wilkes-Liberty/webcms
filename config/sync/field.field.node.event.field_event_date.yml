@@ -15,7 +15,7 @@ field_name: field_event_date
 entity_type: node
 bundle: event
 label: 'Event date'
-description: ''
+description: 'Start and end date/time of the event; supports all-day and timezones.'
 required: false
 translatable: false
 default_value: {  }

@@ -11,7 +11,7 @@ field_name: field_seniority
 entity_type: node
 bundle: career
 label: Seniority
-description: ''
+description: 'Seniority level for this role.'
 required: false
 translatable: true
 default_value: {  }

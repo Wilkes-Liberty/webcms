@@ -12,7 +12,7 @@ field_name: field_job_type
 entity_type: node
 bundle: career
 label: 'Employment Type'
-description: ''
+description: 'Employment type (full-time, part-time, contract, etc.).'
 required: false
 translatable: true
 default_value: {  }

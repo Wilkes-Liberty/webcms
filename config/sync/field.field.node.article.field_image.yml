@@ -14,7 +14,7 @@ field_name: field_image
 entity_type: node
 bundle: article
 label: Image
-description: ''
+description: 'Main image for this content.'
 required: false
 translatable: true
 default_value: {  }

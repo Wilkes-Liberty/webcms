@@ -12,7 +12,7 @@ field_name: body
 entity_type: node
 bundle: resource
 label: Body
-description: ''
+description: 'Main body content.'
 required: false
 translatable: true
 default_value: {  }

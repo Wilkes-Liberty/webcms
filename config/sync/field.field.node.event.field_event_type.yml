@@ -11,7 +11,7 @@ field_name: field_event_type
 entity_type: node
 bundle: event
 label: 'Event Type'
-description: ''
+description: 'Type of event (webinar, in-person, etc.).'
 required: false
 translatable: true
 default_value: {  }

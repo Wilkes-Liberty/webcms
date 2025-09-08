@@ -10,7 +10,7 @@ field_name: field_cache_tags
 entity_type: node
 bundle: event
 label: 'CDN Cache Tags (hints)'
-description: ''
+description: 'Optional CDN cache tags; comma-separated values to hint external caching.'
 required: false
 translatable: true
 default_value: {  }

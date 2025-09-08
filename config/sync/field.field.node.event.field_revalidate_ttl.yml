@@ -10,7 +10,7 @@ field_name: field_revalidate_ttl
 entity_type: node
 bundle: event
 label: 'Revalidate After (seconds)'
-description: ''
+description: 'Override CDN revalidation time in seconds (optional).'
 required: false
 translatable: true
 default_value: {  }

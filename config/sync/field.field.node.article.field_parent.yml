@@ -10,7 +10,7 @@ field_name: field_parent
 entity_type: node
 bundle: article
 label: 'Parent Page'
-description: ''
+description: 'Parent page used for site hierarchy and breadcrumbs.'
 required: false
 translatable: true
 default_value: {  }

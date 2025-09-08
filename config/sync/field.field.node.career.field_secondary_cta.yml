@@ -12,7 +12,7 @@ field_name: field_secondary_cta
 entity_type: node
 bundle: career
 label: 'Secondary CTA'
-description: ''
+description: 'Secondary call-to-action link (optional).'
 required: false
 translatable: true
 default_value: {  }
