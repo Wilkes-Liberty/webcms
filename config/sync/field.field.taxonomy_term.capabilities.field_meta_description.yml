@@ -10,7 +10,7 @@ field_name: field_meta_description
 entity_type: taxonomy_term
 bundle: capabilities
 label: 'Meta Description'
-description: ''
+description: '1–2 sentence summary used by search and social previews.'
 required: false
 translatable: true
 default_value: {  }

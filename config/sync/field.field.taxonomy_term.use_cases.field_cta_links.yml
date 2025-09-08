@@ -12,7 +12,7 @@ field_name: field_cta_links
 entity_type: taxonomy_term
 bundle: use_cases
 label: 'Default CTA Links'
-description: ''
+description: 'Optional call-to-action links for this term (title + URL).'
 required: false
 translatable: true
 default_value: {  }

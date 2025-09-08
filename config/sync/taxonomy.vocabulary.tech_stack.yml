@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: 'Tech Stack'
 vid: tech_stack
-description: null
+description: 'Technology stack categories (frameworks, platforms, tools).'
 weight: 0
 new_revision: false

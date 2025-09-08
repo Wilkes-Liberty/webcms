@@ -12,7 +12,7 @@ field_name: field_external_canonical
 entity_type: taxonomy_term
 bundle: technologies
 label: 'External Canonical'
-description: ''
+description: 'Canonical URL on an external site (optional).'
 required: false
 translatable: true
 default_value: {  }

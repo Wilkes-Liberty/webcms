@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: 'Use Cases'
 vid: use_cases
-description: null
+description: 'Use cases or scenarios addressed by our offerings.'
 weight: 0
 new_revision: false

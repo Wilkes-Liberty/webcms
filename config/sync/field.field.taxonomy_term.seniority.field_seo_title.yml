@@ -10,7 +10,7 @@ field_name: field_seo_title
 entity_type: taxonomy_term
 bundle: seniority
 label: 'SEO Title'
-description: ''
+description: 'Optional SEO title shown in search results; defaults to term name.'
 required: false
 translatable: true
 default_value: {  }

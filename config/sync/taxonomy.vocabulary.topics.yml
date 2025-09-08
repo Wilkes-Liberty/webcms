@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: Topics
 vid: topics
-description: null
+description: 'Topics used to organize content.'
 weight: 0
 new_revision: false

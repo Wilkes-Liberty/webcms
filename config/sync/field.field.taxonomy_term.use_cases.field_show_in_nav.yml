@@ -10,7 +10,7 @@ field_name: field_show_in_nav
 entity_type: taxonomy_term
 bundle: use_cases
 label: 'Show in navigation?'
-description: ''
+description: 'Include this term in navigation and listings.'
 required: false
 translatable: true
 default_value: {  }

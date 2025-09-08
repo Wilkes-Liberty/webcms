@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: 'Event Type'
 vid: event_type
-description: null
+description: 'Types of events such as webinar or in-person.'
 weight: 0
 new_revision: false

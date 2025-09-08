@@ -10,7 +10,7 @@ field_name: field_synonyms
 entity_type: taxonomy_term
 bundle: tech_stack
 label: 'Synonyms / Aliases'
-description: ''
+description: 'Alternate names for this term; add one per line to aid search and tagging.'
 required: false
 translatable: true
 default_value: {  }

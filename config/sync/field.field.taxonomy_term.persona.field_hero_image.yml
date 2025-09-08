@@ -13,7 +13,7 @@ field_name: field_hero_image
 entity_type: taxonomy_term
 bundle: persona
 label: 'Hero Image'
-description: ''
+description: 'Hero image used on term landing pages or headers.'
 required: false
 translatable: true
 default_value: {  }

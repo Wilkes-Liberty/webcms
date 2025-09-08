@@ -10,7 +10,7 @@ field_name: field_icon
 entity_type: taxonomy_term
 bundle: solutions
 label: Icon
-description: ''
+description: 'Icon shown in navigation and listings.'
 required: false
 translatable: true
 default_value: {  }
