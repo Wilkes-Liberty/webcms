@@ -7,6 +7,9 @@ dependencies:
     - node.type.event
   module:
     - smart_date
+third_party_settings:
+  smart_date_recur:
+    allow_recurring: true
 id: node.event.field_event_date
 field_name: field_event_date
 entity_type: node
@@ -18,8 +21,4 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-third_party_settings:
-  smart_date_recur:
-    allow_recurring: true
 field_type: smartdate
-

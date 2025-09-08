@@ -1,24 +1,24 @@
-label: 'В редактировании'
 type_settings:
   states:
+    review:
+      label: 'На проверке'
     archived:
       label: Заархивированный
     draft:
       label: Черновик
     published:
       label: Опубликовано
-    review:
-      label: 'На проверке'
   transitions:
-    archive:
-      label: Архивировать
-    create_new_draft:
-      label: 'Создать новый черновик'
-    publish:
-      label: Опубликовать
     submit_for_review:
       label: 'Отправить на проверку'
     unpublish:
       label: 'Снять с публикации'
     restore:
       label: Восстановить
+    archive:
+      label: Архивировать
+    create_new_draft:
+      label: 'Создать новый черновик'
+    publish:
+      label: Опубликовать
+label: 'В редактировании'

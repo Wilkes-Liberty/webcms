@@ -1,24 +1,24 @@
-label: Editorial
 type_settings:
   states:
+    review:
+      label: Revisión
     archived:
       label: Archivado
     draft:
       label: Borrador
     published:
       label: Publicado
-    review:
-      label: Revisión
   transitions:
-    archive:
-      label: Archivo
-    create_new_draft:
-      label: 'Crear nuevo borrador'
-    publish:
-      label: Publicar
     submit_for_review:
       label: 'Enviar para revisión'
     unpublish:
       label: Despublicar
     restore:
       label: Restaurar
+    archive:
+      label: Archivo
+    create_new_draft:
+      label: 'Crear nuevo borrador'
+    publish:
+      label: Publicar
+label: Editorial

@@ -51,20 +51,6 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
-  field_event_date:
-    type: smartdate_timezone
-    weight: 206
-    region: content
-    settings:
-      modal: false
-      default_duration: 60
-      default_duration_increments: "30\n60|1 hour\n90\n120|2 hours\ncustom"
-      separator: 'to'
-      hide_date: true
-      allday: true
-      remove_seconds: false
-      duration_overlay: true
-    third_party_settings: {  }
   body:
     type: text_textarea_with_summary
     weight: 246
@@ -118,6 +104,25 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_event_date:
+    type: smartdate_timezone
+    weight: 206
+    region: content
+    settings:
+      modal: false
+      default_duration: 60
+      default_duration_increments: |-
+        30
+        60|1 hour
+        90
+        120|2 hours
+        custom
+      hide_date: true
+      allday: true
+      remove_seconds: false
+      duration_overlay: true
+      separator: to
     third_party_settings: {  }
   field_event_type:
     type: entity_reference_autocomplete
