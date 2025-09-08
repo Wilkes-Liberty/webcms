@@ -1,0 +1,25 @@
+uuid: 41cf1a3a-50d4-4d0e-8c3f-d04a5955b9c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_date
+    - node.type.event
+  module:
+    - smart_date
+id: node.event.field_event_date
+field_name: field_event_date
+entity_type: node
+bundle: event
+label: 'Event date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+third_party_settings:
+  smart_date_recur:
+    allow_recurring: true
+field_type: smartdate
+

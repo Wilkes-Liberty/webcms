@@ -35,6 +35,7 @@ dependencies:
     - field.field.node.event.field_template
     - field.field.node.event.field_theme_variant
     - field.field.node.event.field_visibility
+    - field.field.node.event.field_event_date
     - node.type.event
     - workflows.workflow.editorial
   module:
@@ -44,11 +45,26 @@ dependencies:
     - link
     - path
     - text
+    - smart_date
 id: node.event.default
 targetEntityType: node
 bundle: event
 mode: default
 content:
+  field_event_date:
+    type: smartdate_timezone
+    weight: 206
+    region: content
+    settings:
+      modal: false
+      default_duration: 60
+      default_duration_increments: "30\n60|1 hour\n90\n120|2 hours\ncustom"
+      separator: 'to'
+      hide_date: true
+      allday: true
+      remove_seconds: false
+      duration_overlay: true
+    third_party_settings: {  }
   body:
     type: text_textarea_with_summary
     weight: 246
