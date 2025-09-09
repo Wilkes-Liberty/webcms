@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 name: Service
 type: service
-description: 'Company offering'
+description: 'Pages describing company offerings and capabilities. Supports taxonomy/technologies relationships, CTAs, media, and SEO settings.'
 help: null
 new_revision: true
 preview_mode: 1

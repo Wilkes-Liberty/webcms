@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 name: 'Landing Page'
 type: landing_page
-description: 'Flexible marketing page using components'
+description: 'Flexible marketing page composed of components for campaigns and conversion flows. Use when you need custom sections/blocks and prominent CTAs. Includes media, layout, and SEO controls.'
 help: null
 new_revision: true
 preview_mode: 1

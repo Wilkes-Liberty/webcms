@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 name: Person
 type: person
-description: 'Public profile for staff/authors to expose to the frontend.'
+description: 'Public staff/author profile for bylines and team pages. Includes photo, job title, department, expertise, and social links.'
 help: null
 new_revision: true
 preview_mode: 1

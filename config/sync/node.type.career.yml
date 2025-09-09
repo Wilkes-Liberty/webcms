@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 name: Career
 type: career
-description: 'Job posting'
+description: 'Job posting with location, department, job type, and seniority. Optionally links to an external apply URL. Includes media and SEO settings.'
 help: null
 new_revision: true
 preview_mode: 1

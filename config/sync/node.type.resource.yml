@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 name: Resource
 type: resource
-description: Whitepaper/eBook/Checklist
+description: 'Downloadable or gated asset (whitepaper, eBook, checklist). Includes resource type, primary/secondary CTAs, media, and SEO fields.'
 help: null
 new_revision: true
 preview_mode: 1

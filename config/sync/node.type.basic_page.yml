@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 name: 'Basic Page'
 type: basic_page
-description: 'Simple content page for headless rendering'
+description: 'Informational page rendered headlessly. Use for static site content that is not time-sensitive. Includes SEO (title, meta, canonical, noindex), media (hero/social), CTAs, classification, relationships, and layout options.'
 help: null
 new_revision: true
 preview_mode: 1

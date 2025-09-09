@@ -1,2 +1,2 @@
 name: Artículo
-description: 'Use los <em>artículos</em> para contenido que tenga relevancia temporal como las noticias o las publicaciones en blogs.'
+description: "Publicaciones sensibles al tiempo (noticias, comunicados, blogs) que aparecen en listados y feeds. Admite imagen destacada, etiquetas/categorías y campos de SEO."
