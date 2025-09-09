@@ -24,9 +24,9 @@ third_party_settings:
       weight: -30
       format_type: tabs
       format_settings:
-        description: 'Organizes fields into horizontal tabs.'
         classes: ''
         id: ''
+        description: 'Organizes fields into horizontal tabs.'
         required_fields: false
         direction: horizontal
     group_company:

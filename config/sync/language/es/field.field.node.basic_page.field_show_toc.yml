@@ -1,3 +1,2 @@
-label: "Mostrar índice en la página"
-description: "Habilitar solo si la página tiene 3 o más encabezados H2. No habilites para páginas cortas."
-
+label: 'Mostrar índice en la página'
+description: 'Habilitar solo si la página tiene 3 o más encabezados H2. No habilites para páginas cortas.'

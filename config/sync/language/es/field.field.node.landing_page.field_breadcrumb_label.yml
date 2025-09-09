@@ -1,3 +1,2 @@
-label: "Etiqueta de ruta de navegación (sobrescritura)"
-description: "Etiqueta opcional para la ruta de navegación a usar en lugar del título de la página."
-
+label: 'Etiqueta de ruta de navegación (sobrescritura)'
+description: 'Etiqueta opcional para la ruta de navegación a usar en lugar del título de la página.'

@@ -1,3 +1,2 @@
-label: "Robots: noindex"
-description: "Excluye esta página del índice de búsqueda. Úsalo para páginas de campaña, agradecimiento o duplicadas."
-
+label: 'Robots: noindex'
+description: 'Excluye esta página del índice de búsqueda. Úsalo para páginas de campaña, agradecimiento o duplicadas.'
