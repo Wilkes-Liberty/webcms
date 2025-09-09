@@ -1,0 +1,15 @@
+--- a/src/EventSubscriber/RedirectPathTranslatorSubscriber.php
++++ b/src/EventSubscriber/RedirectPathTranslatorSubscriber.php
+@@ -31,10 +31,11 @@ class RedirectPathTranslatorSubscriber extends RouterPathTranslatorSubscriber {
+     ModuleHandlerInterface $module_handler,
+     ConfigFactoryInterface $config_factory,
+     AliasManagerInterface $aliasManager,
+-    protected LanguageManagerInterface $languageManager,
++    LanguageManagerInterface $languageManager,
+     protected RedirectRepository $redirectRepository,
+   ) {
+     parent::__construct($container, $logger, $router, $module_handler, $config_factory, $aliasManager);
++    $this->languageManager = $languageManager;
+   }
+ 
+   /**
