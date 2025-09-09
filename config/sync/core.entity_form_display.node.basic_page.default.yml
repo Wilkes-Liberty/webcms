@@ -63,9 +63,9 @@ third_party_settings:
       weight: -50
       format_type: tabs
       format_settings:
-        description: ''
         classes: ''
         id: ''
+        description: ''
         required_fields: false
         direction: horizontal
     group_content:
@@ -78,10 +78,10 @@ third_party_settings:
       weight: -49
       format_type: details
       format_settings:
-        description: ''
         classes: ''
         id: ''
         open: true
+        description: ''
         required_fields: false
     group_media:
       children:
@@ -93,10 +93,10 @@ third_party_settings:
       weight: -48
       format_type: details
       format_settings:
-        description: ''
         classes: ''
         id: ''
         open: false
+        description: ''
         required_fields: false
     group_ctas:
       children:
@@ -108,10 +108,10 @@ third_party_settings:
       weight: -47
       format_type: details
       format_settings:
-        description: ''
         classes: ''
         id: ''
         open: false
+        description: ''
         required_fields: false
     group_seo:
       children:
@@ -127,10 +127,10 @@ third_party_settings:
       weight: -46
       format_type: details
       format_settings:
-        description: ''
         classes: ''
         id: ''
         open: false
+        description: ''
         required_fields: false
     group_technical:
       children:
@@ -143,10 +143,10 @@ third_party_settings:
       weight: -45
       format_type: details
       format_settings:
-        description: ''
         classes: ''
         id: ''
         open: false
+        description: ''
         required_fields: false
     group_relationships:
       children:
@@ -160,10 +160,10 @@ third_party_settings:
       weight: -44
       format_type: details
       format_settings:
-        description: ''
         classes: ''
         id: ''
         open: false
+        description: ''
         required_fields: false
     group_classification:
       children:
@@ -177,10 +177,10 @@ third_party_settings:
       weight: -43
       format_type: details
       format_settings:
-        description: ''
         classes: ''
         id: ''
         open: false
+        description: ''
         required_fields: false
     group_layout:
       children:
@@ -193,10 +193,10 @@ third_party_settings:
       weight: -42
       format_type: details
       format_settings:
-        description: ''
         classes: ''
         id: ''
         open: false
+        description: ''
         required_fields: false
     group_editorial:
       children:
@@ -209,24 +209,16 @@ third_party_settings:
       weight: -41
       format_type: details
       format_settings:
-        description: ''
         classes: ''
         id: ''
         open: false
+        description: ''
         required_fields: false
 id: node.basic_page.default
 targetEntityType: node
 bundle: basic_page
 mode: default
 content:
-  title:
-    type: string_textfield
-    weight: -100
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   body:
     type: text_textarea_with_summary
     weight: 324
@@ -543,6 +535,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -100
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

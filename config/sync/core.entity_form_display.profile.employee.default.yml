@@ -30,9 +30,9 @@ third_party_settings:
       weight: -30
       format_type: tabs
       format_settings:
-        description: ''
         classes: ''
         id: ''
+        description: ''
         required_fields: false
         direction: horizontal
     group_company_role:
