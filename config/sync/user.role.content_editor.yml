@@ -55,6 +55,7 @@ weight: 2
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access ai tools'
   - 'access content'
   - 'access content overview'
   - 'access contextual links'
@@ -152,6 +153,7 @@ permissions:
   - 'use editorial transition create_new_draft'
   - 'use editorial transition restore'
   - 'use editorial transition submit_for_review'
+  - 'use text format headless_clean'
   - 'view all revisions'
   - 'view editoria11y checker'
   - 'view latest version'

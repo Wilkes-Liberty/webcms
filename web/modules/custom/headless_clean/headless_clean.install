@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the headless_clean module.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_requirements().
+ */
+function headless_clean_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'runtime') {
+    $requirements['headless_clean'] = [
+      'title' => t('Headless Clean'),
+      'value' => t('Filter available'),
+      'severity' => REQUIREMENT_INFO,
+      'description' => t('The Headless HTML Sanitizer filter is available for use in <a href=":formats">text formats</a>.', [
+        ':formats' => Url::fromRoute('filter.admin_overview')->toString(),
+      ]),
+    ];
+
+    // Check if DOMDocument is available (should be in modern PHP)
+    if (!class_exists('DOMDocument')) {
+      $requirements['headless_clean']['value'] = t('Missing dependency');
+      $requirements['headless_clean']['severity'] = REQUIREMENT_ERROR;
+      $requirements['headless_clean']['description'] = t('The Headless Clean module requires the PHP DOM extension, which is not available.');
+    }
+  }
+
+  return $requirements;
+}
+
+/**
+ * Implements hook_install().
+ */
+function headless_clean_install() {
+  $messenger = \Drupal::messenger();
+  $messenger->addStatus(t('Headless Clean module has been installed. You can now add the Headless HTML Sanitizer filter to your <a href=":formats">text formats</a>.', [
+    ':formats' => Url::fromRoute('filter.admin_overview')->toString(),
+  ]));
+}

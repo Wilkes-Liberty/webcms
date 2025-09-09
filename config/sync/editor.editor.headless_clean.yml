@@ -1,0 +1,79 @@
+uuid: 00000000-0000-0000-0000-000000000002
+langcode: en
+status: true
+dependencies:
+  module:
+    - ckeditor5
+    - ai
+    - ai_ckeditor
+    - filter
+    - headless_clean
+format: headless_clean
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - '|'
+      - bold
+      - italic
+      - '|'
+      - bulletedList
+      - numberedList
+      - blockQuote
+      - horizontalLine
+      - '|'
+      - link
+      - code
+      - codeBlock
+      - '|'
+      - undo
+      - redo
+      - '|'
+      - aiTools   # AI Tools dropdown (ai_ckeditor)
+  plugins:
+    htmlSupport:
+      allow:
+        - name: 'p'
+          attributes: []
+          classes: []
+          styles: []
+        - name: 'h2|h3|h4|ul|ol|li|blockquote|hr|strong|em|code|pre|a'
+          attributes: [ 'href' ]
+          classes: []
+          styles: []
+      disallow:
+        - name: /.*/
+          attributes: [ 'class', 'id', 'style', 'data-*', 'on*' ]
+          classes: [ /.*/ ]
+          styles: [ /.*/ ]
+    ai_ckeditor:
+      enabled: true
+      provider: 'openai'        # switch to your configured provider if different
+      model: 'gpt-4o-mini'      # set to your preferred site model
+      tools:
+        rewrite:
+          enabled: true
+          system_prompt: >
+            You are assisting with content for a headless CMS. Produce valid HTML using only:
+            <p>,<h2>,<h3>,<h4>,<ul>,<ol>,<li>,<blockquote>,<hr>,<strong>,<em>,<code>,<pre>,<a href>.
+            No inline styles, classes, IDs, data-*, images, iframes, scripts, or tables. Return only the HTML fragment.
+        summarize:
+          enabled: true
+          system_prompt: >
+            Summarize in 120–160 words using only <p> and <strong> for key phrases. No other tags.
+        outline:
+          enabled: true
+          system_prompt: >
+            Create section outline with <h2>/<h3> plus a brief <p> intro under each heading. Only those tags.
+        change_tone:
+          enabled: true
+          vocabulary: 'tone_of_voice'
+        expand:
+          enabled: true
+          system_prompt: >
+            Expand the selection with clear, scannable paragraphs (<p>) only. No extra tags beyond the allowed set.
+        shorten:
+          enabled: true
+          system_prompt: >
+            Shorten the selection while preserving meaning; output <p> only unless the input contains allowed headings or lists.

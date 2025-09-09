@@ -1,0 +1,21 @@
+# Configuration schema for headless_clean module filters
+filter.plugin.filter_headless_sanitize:
+  type: filter
+  label: 'Headless Sanitize Filter'
+  mapping:
+    allowed_tags:
+      type: text
+      label: 'Allowed HTML tags'
+      # Default to headless-friendly tags only
+    allowed_attributes:
+      type: text
+      label: 'Allowed attributes'
+      # Global attributes allowed on any tag
+    strict_mode:
+      type: boolean
+      label: 'Strict mode'
+      # Remove unknown tags vs convert to text
+    log_sanitization:
+      type: boolean
+      label: 'Log sanitization actions'
+      # For debugging purposes
