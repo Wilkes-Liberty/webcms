@@ -1,0 +1,61 @@
+# Custom translation overrides for ru
+# Generated for Wilkes & Liberty
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ru\n"
+
+msgid "Show On-Page TOC"
+msgstr "Показать оглавление на странице"
+
+msgid "Show the table of contents on this page"
+msgstr "Показать оглавление на этой странице"
+
+msgid "Visibility"
+msgstr "Видимость"
+
+msgid "Control the visibility of this content"
+msgstr "Контролировать видимость этого содержимого"
+
+msgid "Campaign"
+msgstr "Кампания"
+
+msgid "Associate this content with a marketing campaign"
+msgstr "Связать это содержимое с маркетинговой кампанией"
+
+msgid "Template/Layout"
+msgstr "Шаблон/Макет"
+
+msgid "Select the template or layout for this content"
+msgstr "Выберите шаблон или макет для этого содержимого"
+
+msgid "Related Content"
+msgstr "Связанное содержимое"
+
+msgid "Select related content to display with this item"
+msgstr "Выберите связанное содержимое для отображения с этим элементом"
+
+msgid "Parent Page"
+msgstr "Родительская страница"
+
+msgid "Select the parent page for this content"
+msgstr "Выберите родительскую страницу для этого содержимого"
+
+msgid "Personas"
+msgstr "Персоны"
+
+msgid "Select the target personas for this content"
+msgstr "Выберите целевые персоны для этого содержимого"
+
+msgid "Primary Industry"
+msgstr "Основная отрасль"
+
+msgid "Select the primary industry for this content"
+msgstr "Выберите основную отрасль для этого содержимого"
+
+msgid "Technologies"
+msgstr "Технологии"
+
+msgid "Select the technologies related to this content"
+msgstr "Выберите технологии, связанные с этим содержимым"
+

@@ -1,6 +1,14 @@
 _core:
   default_config_hash: 4GIX5Esnc_umpXUBj4IIocRX7Mt5fPhm4AgXfE3E56E
 module:
+  ai: 0
+  ai_ckeditor: 0
+  ai_image_alt_text: 0
+  ai_media_image: 0
+  ai_provider_openai: 0
+  ai_provider_x: 0
+  ai_tmgmt: 0
+  ai_translate: 0
   allowed_formats: 0
   announcements_feed: 0
   antibot: 0
