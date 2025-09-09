@@ -11,7 +11,7 @@ id: taxonomy_term.capabilities.field_external_canonical
 field_name: field_external_canonical
 entity_type: taxonomy_term
 bundle: capabilities
-label: 'External Canonical'
+label: 'External Canonical URL'
 description: 'Canonical URL on an external site (optional).'
 required: false
 translatable: true

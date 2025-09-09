@@ -9,8 +9,8 @@ id: node.landing_page.field_revalidate_ttl
 field_name: field_revalidate_ttl
 entity_type: node
 bundle: landing_page
-label: 'Revalidate After (seconds)'
-description: 'Override CDN revalidation time in seconds (optional).'
+label: 'Revalidate After (Seconds)'
+description: 'Seconds to override CDN revalidation. 0 uses default. Typical 300–3600; use sparingly.'
 required: false
 translatable: true
 default_value: {  }

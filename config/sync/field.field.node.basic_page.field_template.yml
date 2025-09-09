@@ -11,7 +11,7 @@ id: node.basic_page.field_template
 field_name: field_template
 entity_type: node
 bundle: basic_page
-label: 'Template / Layout'
+label: Template/Layout
 description: 'Layout/template to use for this content.'
 required: false
 translatable: true

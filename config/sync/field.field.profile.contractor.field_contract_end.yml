@@ -1,0 +1,21 @@
+uuid: 3d6e998b-93a3-4a4e-8a97-fb0cf3e4db34
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_contract_end
+    - profile.type.contractor
+  module:
+    - datetime
+id: profile.contractor.field_contract_end
+field_name: field_contract_end
+entity_type: profile
+bundle: contractor
+label: 'Contract End Date'
+description: 'Contract end date.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

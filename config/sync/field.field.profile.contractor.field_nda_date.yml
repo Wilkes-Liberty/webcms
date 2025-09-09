@@ -1,0 +1,21 @@
+uuid: 6b8c0f6a-b8a8-46ae-8eda-7d7a8a2a1f1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_nda_date
+    - profile.type.contractor
+  module:
+    - datetime
+id: profile.contractor.field_nda_date
+field_name: field_nda_date
+entity_type: profile
+bundle: contractor
+label: 'NDA Acknowledged On'
+description: 'Date the contractor acknowledged the NDA.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

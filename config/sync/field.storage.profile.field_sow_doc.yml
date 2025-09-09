@@ -1,0 +1,22 @@
+uuid: 1f7f4a3c-0051-4d82-9c61-3b4ee0e12c5f
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: profile.field_sow_doc
+field_name: field_sow_doc
+entity_type: profile
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: private
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

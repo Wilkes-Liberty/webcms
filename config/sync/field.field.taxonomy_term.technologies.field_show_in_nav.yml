@@ -9,7 +9,7 @@ id: taxonomy_term.technologies.field_show_in_nav
 field_name: field_show_in_nav
 entity_type: taxonomy_term
 bundle: technologies
-label: 'Show In Nav'
+label: 'Show in Navigation'
 description: 'Include this term in navigation and listings.'
 required: false
 translatable: true

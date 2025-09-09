@@ -9,7 +9,7 @@ id: taxonomy_term.department.field_synonyms
 field_name: field_synonyms
 entity_type: taxonomy_term
 bundle: department
-label: 'Synonyms / Aliases'
+label: Synonyms/Aliases
 description: 'Alternate names for this term; add one per line to aid search and tagging.'
 required: false
 translatable: true

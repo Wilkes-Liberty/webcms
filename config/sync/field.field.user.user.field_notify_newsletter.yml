@@ -1,0 +1,25 @@
+uuid: 44b2b2cd-d4b0-4f3c-9a75-7d69e0b7c88f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_notify_newsletter
+    - user.role.authenticated
+  module:
+    - user
+id: user.user.field_notify_newsletter
+field_name: field_notify_newsletter
+entity_type: user
+bundle: user
+label: 'Notify: Newsletter/Updates'
+description: 'Receive occasional product or site updates.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,21 @@
+uuid: 6cda6eb7-5a19-4f0a-8dbe-0e79f8a8a3a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_security_training_date
+    - profile.type.employee
+  module:
+    - datetime
+id: profile.employee.field_security_training_date
+field_name: field_security_training_date
+entity_type: profile
+bundle: employee
+label: 'Security Training Completed On'
+description: 'Date the employee completed mandatory security training.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -66,8 +66,38 @@ entity_config:
     page:
       enabled: true
       query_load_enabled: true
+    person:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
   taxonomy_term:
     tags:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    department:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    services:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    industries:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    topics:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    tech_stack:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
@@ -106,6 +136,25 @@ field_config:
       field_tags:
         enabled: true
     page: {  }
+    person:
+      field_job_title:
+        enabled: true
+      field_department:
+        enabled: true
+      field_bio:
+        enabled: true
+      field_photo:
+        enabled: true
+      field_linkedin:
+        enabled: true
+      field_github:
+        enabled: true
+      field_website:
+        enabled: true
+      field_expertise:
+        enabled: true
+      field_show_in_directory:
+        enabled: true
   user:
     user:
       user_picture:

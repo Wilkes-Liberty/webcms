@@ -1,0 +1,23 @@
+uuid: 6f3b9b1e-2a65-4b1a-9f38-3a97a20b5ee9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_nda_ack
+    - profile.type.employee
+id: profile.employee.field_nda_ack
+field_name: field_nda_ack
+entity_type: profile
+bundle: employee
+label: 'NDA Acknowledged'
+description: 'Checked when the employee has acknowledged the NDA.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

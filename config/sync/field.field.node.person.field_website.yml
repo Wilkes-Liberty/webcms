@@ -1,0 +1,23 @@
+uuid: 9e011b7a-6bce-4e5a-8a9a-06d3eb42b0f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_website
+    - node.type.person
+  module:
+    - link
+id: node.person.field_website
+field_name: field_website
+entity_type: node
+bundle: person
+label: Website
+description: 'Personal website or portfolio URL.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

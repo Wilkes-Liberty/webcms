@@ -1,0 +1,12 @@
+uuid: 3d3c557a-7e7d-4545-9a11-d8a4b9630b47
+langcode: en
+status: true
+dependencies: {  }
+id: partner
+label: 'Partner Profile'
+display_label: null
+multiple: false
+registration: false
+roles: {  }
+allow_revisions: false
+new_revision: false

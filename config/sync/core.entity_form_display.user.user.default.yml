@@ -5,12 +5,18 @@ dependencies:
   config:
     - field.field.user.user.tmgmt_translation_skills
     - field.field.user.user.user_picture
+    - field.field.user.user.field_notify_mentions
+    - field.field.user.user.field_notify_replies
+    - field.field.user.user.field_notify_newsletter
+    - field.field.user.user.field_notify_security
+    - field.field.user.user.field_preferred_contact
     - image.style.thumbnail
   module:
     - image
     - path
     - tmgmt_language_combination
     - user
+    - options
 _core:
   default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
 id: user.user.default
@@ -24,6 +30,40 @@ content:
   contact:
     weight: 5
     region: content
+  field_notify_mentions:
+    type: boolean_checkbox
+    weight: 40
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_notify_newsletter:
+    type: boolean_checkbox
+    weight: 42
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_notify_replies:
+    type: boolean_checkbox
+    weight: 41
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_notify_security:
+    type: boolean_checkbox
+    weight: 43
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_preferred_contact:
+    type: options_select
+    weight: 44
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   language:
     weight: 0
     region: content
@@ -51,4 +91,9 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
 hidden:
+  author_profiles: true
+  client_profiles: true
+  contractor_profiles: true
+  employee_profiles: true
   langcode: true
+  partner_profiles: true

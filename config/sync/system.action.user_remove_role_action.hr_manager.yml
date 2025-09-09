@@ -1,0 +1,14 @@
+uuid: 01b5bb4e-6ca0-4996-a657-7ec7a1af502f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.hr_manager
+  module:
+    - user
+id: user_remove_role_action.hr_manager
+label: 'Remove the HR Manager role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: hr_manager

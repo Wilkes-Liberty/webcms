@@ -1,0 +1,23 @@
+uuid: 0c1d3b2e-7041-4a08-9d9c-1c47d0a3f25c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_user
+    - node.type.person
+  module:
+    - user
+id: node.person.field_user
+field_name: field_user
+entity_type: node
+bundle: person
+label: 'Associated User'
+description: 'Associate this Person with a user account (optional). Used for author mapping; not shown publicly.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,29 @@
+uuid: 01e173cb-9bcd-4a7c-bdc9-6c84967d7805
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+id: profile.field_client_tier
+field_name: field_client_tier
+entity_type: profile
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: a
+      label: 'Tier A'
+    -
+      value: b
+      label: 'Tier B'
+    -
+      value: c
+      label: 'Tier C'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

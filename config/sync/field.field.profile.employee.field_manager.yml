@@ -1,0 +1,23 @@
+uuid: 0cf2fd9e-1d7a-4f3d-9dcb-2f1b0f5a13b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_manager
+    - profile.type.employee
+  module:
+    - user
+id: profile.employee.field_manager
+field_name: field_manager
+entity_type: profile
+bundle: employee
+label: Manager
+description: 'Direct manager for this employee.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings: {  }
+field_type: entity_reference

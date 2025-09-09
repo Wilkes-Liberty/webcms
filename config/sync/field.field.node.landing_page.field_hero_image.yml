@@ -11,7 +11,7 @@ field_name: field_hero_image
 entity_type: node
 bundle: landing_page
 label: 'Hero Image'
-description: 'Hero image displayed at the top of the page.'
+description: 'Min 1600×900 (16:9), JPG/PNG. Avoid text; set a focal point.'
 required: false
 translatable: true
 default_value: {  }

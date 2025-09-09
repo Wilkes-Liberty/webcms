@@ -1,0 +1,28 @@
+uuid: 99b9f3a2-0d3e-4b35-9e51-8b3d0b2c19f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_expertise
+    - node.type.person
+  module:
+    - taxonomy
+id: node.person.field_expertise
+field_name: field_expertise
+entity_type: node
+bundle: person
+label: Expertise
+description: 'Tag areas of expertise (topics, services, industries, tech stack).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topics: topics
+      services: services
+      industries: industries
+      tech_stack: tech_stack
+field_type: entity_reference

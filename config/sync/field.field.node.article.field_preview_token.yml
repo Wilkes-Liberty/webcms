@@ -10,7 +10,7 @@ field_name: field_preview_token
 entity_type: node
 bundle: article
 label: 'Preview Token'
-description: 'Optional token to enable preview links; leave empty unless needed.'
+description: 'Token used for content previews. Do not share externally.'
 required: false
 translatable: true
 default_value: {  }

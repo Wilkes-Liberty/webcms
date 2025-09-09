@@ -11,7 +11,7 @@ id: taxonomy_term.solutions.field_cta_links
 field_name: field_cta_links
 entity_type: taxonomy_term
 bundle: solutions
-label: 'Cta Links'
+label: 'CTA Links'
 description: 'Optional call-to-action links for this term (title + URL).'
 required: false
 translatable: true

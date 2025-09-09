@@ -1,0 +1,30 @@
+uuid: 6b7f2c0d-9a8b-4e7f-8c1d-2e3f4a5b6c7d
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_preferred_contact
+field_name: field_preferred_contact
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: email
+      label: Email
+    -
+      value: slack
+      label: Slack
+    -
+      value: phone
+      label: Phone
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

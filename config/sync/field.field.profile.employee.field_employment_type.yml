@@ -1,0 +1,21 @@
+uuid: 23c2e7d5-8b41-4a9f-9b5e-7b4e92d1c6e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_employment_type
+    - profile.type.employee
+  module:
+    - options
+id: profile.employee.field_employment_type
+field_name: field_employment_type
+entity_type: profile
+bundle: employee
+label: 'Employment Type'
+description: 'Employment relationship type.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

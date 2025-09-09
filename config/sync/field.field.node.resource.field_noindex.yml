@@ -10,7 +10,7 @@ field_name: field_noindex
 entity_type: node
 bundle: resource
 label: 'Robots: noindex'
-description: 'Prevent search engines from indexing this page.'
+description: 'Exclude this page from search indexing. Use for campaign/thank-you/duplicate pages.'
 required: false
 translatable: true
 default_value: {  }

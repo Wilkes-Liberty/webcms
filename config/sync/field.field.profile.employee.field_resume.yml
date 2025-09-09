@@ -1,0 +1,27 @@
+uuid: 1d82a1a7-59f9-4c8f-b5e6-9f3a6e9b2a33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_resume
+    - profile.type.employee
+  module:
+    - file
+id: profile.employee.field_resume
+field_name: field_resume
+entity_type: profile
+bundle: employee
+label: 'Resume (Private)'
+description: 'PDF/DOC; stored in private files. HR-only.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+  file_directory: 'profiles/resume/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf doc docx'
+  max_filesize: ''
+  description_field: false
+field_type: file

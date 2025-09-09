@@ -1,0 +1,38 @@
+uuid: 3a64c6c9-14f2-4e5f-8b7e-e6cc9c66f1b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_private_image
+    - profile.type.employee
+  module:
+    - image
+id: profile.employee.field_private_image
+field_name: field_private_image
+entity_type: profile
+bundle: employee
+label: 'Private Image'
+description: 'Confidential image stored in private files (e.g., ID scan). HR-only.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'profiles/private_images/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png jpg jpeg webp'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

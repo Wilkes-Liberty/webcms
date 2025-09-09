@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: Compliance
 vid: compliance
-description: null
+description: 'Compliance frameworks, standards, and regulatory classifications.'
 weight: 0
 new_revision: false

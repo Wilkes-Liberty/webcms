@@ -1,0 +1,25 @@
+uuid: 20f9c7f4-77f7-4a61-8f2c-8220b84b5e46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department
+    - node.type.person
+  module:
+    - taxonomy
+id: node.person.field_department
+field_name: field_department
+entity_type: node
+bundle: person
+label: Department
+description: 'Select the primary department.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      department: department
+field_type: entity_reference

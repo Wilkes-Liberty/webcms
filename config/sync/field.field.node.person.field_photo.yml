@@ -1,0 +1,38 @@
+uuid: e9c4d8f2-a144-4cd5-82da-83b0db4dc6e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_photo
+    - node.type.person
+  module:
+    - image
+id: node.person.field_photo
+field_name: field_photo
+entity_type: node
+bundle: person
+label: Photo
+description: 'Headshot: Min 800×800, JPG/PNG. Avoid text; set a focal point.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'people/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg webp'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

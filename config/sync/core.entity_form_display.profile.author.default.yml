@@ -1,0 +1,79 @@
+uuid: 4a1ea7f0-b7ac-4f2f-9e67-3f0c8a9ea9a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.profile.author.field_author_bio
+    - profile.type.author
+  module:
+    - text
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_editorial
+        - group_confidential_documents
+      label: Profile
+      region: content
+      parent_name: ''
+      weight: -30
+      format_type: tabs
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: false
+        direction: horizontal
+    group_editorial:
+      children:
+        - field_author_bio
+      label: Editorial
+      region: content
+      parent_name: group_tabs
+      weight: -15
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+    group_confidential_documents:
+      children:
+        - field_private_image
+      label: 'Confidential Documents'
+      region: content
+      parent_name: group_tabs
+      weight: -14
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+id: profile.author.default
+targetEntityType: profile
+bundle: author
+mode: default
+content:
+  field_author_bio:
+    type: text_textarea
+    weight: -10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_private_image:
+    type: image_image
+    weight: -9
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  created: true
+  is_default: true
+  uid: true

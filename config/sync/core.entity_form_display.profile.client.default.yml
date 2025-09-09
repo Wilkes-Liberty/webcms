@@ -1,0 +1,109 @@
+uuid: 9b942a4a-8b60-4e3a-b6e0-4f3d2cf2be22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.profile.client.field_company_name
+    - field.field.profile.client.field_account_manager
+    - field.field.profile.client.field_client_tier
+    - field.field.profile.client.field_agreement_doc
+    - profile.type.client
+  module:
+    - file
+    - user
+    - options
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_company
+        - group_confidential_documents
+      label: Profile
+      region: content
+      parent_name: ''
+      weight: -30
+      format_type: tabs
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: false
+        direction: horizontal
+    group_company:
+      children:
+        - field_company_name
+        - field_account_manager
+        - field_client_tier
+      label: Company
+      region: content
+      parent_name: group_tabs
+      weight: -15
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+    group_confidential_documents:
+      children:
+        - field_agreement_doc
+        - field_private_image
+      label: 'Confidential Documents'
+      region: content
+      parent_name: group_tabs
+      weight: -14
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+id: profile.client.default
+targetEntityType: profile
+bundle: client
+mode: default
+content:
+  field_account_manager:
+    type: entity_reference_autocomplete
+    weight: -9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_agreement_doc:
+    type: file_generic
+    weight: -7
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_client_tier:
+    type: options_select
+    weight: -8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_company_name:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_private_image:
+    type: image_image
+    weight: -7
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  created: true
+  is_default: true
+  uid: true

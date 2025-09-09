@@ -1,0 +1,20 @@
+uuid: 9f0617e9-54e3-4b3e-8d77-9d2f2a5f0a21
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: pathauto_person
+label: 'Person pattern'
+type: 'canonical_entities:node'
+pattern: '/people/[node:title]'
+selection_criteria:
+  2f12c93b-31c7-4dd7-934b-9f2dbe8b6b91:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 2f12c93b-31c7-4dd7-934b-9f2dbe8b6b91
+    bundles:
+      - person
+selection_logic: and
+weight: 0
+relationships: {  }

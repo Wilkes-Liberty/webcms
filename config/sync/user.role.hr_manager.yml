@@ -1,0 +1,18 @@
+uuid: 1eed603b-55c4-4977-97c1-b350b08d49b1
+langcode: en
+status: true
+dependencies:
+  module:
+    - profile
+id: hr_manager
+label: 'HR Manager'
+weight: 13
+is_admin: false
+permissions:
+  - 'access profile overview'
+  - 'update any client profile'
+  - 'update any contractor profile'
+  - 'update any employee profile'
+  - 'view any client profile'
+  - 'view any contractor profile'
+  - 'view any employee profile'

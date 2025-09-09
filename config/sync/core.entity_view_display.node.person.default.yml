@@ -1,0 +1,122 @@
+uuid: 898a5b4a-41d3-4bd0-8b6a-2f5d9d3dc6f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.person.field_bio
+    - field.field.node.person.field_department
+    - field.field.node.person.field_expertise
+    - field.field.node.person.field_github
+    - field.field.node.person.field_job_title
+    - field.field.node.person.field_linkedin
+    - field.field.node.person.field_photo
+    - field.field.node.person.field_show_in_directory
+    - field.field.node.person.field_user
+    - image.style.thumbnail
+    - node.type.person
+  module:
+    - image
+id: node.person.default
+targetEntityType: node
+bundle: person
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_bio:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: -16
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -17
+    region: content
+  field_expertise:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -12
+    region: content
+  field_github:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: -14
+    region: content
+  field_job_title:
+    type: string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: -18
+    region: content
+  field_linkedin:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: -15
+    region: content
+  field_photo:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_show_in_directory:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
+    region: hidden
+  field_website:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: -13
+    region: content
+hidden:
+  field_user: true
+  langcode: true
+  links: true
+  preview_token: true
+  search_api_attachments: true
+  search_api_excerpt: true

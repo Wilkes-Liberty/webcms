@@ -1,0 +1,38 @@
+uuid: 5d6e7f80-9a0b-4c1d-2e3f-4a5b6c7d8e9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - profile.type.partner
+    - field.storage.profile.field_private_image
+  module:
+    - image
+id: profile.partner.field_private_image
+field_name: field_private_image
+entity_type: profile
+bundle: partner
+label: 'Private Image'
+description: 'Confidential image stored in private files.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'profiles/private_images/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png jpg jpeg webp'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

@@ -1,0 +1,21 @@
+uuid: 4c3b997f-07f5-4ea6-8cba-4a4a3fb5e6c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_end_date
+    - profile.type.employee
+  module:
+    - datetime
+id: profile.employee.field_end_date
+field_name: field_end_date
+entity_type: profile
+bundle: employee
+label: 'End Date'
+description: 'Employment end date (if applicable).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

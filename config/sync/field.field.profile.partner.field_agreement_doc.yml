@@ -1,0 +1,27 @@
+uuid: 4c5d6e7f-8a9b-4c0d-1e2f-3a4b5c6d7e8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - profile.type.partner
+    - field.storage.profile.field_agreement_doc
+  module:
+    - file
+id: profile.partner.field_agreement_doc
+field_name: field_agreement_doc
+entity_type: profile
+bundle: partner
+label: 'Agreement Document (Private)'
+description: 'Uploaded partner agreements; stored in private files. Restricted to authorized staff.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+  file_directory: 'profiles/agreements/[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

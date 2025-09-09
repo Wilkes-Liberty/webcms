@@ -9,7 +9,7 @@ id: node.service.field_read_time
 field_name: field_read_time
 entity_type: node
 bundle: service
-label: 'Estimated Read Time (minutes)'
+label: 'Estimated Read Time (Minutes)'
 description: 'Estimated reading time in minutes.'
 required: false
 translatable: true

@@ -1,0 +1,23 @@
+uuid: 0842a3f5-0566-4d08-9aa6-8073c5b480e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_linkedin
+    - node.type.person
+  module:
+    - link
+id: node.person.field_linkedin
+field_name: field_linkedin
+entity_type: node
+bundle: person
+label: LinkedIn
+description: 'Full URL to LinkedIn profile.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

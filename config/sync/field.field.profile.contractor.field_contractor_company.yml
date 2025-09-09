@@ -1,0 +1,19 @@
+uuid: 7f2a7b8e-3e9d-4b1e-8f21-9b8d0ee2e1c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_contractor_company
+    - profile.type.contractor
+id: profile.contractor.field_contractor_company
+field_name: field_contractor_company
+entity_type: profile
+bundle: contractor
+label: 'Contractor Company'
+description: 'Contractor or vendor company name.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

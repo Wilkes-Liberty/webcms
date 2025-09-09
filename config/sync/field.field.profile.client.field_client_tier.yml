@@ -1,0 +1,21 @@
+uuid: 7c1c6f58-f4c7-4a2a-ae7a-60f77dbf2463
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_client_tier
+    - profile.type.client
+  module:
+    - options
+id: profile.client.field_client_tier
+field_name: field_client_tier
+entity_type: profile
+bundle: client
+label: 'Client Tier'
+description: 'Account tier classification.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

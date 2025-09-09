@@ -1,0 +1,26 @@
+uuid: 8f2d1e33-8a83-4c0d-9a3a-8152f970ce75
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_company_name
+    - field.storage.profile.field_account_manager
+    - field.storage.profile.field_client_tier
+    - field.storage.profile.field_agreement_doc
+    - profile.type.client
+  module:
+    - file
+    - options
+    - user
+id: profile.client.field_company_name
+field_name: field_company_name
+entity_type: profile
+bundle: client
+label: 'Company Name'
+description: 'Client or partner company name.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

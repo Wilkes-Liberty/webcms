@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: Department
 vid: department
-description: null
+description: 'Organizational departments used for ownership and navigation.'
 weight: 0
 new_revision: false

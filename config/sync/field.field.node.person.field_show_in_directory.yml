@@ -1,0 +1,23 @@
+uuid: 2ff08b12-d7b6-4b49-9b78-9a7f7f5328f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_in_directory
+    - node.type.person
+id: node.person.field_show_in_directory
+field_name: field_show_in_directory
+entity_type: node
+bundle: person
+label: 'Show in Directory'
+description: 'Show this person on the public people directory.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

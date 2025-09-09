@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: 'Resource Type'
 vid: resource_type
-description: null
+description: 'Types of resources (e.g., eBook, whitepaper, checklist).'
 weight: 0
 new_revision: false

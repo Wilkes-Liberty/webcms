@@ -1,0 +1,25 @@
+uuid: 1b15d0f9-7b9f-4c46-9f9e-1a434a77d83a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_notify_replies
+    - user.role.authenticated
+  module:
+    - user
+id: user.user.field_notify_replies
+field_name: field_notify_replies
+entity_type: user
+bundle: user
+label: 'Notify: Comment Replies'
+description: 'Notifications when someone replies to your comments or threads.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

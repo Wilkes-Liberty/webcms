@@ -1,0 +1,23 @@
+uuid: 1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - profile.type.partner
+    - field.storage.profile.field_account_manager
+  module:
+    - user
+id: profile.partner.field_account_manager
+field_name: field_account_manager
+entity_type: profile
+bundle: partner
+label: 'Account Manager'
+description: 'Internal account manager for this partner.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings: {  }
+field_type: entity_reference

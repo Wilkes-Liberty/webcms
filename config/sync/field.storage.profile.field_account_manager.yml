@@ -1,0 +1,19 @@
+uuid: 3bc7f1f2-63de-4cc7-9ea0-9f28e2f0bb85
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: profile.field_account_manager
+field_name: field_account_manager
+entity_type: profile
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

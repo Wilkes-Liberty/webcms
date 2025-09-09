@@ -1,0 +1,12 @@
+uuid: d21cee61-8da4-4935-a173-8c7f47d2c3e4
+langcode: en
+status: true
+dependencies: {  }
+id: client
+label: 'Client Profile'
+display_label: null
+multiple: false
+registration: false
+roles: {  }
+allow_revisions: false
+new_revision: false

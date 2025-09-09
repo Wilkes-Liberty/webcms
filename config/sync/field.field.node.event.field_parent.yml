@@ -10,7 +10,7 @@ field_name: field_parent
 entity_type: node
 bundle: event
 label: 'Parent Page'
-description: 'Parent page used for site hierarchy and breadcrumbs.'
+description: 'Choose the parent to control breadcrumbs and hierarchy. Do not select this page; keep within the same language.'
 required: false
 translatable: true
 default_value: {  }

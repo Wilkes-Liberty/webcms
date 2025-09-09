@@ -12,7 +12,7 @@ field_name: field_secondary_cta
 entity_type: node
 bundle: basic_page
 label: 'Secondary CTA'
-description: 'Secondary call-to-action link (optional).'
+description: 'Optional. Same rules as primary CTA; use sparingly.'
 required: false
 translatable: true
 default_value: {  }

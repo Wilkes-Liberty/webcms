@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: Seniority
 vid: seniority
-description: null
+description: 'Seniority levels for careers and audience targeting.'
 weight: 0
 new_revision: false

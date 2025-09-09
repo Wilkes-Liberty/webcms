@@ -43,11 +43,189 @@ dependencies:
     - link
     - path
     - text
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_content
+        - group_media
+        - group_ctas
+        - group_seo
+        - group_technical
+        - group_relationships
+        - group_classification
+        - group_layout
+        - group_editorial
+      label: Profile
+      region: content
+      parent_name: ''
+      weight: -50
+      format_type: tabs
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: false
+        direction: horizontal
+    group_content:
+      children:
+        - body
+        - field_summary
+      label: Content
+      region: content
+      parent_name: group_tabs
+      weight: -49
+      format_type: details
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        open: true
+        required_fields: false
+    group_media:
+      children:
+        - field_hero_image
+        - field_social_image
+      label: Media
+      region: content
+      parent_name: group_tabs
+      weight: -48
+      format_type: details
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        open: false
+        required_fields: false
+    group_ctas:
+      children:
+        - field_primary_cta
+        - field_secondary_cta
+      label: CTAs
+      region: content
+      parent_name: group_tabs
+      weight: -47
+      format_type: details
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        open: false
+        required_fields: false
+    group_seo:
+      children:
+        - field_seo_title
+        - field_meta_description
+        - field_canonical
+        - field_breadcrumb_label
+        - field_noindex
+        - field_show_toc
+      label: SEO
+      region: content
+      parent_name: group_tabs
+      weight: -46
+      format_type: details
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        open: false
+        required_fields: false
+    group_technical:
+      children:
+        - field_cache_tags
+        - field_revalidate_ttl
+        - field_preview_token
+      label: Technical
+      region: content
+      parent_name: group_tabs
+      weight: -45
+      format_type: details
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        open: false
+        required_fields: false
+    group_relationships:
+      children:
+        - field_parent
+        - field_related
+        - field_primary_capability
+        - field_solutions
+      label: Relationships
+      region: content
+      parent_name: group_tabs
+      weight: -44
+      format_type: details
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        open: false
+        required_fields: false
+    group_classification:
+      children:
+        - field_industry
+        - field_personas
+        - field_taxonomy
+        - field_technologies
+      label: Classification
+      region: content
+      parent_name: group_tabs
+      weight: -43
+      format_type: details
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        open: false
+        required_fields: false
+    group_layout:
+      children:
+        - field_template
+        - field_theme_variant
+        - field_visibility
+      label: Layout
+      region: content
+      parent_name: group_tabs
+      weight: -42
+      format_type: details
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        open: false
+        required_fields: false
+    group_editorial:
+      children:
+        - field_read_time
+        - field_campaign
+        - field_reviewed_on
+      label: Editorial
+      region: content
+      parent_name: group_tabs
+      weight: -41
+      format_type: details
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        open: false
+        required_fields: false
 id: node.case_study.default
 targetEntityType: node
 bundle: case_study
 mode: default
 content:
+  title:
+    type: string_textfield
+    weight: -100
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   body:
     type: text_textarea_with_summary
     weight: 241
@@ -66,7 +244,7 @@ content:
     third_party_settings: {  }
   field_ab_variant:
     type: options_select
-    weight: 261
+    weight: -99
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -354,14 +532,6 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
-  title:
-    type: string_textfield
-    weight: 239
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

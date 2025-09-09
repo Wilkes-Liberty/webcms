@@ -1,0 +1,12 @@
+uuid: ccf62888-4fb2-40c0-8318-348e1478fa7e
+langcode: en
+status: true
+dependencies: {  }
+id: contractor
+label: 'Contractor Profile'
+display_label: null
+multiple: false
+registration: false
+roles: {  }
+allow_revisions: false
+new_revision: false

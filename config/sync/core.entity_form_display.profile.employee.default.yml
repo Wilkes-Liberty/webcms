@@ -1,0 +1,163 @@
+uuid: 5128fa8a-04a3-4f42-8e17-0920e3e167f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.profile.employee.field_manager
+    - field.field.profile.employee.field_employment_type
+    - field.field.profile.employee.field_start_date
+    - field.field.profile.employee.field_end_date
+    - field.field.profile.employee.field_resume
+    - field.field.profile.employee.field_nda_ack
+    - field.field.profile.employee.field_nda_date
+    - field.field.profile.employee.field_security_training_date
+    - profile.type.employee
+  module:
+    - file
+    - datetime
+    - user
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_company_role
+        - group_dates
+        - group_compliance_training
+        - group_confidential_documents
+      label: Profile
+      region: content
+      parent_name: ''
+      weight: -30
+      format_type: tabs
+      format_settings:
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: false
+        direction: horizontal
+    group_company_role:
+      children:
+        - field_manager
+        - field_employment_type
+      label: 'Company & Role'
+      region: content
+      parent_name: group_tabs
+      weight: -15
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+    group_dates:
+      children:
+        - field_start_date
+        - field_end_date
+      label: Dates
+      region: content
+      parent_name: group_tabs
+      weight: -14
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_compliance_training:
+      children:
+        - field_nda_ack
+        - field_nda_date
+        - field_security_training_date
+      label: 'Compliance & Training'
+      region: content
+      parent_name: group_tabs
+      weight: -13
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_confidential_documents:
+      children:
+        - field_resume
+        - field_private_image
+      label: 'Confidential Documents'
+      region: content
+      parent_name: group_tabs
+      weight: -12
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+id: profile.employee.default
+targetEntityType: profile
+bundle: employee
+mode: default
+content:
+  field_employment_type:
+    type: options_select
+    weight: -9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_end_date:
+    type: datetime_default
+    weight: -7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_manager:
+    type: entity_reference_autocomplete
+    weight: -10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_nda_ack:
+    type: boolean_checkbox
+    weight: -5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_nda_date:
+    type: datetime_default
+    weight: -4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_private_image:
+    type: image_image
+    weight: -6
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_resume:
+    type: file_generic
+    weight: -6
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_start_date:
+    type: datetime_default
+    weight: -8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_security_training_date: true
+  is_default: true
+  uid: true

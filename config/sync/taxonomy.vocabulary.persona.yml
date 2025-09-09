@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: Persona
 vid: persona
-description: null
+description: 'Audience personas used to target and personalize content.'
 weight: 0
 new_revision: false

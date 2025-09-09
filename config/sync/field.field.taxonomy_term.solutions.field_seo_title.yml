@@ -9,7 +9,7 @@ id: taxonomy_term.solutions.field_seo_title
 field_name: field_seo_title
 entity_type: taxonomy_term
 bundle: solutions
-label: 'Seo Title'
+label: 'SEO Title'
 description: 'Optional SEO title shown in search results; defaults to term name.'
 required: false
 translatable: true

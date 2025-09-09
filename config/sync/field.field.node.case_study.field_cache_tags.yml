@@ -9,8 +9,8 @@ id: node.case_study.field_cache_tags
 field_name: field_cache_tags
 entity_type: node
 bundle: case_study
-label: 'CDN Cache Tags (hints)'
-description: 'Optional CDN cache tags; comma-separated values to hint external caching.'
+label: 'CDN Cache Tags (Hints)'
+description: 'Advanced. Comma-separated list; limit to ≤10. Coordinate with the platform team before use.'
 required: false
 translatable: true
 default_value: {  }

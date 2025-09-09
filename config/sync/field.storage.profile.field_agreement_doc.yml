@@ -1,0 +1,22 @@
+uuid: 3f2da3d7-2b1d-4f4a-8a70-2cc2f3a6a6a9
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: profile.field_agreement_doc
+field_name: field_agreement_doc
+entity_type: profile
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: private
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -11,8 +11,8 @@ id: node.resource.field_summary
 field_name: field_summary
 entity_type: node
 bundle: resource
-label: 'Summary / Deck'
-description: 'Short summary shown in teasers and SEO contexts.'
+label: Summary/Deck
+description: '1–2 sentences (160–200 characters). Shown in teasers and SEO contexts. No links or formatting.'
 required: false
 translatable: true
 default_value: {  }

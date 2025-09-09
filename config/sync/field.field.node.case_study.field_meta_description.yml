@@ -10,7 +10,7 @@ field_name: field_meta_description
 entity_type: node
 bundle: case_study
 label: 'Meta Description'
-description: '1–2 sentence summary used by search and social previews.'
+description: '150–160 characters. Summarize the page for search and social. Avoid quotes and trailing punctuation; write in sentence case.'
 required: false
 translatable: true
 default_value: {  }

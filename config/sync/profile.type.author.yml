@@ -1,0 +1,12 @@
+uuid: c18153dc-300b-474e-828f-1bf6910d9c4f
+langcode: en
+status: true
+dependencies: {  }
+id: author
+label: 'Author Profile'
+display_label: null
+multiple: false
+registration: false
+roles: {  }
+allow_revisions: false
+new_revision: false

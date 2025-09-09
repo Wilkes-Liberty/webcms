@@ -1,0 +1,27 @@
+uuid: 6f5c4b1f-1488-4b4e-9e6f-3c1bf6b3627f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_sow_doc
+    - profile.type.contractor
+  module:
+    - file
+id: profile.contractor.field_sow_doc
+field_name: field_sow_doc
+entity_type: profile
+bundle: contractor
+label: 'Statement of Work (Private)'
+description: 'SOW document; stored in private files. Restricted to authorized staff.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+  file_directory: 'profiles/sow/[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

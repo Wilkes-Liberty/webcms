@@ -12,7 +12,7 @@ field_name: field_primary_cta
 entity_type: node
 bundle: career
 label: 'Primary CTA'
-description: 'Primary call-to-action link shown prominently.'
+description: 'HTTPS URL with descriptive title. Use action-oriented verbs; avoid “Click here”.'
 required: false
 translatable: true
 default_value: {  }

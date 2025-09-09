@@ -1,0 +1,11 @@
+uuid: b0dbb6a9-2a62-4bb2-8fec-5b52a3f29902
+langcode: en
+status: true
+dependencies: {  }
+name: Person
+type: person
+description: 'Public profile for staff/authors to expose to the frontend.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,24 @@
+uuid: 5d3e7a9f-8c2b-4e1d-9a0b-1c2d3e4f5a6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_preferred_contact
+    - user.role.authenticated
+  module:
+    - options
+    - user
+id: user.user.field_preferred_contact
+field_name: field_preferred_contact
+entity_type: user
+bundle: user
+label: 'Preferred Contact Method'
+description: 'How would you like us to contact you?'
+required: false
+translatable: true
+default_value:
+  -
+    value: email
+default_value_callback: ''
+settings: {  }
+field_type: list_string

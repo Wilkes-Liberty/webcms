@@ -1,0 +1,19 @@
+uuid: 9a88c2bb-7e07-4f10-8a9d-5b9f8f77aa91
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+id: profile.field_end_date
+field_name: field_end_date
+entity_type: profile
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

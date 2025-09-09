@@ -1,0 +1,19 @@
+uuid: 7f21c5e1-4a7d-4d65-9f3c-1a1f2b3c4d5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - profile.type.partner
+    - field.storage.profile.field_company_name
+id: profile.partner.field_company_name
+field_name: field_company_name
+entity_type: profile
+bundle: partner
+label: 'Company Name'
+description: 'Partner company name.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

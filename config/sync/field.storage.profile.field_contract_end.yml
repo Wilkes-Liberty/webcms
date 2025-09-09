@@ -1,0 +1,19 @@
+uuid: 7c2c62a1-3b8e-4fd5-8580-cb5a7f4d9ad9
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+id: profile.field_contract_end
+field_name: field_contract_end
+entity_type: profile
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

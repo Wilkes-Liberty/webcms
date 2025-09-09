@@ -1,0 +1,25 @@
+uuid: 0f4b8e1c-42de-46f5-8da9-8f3b6e77dcf4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_notify_security
+    - user.role.authenticated
+  module:
+    - user
+id: user.user.field_notify_security
+field_name: field_notify_security
+entity_type: user
+bundle: user
+label: 'Notify: Security Alerts'
+description: 'Receive notifications about important security events.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

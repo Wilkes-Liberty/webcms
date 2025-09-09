@@ -1,0 +1,21 @@
+uuid: 2bd2a08b-7b6a-4bf0-9f53-1a5de8d9dcb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_nda_date
+    - profile.type.employee
+  module:
+    - datetime
+id: profile.employee.field_nda_date
+field_name: field_nda_date
+entity_type: profile
+bundle: employee
+label: 'NDA Acknowledged On'
+description: 'Date the employee acknowledged the NDA.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

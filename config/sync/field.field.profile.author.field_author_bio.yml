@@ -1,0 +1,20 @@
+uuid: 1adf6b52-ef4c-4b45-9d97-6fc3c3fdc58b
+langcode: en
+status: true
+dependencies:
+  config:
+    - profile.type.author
+    - field.storage.profile.field_author_bio
+id: profile.author.field_author_bio
+field_name: field_author_bio
+entity_type: profile
+bundle: author
+label: 'Author Bio'
+description: 'Public-facing author bio for internal reference; Person nodes are the public source for bios.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

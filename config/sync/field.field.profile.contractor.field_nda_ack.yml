@@ -1,0 +1,23 @@
+uuid: 7be3f24a-7a3a-47e1-9e5d-3e1c3a6d2a29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_nda_ack
+    - profile.type.contractor
+id: profile.contractor.field_nda_ack
+field_name: field_nda_ack
+entity_type: profile
+bundle: contractor
+label: 'NDA Acknowledged'
+description: 'Checked when the contractor has acknowledged the NDA.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

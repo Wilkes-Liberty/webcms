@@ -1,0 +1,25 @@
+uuid: 2e66b535-3a1c-4692-8ec2-8a1556a9d1d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_notify_mentions
+    - user.role.authenticated
+  module:
+    - user
+id: user.user.field_notify_mentions
+field_name: field_notify_mentions
+entity_type: user
+bundle: user
+label: 'Notify: Mentions'
+description: 'Email or in-app notifications when you are mentioned.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

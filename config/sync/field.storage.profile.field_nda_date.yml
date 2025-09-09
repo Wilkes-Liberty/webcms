@@ -1,0 +1,19 @@
+uuid: a0f58388-6752-4fc4-a7e2-0f3d2b2d2523
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+id: profile.field_nda_date
+field_name: field_nda_date
+entity_type: profile
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

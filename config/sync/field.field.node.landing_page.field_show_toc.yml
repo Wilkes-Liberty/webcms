@@ -10,7 +10,7 @@ field_name: field_show_toc
 entity_type: node
 bundle: landing_page
 label: 'Show On-Page TOC'
-description: 'Show an in-page table of contents for headings.'
+description: 'Enable only if the page has 3+ H2 headings. Do not enable for short pages.'
 required: false
 translatable: true
 default_value: {  }
