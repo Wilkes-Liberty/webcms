@@ -17,8 +17,15 @@
     "require": {
         "composer/installers": "^2.3",
         "cweagans/composer-patches": "^1.7",
+        "drupal/ai": "^1.2@alpha",
+        "drupal/ai_image_alt_text": "^1.0",
+        "drupal/ai_media_image": "^1.0@alpha",
+        "drupal/ai_seo": "^1.0",
+        "drupal/ai_tmgmt": "^1.0@beta",
         "drupal/allowed_formats": "^3.0",
         "drupal/antibot": "^2.0",
+        "drupal/auto_translation": "^1.5@beta",
+        "drupal/ckeditor5_plugin_pack": "^1.4",
         "drupal/config_ignore_auto": "^3.0",
         "drupal/config_readonly": "^1.0",
         "drupal/config_split": "^2.0",
@@ -163,11 +170,11 @@
             ]
         },
         "patches": {
-            "drupal/decoupled_router": {
-                "Unable to resolve path on node in other language than default": "https://www.drupal.org/files/issues/2024-08-05/decouple_router-3111456-resolve-language-issue-63--get-translation-re-rolled-and-good-redirect.patch"
-            },
             "drupal/entity_redirect": {
                 "Fix TypeError when entity label is null during form rendering": "patches/entity_redirect-null-label-fix-2.3.patch"
+            },
+            "drupal/decoupled_router": {
+                "Fix property type declaration issue in RedirectPathTranslatorSubscriber": "patches/decoupled_router-fix-language-manager-property-type.patch"
             }
         }
     }
