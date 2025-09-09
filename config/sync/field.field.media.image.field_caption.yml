@@ -12,11 +12,12 @@ field_name: field_caption
 entity_type: media
 bundle: image
 label: Caption
-description: ''
+description: "Caption text for this media. Uses the 'Headless (Safe)' text format; minimal markup and links allowed. No inline image uploads."
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - headless_safe
 field_type: text_long

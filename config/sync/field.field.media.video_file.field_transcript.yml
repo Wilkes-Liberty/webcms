@@ -12,11 +12,12 @@ field_name: field_transcript
 entity_type: media
 bundle: video_file
 label: Transcript
-description: ''
+description: "Full transcript text. Uses the 'Headless (Safe)' text format; paragraphs and links allowed. No inline image uploads."
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - headless_safe
 field_type: text_long

@@ -1,0 +1,45 @@
+uuid: 00000000-0000-0000-0000-000000000001
+langcode: en
+status: true
+dependencies:
+  module:
+    - editor
+_core:
+  default_config_hash: null
+name: 'Headless (Safe)'
+format: headless_safe
+weight: 3
+filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 11
+    settings: { }
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: true
+    weight: 7
+    settings: { }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: true
+    weight: 8
+    settings: { }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <p> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <cite> <dl> <dt> <dd> <a href hreflang target title rel> <blockquote cite> <ul type> <ol start type> <strong> <em> <code> <li> <drupal-media data-entity-type data-entity-uuid data-view-mode data-entity-substitution data-align data-caption alt title>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: false
+    weight: 15
+    settings: { }

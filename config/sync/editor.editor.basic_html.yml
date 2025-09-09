@@ -23,6 +23,7 @@ settings:
       - '|'
       - blockQuote
       - drupalInsertImage
+      - drupalMedia
       - '|'
       - heading
       - code
@@ -50,6 +51,7 @@ settings:
         - '<dt>'
         - '<dd>'
         - '<a hreflang>'
+        - '<drupal-media data-entity-type data-entity-uuid data-view-mode data-entity-substitution data-align data-caption alt title>'
         - '<blockquote cite>'
         - '<ul type>'
         - '<ol type>'

@@ -12,11 +12,12 @@ field_name: field_body
 entity_type: paragraph
 bundle: p_feature
 label: Body
-description: ''
+description: "Body text for this component. Uses the 'Headless (Safe)' format: headings (H2–H6), lists, quotes, links (target/title/rel), inline code, and embedded media. No inline image uploads."
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - headless_safe
 field_type: text_long

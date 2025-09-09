@@ -12,11 +12,12 @@ field_name: field_bio
 entity_type: node
 bundle: person
 label: Bio
-description: 'Short bio (1–2 paragraphs). Public.'
+description: "Short bio. Uses the 'Headless (Safe)' text format: headings (H2–H6), lists, quotes, links (target/title/rel), inline code, and embedded media. No inline image uploads."
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - headless_safe
 field_type: text_long
