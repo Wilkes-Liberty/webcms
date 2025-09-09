@@ -41,6 +41,8 @@ settings:
         reversed: false
         startIndex: true
       multiBlock: true
+    ckeditor5_media_media:
+      allow_view_mode_override: false
     ckeditor5_sourceEditing:
       allowed_tags:
         - '<cite>'

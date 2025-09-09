@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - editor
+    - media
 _core:
   default_config_hash: null
 name: 'Headless (Safe)'
@@ -43,3 +44,17 @@ filters:
     status: false
     weight: 15
     settings: {  }
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_view_modes:
+        default: default
+      allowed_media_types:
+        remote_video: remote_video
+        image: image
+        audio: audio
+        document: document
