@@ -4,9 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_summary
+    - filter.format.headless_plain_ai
     - node.type.basic_page
   module:
     - text
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.basic_page.field_summary
 field_name: field_summary
 entity_type: node
@@ -19,5 +24,5 @@ default_value: {  }
 default_value_callback: ''
 settings:
   allowed_formats:
-    - plain_text
+    - headless_plain_ai
 field_type: text_long

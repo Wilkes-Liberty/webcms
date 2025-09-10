@@ -251,3 +251,28 @@ editor.settings.plugins.ai_ckeditor_ai:
           type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_tone
         ai_ckeditor_translate:
           type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_translate
+
+# CKEditor 5 core plugin schemas for headless_plain_ai format
+editor.settings.plugins.ckeditor5_bold:
+  type: mapping
+  label: 'CKEditor 5 Bold plugin settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable bold formatting'
+
+editor.settings.plugins.ckeditor5_italic:
+  type: mapping
+  label: 'CKEditor 5 Italic plugin settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable italic formatting'
+
+editor.settings.plugins.ckeditor5_essentials:
+  type: mapping
+  label: 'CKEditor 5 Essentials plugin settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable essential features'

@@ -1,0 +1,72 @@
+uuid: 3f9c0e6e-ac4f-4548-84b6-623052598e58
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.headless_plain_ai
+  module:
+    - ai_ckeditor
+    - ckeditor5
+format: headless_plain_ai
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - undo
+      - redo
+      - '|'
+      - bold
+      - italic
+      - '|'
+      - link
+      - '|'
+      - ai_ckeditor_ai
+  plugins:
+    ai_ckeditor_ai:
+      dialog:
+        autoresize: 'true'
+        height: 600px
+        width: 800px
+        dialog_class: 'ai-dialog ai-dialog-plain-text'
+      plugins:
+        ai_ckeditor_completion:
+          enabled: true
+          provider: openai_chat
+        ai_ckeditor_help:
+          enabled: true
+        ai_ckeditor_modify_prompt:
+          enabled: true
+          provider: openai_chat
+        ai_ckeditor_reformat_html:
+          enabled: false
+          provider: openai_chat
+        ai_ckeditor_spellfix:
+          enabled: true
+          provider: openai_chat
+        ai_ckeditor_summarize:
+          enabled: true
+          provider: openai_chat
+        ai_ckeditor_tone:
+          enabled: true
+          autocreate: false
+          provider: openai_chat
+          tone_vocabulary: tone
+          use_description: 1
+        ai_ckeditor_translate:
+          enabled: true
+          autocreate: false
+          provider: openai_chat
+          translate_vocabulary: language
+          use_description: true
+          language_source: detect
+    ckeditor5_bold:
+      enabled: false
+    ckeditor5_essentials:
+      enabled: true
+    ckeditor5_italic:
+      enabled: false
+    ckeditor5_link:
+      enabled: true
+      enabled_decorators: {  }
+image_upload:
+  status: false
