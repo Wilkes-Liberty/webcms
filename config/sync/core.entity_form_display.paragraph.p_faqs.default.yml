@@ -1,0 +1,14 @@
+content:
+  field_faqs:
+    type: entity_reference_paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: 'FAQ Item'
+      title_plural: 'FAQ Items'
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: faq_item
+    third_party_settings: {  }
+hidden: {  }
