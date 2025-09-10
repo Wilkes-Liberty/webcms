@@ -66,6 +66,7 @@ module:
   graphql_compose_views: 0
   graphql_core_schema: 0
   graphql_webform: 0
+  headless_clean: 0
   help: 0
   history: 0
   honeypot: 0

@@ -1,16 +1,30 @@
-uuid: 00000000-0000-0000-0000-000000000001
+uuid: 7F4C95BF-0ECC-44E9-9808-7E716378A618
 langcode: en
 status: true
 dependencies:
   module:
     - filter
-    - ai
-    - ai_ckeditor
-    - headless_clean # only if you add the custom sanitize filter
-format: headless_clean
+    - headless_clean
 name: 'Headless (Clean HTML)'
+format: headless_clean
 weight: 0
 filters:
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: false
+    weight: 0
+    settings: {  }
+  filter_headless_sanitize:
+    id: filter_headless_sanitize
+    provider: headless_clean
+    status: true
+    weight: 11
+    settings:
+      allowed_tags: 'p h2 h3 h4 ul ol li blockquote hr strong em code pre a'
+      allowed_attributes: href
+      strict_mode: true
+      log_sanitization: false
   filter_html:
     id: filter_html
     provider: filter
@@ -18,27 +32,15 @@ filters:
     weight: -10
     settings:
       allowed_html: '<p> <h2> <h3> <h4> <ul> <ol> <li> <blockquote> <hr> <strong> <em> <code> <pre> <a href>'
-  filter_url:
-    id: filter_url
-    provider: filter
-    status: true
-    weight: -9
-    settings: {  }
-  filter_autop:
-    id: filter_autop
-    provider: filter
-    status: false
-    weight: 0
-    settings: {  }
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
     status: true
     weight: 10
     settings: {  }
-  filter_headless_sanitize:
-    id: filter_headless_sanitize
-    provider: headless_clean
+  filter_url:
+    id: filter_url
+    provider: filter
     status: true
-    weight: 11
+    weight: -9
     settings: {  }

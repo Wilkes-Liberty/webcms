@@ -72,10 +72,13 @@ class FilterHeadlessSanitize extends FilterBase implements ContainerFactoryPlugi
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
+    // Ensure settings are properly initialized with defaults.
+    $settings = $this->settings + $this->defaultConfiguration();
+    
     $form['allowed_tags'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Allowed HTML tags'),
-      '#default_value' => $this->settings['allowed_tags'],
+      '#default_value' => $settings['allowed_tags'],
       '#description' => $this->t('Space-separated list of allowed HTML tags without angle brackets. Example: p h2 h3 ul ol li a strong em'),
       '#maxlength' => 512,
       '#required' => TRUE,
@@ -84,7 +87,7 @@ class FilterHeadlessSanitize extends FilterBase implements ContainerFactoryPlugi
     $form['allowed_attributes'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Allowed attributes'),
-      '#default_value' => $this->settings['allowed_attributes'],
+      '#default_value' => $settings['allowed_attributes'],
       '#description' => $this->t('Space-separated list of allowed HTML attributes. These apply to any allowed tag. Example: href title alt'),
       '#maxlength' => 512,
     ];
@@ -92,18 +95,51 @@ class FilterHeadlessSanitize extends FilterBase implements ContainerFactoryPlugi
     $form['strict_mode'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Strict mode'),
-      '#default_value' => $this->settings['strict_mode'],
+      '#default_value' => $settings['strict_mode'],
       '#description' => $this->t('When enabled, disallowed tags are completely removed. When disabled, disallowed tags are converted to plain text.'),
     ];
 
     $form['log_sanitization'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Log sanitization actions'),
-      '#default_value' => $this->settings['log_sanitization'],
+      '#default_value' => $settings['log_sanitization'],
       '#description' => $this->t('Log when content is sanitized for debugging purposes. Recommended for development only.'),
     ];
 
     return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function settingsFormValidate(array $element, FormStateInterface $form_state) {
+    $settings = $form_state->getValue(['filters', $this->getPluginId(), 'settings']);
+    
+    if (empty($settings['allowed_tags'])) {
+      $form_state->setError($element['allowed_tags'], $this->t('Allowed HTML tags field cannot be empty.'));
+    }
+    
+    // Validate that allowed_tags contains valid tag names
+    if (!empty($settings['allowed_tags'])) {
+      $tags = preg_split('/\s+/', trim($settings['allowed_tags']), -1, PREG_SPLIT_NO_EMPTY);
+      foreach ($tags as $tag) {
+        if (!preg_match('/^[a-zA-Z][a-zA-Z0-9]*$/', $tag)) {
+          $form_state->setError($element['allowed_tags'], $this->t('Invalid tag name "@tag". Tag names must contain only letters and numbers.', ['@tag' => $tag]));
+          break;
+        }
+      }
+    }
+    
+    // Validate attributes if provided
+    if (!empty($settings['allowed_attributes'])) {
+      $attributes = preg_split('/\s+/', trim($settings['allowed_attributes']), -1, PREG_SPLIT_NO_EMPTY);
+      foreach ($attributes as $attr) {
+        if (!preg_match('/^[a-zA-Z][a-zA-Z0-9-]*$/', $attr)) {
+          $form_state->setError($element['allowed_attributes'], $this->t('Invalid attribute name "@attr". Attribute names must contain only letters, numbers, and hyphens.', ['@attr' => $attr]));
+          break;
+        }
+      }
+    }
   }
 
   /**
@@ -119,7 +155,8 @@ class FilterHeadlessSanitize extends FilterBase implements ContainerFactoryPlugi
     $sanitized_text = $this->sanitizeHtml($text);
     
     // Log sanitization if enabled and changes were made.
-    if ($this->settings['log_sanitization'] && $original_text !== $sanitized_text) {
+    $settings = $this->settings + $this->defaultConfiguration();
+    if ($settings['log_sanitization'] && $original_text !== $sanitized_text) {
       $this->loggerFactory->get('headless_clean')
         ->info('HTML content sanitized. Original length: @original, Sanitized length: @sanitized', [
           '@original' => strlen($original_text),
@@ -206,7 +243,8 @@ class FilterHeadlessSanitize extends FilterBase implements ContainerFactoryPlugi
    *   The disallowed element.
    */
   protected function handleDisallowedTag(\DOMElement $element): void {
-    if ($this->settings['strict_mode']) {
+    $settings = $this->settings + $this->defaultConfiguration();
+    if ($settings['strict_mode']) {
       // Remove the element completely.
       if ($element->parentNode) {
         $element->parentNode->removeChild($element);
@@ -312,7 +350,8 @@ class FilterHeadlessSanitize extends FilterBase implements ContainerFactoryPlugi
    *   Array of allowed tag names.
    */
   protected function parseAllowedTags(): array {
-    $tags = preg_split('/\s+/', trim($this->settings['allowed_tags']), -1, PREG_SPLIT_NO_EMPTY);
+    $settings = $this->settings + $this->defaultConfiguration();
+    $tags = preg_split('/\s+/', trim($settings['allowed_tags']), -1, PREG_SPLIT_NO_EMPTY);
     return array_map('strtolower', $tags);
   }
 
@@ -323,7 +362,8 @@ class FilterHeadlessSanitize extends FilterBase implements ContainerFactoryPlugi
    *   Array of allowed attribute names.
    */
   protected function parseAllowedAttributes(): array {
-    $attributes = preg_split('/\s+/', trim($this->settings['allowed_attributes']), -1, PREG_SPLIT_NO_EMPTY);
+    $settings = $this->settings + $this->defaultConfiguration();
+    $attributes = preg_split('/\s+/', trim($settings['allowed_attributes']), -1, PREG_SPLIT_NO_EMPTY);
     return array_map('strtolower', $attributes);
   }
 
@@ -333,6 +373,7 @@ class FilterHeadlessSanitize extends FilterBase implements ContainerFactoryPlugi
   public function tips($long = FALSE) {
     $allowed_tags = $this->parseAllowedTags();
     $allowed_attributes = $this->parseAllowedAttributes();
+    $settings = $this->settings + $this->defaultConfiguration();
     
     if ($long) {
       $tag_list = '<' . implode('>, <', $allowed_tags) . '>';
@@ -341,7 +382,7 @@ class FilterHeadlessSanitize extends FilterBase implements ContainerFactoryPlugi
       return $this->t('<p><strong>Headless HTML Sanitizer:</strong></p><ul><li>Allowed tags: @tags</li><li>Allowed attributes: @attributes</li><li>All other HTML elements and attributes will be @action.</li></ul>', [
         '@tags' => $tag_list,
         '@attributes' => $attr_list,
-        '@action' => $this->settings['strict_mode'] ? $this->t('removed') : $this->t('converted to plain text'),
+        '@action' => $settings['strict_mode'] ? $this->t('removed') : $this->t('converted to plain text'),
       ]);
     }
     
