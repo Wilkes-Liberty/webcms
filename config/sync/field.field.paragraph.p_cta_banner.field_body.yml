@@ -4,9 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_body
+    - filter.format.headless_clean
     - paragraphs.paragraphs_type.p_cta_banner
   module:
     - text
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: paragraph.p_cta_banner.field_body
 field_name: field_body
 entity_type: paragraph
@@ -19,5 +24,5 @@ default_value: {  }
 default_value_callback: ''
 settings:
   allowed_formats:
-    - headless_safe
+    - headless_clean
 field_type: text_long
