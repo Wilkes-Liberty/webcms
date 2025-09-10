@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.event.field_cache_tags
     - field.field.node.event.field_campaign
     - field.field.node.event.field_canonical
+    - field.field.node.event.field_event_date
     - field.field.node.event.field_event_type
     - field.field.node.event.field_hero_image
     - field.field.node.event.field_industry
@@ -35,17 +36,17 @@ dependencies:
     - field.field.node.event.field_template
     - field.field.node.event.field_theme_variant
     - field.field.node.event.field_visibility
-    - field.field.node.event.field_event_date
     - node.type.event
     - workflows.workflow.editorial
   module:
     - content_moderation
     - datetime
     - entity_browser
+    - field_group
     - link
     - path
-    - text
     - smart_date
+    - text
 third_party_settings:
   field_group:
     group_tabs:
@@ -246,6 +247,8 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
+      allowed_formats:
+        headless_clean: headless_clean
     third_party_settings: {  }
   created:
     type: datetime_timestamp
@@ -489,6 +492,8 @@ content:
     settings:
       rows: 3
       placeholder: ''
+      allowed_formats:
+        headless_clean: headless_clean
     third_party_settings: {  }
   field_taxonomy:
     type: entity_reference_autocomplete

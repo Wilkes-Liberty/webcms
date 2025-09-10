@@ -43,6 +43,7 @@ dependencies:
     - content_moderation
     - datetime
     - entity_browser
+    - field_group
     - link
     - path
     - text
@@ -247,6 +248,8 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
+      allowed_formats:
+        headless_clean: headless_clean
     third_party_settings: {  }
   created:
     type: datetime_timestamp
@@ -483,6 +486,8 @@ content:
     settings:
       rows: 3
       placeholder: ''
+      allowed_formats:
+        headless_clean: headless_clean
     third_party_settings: {  }
   field_taxonomy:
     type: entity_reference_autocomplete

@@ -32,6 +32,8 @@ content:
     settings:
       rows: 3
       placeholder: ''
+      allowed_formats:
+        headless_clean: headless_clean
     third_party_settings: {  }
   field_credit:
     type: string_textfield

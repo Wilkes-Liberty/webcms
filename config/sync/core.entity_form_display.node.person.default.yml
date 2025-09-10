@@ -12,13 +12,17 @@ dependencies:
     - field.field.node.person.field_photo
     - field.field.node.person.field_show_in_directory
     - field.field.node.person.field_user
+    - field.field.node.person.field_website
+    - image.style.thumbnail
     - node.type.person
+    - workflows.workflow.editorial
   module:
+    - content_moderation
+    - field_group
     - image
     - link
     - path
     - text
-    - user
 third_party_settings:
   field_group:
     group_tabs:
@@ -111,6 +115,8 @@ content:
     settings:
       rows: 5
       placeholder: ''
+      allowed_formats:
+        headless_clean: headless_clean
     third_party_settings: {  }
   field_department:
     type: options_select
