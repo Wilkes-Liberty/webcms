@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\headless_clean\Plugin\Filter;
+namespace Drupal\wl_text_formats\Plugin\Filter;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
@@ -12,7 +12,7 @@ use Drupal\filter\Plugin\FilterInterface;
 use Drupal\filter\Plugin\FilterInterface as FilterInterfaceAlias;
 
 /**
- * Minimal test filter.
+ * Headless HTML sanitizer filter for clean output.
  */
 #[Filter(
   id: "filter_headless_sanitize",

@@ -1,7 +1,0 @@
-name: Headless Clean Helpers
-type: module
-description: Extra sanitization for headless text formats.
-package: Headless
-core_version_requirement: ^11
-dependencies:
-  - drupal:filter

@@ -1,8 +1,0 @@
-# Services provided by the headless_clean module.
-# Note: The FilterHeadlessSanitize plugin uses dependency injection
-# but is registered via plugin discovery, not as a service.
-
-services:
-  # Currently no custom services needed.
-  # The filter plugin uses standard Drupal services like logger.factory
-  # which are injected via ContainerFactoryPluginInterface.

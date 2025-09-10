@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the wl_text_formats module.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_install().
+ */
+function wl_text_formats_install() {
+  $messenger = \Drupal::messenger();
+  $messenger->addStatus(t('WL Text Formats module has been installed. The Headless HTML Sanitizer filter is now available for use in <a href=":formats">text formats</a>.', [
+    ':formats' => Url::fromRoute('filter.admin_overview')->toString(),
+  ]));
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function wl_text_formats_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'runtime') {
+    $requirements['wl_text_formats'] = [
+      'title' => t('WL Text Formats'),
+      'value' => t('Filter available'),
+      'severity' => REQUIREMENT_INFO,
+      'description' => t('The Headless HTML Sanitizer filter is available for use in <a href=":formats">text formats</a>.', [
+        ':formats' => Url::fromRoute('filter.admin_overview')->toString(),
+      ]),
+    ];
+
+    // Check if DOMDocument is available (should be in modern PHP)
+    if (!class_exists('DOMDocument')) {
+      $requirements['wl_text_formats']['value'] = t('Missing dependency');
+      $requirements['wl_text_formats']['severity'] = REQUIREMENT_ERROR;
+      $requirements['wl_text_formats']['description'] = t('The WL Text Formats module requires the PHP DOM extension, which is not available.');
+    }
+  }
+
+  return $requirements;
+}

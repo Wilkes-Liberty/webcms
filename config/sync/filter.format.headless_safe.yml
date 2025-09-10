@@ -3,8 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
+    - wl_text_formats
     - filter
-    - headless_clean
+    - wl_text_formats
 _core:
   default_config_hash: null
 name: 'Headless (Frontend Safe)'
@@ -13,7 +14,7 @@ weight: 3
 filters:
   filter_headless_sanitize:
     id: filter_headless_sanitize
-    provider: headless_clean
+    provider: wl_text_formats
     status: true
     weight: 10
     settings:

@@ -1,0 +1,7 @@
+name: WL Text Formats
+type: module
+description: Custom text formats for Wilkes Liberty with headless sanitization.
+package: WL Custom
+core_version_requirement: ^11
+dependencies:
+  - drupal:filter

@@ -3,15 +3,15 @@ langcode: en
 status: true
 dependencies:
   module:
-    - headless_clean
+    - wl_text_formats
 name: 'Headless (Clean HTML)'
 format: headless_clean
 weight: 0
 filters:
   filter_headless_sanitize:
     id: filter_headless_sanitize
-    provider: headless_clean
-    status: false
+    provider: wl_text_formats
+    status: true
     weight: 10
     settings:
       allowed_tags: 'br p h2 h3 h4 strong em pre code blockquote a ul ol li hr'
