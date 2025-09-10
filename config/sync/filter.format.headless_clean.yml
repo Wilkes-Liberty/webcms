@@ -1,29 +1,22 @@
-uuid: 7F4C95BF-0ECC-44E9-9808-7E716378A618
+uuid: 23367ce3-6d1b-43ce-b0d6-7589de9b5fef
 langcode: en
 status: true
 dependencies:
   module:
-    - filter
     - headless_clean
 name: 'Headless (Clean HTML)'
 format: headless_clean
 weight: 0
 filters:
-  filter_autop:
-    id: filter_autop
-    provider: filter
-    status: false
-    weight: 0
-    settings: {  }
   filter_headless_sanitize:
     id: filter_headless_sanitize
     provider: headless_clean
-    status: true
-    weight: 11
+    status: false
+    weight: 10
     settings:
-      allowed_tags: 'p h2 h3 h4 ul ol li blockquote hr strong em code pre a'
-      allowed_attributes: href
-      strict_mode: true
+      allowed_tags: 'br p h2 h3 h4 strong em pre code blockquote a ul ol li hr'
+      allowed_attributes: 'dir lang href class(code) reversed start'
+      strict_mode: false
       log_sanitization: false
   filter_html:
     id: filter_html
@@ -31,16 +24,19 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<p> <h2> <h3> <h4> <ul> <ol> <li> <blockquote> <hr> <strong> <em> <code> <pre> <a href>'
+      allowed_html: '<br> <p> <h2> <h3> <h4> <strong> <em> <pre> <code class="language-*"> <blockquote> <a href> <ul> <ol reversed start> <li> <hr>'
+      filter_html_help: false
+      filter_html_nofollow: false
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
     status: true
-    weight: 10
+    weight: 5
     settings: {  }
   filter_url:
     id: filter_url
     provider: filter
     status: true
-    weight: -9
-    settings: {  }
+    weight: -5
+    settings:
+      filter_url_length: 120

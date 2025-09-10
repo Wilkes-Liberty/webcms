@@ -3,58 +3,43 @@ langcode: en
 status: true
 dependencies:
   module:
-    - editor
-    - media
+    - filter
+    - headless_clean
 _core:
   default_config_hash: null
-name: 'Headless (Safe)'
+name: 'Headless (Frontend Safe)'
 format: headless_safe
 weight: 3
 filters:
-  editor_file_reference:
-    id: editor_file_reference
-    provider: editor
+  filter_headless_sanitize:
+    id: filter_headless_sanitize
+    provider: headless_clean
     status: true
-    weight: 11
-    settings: {  }
-  filter_align:
-    id: filter_align
-    provider: filter
-    status: true
-    weight: 7
-    settings: {  }
-  filter_caption:
-    id: filter_caption
-    provider: filter
-    status: true
-    weight: 8
-    settings: {  }
+    weight: 10
+    settings:
+      allowed_tags: 'p br strong em ul ol li a'
+      allowed_attributes: 'href title'
+      strict_mode: true
+      log_sanitization: true
   filter_html:
     id: filter_html
     provider: filter
     status: true
     weight: -10
     settings:
-      allowed_html: '<br> <p> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <cite> <dl> <dt> <dd> <a href hreflang target title rel> <blockquote cite> <ul type> <ol start type> <strong> <em> <code> <li> <drupal-media data-entity-type data-entity-uuid data-view-mode data-entity-substitution data-align data-caption alt title>'
-      filter_html_help: true
-      filter_html_nofollow: false
-  filter_image_lazy_load:
-    id: filter_image_lazy_load
+      allowed_html: '<p> <br> <strong> <em> <ul> <ol> <li> <a href title>'
+      filter_html_help: false
+      filter_html_nofollow: true
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
     provider: filter
-    status: false
-    weight: 15
-    settings: {  }
-  media_embed:
-    id: media_embed
-    provider: media
     status: true
-    weight: 100
+    weight: 5
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: -5
     settings:
-      default_view_mode: default
-      allowed_view_modes:
-        default: default
-      allowed_media_types:
-        remote_video: remote_video
-        image: image
-        audio: audio
-        document: document
+      filter_url_length: 60

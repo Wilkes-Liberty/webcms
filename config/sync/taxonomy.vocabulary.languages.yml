@@ -1,0 +1,48 @@
+uuid: 3b0535ae-b0c1-4ac6-b4f3-2edc1baf679f
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_redirect
+    - scheduler
+third_party_settings:
+  entity_redirect:
+    redirect:
+      anonymous:
+        active: false
+        destination: default
+        url: ''
+        external: ''
+      add:
+        active: false
+        destination: default
+        url: ''
+        external: ''
+      edit:
+        active: false
+        destination: default
+        url: ''
+        external: ''
+      delete:
+        active: false
+        destination: default
+        url: ''
+        external: ''
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+name: Languages
+vid: languages
+description: 'Multi-purpose language vocabulary'
+weight: 0
+new_revision: false

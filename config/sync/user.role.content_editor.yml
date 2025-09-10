@@ -6,6 +6,7 @@ dependencies:
     - block_content.type.basic
     - entity_browser.browser.media_generic_browser
     - entity_browser.browser.media_image_browser
+    - filter.format.headless_clean
     - media.type.audio
     - media.type.document
     - media.type.icon
@@ -41,6 +42,7 @@ dependencies:
     - editoria11y
     - entity_browser
     - file
+    - filter
     - media
     - node
     - path
@@ -55,7 +57,6 @@ weight: 2
 is_admin: false
 permissions:
   - 'access administration pages'
-  - 'access ai tools'
   - 'access content'
   - 'access content overview'
   - 'access contextual links'

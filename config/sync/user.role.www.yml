@@ -2,7 +2,10 @@ uuid: 2cc6056c-f828-4eb2-bffb-9ee5788aac91
 langcode: en
 status: true
 dependencies:
+  config:
+    - filter.format.headless_safe
   module:
+    - filter
     - graphql
 id: www
 label: WWW
@@ -10,3 +13,4 @@ weight: 4
 is_admin: false
 permissions:
   - 'execute graphql_compose_server arbitrary graphql requests'
+  - 'use text format headless_safe'
