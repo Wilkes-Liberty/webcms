@@ -38,17 +38,17 @@ settings:
           enabled: false
           provider: openai__gpt-4o
         ai_ckeditor_tone:
-          autocreate: false
+          enabled: false
           provider: openai__gpt-4o
+          autocreate: false
           tone_vocabulary: capabilities
           use_description: 0
-          enabled: false
         ai_ckeditor_translate:
-          autocreate: false
+          enabled: true
           provider: openai__gpt-4o
+          autocreate: false
           translate_vocabulary: languages
           use_description: false
           language_source: lang
-          enabled: true
 image_upload:
   status: false
