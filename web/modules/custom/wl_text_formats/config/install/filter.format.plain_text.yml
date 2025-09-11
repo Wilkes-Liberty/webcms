@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - wl_text_formats
+name: 'Plain text'
+format: plain_text
+weight: 50
+filters:
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: true
+    weight: -50
+    settings: { }

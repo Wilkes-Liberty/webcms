@@ -27,7 +27,6 @@ settings:
       - redo
       - '|'
       - aickeditor
-      - ai_balloon_menu
   plugins:
     ai_ckeditor_ai:
       dialog:
@@ -103,7 +102,8 @@ settings:
         startIndex: true
       multiBlock: true
     ckeditor5_plugin_pack_paste_markdown__paste_markdown:
-      enabled: true
+      enabled: false
+      language_fallback: en
     ckeditor5_plugin_pack_word_count__word_count:
       word_count_enabled: true
       word_count_mode: words_chars
