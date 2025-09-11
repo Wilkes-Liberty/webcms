@@ -27,6 +27,7 @@
         "drupal/allowed_formats": "^3.0",
         "drupal/antibot": "^2.0",
         "drupal/auto_translation": "^1.5@beta",
+        "drupal/ckeditor5_paste_filter": "^1.1",
         "drupal/ckeditor5_plugin_pack": "^1.4",
         "drupal/config_ignore_auto": "^3.0",
         "drupal/config_readonly": "^1.0",

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.media_image_browser
+    - field.field.node.landing_page.ai_automator_status
     - field.field.node.landing_page.body
     - field.field.node.landing_page.field_ab_variant
     - field.field.node.landing_page.field_breadcrumb_label
@@ -586,5 +587,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  ai_automator_status: true
   publish_on: true
   unpublish_on: true

@@ -1,0 +1,48 @@
+uuid: 017b8c1e-94e6-400e-918c-cd05a83df18a
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_redirect
+    - scheduler
+third_party_settings:
+  entity_redirect:
+    redirect:
+      anonymous:
+        active: false
+        destination: default
+        url: ''
+        external: ''
+      add:
+        active: false
+        destination: default
+        url: ''
+        external: ''
+      edit:
+        active: false
+        destination: default
+        url: ''
+        external: ''
+      delete:
+        active: false
+        destination: default
+        url: ''
+        external: ''
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+name: Tones
+vid: tones
+description: 'AI Tone vocabulary'
+weight: 0
+new_revision: false

@@ -5,6 +5,7 @@ dependencies:
   config:
     - entity_browser.browser.media_generic_browser
     - entity_browser.browser.media_image_browser
+    - filter.format.headless_clean
     - filter.format.headless_plain_ai
     - media.type.audio
     - media.type.document
@@ -39,5 +40,6 @@ permissions:
   - 'delete any remote_video media'
   - 'delete any svg_image media'
   - 'delete any video_file media'
+  - 'use text format headless_clean'
   - 'use text format headless_plain_ai'
   - 'view media'

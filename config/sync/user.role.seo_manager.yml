@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.headless_clean
     - filter.format.headless_plain_ai
     - taxonomy.vocabulary.compliance
     - taxonomy.vocabulary.department
@@ -63,4 +64,5 @@ permissions:
   - 'edit terms in tech_stack'
   - 'edit terms in topics'
   - 'edit terms in use_cases'
+  - 'use text format headless_clean'
   - 'use text format headless_plain_ai'

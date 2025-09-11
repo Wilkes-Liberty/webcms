@@ -2,7 +2,10 @@ uuid: 1eed603b-55c4-4977-97c1-b350b08d49b1
 langcode: en
 status: true
 dependencies:
+  config:
+    - filter.format.headless_clean
   module:
+    - filter
     - profile
 id: hr_manager
 label: 'HR Manager'
@@ -13,6 +16,7 @@ permissions:
   - 'update any client profile'
   - 'update any contractor profile'
   - 'update any employee profile'
+  - 'use text format headless_clean'
   - 'view any client profile'
   - 'view any contractor profile'
   - 'view any employee profile'

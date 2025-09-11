@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.landing_page.ai_automator_status
     - field.field.node.landing_page.body
     - field.field.node.landing_page.field_ab_variant
     - field.field.node.landing_page.field_breadcrumb_label
@@ -181,6 +182,7 @@ content:
     weight: 100
     region: content
 hidden:
+  ai_automator_status: true
   field_ab_variant: true
   field_breadcrumb_label: true
   field_cache_tags: true

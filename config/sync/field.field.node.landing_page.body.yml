@@ -4,9 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
+    - filter.format.headless_clean
     - node.type.landing_page
   module:
     - text
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.landing_page.body
 field_name: body
 entity_type: node
@@ -21,5 +26,5 @@ settings:
   display_summary: false
   required_summary: false
   allowed_formats:
-    - headless_safe
+    - headless_clean
 field_type: text_with_summary
