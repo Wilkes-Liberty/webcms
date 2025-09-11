@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.headless_plain_ai
     - filter.format.webform_default
   module:
     - contact
@@ -28,6 +29,7 @@ permissions:
   - 'delete own files'
   - 'provide translation services'
   - 'use text format basic_html'
+  - 'use text format headless_plain_ai'
   - 'use text format webform_default'
   - 'view media'
   - 'view the administration theme'

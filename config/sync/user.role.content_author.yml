@@ -8,6 +8,7 @@ dependencies:
     - entity_browser.browser.media_image_browser
     - filter.format.basic_html
     - filter.format.headless_clean
+    - filter.format.headless_plain_ai
     - media.type.audio
     - media.type.document
     - media.type.icon
@@ -84,5 +85,6 @@ permissions:
   - 'use editorial transition submit_for_review'
   - 'use text format basic_html'
   - 'use text format headless_clean'
+  - 'use text format headless_plain_ai'
   - 'view latest version'
   - 'view media'

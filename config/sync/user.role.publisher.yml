@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.basic
+    - filter.format.headless_plain_ai
     - node.type.article
     - node.type.basic_page
     - node.type.career
@@ -16,6 +17,7 @@ dependencies:
   module:
     - block_content
     - content_moderation
+    - filter
     - media
     - node
     - system
@@ -50,6 +52,7 @@ permissions:
   - 'use editorial transition restore'
   - 'use editorial transition submit_for_review'
   - 'use editorial transition unpublish'
+  - 'use text format headless_plain_ai'
   - 'view all revisions'
   - 'view latest version'
   - 'view media'

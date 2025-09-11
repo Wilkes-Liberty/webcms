@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.headless_plain_ai
     - taxonomy.vocabulary.compliance
     - taxonomy.vocabulary.department
     - taxonomy.vocabulary.event_type
@@ -15,6 +16,7 @@ dependencies:
     - taxonomy.vocabulary.topics
     - taxonomy.vocabulary.use_cases
   module:
+    - filter
     - metatag
     - path
     - redirect
@@ -61,3 +63,4 @@ permissions:
   - 'edit terms in tech_stack'
   - 'edit terms in topics'
   - 'edit terms in use_cases'
+  - 'use text format headless_plain_ai'

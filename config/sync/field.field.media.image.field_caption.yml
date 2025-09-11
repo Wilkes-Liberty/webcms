@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.media.field_caption
+    - filter.format.headless_plain_ai
     - media.type.image
   module:
     - text
@@ -19,5 +20,5 @@ default_value: {  }
 default_value_callback: ''
 settings:
   allowed_formats:
-    - headless_safe
+    - headless_plain_ai
 field_type: text_long
