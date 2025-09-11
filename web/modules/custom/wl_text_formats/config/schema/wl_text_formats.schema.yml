@@ -19,7 +19,7 @@ filter_settings.filter_headless_sanitize:
 # Schema definitions for CKEditor 5 plugins used in headless_clean format
 # This prevents config validation warnings and allows proper AI constraints
 
-editor.settings.plugins.ai_ckeditor:
+editor.editor.*:settings.plugins.ai_ckeditor:
   type: mapping
   label: 'AI CKEditor plugin settings'
   mapping:
@@ -42,7 +42,7 @@ editor.settings.plugins.ai_ckeditor:
       type: boolean
       label: 'Disable AI code generation'
 
-editor.settings.plugins.ckeditor5_link:
+editor.editor.*:settings.plugins.ckeditor5_link:
   type: mapping
   label: 'CKEditor 5 link plugin settings'
   mapping:
@@ -73,7 +73,7 @@ editor.settings.plugins.ckeditor5_link:
             type: boolean
             label: 'Apply automatically'
 
-editor.settings.plugins.ckeditor5_codeBlock:
+editor.editor.*:settings.plugins.ckeditor5_codeBlock:
   type: mapping
   label: 'CKEditor 5 code block plugin settings'
   mapping:
@@ -91,7 +91,7 @@ editor.settings.plugins.ckeditor5_codeBlock:
             type: string
             label: 'Language display label'
 
-editor.settings.plugins.ckeditor5_heading:
+editor.editor.*:settings.plugins.ckeditor5_heading:
   type: mapping
   label: 'CKEditor 5 heading plugin settings'
   mapping:
@@ -102,56 +102,65 @@ editor.settings.plugins.ckeditor5_heading:
         type: string
         label: 'Heading level'
 
-# AI CKEditor plugin schemas - now handled flexibly in main schema
+# AI CKEditor plugin schemas - Missing schemas added below
 
-# Note: Individual AI plugin schemas removed in favor of flexible main schema
+# Missing AI CKEditor plugin schemas - Add to supplement the AI module's schema
+# Based on the AI CKEditor module's schema structure
 
-# AI CKEditor main plugin schema
-editor.settings.plugins.ai_ckeditor_ai:
+ckeditor5.plugin.ai_ckeditor_ai.ai_ckeditor_help:
   type: mapping
-  label: 'AI CKEditor main plugin settings'
+  label: 'AI Help plugin settings'
   mapping:
-    dialog:
-      type: mapping
-      label: 'Dialog settings'
-      mapping:
-        autoresize:
-          type: string
-          label: 'Auto resize'
-        height:
-          type: string
-          label: 'Dialog height'
-        width:
-          type: string
-          label: 'Dialog width'
-        dialog_class:
-          type: string
-          label: 'Dialog CSS class'
-    plugins:
-      type: mapping
-      label: 'AI sub-plugins'
-      mapping:
-        ai_ckeditor_help:
-          type: mapping
-          label: 'AI Help plugin settings'
-        ai_ckeditor_audio:
-          type: mapping
-          label: 'AI Audio plugin settings'
-        ai_ckeditor_content:
-          type: mapping
-          label: 'AI Content plugin settings'
-        ai_ckeditor_images:
-          type: mapping
-          label: 'AI Images plugin settings'
-        ai_ckeditor_translate:
-          type: mapping
-          label: 'AI Translate plugin settings'
-        ai_ckeditor_tone:
-          type: mapping
-          label: 'AI Tone plugin settings'
+    enabled:
+      type: boolean
+      label: 'Enable help feature'
+
+ckeditor5.plugin.ai_ckeditor_ai.ai_ckeditor_tone:
+  type: mapping
+  label: 'AI Tone plugin settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable tone adjustment'
+    provider:
+      type: string
+      label: 'AI provider for tone'
+    autocreate:
+      type: boolean
+      label: 'Auto-create tone variations'
+    tone_vocabulary:
+      type: string
+      label: 'Tone vocabulary'
+    use_description:
+      type: integer
+      label: 'Use description'
+
+ckeditor5.plugin.ai_ckeditor_ai.ai_ckeditor_translate:
+  type: mapping
+  label: 'AI Translate plugin settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable translation feature'
+    provider:
+      type: string
+      label: 'AI provider for translation'
+    autocreate:
+      type: boolean
+      label: 'Auto-create translations'
+    translate_vocabulary:
+      type: string
+      label: 'Translation vocabulary'
+    use_description:
+      type: boolean
+      label: 'Use description'
+    language_source:
+      type: string
+      label: 'Language source field'
+
 
 # CKEditor 5 core plugin schemas for headless_plain_ai format
-editor.settings.plugins.ckeditor5_bold:
+editor.editor.*:settings.plugins.ckeditor5_bold:
   type: mapping
   label: 'CKEditor 5 Bold plugin settings'
   mapping:
@@ -159,7 +168,7 @@ editor.settings.plugins.ckeditor5_bold:
       type: boolean
       label: 'Enable bold formatting'
 
-editor.settings.plugins.ckeditor5_italic:
+editor.editor.*:settings.plugins.ckeditor5_italic:
   type: mapping
   label: 'CKEditor 5 Italic plugin settings'
   mapping:
@@ -167,7 +176,7 @@ editor.settings.plugins.ckeditor5_italic:
       type: boolean
       label: 'Enable italic formatting'
 
-editor.settings.plugins.ckeditor5_essentials:
+editor.editor.*:settings.plugins.ckeditor5_essentials:
   type: mapping
   label: 'CKEditor 5 Essentials plugin settings'
   mapping:
@@ -176,7 +185,7 @@ editor.settings.plugins.ckeditor5_essentials:
       label: 'Enable essential features'
 
 # Additional CKEditor 5 plugin schemas
-editor.settings.plugins.ckeditor5_list:
+editor.editor.*:settings.plugins.ckeditor5_list:
   type: mapping
   label: 'CKEditor 5 List plugin settings'
   mapping:
@@ -194,7 +203,7 @@ editor.settings.plugins.ckeditor5_list:
       type: boolean
       label: 'Enable multi-block lists'
 
-editor.settings.plugins.ckeditor5_plugin_pack_paste_markdown__paste_markdown:
+editor.editor.*:settings.plugins.ckeditor5_plugin_pack_paste_markdown__paste_markdown:
   type: mapping
   label: 'CKEditor 5 Paste Markdown plugin settings'
   mapping:
@@ -202,7 +211,7 @@ editor.settings.plugins.ckeditor5_plugin_pack_paste_markdown__paste_markdown:
       type: boolean
       label: 'Enable paste markdown'
 
-editor.settings.plugins.ckeditor5_plugin_pack_word_count__word_count:
+editor.editor.*:settings.plugins.ckeditor5_plugin_pack_word_count__word_count:
   type: mapping
   label: 'CKEditor 5 Word Count plugin settings'
   mapping:
@@ -214,7 +223,7 @@ editor.settings.plugins.ckeditor5_plugin_pack_word_count__word_count:
       label: 'Word count mode'
 
 # CKEditor 5 Media plugin schema
-editor.settings.plugins.ckeditor5_media_media:
+editor.editor.*:settings.plugins.ckeditor5_media_media:
   type: mapping
   label: 'CKEditor 5 Media plugin settings'
   mapping:
@@ -223,7 +232,7 @@ editor.settings.plugins.ckeditor5_media_media:
       label: 'Allow view mode override'
 
 # CKEditor 5 Image Resize plugin schema
-editor.settings.plugins.ckeditor5_imageResize:
+editor.editor.*:settings.plugins.ckeditor5_imageResize:
   type: mapping
   label: 'CKEditor 5 Image Resize plugin settings'
   mapping:
@@ -232,7 +241,7 @@ editor.settings.plugins.ckeditor5_imageResize:
       label: 'Allow image resizing'
 
 # CKEditor 5 Source Editing plugin schema
-editor.settings.plugins.ckeditor5_sourceEditing:
+editor.editor.*:settings.plugins.ckeditor5_sourceEditing:
   type: mapping
   label: 'CKEditor 5 Source Editing plugin settings'
   mapping:
