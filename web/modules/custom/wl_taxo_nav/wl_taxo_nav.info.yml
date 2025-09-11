@@ -2,7 +2,7 @@ name: WL Taxonomy Nav
 type: module
 description: Auto-sync top-level Services/Industries terms to the Main menu when "Show in navigation?" is checked.
 core_version_requirement: ^10 || ^11
-package: WilkesLiberty
+package: WL Custom
 dependencies:
   - drupal:taxonomy
   - drupal:menu_link_content

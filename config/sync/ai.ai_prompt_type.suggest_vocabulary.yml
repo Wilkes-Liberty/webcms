@@ -1,0 +1,10 @@
+uuid: 97f80d6e-0d42-4fd1-a442-7ad68e0bd729
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Sk7NBtu1rI5WmMqP7VK82UIj_z8i9ukwe-P46CIPEIQ
+id: suggest_vocabulary
+label: 'Suggest vocabulary'
+variables: {  }
+tokens: {  }

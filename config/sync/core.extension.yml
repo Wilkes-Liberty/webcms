@@ -2,11 +2,16 @@ _core:
   default_config_hash: 4GIX5Esnc_umpXUBj4IIocRX7Mt5fPhm4AgXfE3E56E
 module:
   ai: 0
+  ai_automators: 0
   ai_ckeditor: 0
+  ai_content_suggestions: 0
   ai_image_alt_text: 0
+  ai_logging: 0
   ai_media_image: 0
   ai_provider_openai: 0
   ai_provider_x: 0
+  ai_search: 0
+  ai_seo: 0
   ai_tmgmt: 0
   ai_translate: 0
   allowed_formats: 0
@@ -19,6 +24,9 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor5: 0
+  ckeditor5_plugin_pack: 0
+  ckeditor5_plugin_pack_paste_markdown: 0
+  ckeditor5_plugin_pack_word_count: 0
   config: 0
   config_split: 0
   config_translation: 0

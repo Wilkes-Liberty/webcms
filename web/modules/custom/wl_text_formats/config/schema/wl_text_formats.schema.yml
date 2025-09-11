@@ -102,113 +102,9 @@ editor.settings.plugins.ckeditor5_heading:
         type: string
         label: 'Heading level'
 
-# AI CKEditor plugin schemas - based on actual configuration structure
-editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_help:
-  type: mapping
-  label: 'AI CKEditor Help plugin settings'
-  mapping:
-    enabled:
-      type: boolean
-      label: 'Enable AI Help'
+# AI CKEditor plugin schemas - now handled flexibly in main schema
 
-editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_tone:
-  type: mapping
-  label: 'AI CKEditor Tone plugin settings'
-  mapping:
-    enabled:
-      type: boolean
-      label: 'Enable AI Tone'
-    autocreate:
-      type: boolean
-      label: 'Auto create'
-    provider:
-      type: string
-      label: 'AI Provider'
-    tone_vocabulary:
-      type: string
-      label: 'Tone vocabulary'
-    use_description:
-      type: integer
-      label: 'Use description'
-
-editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_translate:
-  type: mapping
-  label: 'AI CKEditor Translate plugin settings'
-  mapping:
-    enabled:
-      type: boolean
-      label: 'Enable AI Translate'
-    autocreate:
-      type: boolean
-      label: 'Auto create'
-    provider:
-      type: string
-      label: 'AI Provider'
-    translate_vocabulary:
-      type: string
-      label: 'Translate vocabulary'
-    use_description:
-      type: boolean
-      label: 'Use description'
-    language_source:
-      type: string
-      label: 'Language source'
-
-# Additional AI plugin schemas for completeness
-editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_completion:
-  type: mapping
-  label: 'AI CKEditor Completion plugin settings'
-  mapping:
-    enabled:
-      type: boolean
-      label: 'Enable AI Completion'
-    provider:
-      type: string
-      label: 'AI Provider'
-
-editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_modify_prompt:
-  type: mapping
-  label: 'AI CKEditor Modify Prompt plugin settings'
-  mapping:
-    enabled:
-      type: boolean
-      label: 'Enable AI Modify Prompt'
-    provider:
-      type: string
-      label: 'AI Provider'
-
-editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_reformat_html:
-  type: mapping
-  label: 'AI CKEditor Reformat HTML plugin settings'
-  mapping:
-    enabled:
-      type: boolean
-      label: 'Enable AI Reformat HTML'
-    provider:
-      type: string
-      label: 'AI Provider'
-
-editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_spellfix:
-  type: mapping
-  label: 'AI CKEditor Spellfix plugin settings'
-  mapping:
-    enabled:
-      type: boolean
-      label: 'Enable AI Spellfix'
-    provider:
-      type: string
-      label: 'AI Provider'
-
-editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_summarize:
-  type: mapping
-  label: 'AI CKEditor Summarize plugin settings'
-  mapping:
-    enabled:
-      type: boolean
-      label: 'Enable AI Summarize'
-    provider:
-      type: string
-      label: 'AI Provider'
+# Note: Individual AI plugin schemas removed in favor of flexible main schema
 
 # AI CKEditor main plugin schema
 editor.settings.plugins.ai_ckeditor_ai:
@@ -235,22 +131,24 @@ editor.settings.plugins.ai_ckeditor_ai:
       type: mapping
       label: 'AI sub-plugins'
       mapping:
-        ai_ckeditor_completion:
-          type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_completion
         ai_ckeditor_help:
-          type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_help
-        ai_ckeditor_modify_prompt:
-          type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_modify_prompt
-        ai_ckeditor_reformat_html:
-          type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_reformat_html
-        ai_ckeditor_spellfix:
-          type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_spellfix
-        ai_ckeditor_summarize:
-          type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_summarize
-        ai_ckeditor_tone:
-          type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_tone
+          type: mapping
+          label: 'AI Help plugin settings'
+        ai_ckeditor_audio:
+          type: mapping
+          label: 'AI Audio plugin settings'
+        ai_ckeditor_content:
+          type: mapping
+          label: 'AI Content plugin settings'
+        ai_ckeditor_images:
+          type: mapping
+          label: 'AI Images plugin settings'
         ai_ckeditor_translate:
-          type: editor.settings.plugins.ai_ckeditor_ai.plugins.ai_ckeditor_translate
+          type: mapping
+          label: 'AI Translate plugin settings'
+        ai_ckeditor_tone:
+          type: mapping
+          label: 'AI Tone plugin settings'
 
 # CKEditor 5 core plugin schemas for headless_plain_ai format
 editor.settings.plugins.ckeditor5_bold:
@@ -276,3 +174,71 @@ editor.settings.plugins.ckeditor5_essentials:
     enabled:
       type: boolean
       label: 'Enable essential features'
+
+# Additional CKEditor 5 plugin schemas
+editor.settings.plugins.ckeditor5_list:
+  type: mapping
+  label: 'CKEditor 5 List plugin settings'
+  mapping:
+    properties:
+      type: mapping
+      label: 'List properties'
+      mapping:
+        reversed:
+          type: boolean
+          label: 'Enable reversed lists'
+        startIndex:
+          type: boolean
+          label: 'Enable start index'
+    multiBlock:
+      type: boolean
+      label: 'Enable multi-block lists'
+
+editor.settings.plugins.ckeditor5_plugin_pack_paste_markdown__paste_markdown:
+  type: mapping
+  label: 'CKEditor 5 Paste Markdown plugin settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable paste markdown'
+
+editor.settings.plugins.ckeditor5_plugin_pack_word_count__word_count:
+  type: mapping
+  label: 'CKEditor 5 Word Count plugin settings'
+  mapping:
+    word_count_enabled:
+      type: boolean
+      label: 'Enable word count'
+    word_count_mode:
+      type: string
+      label: 'Word count mode'
+
+# CKEditor 5 Media plugin schema
+editor.settings.plugins.ckeditor5_media_media:
+  type: mapping
+  label: 'CKEditor 5 Media plugin settings'
+  mapping:
+    allow_view_mode_override:
+      type: boolean
+      label: 'Allow view mode override'
+
+# CKEditor 5 Image Resize plugin schema
+editor.settings.plugins.ckeditor5_imageResize:
+  type: mapping
+  label: 'CKEditor 5 Image Resize plugin settings'
+  mapping:
+    allow_resize:
+      type: boolean
+      label: 'Allow image resizing'
+
+# CKEditor 5 Source Editing plugin schema
+editor.settings.plugins.ckeditor5_sourceEditing:
+  type: mapping
+  label: 'CKEditor 5 Source Editing plugin settings'
+  mapping:
+    allowed_tags:
+      type: sequence
+      label: 'Allowed HTML tags'
+      sequence:
+        type: string
+        label: 'HTML tag'

@@ -1,0 +1,10 @@
+uuid: 80a264d6-2761-4994-b619-6ed93811aabc
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: mz0pSh1FwU6Q-9h77v337f5ZgmsRKYy31FrJJicLVMI
+id: suggest_tags
+label: 'Suggest tags'
+variables: {  }
+tokens: {  }
