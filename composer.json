@@ -177,6 +177,12 @@
             },
             "drupal/decoupled_router": {
                 "Fix property type declaration issue in RedirectPathTranslatorSubscriber": "patches/decoupled_router-fix-language-manager-property-type.patch"
+            },
+            "drupal/ckeditor5_plugin_pack": {
+                "Fix markdown plugin translation loading issues for unsupported languages": "patches/ckeditor5_plugin_pack_markdown_translation_fix_working.patch"
+            },
+            "drupal/ai": {
+                "Add missing ai_automators_ckeditor schema definition": "patches/ai_ckeditor_schema_fix.patch"
             }
         }
     }

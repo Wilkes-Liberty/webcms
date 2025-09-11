@@ -1,0 +1,75 @@
+--- modules/ckeditor5_plugin_pack_paste_markdown/src/Plugin/CKEditor5Plugin/PasteMarkdown.php	2025-09-11 13:37:14
++++ modules/ckeditor5_plugin_pack_paste_markdown/src/Plugin/CKEditor5Plugin/PasteMarkdown.php	2025-09-11 14:00:28
+@@ -31,6 +31,7 @@
+   public function defaultConfiguration() {
+     return [
+       'enabled' => FALSE,
++      'language_fallback' => 'en',
+     ];
+   }
+ 
+@@ -43,6 +44,12 @@
+       '#title' => $this->t('Enable Paste Markdown'),
+       '#default_value' => $this->configuration['enabled'] ?? FALSE,
+     ];
++    $form['language_fallback'] = [
++      '#type' => 'textfield',
++      '#title' => $this->t('Language Fallback'),
++      '#default_value' => $this->configuration['language_fallback'] ?? 'en',
++      '#description' => $this->t('Fallback language code when translations are not available on CDN.'),
++    ];
+     return $form;
+   }
+ 
+@@ -58,6 +65,7 @@
+   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+     $values = $form_state->cleanValues()->getValues();
+     $this->configuration['enabled'] = (bool) $values['enabled'];
++    $this->configuration['language_fallback'] = $values['language_fallback'] ?? 'en';
+   }
+ 
+   /**
+@@ -66,7 +74,34 @@
+   public function getDynamicPluginConfig(array $static_plugin_config, EditorInterface $editor): array {
+     if (!$this->configuration['enabled']) {
+       $static_plugin_config['removePlugins'] = ['PasteFromMarkdownExperimental'];
++      return $static_plugin_config;
+     }
++
++    // List of languages that have CDN translation support for markdown-gfm
++    $supported_languages = [
++      'en', 'de', 'fr', 'pt', 'it', 'pl', 'nl', 'ja', 'ko', 'zh-cn', 'zh'
++    ];
++    
++    $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
++    $fallback_language = $this->configuration['language_fallback'] ?? 'en';
++    
++    // Use fallback language if current language is not supported
++    if (!in_array($current_language, $supported_languages)) {
++      $static_plugin_config['language'] = $fallback_language;
++      
++      // Log the fallback for debugging
++      \Drupal::logger('ckeditor5_plugin_pack_paste_markdown')->info(
++        'Language @current not supported by markdown-gfm CDN, using @fallback instead',
++        ['@current' => $current_language, '@fallback' => $fallback_language]
++      );
++    }
++    
++    // Prevent automatic language detection that could cause 404s
++    $static_plugin_config['markdown'] = [
++      'preventLanguageDetection' => TRUE,
++      'language' => $static_plugin_config['language'] ?? $current_language,
++    ];
++
+     return $static_plugin_config;
+   }
+ 
+--- modules/ckeditor5_plugin_pack_paste_markdown/config/schema/ckeditor5_plugin_pack_paste_markdown.schema.yml	2025-09-11 13:37:14
++++ modules/ckeditor5_plugin_pack_paste_markdown/config/schema/ckeditor5_plugin_pack_paste_markdown.schema.yml	2025-09-11 14:15:32
+@@ -5,3 +5,6 @@
+     enabled:
+       type: boolean
+       label: 'Enabled'
++    language_fallback:
++      type: string
++      label: 'Language Fallback'
