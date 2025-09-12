@@ -15,6 +15,10 @@ dependencies:
     - media.type.svg_image
     - media.type.video_file
   module:
+    - ai_ckeditor
+    - ai_content_suggestions
+    - ai_image_alt_text
+    - ai_media_image
     - entity_browser
     - filter
     - media
@@ -23,6 +27,7 @@ label: 'Media Manager'
 weight: 11
 is_admin: false
 permissions:
+  - 'access ai content suggestion tools'
   - 'access media overview'
   - 'access media_generic_browser entity browser pages'
   - 'access media_image_browser entity browser pages'
@@ -40,6 +45,9 @@ permissions:
   - 'delete any remote_video media'
   - 'delete any svg_image media'
   - 'delete any video_file media'
+  - 'generate ai alt tags'
+  - 'generate image with ai'
+  - 'use ai ckeditor'
   - 'use text format headless_clean'
   - 'use text format headless_plain_ai'
   - 'view media'

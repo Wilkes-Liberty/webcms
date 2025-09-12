@@ -5,6 +5,9 @@ dependencies:
   config:
     - filter.format.headless_clean
   module:
+    - ai_ckeditor
+    - ai_content_suggestions
+    - ai_image_alt_text
     - filter
     - profile
 id: hr_manager
@@ -12,10 +15,13 @@ label: 'HR Manager'
 weight: 13
 is_admin: false
 permissions:
+  - 'access ai content suggestion tools'
   - 'access profile overview'
+  - 'generate ai alt tags'
   - 'update any client profile'
   - 'update any contractor profile'
   - 'update any employee profile'
+  - 'use ai ckeditor'
   - 'use text format headless_clean'
   - 'view any client profile'
   - 'view any contractor profile'

@@ -17,6 +17,10 @@ dependencies:
     - taxonomy.vocabulary.topics
     - taxonomy.vocabulary.use_cases
   module:
+    - ai_ckeditor
+    - ai_content_suggestions
+    - ai_image_alt_text
+    - ai_seo
     - filter
     - metatag
     - path
@@ -27,9 +31,11 @@ label: 'SEO Manager'
 weight: 10
 is_admin: false
 permissions:
+  - 'access ai content suggestion tools'
   - 'access taxonomy overview'
   - 'administer meta tags'
   - 'administer redirects'
+  - 'create seo reports'
   - 'create terms in compliance'
   - 'create terms in department'
   - 'create terms in event_type'
@@ -64,5 +70,8 @@ permissions:
   - 'edit terms in tech_stack'
   - 'edit terms in topics'
   - 'edit terms in use_cases'
+  - 'generate ai alt tags'
+  - 'use ai ckeditor'
   - 'use text format headless_clean'
   - 'use text format headless_plain_ai'
+  - 'view seo reports'

@@ -37,6 +37,11 @@ dependencies:
     - taxonomy.vocabulary.use_cases
     - workflows.workflow.editorial
   module:
+    - ai_ckeditor
+    - ai_content_suggestions
+    - ai_image_alt_text
+    - ai_media_image
+    - ai_translate
     - block_content
     - content_moderation
     - contextual
@@ -58,6 +63,8 @@ weight: 2
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access ai content suggestion tools'
+  - 'access block library'
   - 'access content'
   - 'access content overview'
   - 'access contextual links'
@@ -68,6 +75,8 @@ permissions:
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'administer url aliases'
+  - 'create ai content translation'
+  - 'create ai interface translation'
   - 'create article content'
   - 'create audio media'
   - 'create basic block content'
@@ -149,8 +158,12 @@ permissions:
   - 'edit terms in tech_stack'
   - 'edit terms in topics'
   - 'edit terms in use_cases'
+  - 'generate ai alt tags'
+  - 'generate image with ai'
   - 'mark as hidden in editoria11y'
   - 'revert all revisions'
+  - 'revert any basic block content revisions'
+  - 'use ai ckeditor'
   - 'use editorial transition archive'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition restore'
@@ -158,6 +171,7 @@ permissions:
   - 'use text format headless_clean'
   - 'use text format headless_plain_ai'
   - 'view all revisions'
+  - 'view any basic block content history'
   - 'view editoria11y checker'
   - 'view latest version'
   - 'view media'

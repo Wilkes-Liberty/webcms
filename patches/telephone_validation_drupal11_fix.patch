@@ -1,0 +1,31 @@
+--- a/src/SettingsForm.php
++++ b/src/SettingsForm.php
+@@ -3,6 +3,7 @@
+ namespace Drupal\telephone_validation;
+ 
+ use Drupal\Core\Config\ConfigFactoryInterface;
++use Drupal\Core\Config\TypedConfigManagerInterface;
+ use Drupal\Core\Form\ConfigFormBase;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Render\ElementInfoManagerInterface;
+@@ -38,10 +39,10 @@
+    * @param \Drupal\Core\Render\ElementInfoManagerInterface $element_info_manager
+    *   Collects available render array element types.
+    */
+-  public function __construct(ConfigFactoryInterface $config_factory, Validator $validator, ElementInfoManagerInterface $element_info_manager) {
++  public function __construct(ConfigFactoryInterface $config_factory, TypedConfigManagerInterface $typed_config_manager, Validator $validator, ElementInfoManagerInterface $element_info_manager) {
+     $this->validator = $validator;
+     $this->elementInfoManager = $element_info_manager;
+-    parent::__construct($config_factory);
++    parent::__construct($config_factory, $typed_config_manager);
+   }
+ 
+   /**
+@@ -50,6 +51,7 @@
+   public static function create(ContainerInterface $container) {
+     return new static(
+       $container->get('config.factory'),
++      $container->get('config.typed'),
+       $container->get('telephone_validation.validator'),
+       $container->get('plugin.manager.element_info')
+     );
