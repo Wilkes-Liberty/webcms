@@ -1,0 +1,54 @@
+uuid: d574f89b-aa10-4e47-9540-eca4952b3528
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.headless_clean
+    - filter.format.headless_plain_ai
+    - taxonomy.vocabulary.languages
+    - taxonomy.vocabulary.tones
+  module:
+    - ai_translate
+    - contact
+    - content_translation
+    - filter
+    - locale
+    - media
+    - node
+    - system
+    - tmgmt
+    - tmgmt_local
+    - toolbar
+id: translator
+label: Translator
+weight: 3
+is_admin: false
+permissions:
+  - 'accept translation jobs'
+  - 'access administration pages'
+  - 'access content'
+  - 'access content overview'
+  - 'access site-wide contact form'
+  - 'access toolbar'
+  - 'access user contact forms'
+  - 'administer translation tasks'
+  - 'create ai content translation'
+  - 'create ai interface translation'
+  - 'create content translations'
+  - 'create translation jobs'
+  - 'delete content translations'
+  - 'manage ai translation prompts'
+  - 'provide translation services'
+  - 'submit translation jobs'
+  - 'translate any entity'
+  - 'translate editable entities'
+  - 'translate interface'
+  - 'translate languages taxonomy_term'
+  - 'translate tones taxonomy_term'
+  - 'update content translations'
+  - 'use text format basic_html'
+  - 'use text format headless_clean'
+  - 'use text format headless_plain_ai'
+  - 'view media'
+  - 'view the administration theme'
