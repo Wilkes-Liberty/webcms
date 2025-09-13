@@ -78,3 +78,6 @@ keys/
 # Database dumps
 *.sql
 *.sql.gz
+
+# Backups
+backups*
