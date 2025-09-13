@@ -1,0 +1,9 @@
+flag-switcher:
+  css:
+    theme:
+      css/flag-language-switcher.css: {}
+  js:
+    js/language-switcher.js: {}
+  dependencies:
+    - gin/gin
+    - core/once

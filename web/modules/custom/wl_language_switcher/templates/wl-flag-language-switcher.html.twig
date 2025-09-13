@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Template for WL Flag Language Switcher.
+ *
+ * Available variables:
+ * - links: Array of language links
+ * - current_language: The current language code
+ */
+#}
+
+<div class="wl-flag-language-switcher">
+  {% for langcode, link in links %}
+    {{ link }}
+  {% endfor %}
+</div>

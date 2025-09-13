@@ -1,0 +1,8 @@
+name: 'WL Language Switcher'
+type: module
+description: 'Custom language switcher with flag icons for WilkesLiberty that integrates with Gin secondary toolbar'
+package: WL Custom
+core_version_requirement: ^11.2
+dependencies:
+  - language
+  - gin_toolbar

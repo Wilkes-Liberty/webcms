@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20" width="28" height="20">
+  <!-- Green stripe -->
+  <rect width="9.33" height="20" fill="#006847"/>
+  <!-- White stripe -->
+  <rect x="9.33" width="9.34" height="20" fill="#FFFFFF"/>
+  <!-- Red stripe -->
+  <rect x="18.67" width="9.33" height="20" fill="#CE1126"/>
+  
+  <!-- Simplified coat of arms (eagle and snake) -->
+  <g transform="translate(14, 10)">
+    <!-- Eagle silhouette -->
+    <path d="M-2.5,-3 C-3,-2.5 -3,-1.5 -2.5,-1 L-1.5,-0.5 C-1,-0.2 -0.5,-0.2 0,-0.5 L1,-1 C1.5,-1.5 1.5,-2.5 1,-3 C0.5,-3.5 -0.5,-3.5 -1,-3 Z" fill="#8B4513" stroke="#654321" stroke-width="0.2"/>
+    <!-- Snake -->
+    <path d="M-1,0.5 C-0.5,1 0,1.2 0.5,1 C1,0.8 1.2,0.3 1,0 C0.8,-0.3 0.3,-0.2 0,0 C-0.3,0.2 -0.8,0.3 -1,0.5 Z" fill="#228B22" stroke="#006400" stroke-width="0.1"/>
+    <!-- Cactus base -->
+    <rect x="-0.3" y="0.8" width="0.6" height="1.5" fill="#228B22"/>
+  </g>
+</svg>

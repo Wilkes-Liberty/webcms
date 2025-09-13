@@ -1,0 +1,165 @@
+<?php
+
+/**
+ * @file
+ * WL Language Switcher module for Gin toolbar integration.
+ */
+
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_page_attachments().
+ * 
+ * Attach our CSS to pages when Gin is active.
+ */
+function wl_language_switcher_page_attachments(array &$page) {
+  // Only attach on admin pages or when Gin is the active theme
+  $active_theme = \Drupal::theme()->getActiveTheme();
+  $admin_context = \Drupal::service('router.admin_context');
+  
+  if ($active_theme->getName() === 'gin' || $admin_context->isAdminRoute()) {
+    $page['#attached']['library'][] = 'wl_language_switcher/flag-switcher';
+  }
+}
+
+/**
+ * Implements hook_preprocess_toolbar__gin__secondary__frontend().
+ * 
+ * Add language switcher to gin secondary toolbar frontend.
+ */
+function wl_language_switcher_preprocess_toolbar__gin__secondary__frontend(&$variables) {
+  $language_switcher = _wl_language_switcher_build();
+  if ($language_switcher) {
+    $variables['language_switcher'] = $language_switcher;
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ * 
+ * Add language switcher to pages when gin secondary toolbar is present.
+ */
+function wl_language_switcher_preprocess_page(&$variables) {
+  // Check if this is a gin-themed page with secondary toolbar
+  $active_theme = \Drupal::theme()->getActiveTheme();
+  
+  if ($active_theme->getName() === 'gin') {
+    $language_switcher = _wl_language_switcher_build();
+    if ($language_switcher) {
+      // Add to page variables so it can be used in templates
+      $variables['wl_language_switcher'] = $language_switcher;
+      
+      // Also add directly to page attachments for easier JavaScript access
+      $variables['#attached']['drupalSettings']['wlLanguageSwitcher'] = [
+        'enabled' => TRUE,
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function wl_language_switcher_theme() {
+  return [
+    'wl_flag_language_switcher' => [
+      'variables' => [
+        'links' => [],
+        'current_language' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Helper function to build the flag language switcher.
+ */
+function _wl_language_switcher_build() {
+  $language_manager = \Drupal::languageManager();
+  
+  // Only show if multilingual site
+  if (!$language_manager->isMultilingual()) {
+    return NULL;
+  }
+  
+  $current_language = $language_manager->getCurrentLanguage(LanguageInterface::TYPE_INTERFACE);
+  $languages = $language_manager->getLanguages();
+  
+  // Define flag mapping
+  $flag_map = [
+    'en' => [
+      'name' => 'English', 
+      'class' => 'lang-en', 
+      'title' => 'Switch to English'
+    ],
+    'es' => [
+      'name' => 'Español', 
+      'class' => 'lang-es', 
+      'title' => 'Cambiar a Español'
+    ],
+    'ru' => [
+      'name' => 'Русский', 
+      'class' => 'lang-ru', 
+      'title' => 'Переключить на русский'
+    ],
+  ];
+  
+  $links = [];
+  
+  foreach ($languages as $langcode => $language) {
+    if (!isset($flag_map[$langcode])) {
+      continue;
+    }
+    
+    $flag_info = $flag_map[$langcode];
+    $is_active = $langcode === $current_language->getId();
+    
+    // Build CSS classes
+    $classes = ['language-link', $flag_info['class']];
+    if ($is_active) {
+      $classes[] = 'active';
+    }
+    
+    // Build URL for language switch - use current route with language parameter
+    $url_options = [
+      'language' => $language,
+      'attributes' => [
+        'class' => $classes,
+        'hreflang' => $langcode,
+        'title' => $flag_info['title'],
+        'aria-label' => $flag_info['title'],
+      ],
+    ];
+    
+    // Try to build URL for current route, fallback to front page
+    try {
+      $route_name = \Drupal::routeMatch()->getRouteName();
+      $route_parameters = \Drupal::routeMatch()->getRawParameters()->all();
+      $url = Url::fromRoute($route_name, $route_parameters, $url_options);
+    } catch (\Exception $e) {
+      // Fallback to homepage
+      $url = Url::fromRoute('<front>', [], $url_options);
+    }
+    
+    $links[$langcode] = [
+      '#type' => 'link',
+      '#title' => Markup::create('<span class="text visually-hidden">' . $flag_info['name'] . '</span>'),
+      '#url' => $url,
+    ];
+  }
+  
+  if (empty($links)) {
+    return NULL;
+  }
+  
+  return [
+    '#theme' => 'wl_flag_language_switcher',
+    '#links' => $links,
+    '#current_language' => $current_language->getId(),
+    '#cache' => [
+      'contexts' => ['languages:language_interface', 'url.path'],
+    ],
+  ];
+}
