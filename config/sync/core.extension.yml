@@ -54,7 +54,6 @@ module:
   entity_redirect: 0
   entity_reference_revisions: 0
   environment_indicator: 0
-  environment_indicator_ui: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -74,7 +73,6 @@ module:
   graphql_compose_users: 0
   graphql_compose_views: 0
   graphql_core_schema: 0
-  graphql_environment_indicator: 0
   graphql_file_url: 0
   graphql_metatag_schema: 0
   graphql_metatag_schema_org_schema: 0

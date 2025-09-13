@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.profile.author.field_author_bio
-    - field.field.profile.author.field_private_image
+    - field.field.profile.creator.field_creator_bio
+    - field.field.profile.creator.field_private_image
     - image.style.thumbnail
-    - profile.type.author
+    - profile.type.creator
   module:
     - field_group
     - image
@@ -30,7 +30,7 @@ third_party_settings:
         direction: horizontal
     group_editorial:
       children:
-        - field_author_bio
+        - field_creator_bio
       label: Editorial
       region: content
       parent_name: group_tabs
@@ -56,12 +56,12 @@ third_party_settings:
         open: false
         description: ''
         required_fields: false
-id: profile.author.default
+id: profile.creator.default
 targetEntityType: profile
-bundle: author
+bundle: creator
 mode: default
 content:
-  field_author_bio:
+  field_creator_bio:
     type: text_textarea
     weight: -10
     region: content

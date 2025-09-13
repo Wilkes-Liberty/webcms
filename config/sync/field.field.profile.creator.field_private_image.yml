@@ -4,13 +4,13 @@ status: true
 dependencies:
   config:
     - field.storage.profile.field_private_image
-    - profile.type.author
+    - profile.type.creator
   module:
     - image
-id: profile.author.field_private_image
+id: profile.creator.field_private_image
 field_name: field_private_image
 entity_type: profile
-bundle: author
+bundle: creator
 label: 'Private Image'
 description: 'Confidential image stored in private files.'
 required: false

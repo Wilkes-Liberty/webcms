@@ -39,8 +39,8 @@ dependencies:
     - node
     - system
 id: content_author
-label: 'Content Author'
-weight: 8
+label: 'Content author'
+weight: -6
 is_admin: false
 permissions:
   - 'access ai content suggestion tools'

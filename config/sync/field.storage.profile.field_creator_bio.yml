@@ -4,8 +4,8 @@ status: true
 dependencies:
   module:
     - text
-id: profile.field_author_bio
-field_name: field_author_bio
+id: profile.field_creator_bio
+field_name: field_creator_bio
 entity_type: profile
 type: text_long
 settings: {  }

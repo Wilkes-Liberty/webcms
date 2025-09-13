@@ -12,7 +12,7 @@ dependencies:
     - profile
 id: hr_manager
 label: 'HR Manager'
-weight: 13
+weight: -2
 is_admin: false
 permissions:
   - 'access ai content suggestion tools'

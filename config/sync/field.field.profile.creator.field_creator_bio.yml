@@ -1,0 +1,21 @@
+uuid: 1adf6b52-ef4c-4b45-9d97-6fc3c3fdc58b
+langcode: en
+status: true
+dependencies:
+  config:
+    - profile.type.creator
+    - field.storage.profile.field_creator_bio
+id: profile.creator.field_creator_bio
+field_name: field_creator_bio
+entity_type: profile
+bundle: creator
+label: 'Creator Bio'
+description: "Creator bio. Uses the 'Headless (Safe)' text format: headings (H2–H6), lists, quotes, links (target/title/rel), inline code, and embedded media. No inline image uploads."
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - headless_safe
+field_type: text_long

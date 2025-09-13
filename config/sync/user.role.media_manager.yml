@@ -24,7 +24,7 @@ dependencies:
     - media
 id: media_manager
 label: 'Media Manager'
-weight: 11
+weight: -1
 is_admin: false
 permissions:
   - 'access ai content suggestion tools'

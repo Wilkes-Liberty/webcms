@@ -26,7 +26,7 @@ dependencies:
     - system
 id: publisher
 label: Publisher
-weight: 9
+weight: 1
 is_admin: false
 permissions:
   - 'access ai content suggestion tools'

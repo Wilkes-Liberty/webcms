@@ -8,7 +8,7 @@ dependencies:
     - filter
 id: client
 label: Client
-weight: 5
+weight: -7
 is_admin: false
 permissions:
   - 'use text format headless_plain_ai'

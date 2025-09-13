@@ -7,7 +7,7 @@ dependencies:
     - system
 id: headless_client
 label: 'Headless Client'
-weight: 12
+weight: -3
 is_admin: false
 permissions:
   - 'access content'

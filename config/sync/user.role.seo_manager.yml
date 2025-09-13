@@ -28,7 +28,7 @@ dependencies:
     - taxonomy
 id: seo_manager
 label: 'SEO Manager'
-weight: 10
+weight: 2
 is_admin: false
 permissions:
   - 'access ai content suggestion tools'
