@@ -34,7 +34,6 @@ module:
   config_update: 0
   config_update_ui: 0
   consumers: 0
-  contact: 0
   content_lock: 0
   content_moderation: 0
   contextual: 0
@@ -85,6 +84,9 @@ module:
   image: 0
   inline_entity_form: 0
   inline_form_errors: 0
+  jquery_ui: 0
+  jquery_ui_autocomplete: 0
+  jquery_ui_menu: 0
   key: 0
   language: 0
   link: 0
@@ -97,6 +99,7 @@ module:
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
+  module_filter: 0
   mysql: 0
   next: 0
   next_extras: 0
@@ -164,6 +167,7 @@ module:
   webform_submission_log: 0
   webform_templates: 0
   webform_ui: 0
+  wl_language_switcher: 0
   wl_taxo_nav: 0
   wl_text_formats: 0
   workflows: 0

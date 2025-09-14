@@ -8,7 +8,7 @@ description: ''
 weight: 0
 stackable: false
 no_patching: false
-storage: null
+storage: folder
 folder: splits/development
 module: {  }
 theme: {  }

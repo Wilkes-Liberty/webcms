@@ -2,7 +2,10 @@ uuid: 7e9ef2b0-d5e6-406e-93bf-8eb6b5cd8800
 langcode: en
 status: true
 dependencies:
+  config:
+    - filter.format.headless_safe
   module:
+    - filter
     - media
     - system
 id: headless_client
@@ -11,4 +14,5 @@ weight: -3
 is_admin: false
 permissions:
   - 'access content'
+  - 'use text format headless_safe'
   - 'view media'

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.headless_clean
+    - filter.format.headless_plain_ai
   module:
     - ai_ckeditor
     - ai_content_suggestions
@@ -23,6 +24,7 @@ permissions:
   - 'update any employee profile'
   - 'use ai ckeditor'
   - 'use text format headless_clean'
+  - 'use text format headless_plain_ai'
   - 'view any client profile'
   - 'view any contractor profile'
   - 'view any employee profile'

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.headless_clean
     - filter.format.headless_plain_ai
   module:
     - filter
@@ -11,4 +12,5 @@ label: Client
 weight: -7
 is_admin: false
 permissions:
+  - 'use text format headless_clean'
   - 'use text format headless_plain_ai'

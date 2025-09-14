@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.basic
+    - filter.format.headless_clean
     - filter.format.headless_plain_ai
     - node.type.article
     - node.type.basic_page
@@ -58,6 +59,7 @@ permissions:
   - 'use editorial transition restore'
   - 'use editorial transition submit_for_review'
   - 'use editorial transition unpublish'
+  - 'use text format headless_clean'
   - 'use text format headless_plain_ai'
   - 'view all revisions'
   - 'view latest version'

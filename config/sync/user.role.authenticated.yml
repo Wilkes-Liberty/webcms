@@ -4,10 +4,9 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
-    - filter.format.headless_plain_ai
+    - filter.format.restricted_html
     - filter.format.webform_default
   module:
-    - contact
     - file
     - filter
     - media
@@ -24,12 +23,11 @@ is_admin: false
 permissions:
   - 'access content'
   - 'access shortcuts'
-  - 'access site-wide contact form'
   - 'access toolbar'
   - 'delete own files'
   - 'provide translation services'
   - 'use text format basic_html'
-  - 'use text format headless_plain_ai'
+  - 'use text format restricted_html'
   - 'use text format webform_default'
   - 'view media'
   - 'view the administration theme'

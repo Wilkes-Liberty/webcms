@@ -8,10 +8,11 @@ description: ''
 weight: 0
 stackable: false
 no_patching: false
-storage: null
-folder: splits/local
+storage: folder
+folder: config/sync/splits/local
 module:
   devel: 0
+  devel_generate: 0
 theme: {  }
 complete_list: {  }
 partial_list: {  }

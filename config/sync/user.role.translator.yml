@@ -10,7 +10,6 @@ dependencies:
     - taxonomy.vocabulary.tones
   module:
     - ai_translate
-    - contact
     - content_translation
     - filter
     - locale
@@ -29,9 +28,7 @@ permissions:
   - 'access administration pages'
   - 'access content'
   - 'access content overview'
-  - 'access site-wide contact form'
   - 'access toolbar'
-  - 'access user contact forms'
   - 'administer translation tasks'
   - 'create ai content translation'
   - 'create ai interface translation'
