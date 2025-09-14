@@ -1,0 +1,73 @@
+diff --git a/config_update_ui/src/Controller/ConfigUpdateController.php b/config_update_ui/src/Controller/ConfigUpdateController.php
+index 99fc99d..cb4254a 100644
+--- a/config_update_ui/src/Controller/ConfigUpdateController.php
++++ b/config_update_ui/src/Controller/ConfigUpdateController.php
+@@ -567,6 +567,11 @@ class ConfigUpdateController extends ControllerBase {
+     sort($names);
+ 
+     foreach ($names as $name) {
++      // Skip empty or invalid configuration names.
++      if (empty($name) || !is_string($name)) {
++        continue;
++      }
++      
+       $row = [];
+       if ($storage == 'active') {
+         $config = $this->configRevert->getFromActive('', $name);
+@@ -593,10 +598,18 @@ class ConfigUpdateController extends ControllerBase {
+       else {
+         $definition = $this->configList->getType($entity_type);
+         $id_key = $definition->getKey('id');
+-        $id = $config[$id_key];
++        
++        // Ensure the ID key exists in the configuration.
++        if ($id_key && isset($config[$id_key])) {
++          $id = $config[$id_key];
++        } else {
++          // Fallback to using the config name if ID key is missing.
++          $id = $name;
++        }
++        
+         // The label key is not required.
+         if ($label_key = $definition->getKey('label')) {
+-          $label = $config[$label_key];
++          $label = isset($config[$label_key]) ? $config[$label_key] : '';
+         }
+         else {
+           $label = '';
+@@ -661,11 +674,14 @@ class ConfigUpdateController extends ControllerBase {
+         'delete' => $this->t('Delete'),
+       ];
+ 
+-      foreach ($actions as $action) {
+-        $links[$action] = [
+-          'url' => Url::fromRoute($routes[$action], ['config_type' => $entity_type, 'config_name' => $id]),
+-          'title' => $titles[$action],
+-        ];
++      // Only create action links if we have a valid config ID.
++      if (!empty($id)) {
++        foreach ($actions as $action) {
++          $links[$action] = [
++            'url' => Url::fromRoute($routes[$action], ['config_type' => $entity_type, 'config_name' => $id]),
++            'title' => $titles[$action],
++          ];
++        }
+       }
+ 
+       $row[] = [
+diff --git a/src/ConfigLister.php b/src/ConfigLister.php
+index e0676b2..b5b704a 100644
+--- a/src/ConfigLister.php
++++ b/src/ConfigLister.php
+@@ -172,6 +172,11 @@ class ConfigLister implements ConfigListInterface {
+         $install_list = $this->listProvidedItems($list_type, $name);
+         $optional_list = $this->listProvidedItems($list_type, $name, TRUE);
+         break;
++
++      default:
++        // Log invalid list_type parameter and return empty arrays.
++        \Drupal::logger('config_update')->warning('Invalid list_type parameter "@list_type" passed to ConfigLister::listConfig(). Valid values are: type, module, theme, profile.', ['@list_type' => $list_type]);
++        break;
+     }
+ 
+     // This only seems to be a problem in unit tests, where a mock object

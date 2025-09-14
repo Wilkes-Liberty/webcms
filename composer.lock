@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4d602073ff6ca939afc8368fe2e39e7",
+    "content-hash": "198c1e3e6ae6f04360fc91de71467b69",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3001,29 +3001,26 @@
         },
         {
             "name": "drupal/config_update",
-            "version": "2.0.0-alpha4",
+            "version": "dev-2.0.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/config_update.git",
-                "reference": "2.0.0-alpha4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/config_update-2.0.0-alpha4.zip",
-                "reference": "2.0.0-alpha4",
-                "shasum": "d8ea528b0b3e24918356bb72bef61408f650aa8e"
+                "reference": "7a7b69dddef56871ccdf4d98722ab63241393011"
             },
             "require": {
                 "drupal/core": "^9.4 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-2.0.x": "2.0.x-dev"
+                },
                 "drupal": {
-                    "version": "2.0.0-alpha4",
-                    "datestamp": "1724596931",
+                    "version": "2.0.0-alpha3+3-dev",
+                    "datestamp": "1723568343",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -16699,7 +16696,7 @@
         "drupal/ai_media_image": 15,
         "drupal/ai_tmgmt": 10,
         "drupal/auto_translation": 10,
-        "drupal/config_update": 15,
+        "drupal/config_update": 20,
         "drupal/diff": 10,
         "drupal/graphql_webform": 15,
         "drupal/inline_entity_form": 5,
@@ -16708,7 +16705,7 @@
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
