@@ -30,6 +30,12 @@ function wl_language_switcher_page_attachments(array &$page) {
  * Add language switcher to gin secondary toolbar frontend.
  */
 function wl_language_switcher_preprocess_toolbar__gin__secondary__frontend(&$variables) {
+  // TEMPORARY: Skip language switcher on translation interface page for testing
+  $current_route = \Drupal::routeMatch()->getRouteName();
+  if ($current_route === 'locale.translate_page') {
+    return; // Skip language switcher on translation interface
+  }
+  
   $language_switcher = _wl_language_switcher_build();
   if ($language_switcher) {
     $variables['language_switcher'] = $language_switcher;
@@ -44,6 +50,14 @@ function wl_language_switcher_preprocess_toolbar__gin__secondary__frontend(&$var
 function wl_language_switcher_preprocess_page(&$variables) {
   // Check if this is a gin-themed page with secondary toolbar
   $active_theme = \Drupal::theme()->getActiveTheme();
+  
+  // TEMPORARY: Skip language switcher on translation interface page for testing
+  $current_route = \Drupal::routeMatch()->getRouteName();
+  \Drupal::logger('wl_language_switcher')->notice('preprocess_page: Route: @route', ['@route' => $current_route]);
+  if ($current_route === 'locale.translate_page') {
+    \Drupal::logger('wl_language_switcher')->notice('SKIPPING language switcher for translation page');
+    return; // Skip language switcher on translation interface
+  }
   
   if ($active_theme->getName() === 'gin') {
     $language_switcher = _wl_language_switcher_build();
@@ -145,7 +159,7 @@ function _wl_language_switcher_build() {
     
     $links[$langcode] = [
       '#type' => 'link',
-      '#title' => Markup::create('<span class="text visually-hidden">' . $flag_info['name'] . '</span>'),
+      '#title' => strtoupper($langcode), // Display language code as uppercase text
       '#url' => $url,
     ];
   }

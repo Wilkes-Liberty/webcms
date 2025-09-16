@@ -9,8 +9,8 @@
  */
 #}
 
-<div class="wl-flag-language-switcher">
+<div class="wl-flag-language-switcher wl-text-language-switcher">
   {% for langcode, link in links %}
-    {{ link }}
+    {% if not loop.first %} / {% endif %}{{ link }}
   {% endfor %}
 </div>

@@ -3,7 +3,7 @@
  * WL Language Switcher JavaScript for Gin toolbar integration.
  */
 
-(function (Drupal) {
+(function (Drupal, once) {
   'use strict';
 
   /**
@@ -14,11 +14,8 @@
       console.log('WL Language Switcher: Behavior attached', settings);
       console.log('WL Language Switcher: Context:', context);
 
-      // Check if language switcher already exists anywhere on the page
-      if (document.querySelector('.wl-flag-language-switcher')) {
-        console.log('WL Language Switcher: Already exists on page, skipping');
-        return;
-      }
+      // Use once to prevent multiple attachments
+      once('wl-language-switcher', 'body', context).forEach(function (element) {
 
       console.log('WL Language Switcher: Creating language switcher');
 
@@ -61,7 +58,7 @@
               positioning = 'position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 8px; background: white; padding: 8px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);';
             } else if (containerType === '.gin-secondary-toolbar__layout-container' || containerType === '.gin-secondary-toolbar') {
               // For Gin secondary toolbar, position to avoid devel menu
-              positioning = 'position: absolute; right: 15em; top: 50%; transform: translateY(-50%); z-index: 10; display: flex; gap: 8px;';
+              positioning = 'position: absolute; right: 15em; top: 50%; transform: translateY(-50%); z-index: 999; display: flex; gap: 8px;';
             } else {
               // For other toolbars, use default positioning
               positioning = 'position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 10; display: flex; gap: 8px;';
@@ -71,34 +68,38 @@
 
             // Add language links
             var languages = [
-              {code: 'en', class: 'lang-en', title: 'Switch to English', name: 'English'},
-              {code: 'es', class: 'lang-es', title: 'Cambiar a Español', name: 'Español'},
-              {code: 'ru', class: 'lang-ru', title: 'Переключить на русский', name: 'Русский'}
+              {code: 'en', class: 'lang-en', title: 'Switch to English', name: 'EN'},
+              {code: 'es', class: 'lang-es', title: 'Cambiar a Español', name: 'ES'},
+              {code: 'ru', class: 'lang-ru', title: 'Переключить на русский', name: 'RU'}
             ];
 
             // Get current language from HTML lang attribute or default to 'en'
             var currentLang = document.documentElement.lang || 'en';
             console.log('WL Language Switcher: Current language is', currentLang);
 
-            languages.forEach(function (lang) {
+            languages.forEach(function (lang, index) {
+              // Add separator before each link (except the first)
+              if (index > 0) {
+                var separator = document.createElement('span');
+                separator.className = 'language-separator';
+                separator.textContent = '/';
+                separator.style.cssText = 'opacity: .3; font-size: var(--gin-font-size-xs); vertical-align: middle; display: inline-block; padding: 0 .5em;';
+                languageSwitcher.appendChild(separator);
+              }
+
               var link = document.createElement('a');
               link.className = 'language-link ' + lang.class;
               link.href = '/' + lang.code;
               link.title = lang.title;
               link.setAttribute('hreflang', lang.code);
               link.setAttribute('aria-label', lang.title);
-              link.style.cssText = 'width: 28px; height: 20px; border-radius: 3px; border: 1px solid #d4d4d8; display: block; text-decoration: none;';
+              link.style.cssText = 'text-decoration: none; font-size: var(--gin-font-size-xs); font-weight: var(--gin-font-weight-normal); color: var(--gin-color-text-light); line-height: 2; border-radius: var(--gin-border-xxs); padding: 2px; vertical-align: middle;';
+              link.textContent = lang.name; // Display language code as text
 
               if (lang.code === currentLang) {
                 link.classList.add('active');
-                link.style.borderColor = '#3b82f6';
+                link.style.cssText += ' color: var(--gin-color-primary); font-weight: var(--gin-font-weight-semibold);';
               }
-
-              // Add visually hidden text for accessibility
-              var span = document.createElement('span');
-              span.className = 'text visually-hidden';
-              span.textContent = lang.name;
-              link.appendChild(span);
 
               languageSwitcher.appendChild(link);
             });
@@ -114,10 +115,11 @@
           } else {
             console.log('WL Language Switcher: No suitable container found. Tried:', containers);
           }
-      } else {
-        console.log('WL Language Switcher: Settings check failed (temporarily disabled)');
-      }
+        } else {
+          console.log('WL Language Switcher: Settings check failed (temporarily disabled)');
+        }
+      }); // End once.forEach
     }
   };
 
-})(Drupal);
+})(Drupal, once);

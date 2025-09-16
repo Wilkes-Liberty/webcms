@@ -12,54 +12,55 @@
 }
 
 .wl-flag-language-switcher .language-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 20px;
-  border-radius: 3px;
-  overflow: hidden;
+  display: inline;
   text-decoration: none;
   transition: all 0.2s ease;
-  border: 1px solid #d4d4d8;
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 3px;
   position: relative;
 }
 
-.wl-flag-language-switcher .language-link:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-color: #3b82f6;
+/* Text-based language switcher styles */
+.wl-text-language-switcher .language-link {
+  display: inline;
+  text-decoration: none;
+  font-size: var(--gin-font-size-xs);
+  font-weight: var(--gin-font-weight-normal);
+  color: var(--gin-color-text-light);
+  line-height: 2;
+  border-radius: var(--gin-border-xxs);
+  padding: 2px;
+  transition: color 0.2s ease;
+  vertical-align: middle;
 }
 
-.wl-flag-language-switcher .language-link:active {
-  transform: translateY(0);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+.wl-flag-language-switcher .language-link:hover,
+.wl-text-language-switcher .language-link:hover {
+  color: var(--gin-color-primary-hover);
+  text-decoration: none;
 }
 
-.wl-flag-language-switcher .language-link.active {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+.wl-flag-language-switcher .language-link.active,
+.wl-text-language-switcher .language-link.active {
+  color: var(--gin-color-primary);
+  font-weight: var(--gin-font-weight-semibold);
 }
 
-/* SVG Flag backgrounds */
-.wl-flag-language-switcher .language-link.lang-en {
-  background: url('../images/flags/us.svg') no-repeat center;
-  background-size: cover;
+/* Language separator styling - match breadcrumb separators */
+.wl-text-language-switcher {
+  font-size: var(--gin-font-size-xs);
+  line-height: 2;
 }
 
-.wl-flag-language-switcher .language-link.lang-es {
-  background: url('../images/flags/mx.svg') no-repeat center;
-  background-size: cover;
-}
-
-.wl-flag-language-switcher .language-link.lang-ru {
-  background: url('../images/flags/ru.svg') no-repeat center;
-  background-size: cover;
-}
-
-/* Hide language link text, show only flags */
-.wl-flag-language-switcher .language-link .text {
-  display: none;
+.wl-text-language-switcher .language-separator {
+  opacity: .3;
+  font-size: var(--gin-font-size-xs);
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0 .5em;
 }
 
 /* Ensure gin secondary toolbar container is relatively positioned */
@@ -75,9 +76,11 @@
 }
 
 /* Focus styles for accessibility */
-.wl-flag-language-switcher .language-link:focus {
+.wl-flag-language-switcher .language-link:focus,
+.wl-text-language-switcher .language-link:focus {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* Tooltip styles */
