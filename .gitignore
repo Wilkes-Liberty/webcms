@@ -84,5 +84,5 @@ backups*
 
 # TMP
 config/compliance-terms*
-docs/archive*
+docs/*
 scripts/create-*
