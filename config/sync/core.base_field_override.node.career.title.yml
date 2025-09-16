@@ -1,0 +1,18 @@
+uuid: 4b820b2b-648b-4070-ae86-7091a72e1cd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.career
+id: node.career.title
+field_name: title
+entity_type: node
+bundle: career
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

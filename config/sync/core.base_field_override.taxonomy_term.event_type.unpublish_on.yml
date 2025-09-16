@@ -1,0 +1,18 @@
+uuid: ade55e96-be64-4101-a74f-00c8a2c317db
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.event_type
+id: taxonomy_term.event_type.unpublish_on
+field_name: unpublish_on
+entity_type: taxonomy_term
+bundle: event_type
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

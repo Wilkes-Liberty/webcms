@@ -1,0 +1,18 @@
+uuid: 57df031a-e357-4f76-ac5e-52702e92defa
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.technologies
+id: taxonomy_term.technologies.name
+field_name: name
+entity_type: taxonomy_term
+bundle: technologies
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

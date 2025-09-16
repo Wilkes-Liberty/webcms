@@ -1,0 +1,18 @@
+uuid: 9e6849c9-e330-4d1d-b191-13618a40dc6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.seniority
+id: taxonomy_term.seniority.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: seniority
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

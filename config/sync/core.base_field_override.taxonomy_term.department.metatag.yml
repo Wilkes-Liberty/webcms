@@ -1,0 +1,20 @@
+uuid: ad3f3845-b6f9-44d4-b022-8edbf87c9821
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.department
+  module:
+    - metatag
+id: taxonomy_term.department.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: department
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

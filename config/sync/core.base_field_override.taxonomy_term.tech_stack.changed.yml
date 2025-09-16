@@ -1,0 +1,18 @@
+uuid: a3429b27-344c-419a-8f23-ed74db836550
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tech_stack
+id: taxonomy_term.tech_stack.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: tech_stack
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

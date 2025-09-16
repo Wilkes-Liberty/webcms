@@ -1,0 +1,19 @@
+uuid: 05697f67-f49d-4422-b735-b826005bde06
+langcode: en
+status: true
+dependencies:
+  module:
+    - consumers
+    - metatag
+id: consumer.consumer.metatag
+field_name: metatag
+entity_type: consumer
+bundle: consumer
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

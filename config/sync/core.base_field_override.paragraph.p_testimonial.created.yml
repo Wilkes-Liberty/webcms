@@ -1,0 +1,18 @@
+uuid: 7c701bb5-2ac2-46cb-8b88-1c917ac1ff02
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.p_testimonial
+id: paragraph.p_testimonial.created
+field_name: created
+entity_type: paragraph
+bundle: p_testimonial
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

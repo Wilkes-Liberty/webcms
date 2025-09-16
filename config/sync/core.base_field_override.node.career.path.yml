@@ -1,0 +1,20 @@
+uuid: 8f7aed49-9785-43a3-81e6-9417450b3e65
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.career
+  module:
+    - path
+id: node.career.path
+field_name: path
+entity_type: node
+bundle: career
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

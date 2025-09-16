@@ -1,0 +1,21 @@
+uuid: f2a5661a-b80f-44fd-9333-725fdafdd644
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.compliance
+  module:
+    - text
+id: taxonomy_term.compliance.description
+field_name: description
+entity_type: taxonomy_term
+bundle: compliance
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,18 @@
+uuid: 0866a689-6e5e-4501-9725-d8c7aea4e716
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.compliance
+id: taxonomy_term.compliance.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: compliance
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

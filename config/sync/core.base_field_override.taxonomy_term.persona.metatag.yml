@@ -1,0 +1,20 @@
+uuid: c6407f7f-a6e1-4961-97d1-ddcbd854da59
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.persona
+  module:
+    - metatag
+id: taxonomy_term.persona.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: persona
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

@@ -1,0 +1,20 @@
+uuid: e9911755-f043-4e66-86a5-da722d6cda1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.compliance
+  module:
+    - path
+id: taxonomy_term.compliance.path
+field_name: path
+entity_type: taxonomy_term
+bundle: compliance
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

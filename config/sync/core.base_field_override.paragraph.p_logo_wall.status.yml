@@ -1,0 +1,22 @@
+uuid: 44087e7e-e1fc-4d03-ae86-ba5285eb2a6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.p_logo_wall
+id: paragraph.p_logo_wall.status
+field_name: status
+entity_type: paragraph
+bundle: p_logo_wall
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

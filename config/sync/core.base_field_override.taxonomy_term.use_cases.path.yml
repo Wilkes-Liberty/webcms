@@ -1,0 +1,20 @@
+uuid: b1557a6c-eee9-4785-97f0-fd614912fae2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.use_cases
+  module:
+    - path
+id: taxonomy_term.use_cases.path
+field_name: path
+entity_type: taxonomy_term
+bundle: use_cases
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

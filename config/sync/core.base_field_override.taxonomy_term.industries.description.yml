@@ -1,0 +1,21 @@
+uuid: 5dea7d98-4967-4f19-a3fb-ae1b22b316ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.industries
+  module:
+    - text
+id: taxonomy_term.industries.description
+field_name: description
+entity_type: taxonomy_term
+bundle: industries
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

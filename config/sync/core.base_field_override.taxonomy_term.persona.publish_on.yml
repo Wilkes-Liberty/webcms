@@ -1,0 +1,18 @@
+uuid: 40e02819-d223-46f4-ba95-84f1d656bd65
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.persona
+id: taxonomy_term.persona.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: persona
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

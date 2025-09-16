@@ -1,0 +1,18 @@
+uuid: 14dee3a8-200b-4df3-a531-c78ad5b66d5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.case_study
+id: node.case_study.created
+field_name: created
+entity_type: node
+bundle: case_study
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

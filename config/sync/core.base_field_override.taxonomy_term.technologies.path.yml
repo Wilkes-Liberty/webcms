@@ -1,0 +1,20 @@
+uuid: 90c51f50-056d-4aad-a36f-a6fed9ab9418
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.technologies
+  module:
+    - path
+id: taxonomy_term.technologies.path
+field_name: path
+entity_type: taxonomy_term
+bundle: technologies
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

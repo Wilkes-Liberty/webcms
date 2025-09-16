@@ -1,0 +1,18 @@
+uuid: a1653313-77fd-497f-8429-068b42f7cdfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tech_stack
+id: taxonomy_term.tech_stack.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: tech_stack
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,21 @@
+uuid: 1ec7e12d-e019-4734-955c-5d47b4f7f8e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tech_stack
+  module:
+    - text
+id: taxonomy_term.tech_stack.description
+field_name: description
+entity_type: taxonomy_term
+bundle: tech_stack
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

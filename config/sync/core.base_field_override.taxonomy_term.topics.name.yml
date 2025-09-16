@@ -1,0 +1,18 @@
+uuid: c2bdce93-8ede-43de-8d98-0d5ed0dec580
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.topics
+id: taxonomy_term.topics.name
+field_name: name
+entity_type: taxonomy_term
+bundle: topics
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

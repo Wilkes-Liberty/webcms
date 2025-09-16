@@ -1,0 +1,22 @@
+uuid: c0481fcc-05ba-4c4a-9f39-6ab5875aa3ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.compliance
+id: taxonomy_term.compliance.status
+field_name: status
+entity_type: taxonomy_term
+bundle: compliance
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

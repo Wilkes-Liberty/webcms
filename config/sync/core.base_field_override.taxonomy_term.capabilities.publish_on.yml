@@ -1,0 +1,18 @@
+uuid: ff6bdc2d-9b79-443a-a2b2-71459fa33e86
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.capabilities
+id: taxonomy_term.capabilities.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: capabilities
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

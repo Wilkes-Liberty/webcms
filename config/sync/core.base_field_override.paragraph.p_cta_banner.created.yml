@@ -1,0 +1,18 @@
+uuid: 6c37d5fb-0325-459f-b187-96ceca566f0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.p_cta_banner
+id: paragraph.p_cta_banner.created
+field_name: created
+entity_type: paragraph
+bundle: p_cta_banner
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

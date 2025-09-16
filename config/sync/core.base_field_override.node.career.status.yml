@@ -1,0 +1,22 @@
+uuid: 18adc57f-c6e9-44d9-a09a-e87e63716f11
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.career
+id: node.career.status
+field_name: status
+entity_type: node
+bundle: career
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

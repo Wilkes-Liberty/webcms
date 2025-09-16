@@ -1,0 +1,20 @@
+uuid: 1abec360-a2b4-4ca1-8940-3f766b58d357
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.use_cases
+  module:
+    - metatag
+id: taxonomy_term.use_cases.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: use_cases
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

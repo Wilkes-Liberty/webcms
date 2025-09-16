@@ -1,0 +1,20 @@
+uuid: b2565b5e-304a-488c-a2da-0f2264fa2373
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tech_stack
+  module:
+    - metatag
+id: taxonomy_term.tech_stack.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: tech_stack
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

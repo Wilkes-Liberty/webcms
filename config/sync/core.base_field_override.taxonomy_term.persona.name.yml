@@ -1,0 +1,18 @@
+uuid: 2b4d96b5-5f6d-478c-9010-a4162c726093
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.persona
+id: taxonomy_term.persona.name
+field_name: name
+entity_type: taxonomy_term
+bundle: persona
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

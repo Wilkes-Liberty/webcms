@@ -1,0 +1,21 @@
+uuid: c2837769-b9ff-4cfb-80e3-4453af666b9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.capabilities
+  module:
+    - text
+id: taxonomy_term.capabilities.description
+field_name: description
+entity_type: taxonomy_term
+bundle: capabilities
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

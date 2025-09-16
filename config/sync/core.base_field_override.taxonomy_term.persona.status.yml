@@ -1,0 +1,22 @@
+uuid: a84fc75c-99d2-414d-9582-6f48f52f2a38
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.persona
+id: taxonomy_term.persona.status
+field_name: status
+entity_type: taxonomy_term
+bundle: persona
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

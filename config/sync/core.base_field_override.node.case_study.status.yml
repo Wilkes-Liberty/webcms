@@ -1,0 +1,22 @@
+uuid: 9abc79dc-be3c-4b9d-adfb-fd0d16c5df55
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.case_study
+id: node.case_study.status
+field_name: status
+entity_type: node
+bundle: case_study
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 57972f02-a1eb-470b-8760-3b72a017c68a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.technologies
+id: taxonomy_term.technologies.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: technologies
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

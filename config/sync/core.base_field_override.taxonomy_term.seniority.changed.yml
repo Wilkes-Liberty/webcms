@@ -1,0 +1,18 @@
+uuid: 874150c0-0ab7-478e-9117-ecbeb94dd7f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.seniority
+id: taxonomy_term.seniority.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: seniority
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

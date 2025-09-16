@@ -1,0 +1,18 @@
+uuid: 00c6c1a0-fb86-45c3-851f-01cc54aa6168
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.career
+id: node.career.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: career
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

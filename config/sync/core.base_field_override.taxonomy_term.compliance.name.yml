@@ -1,0 +1,18 @@
+uuid: 9bf90dee-08a2-420f-b35f-b64bd096898d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.compliance
+id: taxonomy_term.compliance.name
+field_name: name
+entity_type: taxonomy_term
+bundle: compliance
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

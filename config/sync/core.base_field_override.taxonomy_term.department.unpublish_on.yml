@@ -1,0 +1,18 @@
+uuid: 1a9cfd12-c041-4061-8bff-926ecb043872
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.department
+id: taxonomy_term.department.unpublish_on
+field_name: unpublish_on
+entity_type: taxonomy_term
+bundle: department
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

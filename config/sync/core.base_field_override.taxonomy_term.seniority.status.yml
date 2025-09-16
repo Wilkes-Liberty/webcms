@@ -1,0 +1,22 @@
+uuid: 7ce43476-d16d-488a-822c-1f050198b7d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.seniority
+id: taxonomy_term.seniority.status
+field_name: status
+entity_type: taxonomy_term
+bundle: seniority
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

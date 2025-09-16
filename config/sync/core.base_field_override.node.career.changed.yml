@@ -1,0 +1,18 @@
+uuid: 432dfd7f-4176-476c-9f8e-b08936cfb492
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.career
+id: node.career.changed
+field_name: changed
+entity_type: node
+bundle: career
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

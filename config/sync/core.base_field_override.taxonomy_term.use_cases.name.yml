@@ -1,0 +1,18 @@
+uuid: 73b36e4f-0f13-4c52-ae5b-8a830adc3407
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.use_cases
+id: taxonomy_term.use_cases.name
+field_name: name
+entity_type: taxonomy_term
+bundle: use_cases
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

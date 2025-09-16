@@ -1,0 +1,20 @@
+uuid: cd2e45c8-dbd8-4da2-a12a-2e93668372f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.industries
+  module:
+    - metatag
+id: taxonomy_term.industries.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: industries
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

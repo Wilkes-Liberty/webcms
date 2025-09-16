@@ -1,0 +1,18 @@
+uuid: f1945b46-9d20-4017-a8d4-e8d60da72428
+langcode: en
+status: true
+dependencies:
+  module:
+    - consumers
+id: consumer.consumer.redirect
+field_name: redirect
+entity_type: consumer
+bundle: consumer
+label: 'Redirect URIs'
+description: 'The absolute URIs to validate against.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

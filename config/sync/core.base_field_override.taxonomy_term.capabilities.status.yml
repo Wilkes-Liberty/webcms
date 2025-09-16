@@ -1,0 +1,22 @@
+uuid: 5680fb42-1303-42e2-836d-a8ff518761f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.capabilities
+id: taxonomy_term.capabilities.status
+field_name: status
+entity_type: taxonomy_term
+bundle: capabilities
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

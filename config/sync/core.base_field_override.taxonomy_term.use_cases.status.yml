@@ -1,0 +1,22 @@
+uuid: 4bbcc668-4da2-4209-8bdc-5f1d0cc029e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.use_cases
+id: taxonomy_term.use_cases.status
+field_name: status
+entity_type: taxonomy_term
+bundle: use_cases
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

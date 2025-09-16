@@ -1,0 +1,18 @@
+uuid: 7993c765-28c1-4cc0-a81c-9a84fff425fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.solutions
+id: taxonomy_term.solutions.unpublish_on
+field_name: unpublish_on
+entity_type: taxonomy_term
+bundle: solutions
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
