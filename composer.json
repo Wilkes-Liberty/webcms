@@ -21,7 +21,7 @@
         "drupal/ai_image_alt_text": "^1.0",
         "drupal/ai_media_image": "^1.0@alpha",
         "drupal/ai_provider_openai": "^1.1",
-        "drupal/ai_provider_x": "^1.0",
+        "drupal/ai_provider_x": "1.0.x-dev",
         "drupal/ai_seo": "^1.0",
         "drupal/ai_tmgmt": "^1.0@beta",
         "drupal/allowed_formats": "^3.0",
@@ -64,6 +64,7 @@
         "drupal/linkit": "^7.0",
         "drupal/login_security": "^2.0",
         "drupal/masquerade": "^2.0",
+        "drupal/matomo": "^2.0@alpha",
         "drupal/metatag": "^2.1",
         "drupal/module_filter": "^5.0",
         "drupal/next": "^2.0",
@@ -73,7 +74,7 @@
         "drupal/pathauto": "^1.13",
         "drupal/profile": "^1.12",
         "drupal/purge": "^3.6",
-        "drupal/redirect": "^1.12",
+        "drupal/redirect": "1.x-dev",
         "drupal/redis": "^1.10",
         "drupal/registration_role": "^2.0",
         "drupal/require_login": "^3.0",
@@ -90,7 +91,7 @@
         "drupal/smart_date": "^4.2",
         "drupal/telephone_validation": "^2.5",
         "drupal/tfa": "^1.12",
-        "drupal/tmgmt": "^1.17",
+        "drupal/tmgmt": "1.x-dev",
         "drupal/twig_tweak": "^3.4",
         "drupal/webform_remote_handlers": "^3.0",
         "drupal/webform_rest": "^4.2",
@@ -192,6 +193,12 @@
             },
             "drupal/config_update": {
                 "Fix InvalidParameterException when generating URLs with empty config names": "patches/config_update-fix-url-generation-empty-config-names-2025-01-14.patch"
+            },
+            "drupal/redirect": {
+                "Fix redirect_404 service definition to include time service argument": "patches/redirect_404-add-time-service-argument.patch"
+            },
+            "drupal/ai": {
+                "Fix ChatTranslationProvider array/object bug in prompt handling": "patches/ai-translate-fix-prompt-array-bug.patch"
             }
         }
     }

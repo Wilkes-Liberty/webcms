@@ -1,0 +1,11 @@
+--- a/modules/ai_translate/src/Plugin/AiProvider/ChatTranslationProvider.php
++++ b/modules/ai_translate/src/Plugin/AiProvider/ChatTranslationProvider.php
+@@ -184,7 +184,7 @@ class ChatTranslationProvider extends AiProviderClientBase implements
+     $aiConfig = $this->configFactory->get('ai_translate.settings')->get('language_settings') ?? [];
+     $prompt = $aiConfig[$targetLanguage->getId()]['prompt'] ?? '';
+     if (empty($prompt)) {
+-      $prompt = $aiConfig->get('prompt');
++      $prompt = $this->configFactory->get('ai_translate.settings')->get('prompt');
+     }
+     $context = [
+       'dest_lang' => $targetLanguage->getId(),

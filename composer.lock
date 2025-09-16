@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "198c1e3e6ae6f04360fc91de71467b69",
+    "content-hash": "104d091fa31d93e6bd7f25202623fa00",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2254,17 +2254,11 @@
         },
         {
             "name": "drupal/ai_provider_x",
-            "version": "1.0.0",
+            "version": "dev-1.0.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai_provider_x.git",
-                "reference": "1.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai_provider_x-1.0.0.zip",
-                "reference": "1.0.0",
-                "shasum": "6e9347f5417b8941d0f60debd3c35dbf871b9b98"
+                "reference": "fc041f23e4e45f95edc323916a0d3697dd0ae09d"
             },
             "require": {
                 "drupal/ai": "^1.0.4",
@@ -2274,12 +2268,15 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.0.x": "1.0.x-dev"
+                },
                 "drupal": {
-                    "version": "1.0.0",
-                    "datestamp": "1742577826",
+                    "version": "1.0.x-dev",
+                    "datestamp": "1742577640",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -6082,6 +6079,71 @@
             }
         },
         {
+            "name": "drupal/matomo",
+            "version": "2.0.0-alpha3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/matomo.git",
+                "reference": "2.0.0-alpha3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/matomo-2.0.0-alpha3.zip",
+                "reference": "2.0.0-alpha3",
+                "shasum": "0b114402a5231d9efba32f101bb79d7ebfb2d446"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "conflict": {
+                "drupal/csp": "<1.12"
+            },
+            "require-dev": {
+                "drupal/csp": "~1.12",
+                "drupal/facets": "~2.0.7",
+                "drupal/search_api": "~1.34",
+                "drupal/token": "~1.9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-alpha3",
+                    "datestamp": "1738948495",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "c-logemann",
+                    "homepage": "https://www.drupal.org/user/218368"
+                },
+                {
+                    "name": "grimreaper",
+                    "homepage": "https://www.drupal.org/user/2388214"
+                },
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/user/85918"
+                },
+                {
+                    "name": "shelane",
+                    "homepage": "https://www.drupal.org/user/2674989"
+                }
+            ],
+            "description": "Adds Matomo javascript tracking code to all your site's pages.",
+            "homepage": "https://www.drupal.org/project/matomo",
+            "support": {
+                "source": "https://git.drupalcode.org/project/matomo"
+            }
+        },
+        {
             "name": "drupal/metatag",
             "version": "2.1.2",
             "source": {
@@ -6799,29 +6861,26 @@
         },
         {
             "name": "drupal/redirect",
-            "version": "1.12.0",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/redirect.git",
-                "reference": "8.x-1.12"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/redirect-8.x-1.12.zip",
-                "reference": "8.x-1.12",
-                "shasum": "1cdee11356a25b9f9a10329aec0eeb293e0023de"
+                "reference": "156ced403f3c021485fa04882731f113445d8e6c"
             },
             "require": {
                 "drupal/core": "^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
                 "drupal": {
-                    "version": "8.x-1.12",
-                    "datestamp": "1756419163",
+                    "version": "8.x-1.11+13-dev",
+                    "datestamp": "1756240831",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -7574,17 +7633,17 @@
         },
         {
             "name": "drupal/simple_oauth",
-            "version": "6.0.0",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/simple_oauth.git",
-                "reference": "6.0.0"
+                "reference": "6.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_oauth-6.0.0.zip",
-                "reference": "6.0.0",
-                "shasum": "a19c2ef0cbfae431af0e92ea5c89d7514cd7c238"
+                "url": "https://ftp.drupal.org/files/projects/simple_oauth-6.0.1.zip",
+                "reference": "6.0.1",
+                "shasum": "99a89daa914641feb5d432ab50f29fcb1504cc48"
             },
             "require": {
                 "drupal/consumers": "^1.17",
@@ -7600,8 +7659,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.0.0",
-                    "datestamp": "1741341101",
+                    "version": "6.0.1",
+                    "datestamp": "1757918288",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7625,6 +7684,10 @@
                 {
                     "name": "e0ipso",
                     "homepage": "https://www.drupal.org/user/550110"
+                },
+                {
+                    "name": "kingdutch",
+                    "homepage": "https://www.drupal.org/user/1868952"
                 },
                 {
                     "name": "pcambra",
@@ -8012,17 +8075,11 @@
         },
         {
             "name": "drupal/tmgmt",
-            "version": "1.17.0",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/tmgmt.git",
-                "reference": "8.x-1.17"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/tmgmt-8.x-1.17.zip",
-                "reference": "8.x-1.17",
-                "shasum": "83d9796a0e5219cf6fc752d8db8ecadc81550f34"
+                "reference": "2258a75d64b16e913a82e8eeffc9905ccb55ead7"
             },
             "require": {
                 "drupal/core": "^10.2 || ^11"
@@ -8040,12 +8097,15 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
                 "drupal": {
-                    "version": "8.x-1.17",
-                    "datestamp": "1731630348",
+                    "version": "8.x-1.16+6-dev",
+                    "datestamp": "1731629503",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -9488,23 +9548,20 @@
         },
         {
             "name": "google/protobuf",
-            "version": "v4.32.0",
+            "version": "v4.32.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "9a9a92ecbe9c671dc1863f6d4a91ea3ea12c8646"
+                "reference": "c4ed1c1f9bbc1e91766e2cd6c0af749324fe87cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/9a9a92ecbe9c671dc1863f6d4a91ea3ea12c8646",
-                "reference": "9a9a92ecbe9c671dc1863f6d4a91ea3ea12c8646",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/c4ed1c1f9bbc1e91766e2cd6c0af749324fe87cb",
+                "reference": "c4ed1c1f9bbc1e91766e2cd6c0af749324fe87cb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1.0"
-            },
-            "provide": {
-                "ext-protobuf": "*"
             },
             "require-dev": {
                 "phpunit/phpunit": ">=5.0.0 <8.5.27"
@@ -9529,9 +9586,9 @@
                 "proto"
             ],
             "support": {
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.32.0"
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.32.1"
             },
-            "time": "2025-08-14T20:00:33+00:00"
+            "time": "2025-09-14T05:14:52+00:00"
         },
         {
             "name": "grasmash/expander",
@@ -11171,16 +11228,16 @@
         },
         {
             "name": "marc-mabe/php-enum",
-            "version": "v4.7.1",
+            "version": "v4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marc-mabe/php-enum.git",
-                "reference": "7159809e5cfa041dca28e61f7f7ae58063aae8ed"
+                "reference": "bb426fcdd65c60fb3638ef741e8782508fda7eef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marc-mabe/php-enum/zipball/7159809e5cfa041dca28e61f7f7ae58063aae8ed",
-                "reference": "7159809e5cfa041dca28e61f7f7ae58063aae8ed",
+                "url": "https://api.github.com/repos/marc-mabe/php-enum/zipball/bb426fcdd65c60fb3638ef741e8782508fda7eef",
+                "reference": "bb426fcdd65c60fb3638ef741e8782508fda7eef",
                 "shasum": ""
             },
             "require": {
@@ -11238,9 +11295,9 @@
             ],
             "support": {
                 "issues": "https://github.com/marc-mabe/php-enum/issues",
-                "source": "https://github.com/marc-mabe/php-enum/tree/v4.7.1"
+                "source": "https://github.com/marc-mabe/php-enum/tree/v4.7.2"
             },
-            "time": "2024-11-28T04:54:44+00:00"
+            "time": "2025-09-14T11:18:39+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -16694,6 +16751,7 @@
     "stability-flags": {
         "drupal/ai": 15,
         "drupal/ai_media_image": 15,
+        "drupal/ai_provider_x": 20,
         "drupal/ai_tmgmt": 10,
         "drupal/auto_translation": 10,
         "drupal/config_update": 20,
@@ -16701,11 +16759,14 @@
         "drupal/graphql_webform": 15,
         "drupal/inline_entity_form": 5,
         "drupal/jwt": 20,
-        "drupal/openid_connect": 15
+        "drupal/matomo": 15,
+        "drupal/openid_connect": 15,
+        "drupal/redirect": 20,
+        "drupal/tmgmt": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }
