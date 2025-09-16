@@ -1,0 +1,7 @@
+name: 'TMGMT Session Fix'
+type: module
+description: 'Temporary fix for TMGMT $_SESSION deprecation warnings in Drupal 11.2+'
+package: WL Custom
+core_version_requirement: ^11.2
+dependencies:
+  - tmgmt

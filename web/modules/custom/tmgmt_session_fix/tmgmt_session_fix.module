@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * @file
+ * TMGMT Session Fix module - suppresses deprecation warnings during TMGMT operations.
+ */
+
+/**
+ * Implements hook_boot().
+ * 
+ * Set up a global error handler to suppress deprecation warnings very early.
+ */
+function tmgmt_session_fix_boot() {
+  tmgmt_session_fix_set_error_handler();
+}
+
+/**
+ * Implements hook_init().
+ * 
+ * Ensure error handler is set during regular requests too.
+ */
+function tmgmt_session_fix_init() {
+  tmgmt_session_fix_set_error_handler();
+}
+
+/**
+ * Set up global error handler to suppress TMGMT-related deprecation warnings.
+ */
+function tmgmt_session_fix_set_error_handler() {
+  static $handler_set = FALSE;
+  
+  if (!$handler_set) {
+    $previous_handler = set_error_handler(function($severity, $message, $file, $line, $context = NULL) use (&$previous_handler) {
+      // Suppress deprecation warnings that break AJAX requests
+      if ($severity === E_USER_DEPRECATED || $severity === E_DEPRECATED) {
+        // TMGMT session deprecations
+        if (strpos($message, 'Storing values directly in $_SESSION is deprecated') !== FALSE) {
+          return TRUE; // Suppress all $_SESSION deprecations
+        }
+        
+        // Plugin manager attribute discovery deprecations (Drupal 11.2)
+        if (strpos($message, 'attribute discovery') !== FALSE ||
+            strpos($message, 'DefaultPluginManager') !== FALSE ||
+            strpos($message, 'attribute is deprecated') !== FALSE) {
+          return TRUE; // Suppress plugin manager deprecations
+        }
+        
+        // Any deprecation warnings during AI translation AJAX requests
+        if (isset($_SERVER['REQUEST_URI']) && 
+            (strpos($_SERVER['REQUEST_URI'], 'ai-translate') !== FALSE ||
+             strpos($_SERVER['REQUEST_URI'], 'locale/translate') !== FALSE)) {
+          return TRUE; // Suppress all deprecations during AI translate
+        }
+        
+        // TMGMT-related deprecation warnings
+        if (strpos($file, 'tmgmt') !== FALSE || 
+            strpos($message, 'tmgmt') !== FALSE) {
+          return TRUE; // Suppress TMGMT-related deprecations
+        }
+        
+        // AI module deprecation warnings
+        if (strpos($file, '/ai') !== FALSE || 
+            strpos($message, 'ai_') !== FALSE) {
+          return TRUE; // Suppress AI module deprecations
+        }
+      }
+      
+      // For all other errors, call the previous error handler or return FALSE to use default handling
+      if ($previous_handler !== NULL) {
+        return call_user_func($previous_handler, $severity, $message, $file, $line, $context);
+      }
+      return FALSE; // Use default PHP error handling
+    }, E_ALL);
+    
+    $handler_set = TRUE;
+  }
+}
