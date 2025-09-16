@@ -4,14 +4,14 @@ prompt_logging: false
 prompt_logging_tags: ''
 default_providers:
   chat:
-    provider_id: x
-    model_id: grok-2-latest
+    provider_id: openai
+    model_id: gpt-4.1
   chat_with_complex_json:
     provider_id: openai
-    model_id: gpt-4o
+    model_id: gpt-4.1
   chat_with_image_vision:
     provider_id: openai
-    model_id: gpt-4o
+    model_id: gpt-4.1
   chat_with_structured_response:
     provider_id: openai
     model_id: gpt-4.1
@@ -20,7 +20,7 @@ default_providers:
     model_id: gpt-4.1
   embeddings:
     provider_id: openai
-    model_id: text-embedding-3-small
+    model_id: text-embedding-3-large
   moderation:
     provider_id: openai
     model_id: omni-moderation-latest
@@ -35,5 +35,5 @@ default_providers:
     model_id: tts-1-hd
   translate_text:
     provider_id: chat_translation
-    model_id: gpt-3.5-turbo
+    model_id: gpt-4.1
 default_vdb_provider: ''

@@ -1,0 +1,39 @@
+uuid: eb27d978-5c32-45b8-ac1e-2cbd5779f787
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.article.field_tags
+id: node.article.field_tags.default
+label: 'Tags Default'
+rule: llm_taxonomy
+input_mode: base
+weight: 100
+worker_type: field_widget_actions
+entity_type: node
+bundle: article
+field_name: field_tags
+edit_mode: true
+base_field: body
+prompt: 'Based on the {{ context }} generate up to {{ max_amount }} taxonomy term tags for this content in a comma separated list.'
+token: ''
+plugin_config:
+  automator_enabled: 1
+  automator_rule: llm_taxonomy
+  automator_mode: base
+  automator_base_field: body
+  automator_prompt: 'Based on the {{ context }} generate up to {{ max_amount }} taxonomy term tags for this content in a comma separated list.'
+  automator_token: ''
+  automator_edit_mode: 1
+  automator_label: 'Tags Default'
+  automator_weight: '100'
+  automator_worker_type: field_widget_actions
+  automator_ai_provider: x
+  automator_ai_model: grok-2-latest
+  automator_configuration_max_tokens: '4096'
+  automator_configuration_temperature: '1'
+  automator_configuration_frequency_penalty: '0'
+  automator_configuration_presence_penalty: '0'
+  automator_configuration_top_p: '1'
+  automator_clean_up: lowercase
+  automator_search_similar_tags: 1

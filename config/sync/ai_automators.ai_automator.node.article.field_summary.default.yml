@@ -1,0 +1,40 @@
+uuid: 76f406ad-e0d3-4f4e-899d-bb954eac29a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.article.field_summary
+id: node.article.field_summary.default
+label: 'Summary/Deck Default'
+rule: llm_text_long
+input_mode: base
+weight: 100
+worker_type: field_widget_actions
+entity_type: node
+bundle: article
+field_name: field_summary
+edit_mode: true
+base_field: body
+prompt: 'Create a summary in 1–2 sentences (160–200 characters) to be shown in teasers and SEO contexts. No links or formatting.'
+token: ''
+plugin_config:
+  automator_enabled: 1
+  automator_rule: llm_text_long
+  automator_mode: base
+  automator_base_field: body
+  automator_prompt: 'Create a summary in 1–2 sentences (160–200 characters) to be shown in teasers and SEO contexts. No links or formatting.'
+  automator_token: ''
+  automator_edit_mode: 1
+  automator_label: 'Summary/Deck Default'
+  automator_weight: '100'
+  automator_worker_type: field_widget_actions
+  automator_ai_provider: x
+  automator_ai_model: grok-2-latest
+  automator_configuration_max_tokens: '4096'
+  automator_configuration_temperature: '1'
+  automator_configuration_frequency_penalty: '0'
+  automator_configuration_presence_penalty: '0'
+  automator_configuration_top_p: '1'
+  automator_joiner: ''
+  automator_joiner_other: ''
+  automator_use_text_format: plain_text

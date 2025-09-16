@@ -3,4 +3,4 @@ title_suggest: "Suggest an SEO friendly title for this page based off of the fol
 tone: 'Change the tone of the following text to be {{ tone }} using the same language as the following text:'
 summarise: "Create a detailed summary of the following text in less than 130 words using the same language as the following text:\r\n"
 taxonomy_suggest_open: suggest_tags__suggest_tags_default
-taxonomy_suggest_from_voc: suggest_vocabulary__suggest_vocabulary_default
+taxonomy_suggest_from_voc: suggest_vocabulary__suggest_vocabulary_modified

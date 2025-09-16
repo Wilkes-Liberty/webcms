@@ -1,0 +1,8 @@
+uuid: f342c21e-450e-4a2e-a633-5a7e415c28de
+langcode: en
+status: true
+dependencies: {  }
+id: suggest_vocabulary__suggest_vocabulary_modified
+label: 'Modified Suggest Vocabulary'
+type: suggest_vocabulary
+prompt: suggest_vocabulary__suggest_vocabulary_default
