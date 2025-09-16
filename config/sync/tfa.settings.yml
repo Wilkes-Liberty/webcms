@@ -2,20 +2,39 @@ _core:
   default_config_hash: JyIkFj38h-aTLsrCfejAfP277qBJ61tlaLEBH44IHhg
 langcode: en
 enabled: false
-required_roles: {  }
+required_roles:
+  administrator: administrator
+  authenticated: '0'
+  client: '0'
+  content_author: '0'
+  content_editor: '0'
+  contractor: '0'
+  headless_client: '0'
+  hr_manager: '0'
+  media_manager: '0'
+  pending: '0'
+  publisher: '0'
+  seo_manager: '0'
+  translator: '0'
+  www: '0'
 send_plugins: {  }
 login_plugins: {  }
+login_plugin_settings:
+  tfa_trusted_browser:
+    cookie_expiration: 30
+    cookie_name: tfa-trusted-browser
+allowed_validation_plugins:
+  '': null
 default_validation_plugin: ''
 validation_plugin_settings: {  }
-allowed_validation_plugins: {  }
-help_text: 'Contact support to reset your access'
 validation_skip: 3
 users_without_tfa_redirect: false
+reset_pass_skip_enabled: false
 encryption: ''
 tfa_flood_uid_only: 1
 tfa_flood_window: 300
 tfa_flood_threshold: 6
-reset_pass_skip_enabled: false
+help_text: 'Contact support to reset your access'
 mail:
   tfa_enabled_configuration:
     subject: 'Your [site:name] account now has two-factor authentication'
@@ -28,7 +47,7 @@ mail:
 
       If you ever lose the device you configured, you should act quickly to delete its association with this account.
 
-      --
+      -- 
       [site:name] team
   tfa_disabled_configuration:
     subject: 'Your [site:name] account no longer has two-factor authentication'
@@ -39,5 +58,5 @@ mail:
 
       If you did not take this action, please contact a site administrator immediately.
 
-      --
+      -- 
       [site:name] team

@@ -14,7 +14,7 @@ bundle: resource
 label: 'Design Variant'
 description: 'Design variant to apply to this page.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.rss
+    - field.field.node.article.ai_automator_status
     - field.field.node.article.body
     - field.field.node.article.field_ab_variant
     - field.field.node.article.field_breadcrumb_label
@@ -57,6 +58,7 @@ content:
     weight: 100
     region: content
 hidden:
+  ai_automator_status: true
   body: true
   field_ab_variant: true
   field_breadcrumb_label: true

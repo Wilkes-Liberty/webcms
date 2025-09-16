@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.media.field_transcript
+    - filter.format.headless_safe
     - media.type.video_file
   module:
     - text
@@ -14,7 +15,7 @@ bundle: video_file
 label: Transcript
 description: "Full transcript text. Uses the 'Headless (Safe)' text format; paragraphs and links allowed. No inline image uploads."
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

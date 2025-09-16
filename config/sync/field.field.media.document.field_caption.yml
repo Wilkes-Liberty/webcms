@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.media.field_caption
+    - filter.format.headless_safe
     - media.type.document
   module:
     - text
@@ -14,7 +15,7 @@ bundle: document
 label: Caption
 description: "Caption text for this media. Uses the 'Headless (Safe)' text format; minimal markup and links allowed. No inline image uploads."
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

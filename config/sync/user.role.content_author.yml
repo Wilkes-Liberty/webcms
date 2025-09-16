@@ -8,6 +8,7 @@ dependencies:
     - entity_browser.browser.media_image_browser
     - filter.format.basic_html
     - filter.format.headless_clean
+    - filter.format.headless_clean_x
     - filter.format.headless_plain_ai
     - media.type.audio
     - media.type.document
@@ -34,6 +35,7 @@ dependencies:
     - block_content
     - content_moderation
     - entity_browser
+    - environment_indicator
     - filter
     - media
     - node
@@ -45,6 +47,7 @@ is_admin: false
 permissions:
   - 'access ai content suggestion tools'
   - 'access content'
+  - 'access environment indicator'
   - 'access media overview'
   - 'access media_generic_browser entity browser pages'
   - 'access media_image_browser entity browser pages'
@@ -96,6 +99,7 @@ permissions:
   - 'use editorial transition submit_for_review'
   - 'use text format basic_html'
   - 'use text format headless_clean'
+  - 'use text format headless_clean_x'
   - 'use text format headless_plain_ai'
   - 'view latest version'
   - 'view media'

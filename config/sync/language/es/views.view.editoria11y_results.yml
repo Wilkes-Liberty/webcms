@@ -1,7 +1,9 @@
+label: 'Resultados de Editoria11y'
 display:
   default:
     display_title: 'Por defecto'
     display_options:
+      title: 'Resultados principales'
       fields:
         id:
           label: ID
@@ -12,31 +14,56 @@ display:
           exposed_sorts_label: 'Ordenar por'
           sort_asc_label: Asc
           sort_desc_label: Desc
+      empty:
+        area_text_custom:
+          content: 'No se encontraron alertas.'
+      use_more_text: 'Todas las páginas con problemas'
   block_recent_issues:
+    display_title: 'Bloque: Problemas recientes'
     display_options:
+      title: 'Alertas recientes de Editoria11y'
       fields:
+        created:
+          label: Detectado
         result_name:
           label: Incidencia
         page_path:
           label: 'Ruta de la página'
         page_title:
           label: Página
+      use_more_text: 'Problemas recientes'
+      block_description: 'Editoria11y - Alertas recientes'
+      block_category: Editoria11y
   block_top_issues:
+    display_title: 'Bloque: Alertas más frecuentes'
     display_options:
+      title: 'Alertas de Editoria11y más frecuentes'
       fields:
         result_name:
           label: Incidencia
         result_name_count:
           label: Número
+      use_more_text: 'Todos los problemas'
+      block_description: 'Editoria11y - Alertas más frecuentes'
+      block_category: Editoria11y
   block_top_results:
+    display_title: 'Bloque: Páginas con más alertas'
     display_options:
+      title: 'Páginas con más alertas de Editoria11y'
       fields:
         page_title:
           label: Página
         page_path:
           label: 'Ruta de la página'
+        page_result_count:
+          label: 'Problemas en la página'
+      use_more_text: 'Todas las páginas con problemas'
+      block_description: 'Editoria11y - Páginas con más alertas'
+      block_category: Editoria11y
   issues__page:
+    display_title: 'Todos los problemas'
     display_options:
+      title: 'Todos los problemas'
       fields:
         result_name:
           label: Incidencia
@@ -53,6 +80,14 @@ display:
             items_per_page_label: 'Elementos por página'
             items_per_page_options_all_label: '- Todo -'
             offset_label: Desplazamiento
+      sorts:
+        result_name_count:
+          expose:
+            label: 'Nombre de resultado cantidad'
+        result_name:
+          expose:
+            label: 'Nombre del resultado'
+      use_more_text: 'Todas las páginas con problemas'
   issues_by_page__page:
     display_options:
       fields:
@@ -60,6 +95,8 @@ display:
           label: Número
         result_name:
           label: Incidencia
+        created:
+          label: Detectado
         page_path:
           label: 'Ruta de la página'
         page_title:
@@ -80,6 +117,7 @@ display:
           exception:
             title: Todo(s)
   pages__page:
+    display_title: 'Todas las páginas con problemas'
     display_options:
       fields:
         page_title:
@@ -100,6 +138,12 @@ display:
             items_per_page_options_all_label: '- Todo -'
             offset_label: Desplazamiento
       filters:
+        page_title:
+          expose:
+            label: 'El título de la página contiene'
+        page_url:
+          expose:
+            label: 'La URL contiene'
         page_language:
           expose:
             label: Idioma
@@ -110,6 +154,8 @@ display:
           label: Número
         page_title:
           label: Página
+        created:
+          label: Detectado
       pager:
         options:
           tags:
@@ -124,8 +170,11 @@ display:
           exception:
             title: Todo(s)
   recent__page:
+    display_title: 'Problemas recientes'
     display_options:
       fields:
+        created:
+          label: Detectado
         result_name:
           label: Incidencia
         result_name_count:
@@ -146,6 +195,14 @@ display:
             items_per_page_options_all_label: '- Todo -'
             offset_label: Desplazamiento
       filters:
+        page_title:
+          expose:
+            label: 'El título de la página contiene'
+        page_url:
+          expose:
+            label: 'La URL contiene'
         page_language:
           expose:
             label: Idioma
+      menu:
+        title: 'Problemas recientes'

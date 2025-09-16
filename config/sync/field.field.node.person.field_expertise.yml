@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.storage.node.field_expertise
     - node.type.person
-  module:
-    - taxonomy
+    - taxonomy.vocabulary.industries
+    - taxonomy.vocabulary.services
+    - taxonomy.vocabulary.tech_stack
+    - taxonomy.vocabulary.topics
 id: node.person.field_expertise
 field_name: field_expertise
 entity_type: node
@@ -14,7 +16,7 @@ bundle: person
 label: Expertise
 description: 'Tag areas of expertise (topics, services, industries, tech stack).'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

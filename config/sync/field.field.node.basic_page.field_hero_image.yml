@@ -13,7 +13,7 @@ bundle: basic_page
 label: 'Hero Image'
 description: 'Min 1600×900 (16:9), JPG/PNG. Avoid text; set a focal point.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -4,7 +4,7 @@ status: true
 dependencies:
   module:
     - wl_text_formats
-name: 'Headless (Clean HTML)'
+name: 'Headless (Clean HTML) - OpenAI'
 format: headless_clean
 weight: 0
 filters:

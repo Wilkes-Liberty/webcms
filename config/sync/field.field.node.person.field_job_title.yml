@@ -12,7 +12,7 @@ bundle: person
 label: 'Job Title'
 description: 'Public job title displayed on profile.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

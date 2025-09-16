@@ -6,6 +6,16 @@ dependencies:
     - field.storage.node.field_tags
     - node.type.article
     - taxonomy.vocabulary.tags
+  module:
+    - ai_translate
+    - tmgmt_content
+third_party_settings:
+  ai_translate:
+    entity_reference:
+      translate_references: default
+    translate_references: default
+  tmgmt_content:
+    excluded: false
 _core:
   default_config_hash: QdUgf_beeoaPiyKorFv0q1fcJpWH_uZTqe_xoVJacrw
 id: node.article.field_tags
@@ -25,5 +35,7 @@ settings:
       tags: tags
     sort:
       field: _none
+      direction: asc
     auto_create: true
+    auto_create_bundle: ''
 field_type: entity_reference

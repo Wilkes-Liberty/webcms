@@ -14,7 +14,7 @@ bundle: service
 label: 'A/B Variant'
 description: 'Select the A/B testing variant for this page (if applicable).'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

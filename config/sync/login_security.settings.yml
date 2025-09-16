@@ -1,6 +1,6 @@
 _core:
   default_config_hash: xXWvqA-mLme5e-gh8GoK7HRINxd1ymvCnbrMMn6gamc
-track_time: 60
+track_time: 3600
 user_wrong_count: 0
 host_wrong_count: 0
 host_wrong_count_hard: 0

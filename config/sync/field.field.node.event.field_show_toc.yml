@@ -12,7 +12,7 @@ bundle: event
 label: 'Show On-Page TOC'
 description: 'Enable only if the page has 3+ H2 headings. Do not enable for short pages.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

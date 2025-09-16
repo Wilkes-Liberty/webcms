@@ -12,7 +12,7 @@ bundle: article
 label: 'Preview Token'
 description: 'Token used for content previews. Do not share externally.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -53,9 +53,12 @@ module:
   entity_redirect: 0
   entity_reference_revisions: 0
   environment_indicator: 0
+  environment_indicator_toolbar: 0
+  environment_indicator_ui: 0
   field: 0
   field_group: 0
   field_ui: 0
+  field_widget_actions: 0
   file: 0
   filter: 0
   focal_point: 0
@@ -84,9 +87,6 @@ module:
   image: 0
   inline_entity_form: 0
   inline_form_errors: 0
-  jquery_ui: 0
-  jquery_ui_autocomplete: 0
-  jquery_ui_menu: 0
   key: 0
   language: 0
   link: 0
@@ -99,7 +99,7 @@ module:
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
-  module_filter: 0
+  metatag_open_graph: 0
   mysql: 0
   next: 0
   next_extras: 0
@@ -150,6 +150,7 @@ module:
   tmgmt_language_combination: 0
   tmgmt_local: 0
   tmgmt_locale: 0
+  tmgmt_session_fix: 0
   token: 0
   toolbar: 0
   twig_tweak: 0

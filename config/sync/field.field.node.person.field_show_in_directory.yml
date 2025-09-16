@@ -12,7 +12,7 @@ bundle: person
 label: 'Show in Directory'
 description: 'Show this person on the public people directory.'
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 1

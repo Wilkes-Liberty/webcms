@@ -12,7 +12,7 @@ bundle: article
 label: 'Estimated Read Time (Minutes)'
 description: 'Whole minutes only (e.g., 3, 5, 7).'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -1,7 +1,9 @@
+label: 'Descartes de Editoria11y'
 display:
   default:
     display_title: 'Por defecto'
     display_options:
+      title: Despidos
       exposed_form:
         options:
           submit_button: Aplicar
@@ -9,14 +11,28 @@ display:
           exposed_sorts_label: 'Ordenar por'
           sort_asc_label: Asc
           sort_desc_label: Desc
+      empty:
+        area_text_custom:
+          content: 'No se encontraron despidos.'
+      use_more_text: 'Todos los despidos'
   dismissals__page:
+    display_title: 'Página de despidos'
     display_options:
+      title: 'Alertas de accesibilidad descartadas'
       fields:
+        page_title:
+          label: 'Página con problema'
+        result_name:
+          label: 'Problema descartado'
+        dismissal_status:
+          label: Marcado
         created:
           label: Activado
         name:
           label: Por
           separator: ', '
+        stale:
+          label: 'Todavía en la página'
         page_path:
           label: Ruta
         nothing:
@@ -33,21 +49,45 @@ display:
             items_per_page_options_all_label: '- Todo -'
             offset_label: Desplazamiento
       filters:
+        page_title:
+          expose:
+            label: 'El título de la página contiene'
+        page_path:
+          expose:
+            label: 'La URL contiene'
         page_language:
           expose:
             label: Idioma
         uid:
           expose:
             label: Por
+        result_name:
+          expose:
+            label: 'Tipo de problema'
+        stale:
+          expose:
+            label: 'Todavía en la página'
+      use_more_text: 'Todos los despidos'
+      menu:
+        title: 'Alertas descartadas'
+        description: 'Problemas marcados como ocultos o correctos en Editoria11y.'
   recent_dismissals:
+    display_title: 'Despidos recientes'
     display_options:
+      title: 'Despidos recientes de Editoria11y'
+      block_description: 'Editoria11y - Descartes recientes'
+      block_category: Editoria11y
       fields:
         page_title:
           label: Página
         result_name:
           label: Incidencia
+        dismissal_status:
+          label: Marcado
         name:
           label: Por
           separator: ', '
         created:
           label: Activado
+        stale:
+          label: '¿Sigues en la página?'

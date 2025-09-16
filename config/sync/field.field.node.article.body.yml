@@ -4,9 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
+    - filter.format.headless_clean_x
     - node.type.article
   module:
     - text
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 _core:
   default_config_hash: 4Wxs1LseZ8JsNwD9uJVIbzZqG35yQXN8Eo1Hub6NMuI
 id: node.article.body
@@ -14,14 +19,14 @@ field_name: body
 entity_type: node
 bundle: article
 label: Body
-description: "Main body content. Uses the 'Headless (Safe)' text format: headings (H2–H6), lists, quotes, links (target/title/rel), inline code, and embedded media. No inline image uploads."
+description: "Main body content. Uses the 'Headless (Clean)' text format: headings (H2–H6), lists, quotes, links (target/title/rel), inline code, and embedded media. No inline image uploads."
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  display_summary: true
+  display_summary: false
   required_summary: false
   allowed_formats:
-    - headless_safe
+    - headless_clean_x
 field_type: text_with_summary

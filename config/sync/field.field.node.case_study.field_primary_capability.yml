@@ -13,7 +13,7 @@ bundle: case_study
 label: 'Primary Capability'
 description: 'Main capability highlighted by this content.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

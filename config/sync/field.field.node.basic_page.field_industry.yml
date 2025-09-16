@@ -13,7 +13,7 @@ bundle: basic_page
 label: 'Primary Industry'
 description: 'Primary industry audience for this content.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

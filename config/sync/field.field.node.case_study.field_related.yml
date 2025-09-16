@@ -12,7 +12,7 @@ bundle: case_study
 label: 'Related Content'
 description: 'Related items to recommend to readers.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

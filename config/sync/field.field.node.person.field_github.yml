@@ -14,7 +14,7 @@ bundle: person
 label: GitHub
 description: 'Full URL to GitHub profile.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -13,7 +13,7 @@ bundle: resource
 label: 'Resource Type'
 description: 'Type of resource (e.g., eBook, whitepaper, checklist).'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -5,6 +5,11 @@ dependencies:
   config:
     - field.storage.node.field_cache_tags
     - node.type.article
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.article.field_cache_tags
 field_name: field_cache_tags
 entity_type: node
@@ -12,7 +17,7 @@ bundle: article
 label: 'CDN Cache Tags (Hints)'
 description: 'Advanced. Comma-separated list; limit to ≤10. Coordinate with the platform team before use.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

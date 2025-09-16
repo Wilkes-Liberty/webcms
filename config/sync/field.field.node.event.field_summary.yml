@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_summary
+    - filter.format.plain_text
     - node.type.event
   module:
     - text
@@ -14,7 +15,7 @@ bundle: event
 label: Summary/Deck
 description: '1–2 sentences (160–200 characters). Shown in teasers and SEO contexts. No links or formatting.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

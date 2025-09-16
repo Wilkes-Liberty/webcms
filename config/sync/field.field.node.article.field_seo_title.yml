@@ -12,7 +12,7 @@ bundle: article
 label: 'SEO Title Override'
 description: '50–60 characters. Put the primary keyword first. Avoid brand unless required; replaces the HTML <title> only.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

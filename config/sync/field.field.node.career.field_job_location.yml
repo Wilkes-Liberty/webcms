@@ -12,7 +12,7 @@ bundle: career
 label: Location
 description: 'Location for this role (city/state or remote).'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

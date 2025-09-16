@@ -19,7 +19,7 @@ bundle: p_cta_banner
 label: Body
 description: "Body text for this component. Uses the 'Headless (Safe)' format: headings (H2–H6), lists, quotes, links (target/title/rel), inline code, and embedded media. No inline image uploads."
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

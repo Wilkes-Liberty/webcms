@@ -37,8 +37,8 @@ settings:
         dialog_class: ai-ckeditor-modal
       plugins:
         ai_automators_ckeditor:
-          enabled: true
           workflows: {  }
+          enabled: true
         ai_ckeditor_completion:
           enabled: true
           provider: openai__gpt-4o

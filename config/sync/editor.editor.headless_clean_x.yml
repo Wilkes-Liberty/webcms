@@ -1,0 +1,205 @@
+uuid: 9520d85e-ab55-4adf-8d0c-35f9c6e08930
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.headless_clean_x
+  module:
+    - ckeditor5
+format: headless_clean_x
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - bold
+      - italic
+      - '|'
+      - codeBlock
+      - code
+      - blockQuote
+      - link
+      - bulletedList
+      - numberedList
+      - horizontalLine
+      - '|'
+      - aickeditor
+  plugins:
+    ai_ckeditor_ai:
+      dialog:
+        autoresize: 'min-width: 600px'
+        height: '750'
+        width: '900'
+        dialog_class: ai-ckeditor-modal
+      plugins:
+        ai_automators_ckeditor:
+          workflows: {  }
+          enabled: true
+        ai_ckeditor_completion:
+          enabled: true
+          provider: x__grok-2-latest
+        ai_ckeditor_help:
+          enabled: false
+        ai_ckeditor_modify_prompt:
+          enabled: true
+          provider: x__grok-2-latest
+        ai_ckeditor_reformat_html:
+          enabled: false
+          provider: openai__gpt-4.1
+        ai_ckeditor_spellfix:
+          enabled: true
+          provider: x__grok-2-latest
+        ai_ckeditor_summarize:
+          enabled: true
+          provider: x__grok-2-latest
+        ai_ckeditor_tone:
+          enabled: true
+          provider: x__grok-2-latest
+          autocreate: false
+          tone_vocabulary: tones
+          use_description: 0
+        ai_ckeditor_translate:
+          enabled: true
+          provider: x__grok-2-latest
+          autocreate: false
+          translate_vocabulary: languages
+          use_description: false
+          language_source: lang
+    ckeditor5_codeBlock:
+      languages:
+        -
+          label: 'Plain text'
+          language: plaintext
+        -
+          label: C
+          language: c
+        -
+          label: 'C#'
+          language: cs
+        -
+          label: C++
+          language: cpp
+        -
+          label: CSS
+          language: css
+        -
+          label: Diff
+          language: diff
+        -
+          label: HTML
+          language: html
+        -
+          label: Java
+          language: java
+        -
+          label: JavaScript
+          language: javascript
+        -
+          label: markdown
+          language: md
+        -
+          label: PHP
+          language: php
+        -
+          label: Python
+          language: python
+        -
+          label: Ruby
+          language: ruby
+        -
+          label: TypeScript
+          language: typescript
+        -
+          label: XML
+          language: xml
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+      multiBlock: true
+    ckeditor5_paste_filter_pasteFilter:
+      enabled: true
+      filters:
+        -
+          enabled: true
+          weight: -10
+          search: '<o:p><\/o:p>'
+          replace: ''
+        -
+          enabled: true
+          weight: -9
+          search: '(<[^>]*) (style="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -8
+          search: '(<[^>]*) (face="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -7
+          search: '(<[^>]*) (class="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -6
+          search: '(<[^>]*) (valign="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -5
+          search: '<font[^>]*>'
+          replace: ''
+        -
+          enabled: true
+          weight: -4
+          search: '<\/font>'
+          replace: ''
+        -
+          enabled: true
+          weight: -3
+          search: '<span[^>]*>'
+          replace: ''
+        -
+          enabled: true
+          weight: -2
+          search: '<\/span>'
+          replace: ''
+        -
+          enabled: true
+          weight: -1
+          search: '<p>&nbsp;<\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 0
+          search: '<p><\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 1
+          search: '<b><\/b>'
+          replace: ''
+        -
+          enabled: true
+          weight: 2
+          search: '<i><\/i>'
+          replace: ''
+        -
+          enabled: true
+          weight: 3
+          search: '<a name="OLE_LINK[^"]*">(.*?)<\/a>'
+          replace: $1
+    ckeditor5_plugin_pack_paste_markdown__paste_markdown:
+      enabled: true
+      language_fallback: en
+    ckeditor5_plugin_pack_word_count__word_count:
+      word_count_enabled: true
+      word_count_mode: words_chars
+image_upload:
+  status: false

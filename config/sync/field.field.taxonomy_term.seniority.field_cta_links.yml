@@ -14,7 +14,7 @@ bundle: seniority
 label: 'CTA Links'
 description: 'Optional call-to-action links for this term (title + URL).'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

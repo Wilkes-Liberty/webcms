@@ -6,6 +6,16 @@ dependencies:
     - field.storage.node.field_compliance
     - node.type.article
     - taxonomy.vocabulary.compliance
+  module:
+    - ai_translate
+    - tmgmt_content
+third_party_settings:
+  ai_translate:
+    entity_reference:
+      translate_references: 'yes'
+    translate_references: 'yes'
+  tmgmt_content:
+    excluded: false
 id: node.article.field_compliance
 field_name: field_compliance
 entity_type: node
@@ -21,4 +31,9 @@ settings:
   handler_settings:
     target_bundles:
       compliance: compliance
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
 field_type: entity_reference

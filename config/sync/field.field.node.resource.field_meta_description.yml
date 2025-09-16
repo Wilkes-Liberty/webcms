@@ -12,7 +12,7 @@ bundle: resource
 label: 'Meta Description'
 description: '150–160 characters. Summarize the page for search and social. Avoid quotes and trailing punctuation; write in sentence case.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

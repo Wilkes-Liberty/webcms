@@ -12,7 +12,7 @@ bundle: landing_page
 label: 'CDN Cache Tags (Hints)'
 description: 'Advanced. Comma-separated list; limit to ≤10. Coordinate with the platform team before use.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -14,7 +14,7 @@ bundle: capabilities
 label: 'External Canonical URL'
 description: 'Canonical URL on an external site (optional).'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

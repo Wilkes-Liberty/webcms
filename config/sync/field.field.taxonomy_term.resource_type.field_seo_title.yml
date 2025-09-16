@@ -12,7 +12,7 @@ bundle: resource_type
 label: 'SEO Title'
 description: 'Optional SEO title shown in search results; defaults to term name.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -6,6 +6,7 @@ dependencies:
     - system.menu.admin
   module:
     - node
+    - smart_date
     - user
   enforced:
     module:

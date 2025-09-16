@@ -1,0 +1,10 @@
+uuid: b9086eff-675f-4748-820b-ffcab9d47c11
+langcode: en
+status: true
+dependencies: {  }
+id: sitemap_index
+label: 'Extended Sitemap Index'
+description: 'The extended sitemap index type.'
+sitemap_generator: sitemap_index
+url_generators:
+  - sitemap_variant

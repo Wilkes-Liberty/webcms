@@ -14,7 +14,7 @@ bundle: landing_page
 label: 'Primary CTA'
 description: 'HTTPS URL with descriptive title. Use action-oriented verbs; avoid “Click here”.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

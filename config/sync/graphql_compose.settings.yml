@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: Sd_9jXBxw3mGn9d_y94jvlitI0wpvj6x2dQ0p6aGhJo
+  default_config_hash: HjBACF5NUOUEE_nzaQUEQf3mwzx-c-cevV4NejXsv1A
 entity_config:
   block_content:
     basic:
@@ -72,17 +72,7 @@ entity_config:
       edges_enabled: true
       routes_enabled: true
   taxonomy_term:
-    tags:
-      enabled: true
-      query_load_enabled: true
-      edges_enabled: true
-      routes_enabled: true
     department:
-      enabled: true
-      query_load_enabled: true
-      edges_enabled: true
-      routes_enabled: true
-    services:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
@@ -92,12 +82,22 @@ entity_config:
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
-    topics:
+    services:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    tags:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
     tech_stack:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    topics:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
@@ -126,7 +126,6 @@ field_config:
     remote_video:
       field_media_oembed_video:
         enabled: true
-    video: {  }
   node:
     article:
       body:
@@ -135,41 +134,34 @@ field_config:
         enabled: true
       field_tags:
         enabled: true
-    page: {  }
     person:
-      field_job_title:
+      field_bio:
         enabled: true
       field_department:
         enabled: true
-      field_bio:
-        enabled: true
-      field_photo:
-        enabled: true
-      field_linkedin:
+      field_expertise:
         enabled: true
       field_github:
         enabled: true
-      field_website:
+      field_job_title:
         enabled: true
-      field_expertise:
+      field_linkedin:
+        enabled: true
+      field_photo:
         enabled: true
       field_show_in_directory:
+        enabled: true
+      field_website:
         enabled: true
   user:
     user:
       user_picture:
         enabled: true
 settings:
-  exclude_unpublished: true
   expose_entity_ids: false
-  field_required_override: false
   schema_description: 'GraphQL Compose'
   schema_version: '1'
-  simple_queries: true
   simple_unions: true
-  site_name: true
-  site_slogan: true
+  site_name: false
+  site_slogan: false
   site_front: true
-  inflector_langcode: en
-  inflector_singularize: true
-  custom: {  }

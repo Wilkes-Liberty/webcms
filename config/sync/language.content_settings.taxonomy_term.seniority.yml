@@ -1,0 +1,18 @@
+uuid: d2741523-e4e9-4095-9aa6-8a8100c5fb05
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.seniority
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.seniority
+target_entity_type_id: taxonomy_term
+target_bundle: seniority
+default_langcode: site_default
+language_alterable: false

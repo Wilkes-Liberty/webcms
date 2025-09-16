@@ -1,0 +1,18 @@
+uuid: f7595ac8-995e-426b-ba1f-718d3a5fcd69
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tech_stack
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.tech_stack
+target_entity_type_id: taxonomy_term
+target_bundle: tech_stack
+default_langcode: site_default
+language_alterable: false

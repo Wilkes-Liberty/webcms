@@ -1,0 +1,42 @@
+uuid: ''
+langcode: en
+status: true
+dependencies:
+  module:
+    - wl_text_formats
+name: 'Headless (Clean HTML) X'
+format: headless_clean_x
+weight: 0
+filters:
+  filter_headless_sanitize:
+    id: filter_headless_sanitize
+    provider: wl_text_formats
+    status: true
+    weight: 10
+    settings:
+      allowed_tags: 'br p h2 h3 h4 strong em pre code blockquote a ul ol li hr'
+      allowed_attributes: 'dir lang href class(code) reversed start'
+      strict_mode: false
+      log_sanitization: false
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <p> <h2> <h3> <h4> <strong> <em> <code class="language-*"> <pre> <blockquote> <a href> <ul> <ol reversed start> <li> <hr>'
+      filter_html_help: false
+      filter_html_nofollow: false
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 5
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: -5
+    settings:
+      filter_url_length: 120

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.media_image_browser
+    - field.field.node.article.ai_automator_status
     - field.field.node.article.body
     - field.field.node.article.field_ab_variant
     - field.field.node.article.field_breadcrumb_label
@@ -49,6 +50,7 @@ dependencies:
     - image
     - link
     - path
+    - scheduler
     - text
 third_party_settings:
   field_group:
@@ -560,6 +562,17 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 52
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   simple_sitemap:
     weight: 10
     region: content
@@ -585,6 +598,11 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
     weight: 5
@@ -595,11 +613,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 54
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   url_redirects:
     weight: 50
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  publish_on: true
-  unpublish_on: true
+  ai_automator_status: true

@@ -12,7 +12,7 @@ bundle: solutions
 label: Icon
 description: 'Icon shown in navigation and listings.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

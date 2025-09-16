@@ -12,7 +12,7 @@ bundle: solutions
 label: Synonyms/Aliases
 description: 'Alternate names for this term; add one per line to aid search and tagging.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -12,7 +12,7 @@ bundle: case_study
 label: 'Parent Page'
 description: 'Choose the parent to control breadcrumbs and hierarchy. Do not select this page; keep within the same language.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

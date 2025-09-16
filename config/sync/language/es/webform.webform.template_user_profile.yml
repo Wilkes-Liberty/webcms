@@ -1,3 +1,4 @@
+settings: null
 title: 'Perfil de usuario'
 handlers:
   email_notification:

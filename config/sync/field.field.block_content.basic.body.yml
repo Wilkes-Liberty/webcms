@@ -5,6 +5,7 @@ dependencies:
   config:
     - block_content.type.basic
     - field.storage.block_content.body
+    - filter.format.headless_safe
   module:
     - text
 _core:
@@ -16,7 +17,7 @@ bundle: basic
 label: Body
 description: "Block body text. Uses the 'Headless (Safe)' text format: headings (H2–H6), lists, quotes, links (target/title/rel), inline code, and embedded media. No inline image uploads."
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

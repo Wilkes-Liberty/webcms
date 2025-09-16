@@ -12,7 +12,7 @@ bundle: basic_page
 label: 'Robots: noindex'
 description: 'Exclude this page from search indexing. Use for campaign/thank-you/duplicate pages.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

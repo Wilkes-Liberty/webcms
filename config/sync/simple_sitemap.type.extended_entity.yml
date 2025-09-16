@@ -1,0 +1,10 @@
+uuid: 7b3ba3f9-ed0f-423f-9c36-82fdb55fe2b7
+langcode: en
+status: true
+dependencies: {  }
+id: extended_entity
+label: 'Extended entity'
+description: 'Allows adding images within paragraphs and altering the entity query. Provided by the Sitemap Extensions module.'
+sitemap_generator: default
+url_generators:
+  - extended_entity

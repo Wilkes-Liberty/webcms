@@ -1,0 +1,18 @@
+uuid: 09025850-9cde-4edf-83e8-677069867934
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.persona
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.persona
+target_entity_type_id: taxonomy_term
+target_bundle: persona
+default_langcode: site_default
+language_alterable: false

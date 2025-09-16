@@ -14,7 +14,7 @@ bundle: career
 label: 'Employment Type'
 description: 'Employment type (full-time, part-time, contract, etc.).'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

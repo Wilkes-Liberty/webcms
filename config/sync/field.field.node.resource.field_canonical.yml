@@ -14,7 +14,7 @@ bundle: resource
 label: 'Canonical URL (override)'
 description: 'Optional canonical URL to indicate the preferred source for this content.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

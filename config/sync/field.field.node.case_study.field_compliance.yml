@@ -13,7 +13,7 @@ bundle: case_study
 label: Compliance
 description: 'Compliance notes or classification relevant to this content.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

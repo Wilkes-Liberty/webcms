@@ -19,7 +19,7 @@ bundle: landing_page
 label: Body
 description: "Main body content. Uses the 'Headless (Safe)' text format: headings (H2–H6), lists, quotes, links (target/title/rel), inline code, and embedded media. No inline image uploads."
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -12,7 +12,7 @@ bundle: article
 label: 'UTM Bucket/Campaign'
 description: 'UTM bucket or campaign tag for analytics.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

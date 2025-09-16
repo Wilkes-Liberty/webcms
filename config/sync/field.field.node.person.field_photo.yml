@@ -14,7 +14,7 @@ bundle: person
 label: Photo
 description: 'Headshot: Min 800×800, JPG/PNG. Avoid text; set a focal point.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

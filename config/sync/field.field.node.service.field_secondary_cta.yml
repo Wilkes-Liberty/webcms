@@ -14,7 +14,7 @@ bundle: service
 label: 'Secondary CTA'
 description: 'Optional. Same rules as primary CTA; use sparingly.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

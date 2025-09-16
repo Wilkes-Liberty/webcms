@@ -19,7 +19,7 @@ bundle: basic_page
 label: Body
 description: "Main body content. Uses the 'Headless (Clean HTML)' text format: headings (H2–H6), lists, quotes, links, inline code, and clean HTML structure optimized for headless/API usage."
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

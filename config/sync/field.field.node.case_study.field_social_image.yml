@@ -13,7 +13,7 @@ bundle: case_study
 label: 'Social Share Image'
 description: '1200×630 JPG/PNG (≤1MB). Keep critical content 48px from edges; minimal text.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

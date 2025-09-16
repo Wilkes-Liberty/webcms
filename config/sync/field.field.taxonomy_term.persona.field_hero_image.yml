@@ -15,7 +15,7 @@ bundle: persona
 label: 'Hero Image'
 description: 'Hero image used on term landing pages or headers.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

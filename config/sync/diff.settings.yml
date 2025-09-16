@@ -8,12 +8,9 @@ general_settings:
   layout_plugins:
     visual_inline:
       enabled: true
-      weight: 0
-    split_fields:
-      enabled: true
-      weight: 1
     unified_fields:
       enabled: true
-      weight: 2
+    split_fields:
+      enabled: true
   visual_default_view_mode: full
-  visual_inline_theme: admin
+  visual_inline_theme: default

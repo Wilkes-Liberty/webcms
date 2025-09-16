@@ -978,7 +978,7 @@ display:
       menu:
         type: normal
         title: Jobs
-        description: 'Manage and review existing translation jobs.'
+        description: 'Overview of Jobs.'
         weight: 10
         menu_name: admin
         parent: tmgmt.admin_tmgmt

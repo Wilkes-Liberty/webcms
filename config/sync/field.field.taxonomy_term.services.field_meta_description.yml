@@ -12,7 +12,7 @@ bundle: services
 label: 'Meta Description'
 description: '1–2 sentence summary used by search and social previews.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

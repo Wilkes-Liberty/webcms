@@ -1,0 +1,18 @@
+uuid: 95f50632-9dbd-458a-bb31-3acbf99e81ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.compliance
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.compliance
+target_entity_type_id: taxonomy_term
+target_bundle: compliance
+default_langcode: site_default
+language_alterable: false
