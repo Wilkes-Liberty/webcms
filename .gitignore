@@ -81,3 +81,8 @@ keys/
 
 # Backups
 backups*
+
+# TMP
+config/compliance-terms*
+docs/archive*
+scripts/create-*
