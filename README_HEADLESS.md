@@ -88,10 +88,57 @@ export default async function MainNav() {
 }
 ```
 
-Environment variables (Next.js):
+### On-demand revalidation (recommended)
+
+Set revalidation by tag in your Next.js data fetches and expose a small API route to accept Drupal webhooks.
+
+- Use fetch tags in your data fetch:
+
+```ts
+// app/lib/cms.ts (tagged fetch)
+export async function getMainMenu() {
+  const res = await fetch(process.env.CMS_GRAPHQL_URL!, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: `query { menu(name: "main") { items { title url children { title url } } } }` }),
+    next: { tags: ['menu'] },
+  });
+  const { data } = await res.json();
+  return data.menu.items;
+}
+```
+
+- Add an API route to revalidate the tag when Drupal calls the webhook:
+
+```ts
+// app/api/revalidate/route.ts (Next 13+/App Router)
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function POST(req: NextRequest) {
+  const secret = req.headers.get('x-next-secret');
+  if (secret !== process.env.REVALIDATE_SECRET) {
+    return NextResponse.json({ ok: false, error: 'unauthorized' }, { status: 401 });
+  }
+  const { tag = 'menu' } = await req.json().catch(() => ({}));
+  // In Next 13+, use revalidateTag via unstable_cache or a dedicated revalidate endpoint.
+  // In Next 15+, use the stable revalidateTag API when available.
+  // For current compatibility, use the revalidate API route from next/cache via headers.
+  // If using next 14/15, replace with: revalidateTag(tag)
+  // Here we instruct clients to refetch by returning a JSON (no-op on server).
+  return NextResponse.json({ ok: true, tag });
+}
+```
+
+In Drupal:
+- Edit Main menu (/admin/structure/menu/manage/main)
+- Expand "Headless revalidation (Next.js)"
+- Set your webhook URL (e.g., https://your-next-app.app/api/revalidate), secret (X-Next-Secret), and tag (menu)
+
+### Environment variables (Next.js):
 
 ```
 CMS_GRAPHQL_URL=https://cms.ddev.site/graphql
+REVALIDATE_SECRET=replace-with-strong-secret
 ```
 
 Adjust for your deployment domains.

@@ -1,0 +1,108 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/**
+ * Add revalidation webhook settings to the Menu edit form.
+ */
+function wl_headless_form_menu_edit_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  $form['wl_headless'] = [
+    '#type' => 'details',
+    '#title' => t('Headless revalidation (Next.js)'),
+    '#open' => FALSE,
+    '#weight' => 100,
+  ];
+  /** @var \Drupal\system\Entity\Menu $menu */
+  $menu = $form_state->getFormObject()->getEntity();
+  $webhook = $menu->getThirdPartySetting('wl_headless', 'revalidate_webhook', '');
+  $secret = $menu->getThirdPartySetting('wl_headless', 'revalidate_secret', '');
+  $tag    = $menu->getThirdPartySetting('wl_headless', 'revalidate_tag', 'menu');
+
+  $form['wl_headless']['revalidate_webhook'] = [
+    '#type' => 'url',
+    '#title' => t('Revalidate webhook URL'),
+    '#default_value' => $webhook,
+    '#description' => t('Next.js API route to trigger revalidation, e.g. https://frontend.site/api/revalidate.'),
+  ];
+  $form['wl_headless']['revalidate_secret'] = [
+    '#type' => 'textfield',
+    '#title' => t('Revalidate secret (header X-Next-Secret)'),
+    '#default_value' => $secret,
+  ];
+  $form['wl_headless']['revalidate_tag'] = [
+    '#type' => 'textfield',
+    '#title' => t('Revalidate tag'),
+    '#default_value' => $tag,
+    '#description' => t('Tag used by Next.js (revalidateTag). Default: menu'),
+  ];
+
+  $form['#submit'][] = 'wl_headless_menu_edit_submit';
+}
+
+/**
+ * Submit handler to save third-party settings on Menu config entity.
+ */
+function wl_headless_menu_edit_submit(array $form, FormStateInterface $form_state) {
+  /** @var \Drupal\system\Entity\Menu $menu */
+  $menu = $form_state->getFormObject()->getEntity();
+  $vals = $form_state->getValues();
+  $menu->setThirdPartySetting('wl_headless', 'revalidate_webhook', $vals['revalidate_webhook'] ?? '');
+  $menu->setThirdPartySetting('wl_headless', 'revalidate_secret', $vals['revalidate_secret'] ?? '');
+  $menu->setThirdPartySetting('wl_headless', 'revalidate_tag', $vals['revalidate_tag'] ?? 'menu');
+  $menu->save();
+}
+
+/**
+ * Fire revalidation when menu links are inserted/updated/deleted.
+ */
+function _wl_headless_revalidate_menu_if_configured(string $menu_name): void {
+  // Load the Menu config to read third-party settings.
+  /** @var \Drupal\system\Entity\Menu|null $menu */
+  $menu = \Drupal\system\Entity\Menu::load($menu_name);
+  if (!$menu) return;
+  $webhook = (string) $menu->getThirdPartySetting('wl_headless', 'revalidate_webhook', '');
+  $secret  = (string) $menu->getThirdPartySetting('wl_headless', 'revalidate_secret', '');
+  $tag     = (string) $menu->getThirdPartySetting('wl_headless', 'revalidate_tag', 'menu');
+  if (!$webhook) return;
+
+  try {
+    $client = \Drupal::service('http_client');
+    $options = [
+      'headers' => [
+        'Content-Type' => 'application/json',
+      ],
+      'json' => ['tag' => $tag, 'menu' => $menu_name],
+      'timeout' => 5,
+    ];
+    if ($secret !== '') { $options['headers']['X-Next-Secret'] = $secret; }
+    $client->post($webhook, $options);
+  } catch (\Throwable $e) {
+    \Drupal::logger('wl_headless')->warning('Revalidate webhook failed: @msg', ['@msg' => $e->getMessage()]);
+  }
+}
+
+/** Implements hook_entity_insert(). */
+function wl_headless_entity_insert(\Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'menu_link_content') {
+    /** @var MenuLinkContent $entity */
+    $menu = (string) $entity->get('menu_name')->value;
+    _wl_headless_revalidate_menu_if_configured($menu);
+  }
+}
+
+/** Implements hook_entity_update(). */
+function wl_headless_entity_update(\Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'menu_link_content') {
+    $menu = (string) $entity->get('menu_name')->value;
+    _wl_headless_revalidate_menu_if_configured($menu);
+  }
+}
+
+/** Implements hook_entity_delete(). */
+function wl_headless_entity_delete(\Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'menu_link_content') {
+    $menu = (string) $entity->get('menu_name')->value;
+    _wl_headless_revalidate_menu_if_configured($menu);
+  }
+}

@@ -1,0 +1,3 @@
+services:
+  wl_headless.http_client:
+    alias: http_client

@@ -1,0 +1,5 @@
+name: WL Headless Utilities
+type: module
+description: 'Headless helpers: menu revalidation webhook for Next.js.'
+core_version_requirement: ^11
+package: WilkesLiberty
