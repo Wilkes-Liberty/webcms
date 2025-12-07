@@ -1,0 +1,101 @@
+{
+    "_hash": "be6a1e119634eb000a3b820c0c65ff4faa47fbfcc6b6e7d79c69b35c95edc514",
+    "patches": {
+        "drupal/entity_redirect": [
+            {
+                "package": "drupal/entity_redirect",
+                "description": "Fix TypeError when entity label is null during form rendering",
+                "url": "patches/entity_redirect-null-label-fix-2.3.patch",
+                "sha256": "46a6899464a535884267ae3c063fc700b1b839415a2b973297b60de7bc9e3044",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/decoupled_router": [
+            {
+                "package": "drupal/decoupled_router",
+                "description": "Fix property type declaration issue in RedirectPathTranslatorSubscriber",
+                "url": "patches/decoupled_router-fix-language-manager-property-type.patch",
+                "sha256": "4476760d1f60d9953f904dc58cbb374acadbf270e528dbb186f9c4791e66b4ad",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/ckeditor5_plugin_pack": [
+            {
+                "package": "drupal/ckeditor5_plugin_pack",
+                "description": "Fix markdown plugin translation loading issues for unsupported languages",
+                "url": "patches/ckeditor5_plugin_pack_markdown_translation_fix_working.patch",
+                "sha256": "080a1d241f3843b49f670e695adf2b38471293b569e99ca09876c7c73be4b269",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/telephone_validation": [
+            {
+                "package": "drupal/telephone_validation",
+                "description": "Fix Drupal 11 compatibility - ConfigFormBase constructor expects 2 arguments",
+                "url": "patches/telephone_validation_drupal11_fix.patch",
+                "sha256": "e727904b0aa008c25ba9c3261337e2fa243d5748ebb620907817f96a5a65a9c1",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/config_update": [
+            {
+                "package": "drupal/config_update",
+                "description": "Fix InvalidParameterException when generating URLs with empty config names",
+                "url": "patches/config_update-fix-url-generation-empty-config-names-2025-01-14.patch",
+                "sha256": "53526cb326af24aa14b07cb48c42de9e879fb55acf5a418e2dde1cc970cd2683",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/redirect": [
+            {
+                "package": "drupal/redirect",
+                "description": "Fix redirect_404 service definition to include time service argument",
+                "url": "patches/redirect_404-add-time-service-argument.patch",
+                "sha256": "43e67069732385348ebc0b7b530c19b1c0c33c1e10d0899d8ff5caf28bcf4d02",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/ai": [
+            {
+                "package": "drupal/ai",
+                "description": "Add missing ai_automators_ckeditor schema definition",
+                "url": "patches/ai_ckeditor_schema_fix.patch",
+                "sha256": "a2ff522a3cc9a3ed84e331fa6c017d2262892639fda59191f7629bfcfdf5274a",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "tmgmt/tmgmt_local": [
+            {
+                "package": "tmgmt/tmgmt_local",
+                "description": "Fix strpos null deprecation in TMGMTLocalBreadcrumbBuilder",
+                "url": "patches/tmgmt_local-strpos-null-fix.patch",
+                "sha256": "1482653a7aec961925bf51b475449ce4ac79b878d738005bad3c0a135ea8e936",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

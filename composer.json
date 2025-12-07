@@ -17,13 +17,9 @@
     "require": {
         "composer/installers": "^2.3",
         "cweagans/composer-patches": "^2.0",
-        "drupal/ai": "^1.2@alpha",
-        "drupal/ai_image_alt_text": "^1.0",
+        "drupal/ai": "2.0.x-dev",
         "drupal/ai_media_image": "^1.0@alpha",
-        "drupal/ai_provider_openai": "^1.1",
-        "drupal/ai_provider_x": "1.0.x-dev",
-        "drupal/ai_seo": "^1.0",
-        "drupal/ai_tmgmt": "^1.0@beta",
+        "drupal/ai_search": "^2.0@alpha",
         "drupal/allowed_formats": "^3.0",
         "drupal/antibot": "^2.0",
         "drupal/auto_translation": "^1.5@beta",
@@ -50,6 +46,7 @@
         "drupal/entity_redirect": "^2.3",
         "drupal/environment_indicator": "^4.0",
         "drupal/field_group": "^4.0",
+        "drupal/field_validation": "^3.0@beta",
         "drupal/focal_point": "^2.1",
         "drupal/gin": "^5.0",
         "drupal/graphql": "^4.6",
@@ -102,7 +99,7 @@
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "alpha",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
@@ -195,9 +192,6 @@
             },
             "drupal/redirect": {
                 "Fix redirect_404 service definition to include time service argument": "patches/redirect_404-add-time-service-argument.patch"
-            },
-            "drupal/ai": {
-                "Add missing ai_automators_ckeditor schema definition": "patches/ai_ckeditor_schema_fix.patch"
             },
             "tmgmt/tmgmt_local": {
                 "Fix strpos null deprecation in TMGMTLocalBreadcrumbBuilder": "patches/tmgmt_local-strpos-null-fix.patch"
