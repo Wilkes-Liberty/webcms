@@ -1,4 +1,8 @@
 <?php
+// Fallback include to ensure controller class loads during early rebuilds.
+if (!class_exists('\\Drupal\\wl_headless\\Controller\\HeadlessStatusController')) {
+  @include_once __DIR__ . '/src/Controller/HeadlessStatusController.php';
+}
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
@@ -76,8 +80,20 @@ function _wl_headless_revalidate_menu_if_configured(string $menu_name): void {
       'timeout' => 5,
     ];
     if ($secret !== '') { $options['headers']['X-Next-Secret'] = $secret; }
-    $client->post($webhook, $options);
+    $resp = $client->post($webhook, $options);
+    $status = (int) $resp->getStatusCode();
+    \Drupal::state()->set('wl_headless.revalidate.' . $menu_name, [
+      'timestamp' => \Drupal::time()->getRequestTime(),
+      'status' => $status,
+      'ok' => $status >= 200 && $status < 300,
+    ]);
   } catch (\Throwable $e) {
+    \Drupal::state()->set('wl_headless.revalidate.' . $menu_name, [
+      'timestamp' => \Drupal::time()->getRequestTime(),
+      'status' => 0,
+      'ok' => FALSE,
+      'error' => $e->getMessage(),
+    ]);
     \Drupal::logger('wl_headless')->warning('Revalidate webhook failed: @msg', ['@msg' => $e->getMessage()]);
   }
 }
