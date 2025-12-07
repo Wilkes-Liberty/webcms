@@ -94,6 +94,7 @@ module:
   image: 0
   inline_entity_form: 0
   inline_form_errors: 0
+  jsonapi: 0
   key: 0
   language: 0
   link: 0
@@ -111,6 +112,7 @@ module:
   next: 0
   next_extras: 0
   next_graphql: 0
+  next_jsonapi: 0
   node: 0
   options: 0
   page_cache: 0
