@@ -1,0 +1,41 @@
+id: hugo_redirects
+label: 'Hugo aliases to Redirects'
+migration_group: hugo
+status: true
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - modules/custom/wl_hugo_migrate/data/redirects.json
+  item_selector: /items
+  fields:
+  - name: from
+    selector: from
+  - name: to
+    selector: to
+  - name: code
+    selector: code
+ids:
+  from:
+    type: string
+process:
+  redirect_source/path: from
+  redirect_redirect/uri:
+    plugin: concat
+    source:
+      - 'internal:'
+      - to
+    delimiter: ''
+  status_code:
+    plugin: default_value
+    default_value: 301
+  language:
+    plugin: default_value
+    default_value: und
+destination:
+  plugin: 'entity:redirect'
+migration_dependencies:
+  required:
+    - hugo_terms
+    - hugo_pages

@@ -1,0 +1,263 @@
+{
+  "items": [
+    {
+      "uuid": "bb261573-aa3a-3811-6476-40c8880b3edb",
+      "title": "Capabilities",
+      "url": "/capabilities/",
+      "weight": 1,
+      "parent_uuid": null
+    },
+    {
+      "uuid": "74fa5418-8111-e769-814b-d72f9025e9c3",
+      "title": "Technology",
+      "url": "/technology/",
+      "weight": 2,
+      "parent_uuid": null
+    },
+    {
+      "uuid": "42f315f0-03f4-768a-f3d9-4145567315d8",
+      "title": "Artificial Intelligence",
+      "url": "/technology/artificial-intelligence/",
+      "weight": 21,
+      "parent_uuid": "74fa5418-8111-e769-814b-d72f9025e9c3"
+    },
+    {
+      "uuid": "c51a6e5d-3db1-7bee-e085-45e2d0608623",
+      "title": "Blockchain",
+      "url": "/technology/blockchain/",
+      "weight": 22,
+      "parent_uuid": "74fa5418-8111-e769-814b-d72f9025e9c3"
+    },
+    {
+      "uuid": "39bec66c-77b3-6053-df7a-fd1d59d082ab",
+      "title": "XRP Ledger",
+      "url": "/technology/blockchain/xrp-ledger/",
+      "weight": 221,
+      "parent_uuid": "c51a6e5d-3db1-7bee-e085-45e2d0608623"
+    },
+    {
+      "uuid": "40ea6b36-1921-809c-a19b-cbce8b06c49f",
+      "title": "Content Management",
+      "url": "/technology/content-management/",
+      "weight": 23,
+      "parent_uuid": "74fa5418-8111-e769-814b-d72f9025e9c3"
+    },
+    {
+      "uuid": "f166c3a2-a456-1f99-2fd5-c82dfce0d5e9",
+      "title": "Drupal",
+      "url": "/technology/content-management/drupal-cms/",
+      "weight": 231,
+      "parent_uuid": "40ea6b36-1921-809c-a19b-cbce8b06c49f"
+    },
+    {
+      "uuid": "cb278e84-b5f7-b964-ed66-8bc53bbf1bbe",
+      "title": "Digital Identity",
+      "url": "/technology/digital-identity/",
+      "weight": 24,
+      "parent_uuid": "74fa5418-8111-e769-814b-d72f9025e9c3"
+    },
+    {
+      "uuid": "99fbb567-bc9a-a279-f51b-2bf942eab3ed",
+      "title": "Solutions",
+      "url": "/solutions/",
+      "weight": 3,
+      "parent_uuid": null
+    },
+    {
+      "uuid": "d748ddba-9c90-11bb-29c5-df571672335c",
+      "title": "Digital Health ID",
+      "url": "/solutions/digital-health-id/",
+      "weight": 31,
+      "parent_uuid": "99fbb567-bc9a-a279-f51b-2bf942eab3ed"
+    },
+    {
+      "uuid": "67f384a5-2fa0-d4c7-c818-0fa787f5c727",
+      "title": "Digital Modernization",
+      "url": "/solutions/digital-modernization/",
+      "weight": 32,
+      "parent_uuid": "99fbb567-bc9a-a279-f51b-2bf942eab3ed"
+    },
+    {
+      "uuid": "2ace6129-03fc-4439-5792-396d9fa6ce55",
+      "title": "Financial Optimization",
+      "url": "/solutions/financial-optimization/",
+      "weight": 33,
+      "parent_uuid": "99fbb567-bc9a-a279-f51b-2bf942eab3ed"
+    },
+    {
+      "uuid": "7b13074d-3add-8049-5dcf-9df0e61c7f3a",
+      "title": "Private LLMs",
+      "url": "/solutions/private-llms/",
+      "weight": 34,
+      "parent_uuid": "99fbb567-bc9a-a279-f51b-2bf942eab3ed"
+    },
+    {
+      "uuid": "427e9574-4504-7bd1-b1a2-6beb9b087c4f",
+      "title": "Product AI",
+      "url": "/solutions/product-ai/",
+      "weight": 35,
+      "parent_uuid": "99fbb567-bc9a-a279-f51b-2bf942eab3ed"
+    },
+    {
+      "uuid": "2129b232-1d1e-f857-9c6f-6a0f2cf9bcee",
+      "title": "Zero Trust",
+      "url": "/solutions/zero-trust/",
+      "weight": 36,
+      "parent_uuid": "99fbb567-bc9a-a279-f51b-2bf942eab3ed"
+    },
+    {
+      "uuid": "994388ae-4a6f-068d-a338-73c6dc500bee",
+      "title": "Services",
+      "url": "/services/",
+      "weight": 4,
+      "parent_uuid": null
+    },
+    {
+      "uuid": "0c6d4eea-4ac2-7b04-3d89-ac85f4761da9",
+      "title": "AI Specialist Support",
+      "url": "/services/ai-specialist-support/",
+      "weight": 41,
+      "parent_uuid": "994388ae-4a6f-068d-a338-73c6dc500bee"
+    },
+    {
+      "uuid": "ae6dc200-94fe-5eb0-8b56-17b07ff2cff6",
+      "title": "Cloud Operations",
+      "url": "/services/cloud-operations/",
+      "weight": 42,
+      "parent_uuid": "994388ae-4a6f-068d-a338-73c6dc500bee"
+    },
+    {
+      "uuid": "81fff0c8-8817-4b79-8030-90b9e2392d47",
+      "title": "Cybersecurity",
+      "url": "/services/cybersecurity/",
+      "weight": 43,
+      "parent_uuid": "994388ae-4a6f-068d-a338-73c6dc500bee"
+    },
+    {
+      "uuid": "632de8e9-0fe2-0c14-fac9-6511eee13531",
+      "title": "Software Development",
+      "url": "/services/software-development/",
+      "weight": 44,
+      "parent_uuid": "994388ae-4a6f-068d-a338-73c6dc500bee"
+    },
+    {
+      "uuid": "0d277056-ab04-c400-c47e-9554a2d78655",
+      "title": "Industries",
+      "url": "/industries/",
+      "weight": 5,
+      "parent_uuid": null
+    },
+    {
+      "uuid": "51f83fa2-06b9-d5d7-390b-f485470c8588",
+      "title": "Aerospace & Defense",
+      "url": "/industries/aerospace-defense/",
+      "weight": 51,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "630f1815-f00c-1298-0414-08465965a748",
+      "title": "Civil Engineering",
+      "url": "/industries/civil/",
+      "weight": 52,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "6da55552-5f02-9010-81e6-51212e168278",
+      "title": "Communications & Media",
+      "url": "/industries/communications-media/",
+      "weight": 53,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "a3ecc84a-b7de-1944-236c-192dac7bf854",
+      "title": "Education",
+      "url": "/industries/education/",
+      "weight": 54,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "0bd6b3b6-36ff-d943-65f0-1555fb07cff7",
+      "title": "Emerging Markets",
+      "url": "/industries/emerging-markets/",
+      "weight": 55,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "29d080cd-149a-7ad3-c855-837c878ef271",
+      "title": "Finance",
+      "url": "/industries/finance/",
+      "weight": 56,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "5ba3dd3a-7e32-4116-0048-750c8f290425",
+      "title": "Government",
+      "url": "/industries/government/",
+      "weight": 57,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "30f7371c-b615-1455-e325-b4bcf4ae6490",
+      "title": "Health",
+      "url": "/industries/health/",
+      "weight": 58,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "04927b28-17e4-da4c-c85b-29f25b80a2db",
+      "title": "Legal",
+      "url": "/industries/legal/",
+      "weight": 59,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "ab36f84e-8519-86af-79d7-9b6a99463324",
+      "title": "Travel",
+      "url": "/industries/travel/",
+      "weight": 60,
+      "parent_uuid": "0d277056-ab04-c400-c47e-9554a2d78655"
+    },
+    {
+      "uuid": "b22b4dae-8b9f-15eb-3f21-7af71b279ded",
+      "title": "About",
+      "url": "/about/",
+      "weight": 6,
+      "parent_uuid": null
+    },
+    {
+      "uuid": "61e0afaa-b64e-4c88-c107-b3ded4c8b83d",
+      "title": "Contact Us",
+      "url": "/about/contact-us/",
+      "weight": 61,
+      "parent_uuid": "b22b4dae-8b9f-15eb-3f21-7af71b279ded"
+    },
+    {
+      "uuid": "7c244161-d04b-0446-e9dc-c6a7e8872695",
+      "title": "Contract Vehicles",
+      "url": "/about/contract-vehicles/",
+      "weight": 62,
+      "parent_uuid": "b22b4dae-8b9f-15eb-3f21-7af71b279ded"
+    },
+    {
+      "uuid": "ccf55387-58bd-0415-5242-02dfde4e8bfe",
+      "title": "Corporate Citizenship",
+      "url": "/about/corporate-citizenship/",
+      "weight": 63,
+      "parent_uuid": "b22b4dae-8b9f-15eb-3f21-7af71b279ded"
+    },
+    {
+      "uuid": "5a48fb87-7cb1-d8b0-4885-4857df4757b9",
+      "title": "Leadership",
+      "url": "/about/leadership/",
+      "weight": 64,
+      "parent_uuid": "b22b4dae-8b9f-15eb-3f21-7af71b279ded"
+    },
+    {
+      "uuid": "878771dd-938f-ca24-64be-3613e98ee41a",
+      "title": "News",
+      "url": "/about/news/",
+      "weight": 65,
+      "parent_uuid": "b22b4dae-8b9f-15eb-3f21-7af71b279ded"
+    }
+  ]
+}
