@@ -7,12 +7,12 @@ dependencies:
 id: taxo_capabilities
 label: 'Capabilities terms'
 type: 'canonical_entities:taxonomy_term'
-pattern: '/services/[term:parents:join-path]/[term:name]'
+pattern: '/capabilities/[term:parents:join-path]/[term:name]'
 selection_criteria:
-  5fe0a07a-be43-4c16-a371-8598c8c290e4:
+  -
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 5fe0a07a-be43-4c16-a371-8598c8c290e4
+    uuid: 6ddf0b18-fd68-495b-8ef0-28116daca996
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:
