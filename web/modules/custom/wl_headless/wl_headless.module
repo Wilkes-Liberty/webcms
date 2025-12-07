@@ -1,7 +1,36 @@
 <?php
-// Fallback include to ensure controller class loads during early rebuilds.
-if (!class_exists('\\Drupal\\wl_headless\\Controller\\HeadlessStatusController')) {
-  @include_once __DIR__ . '/src/Controller/HeadlessStatusController.php';
+// Headless utilities: revalidation settings, state tracking, and status report entry.
+
+/**
+ * Implements hook_requirements().
+ * Adds a status report entry summarizing menu revalidation timestamps.
+ */
+function wl_headless_requirements($phase) {
+  $req = [];
+  if ($phase !== 'runtime') return $req;
+  $menus = \Drupal::entityTypeManager()->getStorage('menu')->loadMultiple();
+  $df = \Drupal::service('date.formatter');
+  foreach ($menus as $menu) {
+    $name = $menu->id();
+    $title = $menu->label();
+    $rec = \Drupal::state()->get('wl_headless.revalidate.' . $name, NULL);
+    $webhook = (string) $menu->getThirdPartySetting('wl_headless','revalidate_webhook','');
+    $tag = (string) $menu->getThirdPartySetting('wl_headless','revalidate_tag','menu');
+    $ts = (int) ($rec['timestamp'] ?? 0);
+    $status = isset($rec['status']) ? (string) $rec['status'] : '-';
+    $ok = isset($rec['ok']) ? (bool) $rec['ok'] : NULL;
+
+    $value = $webhook ? t('URL set; tag: @tag', ['@tag' => $tag]) : t('No webhook configured');
+    $desc = $ts ? t('Last: @when (status @code)', ['@when' => $df->format($ts, 'short'), '@code' => $status]) : t('No attempts recorded');
+
+    $req['wl_headless_' . $name] = [
+      'title' => t('Next.js revalidation – @title (@name)', ['@title'=>$title,'@name'=>$name]),
+      'value' => $value,
+      'severity' => $ok === NULL ? REQUIREMENT_INFO : ($ok ? REQUIREMENT_OK : REQUIREMENT_WARNING),
+      'description' => $desc,
+    ];
+  }
+  return $req;
 }
 
 use Drupal\Core\Form\FormStateInterface;
