@@ -38,6 +38,7 @@
         "drupal/core-project-message": "^11.2",
         "drupal/core-recipe-unpack": "^11.2",
         "drupal/core-recommended": "^11.2",
+        "drupal/dashboards": "^2.1",
         "drupal/date_popup": "^2.0",
         "drupal/decoupled_router": "^2.0",
         "drupal/devel": "^5.4",
@@ -186,9 +187,6 @@
             "drupal/ckeditor5_plugin_pack": {
                 "Fix markdown plugin translation loading issues for unsupported languages": "patches/ckeditor5_plugin_pack_markdown_translation_fix_working.patch"
             },
-            "drupal/ai": {
-                "Add missing ai_automators_ckeditor schema definition": "patches/ai_ckeditor_schema_fix.patch"
-            },
             "drupal/telephone_validation": {
                 "Fix Drupal 11 compatibility - ConfigFormBase constructor expects 2 arguments": "patches/telephone_validation_drupal11_fix.patch"
             },
@@ -199,7 +197,10 @@
                 "Fix redirect_404 service definition to include time service argument": "patches/redirect_404-add-time-service-argument.patch"
             },
             "drupal/ai": {
-                "Fix ChatTranslationProvider array/object bug in prompt handling": "patches/ai-translate-fix-prompt-array-bug.patch"
+                "Add missing ai_automators_ckeditor schema definition": "patches/ai_ckeditor_schema_fix.patch"
+            },
+            "tmgmt/tmgmt_local": {
+                "Fix strpos null deprecation in TMGMTLocalBreadcrumbBuilder": "patches/tmgmt_local-strpos-null-fix.patch"
             }
         }
     }

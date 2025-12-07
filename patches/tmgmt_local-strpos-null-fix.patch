@@ -1,0 +1,13 @@
+diff --git a/src/Menu/TMGMTLocalBreadcrumbBuilder.php b/src/Menu/TMGMTLocalBreadcrumbBuilder.php
+index abc123..def456 100644
+--- a/src/Menu/TMGMTLocalBreadcrumbBuilder.php
++++ b/src/Menu/TMGMTLocalBreadcrumbBuilder.php
+@@ -20,7 +20,7 @@ class TMGMTLocalBreadcrumbBuilder extends BreadcrumbBuilderBase {
+   public function applies(RouteMatchInterface $route_match) {
+     $route_name = $route_match->getRouteName();
+
+-    if (strpos($route_name, 'tmgmt_local') !== false) {
++    if (is_string($route_name) && strpos($route_name, 'tmgmt_local') !== false) {
+       return TRUE;
+     }
+
