@@ -40,7 +40,6 @@ dependencies:
   module:
     - ai_ckeditor
     - ai_content_suggestions
-    - ai_image_alt_text
     - ai_media_image
     - ai_translate
     - block_content
@@ -161,7 +160,6 @@ permissions:
   - 'edit terms in tech_stack'
   - 'edit terms in topics'
   - 'edit terms in use_cases'
-  - 'generate ai alt tags'
   - 'generate image with ai'
   - 'mark as hidden in editoria11y'
   - 'revert all revisions'

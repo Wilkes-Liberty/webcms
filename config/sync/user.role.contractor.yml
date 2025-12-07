@@ -9,7 +9,6 @@ dependencies:
   module:
     - ai_ckeditor
     - ai_content_suggestions
-    - ai_image_alt_text
     - ai_translate
     - filter
 id: contractor
@@ -20,7 +19,6 @@ permissions:
   - 'access ai content suggestion tools'
   - 'create ai content translation'
   - 'create ai interface translation'
-  - 'generate ai alt tags'
   - 'use ai ckeditor'
   - 'use text format headless_clean'
   - 'use text format headless_clean_x'

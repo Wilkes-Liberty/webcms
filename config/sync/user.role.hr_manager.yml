@@ -9,7 +9,6 @@ dependencies:
   module:
     - ai_ckeditor
     - ai_content_suggestions
-    - ai_image_alt_text
     - filter
     - profile
 id: hr_manager
@@ -19,7 +18,6 @@ is_admin: false
 permissions:
   - 'access ai content suggestion tools'
   - 'access profile overview'
-  - 'generate ai alt tags'
   - 'update any client profile'
   - 'update any contractor profile'
   - 'update any employee profile'

@@ -10,6 +10,10 @@ display:
           exposed_sorts_label: 'Сортировать по'
           sort_asc_label: 'По возрастанию'
           sort_desc_label: 'По убыванию'
+      empty:
+        area:
+          content:
+            value: 'Профилей пока нет.'
       arguments:
         uid:
           exception:

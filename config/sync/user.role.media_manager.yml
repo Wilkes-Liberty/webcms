@@ -18,7 +18,6 @@ dependencies:
   module:
     - ai_ckeditor
     - ai_content_suggestions
-    - ai_image_alt_text
     - ai_media_image
     - entity_browser
     - filter
@@ -46,7 +45,6 @@ permissions:
   - 'delete any remote_video media'
   - 'delete any svg_image media'
   - 'delete any video_file media'
-  - 'generate ai alt tags'
   - 'generate image with ai'
   - 'use ai ckeditor'
   - 'use text format headless_clean'

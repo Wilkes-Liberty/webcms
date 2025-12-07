@@ -29,7 +29,6 @@ dependencies:
   module:
     - ai_ckeditor
     - ai_content_suggestions
-    - ai_image_alt_text
     - ai_media_image
     - ai_translate
     - block_content
@@ -92,7 +91,6 @@ permissions:
   - 'edit own landing_page content'
   - 'edit own resource content'
   - 'edit own service content'
-  - 'generate ai alt tags'
   - 'generate image with ai'
   - 'use ai ckeditor'
   - 'use editorial transition create_new_draft'
