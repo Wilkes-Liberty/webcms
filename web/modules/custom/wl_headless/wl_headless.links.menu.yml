@@ -1,0 +1,6 @@
+wl_headless.status:
+  title: 'Headless revalidation status'
+  description: 'View latest revalidation timestamps and trigger revalidate.'
+  route_name: wl_headless.status
+  parent: system.admin_config_development
+  weight: 100
