@@ -44,8 +44,10 @@ module:
   crop: 0
   date_popup: 0
   datetime: 0
+  datetime_range: 0
   dblog: 0
   decoupled_router: 0
+  devel: 0
   diff: 0
   dynamic_page_cache: 0
   editor: 0
