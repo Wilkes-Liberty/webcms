@@ -1,7 +1,0 @@
-id: hugo
-label: 'Hugo import'
-description: 'Import content, terms, menus, and redirects from Hugo.'
-shared_configuration:
-  source:
-    constants:
-      langcode: en

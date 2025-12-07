@@ -1,9 +1,0 @@
-name: 'WL Hugo Migrate'
-type: module
-description: 'Imports Hugo content, taxonomies, menus, and aliases into Drupal via Migrate API.'
-core_version_requirement: ^11
-package: WilkesLiberty
-dependencies:
-  - drupal:migrate_plus
-  - drupal:migrate_tools
-  - drupal:redirect
