@@ -1,0 +1,68 @@
+uuid: 917fe290-d6c6-4a0f-8755-fde734b5aca1
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ot-DECGW0z_pvWnrrF0kEneC_p7LeNatOhbhZnLxwQc
+id: hugo_menu
+class: null
+idMap: {  }
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: hugo
+label: 'Hugo Main menu'
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - modules/custom/wl_hugo_migrate/data/menu.json
+  item_selector: /
+  ids:
+    uuid:
+      type: string
+process:
+  uuid: uuid
+  title: title
+  menu_name:
+    plugin: default_value
+    default_value: main
+  weight_override:
+    plugin: skip_on_empty
+    method: process
+    source: weight
+  weight_final:
+    plugin: coalesce
+    source:
+      - '@weight_override'
+      - 0
+  weight: '@weight_final'
+  link/uri:
+    plugin: concat
+    source:
+      - 'internal:'
+      - url
+    delimiter: ''
+  link/title: title
+  enabled:
+    plugin: default_value
+    default_value: 1
+  parent:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent_uuid
+    -
+      plugin: concat
+      delimiter: ''
+      source:
+        - 'menu_link_content:'
+        - '@parent_uuid'
+destination:
+  plugin: 'entity:menu_link_content'
+migration_dependencies:
+  required:
+    - hugo_terms
+    - hugo_pages
+include: null

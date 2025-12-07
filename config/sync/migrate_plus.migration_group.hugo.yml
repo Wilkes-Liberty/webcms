@@ -1,0 +1,15 @@
+uuid: c7f79fc7-94f0-4390-b5b9-e8afecce572a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: hnLbB8mh6xT0y2ZS2JNsChpR7Z4KMJXV8u450na3d9w
+id: hugo
+label: 'Hugo import'
+description: 'Import content, terms, menus, and redirects from Hugo.'
+source_type: null
+module: null
+shared_configuration:
+  source:
+    constants:
+      langcode: en

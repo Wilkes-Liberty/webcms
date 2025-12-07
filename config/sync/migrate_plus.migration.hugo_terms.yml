@@ -1,0 +1,61 @@
+uuid: 8be972c0-7480-46cf-a6c7-3b08bdb9ced2
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: v9t8z0FhkyqLJQLC22H45ralm94Sg_YkgCMm2I2TfOQ
+id: hugo_terms
+class: null
+idMap: {  }
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: hugo
+label: 'Hugo taxonomy terms'
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - modules/custom/wl_hugo_migrate/data/terms.json
+  item_selector: /
+  ids:
+    term_id:
+      type: string
+process:
+  vid: vid
+  name: name
+  description/value: description_html
+  description/format:
+    plugin: default_value
+    default_value: basic_html
+  path/alias: path
+  path/pathauto:
+    plugin: default_value
+    default_value: 0
+  field_seo_title: seo_title
+  field_meta_description: meta_description
+  field_show_in_nav:
+    plugin: default_value
+    default_value: 0
+  parent:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent_id
+    -
+      plugin: migration_lookup
+      migration: hugo_terms
+  status:
+    plugin: default_value
+    default_value: 1
+  langcode: constants/langcode
+  vid_target: vid
+  bundle:
+    plugin: default_value
+    default_value: ''
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_language: en
+migration_dependencies: {  }
+include: null
