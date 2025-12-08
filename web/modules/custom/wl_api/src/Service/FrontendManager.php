@@ -3,22 +3,37 @@
 namespace Drupal\wl_api\Service;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\\Core\\Extension\\ModuleHandlerInterface;
-use Drupal\\Core\\Entity\\EntityTypeManagerInterface;
-use Drupal\\key\\KeyRepositoryInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\key\KeyRepositoryInterface;
 
 /**
  * Manages Frontend configurations and secrets.
  */
 class FrontendManager {
 
+  /**
+   * Constructs a FrontendManager service.
+   *
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
+   *   The config factory.
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
+   *   The module handler.
+   * @param \Drupal\key\KeyRepositoryInterface|null $keyRepo
+   *   The key repository (optional).
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity type manager.
+   * @param \Drupal\Core\Logger\LoggerChannelInterface|null $logger
+   *   The logger channel (optional).
+   */
   public function __construct(
     protected ConfigFactoryInterface $configFactory,
     protected ModuleHandlerInterface $moduleHandler,
-    protected ?KeyRepositoryInterface $keyRepo = NULL,
+    protected ?KeyRepositoryInterface $keyRepo,
     protected EntityTypeManagerInterface $entityTypeManager,
-  ) {
-  }
+    protected ?LoggerChannelInterface $logger = NULL,
+  ) {}
 
   /**
    * List frontends (fallback to a single default if none configured).
@@ -53,7 +68,9 @@ class FrontendManager {
       }
     }
     catch (\Throwable $e) {
-      // Fall back below.
+      $this->logger?->warning('Failed to load frontend entities, falling back to legacy config: @message', [
+        '@message' => $e->getMessage(),
+      ]);
     }
     // Fallback to single frontend based on legacy settings.
     $config = $this->configFactory->get('wl_api.settings');
@@ -85,7 +102,10 @@ class FrontendManager {
         }
       }
       catch (\Throwable $e) {
-        // Fall through to raw secret.
+        $this->logger?->notice('Key module lookup failed for "@key", using as raw secret: @message', [
+          '@key' => $keyIdOrSecret,
+          '@message' => $e->getMessage(),
+        ]);
       }
     }
     return (string) $keyIdOrSecret;

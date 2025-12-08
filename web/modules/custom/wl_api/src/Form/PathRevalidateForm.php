@@ -5,23 +5,26 @@ namespace Drupal\wl_api\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
-
-/**
- * One-off path revalidation form.
- */
-
-/**
- * Form to trigger a one-off path revalidation for a selected frontend.
- */
 use Drupal\wl_api\Service\FrontendManager;
 use Drupal\wl_api\Service\Revalidator;
 
 /**
- *
+ * Form to trigger a one-off path revalidation for a selected frontend.
  */
 class PathRevalidateForm extends FormBase {
 
-  public function __construct(private FrontendManager $frontends, private Revalidator $revalidator) {}
+  /**
+   * Constructs a PathRevalidateForm.
+   *
+   * @param \Drupal\wl_api\Service\FrontendManager $frontends
+   *   The frontend manager service.
+   * @param \Drupal\wl_api\Service\Revalidator $revalidator
+   *   The revalidator service.
+   */
+  public function __construct(
+    private FrontendManager $frontends,
+    private Revalidator $revalidator,
+  ) {}
 
   /**
    * {@inheritdoc}
@@ -83,9 +86,7 @@ class PathRevalidateForm extends FormBase {
       $this->messenger()->addError($this->t('Path is required.'));
       return;
     }
-    /** @var \\Drupal\\wl_api\\Service\\FrontendManager $fm */
     $fm = $this->frontends;
-    /** @var \Drupal\wl_api\Service\Revalidator $rv */
     $rv = $this->revalidator;
     $frontends = $fm->listFrontends();
     if (empty($frontends[$frontend])) {

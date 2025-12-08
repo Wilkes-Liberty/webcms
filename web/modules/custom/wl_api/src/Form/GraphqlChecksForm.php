@@ -2,26 +2,30 @@
 
 namespace Drupal\wl_api\Form;
 
+use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-
-/**
- * Runs saved GraphQL checks against the configured endpoint.
- */
+use Drupal\Core\State\StateInterface;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Admin UI to run saved GraphQL checks against the configured endpoint.
  */
-use Drupal\Core\Datetime\DateFormatterInterface;
-use Drupal\Core\State\StateInterface;
-use Drupal\Component\Datetime\TimeInterface;
-use GuzzleHttp\ClientInterface;
-
-/**
- *
- */
 class GraphqlChecksForm extends FormBase {
 
+  /**
+   * Constructs a GraphqlChecksForm.
+   *
+   * @param \GuzzleHttp\ClientInterface $httpClient
+   *   The HTTP client.
+   * @param \Drupal\Core\State\StateInterface $state
+   *   The state service.
+   * @param \Drupal\Component\Datetime\TimeInterface $time
+   *   The time service.
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $dateFormatter
+   *   The date formatter.
+   */
   public function __construct(
     private ClientInterface $httpClient,
     private StateInterface $state,
@@ -42,13 +46,15 @@ class GraphqlChecksForm extends FormBase {
   }
 
   /**
-   * {@inheritdoc} */
+   * {@inheritdoc}
+   */
   public function getFormId(): string {
     return 'wl_api_graphql_checks';
   }
 
   /**
-   * {@inheritdoc} */
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $cfg = $this->config('wl_api.settings');
     $endpoint = (string) ($cfg->get('graphql_endpoint') ?? '');
@@ -93,7 +99,8 @@ class GraphqlChecksForm extends FormBase {
   }
 
   /**
-   * {@inheritdoc} */
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $trigger = $form_state->getTriggeringElement();
     $name = (string) ($trigger['#name'] ?? '');
@@ -159,6 +166,12 @@ class GraphqlChecksForm extends FormBase {
 
   /**
    * Render the last stored result for a given check label.
+   *
+   * @param string $label
+   *   The check label.
+   *
+   * @return string
+   *   HTML markup of the result.
    */
   protected function renderResult(string $label): string {
     $rec = $this->state->get('wl_api.check.' . $this->sanitize($label));
@@ -173,6 +186,12 @@ class GraphqlChecksForm extends FormBase {
 
   /**
    * Sanitize a label for use as a state key suffix.
+   *
+   * @param string $label
+   *   The label to sanitize.
+   *
+   * @return string
+   *   The sanitized label.
    */
   protected function sanitize(string $label): string {
     return preg_replace('/[^A-Za-z0-9_\-]+/', '_', strtolower($label));

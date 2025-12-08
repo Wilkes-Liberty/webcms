@@ -5,14 +5,13 @@ services:
 
   wl_api.frontend_manager:
     class: Drupal\wl_api\Service\FrontendManager
-    arguments: ['@config.factory', '@module_handler', '@key.repository', '@entity_type.manager']
-    tags: ['default_service']
+    arguments: ['@config.factory', '@module_handler', '@?key.repository', '@entity_type.manager', '@logger.channel.wl_api']
   wl_api.logger:
     class: Drupal\wl_api\Service\Logger
     arguments: ['@database', '@current_user']
   wl_api.revalidator:
     class: Drupal\wl_api\Service\Revalidator
-    arguments: ['@http_client', '@wl_api.frontend_manager', '@wl_api.logger', '@current_user']
+    arguments: ['@http_client', '@wl_api.frontend_manager', '@wl_api.logger', '@current_user', '@state', '@wl_api.alerts', '@logger.channel.wl_api']
   wl_api.alerts:
     class: Drupal\wl_api\Service\Alerts
     arguments: ['@config.factory', '@http_client', '@logger.channel.wl_api', '@plugin.manager.mail']

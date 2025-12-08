@@ -2,7 +2,9 @@
 
 namespace Drupal\wl_api\Service;
 
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\Core\State\StateInterface;
 use GuzzleHttp\ClientInterface;
 
 /**
@@ -10,11 +12,32 @@ use GuzzleHttp\ClientInterface;
  */
 class Revalidator {
 
+  /**
+   * Constructs a Revalidator service.
+   *
+   * @param \GuzzleHttp\ClientInterface $httpClient
+   *   The HTTP client.
+   * @param \Drupal\wl_api\Service\FrontendManager $frontends
+   *   The frontend manager.
+   * @param \Drupal\wl_api\Service\Logger $logger
+   *   The wl_api logger.
+   * @param \Drupal\Core\Session\AccountProxyInterface $currentUser
+   *   The current user.
+   * @param \Drupal\Core\State\StateInterface $state
+   *   The state service.
+   * @param \Drupal\wl_api\Service\Alerts $alerts
+   *   The alerts service.
+   * @param \Drupal\Core\Logger\LoggerChannelInterface $drupalLogger
+   *   The Drupal logger channel.
+   */
   public function __construct(
     protected ClientInterface $httpClient,
     protected FrontendManager $frontends,
     protected Logger $logger,
     protected AccountProxyInterface $currentUser,
+    protected StateInterface $state,
+    protected Alerts $alerts,
+    protected LoggerChannelInterface $drupalLogger,
   ) {}
 
   /**
@@ -72,23 +95,36 @@ class Revalidator {
     $domain = (string) ($meta['domain'] ?? '');
     $scope = (string) ($meta['scope'] ?? '');
     $key = sprintf('wl_api.failcount.%s.%s.%s', $frontend, $domain, $scope);
-    $state = \Drupal::state();
-    $count = (int) $state->get($key, 0);
+    $count = (int) $this->state->get($key, 0);
+
     if ($ok) {
       if ($count) {
-        $state->set($key, 0);
+        $this->state->set($key, 0);
+        $this->drupalLogger->info('Revalidation recovered for @frontend/@domain/@scope after @count failures.', [
+          '@frontend' => $frontend,
+          '@domain' => $domain,
+          '@scope' => $scope,
+          '@count' => $count,
+        ]);
       }
     }
     else {
       $count++;
-      $state->set($key, $count);
+      $this->state->set($key, $count);
+      $this->drupalLogger->error('Revalidation failed for @frontend/@domain/@scope (attempt @count): @error', [
+        '@frontend' => $frontend,
+        '@domain' => $domain,
+        '@scope' => $scope,
+        '@count' => $count,
+        '@error' => $error ?: ('HTTP ' . $status),
+      ]);
       try {
-        /** @var \Drupal\wl_api\Service\Alerts $alerts */
-        $alerts = \Drupal::service('wl_api.alerts');
-        $alerts->maybeAlert($frontend, $domain, $scope, $count, $error ?: ('HTTP ' . $status));
+        $this->alerts->maybeAlert($frontend, $domain, $scope, $count, $error ?: ('HTTP ' . $status));
       }
       catch (\Throwable $e) {
-        // Do not break revalidation on alert failure.
+        $this->drupalLogger->warning('Alert dispatch failed: @message', [
+          '@message' => $e->getMessage(),
+        ]);
       }
     }
 
