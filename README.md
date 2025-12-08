@@ -102,10 +102,10 @@ ddev launch
 
 Once running, your headless Drupal instance will provide these key endpoints:
 
-- **JSON:API**: `https://webcms.ddev.site/jsonapi`
-- **REST API**: `https://webcms.ddev.site/api`
-- **GraphQL**: `https://webcms.ddev.site/graphql`
-- **Admin Interface**: `https://webcms.ddev.site/admin`
+- **JSON:API**: `https://api.wilkesliberty.local/jsonapi`
+- **REST API**: `https://api.wilkesliberty.local/api`
+- **GraphQL**: `https://api.wilkesliberty.local/graphql`
+- **Admin Interface**: `https://api.wilkesliberty.local/admin`
 
 ## Content Architecture
 
@@ -259,14 +259,14 @@ ddev composer security-check
 
 ### Staging Environment
 
-- **URL**: `https://cms-dev.wilkesliberty.com`
+- **URL**: `https://api-dev.wilkesliberty.com`
 - **Purpose**: Content review and API testing
 - **Access**: Authenticated access for development team
 - **Deployment**: Automatic from `dev` branch
 
 ### Production Environment
 
-- **URL**: `https://cms.wilkesliberty.com`
+- **URL**: `https://api.wilkesliberty.com`
 - **Purpose**: Production content delivery
 - **Access**: API-only access (no admin interface)
 - **Deployment**: Manual deployment from `master` branch

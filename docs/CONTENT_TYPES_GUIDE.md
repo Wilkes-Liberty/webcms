@@ -1,5 +1,7 @@
 # Content Types Guide for Content Creators
 
+Updated: 2025-12-08
+
 This guide provides detailed information about all content types available in the CMS, their intended purposes, and how to use each field effectively.
 
 ## Overview

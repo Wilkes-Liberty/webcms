@@ -1,5 +1,7 @@
 # Field Types & Formats Quick Reference
 
+Updated: 2025-12-08
+
 This quick reference guide helps content creators understand the different field types and text formats available in the CMS.
 
 ## Text Formats Overview

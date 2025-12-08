@@ -16,7 +16,7 @@ Start here for technical setup and development:
 
 1. **[local-development.md](local-development.md)** - Complete development environment setup
 2. **[FIELD_REFERENCE.md](FIELD_REFERENCE.md)** - Field specifications and technical details
-3. **[config_update_fix_documentation.md](config_update_fix_documentation.md)** - Technical troubleshooting
+3. **[wl_api/CHANGELOG.md](../web/modules/custom/wl_api/CHANGELOG.md)** - API integration changes
 
 ### 📊 **For Project Managers**
 Start here for project status and overview:
@@ -39,10 +39,10 @@ Start here for project status and overview:
 
 ### 🛠️ **Technical Documentation**
 
-| File | Purpose | Audience | Status |
-|------|---------|----------|--------|
-| **[local-development.md](local-development.md)** | DDEV development setup | Developers | ✅ Current |
-| **[config_update_fix_documentation.md](config_update_fix_documentation.md)** | Technical fix reference | Developers | ✅ Current |
+|| File | Purpose | Audience | Status |
+||------|---------|----------|--------|
+|| **[local-development.md](local-development.md)** | DDEV development setup | Developers | ✅ Current |
+|| **[wl_api/CHANGELOG.md](../web/modules/custom/wl_api/CHANGELOG.md)** | API module changes | Developers | ✅ Current |
 
 ### 📋 **Project Documentation**
 
@@ -50,12 +50,6 @@ Start here for project status and overview:
 |------|---------|----------|--------|
 | **[DOCUMENTATION_STATUS.md](DOCUMENTATION_STATUS.md)** | Current project status | Project Managers | ✅ Current |
 
-### 📁 **Historical Archive**
-
-| File | Purpose | Status |
-|------|---------|--------|
-| **archive/FIELD_AUDIT_SUMMARY_2024-09-11.md** | Historical audit summary | 📚 Archived |
-| **archive/FIELD_INVENTORY_2024-09-11.md** | Historical field inventory | 📚 Archived |
 
 ---
 
@@ -115,7 +109,7 @@ All documentation follows these principles:
 ---
 
 **Status**: ✅ **Documentation Complete**  
-**Last Updated**: 2024-09-14  
+**Last Updated**: 2025-12-08  
 **Coverage**: 100% of identified fields and workflows
 
 *This documentation follows the principles of digital sovereignty and editorial independence that guide the Wilkes & Liberty CMS platform.*

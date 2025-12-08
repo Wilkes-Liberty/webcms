@@ -27,7 +27,7 @@ This guide provides comprehensive instructions for setting up a local developmen
 - **DDEV** (v1.22.0+) - Local development environment
 - **Git** (v2.30+) - Version control
 - **Composer** (v2.0+) - PHP dependency management
-- **PHP** (v8.1+) - For local CLI operations
+- **PHP** (v8.3+) - For local CLI operations
 - **Node.js** (v18+) - For build tools (optional)
 
 ### Installation Instructions
@@ -114,28 +114,19 @@ The project includes a pre-configured `.ddev/config.yaml` file optimized for hea
 
 ```yaml
 # .ddev/config.yaml
-name: webcms
+name: cms
 type: drupal11
 docroot: web
-php_version: "8.1"
+php_version: "8.3"
 webserver_type: nginx-fpm
-router_http_port: "80"
-router_https_port: "443"
+database:
+  type: mariadb
+  version: "10.11"
+additional_fqdns:
+  - api.wilkesliberty.local
 xdebug_enabled: false
-mariadb_version: "10.8"
 use_dns_when_possible: true
 composer_version: "2"
-
-# Additional services for headless development
-additional_services:
-  - redis
-  - elasticsearch
-
-# Hooks for automated setup
-hooks:
-  post-start:
-    - exec: composer install
-    - exec: drush cr
 ```
 
 ### Custom DDEV Commands
@@ -160,7 +151,7 @@ echo "Setup complete! Admin user created: admin/admin123"
 #!/bin/bash
 # .ddev/commands/web/api-test
 echo "Testing JSON:API endpoints..."
-curl -s -H "Accept: application/vnd.api+json" https://webcms.ddev.site/jsonapi/node/solution | jq .
+curl -s -H "Accept: application/vnd.api+json" https://cms.ddev.site/jsonapi/node/article | jq .
 echo "API test complete."
 ```
 
@@ -284,16 +275,16 @@ ddev drush config:set jsonapi_extras.settings default_disabled false -y
 
 ```bash
 # Test JSON:API endpoints
-curl -H "Accept: application/vnd.api+json" https://webcms.ddev.site/jsonapi/node/solution
+curl -H "Accept: application/vnd.api+json" https://cms.ddev.site/jsonapi/node/article | jq
 
-# Test with authentication
+# Test with authentication (if configured)
 TOKEN=$(ddev get-oauth-token)
-curl -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.api+json" https://webcms.ddev.site/jsonapi/node/solution
+curl -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.api+json" https://cms.ddev.site/jsonapi/node/article | jq
 
 # Test GraphQL (if enabled)
-curl -X POST https://webcms.ddev.site/graphql \
+curl -X POST https://cms.ddev.site/graphql \
   -H "Content-Type: application/json" \
-  -d '{"query": "{ nodeQuery { entities { ... on NodeSolution { title } } } }"}'
+  -d '{"query": "{ nodeQuery { entities { ... on NodeArticle { title } } } }"}'
 ```
 
 ### Custom Module Development
@@ -303,35 +294,33 @@ curl -X POST https://webcms.ddev.site/graphql \
 ddev drush generate:module
 
 # Module structure for API endpoints
-web/modules/custom/liberty_api/
-├── liberty_api.info.yml
-├── liberty_api.routing.yml
+web/modules/custom/wl_api/
+├── wl_api.info.yml
+├── wl_api.routing.yml
 ├── src/
 │   ├── Controller/
-│   │   └── LibertySolutionsController.php
-│   └── Plugin/
-│       └── rest/
-│           └── resource/
-│               └── LibertySolutionsResource.php
+│   │   └── FrontendApiController.php
+│   └── Commands/
+│       └── WlApiCommands.php
 ```
 
 ### Development URLs
 
 ```bash
 # Main site
-https://webcms.ddev.site
+https://cms.ddev.site
 
 # Admin interface
-https://webcms.ddev.site/admin
+https://cms.ddev.site/admin
 
-# JSON:API explorer
-https://webcms.ddev.site/jsonapi
+# JSON:API
+https://cms.ddev.site/jsonapi
 
-# API documentation (if installed)
-https://webcms.ddev.site/admin/config/services/openapi
+# GraphQL
+https://cms.ddev.site/graphql
 
 # Database admin
-https://webcms.ddev.site:8037  # PhpMyAdmin
+https://cms.ddev.site:8037  # PhpMyAdmin
 ```
 
 ## Testing
@@ -343,7 +332,7 @@ https://webcms.ddev.site:8037  # PhpMyAdmin
 ddev phpunit
 
 # Run specific test classes
-ddev phpunit web/modules/custom/liberty_api/tests/
+ddev phpunit web/modules/custom/wl_api/tests/
 
 # Run coding standards checks
 ddev composer phpcs
@@ -359,7 +348,7 @@ ddev composer security-check
 
 ```bash
 # Test content creation workflow
-ddev launch /node/add/solution
+ddev launch /node/add/article
 
 # Test API responses
 ddev api-test
@@ -377,12 +366,12 @@ ddev launch /admin/reports/status
 ```bash
 # Generate test content
 ddev drush en devel_generate -y
-ddev drush genc 10 --types=solution
-ddev drush genc 10 --types=service
-ddev drush genc 10 --types=technology
+ddev drush genc 10 --types=article
+ddev drush genc 10 --types=landing_page
+ddev drush genc 5 --types=event
 
 # Test content API responses
-curl -s https://webcms.ddev.site/jsonapi/node/solution | jq '.data | length'
+curl -s https://cms.ddev.site/jsonapi/node/article | jq '.data | length'
 ```
 
 ## Advanced Development
@@ -395,7 +384,7 @@ ddev xdebug on
 
 # Configure your IDE to connect to port 9003
 # PHPStorm: Languages & Frameworks > PHP > Servers
-# Add server: webcms.ddev.site, port 443, debugger Xdebug
+# Add server: cms.ddev.site, port 443, debugger Xdebug
 
 # Disable when not needed (improves performance)
 ddev xdebug off

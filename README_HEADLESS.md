@@ -137,7 +137,7 @@ In Drupal:
 ### Environment variables (Next.js):
 
 ```
-CMS_GRAPHQL_URL=https://cms.ddev.site/graphql
+CMS_GRAPHQL_URL=https://api.wilkesliberty.local/graphql
 REVALIDATE_SECRET=replace-with-strong-secret
 ```
 

@@ -1,6 +1,6 @@
 # Documentation Status - Current State
 
-**Updated**: 2024-09-14  
+**Updated**: 2025-12-08  
 **Status**: ✅ **COMPLETE** - All field documentation gaps resolved  
 
 ## Overview
@@ -36,14 +36,12 @@ The CMS field documentation project has been **successfully completed**. All pre
    - API development workflows
    - Testing and debugging procedures
 
-5. **[config_update_fix_documentation.md](config_update_fix_documentation.md)** - **Technical Fix Reference**
-   - Configuration update module fix documentation
-   - Technical troubleshooting reference
+5. **[wl_api/CHANGELOG.md](../web/modules/custom/wl_api/CHANGELOG.md)** - **API Module Changes**
+   - Decoupled API integration changes and upgrade notes
 
-### 📁 **Archived Documentation**
+### 📁 **Archived/Historical**
 
-6. **archive/FIELD_AUDIT_SUMMARY_2024-09-11.md** - Historical audit (archived)
-7. **archive/FIELD_INVENTORY_2024-09-11.md** - Historical inventory (archived)
+- **FIELD_INVENTORY.md** — Historical snapshot retained in place; see header note for details
 
 ## Current Coverage Status
 
@@ -165,7 +163,7 @@ All 54+ distinct fields across 9 content types are now fully documented:
 ### For Developers
 👉 Use **FIELD_REFERENCE.md** for technical specifications  
 👉 Reference **local-development.md** for development setup  
-👉 Check **config_update_fix_documentation.md** for technical issues
+👉 See **[wl_api/CHANGELOG.md](../web/modules/custom/wl_api/CHANGELOG.md)** for API module changes
 
 ### For Project Managers
 👉 This **DOCUMENTATION_STATUS.md** for current project status  

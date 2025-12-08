@@ -107,7 +107,7 @@ ddev launch
 ddev phpunit
 
 # Test API endpoints
-curl -X GET "https://webcms.ddev.site/jsonapi/node/solution" \
+curl -X GET "https://api.wilkesliberty.local/jsonapi/node/solution" \
   -H "Accept: application/vnd.api+json"
 
 # Validate configuration exports
@@ -223,7 +223,7 @@ ddev logs                # View container logs
 
 We maintain a password-protected development environment for staging:
 
-- **URL**: `https://cms-dev.wilkesliberty.com`
+- **URL**: `https://api-dev.wilkesliberty.com`
 - **Authentication**: API key authentication for content access
 - **Deployment**: Automatic from `dev` branch
 - **Purpose**: API testing and content preview
@@ -247,7 +247,7 @@ We maintain a password-protected development environment for staging:
   - Source of truth for production releases
 
 - **`dev`**: Development integration branch
-  - Deployed to https://cms-dev.wilkesliberty.com
+- Deployed to https://api-dev.wilkesliberty.com
   - Used for staging and API testing
   - Maintained by project maintainers
 
@@ -414,16 +414,16 @@ Before submitting a pull request:
 
 ```bash
 # Test JSON:API endpoints
-curl -X GET "https://webcms.ddev.site/jsonapi/node/solution" \
+curl -X GET "https://api.wilkesliberty.local/jsonapi/node/solution" \
   -H "Accept: application/vnd.api+json" | jq
 
 # Test GraphQL endpoint
-curl -X POST "https://webcms.ddev.site/graphql" \
+curl -X POST "https://api.wilkesliberty.local/graphql" \
   -H "Content-Type: application/json" \
   -d '{"query": "{ nodeQuery { entities { ... on NodeSolution { title } } } }"}'
 
 # Test REST API endpoints
-curl -X GET "https://webcms.ddev.site/api/solutions" \
+curl -X GET "https://api.wilkesliberty.local/api/solutions" \
   -H "Accept: application/json"
 ```
 
@@ -451,7 +451,7 @@ git push origin dev
 ```
 
 This triggers:
-1. Automatic deployment to https://cms-dev.wilkesliberty.com
+1. Automatic deployment to https://api-dev.wilkesliberty.com
 2. Composer dependency installation
 3. Configuration import
 4. Cache clearing

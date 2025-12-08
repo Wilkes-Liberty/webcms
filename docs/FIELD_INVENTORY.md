@@ -1,7 +1,9 @@
-# Complete Field Inventory by Content Type
+# Field Inventory (Archived)
 
-**Generated**: 2024-09-11  
-**Source**: Drupal configuration files analysis
+**Archived**: 2025-12-08  
+**Generated from**: Drupal configuration as of 2024-09-11 (historical snapshot)
+
+> This file is retained for historical context. For current field specifications and authoritative guidance, see [FIELD_REFERENCE.md](FIELD_REFERENCE.md).
 
 ## Field Distribution Summary
 
@@ -377,6 +379,6 @@
 
 ---
 
-**Total Fields Across All Content Types**: 287 individual field instances
-**Unique Field Types**: 54 distinct field configurations
-**Documentation Coverage**: ~85% (49 fields documented, ~7 completely missing)
+**Total Fields Across All Content Types (historical)**: 287 individual field instances
+**Unique Field Types (historical)**: 54 distinct field configurations
+**Note**: Current documentation coverage is 100% as of 2025-12-08 — see [FIELD_REFERENCE.md](FIELD_REFERENCE.md).

@@ -95,10 +95,10 @@ ddev drush en devel_generate -y
 ddev drush genc 10 --types=article
 
 # Test API endpoints
-curl -H "Accept: application/vnd.api+json" https://cms.ddev.site/jsonapi/node/article
+curl -H "Accept: application/vnd.api+json" https://api.wilkesliberty.local/jsonapi/node/article
 
 # Test GraphQL
-curl -X POST https://cms.ddev.site/graphql \
+curl -X POST https://api.wilkesliberty.local/graphql \
   -H "Content-Type: application/json" \
   -d '{"query": "{ nodeQuery { entities { ... on NodeArticle { title } } } }"}'
 ```
@@ -172,13 +172,13 @@ Content types use **tab-based field organization** for optimal editorial experie
 ### API Architecture
 
 #### JSON:API (Primary)
-- **Endpoint**: `https://cms.ddev.site/jsonapi`
+- **Endpoint**: `https://api.wilkesliberty.local/jsonapi`
 - **Enhanced with jsonapi_extras**: Custom resource configurations, include/exclude fields
 - **Content Types**: All content accessible via `/jsonapi/node/{content_type}`
 - **Taxonomy**: All vocabularies via `/jsonapi/taxonomy_term/{vocabulary}`
 
 #### GraphQL
-- **Endpoint**: `https://cms.ddev.site/graphql`
+- **Endpoint**: `https://api.wilkesliberty.local/graphql`
 - **Schema**: Auto-generated from content types using graphql_compose
 - **Features**: Complex queries, nested relationships, field selection
 
@@ -256,13 +256,13 @@ For custom API endpoints:
 
 ```bash
 # Test endpoints during development
-curl -X GET "https://cms.ddev.site/jsonapi/node/article" \
+curl -X GET "https://api.wilkesliberty.local/jsonapi/node/article" \
   -H "Accept: application/vnd.api+json" | jq
 
 # Validate GraphQL queries
-curl -X POST "https://cms.ddev.site/graphql" \
+curl -X POST "https://api.wilkesliberty.local/graphql" \
   -H "Content-Type: application/json" \
-  -d '{"query": "{ nodeQuery { entities { entityId entityLabel } } }"}'
+  -d '{"query": "{ nodeQuery { entities { entityId entityLabel } } } }'
 ```
 
 ### Common Development Tasks
@@ -314,14 +314,14 @@ curl -X POST "https://cms.ddev.site/graphql" \
 ## Environment URLs
 
 ### Development
-- **Main Site**: `https://cms.ddev.site`
-- **Admin**: `https://cms.ddev.site/admin`  
-- **JSON:API**: `https://cms.ddev.site/jsonapi`
-- **GraphQL**: `https://cms.ddev.site/graphql`
-- **PhpMyAdmin**: `https://cms.ddev.site:8037`
+- **Main Site**: `https://api.wilkesliberty.local`
+- **Admin**: `https://api.wilkesliberty.local/admin`
+- **JSON:API**: `https://api.wilkesliberty.local/jsonapi`
+- **GraphQL**: `https://api.wilkesliberty.local/graphql`
+- **PhpMyAdmin**: `https://api.wilkesliberty.local:8037`
 
 ### Staging
-- **Dev Environment**: `https://cms-dev.wilkesliberty.com`
+- **Dev Environment**: `https://api-dev.wilkesliberty.com`
 
 ## Troubleshooting
 
