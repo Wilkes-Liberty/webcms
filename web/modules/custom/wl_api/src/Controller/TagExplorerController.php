@@ -6,11 +6,19 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\TermInterface;
 use Drupal\system\Entity\Menu;
+use Drupal\wl_api\Service\TagResolver;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Shows derived frontend tags for entities.
  */
 class TagExplorerController extends ControllerBase {
+
+  public function __construct(protected TagResolver $resolver) {}
+
+  public static function create(ContainerInterface $container): static {
+    return new static($container->get('wl_api.tag_resolver'));
+  }
 
   /**
    * Node tags.
@@ -51,9 +59,7 @@ class TagExplorerController extends ControllerBase {
    *   Render array detailing derived tags.
    */
   protected function build($entity, string $type): array {
-    /** @var \Drupal\wl_api\Service\TagResolver $resolver */
-    $resolver = $this->container->get('wl_api.tag_resolver');
-    $tags = $resolver->tagsForEntity($entity);
+    $tags = $this->resolver->tagsForEntity($entity);
 
     $items = [];
     foreach ($tags as $tag) {
