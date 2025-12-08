@@ -1,0 +1,48 @@
+wl_api.status:
+  title: 'API revalidation status'
+  description: 'View latest revalidation timestamps and trigger revalidate.'
+  route_name: wl_api.status
+  parent: system.admin_config_development
+  weight: 90
+
+wl_api.settings:
+  title: 'API revalidation settings'
+  description: 'Configure global revalidation webhooks and secrets.'
+  route_name: wl_api.settings
+  parent: system.admin_config_development
+  weight: 91
+
+wl_api.frontends:
+  title: 'API frontends'
+  description: 'Manage frontend integrations (URLs, secrets, links).'
+  route_name: entity.wl_api_frontend.collection
+  parent: system.admin_config_development
+  weight: 92
+
+wl_api.logs:
+  title: 'API logs'
+  description: 'View revalidation and test event logs.'
+  route_name: wl_api.logs
+  parent: system.admin_config_development
+  weight: 93
+
+wl_api.path_revalidate:
+  title: 'Path revalidation'
+  description: 'Trigger a one-off path revalidation.'
+  route_name: wl_api.path_revalidate
+  parent: system.admin_config_development
+  weight: 94
+
+wl_api.checks:
+  title: 'GraphQL checks'
+  description: 'Run saved GraphQL checks and view results.'
+  route_name: wl_api.checks
+  parent: system.admin_config_development
+  weight: 95
+
+wl_api.checks_config:
+  title: 'GraphQL checks (edit)'
+  description: 'Create and edit saved GraphQL checks.'
+  route_name: wl_api.checks_config
+  parent: system.admin_config_development
+  weight: 96

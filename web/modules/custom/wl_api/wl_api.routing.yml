@@ -1,0 +1,132 @@
+wl_api.status:
+  path: '/admin/config/development/api'
+  defaults:
+    _controller: '\Drupal\wl_api\Controller\ApiStatusController::status'
+    _title: 'API revalidation status'
+  requirements:
+    _permission: 'view api revalidation status'
+  options:
+    _admin_route: TRUE
+
+wl_api.settings:
+  path: '/admin/config/development/api/settings'
+  defaults:
+    _form: '\Drupal\wl_api\Form\ApiSettingsForm'
+    _title: 'API revalidation settings'
+  requirements:
+    _permission: 'administer api revalidation settings'
+  options:
+    _admin_route: TRUE
+
+wl_api.revalidate_menu_confirm:
+  path: '/admin/config/development/api/revalidate/{menu}/confirm'
+  defaults:
+    _form: '\Drupal\wl_api\Form\RevalidateMenuConfirmForm'
+    _title: 'Confirm revalidation'
+  requirements:
+    _permission: 'trigger api revalidation'
+  options:
+    _admin_route: TRUE
+
+wl_api.revalidate_global_confirm:
+  path: '/admin/config/development/api/revalidate-global/{hook}/confirm'
+  defaults:
+    _form: '\Drupal\wl_api\Form\RevalidateGlobalConfirmForm'
+    _title: 'Confirm revalidation'
+  requirements:
+    _permission: 'trigger api revalidation'
+  options:
+    _admin_route: TRUE
+
+wl_api.logs:
+  path: '/admin/config/development/api/logs'
+  defaults:
+    _controller: '\Drupal\wl_api\Controller\LogsController::logs'
+    _title: 'API revalidation logs'
+  requirements:
+    _permission: 'view api logs'
+  options:
+    _admin_route: TRUE
+
+wl_api.test_endpoint_confirm:
+  path: '/admin/config/development/api/test/{frontend}/{domain}/{scope}'
+  defaults:
+    _form: '\Drupal\wl_api\Form\TestEndpointConfirmForm'
+    _title: 'Test endpoint'
+  requirements:
+    _permission: 'run api checks'
+  options:
+    _admin_route: TRUE
+
+wl_api.path_revalidate:
+  path: '/admin/config/development/api/path/revalidate'
+  defaults:
+    _form: '\Drupal\wl_api\Form\PathRevalidateForm'
+    _title: 'Path revalidation'
+  requirements:
+    _permission: 'trigger api revalidation'
+  options:
+    _admin_route: TRUE
+
+# Tag explorer routes (local tasks)
+wl_api.tags.node:
+  path: '/node/{node}/wl-api-tags'
+  defaults:
+    _controller: '\Drupal\wl_api\Controller\TagExplorerController::nodeTags'
+    _title: 'Frontend tags'
+  requirements:
+    _entity_access: 'node.view'
+  options:
+    _admin_route: TRUE
+
+wl_api.tags.term:
+  path: '/taxonomy/term/{taxonomy_term}/wl-api-tags'
+  defaults:
+    _controller: '\Drupal\wl_api\Controller\TagExplorerController::termTags'
+    _title: 'Frontend tags'
+  requirements:
+    _entity_access: 'taxonomy_term.view'
+  options:
+    _admin_route: TRUE
+
+wl_api.tags.menu:
+  path: '/admin/structure/menu/manage/{menu}/wl-api-tags'
+  defaults:
+    _controller: '\Drupal\wl_api\Controller\TagExplorerController::menuTags'
+    _title: 'Frontend tags'
+  requirements:
+    _permission: 'view api revalidation status'
+  options:
+    _admin_route: TRUE
+
+# Saved GraphQL checks page
+wl_api.checks:
+  path: '/admin/config/development/api/checks'
+  defaults:
+    _form: '\Drupal\wl_api\Form\GraphqlChecksForm'
+    _title: 'GraphQL checks'
+  requirements:
+    _permission: 'run api checks'
+  options:
+    _admin_route: TRUE
+
+# GraphQL checks config editor
+wl_api.checks_config:
+  path: '/admin/config/development/api/checks/edit'
+  defaults:
+    _form: '\Drupal\wl_api\Form\GraphqlChecksConfigForm'
+    _title: 'Edit GraphQL checks'
+  requirements:
+    _permission: 'run api checks'
+  options:
+    _admin_route: TRUE
+
+# Logs CSV export
+wl_api.logs_csv:
+  path: '/admin/config/development/api/logs.csv'
+  defaults:
+    _controller: '\Drupal\wl_api\Controller\LogsController::logsCsv'
+  requirements:
+    _permission: 'view api logs'
+  options:
+    _admin_route: TRUE
