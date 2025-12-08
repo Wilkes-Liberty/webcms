@@ -1,0 +1,5 @@
+name: WL API Utilities
+type: module
+description: 'API/webhook utilities: Next.js revalidation for menus, content, taxonomy.'
+core_version_requirement: ^11
+package: WilkesLiberty

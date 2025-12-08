@@ -1,0 +1,98 @@
+wl_api.settings:
+  type: mapping
+  label: 'WL API settings'
+  mapping:
+    revalidate_secret:
+      type: string
+      label: 'Shared secret (X-Next-Secret)'
+    revalidate_content_webhook:
+      type: string
+      label: 'Content webhook URL'
+    revalidate_content_tag:
+      type: string
+      label: 'Content tag'
+    revalidate_taxonomy_webhook:
+      type: string
+      label: 'Taxonomy webhook URL'
+    revalidate_taxonomy_tag:
+      type: string
+      label: 'Taxonomy tag'
+    auto_content_enabled:
+      type: boolean
+      label: 'Auto-trigger for content'
+    auto_content_bundles:
+      type: sequence
+      label: 'Bundles to include for auto-trigger'
+      sequence:
+        type: string
+    auto_taxonomy_enabled:
+      type: boolean
+      label: 'Auto-trigger for taxonomy'
+    auto_taxonomy_vocabularies:
+      type: sequence
+      label: 'Vocabularies to include for auto-trigger'
+      sequence:
+        type: string
+    rate_limit_per_minute:
+      type: integer
+      label: 'Rate limit per minute (global)'
+    sweep_hour:
+      type: integer
+      label: 'Nightly sweep hour (0-23)'
+    sweep_minute:
+      type: integer
+      label: 'Nightly sweep minute (0-59)'
+    graphql_endpoint:
+      type: string
+      label: 'GraphQL endpoint URL'
+    checks:
+      type: sequence
+      label: 'Saved GraphQL checks'
+      sequence:
+        type: mapping
+        mapping:
+          label:
+            type: label
+            label: 'Label'
+          query:
+            type: text
+            label: 'GraphQL query'
+    alerts:
+      type: mapping
+      label: 'Alerts configuration'
+      mapping:
+        threshold:
+          type: integer
+          label: 'Consecutive failures threshold'
+        slack_webhook:
+          type: string
+          label: 'Slack webhook URL'
+        emails:
+          type: sequence
+          label: 'Alert emails'
+          sequence:
+            type: string
+    schema_sweep_on_change:
+      type: boolean
+      label: 'Run sweep when schema changes'
+
+system.menu.*:
+  type: config_entity
+  label: 'Menu'
+  mapping:
+    third_party_settings:
+      type: mapping
+      mapping:
+        wl_api:
+          type: mapping
+          label: 'WL API menu settings'
+          mapping:
+            revalidate_webhook:
+              type: string
+              label: 'Revalidate webhook URL'
+            revalidate_secret:
+              type: string
+              label: 'Revalidate secret'
+            revalidate_tag:
+              type: string
+              label: 'Revalidate tag'

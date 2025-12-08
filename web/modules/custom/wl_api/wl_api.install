@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function wl_api_schema() {
+  $schema['wl_api_event'] = [
+    'description' => 'Revalidation and test webhook event log.',
+    'fields' => [
+      'eid' => [ 'type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE, 'description' => 'Event ID.' ],
+      'created' => [ 'type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'description' => 'Unix timestamp.' ],
+      'uid' => [ 'type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0, 'description' => 'User ID who triggered the event (0 = system).' ],
+      'frontend' => [ 'type' => 'varchar', 'length' => 64, 'not null' => TRUE, 'default' => '', 'description' => 'Frontend ID (or default).' ],
+      'domain' => [ 'type' => 'varchar', 'length' => 32, 'not null' => TRUE, 'default' => '', 'description' => 'Domain: menu|content|taxonomy|path|test.' ],
+      'scope' => [ 'type' => 'varchar', 'length' => 255, 'not null' => TRUE, 'default' => '', 'description' => 'Scope detail (menu:name, tag:name, path:/slug).' ],
+      'action' => [ 'type' => 'varchar', 'length' => 32, 'not null' => TRUE, 'default' => 'revalidate', 'description' => 'Action: revalidate|test.' ],
+      'endpoint' => [ 'type' => 'varchar', 'length' => 512, 'not null' => TRUE, 'default' => '', 'description' => 'Endpoint URL used.' ],
+      'http_code' => [ 'type' => 'int', 'size' => 'small', 'not null' => TRUE, 'default' => 0, 'description' => 'HTTP status code.' ],
+      'ok' => [ 'type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 0, 'description' => '1 if 2xx, else 0.' ],
+      'latency_ms' => [ 'type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0, 'description' => 'Latency in milliseconds.' ],
+      'message' => [ 'type' => 'varchar', 'length' => 255, 'not null' => TRUE, 'default' => '', 'description' => 'Short message or error.' ],
+      'response' => [ 'type' => 'text', 'size' => 'big', 'not null' => FALSE, 'description' => 'Response body snippet (truncated).' ],
+    ],
+    'primary key' => ['eid'],
+    'indexes' => [
+      'created' => ['created'],
+      'ok_created' => ['ok', 'created'],
+      'frontend_domain' => ['frontend', 'domain'],
+    ],
+  ];
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function wl_api_install() {
+  // Grant Administrator role default permissions.
+  if ($role = \Drupal\user\Entity\Role::load('administrator')) {
+    foreach ([
+      'view api revalidation status',
+      'trigger api revalidation',
+      'administer api revalidation settings',
+    ] as $perm) {
+      if (!in_array($perm, $role->getPermissions(), TRUE)) {
+        $role->grantPermission($perm);
+      }
+    }
+    $role->save();
+  }
+
+  // Migrate config/state/third-party from wl_headless if present.
+  _wl_api_migrate_from_headless();
+}
+
+/**
+ * Update: add wl_api_event table for logging.
+ */
+function wl_api_update_8002() {
+  $schema = wl_api_schema();
+  if (!\Drupal::database()->schema()->tableExists('wl_api_event')) {
+    \Drupal::database()->schema()->createTable('wl_api_event', $schema['wl_api_event']);
+  }
+}
+
+/**
+ * Helper to migrate settings/state from wl_headless module.
+ */
+function _wl_api_migrate_from_headless(): void {
+  $config_factory = \Drupal::configFactory();
+  $state = \Drupal::state();
+
+  // Copy settings.
+  $old = $config_factory->getEditable('wl_headless.settings');
+  if ($old->getRawData()) {
+    $config_factory->getEditable('wl_api.settings')
+      ->set('revalidate_secret', (string) ($old->get('revalidate_secret') ?? ''))
+      ->set('revalidate_content_webhook', (string) ($old->get('revalidate_content_webhook') ?? ''))
+      ->set('revalidate_content_tag', (string) ($old->get('revalidate_content_tag') ?? 'content'))
+      ->set('revalidate_taxonomy_webhook', (string) ($old->get('revalidate_taxonomy_webhook') ?? ''))
+      ->set('revalidate_taxonomy_tag', (string) ($old->get('revalidate_taxonomy_tag') ?? 'taxonomy'))
+      ->save();
+  }
+
+  // Copy menu third-party settings and state per menu.
+  $menus = \Drupal::entityTypeManager()->getStorage('menu')->loadMultiple();
+  foreach ($menus as $menu) {
+    /** @var \Drupal\system\Entity\Menu $menu */
+    $name = $menu->id();
+    $webhook = (string) $menu->getThirdPartySetting('wl_headless', 'revalidate_webhook', '');
+    $secret  = (string) $menu->getThirdPartySetting('wl_headless', 'revalidate_secret', '');
+    $tag     = (string) $menu->getThirdPartySetting('wl_headless', 'revalidate_tag', '');
+    if ($webhook || $secret || $tag) {
+      $menu->setThirdPartySetting('wl_api', 'revalidate_webhook', $webhook);
+      $menu->setThirdPartySetting('wl_api', 'revalidate_secret', $secret);
+      $menu->setThirdPartySetting('wl_api', 'revalidate_tag', $tag ?: 'menu');
+      $menu->save();
+    }
+    $old_state = $state->get('wl_headless.revalidate.' . $name);
+    if ($old_state) {
+      $state->set('wl_api.revalidate.' . $name, $old_state);
+    }
+  }
+
+  // Copy global state.
+  foreach (['content', 'taxonomy'] as $domain) {
+    $old_state = $state->get('wl_headless.revalidate_global.' . $domain);
+    if ($old_state) {
+      $state->set('wl_api.revalidate_global.' . $domain, $old_state);
+    }
+  }
+}

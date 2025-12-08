@@ -1,0 +1,18 @@
+# Local tasks for Tag Explorer
+wl_api.tags.node_tab:
+  route_name: wl_api.tags.node
+  title: 'Frontend tags'
+  base_route: entity.node.canonical
+  weight: 50
+
+wl_api.tags.term_tab:
+  route_name: wl_api.tags.term
+  title: 'Frontend tags'
+  base_route: entity.taxonomy_term.canonical
+  weight: 50
+
+wl_api.tags.menu_tab:
+  route_name: wl_api.tags.menu
+  title: 'Frontend tags'
+  base_route: entity.menu.edit_form
+  weight: 50

@@ -1,0 +1,25 @@
+wl_api.frontend.*:
+  type: config_entity
+  label: 'WL API Frontend'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    revalidate_webhook:
+      type: string
+      label: 'Revalidate webhook URL'
+    path_revalidate_webhook:
+      type: string
+      label: 'Path revalidate webhook URL'
+    secret:
+      type: string
+      label: 'Secret or Key ID'
+    health_url:
+      type: string
+      label: 'Health URL'
+    ci_url:
+      type: string
+      label: 'CI/CD URL'

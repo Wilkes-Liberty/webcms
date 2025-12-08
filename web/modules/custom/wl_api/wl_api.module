@@ -1,0 +1,300 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/**
+ * Implements hook_requirements().
+ */
+function wl_api_requirements($phase) {
+  $req = [];
+  if ($phase !== 'runtime') return $req;
+  $menus = \Drupal::entityTypeManager()->getStorage('menu')->loadMultiple();
+  $df = \Drupal::service('date.formatter');
+  foreach ($menus as $menu) {
+    $name = $menu->id();
+    $title = $menu->label();
+    $rec = \Drupal::state()->get('wl_api.revalidate.' . $name, NULL);
+    $webhook = (string) $menu->getThirdPartySetting('wl_api','revalidate_webhook','');
+    $tag = (string) $menu->getThirdPartySetting('wl_api','revalidate_tag','menu');
+    $ts = (int) ($rec['timestamp'] ?? 0);
+    $status = isset($rec['status']) ? (string) $rec['status'] : '-';
+    $ok = isset($rec['ok']) ? (bool) $rec['ok'] : NULL;
+
+    $value = $webhook ? t('URL set; tag: @tag', ['@tag' => $tag]) : t('No webhook configured');
+    $desc = $ts ? t('Last: @when (status @code)', ['@when' => $df->format($ts, 'short'), '@code' => $status]) : t('No attempts recorded');
+
+    $req['wl_api_' . $name] = [
+      'title' => t('Next.js revalidation – @title (@name)', ['@title'=>$title,'@name'=>$name]),
+      'value' => $value,
+      'severity' => $ok === NULL ? REQUIREMENT_INFO : ($ok ? REQUIREMENT_OK : REQUIREMENT_WARNING),
+      'description' => $desc,
+    ];
+  }
+  return $req;
+}
+
+/**
+ * Menu edit form alter to add wl_api settings.
+ */
+function wl_api_form_menu_edit_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  $form['wl_api'] = [
+    '#type' => 'details',
+    '#title' => t('API revalidation (Next.js)'),
+    '#open' => FALSE,
+    '#weight' => 100,
+  ];
+  /** @var \Drupal\system\Entity\Menu $menu */
+  $menu = $form_state->getFormObject()->getEntity();
+  $webhook = $menu->getThirdPartySetting('wl_api', 'revalidate_webhook', '');
+  $secret = $menu->getThirdPartySetting('wl_api', 'revalidate_secret', '');
+  $tag    = $menu->getThirdPartySetting('wl_api', 'revalidate_tag', 'menu');
+
+  $form['wl_api']['revalidate_webhook'] = [
+    '#type' => 'url',
+    '#title' => t('Revalidate webhook URL'),
+    '#default_value' => $webhook,
+  ];
+  $form['wl_api']['revalidate_secret'] = [
+    '#type' => 'textfield',
+    '#title' => t('Revalidate secret (header X-Next-Secret)'),
+    '#default_value' => $secret,
+  ];
+  $form['wl_api']['revalidate_tag'] = [
+    '#type' => 'textfield',
+    '#title' => t('Revalidate tag'),
+    '#default_value' => $tag,
+  ];
+
+  $form['#submit'][] = 'wl_api_menu_edit_submit';
+}
+
+/**
+ * Submit handler for menu edit to persist third-party settings.
+ */
+function wl_api_menu_edit_submit(array $form, FormStateInterface $form_state) {
+  /** @var \Drupal\system\Entity\Menu $menu */
+  $menu = $form_state->getFormObject()->getEntity();
+  $vals = $form_state->getValues();
+  $menu->setThirdPartySetting('wl_api', 'revalidate_webhook', $vals['revalidate_webhook'] ?? '');
+  $menu->setThirdPartySetting('wl_api', 'revalidate_secret', $vals['revalidate_secret'] ?? '');
+  $menu->setThirdPartySetting('wl_api', 'revalidate_tag', $vals['revalidate_tag'] ?? 'menu');
+  $menu->save();
+}
+
+/**
+ * Trigger a menu-scoped revalidation if configured on the Menu entity.
+ */
+function _wl_api_revalidate_menu_if_configured(string $menu_name): void {
+  /** @var \Drupal\system\Entity\Menu|null $menu */
+  $menu = \Drupal\system\Entity\Menu::load($menu_name);
+  if (!$menu) return;
+  $webhook = (string) $menu->getThirdPartySetting('wl_api', 'revalidate_webhook', '');
+  $secret  = (string) $menu->getThirdPartySetting('wl_api', 'revalidate_secret', '');
+  $tag     = (string) $menu->getThirdPartySetting('wl_api', 'revalidate_tag', 'menu');
+  if (!$webhook) return;
+  _wl_api_post_revalidate($webhook, $secret, ['tag' => $tag, 'menu' => $menu_name], 'wl_api.revalidate.' . $menu_name);
+}
+
+/**
+ * Trigger a global revalidation for a domain (content|taxonomy) if configured.
+ */
+function _wl_api_revalidate_global(string $domain): void {
+  $config = \Drupal::config('wl_api.settings');
+  $secret = (string) ($config->get('revalidate_secret') ?? '');
+  $map = [
+    'content' => [
+      'webhook' => (string) ($config->get('revalidate_content_webhook') ?? ''),
+      'tag' => (string) ($config->get('revalidate_content_tag') ?? 'content'),
+    ],
+    'taxonomy' => [
+      'webhook' => (string) ($config->get('revalidate_taxonomy_webhook') ?? ''),
+      'tag' => (string) ($config->get('revalidate_taxonomy_tag') ?? 'taxonomy'),
+    ],
+  ];
+  if (!isset($map[$domain]) || empty($map[$domain]['webhook'])) return;
+  $payload = ['tag' => $map[$domain]['tag'], 'domain' => $domain];
+  _wl_api_post_revalidate($map[$domain]['webhook'], $secret, $payload, 'wl_api.revalidate_global.' . $domain);
+}
+
+/**
+ * Post to a Next.js revalidate webhook and persist the outcome in state.
+ */
+function _wl_api_post_revalidate(string $webhook, string $secret, array $payload, string $state_key): void {
+  // Backward-compatible wrapper delegating to the service-based revalidator.
+  /** @var \Drupal\wl_api\Service\Revalidator $svc */
+  $svc = \Drupal::service('wl_api.revalidator');
+  $result = $svc->post($webhook, $secret, $payload, [
+    'frontend' => 'default',
+    'domain' => (string) ($payload['domain'] ?? 'menu'),
+    'scope' => (string) ($payload['menu'] ?? $payload['tag'] ?? ''),
+    'action' => (string) ($payload['__action'] ?? 'revalidate'),
+  ]);
+  // Maintain previous state key behavior for status report compatibility.
+  \Drupal::state()->set($state_key, [
+    'timestamp' => \Drupal::time()->getRequestTime(),
+    'status' => $result['status'] ?? 0,
+    'ok' => (bool) ($result['ok'] ?? FALSE),
+    'error' => $result['error'] ?? NULL,
+  ]);
+}
+
+/** Implements hook_entity_insert(). */
+function wl_api_entity_insert(\Drupal\Core\Entity\EntityInterface $entity) {
+  _wl_api_handle_entity_change($entity);
+}
+
+/** Implements hook_entity_update(). */
+function wl_api_entity_update(\Drupal\Core\Entity\EntityInterface $entity) {
+  _wl_api_handle_entity_change($entity);
+}
+
+/** Implements hook_entity_delete(). */
+function wl_api_entity_delete(\Drupal\Core\Entity\EntityInterface $entity) {
+  _wl_api_handle_entity_change($entity);
+}
+
+/**
+ * Common handler for entity changes based on settings.
+ */
+function _wl_api_handle_entity_change(\Drupal\Core\Entity\EntityInterface $entity): void {
+  $type = $entity->getEntityTypeId();
+  if ($type === 'menu_link_content') {
+    /** @var MenuLinkContent $entity */
+    $menu = (string) $entity->get('menu_name')->value;
+    _wl_api_revalidate_menu_if_configured($menu);
+    return;
+  }
+  $cfg = \Drupal::config('wl_api.settings');
+  // Content auto trigger.
+  if ($type === 'node' && ($cfg->get('auto_content_enabled') ?? FALSE)) {
+    $bundles = (array) ($cfg->get('auto_content_bundles') ?? []);
+    $bundle = $entity->bundle();
+    if (!$bundles || in_array($bundle, $bundles, TRUE)) {
+      _wl_api_revalidate_entity_tags($entity, 'content');
+    }
+  }
+  // Taxonomy auto trigger.
+  if ($type === 'taxonomy_term' && ($cfg->get('auto_taxonomy_enabled') ?? FALSE)) {
+    $vids = (array) ($cfg->get('auto_taxonomy_vocabularies') ?? []);
+    $vid = $entity->bundle();
+    if (!$vids || in_array($vid, $vids, TRUE)) {
+      _wl_api_revalidate_entity_tags($entity, 'taxonomy');
+    }
+  }
+}
+
+/**
+ * Resolve tags for an entity and dispatch to all frontends.
+ */
+function _wl_api_revalidate_entity_tags(\Drupal\Core\Entity\EntityInterface $entity, string $domain): void {
+  /** @var \Drupal\wl_api\Service\TagResolver $resolver */
+  $resolver = \Drupal::service('wl_api.tag_resolver');
+  $tags = $resolver->tagsForEntity($entity);
+  /** @var \Drupal\wl_api\Service\FrontendManager $fm */
+  $fm = \Drupal::service('wl_api.frontend_manager');
+  /** @var \Drupal\wl_api\Service\Revalidator $rv */
+  $rv = \Drupal::service('wl_api.revalidator');
+  foreach ($fm->listFrontends() as $id => $fe) {
+    $endpoint = (string) ($fe['revalidate_webhook'] ?? '');
+    if (!$endpoint) { continue; }
+    $secret = $fm->resolveSecret($fe['secret'] ?? '');
+    foreach ($tags as $tag) {
+      $payload = ['tag' => $tag, 'domain' => $domain];
+      $rv->post($endpoint, $secret, $payload, [
+        'frontend' => $id, 'domain' => $domain, 'scope' => $tag, 'action' => 'revalidate',
+      ]);
+    }
+  }
+}
+
+/**
+ * Implements hook_cron(). Rate-limit processing and nightly tasks.
+ */
+function wl_api_cron() {
+  $cfg = \Drupal::config('wl_api.settings');
+  $limit = max(1, (int) ($cfg->get('rate_limit_per_minute') ?? 60));
+  $queue = \Drupal::service('queue')->get('wl_api_revalidate');
+  $processed = 0;
+  $start = \Drupal::time()->getRequestTime();
+  while ($processed < $limit && ($item = $queue->claimItem())) {
+    try {
+      $data = (array) $item->data;
+      /** @var \Drupal\wl_api\Service\Revalidator $rv */
+      $rv = \Drupal::service('wl_api.revalidator');
+      $rv->post($data['endpoint'], $data['secret'] ?? '', $data['payload'] ?? [], $data['meta'] ?? []);
+      $queue->deleteItem($item);
+    } catch (\Throwable $e) {
+      // Release for retry later.
+      $queue->releaseItem($item);
+    }
+    $processed++;
+    if ((\Drupal::time()->getRequestTime() - $start) > 55) { break; }
+  }
+
+  // Nightly sweep at configured time.
+  $hour = (int) ($cfg->get('sweep_hour') ?? 3);
+  $minute = (int) ($cfg->get('sweep_minute') ?? 15);
+  $last = (int) \Drupal::state()->get('wl_api.last_sweep', 0);
+  $now = \Drupal::time()->getRequestTime();
+  $dt = \Drupal::service('date.formatter')->format($now, 'custom', 'Y-m-d');
+  $target = strtotime($dt . sprintf(' %02d:%02d:00', $hour, $minute));
+  if ($now >= $target && ($last < $target)) {
+    // Enqueue a simple global sweep for content+taxonomy tags on all frontends.
+    _wl_api_enqueue_global_sweep();
+    \Drupal::state()->set('wl_api.last_sweep', $now);
+  }
+
+  // Daily schema handshake.
+  $lastSchema = (int) \Drupal::state()->get('wl_api.last_schema_check', 0);
+  if ($now - $lastSchema > 86400) {
+    _wl_api_check_schema_and_maybe_sweep();
+    \Drupal::state()->set('wl_api.last_schema_check', $now);
+  }
+}
+
+/** Enqueue a global sweep revalidate for all frontends. */
+function _wl_api_enqueue_global_sweep(): void {
+  /** @var \Drupal\wl_api\Service\FrontendManager $fm */
+  $fm = \Drupal::service('wl_api.frontend_manager');
+  $queue = \Drupal::service('queue')->get('wl_api_revalidate');
+  foreach ($fm->listFrontends() as $id => $fe) {
+    $endpoint = (string) ($fe['revalidate_webhook'] ?? '');
+    if (!$endpoint) { continue; }
+    $secret = $fm->resolveSecret($fe['secret'] ?? '');
+    foreach (['content','taxonomy'] as $tag) {
+      $queue->createItem([
+        'endpoint' => $endpoint,
+        'secret' => $secret,
+        'payload' => ['tag' => $tag, 'domain' => $tag],
+        'meta' => ['frontend' => $id, 'domain' => $tag, 'scope' => $tag, 'action' => 'revalidate'],
+      ]);
+    }
+  }
+}
+
+/**
+ * Check GraphQL schema hash and optionally schedule a sweep.
+ */
+function _wl_api_check_schema_and_maybe_sweep(): void {
+  $cfg = \Drupal::config('wl_api.settings');
+  $endpoint = (string) ($cfg->get('graphql_endpoint') ?? '');
+  if (!$endpoint) { return; }
+  $client = \Drupal::service('http_client');
+  $q = '{ __schema { types { name kind fields { name } } } }';
+  try {
+    $resp = $client->post($endpoint, ['json' => ['query' => $q], 'timeout' => 10]);
+    $data = json_decode((string) $resp->getBody(), TRUE);
+    $json = json_encode($data['data']['__schema'] ?? []);
+    $hash = hash('sha256', $json);
+    $prev = (string) \Drupal::state()->get('wl_api.schema_hash', '');
+    if ($hash !== $prev) {
+      \Drupal::state()->set('wl_api.schema_hash', $hash);
+      if ($cfg->get('schema_sweep_on_change')) {
+        _wl_api_enqueue_global_sweep();
+      }
+    }
+  } catch (\Throwable $e) {
+    // Ignore errors silently; visible via logs if checks are added later.
+  }
+}

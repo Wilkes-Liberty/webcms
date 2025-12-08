@@ -1,0 +1,20 @@
+view api revalidation status:
+  title: 'View API revalidation status'
+  description: 'View the API revalidation status page.'
+trigger api revalidation:
+  title: 'Trigger API revalidation'
+  description: 'Trigger revalidation now for menus/content/taxonomy.'
+administer api revalidation settings:
+  title: 'Administer API revalidation settings'
+  description: 'Configure API revalidation webhooks and tags.'
+  restrict access: true
+administer api frontends:
+  title: 'Administer API frontends'
+  description: 'Create and manage frontend integrations.'
+  restrict access: true
+view api logs:
+  title: 'View API logs'
+  description: 'View revalidation/test event logs.'
+run api checks:
+  title: 'Run API checks'
+  description: 'Run saved GraphQL checks and endpoint tests.'

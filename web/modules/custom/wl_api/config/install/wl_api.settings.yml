@@ -1,0 +1,19 @@
+revalidate_secret: ''
+revalidate_content_webhook: ''
+revalidate_content_tag: 'content'
+revalidate_taxonomy_webhook: ''
+revalidate_taxonomy_tag: 'taxonomy'
+auto_content_enabled: false
+auto_content_bundles: []
+auto_taxonomy_enabled: false
+auto_taxonomy_vocabularies: []
+rate_limit_per_minute: 60
+sweep_hour: 3
+sweep_minute: 15
+graphql_endpoint: ''
+checks: []
+alerts:
+  threshold: 0
+  slack_webhook: ''
+  emails: []
+schema_sweep_on_change: false

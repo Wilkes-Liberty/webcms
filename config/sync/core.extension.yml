@@ -180,7 +180,7 @@ module:
   webform_submission_log: 0
   webform_templates: 0
   webform_ui: 0
-  wl_headless: 0
+  wl_api: 0
   wl_language_switcher: 0
   wl_text_formats: 0
   workflows: 0

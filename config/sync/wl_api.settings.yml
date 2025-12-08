@@ -1,0 +1,7 @@
+_core:
+  default_config_hash: fChrGxs7yPpxdcYxnGAUiL_xxgrV38zOAlU72yXGJ34
+revalidate_secret: ''
+revalidate_content_webhook: ''
+revalidate_content_tag: content
+revalidate_taxonomy_webhook: ''
+revalidate_taxonomy_tag: taxonomy
