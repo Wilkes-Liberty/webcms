@@ -1,48 +1,50 @@
-wl_api.status:
-  title: 'API revalidation status'
-  description: 'View latest revalidation timestamps and trigger revalidate.'
-  route_name: wl_api.status
-  parent: system.admin_config_development
+# API menu item at same level as Development
+wl_api.admin:
+  title: 'API'
+  description: 'API revalidation, frontend integrations, and GraphQL checks.'
+  route_name: wl_api.admin_config_api
+  parent: system.admin_config
   weight: 90
 
+# Child items under API
+wl_api.status:
+  title: 'Status'
+  description: 'View latest revalidation timestamps and trigger revalidate.'
+  route_name: wl_api.status
+  parent: wl_api.admin
+  weight: 0
+
 wl_api.settings:
-  title: 'API revalidation settings'
+  title: 'Settings'
   description: 'Configure global revalidation webhooks and secrets.'
   route_name: wl_api.settings
-  parent: system.admin_config_development
-  weight: 91
+  parent: wl_api.admin
+  weight: 10
 
 wl_api.frontends:
-  title: 'API frontends'
+  title: 'Frontends'
   description: 'Manage frontend integrations (URLs, secrets, links).'
   route_name: entity.wl_api_frontend.collection
-  parent: system.admin_config_development
-  weight: 92
-
-wl_api.logs:
-  title: 'API logs'
-  description: 'View revalidation and test event logs.'
-  route_name: wl_api.logs
-  parent: system.admin_config_development
-  weight: 93
+  parent: wl_api.admin
+  weight: 20
 
 wl_api.path_revalidate:
   title: 'Path revalidation'
   description: 'Trigger a one-off path revalidation.'
   route_name: wl_api.path_revalidate
-  parent: system.admin_config_development
-  weight: 94
+  parent: wl_api.admin
+  weight: 30
 
 wl_api.checks:
   title: 'GraphQL checks'
   description: 'Run saved GraphQL checks and view results.'
   route_name: wl_api.checks
-  parent: system.admin_config_development
-  weight: 95
+  parent: wl_api.admin
+  weight: 40
 
-wl_api.checks_config:
-  title: 'GraphQL checks (edit)'
-  description: 'Create and edit saved GraphQL checks.'
-  route_name: wl_api.checks_config
-  parent: system.admin_config_development
-  weight: 96
+wl_api.logs:
+  title: 'Logs'
+  description: 'View revalidation and test event logs.'
+  route_name: wl_api.logs
+  parent: wl_api.admin
+  weight: 50

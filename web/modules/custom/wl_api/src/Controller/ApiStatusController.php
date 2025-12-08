@@ -3,13 +3,44 @@
 namespace Drupal\wl_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
+use Drupal\wl_api\Service\FrontendManager;
+use Drupal\wl_api\Service\Logger;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Builds the API revalidation status overview page.
  */
 class ApiStatusController extends ControllerBase {
+
+  /**
+   * Constructs an ApiStatusController.
+   *
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $dateFormatter
+   *   The date formatter.
+   * @param \Drupal\wl_api\Service\FrontendManager $frontendManager
+   *   The frontend manager.
+   * @param \Drupal\wl_api\Service\Logger $wlApiLogger
+   *   The wl_api logger.
+   */
+  public function __construct(
+    protected DateFormatterInterface $dateFormatter,
+    protected FrontendManager $frontendManager,
+    protected Logger $wlApiLogger,
+  ) {}
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('date.formatter'),
+      $container->get('wl_api.frontend_manager'),
+      $container->get('wl_api.logger'),
+    );
+  }
 
   /**
    * Builds the status page render array.
@@ -33,7 +64,7 @@ class ApiStatusController extends ControllerBase {
     $menus_rows = [];
     /** @var \Drupal\system\Entity\Menu[] $menus */
     $menus = $this->entityTypeManager()->getStorage('menu')->loadMultiple();
-    $df = $this->dateFormatter();
+    $df = $this->dateFormatter;
 
     foreach ($menus as $menu) {
       $name = $menu->id();
@@ -111,11 +142,7 @@ class ApiStatusController extends ControllerBase {
     }
 
     // Frontends section with Test buttons and last 5 attempts.
-    /** @var \Drupal\wl_api\Service\FrontendManager $fm */
-    $fm = $this->container->get('wl_api.frontend_manager');
-    $frontends = $fm->listFrontends();
-    /** @var \Drupal\wl_api\Service\Logger $ev */
-    $ev = $this->container->get('wl_api.logger');
+    $frontends = $this->frontendManager->listFrontends();
 
     $frontend_rows = [];
     $frontend_header = [
@@ -128,7 +155,7 @@ class ApiStatusController extends ControllerBase {
       $this->t('Recent'),
     ];
     foreach ($frontends as $id => $fe) {
-      $stats = $ev->stats($id, 'test');
+      $stats = $this->wlApiLogger->stats($id, 'test');
       $statsMarkup = $stats['count']
         ? $this->t('ok @ok%% p95 @p95ms', [
           '@ok' => $stats['success_rate'],
@@ -145,7 +172,7 @@ class ApiStatusController extends ControllerBase {
           ])
         )->toString()
         : $this->t('—');
-      $recent = $ev->lastAttempts(['frontend' => $id], 5);
+      $recent = $this->wlApiLogger->lastAttempts(['frontend' => $id], 5);
       $recentMarkup = [];
       foreach ($recent as $r) {
         $recentMarkup[] = $df->format((int) $r->created, 'short') . ' ' . ($r->ok ? '✓' : '✗') . ' ' . (int) $r->latency_ms . 'ms';

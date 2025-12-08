@@ -1,3 +1,40 @@
+# API admin tabs
+wl_api.status_tab:
+  route_name: wl_api.status
+  title: 'Status'
+  base_route: wl_api.status
+  weight: 0
+
+wl_api.settings_tab:
+  route_name: wl_api.settings
+  title: 'Settings'
+  base_route: wl_api.status
+  weight: 10
+
+wl_api.frontends_tab:
+  route_name: entity.wl_api_frontend.collection
+  title: 'Frontends'
+  base_route: wl_api.status
+  weight: 20
+
+wl_api.path_revalidate_tab:
+  route_name: wl_api.path_revalidate
+  title: 'Path revalidate'
+  base_route: wl_api.status
+  weight: 30
+
+wl_api.checks_tab:
+  route_name: wl_api.checks
+  title: 'GraphQL checks'
+  base_route: wl_api.status
+  weight: 40
+
+wl_api.logs_tab:
+  route_name: wl_api.logs
+  title: 'Logs'
+  base_route: wl_api.status
+  weight: 50
+
 # Local tasks for Tag Explorer
 wl_api.tags.node_tab:
   route_name: wl_api.tags.node

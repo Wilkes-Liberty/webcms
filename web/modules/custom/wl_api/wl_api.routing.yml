@@ -130,3 +130,15 @@ wl_api.logs_csv:
     _permission: 'view api logs'
   options:
     _admin_route: TRUE
+
+# Configuration category for API (same level as Development)
+wl_api.admin_config_api:
+  path: '/admin/config/api'
+  defaults:
+    _title: 'API'
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    link_id: 'wl_api.admin'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

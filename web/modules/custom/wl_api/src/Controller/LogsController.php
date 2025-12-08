@@ -2,26 +2,45 @@
 
 namespace Drupal\wl_api\Controller;
 
+use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Datetime\DateFormatterInterface;
+use Drupal\Core\Form\FormState;
 use Drupal\Core\Url;
+use Drupal\wl_api\Service\Logger;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Form\FormState;
 
 /**
  * Renders wl_api event logs with basic filters.
  */
 class LogsController extends ControllerBase {
 
-  public function __construct(private RequestStack $requestStack) {}
+  /**
+   * Constructs a LogsController.
+   *
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
+   *   The request stack.
+   * @param \Drupal\wl_api\Service\Logger $wlApiLogger
+   *   The wl_api logger service.
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $dateFormatter
+   *   The date formatter.
+   */
+  public function __construct(
+    private RequestStack $requestStack,
+    private Logger $wlApiLogger,
+    private DateFormatterInterface $dateFormatter,
+  ) {}
 
   /**
    * {@inheritdoc}
    */
-  public static function create($container) {
+  public static function create(ContainerInterface $container) {
     return new static(
       $container->get('request_stack'),
+      $container->get('wl_api.logger'),
+      $container->get('date.formatter'),
     );
   }
 
@@ -40,19 +59,16 @@ class LogsController extends ControllerBase {
       'action' => $req->query->get('action') ?? NULL,
     ];
 
-    /** @var \Drupal\wl_api\Service\Logger $logger */
-    $logger = $this->container->get('wl_api.logger');
-    $rows = $logger->lastAttempts(array_filter($filters), 50);
+    $rows = $this->wlApiLogger->lastAttempts(array_filter($filters), 50);
 
     $header = [
       $this->t('When'), $this->t('Frontend'), $this->t('Domain'), $this->t('Scope'), $this->t('Action'), $this->t('HTTP'), $this->t('OK'), $this->t('ms'), $this->t('Message'),
     ];
 
     $tableRows = [];
-    $df = $this->dateFormatter();
     foreach ($rows as $r) {
       $tableRows[] = [
-        $df->format((int) $r->created, 'short'),
+        $this->dateFormatter->format((int) $r->created, 'short'),
         $r->frontend,
         $r->domain,
         $r->scope,
@@ -137,16 +153,13 @@ class LogsController extends ControllerBase {
       'scope' => $req->query->get('scope') ?? NULL,
       'action' => $req->query->get('action') ?? NULL,
     ];
-    /** @var \Drupal\wl_api\Service\Logger $logger */
-    $logger = $this->container->get('wl_api.logger');
-    $rows = $logger->lastAttempts(array_filter($filters), 500);
+    $rows = $this->wlApiLogger->lastAttempts(array_filter($filters), 500);
 
     $out = fopen('php://temp', 'r+');
     fputcsv($out, ['when', 'frontend', 'domain', 'scope', 'action', 'http', 'ok', 'ms', 'message']);
-    $df = $this->dateFormatter();
     foreach ($rows as $r) {
       fputcsv($out, [
-        $df->format((int) $r->created, 'short'),
+        $this->dateFormatter->format((int) $r->created, 'short'),
         $r->frontend, $r->domain, $r->scope, $r->action,
         $r->http_code, $r->ok ? '1' : '0', $r->latency_ms, $r->message,
       ]);
