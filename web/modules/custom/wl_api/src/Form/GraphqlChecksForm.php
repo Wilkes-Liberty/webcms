@@ -12,7 +12,34 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Admin UI to run saved GraphQL checks against the configured endpoint.
  */
+use Drupal\Core\Datetime\DateFormatterInterface;
+use Drupal\Core\State\StateInterface;
+use Drupal\Component\Datetime\TimeInterface;
+use GuzzleHttp\ClientInterface;
+
+/**
+ *
+ */
 class GraphqlChecksForm extends FormBase {
+
+  public function __construct(
+    private ClientInterface $httpClient,
+    private StateInterface $state,
+    private TimeInterface $time,
+    private DateFormatterInterface $dateFormatter,
+  ) {}
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create($container) {
+    return new static(
+      $container->get('http_client'),
+      $container->get('state'),
+      $container->get('datetime.time'),
+      $container->get('date.formatter'),
+    );
+  }
 
   /**
    * {@inheritdoc} */
@@ -111,18 +138,18 @@ class GraphqlChecksForm extends FormBase {
    */
   protected function runQuery(string $endpoint, string $label, string $query): void {
     try {
-$resp = \Drupal::service('http_client')->post($endpoint, ['json' => ['query' => $query], 'timeout' => 15]);
+      $resp = $this->httpClient->post($endpoint, ['json' => ['query' => $query], 'timeout' => 15]);
       $data = (string) $resp->getBody();
-\Drupal::state()->set('wl_api.check.' . $this->sanitize($label), [
-'t' => \Drupal::time()->getRequestTime(),
+      $this->state->set('wl_api.check.' . $this->sanitize($label), [
+        't' => (int) $this->time->getRequestTime(),
         'ok' => TRUE,
         'code' => $resp->getStatusCode(),
         'body' => substr($data, 0, 5000),
       ]);
     }
     catch (\Throwable $e) {
-\Drupal::state()->set('wl_api.check.' . $this->sanitize($label), [
-'t' => \Drupal::time()->getRequestTime(),
+      $this->state->set('wl_api.check.' . $this->sanitize($label), [
+        't' => (int) $this->time->getRequestTime(),
         'ok' => FALSE,
         'code' => 0,
         'body' => substr($e->getMessage(), 0, 1000),
@@ -134,11 +161,11 @@ $resp = \Drupal::service('http_client')->post($endpoint, ['json' => ['query' => 
    * Render the last stored result for a given check label.
    */
   protected function renderResult(string $label): string {
-$rec = \Drupal::state()->get('wl_api.check.' . $this->sanitize($label));
+    $rec = $this->state->get('wl_api.check.' . $this->sanitize($label));
     if (!$rec) {
       return '';
     }
-$when = \Drupal::service('date.formatter')->format((int) $rec['t'], 'short');
+    $when = $this->dateFormatter->format((int) $rec['t'], 'short');
     $status = $rec['ok'] ? 'OK' : 'FAIL';
     $code = (int) $rec['code'];
     return sprintf('%s — %s (HTTP %d)<br><pre style="max-width:100%; white-space: pre-wrap;">%s</pre>', $when, $status, $code, htmlspecialchars((string) $rec['body']));

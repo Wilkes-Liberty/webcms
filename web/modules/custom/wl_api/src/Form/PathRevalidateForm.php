@@ -13,7 +13,25 @@ use Drupal\Core\Url;
 /**
  * Form to trigger a one-off path revalidation for a selected frontend.
  */
+use Drupal\wl_api\Service\FrontendManager;
+use Drupal\wl_api\Service\Revalidator;
+
+/**
+ *
+ */
 class PathRevalidateForm extends FormBase {
+
+  public function __construct(private FrontendManager $frontends, private Revalidator $revalidator) {}
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create($container) {
+    return new static(
+      $container->get('wl_api.frontend_manager'),
+      $container->get('wl_api.revalidator'),
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -27,7 +45,7 @@ class PathRevalidateForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
     /** @var \Drupal\wl_api\Service\FrontendManager $fm */
-$fm = \Drupal::service('wl_api.frontend_manager');
+    $fm = $this->frontends;
     $options = [];
     foreach ($fm->listFrontends() as $id => $fe) {
       $options[$id] = $fe['label'] ?? $id;
@@ -68,7 +86,7 @@ $fm = \Drupal::service('wl_api.frontend_manager');
     /** @var \\Drupal\\wl_api\\Service\\FrontendManager $fm */
     $fm = $this->frontends;
     /** @var \Drupal\wl_api\Service\Revalidator $rv */
-$rv = \Drupal::service('wl_api.revalidator');
+    $rv = $this->revalidator;
     $frontends = $fm->listFrontends();
     if (empty($frontends[$frontend])) {
       $this->messenger()->addError($this->t('Unknown frontend.'));
