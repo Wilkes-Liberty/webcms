@@ -1,5 +1,5 @@
 wl_api.status:
-  path: '/admin/config/development/api'
+  path: '/admin/config/api/status'
   defaults:
     _controller: '\Drupal\wl_api\Controller\ApiStatusController::status'
     _title: 'API revalidation status'
@@ -9,7 +9,7 @@ wl_api.status:
     _admin_route: TRUE
 
 wl_api.settings:
-  path: '/admin/config/development/api/settings'
+  path: '/admin/config/api/settings'
   defaults:
     _form: '\Drupal\wl_api\Form\ApiSettingsForm'
     _title: 'API revalidation settings'
@@ -19,7 +19,7 @@ wl_api.settings:
     _admin_route: TRUE
 
 wl_api.revalidate_menu_confirm:
-  path: '/admin/config/development/api/revalidate/{menu}/confirm'
+  path: '/admin/config/api/revalidate/{menu}/confirm'
   defaults:
     _form: '\Drupal\wl_api\Form\RevalidateMenuConfirmForm'
     _title: 'Confirm revalidation'
@@ -29,7 +29,7 @@ wl_api.revalidate_menu_confirm:
     _admin_route: TRUE
 
 wl_api.revalidate_global_confirm:
-  path: '/admin/config/development/api/revalidate-global/{hook}/confirm'
+  path: '/admin/config/api/revalidate-global/{hook}/confirm'
   defaults:
     _form: '\Drupal\wl_api\Form\RevalidateGlobalConfirmForm'
     _title: 'Confirm revalidation'
@@ -39,7 +39,7 @@ wl_api.revalidate_global_confirm:
     _admin_route: TRUE
 
 wl_api.logs:
-  path: '/admin/config/development/api/logs'
+  path: '/admin/config/api/logs'
   defaults:
     _controller: '\Drupal\wl_api\Controller\LogsController::logs'
     _title: 'API revalidation logs'
@@ -49,7 +49,7 @@ wl_api.logs:
     _admin_route: TRUE
 
 wl_api.test_endpoint_confirm:
-  path: '/admin/config/development/api/test/{frontend}/{domain}/{scope}'
+  path: '/admin/config/api/test/{frontend}/{domain}/{scope}'
   defaults:
     _form: '\Drupal\wl_api\Form\TestEndpointConfirmForm'
     _title: 'Test endpoint'
@@ -59,7 +59,7 @@ wl_api.test_endpoint_confirm:
     _admin_route: TRUE
 
 wl_api.path_revalidate:
-  path: '/admin/config/development/api/path/revalidate'
+  path: '/admin/config/api/path/revalidate'
   defaults:
     _form: '\Drupal\wl_api\Form\PathRevalidateForm'
     _title: 'Path revalidation'
@@ -101,7 +101,7 @@ wl_api.tags.menu:
 
 # Saved GraphQL checks page
 wl_api.checks:
-  path: '/admin/config/development/api/checks'
+  path: '/admin/config/api/checks'
   defaults:
     _form: '\Drupal\wl_api\Form\GraphqlChecksForm'
     _title: 'GraphQL checks'
@@ -112,7 +112,7 @@ wl_api.checks:
 
 # GraphQL checks config editor
 wl_api.checks_config:
-  path: '/admin/config/development/api/checks/edit'
+  path: '/admin/config/api/checks/edit'
   defaults:
     _form: '\Drupal\wl_api\Form\GraphqlChecksConfigForm'
     _title: 'Edit GraphQL checks'
@@ -123,7 +123,7 @@ wl_api.checks_config:
 
 # Logs CSV export
 wl_api.logs_csv:
-  path: '/admin/config/development/api/logs.csv'
+  path: '/admin/config/api/logs.csv'
   defaults:
     _controller: '\Drupal\wl_api\Controller\LogsController::logsCsv'
   requirements:

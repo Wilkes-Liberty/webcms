@@ -16,12 +16,12 @@ This PR delivers a substantial set of admin utilities for decoupled revalidation
 - Drush: wl-api:revalidate:tag|path, wl-api:test, wl-api:logs
 
 ## New admin paths
-- Status: `/admin/config/development/api`
-- Settings: `/admin/config/development/api/settings`
-- Frontends: `/admin/config/development/api/frontends`
-- Logs: `/admin/config/development/api/logs`
-- Path Revalidation: `/admin/config/development/api/path/revalidate`
-- GraphQL Checks: `/admin/config/development/api/checks`
+- Status: `/admin/config/api/status`
+- Settings: `/admin/config/api/settings`
+- Frontends: `/admin/config/api/frontends`
+- Logs: `/admin/config/api/logs`
+- Path Revalidation: `/admin/config/api/path/revalidate`
+- GraphQL Checks: `/admin/config/api/checks`
 - Tag Explorer: on node/term/menu pages as “Frontend tags” tab
 
 ## Permissions

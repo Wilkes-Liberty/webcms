@@ -30,10 +30,10 @@ use Drupal\wl_api\FrontendInterface;
  *     "label" = "label"
  *   },
  *   links = {
- *     "collection" = "/admin/config/development/api/frontends",
- *     "add-form" = "/admin/config/development/api/frontends/add",
- *     "edit-form" = "/admin/config/development/api/frontends/{wl_api_frontend}",
- *     "delete-form" = "/admin/config/development/api/frontends/{wl_api_frontend}/delete"
+ *     "collection" = "/admin/config/api/frontends",
+ *     "add-form" = "/admin/config/api/frontends/add",
+ *     "edit-form" = "/admin/config/api/frontends/{wl_api_frontend}",
+ *     "delete-form" = "/admin/config/api/frontends/{wl_api_frontend}/delete"
  *   }
  * )
  */
