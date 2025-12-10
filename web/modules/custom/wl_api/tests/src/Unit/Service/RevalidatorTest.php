@@ -7,7 +7,6 @@ use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\Tests\UnitTestCase;
 use Drupal\wl_api\Service\Alerts;
-use Drupal\wl_api\Service\FrontendManager;
 use Drupal\wl_api\Service\Logger;
 use Drupal\wl_api\Service\Revalidator;
 use GuzzleHttp\ClientInterface;
@@ -27,13 +26,6 @@ class RevalidatorTest extends UnitTestCase {
    * @var \GuzzleHttp\ClientInterface|\PHPUnit\Framework\MockObject\MockObject
    */
   protected $httpClient;
-
-  /**
-   * The frontend manager mock.
-   *
-   * @var \Drupal\wl_api\Service\FrontendManager|\PHPUnit\Framework\MockObject\MockObject
-   */
-  protected $frontendManager;
 
   /**
    * The wl_api logger mock.
@@ -77,7 +69,6 @@ class RevalidatorTest extends UnitTestCase {
     parent::setUp();
 
     $this->httpClient = $this->createMock(ClientInterface::class);
-    $this->frontendManager = $this->createMock(FrontendManager::class);
     $this->logger = $this->createMock(Logger::class);
     $this->currentUser = $this->createMock(AccountProxyInterface::class);
     $this->state = $this->createMock(StateInterface::class);
@@ -94,12 +85,11 @@ class RevalidatorTest extends UnitTestCase {
   protected function createRevalidator(): Revalidator {
     return new Revalidator(
       $this->httpClient,
-      $this->frontendManager,
       $this->logger,
-      $this->currentUser,
-      $this->state,
-      $this->alerts,
       $this->drupalLogger,
+      $this->state,
+      $this->currentUser,
+      $this->alerts,
     );
   }
 

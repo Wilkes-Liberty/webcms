@@ -1,0 +1,71 @@
+diff --git a/src/Plugin/simple_sitemap/UrlGenerator/ExtendedEntityUrlGenerator.php b/src/Plugin/simple_sitemap/UrlGenerator/ExtendedEntityUrlGenerator.php
+index e0ed91d..c11c12b 100644
+--- a/src/Plugin/simple_sitemap/UrlGenerator/ExtendedEntityUrlGenerator.php
++++ b/src/Plugin/simple_sitemap/UrlGenerator/ExtendedEntityUrlGenerator.php
+@@ -39,10 +39,8 @@ class ExtendedEntityUrlGenerator extends EntityUrlGenerator {
+ 
+   /**
+    * Module handler.
+-   *
+-   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+    */
+-  protected $moduleHandler;
++  protected ModuleHandlerInterface $moduleHandler;
+ 
+   /**
+    * Config factory.
+@@ -89,10 +87,10 @@ class ExtendedEntityUrlGenerator extends EntityUrlGenerator {
+       $entity_helper,
+       $entities_manager,
+       $url_generator_manager,
+-      $memory_cache
++      $memory_cache,
++      $module_handler
+     );
+ 
+-    $this->moduleHandler = $module_handler;
+     $this->configFactory = $configFactory;
+     $this->fileUrlGenerator = $fileUrlGenerator;
+   }
+@@ -193,14 +191,14 @@ class ExtendedEntityUrlGenerator extends EntityUrlGenerator {
+   /**
+    * {@inheritDoc}
+    */
+-  protected function getEntityImageData(ContentEntityInterface $entity): array {
++  protected function getEntityImageData(ContentEntityInterface $entity, array &$processed = []): array {
+     $image_paths = $this->configFactory->get('simple_sitemap_extensions.extended_entity.image_paths')->get();
+     if (empty($image_paths[$entity->getEntityTypeId()][$entity->bundle()])) {
+-      return parent::getEntityImageData($entity);
++      return parent::getEntityImageData($entity, $processed);
+     }
+ 
+     $image_paths = $image_paths[$entity->getEntityTypeId()][$entity->bundle()];
+-    $image_data = $this->getImageDataFromImagePaths($entity, (array) $image_paths);
++    $image_data = $this->getImageDataFromImagePaths($entity, (array) $image_paths, $processed);
+ 
+     return $image_data;
+   }
+@@ -212,11 +210,13 @@ class ExtendedEntityUrlGenerator extends EntityUrlGenerator {
+    *   A fieldable entity.
+    * @param array $image_paths
+    *   Configuration of image paths.
++   * @param array $processed
++   *   Internal use only. An array of processed entities.
+    *
+    * @return array
+    *   The data.
+    */
+-  private function getImageDataFromImagePaths(FieldableEntityInterface $entity, array $image_paths) {
++  private function getImageDataFromImagePaths(FieldableEntityInterface $entity, array $image_paths, array &$processed = []) {
+     $fields = !empty($image_paths['fields']) && is_array($image_paths['fields']) ? $image_paths['fields'] : [];
+     $image_data = [];
+     foreach ($fields as $field_name => $field_config) {
+@@ -247,7 +247,7 @@ class ExtendedEntityUrlGenerator extends EntityUrlGenerator {
+               if (!empty($required_bundles) && !in_array($field_item->entity->bundle(), $required_bundles)) {
+                 continue;
+               }
+-              $image_data += $this->getEntityImageData($field_item->entity);
++              $image_data += $this->getEntityImageData($field_item->entity, $processed);
+             }
+           }
+         }

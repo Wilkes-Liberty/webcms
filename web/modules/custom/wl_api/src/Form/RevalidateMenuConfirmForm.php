@@ -59,7 +59,7 @@ class RevalidateMenuConfirmForm extends ConfirmFormBase {
     $this->menuName = $menu ?? '';
     if ($this->menuName === '') {
       $this->messenger()->addError($this->t('Missing menu parameter.'));
-      $form_state->setRedirect('wl_api.status');
+      $form_state->setRedirectUrl(Url::fromRoute('wl_api.status'));
     }
     return parent::buildForm($form, $form_state);
   }
@@ -72,7 +72,7 @@ class RevalidateMenuConfirmForm extends ConfirmFormBase {
       _wl_api_revalidate_menu_if_configured($this->menuName);
       $this->messenger()->addStatus($this->t('Triggered revalidation for @menu.', ['@menu' => $this->menuName]));
     }
-    $form_state->setRedirect('wl_api.status');
+    $form_state->setRedirectUrl(Url::fromRoute('wl_api.status'));
   }
 
 }

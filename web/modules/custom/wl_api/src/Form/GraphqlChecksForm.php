@@ -3,6 +3,7 @@
 namespace Drupal\wl_api\Form;
 
 use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -181,7 +182,7 @@ class GraphqlChecksForm extends FormBase {
     $when = $this->dateFormatter->format((int) $rec['t'], 'short');
     $status = $rec['ok'] ? 'OK' : 'FAIL';
     $code = (int) $rec['code'];
-    return sprintf('%s — %s (HTTP %d)<br><pre style="max-width:100%; white-space: pre-wrap;">%s</pre>', $when, $status, $code, htmlspecialchars((string) $rec['body']));
+    return sprintf('%s — %s (HTTP %d)<br><pre style="max-width:100%; white-space: pre-wrap;">%s</pre>', $when, $status, $code, Html::escape((string) $rec['body']));
   }
 
   /**

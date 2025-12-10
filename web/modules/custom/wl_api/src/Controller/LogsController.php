@@ -50,7 +50,7 @@ class LogsController extends ControllerBase {
    * @return array
    *   Render array with filters and table.
    */
-  public function logs() {
+  public function logs(): array {
     $req = $this->requestStack->getCurrentRequest();
     $filters = [
       'frontend' => $req->query->get('frontend') ?? NULL,

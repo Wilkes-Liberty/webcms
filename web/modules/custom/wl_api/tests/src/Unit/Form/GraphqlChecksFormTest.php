@@ -3,6 +3,7 @@
 namespace Drupal\Tests\wl_api\Unit\Form;
 
 use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\Tests\UnitTestCase;
@@ -162,6 +163,6 @@ class GraphqlChecksFormTest extends UnitTestCase {
     $this->assertStringContainsString('FAIL', $out);
     $this->assertStringContainsString('HTTP 503', $out);
     // Ensure body is escaped.
-    $this->assertStringContainsString('&lt;b&gt;HTML&lt;/b&gt;', $out);
+    $this->assertStringContainsString(Html::escape('<b>HTML</b>'), $out);
   }
 }

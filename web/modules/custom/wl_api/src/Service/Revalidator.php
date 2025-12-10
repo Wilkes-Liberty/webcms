@@ -8,37 +8,71 @@ use Drupal\Core\State\StateInterface;
 use GuzzleHttp\ClientInterface;
 
 /**
- * Handles posting to Next.js revalidate endpoints and logs results.
+ * Revalidator service for API invalidation.
  */
 class Revalidator {
 
   /**
-   * Constructs a Revalidator service.
+   * Constructs the Revalidator.
    *
    * @param \GuzzleHttp\ClientInterface $httpClient
    *   The HTTP client.
-   * @param \Drupal\wl_api\Service\FrontendManager $frontends
-   *   The frontend manager.
-   * @param \Drupal\wl_api\Service\Logger $logger
-   *   The wl_api logger.
-   * @param \Drupal\Core\Session\AccountProxyInterface $currentUser
-   *   The current user.
-   * @param \Drupal\Core\State\StateInterface $state
-   *   The state service.
-   * @param \Drupal\wl_api\Service\Alerts $alerts
-   *   The alerts service.
+   * @param \Drupal\wl_api\Service\Logger $dbLogger
+   *   The DB logger service.
    * @param \Drupal\Core\Logger\LoggerChannelInterface $drupalLogger
    *   The Drupal logger channel.
+   * @param \Drupal\Core\State\StateInterface $state
+   *   The state service.
+   * @param \Drupal\Core\Session\AccountProxyInterface $currentUser
+   *   The current user.
+   * @param \Drupal\wl_api\Service\Alerts $alerts
+   *   The alerts service.
    */
   public function __construct(
     protected ClientInterface $httpClient,
-    protected FrontendManager $frontends,
-    protected Logger $logger,
-    protected AccountProxyInterface $currentUser,
-    protected StateInterface $state,
-    protected Alerts $alerts,
+    protected Logger $dbLogger,
     protected LoggerChannelInterface $drupalLogger,
+    protected StateInterface $state,
+    protected AccountProxyInterface $currentUser,
+    protected Alerts $alerts,
   ) {}
+
+  /**
+   * Revalidates a tag.
+   *
+   * @param string $tag
+   *   The tag to revalidate.
+   * @param string $secret
+   *   The secret key.
+   * @param string $webhookUrl
+   *   The webhook URL.
+   *
+   * @return bool
+   *   TRUE on success, FALSE on failure.
+   */
+  public function revalidate(string $tag, string $secret, string $webhookUrl): bool {
+    try {
+      // Basic implementation: POST to webhook with tag payload.
+      $payload = ['tag' => $tag];
+      $result = $this->post($webhookUrl, $secret, $payload, [
+        'frontend' => 'default',
+        'domain' => '',
+        'scope' => 'tag',
+        'action' => 'revalidate',
+      ]);
+      if ($result['ok']) {
+        $this->drupalLogger->info('Revalidation successful for tag: @tag', ['@tag' => $tag]);
+        return TRUE;
+      }
+      else {
+        throw new \Exception($result['error'] ?: ('HTTP ' . $result['status']));
+      }
+    }
+    catch (\Exception $e) {
+      $this->drupalLogger->error('Revalidation failed: @error', ['@error' => $e->getMessage()]);
+      return FALSE;
+    }
+  }
 
   /**
    * Low-level POST with timing + logging metadata.
@@ -77,7 +111,7 @@ class Revalidator {
     }
     $latency = (int) round((microtime(TRUE) - $start) * 1000);
 
-    $this->logger->log([
+    $this->dbLogger->log([
       'frontend' => $meta['frontend'] ?? 'default',
       'domain' => $meta['domain'] ?? '',
       'scope' => $meta['scope'] ?? '',

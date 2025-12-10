@@ -1,28 +1,29 @@
 view api revalidation status:
   title: 'View API revalidation status'
-  description: 'View the API revalidation status page.'
+  description: 'Allows viewing the API status page.'
+  restrict access: FALSE
 
 trigger api revalidation:
   title: 'Trigger API revalidation'
-  description: 'Trigger revalidation now for menus/content/taxonomy.'
-  restrict access: true
+  description: 'Allows triggering revalidation actions.'
+  restrict access: TRUE
 
 administer api revalidation settings:
   title: 'Administer API revalidation settings'
-  description: 'Configure API revalidation webhooks and tags.'
-  restrict access: true
+  description: 'Allows configuring API settings.'
+  restrict access: TRUE
 
 administer api frontends:
   title: 'Administer API frontends'
-  description: 'Create and manage frontend integrations.'
-  restrict access: true
+  description: 'Allows managing frontend configurations.'
+  restrict access: TRUE
 
 view api logs:
   title: 'View API logs'
-  description: 'View revalidation/test event logs. May contain sensitive endpoint and response data.'
-  restrict access: true
+  description: 'Allows viewing API event logs.'
+  restrict access: TRUE
 
 run api checks:
   title: 'Run API checks'
-  description: 'Run saved GraphQL checks and endpoint tests. Can trigger external HTTP requests.'
-  restrict access: true
+  description: 'Allows running GraphQL and health checks.'
+  restrict access: TRUE

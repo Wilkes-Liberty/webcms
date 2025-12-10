@@ -87,7 +87,7 @@ class Frontend extends ConfigEntityBase implements FrontendInterface {
   /**
    * Get arbitrary field value.
    */
-  public function get($field) {
+  public function get($field): mixed {
     return $this->$field ?? NULL;
   }
 

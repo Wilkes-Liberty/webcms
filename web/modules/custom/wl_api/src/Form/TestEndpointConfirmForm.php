@@ -36,25 +36,29 @@ class TestEndpointConfirmForm extends ConfirmFormBase {
   }
 
   /**
-   * {@inheritdoc} */
+   * {@inheritdoc}
+   */
   public function getQuestion() {
     return $this->t('Test @domain endpoint on @frontend?', ['@domain' => $this->domain, '@frontend' => $this->frontend]);
   }
 
   /**
-   * {@inheritdoc} */
+   * {@inheritdoc}
+   */
   public function getCancelUrl() {
     return Url::fromRoute('wl_api.status');
   }
 
   /**
-   * {@inheritdoc} */
+   * {@inheritdoc}
+   */
   public function getConfirmText() {
     return $this->t('Run test');
   }
 
   /**
-   * {@inheritdoc} */
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state, ?string $frontend = NULL, ?string $domain = NULL, ?string $scope = NULL) {
     $this->frontend = $frontend ?? 'default';
     $this->domain = $domain ?? 'test';
@@ -64,7 +68,8 @@ class TestEndpointConfirmForm extends ConfirmFormBase {
   }
 
   /**
-   * {@inheritdoc} */
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     /** @var \Drupal\wl_api\Service\FrontendManager $fm */
     $fm = \Drupal::service('wl_api.frontend_manager');
@@ -73,7 +78,7 @@ class TestEndpointConfirmForm extends ConfirmFormBase {
     $frontends = $fm->listFrontends();
     if (!isset($frontends[$this->frontend])) {
       $this->messenger()->addError($this->t('Unknown frontend: @id', ['@id' => $this->frontend]));
-      $form_state->setRedirect('wl_api.status');
+      $form_state->setRedirectUrl(Url::fromRoute('wl_api.status'));
       return;
     }
     $fe = $frontends[$this->frontend];
@@ -81,7 +86,7 @@ class TestEndpointConfirmForm extends ConfirmFormBase {
     $secret = $fm->resolveSecret($fe['secret'] ?? '');
     if (!$endpoint) {
       $this->messenger()->addError($this->t('No revalidate webhook configured for frontend @id.', ['@id' => $this->frontend]));
-      $form_state->setRedirect('wl_api.status');
+      $form_state->setRedirectUrl(Url::fromRoute('wl_api.status'));
       return;
     }
     $payload = ['__action' => 'test', 'domain' => $this->domain, 'scope' => $this->scope, 'tag' => 'health'];
@@ -97,7 +102,7 @@ class TestEndpointConfirmForm extends ConfirmFormBase {
       ]
     );
     $this->messenger()->addStatus($this->t('Test executed for @frontend.', ['@frontend' => $this->frontend]));
-    $form_state->setRedirect('wl_api.status');
+    $form_state->setRedirectUrl(Url::fromRoute('wl_api.status'));
   }
 
 }

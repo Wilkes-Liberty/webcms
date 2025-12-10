@@ -59,7 +59,7 @@ class RevalidateGlobalConfirmForm extends ConfirmFormBase {
     $this->hook = $hook ?? '';
     if (!in_array($this->hook, ['content', 'taxonomy'], TRUE)) {
       $this->messenger()->addError($this->t('Invalid revalidation hook.'));
-      $form_state->setRedirect('wl_api.status');
+      $form_state->setRedirectUrl(Url::fromRoute('wl_api.status'));
     }
     return parent::buildForm($form, $form_state);
   }
@@ -72,7 +72,7 @@ class RevalidateGlobalConfirmForm extends ConfirmFormBase {
       _wl_api_revalidate_global($this->hook);
       $this->messenger()->addStatus($this->t('Triggered revalidation for @hook.', ['@hook' => $this->hook]));
     }
-    $form_state->setRedirect('wl_api.status');
+    $form_state->setRedirectUrl(Url::fromRoute('wl_api.status'));
   }
 
 }

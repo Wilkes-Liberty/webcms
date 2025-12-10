@@ -57,7 +57,8 @@ class GraphqlChecksConfigForm extends ConfigFormBase {
   }
 
   /**
-   * {@inheritdoc} */
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     parent::submitForm($form, $form_state);
     $values = (array) $form_state->getValue('checks');

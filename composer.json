@@ -84,7 +84,7 @@
         "drupal/seckit": "^2.0",
         "drupal/security_review": "^3.1",
         "drupal/simple_sitemap": "^4.2",
-        "drupal/simple_sitemap_extensions": "^2.0",
+        "drupal/simple_sitemap_extensions": "2.x-dev",
         "drupal/smart_date": "^4.2",
         "drupal/smtp": "^1.4",
         "drupal/telephone_validation": "^2.5",
@@ -194,6 +194,9 @@
             },
             "tmgmt/tmgmt_local": {
                 "Fix strpos null deprecation in TMGMTLocalBreadcrumbBuilder": "patches/tmgmt_local-strpos-null-fix.patch"
+            },
+            "drupal/simple_sitemap_extensions": {
+                "Fix simple_sitemap 4.2+ compatibility - typed properties and method signatures": "patches/simple_sitemap_extensions-fix-simple-sitemap-4.2-compatibility.patch"
             }
         }
     },
