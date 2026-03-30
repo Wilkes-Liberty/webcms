@@ -92,5 +92,5 @@ backups*
 
 # TMP
 config/compliance-terms*
-docs/*
+#docs/*
 scripts/create-*
