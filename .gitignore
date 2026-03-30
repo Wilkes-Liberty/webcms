@@ -39,12 +39,20 @@ web/sites/*/files/css/
 web/sites/*/files/js/
 web/sites/*/files/styles/
 
-# Configuration files that may contain sensitive information
-web/sites/*/settings*.php
-web/sites/*/services*.yml
-web/sites/development.services.yml
-web/sites/local.services.yml
-web/sites/*/local.settings.php
+# Sensitive settings overrides — base settings.php is committed
+# settings.local.php holds DB credentials / environment-specific secrets
+web/sites/*/settings.local.php
+# Allow settings.php and settings.docker.php to be committed
+!web/sites/*/settings.php
+!web/sites/*/settings.docker.php
+
+# Services YML — allow environment-specific variants to be committed
+# Only exclude truly local/personal overrides
+web/sites/*/local.services.yml
+# Allow the standard environment services files
+!web/sites/*/development.services.yml
+!web/sites/*/production.services.yml
+!web/sites/development.services.yml
 
 # Temporary files
 *.tmp
