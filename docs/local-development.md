@@ -1,586 +1,276 @@
-# Local Development Guide - Wilkes & Liberty Web CMS
+# Local Development Guide
 
-This guide provides comprehensive instructions for setting up a local development environment for the Wilkes & Liberty headless Drupal 11 CMS using DDEV, following our principles of digital sovereignty and development freedom.
-
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Initial Setup](#initial-setup)
-- [DDEV Configuration](#ddev-configuration)
-- [Drupal Installation](#drupal-installation)
-- [Development Workflow](#development-workflow)
-- [API Development](#api-development)
-- [Testing](#testing)
-- [Troubleshooting](#troubleshooting)
+This guide covers setting up a local Drupal 11 development environment using DDEV. The local environment uses **PostgreSQL 16** to match production.
 
 ## Prerequisites
 
-### System Requirements
+| Tool | Version | Install |
+|------|---------|---------|
+| Docker Desktop | 20.10+ | https://docs.docker.com/get-docker/ |
+| DDEV | 1.22.0+ | https://ddev.readthedocs.io/en/stable/users/install/ |
+| Composer | 2.x | `brew install composer` |
+| Git | 2.30+ | `brew install git` |
 
-**Operating System Support:**
-- macOS (recommended for Wilkes & Liberty development)
-- Linux (Ubuntu 20.04+, other distributions)
-- Windows 10/11 with WSL2
-
-**Required Software:**
-- **Docker** (v20.10+) - Container runtime
-- **DDEV** (v1.22.0+) - Local development environment
-- **Git** (v2.30+) - Version control
-- **Composer** (v2.0+) - PHP dependency management
-- **PHP** (v8.3+) - For local CLI operations
-- **Node.js** (v18+) - For build tools (optional)
-
-### Installation Instructions
-
-#### macOS Installation
+### macOS Quick Install
 
 ```bash
-# Install Docker Desktop
 brew install --cask docker
-
-# Install DDEV
-brew install ddev/ddev/ddev
-
-# Install Composer (if not already installed)
+brew install ddev
 brew install composer
-
-# Verify installations
-docker --version
-ddev version
-composer --version
-```
-
-#### Linux Installation
-
-```bash
-# Install Docker (Ubuntu/Debian)
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker $USER
-
-# Install DDEV
-curl -fsSL https://pkg.ddev.com/apt/gpg.DD2316338C7BF2016B2D47C23A33DDA13A30C6B2.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/ddev.gpg
-echo "deb [signed-by=/etc/apt/trusted.gpg.d/ddev.gpg] https://pkg.ddev.com/apt/ * *" | sudo tee /etc/apt/sources.list.d/ddev.list
-sudo apt update
-sudo apt install ddev
-
-# Install Composer
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-
-# Log out and back in to refresh group membership
-```
-
-#### Windows (WSL2) Installation
-
-```powershell
-# Install WSL2 and Ubuntu
-wsl --install
-
-# From within WSL2, follow Linux installation steps
-# Ensure Docker Desktop is configured to use WSL2 backend
 ```
 
 ## Initial Setup
 
-### Repository Setup
-
 ```bash
 # Clone the repository
-git clone git@github.com:Wilkes-Liberty/webcms.git
+git clone git@github.com:wilkesliberty/webcms.git
 cd webcms
 
-# Or fork and clone your fork
-git clone git@github.com:YOUR_USERNAME/webcms.git
-cd webcms
-git remote add upstream git@github.com:Wilkes-Liberty/webcms.git
-```
+# Start DDEV (creates PostgreSQL 16 container automatically)
+ddev start
 
-### Environment Configuration
+# Install PHP dependencies
+ddev composer install
 
-```bash
-# Copy environment template (when available)
-cp .env.example .env
+# Import configuration
+ddev drush cim -y
 
-# Edit environment variables for local development
-# Set database credentials, API keys, etc.
+# Clear caches
+ddev drush cr
+
+# Open the site
+ddev launch          # https://api.wilkesliberty.dev
+ddev launch /admin   # Admin interface
 ```
 
 ## DDEV Configuration
 
-### Project Configuration
-
-The project includes a pre-configured `.ddev/config.yaml` file optimized for headless Drupal development:
+The project's `.ddev/config.yaml` is pre-configured and committed. Key settings:
 
 ```yaml
-# .ddev/config.yaml
-name: cms
+name: api
 type: drupal11
 docroot: web
 php_version: "8.3"
 webserver_type: nginx-fpm
 database:
-  type: mariadb
-  version: "10.11"
+  type: postgres       # PostgreSQL 16 — matches production
+  version: "16"
 additional_fqdns:
-  - api.wilkesliberty.local
-xdebug_enabled: false
-use_dns_when_possible: true
+  - api.wilkesliberty.dev
 composer_version: "2"
 ```
 
-### Custom DDEV Commands
+**Important**: This project uses **PostgreSQL**, not MySQL or MariaDB. Use `ddev psql` (not `ddev mysql`) for database access.
 
-The project includes custom DDEV commands in `.ddev/commands/web/`:
+## Settings File Hierarchy
 
-#### Setup Command (`ddev setup`)
-```bash
-#!/bin/bash
-# .ddev/commands/web/setup
-composer install
-drush site:install minimal --yes
-drush config:import --yes
-drush cache:rebuild
-drush user:create admin --password="admin123" --mail="admin@wilkesliberty.com"
-drush user:role:add administrator admin
-echo "Setup complete! Admin user created: admin/admin123"
+1. `web/sites/default/settings.php` — base config (committed, no secrets)
+2. `web/sites/default/settings.ddev.php` — DDEV auto-generates this (gitignored); sets DB connection
+3. `web/sites/default/settings.local.php` — your local overrides (gitignored)
+
+For development, you can add cache-disabling settings to `settings.local.php`:
+
+```php
+// web/sites/default/settings.local.php (create if it doesn't exist)
+<?php
+// Load development services (Twig debug, relaxed CORS, null caches)
+$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+
+// Disable render cache for development
+$settings['cache']['bins']['render'] = 'cache.backend.null';
+$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
+$settings['cache']['bins']['page'] = 'cache.backend.null';
 ```
 
-#### API Test Command (`ddev api-test`)
-```bash
-#!/bin/bash
-# .ddev/commands/web/api-test
-echo "Testing JSON:API endpoints..."
-curl -s -H "Accept: application/vnd.api+json" https://cms.ddev.site/jsonapi/node/article | jq .
-echo "API test complete."
-```
-
-### Starting Your Environment
+## Daily Workflow
 
 ```bash
-# Start DDEV (first time)
+# Start your session
 ddev start
-
-# Run initial setup
-ddev setup
-
-# Access your site
-ddev launch          # Opens in browser
-ddev launch /admin   # Opens admin interface
-```
-
-## Drupal Installation
-
-### Fresh Installation
-
-```bash
-# Start with a clean Drupal 11 installation
-ddev start
-ddev composer create-project drupal/recommended-project:^11.0 .
-ddev composer require 'drupal/core-dev:^11.0' --dev
-
-# Install Drupal
-ddev drush site:install minimal --site-name="Wilkes & Liberty CMS" --account-name=admin --account-pass=admin123 --yes
-
-# Install additional modules for headless development
-ddev composer require drupal/jsonapi_extras drupal/simple_oauth drupal/decoupled_router drupal/cors
-ddev drush en jsonapi jsonapi_extras simple_oauth decoupled_router cors -y
-```
-
-### Content Types Installation
-
-```bash
-# Import content type configurations
-ddev drush config:import --yes
-
-# Or create content types programmatically
-ddev drush en devel_generate -y
-ddev drush genc 50  # Generate sample content
-```
-
-## Development Workflow
-
-### Daily Development
-
-```bash
-# Start development session
-ddev start
-ddev composer install  # Update dependencies if needed
+ddev composer install  # Only if composer.lock changed
 ddev drush cr          # Clear caches
-ddev launch            # Open site
 
-# Make changes to code, configuration, content types
-# Export configuration changes
+# After making changes in the admin interface — always export
 ddev drush cex -y
+git add config/sync/
+git commit -m "Export configuration: <what you changed>"
 
-# Test changes
-ddev phpunit
-ddev composer phpcs
-
-# Commit changes
-git add .
-git commit -m "Add new revolutionary content type"
-git push origin feature/content-type
+# After pulling someone else's changes that include config
+git pull
+ddev drush cim -y
+ddev drush cr
 ```
 
-### Configuration Management
+## Configuration Management
 
 ```bash
-# Export current configuration
-ddev drush config:export --yes
+# Export current configuration to config/sync/
+ddev drush config:export --yes    # or: ddev drush cex -y
 
-# Import configuration (after pulling changes)
-ddev drush config:import --yes
+# Import configuration from config/sync/
+ddev drush config:import --yes    # or: ddev drush cim -y
 
-# Check configuration status
+# Check what's different between DB and config/sync/
 ddev drush config:status
 
-# Compare configuration differences
-ddev drush config:diff
+# Show diff for a specific config item
+ddev drush config:diff system.site
 ```
 
-### Database Management
+## Database Operations
 
 ```bash
-# Create database backup
+# PostgreSQL CLI (use this — NOT ddev mysql)
+ddev psql
+
+# Export database snapshot
 ddev export-db --file=backup-$(date +%Y%m%d).sql.gz
 
-# Import database from file
+# Import a database snapshot
 ddev import-db --src=backup.sql.gz
 
-# Access database directly
-ddev mysql         # MySQL CLI
-ddev phpmyadmin    # Web interface
-
-# Reset database to fresh state
+# Drop and reinstall (destructive!)
 ddev drush sql:drop -y
 ddev drush site:install minimal -y
-ddev drush config:import -y
+ddev drush cim -y
 ```
 
-## API Development
-
-### JSON:API Configuration
+## API Development & Testing
 
 ```bash
-# Enable and configure JSON:API
-ddev drush en jsonapi jsonapi_extras -y
+# Test JSON:API
+curl -s -H "Accept: application/vnd.api+json" \
+  https://api.wilkesliberty.dev/jsonapi/node/article | jq '.data | length'
 
-# Configure JSONAPI extras for custom endpoints
-ddev drush config:set jsonapi_extras.settings include_count true -y
-ddev drush config:set jsonapi_extras.settings default_disabled false -y
-```
-
-### Testing API Endpoints
-
-```bash
-# Test JSON:API endpoints
-curl -H "Accept: application/vnd.api+json" https://cms.ddev.site/jsonapi/node/article | jq
-
-# Test with authentication (if configured)
-TOKEN=$(ddev get-oauth-token)
-curl -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.api+json" https://cms.ddev.site/jsonapi/node/article | jq
-
-# Test GraphQL (if enabled)
-curl -X POST https://cms.ddev.site/graphql \
+# Test GraphQL
+curl -s -X POST https://api.wilkesliberty.dev/graphql \
   -H "Content-Type: application/json" \
-  -d '{"query": "{ nodeQuery { entities { ... on NodeArticle { title } } } }"}'
+  -d '{"query":"{ nodeArticles { nodes { title } } }"}' | jq
+
+# Get OAuth2 token for authenticated requests
+# Configure a consumer in Drupal at /admin/config/services/consumer
+# Then request a token:
+curl -X POST https://api.wilkesliberty.dev/oauth/token \
+  -d "grant_type=client_credentials" \
+  -d "client_id=YOUR_CLIENT_ID" \
+  -d "client_secret=YOUR_CLIENT_SECRET" | jq
 ```
 
-### Custom Module Development
+## Translations
 
 ```bash
-# Generate module scaffolding
-ddev drush generate:module
+# Export interface translations (before committing)
+./scripts/export-interface-translations.sh
 
-# Module structure for API endpoints
-web/modules/custom/wl_api/
-├── wl_api.info.yml
-├── wl_api.routing.yml
-├── src/
-│   ├── Controller/
-│   │   └── FrontendApiController.php
-│   └── Commands/
-│       └── WlApiCommands.php
+# Import custom translations
+./scripts/import-custom-translations.sh
+
+# Export custom translations
+./scripts/export-custom-translations.sh
+
+# Via Drush
+ddev drush locale:rebuild
+ddev drush cr
 ```
 
-### Development URLs
+## Generating Sample Content
 
 ```bash
-# Main site
-https://cms.ddev.site
-
-# Admin interface
-https://cms.ddev.site/admin
-
-# JSON:API
-https://cms.ddev.site/jsonapi
-
-# GraphQL
-https://cms.ddev.site/graphql
-
-# Database admin
-https://cms.ddev.site:8037  # PhpMyAdmin
-```
-
-## Testing
-
-### Automated Testing
-
-```bash
-# Run PHPUnit tests
-ddev phpunit
-
-# Run specific test classes
-ddev phpunit web/modules/custom/wl_api/tests/
-
-# Run coding standards checks
-ddev composer phpcs
-
-# Fix coding standards violations
-ddev composer phpcbf
-
-# Run security checks
-ddev composer security-check
-```
-
-### Manual Testing
-
-```bash
-# Test content creation workflow
-ddev launch /node/add/article
-
-# Test API responses
-ddev api-test
-
-# Test configuration import/export
-ddev drush config:export -y
-ddev drush config:import -y
-
-# Performance testing
-ddev launch /admin/reports/status
-```
-
-### Content Testing
-
-```bash
-# Generate test content
+# Enable devel_generate (dev only — never in staging/prod)
 ddev drush en devel_generate -y
-ddev drush genc 10 --types=article
-ddev drush genc 10 --types=landing_page
-ddev drush genc 5 --types=event
 
-# Test content API responses
-curl -s https://cms.ddev.site/jsonapi/node/article | jq '.data | length'
+# Generate sample content
+ddev drush genc 10 --types=article
+ddev drush genc 5 --types=event
+ddev drush genc 5 --types=landing_page
+
+# Disable when done
+ddev drush pmu devel_generate -y
 ```
 
-## Advanced Development
+## Debugging
 
-### Xdebug Configuration
-
+### Xdebug
 ```bash
-# Enable Xdebug for debugging
+# Enable (configure your IDE to listen on port 9003)
 ddev xdebug on
 
-# Configure your IDE to connect to port 9003
-# PHPStorm: Languages & Frameworks > PHP > Servers
-# Add server: cms.ddev.site, port 443, debugger Xdebug
+# PhpStorm: Settings > PHP > Servers > add api.wilkesliberty.dev, port 443, Xdebug
+# VS Code: install PHP Debug extension, use port 9003
 
-# Disable when not needed (improves performance)
-ddev xdebug off
+ddev xdebug off   # Disable when not needed (big performance hit)
 ```
 
-### Custom Services
-
-Add additional services to `.ddev/docker-compose.services.yml`:
-
-```yaml
-version: '3.6'
-services:
-  redis:
-    container_name: ddev-${DDEV_SITENAME}-redis
-    image: redis:7-alpine
-    restart: unless-stopped
-    ports:
-      - "6379"
-    environment:
-      - REDIS_DATABASES=16
-
-  elasticsearch:
-    container_name: ddev-${DDEV_SITENAME}-elasticsearch
-    image: elasticsearch:8.10.4
-    restart: unless-stopped
-    ports:
-      - "9200"
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
+### Drupal Watchdog Logs
+```bash
+ddev drush watchdog:show           # Recent logs
+ddev drush watchdog:show --type=php  # PHP errors only
+ddev drush watchdog:show --severity=error
 ```
 
-### Performance Optimization
+### Module Status
+```bash
+ddev drush pm:list | grep -E "(json|api|rest|graphql|redis|next)"
+```
+
+## Custom Module Development
 
 ```bash
-# Enable Redis for caching
-ddev composer require drupal/redis
-ddev drush en redis -y
+# Generate a new module scaffold
+ddev drush generate:module
 
-# Configure Redis in settings.local.php
-echo "Redis configuration added to settings.local.php"
+# Place in web/modules/custom/
+# Follow Drupal 11 coding standards
+```
 
-# Enable CSS/JS aggregation
-ddev drush config:set system.performance css.preprocess true -y
-ddev drush config:set system.performance js.preprocess true -y
+Module layout example:
+```
+web/modules/custom/wl_example/
+├── wl_example.info.yml
+├── wl_example.routing.yml
+├── wl_example.module
+└── src/
+    ├── Controller/
+    └── Plugin/
+```
 
-# Configure caching for API responses
-ddev drush config:set system.performance cache.page.max_age 3600 -y
+## Code Quality
+
+```bash
+# Check coding standards (PHPCS)
+ddev composer phpcs
+
+# Auto-fix fixable violations
+ddev composer phpcbf
+
+# Security audit
+ddev composer audit
 ```
 
 ## Troubleshooting
 
-### Common Issues
+| Problem | Solution |
+|---------|----------|
+| DDEV won't start | `ddev poweroff && ddev start` |
+| Port conflict | `ddev stop && sudo lsof -i :80 && ddev start` |
+| Config import fails | `ddev drush cim --partial -y` |
+| Config UUID mismatch | `ddev drush config:set system.site uuid <UUID>` |
+| Module install error | `ddev composer install` then retry |
+| PostgreSQL connection | `ddev describe` to see DB credentials; use `ddev psql` |
+| Composer memory limit | `ddev composer install --no-dev -o` or `COMPOSER_MEMORY_LIMIT=-1 ddev composer install` |
+| Permission issues | `ddev exec chmod -R 755 web/sites/default/files` |
 
-#### Docker/DDEV Issues
-
+### Getting DDEV Credentials
 ```bash
-# DDEV won't start
-ddev poweroff
-ddev start
-
-# Port conflicts
-ddev stop
-sudo lsof -i :80  # Check what's using port 80
-ddev start
-
-# Permission issues (Linux)
-sudo chown -R $USER:$USER .ddev
+ddev describe          # Shows all URLs and service info
+ddev describe postgres # PostgreSQL-specific connection info
 ```
-
-#### Composer Issues
-
-```bash
-# Composer memory limit
-ddev composer install --memory-limit=-1
-
-# Clear Composer cache
-ddev composer clear-cache
-
-# Update Composer to latest version
-ddev composer self-update
-```
-
-#### Drupal Issues
-
-```bash
-# Clear all caches
-ddev drush cache:rebuild
-
-# Fix file permissions
-ddev exec chmod -R 755 web/sites/default/files
-ddev exec chown -R www-data:www-data web/sites/default/files
-
-# Database connection issues
-ddev describe  # Check database credentials
-```
-
-#### Configuration Issues
-
-```bash
-# Configuration import fails
-ddev drush config:import --partial -y
-
-# Configuration export issues
-ddev drush config:export --yes
-git checkout config/sync/core.extension.yml  # If module conflicts
-```
-
-### Debugging API Issues
-
-```bash
-# Check API module status
-ddev drush pm:list | grep -E "(json|api|rest)"
-
-# Test API authentication
-ddev drush eval "print_r(\Drupal::service('simple_oauth.oauth2_token_generator')->generate());"
-
-# Check API permissions
-ddev launch /admin/people/permissions
-
-# View API logs
-ddev logs | grep -i api
-```
-
-### Performance Debugging
-
-```bash
-# Check PHP memory usage
-ddev exec php -i | grep memory
-
-# Monitor database queries
-ddev drush sql:cli --extra="--verbose"
-
-# Profile page loads
-ddev composer require drupal/webprofiler --dev
-ddev drush en webprofiler -y
-```
-
-## Best Practices
-
-### Security
-
-- Keep all dependencies updated
-- Use strong passwords for admin accounts
-- Configure proper API authentication
-- Regular security audits with `ddev composer audit`
-- Never commit sensitive configuration or secrets
-
-### Performance
-
-- Enable Redis caching
-- Configure CSS/JS aggregation
-- Use CDN for file serving in production
-- Optimize database queries
-- Monitor API response times
-
-### Development
-
-- Always work in feature branches
-- Export configuration after changes
-- Write tests for custom functionality
-- Follow Drupal coding standards
-- Document API endpoints thoroughly
-
-### Content Management
-
-- Use consistent content type structures
-- Implement editorial workflows
-- Plan content relationships carefully
-- Document content architecture decisions
-- Test content migration procedures
 
 ## Additional Resources
-
-### Documentation
 
 - [DDEV Documentation](https://ddev.readthedocs.io/)
 - [Drupal 11 API Documentation](https://api.drupal.org/api/drupal/11)
 - [JSON:API Specification](https://jsonapi.org/)
-- [Drupal REST API Guide](https://www.drupal.org/docs/core-modules-and-themes/core-modules/rest-module)
-
-### Community
-
-- [Drupal Slack](https://drupal.slack.com/) - #headless channel
-- [DDEV Community](https://github.com/ddev/ddev/discussions)
-- [Drupal API-First Initiative](https://www.drupal.org/community/initiatives/api-first)
-
-### Tools
-
-- [Postman](https://www.postman.com/) - API testing
-- [Insomnia](https://insomnia.rest/) - REST client
-- [GraphiQL](https://github.com/graphql/graphiql) - GraphQL explorer
-- [jq](https://stedolan.github.io/jq/) - JSON processor
-
----
-
-**Developing with digital sovereignty principles.**
-
-*This local development environment empowers you to build content management systems that champion editorial independence and privacy-first design, following in the tradition of John Wilkes' fight for freedom of expression.*
+- [next-drupal Documentation](https://next-drupal.org)
+- [Drupal Slack](https://drupal.slack.com/) — #headless and #drupal-decoupled channels
