@@ -1,6 +1,6 @@
 # Contributing to Wilkes & Liberty Web CMS
 
-Welcome to the Wilkes & Liberty Web CMS project! This document provides comprehensive guidelines for contributing to our headless Drupal 11 content management system using a GitHub flow workflow and DDEV local development environment.
+Welcome to the Wilkes & Liberty Web CMS project! This document covers contributing guidelines for our headless Drupal 11 CMS. For how this repo fits into the broader stack (infra, ui, staging, production), see [`ENVIRONMENT_OVERVIEW.md`](../infra/ENVIRONMENT_OVERVIEW.md) in the `infra` repo.
 
 ## Table of Contents
 
