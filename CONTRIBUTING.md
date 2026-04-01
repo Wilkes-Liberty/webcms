@@ -220,60 +220,29 @@ ddev ssh                 # SSH into web container
 ddev logs                # View container logs
 ```
 
-### Development Server
+### Staging Environment
 
-We maintain a password-protected development environment for staging:
+A staging stack runs on the on-prem server, built from the `staging` branch:
 
-- **URL**: `https://api-dev.wilkesliberty.com`
-- **Authentication**: API key authentication for content access
-- **Deployment**: Automatic from `dev` branch
-- **Purpose**: API testing and content preview
-
-**Note**: Only maintainers can deploy to the development server.
+- **URL**: `https://stg-api.int.wilkesliberty.com` (Tailscale required)
+- **Deployment**: Manual — team lead rebuilds Docker image after merging to `staging`
+- **Purpose**: Integration testing before promoting to production
 
 ## Branch Structure
 
 ### Main Branches
 
-- **`master`**: Production-ready code
-  - Always deployable to production
-  - **Protected branch** with restrictions:
-    - Direct pushes are blocked
-    - Changes must go through pull requests
-    - Automated tests must pass
-    - At least one review required for non-maintainers
-    - Force pushes prohibited
-    - Branch deletion blocked
-    - Admin bypass available when necessary
-  - Source of truth for production releases
+- **`master`**: Production-ready code — maps to what's running on the production Docker stack
+  - Protected: no direct pushes. All changes via PR from `staging`.
+  - Team lead merges only after staging verification.
 
-- **`dev`**: Development integration branch
-- Deployed to https://api-dev.wilkesliberty.com
-  - Used for staging and API testing
-  - Maintained by project maintainers
-
-### Branch Protection Details
-
-The `master` branch is protected to ensure content management system stability:
-
-#### What's Blocked:
-- **Direct pushes**: `git push origin master` will be rejected
-- **Force pushes**: `git push --force origin master` will be rejected
-- **Branch deletion**: The master branch cannot be deleted
-
-#### What's Required:
-- **Pull requests**: All changes must go through a pull request
-- **Automated tests**: PHPUnit, coding standards, security scans must pass
-- **Configuration validation**: Exported configuration must be valid
-- **API testing**: All endpoints must respond correctly
-
-#### What's NOT Required for Maintainers:
-- **External reviews**: Repository maintainers can approve their own PRs
-- **Linear history**: Merge commits are allowed for feature integration
+- **`staging`**: Integration branch — maps to the staging Docker stack on on-prem
+  - Protected: no direct pushes. All changes via PR from feature branches.
+  - Team lead merges feature PRs here after review.
 
 ### Feature Branches
 
-Create feature branches from `master` using descriptive names:
+Create feature branches from `staging` using descriptive names:
 
 - `content/add-new-content-type`
 - `api/graphql-endpoint`
