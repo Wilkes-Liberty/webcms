@@ -409,46 +409,30 @@ The project includes comprehensive automated testing:
 
 ## Deployment Process
 
-### Automatic Deployment (Maintainers Only)
+### Deployment Process (Manual, Pre-CI/CD)
 
-The project uses automated Git deployment for development environment:
+All deployments are currently manual, triggered by a team lead after merging.
 
+**To staging** (after merging feature PR → `staging`):
 ```bash
-# Deploy to development environment
-git checkout dev
-git merge master
-git push origin dev
+# On the on-prem server
+cd ~/nas_docker_staging
+git -C ~/Repositories/staging/webcms pull origin staging
+docker compose up -d --build drupal
+docker compose exec drupal drush deploy -y   # updatedb + cim + cr
 ```
 
-This triggers:
-1. Automatic deployment to https://api-dev.wilkesliberty.com
-2. Composer dependency installation
-3. Configuration import
-4. Cache clearing
-5. Database updates if needed
-
-### Configuration Deployment
-
+**To production** (after merging `staging` → `master`):
 ```bash
-# Deploy configuration changes
-ddev drush deploy
-
-# This runs:
-# - drush updatedb -y
-# - drush cim -y
-# - drush cr
+# On the on-prem server
+cd ~/nas_docker
+git -C ~/Repositories/webcms pull origin master
+docker compose build --no-cache drupal
+docker compose up -d drupal
+docker compose exec drupal drush deploy -y
 ```
 
-### Manual Production Deployment
-
-Production deployments follow a controlled process:
-
-1. **Preparation**: Merge approved changes to `master`
-2. **Testing**: Verify all functionality in development environment
-3. **Backup**: Create database and configuration backups
-4. **Deploy**: Run deployment scripts on production server
-5. **Validation**: Verify all APIs and content work correctly
-6. **Rollback Plan**: Have rollback procedure ready if issues arise
+The `drush deploy` command runs `updatedb`, `config:import`, and `cache:rebuild` in sequence.
 
 ## Pull Request Process
 
