@@ -50,13 +50,14 @@ Welcome to the Wilkes & Liberty Web CMS project! This document covers contributi
 
 We use a simplified GitHub flow for all contributions, adapted for headless CMS development:
 
-### 1. Sync with Master Branch
+### 1. Sync with Staging Branch
+
+Branch from `staging`, not `master`. `master` is production — only team leads promote to it.
 
 ```bash
-# Switch to master branch and pull latest changes
-git checkout master
-git pull upstream master
-git push origin master
+# Switch to staging and pull latest changes
+git checkout staging
+git pull origin staging
 ```
 
 ### 2. Create Feature Branch
@@ -142,11 +143,11 @@ git commit -m "Add solution content type with API endpoints
 ### 8. Push and Create Pull Request
 
 ```bash
-# Push feature branch to your fork
+# Push feature branch
 git push origin feature/descriptive-name
 
-# Create pull request on GitHub
-# Target: upstream/master ← your-fork/feature/descriptive-name
+# Open PR on GitHub targeting: staging ← feature/descriptive-name
+# (Never target master directly)
 ```
 
 ### 9. Code Review Process
@@ -161,8 +162,8 @@ git push origin feature/descriptive-name
 
 ```bash
 # After PR is merged, clean up local branches
-git checkout master
-git pull upstream master
+git checkout staging
+git pull origin staging
 git branch -d feature/descriptive-name
 git push origin --delete feature/descriptive-name
 ```
