@@ -25,19 +25,7 @@
                 }
             }
         ],
-        "drupal/ckeditor5_plugin_pack": [
-            {
-                "package": "drupal/ckeditor5_plugin_pack",
-                "description": "Fix markdown plugin translation loading issues for unsupported languages",
-                "url": "patches/ckeditor5_plugin_pack_markdown_translation_fix_working.patch",
-                "sha256": "080a1d241f3843b49f670e695adf2b38471293b569e99ca09876c7c73be4b269",
-                "depth": 1,
-                "extra": {
-                    "provenance": "root"
-                }
-            }
-        ],
-        "drupal/telephone_validation": [
+"drupal/telephone_validation": [
             {
                 "package": "drupal/telephone_validation",
                 "description": "Fix Drupal 11 compatibility - ConfigFormBase constructor expects 2 arguments",
@@ -61,19 +49,7 @@
                 }
             }
         ],
-        "drupal/redirect": [
-            {
-                "package": "drupal/redirect",
-                "description": "Fix redirect_404 service definition to include time service argument",
-                "url": "patches/redirect_404-add-time-service-argument.patch",
-                "sha256": "43e67069732385348ebc0b7b530c19b1c0c33c1e10d0899d8ff5caf28bcf4d02",
-                "depth": 1,
-                "extra": {
-                    "provenance": "root"
-                }
-            }
-        ],
-        "drupal/ai": [
+"drupal/ai": [
             {
                 "package": "drupal/ai",
                 "description": "Add missing ai_automators_ckeditor schema definition",

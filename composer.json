@@ -180,19 +180,13 @@
             "drupal/decoupled_router": {
                 "Fix property type declaration issue in RedirectPathTranslatorSubscriber": "patches/decoupled_router-fix-language-manager-property-type.patch"
             },
-            "drupal/ckeditor5_plugin_pack": {
-                "Fix markdown plugin translation loading issues for unsupported languages": "patches/ckeditor5_plugin_pack_markdown_translation_fix_working.patch"
-            },
-            "drupal/telephone_validation": {
+"drupal/telephone_validation": {
                 "Fix Drupal 11 compatibility - ConfigFormBase constructor expects 2 arguments": "patches/telephone_validation_drupal11_fix.patch"
             },
             "drupal/config_update": {
                 "Fix InvalidParameterException when generating URLs with empty config names": "patches/config_update-fix-url-generation-empty-config-names-2025-01-14.patch"
             },
-            "drupal/redirect": {
-                "Fix redirect_404 service definition to include time service argument": "patches/redirect_404-add-time-service-argument.patch"
-            },
-            "tmgmt/tmgmt_local": {
+"tmgmt/tmgmt_local": {
                 "Fix strpos null deprecation in TMGMTLocalBreadcrumbBuilder": "patches/tmgmt_local-strpos-null-fix.patch"
             },
             "drupal/simple_sitemap_extensions": {
