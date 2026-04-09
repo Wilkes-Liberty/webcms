@@ -1,6 +1,6 @@
 # Contributing to Wilkes & Liberty Web CMS
 
-Welcome to the Wilkes & Liberty Web CMS project! This document provides comprehensive guidelines for contributing to our headless Drupal 11 content management system using a GitHub flow workflow and DDEV local development environment.
+Welcome to the Wilkes & Liberty Web CMS project! This document covers contributing guidelines for our headless Drupal 11 CMS. For how this repo fits into the broader stack (infra, ui, staging, production), see [`ENVIRONMENT_OVERVIEW.md`](../infra/ENVIRONMENT_OVERVIEW.md) in the `infra` repo.
 
 ## Table of Contents
 
@@ -50,13 +50,14 @@ Welcome to the Wilkes & Liberty Web CMS project! This document provides comprehe
 
 We use a simplified GitHub flow for all contributions, adapted for headless CMS development:
 
-### 1. Sync with Master Branch
+### 1. Sync with Staging Branch
+
+Branch from `staging`, not `master`. `master` is production — only team leads promote to it.
 
 ```bash
-# Switch to master branch and pull latest changes
-git checkout master
-git pull upstream master
-git push origin master
+# Switch to staging and pull latest changes
+git checkout staging
+git pull origin staging
 ```
 
 ### 2. Create Feature Branch
@@ -142,11 +143,11 @@ git commit -m "Add solution content type with API endpoints
 ### 8. Push and Create Pull Request
 
 ```bash
-# Push feature branch to your fork
+# Push feature branch
 git push origin feature/descriptive-name
 
-# Create pull request on GitHub
-# Target: upstream/master ← your-fork/feature/descriptive-name
+# Open PR on GitHub targeting: staging ← feature/descriptive-name
+# (Never target master directly)
 ```
 
 ### 9. Code Review Process
@@ -161,8 +162,8 @@ git push origin feature/descriptive-name
 
 ```bash
 # After PR is merged, clean up local branches
-git checkout master
-git pull upstream master
+git checkout staging
+git pull origin staging
 git branch -d feature/descriptive-name
 git push origin --delete feature/descriptive-name
 ```
@@ -219,60 +220,29 @@ ddev ssh                 # SSH into web container
 ddev logs                # View container logs
 ```
 
-### Development Server
+### Staging Environment
 
-We maintain a password-protected development environment for staging:
+A staging stack runs on the on-prem server, built from the `staging` branch:
 
-- **URL**: `https://api-dev.wilkesliberty.com`
-- **Authentication**: API key authentication for content access
-- **Deployment**: Automatic from `dev` branch
-- **Purpose**: API testing and content preview
-
-**Note**: Only maintainers can deploy to the development server.
+- **URL**: `https://stg-api.int.wilkesliberty.com` (Tailscale required)
+- **Deployment**: Manual — team lead rebuilds Docker image after merging to `staging`
+- **Purpose**: Integration testing before promoting to production
 
 ## Branch Structure
 
 ### Main Branches
 
-- **`master`**: Production-ready code
-  - Always deployable to production
-  - **Protected branch** with restrictions:
-    - Direct pushes are blocked
-    - Changes must go through pull requests
-    - Automated tests must pass
-    - At least one review required for non-maintainers
-    - Force pushes prohibited
-    - Branch deletion blocked
-    - Admin bypass available when necessary
-  - Source of truth for production releases
+- **`master`**: Production-ready code — maps to what's running on the production Docker stack
+  - Protected: no direct pushes. All changes via PR from `staging`.
+  - Team lead merges only after staging verification.
 
-- **`dev`**: Development integration branch
-- Deployed to https://api-dev.wilkesliberty.com
-  - Used for staging and API testing
-  - Maintained by project maintainers
-
-### Branch Protection Details
-
-The `master` branch is protected to ensure content management system stability:
-
-#### What's Blocked:
-- **Direct pushes**: `git push origin master` will be rejected
-- **Force pushes**: `git push --force origin master` will be rejected
-- **Branch deletion**: The master branch cannot be deleted
-
-#### What's Required:
-- **Pull requests**: All changes must go through a pull request
-- **Automated tests**: PHPUnit, coding standards, security scans must pass
-- **Configuration validation**: Exported configuration must be valid
-- **API testing**: All endpoints must respond correctly
-
-#### What's NOT Required for Maintainers:
-- **External reviews**: Repository maintainers can approve their own PRs
-- **Linear history**: Merge commits are allowed for feature integration
+- **`staging`**: Integration branch — maps to the staging Docker stack on on-prem
+  - Protected: no direct pushes. All changes via PR from feature branches.
+  - Team lead merges feature PRs here after review.
 
 ### Feature Branches
 
-Create feature branches from `master` using descriptive names:
+Create feature branches from `staging` using descriptive names:
 
 - `content/add-new-content-type`
 - `api/graphql-endpoint`
@@ -439,46 +409,30 @@ The project includes comprehensive automated testing:
 
 ## Deployment Process
 
-### Automatic Deployment (Maintainers Only)
+### Deployment Process (Manual, Pre-CI/CD)
 
-The project uses automated Git deployment for development environment:
+All deployments are currently manual, triggered by a team lead after merging.
 
+**To staging** (after merging feature PR → `staging`):
 ```bash
-# Deploy to development environment
-git checkout dev
-git merge master
-git push origin dev
+# On the on-prem server
+cd ~/nas_docker_staging
+git -C ~/Repositories/staging/webcms pull origin staging
+docker compose up -d --build drupal
+docker compose exec drupal drush deploy -y   # updatedb + cim + cr
 ```
 
-This triggers:
-1. Automatic deployment to https://api-dev.wilkesliberty.com
-2. Composer dependency installation
-3. Configuration import
-4. Cache clearing
-5. Database updates if needed
-
-### Configuration Deployment
-
+**To production** (after merging `staging` → `master`):
 ```bash
-# Deploy configuration changes
-ddev drush deploy
-
-# This runs:
-# - drush updatedb -y
-# - drush cim -y
-# - drush cr
+# On the on-prem server
+cd ~/nas_docker
+git -C ~/Repositories/webcms pull origin master
+docker compose build --no-cache drupal
+docker compose up -d drupal
+docker compose exec drupal drush deploy -y
 ```
 
-### Manual Production Deployment
-
-Production deployments follow a controlled process:
-
-1. **Preparation**: Merge approved changes to `master`
-2. **Testing**: Verify all functionality in development environment
-3. **Backup**: Create database and configuration backups
-4. **Deploy**: Run deployment scripts on production server
-5. **Validation**: Verify all APIs and content work correctly
-6. **Rollback Plan**: Have rollback procedure ready if issues arise
+The `drush deploy` command runs `updatedb`, `config:import`, and `cache:rebuild` in sequence.
 
 ## Pull Request Process
 
