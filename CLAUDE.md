@@ -138,8 +138,8 @@ curl -H "Accept: application/vnd.api+json" https://api.wilkesliberty.dev/jsonapi
 | Env | Stack | Drupal URL | Notes |
 |-----|-------|-----------|-------|
 | Local | DDEV | `https://api.wilkesliberty.dev` | PostgreSQL 16 |
-| Staging | Docker (Mac Mini) | `http://localhost:8090` | `staging` branch |
-| Production | Docker (Mac Mini) | Internal; Tailscale to VPS | `main` branch |
+| Staging | Docker (on-prem server) | `http://localhost:8090` | `staging` branch |
+| Production | Docker (on-prem server) | Internal; Tailscale to VPS | `main` branch |
 
 ## Branch Strategy
 - **main** — production-ready code

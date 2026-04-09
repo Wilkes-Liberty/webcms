@@ -126,15 +126,15 @@ ddev drush cr
 | Environment | Access | Branch | Notes |
 |-------------|--------|--------|-------|
 | Local | `https://api.wilkesliberty.dev` | any | DDEV, PostgreSQL 16 |
-| Staging | `http://mac-mini:8090` (internal) | `staging` | Docker on Mac Mini |
-| Production | Tailscale / Caddy proxy | `main` | Docker on Mac Mini |
+| Staging | `http://mac-mini:8090` (internal) | `staging` | Docker on on-prem server |
+| Production | Tailscale / Caddy proxy | `main` | Docker on on-prem server |
 
 The Next.js frontend (in the `ui` repo) connects to Drupal at runtime. In production, the Next.js container runs on the Njalla VPS and reaches Drupal via Tailscale.
 
 ## Branch Strategy
 
 - `main` — production-ready code; protected branch
-- `staging` — deployed to staging environment on Mac Mini
+- `staging` — deployed to staging environment on on-prem server
 - `feature/*` — feature development; pull requests target `main`
 
 ## Contributing
