@@ -1,7 +1,4 @@
 services:
-  wl_api.revalidator:
-    class: Drupal\wl_api\Service\Revalidator
-    arguments: ['@http_client', '@logger.factory', '@state', '@current_user']services:
   logger.channel.wl_api:
     parent: 'logger.channel_base'
     arguments: ['wl_api']
