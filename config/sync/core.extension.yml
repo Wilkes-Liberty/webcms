@@ -110,7 +110,7 @@ module:
   metatag: 0
   metatag_open_graph: 0
   migrate: 0
-  mysql: 0
+  pgsql: 0
   next: 0
   next_extras: 0
   next_graphql: 0
@@ -189,9 +189,9 @@ module:
   views: 10
   paragraphs: 11
   paragraphs_ee: 15
-  standard: 1000
+  minimal: 1000
 theme:
   olivero: 0
   claro: 0
   gin: 0
-profile: standard
+profile: minimal
