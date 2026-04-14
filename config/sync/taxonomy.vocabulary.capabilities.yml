@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: Capabilities
 vid: capabilities
-description: 'Cross-cutting capabilities referenced across tech/services/solutions.'
+description: 'Taxonomy vocabulary for classifying content by organizational capability. Not to be confused with the "Capability" paragraph type, which is a structured content component used on Product/Service/Solution pages.'
 weight: 0
 new_revision: false

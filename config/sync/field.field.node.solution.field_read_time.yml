@@ -1,0 +1,23 @@
+uuid: 0da25189-f4c1-466b-8303-0976c1b3e819
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_read_time
+    - node.type.solution
+id: node.solution.field_read_time
+field_name: field_read_time
+entity_type: node
+bundle: solution
+label: 'Read Time'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

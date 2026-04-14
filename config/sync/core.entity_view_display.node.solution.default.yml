@@ -24,6 +24,7 @@ dependencies:
     - field.field.node.solution.field_preview_token
     - field.field.node.solution.field_primary_capability
     - field.field.node.solution.field_primary_cta
+    - field.field.node.solution.field_read_time
     - field.field.node.solution.field_related
     - field.field.node.solution.field_revalidate_ttl
     - field.field.node.solution.field_reviewed_on
@@ -286,6 +287,7 @@ hidden:
   field_parent: true
   field_platform: true
   field_primary_capability: true
+  field_read_time: true
   field_reviewed_on: true
   field_show_toc: true
   langcode: true

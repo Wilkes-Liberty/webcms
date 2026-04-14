@@ -16,7 +16,6 @@ dependencies:
     - taxonomy.vocabulary.services
     - taxonomy.vocabulary.tech_stack
     - taxonomy.vocabulary.topics
-    - taxonomy.vocabulary.use_cases
   module:
     - ai_ckeditor
     - ai_content_suggestions
@@ -45,7 +44,6 @@ permissions:
   - 'create terms in services'
   - 'create terms in tech_stack'
   - 'create terms in topics'
-  - 'create terms in use_cases'
   - 'create url aliases'
   - 'delete terms in compliance'
   - 'delete terms in department'
@@ -57,7 +55,6 @@ permissions:
   - 'delete terms in services'
   - 'delete terms in tech_stack'
   - 'delete terms in topics'
-  - 'delete terms in use_cases'
   - 'edit terms in compliance'
   - 'edit terms in department'
   - 'edit terms in event_type'
@@ -68,7 +65,6 @@ permissions:
   - 'edit terms in services'
   - 'edit terms in tech_stack'
   - 'edit terms in topics'
-  - 'edit terms in use_cases'
   - 'use ai ckeditor'
   - 'use text format headless_clean'
   - 'use text format headless_clean_x'

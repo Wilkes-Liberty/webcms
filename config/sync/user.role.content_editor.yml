@@ -35,7 +35,6 @@ dependencies:
     - taxonomy.vocabulary.tags
     - taxonomy.vocabulary.tech_stack
     - taxonomy.vocabulary.topics
-    - taxonomy.vocabulary.use_cases
     - workflows.workflow.editorial
   module:
     - ai_ckeditor
@@ -105,7 +104,6 @@ permissions:
   - 'create terms in tags'
   - 'create terms in tech_stack'
   - 'create terms in topics'
-  - 'create terms in use_cases'
   - 'create url aliases'
   - 'create video_file media'
   - 'delete any article content'
@@ -137,7 +135,6 @@ permissions:
   - 'delete terms in services'
   - 'delete terms in tech_stack'
   - 'delete terms in topics'
-  - 'delete terms in use_cases'
   - 'edit any article content'
   - 'edit any basic block content'
   - 'edit any basic_page content'
@@ -159,7 +156,6 @@ permissions:
   - 'edit terms in tags'
   - 'edit terms in tech_stack'
   - 'edit terms in topics'
-  - 'edit terms in use_cases'
   - 'generate image with ai'
   - 'mark as hidden in editoria11y'
   - 'revert all revisions'
