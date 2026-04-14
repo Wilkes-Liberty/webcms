@@ -1,52 +1,30 @@
-# Development service container overrides
+# Local development services.
 #
-# Loaded via $settings['container_yamls'] in settings.local.php for local
-# development environments (DDEV, Docker dev stack).
+# The development.services.yml file allows the developer to override
+# container parameters for debugging.
 #
-# DO NOT load this in production or staging — use production.services.yml there.
+# To activate this feature, follow the instructions at the top of the
+# 'example.settings.local.php' file, which sits next to this file.
 #
-# To activate, add this to your settings.local.php:
-#   $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
-#
+# Be aware that in Drupal's configuration system, all the files that
+# provide container definitions are merged using a shallow merge approach
+# within \Drupal\Core\DependencyInjection\YamlFileLoader.
+# This means that if you want to override any value of a parameter, the
+# whole parameter array needs to be copied from
+# sites/default/default.services.yml or from core/core.services.yml file.
 parameters:
-  # ── Twig debugging ────────────────────────────────────────────────────────
-  # Adds HTML comments to templates showing which template files are active.
-  # Also enables auto-reload so Twig template changes take effect immediately.
-  twig.config:
-    debug: true
-    auto_reload: true
-    cache: false
-
-  # ── CORS for local development ────────────────────────────────────────────
-  # Allow all local origins: Next.js dev server (3000), DDEV, direct Docker.
-  # supportsCredentials: false allows '*' wildcard.
-  cors.config:
-    enabled: true
-    allowedOrigins:
-      - 'http://localhost:3000'
-      - 'http://localhost:3001'
-      - 'https://wilkesliberty.ddev.site'
-      - 'http://wilkesliberty.ddev.site'
-      - 'http://nextjs:3000'
-    allowedHeaders:
-      - '*'
-    allowedMethods:
-      - 'GET'
-      - 'POST'
-      - 'PUT'
-      - 'PATCH'
-      - 'DELETE'
-      - 'OPTIONS'
-    exposedHeaders: false
-    maxAge: 0
-    supportsCredentials: false
-
+  http.response.debug_cacheability_headers: true
 services:
-  # ── Null cache backends ───────────────────────────────────────────────────
-  # Disable caching during development so changes are always reflected.
-  # Activate in settings.local.php with:
-  #   $settings['cache']['bins']['render'] = 'cache.backend.null';
-  #   $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
-  #   $settings['cache']['bins']['page'] = 'cache.backend.null';
   cache.backend.null:
     class: Drupal\Core\Cache\NullBackendFactory
+  logger.channel.config_schema:
+    parent: logger.channel_base
+    arguments: [ 'config_schema' ]
+  config.schema_checker:
+    class: Drupal\Core\Config\Development\LenientConfigSchemaChecker
+    arguments:
+      - '@config.typed'
+      - '@messenger'
+      - '@logger.channel.config_schema'
+    tags:
+      - { name: event_subscriber }

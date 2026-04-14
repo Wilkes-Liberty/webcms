@@ -16,6 +16,11 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  masquerade:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
   member_for:
     weight: 5
     region: content
@@ -34,6 +39,7 @@ hidden:
   author_profiles: true
   client_profiles: true
   contractor_profiles: true
+  creator_profiles: true
   employee_profiles: true
   field_notify_mentions: true
   field_notify_newsletter: true

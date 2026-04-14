@@ -47,6 +47,21 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
+  client_profiles: true
+  contractor_profiles: true
+  creator_profiles: true
+  employee_profiles: true
+  field_notify_mentions: true
+  field_notify_newsletter: true
+  field_notify_replies: true
+  field_notify_security: true
+  field_preferred_contact: true
   langcode: true
+  partner_profiles: true
   user_picture: true

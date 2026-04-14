@@ -110,7 +110,6 @@ module:
   metatag: 0
   metatag_open_graph: 0
   migrate: 0
-  pgsql: 0
   next: 0
   next_extras: 0
   next_graphql: 0
@@ -120,6 +119,7 @@ module:
   paragraphs_features: 0
   path: 0
   path_alias: 0
+  pgsql: 0
   profile: 0
   purge: 0
   purge_tokens: 0

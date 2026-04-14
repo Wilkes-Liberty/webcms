@@ -56,7 +56,10 @@ $settings['update_free_access'] = FALSE;
 
 // ── Performance ──────────────────────────────────────────────────────────────
 // These are production defaults. Dev environments override in settings.local.php.
-$settings['cache']['bins']['render'] = 'cache.backend.null';  // overridden per-env
+// Render cache — use database by default; settings.local.php can override per environment.
+// Note: cache.backend.null is not a registered service in Drupal core; use
+// cache.backend.database (production) or cache.backend.memory (dev) instead.
+$settings['cache']['bins']['render'] = 'cache.backend.database';
 
 // ── Reverse proxy / load balancer ────────────────────────────────────────────
 // Caddy/Varnish sits in front of Drupal in production.

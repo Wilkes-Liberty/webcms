@@ -17,6 +17,11 @@ targetEntityType: user
 bundle: user
 mode: compact
 content:
+  masquerade:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
   user_picture:
     type: image
     label: hidden
@@ -29,7 +34,18 @@ content:
     weight: 0
     region: content
 hidden:
+  client_profiles: true
+  contractor_profiles: true
+  creator_profiles: true
+  employee_profiles: true
+  field_notify_mentions: true
+  field_notify_newsletter: true
+  field_notify_replies: true
+  field_notify_security: true
+  field_preferred_contact: true
   langcode: true
   member_for: true
+  partner_profiles: true
+  search_api_attachments: true
   search_api_excerpt: true
   tmgmt_translation_skills: true

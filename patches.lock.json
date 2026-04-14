@@ -1,5 +1,5 @@
 {
-    "_hash": "be6a1e119634eb000a3b820c0c65ff4faa47fbfcc6b6e7d79c69b35c95edc514",
+    "_hash": "1136ac15416281d7e527b858cc3ee2a9ffc32020a12443b98006e12664680fbe",
     "patches": {
         "drupal/entity_redirect": [
             {
@@ -25,7 +25,7 @@
                 }
             }
         ],
-"drupal/telephone_validation": [
+        "drupal/telephone_validation": [
             {
                 "package": "drupal/telephone_validation",
                 "description": "Fix Drupal 11 compatibility - ConfigFormBase constructor expects 2 arguments",
@@ -49,24 +49,24 @@
                 }
             }
         ],
-"drupal/ai": [
-            {
-                "package": "drupal/ai",
-                "description": "Add missing ai_automators_ckeditor schema definition",
-                "url": "patches/ai_ckeditor_schema_fix.patch",
-                "sha256": "a2ff522a3cc9a3ed84e331fa6c017d2262892639fda59191f7629bfcfdf5274a",
-                "depth": 1,
-                "extra": {
-                    "provenance": "root"
-                }
-            }
-        ],
         "tmgmt/tmgmt_local": [
             {
                 "package": "tmgmt/tmgmt_local",
                 "description": "Fix strpos null deprecation in TMGMTLocalBreadcrumbBuilder",
                 "url": "patches/tmgmt_local-strpos-null-fix.patch",
                 "sha256": "1482653a7aec961925bf51b475449ce4ac79b878d738005bad3c0a135ea8e936",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/simple_sitemap_extensions": [
+            {
+                "package": "drupal/simple_sitemap_extensions",
+                "description": "Fix simple_sitemap 4.2+ compatibility - typed properties and method signatures",
+                "url": "patches/simple_sitemap_extensions-fix-simple-sitemap-4.2-compatibility.patch",
+                "sha256": "e35635de7543616312f8c7750a3d95dcdaa4acc8c716aff54aeff1d8465c1935",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"
