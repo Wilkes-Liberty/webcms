@@ -1,0 +1,10 @@
+uuid: 7660d3f1-d71d-47b6-bf46-f0e90d72fe07
+langcode: en
+status: true
+dependencies: {  }
+id: p_notice
+label: 'Notice / Status Pill'
+icon_uuid: null
+icon_default: null
+description: 'A small status badge with a colored dot — e.g. "Not accepting new clients", "Now hiring", "Service degraded".'
+behavior_plugins: {  }

@@ -71,6 +71,11 @@ entity_config:
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
+    landing_page:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
   taxonomy_term:
     department:
       enabled: true
@@ -108,6 +113,49 @@ entity_config:
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
+  paragraph:
+    p_hero:
+      enabled: true
+      query_load_enabled: true
+    p_text_block:
+      enabled: true
+      query_load_enabled: true
+    p_cta_banner:
+      enabled: true
+      query_load_enabled: true
+    p_notice:
+      enabled: true
+      query_load_enabled: true
+    p_feature:
+      enabled: true
+      query_load_enabled: true
+    p_stat:
+      enabled: true
+      query_load_enabled: true
+    p_testimonial:
+      enabled: true
+      query_load_enabled: true
+    p_text_image:
+      enabled: true
+      query_load_enabled: true
+    p_image_gallery:
+      enabled: true
+      query_load_enabled: true
+    p_logo_wall:
+      enabled: true
+      query_load_enabled: true
+    p_faq_group:
+      enabled: true
+      query_load_enabled: true
+    p_faq_item:
+      enabled: true
+      query_load_enabled: true
+    capability:
+      enabled: true
+      query_load_enabled: true
+    use_case:
+      enabled: true
+      query_load_enabled: true
 field_config:
   block_content:
     basic:
@@ -153,9 +201,123 @@ field_config:
         enabled: true
       field_website:
         enabled: true
+    landing_page:
+      body:
+        enabled: true
+      field_components:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_canonical:
+        enabled: true
+      field_noindex:
+        enabled: true
   user:
     user:
       user_picture:
+        enabled: true
+  paragraph:
+    p_hero:
+      field_title:
+        enabled: true
+      field_subtitle:
+        enabled: true
+      field_media:
+        enabled: true
+      field_cta_links:
+        enabled: true
+    p_text_block:
+      field_title:
+        enabled: true
+      field_body:
+        enabled: true
+    p_cta_banner:
+      field_title:
+        enabled: true
+      field_body:
+        enabled: true
+      field_cta_links:
+        enabled: true
+    p_notice:
+      field_title:
+        enabled: true
+      field_notice_tone:
+        enabled: true
+    p_feature:
+      field_title:
+        enabled: true
+      field_body:
+        enabled: true
+      field_icon:
+        enabled: true
+    p_stat:
+      field_title:
+        enabled: true
+      field_value:
+        enabled: true
+      field_suffix:
+        enabled: true
+    p_testimonial:
+      field_quote:
+        enabled: true
+      field_attribution:
+        enabled: true
+    p_text_image:
+      field_title:
+        enabled: true
+      field_body:
+        enabled: true
+      field_media:
+        enabled: true
+    p_image_gallery:
+      field_title:
+        enabled: true
+      field_gallery_images:
+        enabled: true
+    p_logo_wall:
+      field_logos:
+        enabled: true
+    p_faq_group:
+      field_title:
+        enabled: true
+      field_items:
+        enabled: true
+    p_faq_item:
+      field_title:
+        enabled: true
+      field_body:
+        enabled: true
+    capability:
+      field_capability_title:
+        enabled: true
+      field_capability_description:
+        enabled: true
+      field_mission_benefit:
+        enabled: true
+      field_icon:
+        enabled: true
+    use_case:
+      field_use_case_title:
+        enabled: true
+      field_sector:
+        enabled: true
+      field_challenge:
+        enabled: true
+      field_solution:
+        enabled: true
+      field_results:
         enabled: true
 settings:
   expose_entity_ids: false

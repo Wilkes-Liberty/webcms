@@ -1,0 +1,19 @@
+uuid: 2d6f1fb0-5db7-44ae-9e22-31b17edad49c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.p_notice
+id: paragraph.p_notice.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: p_notice
+label: 'Notice Text'
+description: 'Short text shown inside the pill (e.g., "Not accepting new clients").'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,33 @@
+uuid: a553be21-68e7-437f-9f88-e36d6e23cdcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_notice.field_notice_tone
+    - field.field.paragraph.p_notice.field_title
+    - paragraphs.paragraphs_type.p_notice
+  module:
+    - options
+id: paragraph.p_notice.default
+targetEntityType: paragraph
+bundle: p_notice
+mode: default
+content:
+  field_notice_tone:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_attachments: true
+  search_api_excerpt: true

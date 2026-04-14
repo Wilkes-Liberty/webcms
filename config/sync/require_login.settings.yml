@@ -3,7 +3,15 @@ _core:
 login_path: null
 login_message: null
 login_destination: null
-requirements: {  }
+requirements:
+  request_path:
+    id: request_path
+    negate: true
+    pages: |-
+      /graphql
+      /graphql/*
+      /oauth/token
+      /jsonapi/*
 extra:
   include_403: false
   include_404: false

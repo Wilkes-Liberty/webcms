@@ -1,0 +1,23 @@
+uuid: c21fd1e4-9054-4103-b350-b4f8da83ffb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_notice_tone
+    - paragraphs.paragraphs_type.p_notice
+  module:
+    - options
+id: paragraph.p_notice.field_notice_tone
+field_name: field_notice_tone
+entity_type: paragraph
+bundle: p_notice
+label: Tone
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: warning
+default_value_callback: ''
+settings: {  }
+field_type: list_string

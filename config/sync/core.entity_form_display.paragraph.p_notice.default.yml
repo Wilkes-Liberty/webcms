@@ -1,0 +1,30 @@
+uuid: 39754396-0bff-451e-a3cd-99f773b782e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_notice.field_notice_tone
+    - field.field.paragraph.p_notice.field_title
+    - paragraphs.paragraphs_type.p_notice
+id: paragraph.p_notice.default
+targetEntityType: paragraph
+bundle: p_notice
+mode: default
+content:
+  field_notice_tone:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

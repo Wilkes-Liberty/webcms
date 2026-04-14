@@ -6,6 +6,7 @@ dependencies:
     - filter.format.restricted_html
   module:
     - filter
+    - graphql
     - media
     - system
 _core:
@@ -16,5 +17,6 @@ weight: -9
 is_admin: false
 permissions:
   - 'access content'
+  - 'execute graphql_compose_server arbitrary graphql requests'
   - 'use text format restricted_html'
   - 'view media'
