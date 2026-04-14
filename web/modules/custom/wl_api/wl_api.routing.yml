@@ -142,3 +142,15 @@ wl_api.admin_config_api:
     _permission: 'access administration pages'
   options:
     _admin_route: TRUE
+
+# Public system status endpoint — returns JSON status of all internal services.
+# Used by the Next.js frontend to power the live status indicators on the
+# landing page. Anonymous, cached for 10 seconds.
+wl_api.system_status:
+  path: '/api/system-status'
+  defaults:
+    _controller: '\Drupal\wl_api\Controller\SystemStatusController::status'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE

@@ -12,6 +12,7 @@ requirements:
       /graphql/*
       /oauth/token
       /jsonapi/*
+      /api/*
 extra:
   include_403: false
   include_404: false
