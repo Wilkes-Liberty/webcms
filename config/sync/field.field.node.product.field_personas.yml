@@ -1,0 +1,23 @@
+uuid: 3ae3198f-6a78-4573-805f-f07b6fe62d97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_personas
+    - node.type.product
+id: node.product.field_personas
+field_name: field_personas
+entity_type: node
+bundle: product
+label: Personas
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      personas: personas
+field_type: entity_reference

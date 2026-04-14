@@ -9,8 +9,11 @@ dependencies:
     - field.field.node.event.field_cache_tags
     - field.field.node.event.field_campaign
     - field.field.node.event.field_canonical
+    - field.field.node.event.field_categories
+    - field.field.node.event.field_event_date
     - field.field.node.event.field_event_type
     - field.field.node.event.field_hero_image
+    - field.field.node.event.field_industries
     - field.field.node.event.field_industry
     - field.field.node.event.field_meta_description
     - field.field.node.event.field_noindex
@@ -34,13 +37,12 @@ dependencies:
     - field.field.node.event.field_template
     - field.field.node.event.field_theme_variant
     - field.field.node.event.field_visibility
-    - field.field.node.event.field_event_date
     - node.type.event
   module:
     - link
+    - smart_date
     - text
     - user
-    - smart_date
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -70,6 +72,14 @@ content:
     third_party_settings: {  }
     weight: 169
     region: content
+  field_categories:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
+    region: content
   field_event_date:
     type: smartdate_default
     label: above
@@ -98,6 +108,14 @@ content:
       link: false
     third_party_settings: {  }
     weight: 165
+    region: content
+  field_industries:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
     region: content
   field_industry:
     type: entity_reference_label

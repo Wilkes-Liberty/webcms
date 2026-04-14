@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.article.field_cache_tags
     - field.field.node.article.field_campaign
     - field.field.node.article.field_canonical
+    - field.field.node.article.field_categories
     - field.field.node.article.field_compliance
     - field.field.node.article.field_hero_image
     - field.field.node.article.field_image
@@ -65,6 +66,7 @@ hidden:
   field_cache_tags: true
   field_campaign: true
   field_canonical: true
+  field_categories: true
   field_compliance: true
   field_hero_image: true
   field_image: true

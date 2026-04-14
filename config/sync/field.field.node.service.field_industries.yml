@@ -1,0 +1,27 @@
+uuid: 44a3df50-9901-4b9f-89b9-5021795d76d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_industries
+    - node.type.service
+    - taxonomy.vocabulary.industries
+id: node.service.field_industries
+field_name: field_industries
+entity_type: node
+bundle: service
+label: Industries
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      industries: industries
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

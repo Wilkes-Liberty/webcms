@@ -1,0 +1,10 @@
+uuid: 33318e60-0713-420d-b0de-e1e622f4e549
+langcode: en
+status: true
+dependencies: {  }
+id: p_text_image
+label: 'Text with Image'
+icon_uuid: null
+icon_default: null
+description: 'Text content paired with an image.'
+behavior_plugins: {  }

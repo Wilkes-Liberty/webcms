@@ -10,8 +10,15 @@ dependencies:
     - field.field.node.service.field_cache_tags
     - field.field.node.service.field_campaign
     - field.field.node.service.field_canonical
+    - field.field.node.service.field_capabilities
+    - field.field.node.service.field_categories
+    - field.field.node.service.field_defense_relevance
+    - field.field.node.service.field_deployment_options
     - field.field.node.service.field_hero_image
+    - field.field.node.service.field_industries
+    - field.field.node.service.field_key_capabilities
     - field.field.node.service.field_meta_description
+    - field.field.node.service.field_mission_impact
     - field.field.node.service.field_noindex
     - field.field.node.service.field_parent
     - field.field.node.service.field_preview_token
@@ -25,6 +32,7 @@ dependencies:
     - field.field.node.service.field_show_toc
     - field.field.node.service.field_social_image
     - field.field.node.service.field_solutions
+    - field.field.node.service.field_sovereignty_features
     - field.field.node.service.field_summary
     - field.field.node.service.field_taxonomy
     - field.field.node.service.field_technologies
@@ -270,6 +278,26 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_capabilities:
+    type: entity_reference_autocomplete_tags
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_categories:
+    type: entity_reference_autocomplete_tags
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_hero_image:
     type: entity_browser_entity_reference
     weight: 248
@@ -283,6 +311,16 @@ content:
       open: true
       field_widget_display_settings: {  }
       selection_mode: selection_replace
+    third_party_settings: {  }
+  field_industries:
+    type: entity_reference_autocomplete_tags
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_meta_description:
     type: string_textfield
@@ -540,4 +578,9 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_defense_relevance: true
+  field_deployment_options: true
+  field_key_capabilities: true
+  field_mission_impact: true
+  field_sovereignty_features: true

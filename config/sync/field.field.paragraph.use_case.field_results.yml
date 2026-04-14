@@ -1,0 +1,22 @@
+uuid: eedbc2d0-6252-4b9d-ad85-e78800a8c10a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_results
+    - paragraphs.paragraphs_type.use_case
+  module:
+    - text
+id: paragraph.use_case.field_results
+field_name: field_results
+entity_type: paragraph
+bundle: use_case
+label: Results
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

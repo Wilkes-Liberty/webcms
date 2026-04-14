@@ -1,0 +1,24 @@
+uuid: d0d772a1-147e-45f3-8d4d-d8202668a2b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sector
+    - paragraphs.paragraphs_type.use_case
+    - taxonomy.vocabulary.target_sectors
+id: paragraph.use_case.field_sector
+field_name: field_sector
+entity_type: paragraph
+bundle: use_case
+label: Sector
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      target_sectors: target_sectors
+field_type: entity_reference

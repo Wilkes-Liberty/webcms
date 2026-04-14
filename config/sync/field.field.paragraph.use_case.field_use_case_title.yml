@@ -1,0 +1,19 @@
+uuid: 9b9e5f3a-6aa4-402b-8634-b7e4777dcbef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_use_case_title
+    - paragraphs.paragraphs_type.use_case
+id: paragraph.use_case.field_use_case_title
+field_name: field_use_case_title
+entity_type: paragraph
+bundle: use_case
+label: 'Use Case Title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

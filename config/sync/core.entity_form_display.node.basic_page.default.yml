@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.basic_page.field_cache_tags
     - field.field.node.basic_page.field_campaign
     - field.field.node.basic_page.field_canonical
+    - field.field.node.basic_page.field_categories
     - field.field.node.basic_page.field_compliance
     - field.field.node.basic_page.field_hero_image
     - field.field.node.basic_page.field_industry
@@ -25,6 +26,7 @@ dependencies:
     - field.field.node.basic_page.field_revalidate_ttl
     - field.field.node.basic_page.field_reviewed_on
     - field.field.node.basic_page.field_secondary_cta
+    - field.field.node.basic_page.field_sections
     - field.field.node.basic_page.field_seo_title
     - field.field.node.basic_page.field_show_toc
     - field.field.node.basic_page.field_social_image
@@ -277,6 +279,16 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_categories:
+    type: entity_reference_autocomplete_tags
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_compliance:
     type: entity_reference_autocomplete
     weight: 287
@@ -409,6 +421,16 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_sections:
+    type: entity_reference_autocomplete_tags
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_seo_title:
     type: string_textfield

@@ -11,8 +11,10 @@ dependencies:
     - field.field.node.career.field_cache_tags
     - field.field.node.career.field_campaign
     - field.field.node.career.field_canonical
+    - field.field.node.career.field_categories
     - field.field.node.career.field_department
     - field.field.node.career.field_hero_image
+    - field.field.node.career.field_industries
     - field.field.node.career.field_job_location
     - field.field.node.career.field_job_type
     - field.field.node.career.field_meta_description
@@ -304,6 +306,16 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_categories:
+    type: entity_reference_autocomplete_tags
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_department:
     type: entity_reference_autocomplete
     weight: 209
@@ -327,6 +339,16 @@ content:
       open: true
       field_widget_display_settings: {  }
       selection_mode: selection_replace
+    third_party_settings: {  }
+  field_industries:
+    type: entity_reference_autocomplete_tags
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_job_location:
     type: string_textfield

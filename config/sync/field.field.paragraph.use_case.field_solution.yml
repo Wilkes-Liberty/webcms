@@ -1,0 +1,22 @@
+uuid: f5bb5e15-d730-491c-b8d4-1245d0048c29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_solution
+    - paragraphs.paragraphs_type.use_case
+  module:
+    - text
+id: paragraph.use_case.field_solution
+field_name: field_solution
+entity_type: paragraph
+bundle: use_case
+label: Solution
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

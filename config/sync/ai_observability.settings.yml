@@ -8,3 +8,9 @@ log_input: false
 log_output: false
 log_tags: {  }
 fallback_log_message_mode: true
+logging_enabled: true
+otel_enabled: false
+otel_spans: true
+otel_spans_store_input: false
+otel_spans_store_output: false
+otel_metrics: true

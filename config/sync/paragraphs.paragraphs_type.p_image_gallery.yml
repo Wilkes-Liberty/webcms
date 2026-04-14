@@ -1,0 +1,10 @@
+uuid: ecc1f44f-e773-4aa4-960c-1085f922c93d
+langcode: en
+status: true
+dependencies: {  }
+id: p_image_gallery
+label: 'Image Gallery'
+icon_uuid: null
+icon_default: null
+description: 'Grid of images with optional title.'
+behavior_plugins: {  }

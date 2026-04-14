@@ -9,8 +9,10 @@ dependencies:
     - field.field.node.case_study.field_cache_tags
     - field.field.node.case_study.field_campaign
     - field.field.node.case_study.field_canonical
+    - field.field.node.case_study.field_categories
     - field.field.node.case_study.field_compliance
     - field.field.node.case_study.field_hero_image
+    - field.field.node.case_study.field_industries
     - field.field.node.case_study.field_industry
     - field.field.node.case_study.field_meta_description
     - field.field.node.case_study.field_noindex
@@ -67,6 +69,14 @@ content:
     third_party_settings: {  }
     weight: 164
     region: content
+  field_categories:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
+    region: content
   field_compliance:
     type: entity_reference_label
     label: above
@@ -83,6 +93,14 @@ content:
       link: false
     third_party_settings: {  }
     weight: 160
+    region: content
+  field_industries:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
     region: content
   field_industry:
     type: entity_reference_label

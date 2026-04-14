@@ -9,9 +9,10 @@ dependencies:
     - node.type.case_study
     - node.type.event
     - node.type.landing_page
+    - node.type.person
+    - node.type.product
     - node.type.resource
     - node.type.service
-    - node.type.person
   module:
     - content_moderation
 _core:
@@ -95,4 +96,5 @@ type_settings:
       - event
       - career
       - person
+      - product
   default_moderation_state: draft

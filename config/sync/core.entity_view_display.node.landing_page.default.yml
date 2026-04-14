@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.landing_page.field_cache_tags
     - field.field.node.landing_page.field_campaign
     - field.field.node.landing_page.field_canonical
+    - field.field.node.landing_page.field_categories
     - field.field.node.landing_page.field_compliance
     - field.field.node.landing_page.field_components
     - field.field.node.landing_page.field_hero_image
@@ -26,6 +27,7 @@ dependencies:
     - field.field.node.landing_page.field_revalidate_ttl
     - field.field.node.landing_page.field_reviewed_on
     - field.field.node.landing_page.field_secondary_cta
+    - field.field.node.landing_page.field_sections
     - field.field.node.landing_page.field_seo_title
     - field.field.node.landing_page.field_show_toc
     - field.field.node.landing_page.field_social_image
@@ -70,6 +72,14 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 172
+    region: content
+  field_categories:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
     region: content
   field_compliance:
     type: entity_reference_label
@@ -152,6 +162,14 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 170
+    region: content
+  field_sections:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
     region: content
   field_solutions:
     type: entity_reference_label

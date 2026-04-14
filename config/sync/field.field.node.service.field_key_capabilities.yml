@@ -1,0 +1,30 @@
+uuid: 4c1f5d0c-4f21-483c-a522-ac8d1c91b54c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_key_capabilities
+    - node.type.service
+    - paragraphs.paragraphs_type.capability
+  module:
+    - entity_reference_revisions
+id: node.service.field_key_capabilities
+field_name: field_key_capabilities
+entity_type: node
+bundle: service
+label: 'Key Capabilities'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      capability: capability
+    target_bundles_drag_drop:
+      capability:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

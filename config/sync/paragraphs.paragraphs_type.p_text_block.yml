@@ -1,0 +1,10 @@
+uuid: d2d5d842-2239-4d78-a8a3-92205880c1b9
+langcode: en
+status: true
+dependencies: {  }
+id: p_text_block
+label: 'Text Block'
+icon_uuid: null
+icon_default: null
+description: 'Simple text section with title and body content.'
+behavior_plugins: {  }

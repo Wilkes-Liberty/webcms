@@ -1,0 +1,27 @@
+uuid: 1b62282c-5a00-40d2-97c1-54ee58a0242a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_categories
+    - node.type.career
+    - taxonomy.vocabulary.categories
+id: node.career.field_categories
+field_name: field_categories
+entity_type: node
+bundle: career
+label: Categories
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      categories: categories
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

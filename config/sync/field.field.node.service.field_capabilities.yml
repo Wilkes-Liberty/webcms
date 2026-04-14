@@ -1,0 +1,27 @@
+uuid: e27d18c4-e2bc-4694-bfac-02c78d2f8c07
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_capabilities
+    - node.type.service
+    - taxonomy.vocabulary.capabilities
+id: node.service.field_capabilities
+field_name: field_capabilities
+entity_type: node
+bundle: service
+label: Capabilities
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      capabilities: capabilities
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,9 @@
+uuid: 6b15299d-373e-425b-b0e1-646ce0e28a90
+langcode: en
+status: true
+dependencies: {  }
+name: Sections
+vid: sections
+description: 'Top-level site sections as per the Hugo prototype.'
+weight: 0
+new_revision: false

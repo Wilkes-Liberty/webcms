@@ -1,0 +1,9 @@
+uuid: 59b3adb9-7e3d-42d3-acf5-e3ee825b0cef
+langcode: en
+status: true
+dependencies: {  }
+name: 'Target Sectors'
+vid: target_sectors
+description: 'Market sectors for content targeting'
+weight: 0
+new_revision: false

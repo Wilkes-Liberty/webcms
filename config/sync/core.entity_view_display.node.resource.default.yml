@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.resource.field_cache_tags
     - field.field.node.resource.field_campaign
     - field.field.node.resource.field_canonical
+    - field.field.node.resource.field_categories
     - field.field.node.resource.field_compliance
     - field.field.node.resource.field_hero_image
     - field.field.node.resource.field_industry
@@ -68,6 +69,14 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 174
+    region: content
+  field_categories:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
     region: content
   field_compliance:
     type: entity_reference_label

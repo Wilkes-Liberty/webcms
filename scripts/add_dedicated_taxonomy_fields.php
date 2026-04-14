@@ -20,8 +20,8 @@
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\node\Entity\NodeType;
-use Drupal\Core\Entity\Display\EntityFormDisplay;
-use Drupal\Core\Entity\Display\EntityViewDisplay;
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
 
 /**
  * Map vocabularies to field definitions (field name + label).

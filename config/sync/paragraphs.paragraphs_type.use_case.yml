@@ -1,0 +1,10 @@
+uuid: 09e8489f-df8d-4170-a900-7f2fbf2f5a08
+langcode: en
+status: true
+dependencies: {  }
+id: use_case
+label: 'Use Case'
+icon_uuid: null
+icon_default: null
+description: 'Showcase real-world applications for defense, government, and critical infrastructure clients.'
+behavior_plugins: {  }

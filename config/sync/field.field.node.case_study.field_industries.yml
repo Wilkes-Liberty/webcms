@@ -1,0 +1,27 @@
+uuid: 36537ae2-4c6b-46ce-a9fa-39f3de3149a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_industries
+    - node.type.case_study
+    - taxonomy.vocabulary.industries
+id: node.case_study.field_industries
+field_name: field_industries
+entity_type: node
+bundle: case_study
+label: Industries
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      industries: industries
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

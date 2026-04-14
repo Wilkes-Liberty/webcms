@@ -9,8 +9,15 @@ dependencies:
     - field.field.node.service.field_cache_tags
     - field.field.node.service.field_campaign
     - field.field.node.service.field_canonical
+    - field.field.node.service.field_capabilities
+    - field.field.node.service.field_categories
+    - field.field.node.service.field_defense_relevance
+    - field.field.node.service.field_deployment_options
     - field.field.node.service.field_hero_image
+    - field.field.node.service.field_industries
+    - field.field.node.service.field_key_capabilities
     - field.field.node.service.field_meta_description
+    - field.field.node.service.field_mission_impact
     - field.field.node.service.field_noindex
     - field.field.node.service.field_parent
     - field.field.node.service.field_preview_token
@@ -24,6 +31,7 @@ dependencies:
     - field.field.node.service.field_show_toc
     - field.field.node.service.field_social_image
     - field.field.node.service.field_solutions
+    - field.field.node.service.field_sovereignty_features
     - field.field.node.service.field_summary
     - field.field.node.service.field_taxonomy
     - field.field.node.service.field_technologies
@@ -64,6 +72,22 @@ content:
     third_party_settings: {  }
     weight: 147
     region: content
+  field_capabilities:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_categories:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
+    region: content
   field_hero_image:
     type: entity_reference_entity_view
     label: hidden
@@ -72,6 +96,14 @@ content:
       link: false
     third_party_settings: {  }
     weight: 143
+    region: content
+  field_industries:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 20
     region: content
   field_primary_cta:
     type: link
@@ -138,7 +170,11 @@ hidden:
   field_breadcrumb_label: true
   field_cache_tags: true
   field_campaign: true
+  field_defense_relevance: true
+  field_deployment_options: true
+  field_key_capabilities: true
   field_meta_description: true
+  field_mission_impact: true
   field_noindex: true
   field_parent: true
   field_preview_token: true
@@ -148,6 +184,7 @@ hidden:
   field_seo_title: true
   field_show_toc: true
   field_social_image: true
+  field_sovereignty_features: true
   field_taxonomy: true
   field_template: true
   field_theme_variant: true

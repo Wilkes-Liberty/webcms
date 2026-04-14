@@ -1,0 +1,24 @@
+uuid: 53265c7e-734d-4f28-8ac3-d8ee92508f97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon
+    - media.type.image
+    - paragraphs.paragraphs_type.capability
+id: paragraph.capability.field_icon
+field_name: field_icon
+entity_type: paragraph
+bundle: capability
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

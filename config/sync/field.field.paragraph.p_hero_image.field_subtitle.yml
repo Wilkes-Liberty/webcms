@@ -1,0 +1,22 @@
+uuid: 8084dc8d-60eb-4f0f-9e87-e9567ec17404
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subtitle
+    - paragraphs.paragraphs_type.p_hero_image
+  module:
+    - text
+id: paragraph.p_hero_image.field_subtitle
+field_name: field_subtitle
+entity_type: paragraph
+bundle: p_hero_image
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

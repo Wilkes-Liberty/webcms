@@ -5,7 +5,15 @@ dependencies:
   config:
     - field.storage.node.field_taxonomy
     - node.type.article
+    - taxonomy.vocabulary.capabilities
+    - taxonomy.vocabulary.categories
+    - taxonomy.vocabulary.industries
+    - taxonomy.vocabulary.sections
+    - taxonomy.vocabulary.services
+    - taxonomy.vocabulary.solutions
+    - taxonomy.vocabulary.tags
     - taxonomy.vocabulary.tech_stack
+    - taxonomy.vocabulary.technologies
     - taxonomy.vocabulary.topics
 id: node.article.field_taxonomy
 field_name: field_taxonomy
@@ -23,5 +31,13 @@ settings:
     target_bundles:
       topics: topics
       tech_stack: tech_stack
+      tags: tags
+      sections: sections
+      technologies: technologies
+      solutions: solutions
+      services: services
+      industries: industries
+      capabilities: capabilities
+      categories: categories
     auto_create: false
 field_type: entity_reference

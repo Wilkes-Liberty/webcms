@@ -1,0 +1,19 @@
+uuid: 9a2db827-85af-4779-baf3-da7809d4e6d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.p_faqs
+id: paragraph.p_faqs.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: p_faqs
+label: 'Section Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

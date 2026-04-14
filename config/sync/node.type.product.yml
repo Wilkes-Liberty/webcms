@@ -1,0 +1,11 @@
+uuid: 91c7772f-9f80-45b3-95f3-7d95131b47a3
+langcode: en
+status: true
+dependencies: {  }
+name: Product
+type: product
+description: 'Self-deployable sovereign technology platforms.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

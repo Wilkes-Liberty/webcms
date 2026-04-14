@@ -1,0 +1,10 @@
+uuid: 28795954-fe36-4943-a4b4-e7a3f9b80257
+langcode: en
+status: true
+dependencies: {  }
+id: capability
+label: Capability
+icon_uuid: null
+icon_default: null
+description: 'Individual capability item for the Key Capabilities section of Product and Service pages.'
+behavior_plugins: {  }

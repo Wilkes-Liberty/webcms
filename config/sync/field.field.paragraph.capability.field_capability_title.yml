@@ -1,0 +1,19 @@
+uuid: b03ea42d-d2fe-45f2-95cf-58c585bb3f13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_capability_title
+    - paragraphs.paragraphs_type.capability
+id: paragraph.capability.field_capability_title
+field_name: field_capability_title
+entity_type: paragraph
+bundle: capability
+label: 'Capability Title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

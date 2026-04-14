@@ -1,0 +1,22 @@
+uuid: e93cd14b-56cf-4f6e-b888-af910348c464
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_capability_description
+    - paragraphs.paragraphs_type.capability
+  module:
+    - text
+id: paragraph.capability.field_capability_description
+field_name: field_capability_description
+entity_type: paragraph
+bundle: capability
+label: 'Capability Description'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

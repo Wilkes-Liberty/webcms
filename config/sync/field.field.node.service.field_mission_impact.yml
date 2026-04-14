@@ -1,0 +1,22 @@
+uuid: 4ea6e3ea-a8a5-4974-b8bd-aa6f29b99316
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mission_impact
+    - node.type.service
+  module:
+    - text
+id: node.service.field_mission_impact
+field_name: field_mission_impact
+entity_type: node
+bundle: service
+label: 'Mission Impact'
+description: 'Frame the service around operational outcomes.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

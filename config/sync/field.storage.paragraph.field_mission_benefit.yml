@@ -1,0 +1,21 @@
+uuid: a0238824-09ff-41a2-99de-a95d6b8a4f78
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_mission_benefit
+field_name: field_mission_benefit
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
