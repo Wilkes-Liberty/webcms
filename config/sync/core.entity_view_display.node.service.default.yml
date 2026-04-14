@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.service.field_noindex
     - field.field.node.service.field_parent
     - field.field.node.service.field_personas
+    - field.field.node.service.field_platform
     - field.field.node.service.field_preview_token
     - field.field.node.service.field_primary_cta
     - field.field.node.service.field_read_time
@@ -181,6 +182,7 @@ hidden:
   field_noindex: true
   field_parent: true
   field_personas: true
+  field_platform: true
   field_preview_token: true
   field_read_time: true
   field_revalidate_ttl: true

@@ -10,7 +10,9 @@ dependencies:
     - field.field.node.career.field_cache_tags
     - field.field.node.career.field_campaign
     - field.field.node.career.field_canonical
+    - field.field.node.career.field_career_stage
     - field.field.node.career.field_categories
+    - field.field.node.career.field_clearance_level
     - field.field.node.career.field_department
     - field.field.node.career.field_hero_image
     - field.field.node.career.field_industries
@@ -24,6 +26,7 @@ dependencies:
     - field.field.node.career.field_primary_cta
     - field.field.node.career.field_read_time
     - field.field.node.career.field_related
+    - field.field.node.career.field_remote_policy
     - field.field.node.career.field_revalidate_ttl
     - field.field.node.career.field_reviewed_on
     - field.field.node.career.field_secondary_cta
@@ -36,6 +39,7 @@ dependencies:
     - field.field.node.career.field_technologies
     - field.field.node.career.field_template
     - field.field.node.career.field_theme_variant
+    - field.field.node.career.field_veteran_friendly
     - field.field.node.career.field_visibility
     - node.type.career
   module:
@@ -213,11 +217,14 @@ hidden:
   field_breadcrumb_label: true
   field_cache_tags: true
   field_campaign: true
+  field_career_stage: true
+  field_clearance_level: true
   field_meta_description: true
   field_noindex: true
   field_parent: true
   field_preview_token: true
   field_read_time: true
+  field_remote_policy: true
   field_revalidate_ttl: true
   field_reviewed_on: true
   field_seo_title: true
@@ -225,6 +232,7 @@ hidden:
   field_social_image: true
   field_template: true
   field_theme_variant: true
+  field_veteran_friendly: true
   field_visibility: true
   langcode: true
   preview_token: true

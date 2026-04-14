@@ -1,0 +1,39 @@
+uuid: 4318b4f5-b056-4481-8959-acfef79ad48c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_clearance_level
+field_name: field_clearance_level
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: none
+      label: 'No Clearance Required'
+    -
+      value: public_trust
+      label: 'Public Trust'
+    -
+      value: secret
+      label: Secret
+    -
+      value: top_secret
+      label: 'Top Secret'
+    -
+      value: ts_sci
+      label: TS/SCI
+    -
+      value: ts_sci_poly
+      label: 'TS/SCI with Polygraph'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

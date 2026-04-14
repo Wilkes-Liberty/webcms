@@ -1,0 +1,21 @@
+uuid: c88a3e02-0dc2-4797-9406-06a3c8298f8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_clearance_level
+    - node.type.career
+  module:
+    - options
+id: node.career.field_clearance_level
+field_name: field_clearance_level
+entity_type: node
+bundle: career
+label: 'Security Clearance'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

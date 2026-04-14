@@ -1,0 +1,24 @@
+uuid: f5f984b4-1dc8-42ca-a482-0fd0934b91b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_platform
+    - node.type.case_study
+    - taxonomy.vocabulary.platforms
+id: node.case_study.field_platform
+field_name: field_platform
+entity_type: node
+bundle: case_study
+label: Platform
+description: 'Which platform brand this content belongs to.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      platforms: platforms
+field_type: entity_reference

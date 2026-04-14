@@ -1,0 +1,21 @@
+uuid: bf97a182-546c-416c-a9d2-1f83cff3031a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_remote_policy
+    - node.type.career
+  module:
+    - options
+id: node.career.field_remote_policy
+field_name: field_remote_policy
+entity_type: node
+bundle: career
+label: 'Remote Policy'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

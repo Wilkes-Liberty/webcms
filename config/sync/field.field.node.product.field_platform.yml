@@ -1,0 +1,24 @@
+uuid: 09b0275b-8120-46ba-93f8-51ce82e3993d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_platform
+    - node.type.product
+    - taxonomy.vocabulary.platforms
+id: node.product.field_platform
+field_name: field_platform
+entity_type: node
+bundle: product
+label: Platform
+description: 'Which platform brand this content belongs to.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      platforms: platforms
+field_type: entity_reference

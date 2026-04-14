@@ -1,0 +1,22 @@
+uuid: 12153562-121a-453e-8fef-a913a0517b61
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mission_impact
+    - node.type.solution
+  module:
+    - text
+id: node.solution.field_mission_impact
+field_name: field_mission_impact
+entity_type: node
+bundle: solution
+label: 'Mission Impact'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

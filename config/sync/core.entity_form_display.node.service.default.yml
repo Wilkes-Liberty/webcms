@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.service.field_noindex
     - field.field.node.service.field_parent
     - field.field.node.service.field_personas
+    - field.field.node.service.field_platform
     - field.field.node.service.field_preview_token
     - field.field.node.service.field_primary_cta
     - field.field.node.service.field_read_time
@@ -342,6 +343,16 @@ content:
   field_parent:
     type: entity_reference_autocomplete
     weight: 225
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_platform:
+    type: entity_reference_autocomplete
+    weight: 38
     region: content
     settings:
       match_operator: CONTAINS

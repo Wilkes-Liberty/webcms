@@ -1,0 +1,19 @@
+uuid: af82c1b8-5857-4e9f-8278-872915d3db87
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_preview_token
+    - node.type.solution
+id: node.solution.field_preview_token
+field_name: field_preview_token
+entity_type: node
+bundle: solution
+label: 'Preview Token'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

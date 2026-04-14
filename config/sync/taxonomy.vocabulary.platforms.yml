@@ -1,0 +1,9 @@
+uuid: 15706724-0725-41c9-ad98-3b380b721fdf
+langcode: en
+status: true
+dependencies: {  }
+name: Platforms
+vid: platforms
+description: 'Top-level product platform brands. Each platform groups related products, solutions, and content into a coherent ecosystem.'
+weight: 0
+new_revision: false

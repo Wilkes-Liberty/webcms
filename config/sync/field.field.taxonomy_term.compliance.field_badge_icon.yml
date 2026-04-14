@@ -1,0 +1,24 @@
+uuid: 7636d31d-a3df-4bec-8eeb-5f2bf7c7adec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_badge_icon
+    - media.type.image
+    - taxonomy.vocabulary.compliance
+id: taxonomy_term.compliance.field_badge_icon
+field_name: field_badge_icon
+entity_type: taxonomy_term
+bundle: compliance
+label: 'Badge / Icon'
+description: 'Compliance badge image (e.g., FedRAMP, IL5, SOC2 logos) — displayed on Product and Service pages.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

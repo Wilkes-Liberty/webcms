@@ -1,0 +1,30 @@
+uuid: 9de7ca96-0cd8-40fb-b073-07b22c243080
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_outcomes
+    - node.type.solution
+    - paragraphs.paragraphs_type.outcome
+  module:
+    - entity_reference_revisions
+id: node.solution.field_outcomes
+field_name: field_outcomes
+entity_type: node
+bundle: solution
+label: 'Key Outcomes'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      outcome: outcome
+    target_bundles_drag_drop:
+      outcome:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.media_image_browser
+    - field.field.taxonomy_term.compliance.field_badge_icon
     - field.field.taxonomy_term.compliance.field_cta_links
     - field.field.taxonomy_term.compliance.field_external_canonical
     - field.field.taxonomy_term.compliance.field_hero_image
     - field.field.taxonomy_term.compliance.field_icon
     - field.field.taxonomy_term.compliance.field_meta_description
     - field.field.taxonomy_term.compliance.field_seo_title
+    - field.field.taxonomy_term.compliance.field_short_description
     - field.field.taxonomy_term.compliance.field_show_in_nav
     - field.field.taxonomy_term.compliance.field_synonyms
     - taxonomy.vocabulary.compliance
@@ -140,5 +142,7 @@ content:
       display_label: true
     third_party_settings: {  }
 hidden:
+  field_badge_icon: true
+  field_short_description: true
   publish_on: true
   unpublish_on: true

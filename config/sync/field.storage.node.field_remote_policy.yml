@@ -1,0 +1,33 @@
+uuid: 6ff66516-6d1b-4b42-b8b0-0c9119d0c9c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_remote_policy
+field_name: field_remote_policy
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: onsite
+      label: On-Site
+    -
+      value: hybrid
+      label: Hybrid
+    -
+      value: remote
+      label: Remote
+    -
+      value: scif
+      label: 'SCIF / Secure Facility Required'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,11 @@
+uuid: b39e6468-d120-46d9-b9b1-c89a65030693
+langcode: en
+status: true
+dependencies: {  }
+name: Solution
+type: solution
+description: 'Branded, deployable solution packages bridging Products and Services. Similar to GDIT Digital Accelerators or Palantir Offerings.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

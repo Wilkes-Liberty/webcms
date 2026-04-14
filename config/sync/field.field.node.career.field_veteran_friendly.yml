@@ -1,0 +1,21 @@
+uuid: 081abbe2-145b-417b-98d0-e178b2ef19a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_veteran_friendly
+    - node.type.career
+id: node.career.field_veteran_friendly
+field_name: field_veteran_friendly
+entity_type: node
+bundle: career
+label: 'Veteran Friendly'
+description: 'Flag this position as especially suited for military veteran transitions.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

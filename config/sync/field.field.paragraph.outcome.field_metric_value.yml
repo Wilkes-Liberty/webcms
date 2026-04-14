@@ -1,0 +1,19 @@
+uuid: 2f26de74-0445-4415-b110-565753012abd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_metric_value
+    - paragraphs.paragraphs_type.outcome
+id: paragraph.outcome.field_metric_value
+field_name: field_metric_value
+entity_type: paragraph
+bundle: outcome
+label: 'Metric Value'
+description: 'The headline metric (e.g., "40%", "3x faster", "$2.1M saved").'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: a104ced6-9fe3-4902-85e2-a7c6be7c0247
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_career_stage
+    - node.type.career
+  module:
+    - options
+id: node.career.field_career_stage
+field_name: field_career_stage
+entity_type: node
+bundle: career
+label: 'Career Stage'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

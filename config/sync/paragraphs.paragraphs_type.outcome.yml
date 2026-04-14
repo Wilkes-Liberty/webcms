@@ -1,0 +1,10 @@
+uuid: c999505d-23ab-45ea-92fb-2bfffcff0999
+langcode: en
+status: true
+dependencies: {  }
+id: outcome
+label: Outcome
+icon_uuid: null
+icon_default: null
+description: 'A quantified result or metric from a case study (e.g., "40% cost reduction").'
+behavior_plugins: {  }

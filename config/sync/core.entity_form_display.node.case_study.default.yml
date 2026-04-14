@@ -16,7 +16,9 @@ dependencies:
     - field.field.node.case_study.field_industries
     - field.field.node.case_study.field_meta_description
     - field.field.node.case_study.field_noindex
+    - field.field.node.case_study.field_outcomes
     - field.field.node.case_study.field_parent
+    - field.field.node.case_study.field_platform
     - field.field.node.case_study.field_preview_token
     - field.field.node.case_study.field_primary_capability
     - field.field.node.case_study.field_primary_cta
@@ -43,6 +45,7 @@ dependencies:
     - entity_browser
     - field_group
     - link
+    - paragraphs
     - path
     - scheduler
     - text
@@ -336,9 +339,31 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_outcomes:
+    type: entity_reference_paragraphs
+    weight: 3
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
   field_parent:
     type: entity_reference_autocomplete
     weight: 242
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_platform:
+    type: entity_reference_autocomplete
+    weight: 38
     region: content
     settings:
       match_operator: CONTAINS

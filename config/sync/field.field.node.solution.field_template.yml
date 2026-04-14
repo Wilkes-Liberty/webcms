@@ -1,0 +1,21 @@
+uuid: 188ab1c5-c7b0-4596-8034-5381b439f472
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_template
+    - node.type.solution
+  module:
+    - options
+id: node.solution.field_template
+field_name: field_template
+entity_type: node
+bundle: solution
+label: Template
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

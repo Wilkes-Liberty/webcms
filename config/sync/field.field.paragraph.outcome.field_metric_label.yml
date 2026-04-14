@@ -1,0 +1,19 @@
+uuid: f2cff411-b6e8-4efe-a5b9-aa50577262df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_metric_label
+    - paragraphs.paragraphs_type.outcome
+id: paragraph.outcome.field_metric_label
+field_name: field_metric_label
+entity_type: paragraph
+bundle: outcome
+label: 'Metric Label'
+description: 'What this metric measures (e.g., "Cost Reduction", "Deployment Speed").'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

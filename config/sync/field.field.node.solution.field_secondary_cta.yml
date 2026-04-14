@@ -1,0 +1,23 @@
+uuid: 861c575d-8ebd-4083-916d-07836f627ec0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_secondary_cta
+    - node.type.solution
+  module:
+    - link
+id: node.solution.field_secondary_cta
+field_name: field_secondary_cta
+entity_type: node
+bundle: solution
+label: 'Secondary CTA'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

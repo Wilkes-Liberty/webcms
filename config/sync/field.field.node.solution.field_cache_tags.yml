@@ -1,0 +1,19 @@
+uuid: 38bca21d-1c3b-495f-a6dd-a3de47347540
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cache_tags
+    - node.type.solution
+id: node.solution.field_cache_tags
+field_name: field_cache_tags
+entity_type: node
+bundle: solution
+label: 'CDN Cache Tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

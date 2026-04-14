@@ -11,7 +11,9 @@ dependencies:
     - field.field.node.career.field_cache_tags
     - field.field.node.career.field_campaign
     - field.field.node.career.field_canonical
+    - field.field.node.career.field_career_stage
     - field.field.node.career.field_categories
+    - field.field.node.career.field_clearance_level
     - field.field.node.career.field_department
     - field.field.node.career.field_hero_image
     - field.field.node.career.field_industries
@@ -25,6 +27,7 @@ dependencies:
     - field.field.node.career.field_primary_cta
     - field.field.node.career.field_read_time
     - field.field.node.career.field_related
+    - field.field.node.career.field_remote_policy
     - field.field.node.career.field_revalidate_ttl
     - field.field.node.career.field_reviewed_on
     - field.field.node.career.field_secondary_cta
@@ -37,6 +40,7 @@ dependencies:
     - field.field.node.career.field_technologies
     - field.field.node.career.field_template
     - field.field.node.career.field_theme_variant
+    - field.field.node.career.field_veteran_friendly
     - field.field.node.career.field_visibility
     - node.type.career
     - workflows.workflow.editorial
@@ -305,6 +309,12 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_career_stage:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_categories:
     type: entity_reference_autocomplete_tags
     weight: 20
@@ -314,6 +324,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_clearance_level:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_department:
     type: entity_reference_autocomplete
@@ -431,6 +447,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_remote_policy:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_revalidate_ttl:
     type: number
     weight: 266
@@ -532,6 +554,13 @@ content:
     weight: 253
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_veteran_friendly:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_visibility:
     type: options_select

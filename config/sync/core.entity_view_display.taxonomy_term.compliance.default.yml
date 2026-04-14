@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.compliance.field_badge_icon
     - field.field.taxonomy_term.compliance.field_cta_links
     - field.field.taxonomy_term.compliance.field_external_canonical
     - field.field.taxonomy_term.compliance.field_hero_image
     - field.field.taxonomy_term.compliance.field_icon
     - field.field.taxonomy_term.compliance.field_meta_description
     - field.field.taxonomy_term.compliance.field_seo_title
+    - field.field.taxonomy_term.compliance.field_short_description
     - field.field.taxonomy_term.compliance.field_show_in_nav
     - field.field.taxonomy_term.compliance.field_synonyms
     - taxonomy.vocabulary.compliance
@@ -58,9 +60,11 @@ content:
     weight: 35
     region: content
 hidden:
+  field_badge_icon: true
   field_external_canonical: true
   field_meta_description: true
   field_seo_title: true
+  field_short_description: true
   field_show_in_nav: true
   field_synonyms: true
   langcode: true

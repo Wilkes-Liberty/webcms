@@ -13,6 +13,7 @@ dependencies:
     - node.type.product
     - node.type.resource
     - node.type.service
+    - node.type.solution
   module:
     - content_moderation
 _core:
@@ -97,4 +98,5 @@ type_settings:
       - career
       - person
       - product
+      - solution
   default_moderation_state: draft

@@ -1,0 +1,36 @@
+uuid: 688c6d4a-0aed-4f0f-92bc-aabd714ba3c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_career_stage
+field_name: field_career_stage
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: early
+      label: 'Early Career / New Graduate'
+    -
+      value: mid
+      label: 'Mid-Career Professional'
+    -
+      value: senior
+      label: 'Senior / Leadership'
+    -
+      value: veteran
+      label: 'Military Veteran Transition'
+    -
+      value: cleared
+      label: 'Cleared Professional'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

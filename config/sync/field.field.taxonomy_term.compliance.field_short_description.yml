@@ -1,0 +1,19 @@
+uuid: 812d3995-e585-47d3-ad9a-d7eeb0e27a5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_short_description
+    - taxonomy.vocabulary.compliance
+id: taxonomy_term.compliance.field_short_description
+field_name: field_short_description
+entity_type: taxonomy_term
+bundle: compliance
+label: 'Short Description'
+description: 'One-line description of this compliance framework (e.g., "Federal Risk and Authorization Management Program").'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

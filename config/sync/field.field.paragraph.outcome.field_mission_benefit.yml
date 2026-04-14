@@ -1,0 +1,19 @@
+uuid: 29c53e71-3ecf-4d7b-8766-8a912f3f5413
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mission_benefit
+    - paragraphs.paragraphs_type.outcome
+id: paragraph.outcome.field_mission_benefit
+field_name: field_mission_benefit
+entity_type: paragraph
+bundle: outcome
+label: 'Mission Context'
+description: 'Optional one-line context connecting this metric to mission impact.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
