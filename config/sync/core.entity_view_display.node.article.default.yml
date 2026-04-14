@@ -16,7 +16,6 @@ dependencies:
     - field.field.node.article.field_image
     - field.field.node.article.field_industries
     - field.field.node.article.field_meta_description
-    - field.field.node.article.field_news_category
     - field.field.node.article.field_noindex
     - field.field.node.article.field_parent
     - field.field.node.article.field_personas
@@ -111,14 +110,6 @@ content:
         attribute: eager
     third_party_settings: {  }
     weight: -1
-    region: content
-  field_news_category:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 157
     region: content
   field_personas:
     type: entity_reference_label

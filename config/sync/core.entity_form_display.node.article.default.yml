@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.article.field_image
     - field.field.node.article.field_industries
     - field.field.node.article.field_meta_description
-    - field.field.node.article.field_news_category
     - field.field.node.article.field_noindex
     - field.field.node.article.field_parent
     - field.field.node.article.field_personas
@@ -345,16 +344,6 @@ content:
     weight: 258
     region: content
     settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_news_category:
-    type: entity_reference_autocomplete
-    weight: 217
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }

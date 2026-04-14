@@ -4,14 +4,24 @@ status: true
 dependencies:
   config:
     - field.field.node.person.field_bio
+    - field.field.node.person.field_cache_tags
+    - field.field.node.person.field_canonical
     - field.field.node.person.field_department
     - field.field.node.person.field_expertise
     - field.field.node.person.field_github
     - field.field.node.person.field_job_title
     - field.field.node.person.field_linkedin
+    - field.field.node.person.field_meta_description
+    - field.field.node.person.field_noindex
     - field.field.node.person.field_photo
+    - field.field.node.person.field_preview_token
+    - field.field.node.person.field_revalidate_ttl
+    - field.field.node.person.field_seo_title
     - field.field.node.person.field_show_in_directory
+    - field.field.node.person.field_social_image
+    - field.field.node.person.field_summary
     - field.field.node.person.field_user
+    - field.field.node.person.field_visibility
     - field.field.node.person.field_website
     - image.style.thumbnail
     - node.type.person
@@ -118,6 +128,22 @@ content:
       allowed_formats:
         headless_clean: headless_clean
     third_party_settings: {  }
+  field_cache_tags:
+    type: string_textfield
+    weight: 31
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_canonical:
+    type: string_textfield
+    weight: 23
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_department:
     type: options_select
     weight: -8
@@ -153,6 +179,21 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_meta_description:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_noindex:
+    type: boolean_checkbox
+    weight: 24
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_photo:
     type: image_image
     weight: -7
@@ -161,6 +202,29 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
+  field_preview_token:
+    type: string_textfield
+    weight: 30
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_revalidate_ttl:
+    type: number
+    weight: 32
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_seo_title:
+    type: string_textfield
+    weight: 20
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_show_in_directory:
     type: boolean_checkbox
     weight: -1
@@ -168,12 +232,38 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_social_image:
+    type: entity_reference_autocomplete
+    weight: 22
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_summary:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_user:
     type: entity_reference_autocomplete
     weight: -10
     region: content
     settings:
       match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_visibility:
+    type: string_textfield
+    weight: 33
+    region: content
+    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }

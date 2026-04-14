@@ -4,18 +4,32 @@ status: true
 dependencies:
   config:
     - field.field.node.person.field_bio
+    - field.field.node.person.field_cache_tags
+    - field.field.node.person.field_canonical
     - field.field.node.person.field_department
     - field.field.node.person.field_expertise
     - field.field.node.person.field_github
     - field.field.node.person.field_job_title
     - field.field.node.person.field_linkedin
+    - field.field.node.person.field_meta_description
+    - field.field.node.person.field_noindex
     - field.field.node.person.field_photo
+    - field.field.node.person.field_preview_token
+    - field.field.node.person.field_revalidate_ttl
+    - field.field.node.person.field_seo_title
     - field.field.node.person.field_show_in_directory
+    - field.field.node.person.field_social_image
+    - field.field.node.person.field_summary
     - field.field.node.person.field_user
+    - field.field.node.person.field_visibility
+    - field.field.node.person.field_website
     - image.style.thumbnail
     - node.type.person
   module:
     - image
+    - link
+    - text
+    - user
 id: node.person.default
 targetEntityType: node
 bundle: person
@@ -114,7 +128,17 @@ content:
     weight: -13
     region: content
 hidden:
+  field_cache_tags: true
+  field_canonical: true
+  field_meta_description: true
+  field_noindex: true
+  field_preview_token: true
+  field_revalidate_ttl: true
+  field_seo_title: true
+  field_social_image: true
+  field_summary: true
   field_user: true
+  field_visibility: true
   langcode: true
   links: true
   preview_token: true

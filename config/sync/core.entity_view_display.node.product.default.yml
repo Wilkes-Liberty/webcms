@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.product.field_preview_token
     - field.field.node.product.field_primary_capability
     - field.field.node.product.field_primary_cta
+    - field.field.node.product.field_read_time
     - field.field.node.product.field_related
     - field.field.node.product.field_revalidate_ttl
     - field.field.node.product.field_reviewed_on
@@ -355,6 +356,7 @@ content:
     region: content
 hidden:
   field_platform: true
+  field_read_time: true
   langcode: true
   preview_token: true
   search_api_attachments: true

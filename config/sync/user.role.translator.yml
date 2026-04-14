@@ -7,8 +7,6 @@ dependencies:
     - filter.format.headless_clean
     - filter.format.headless_clean_x
     - filter.format.headless_plain_ai
-    - taxonomy.vocabulary.languages
-    - taxonomy.vocabulary.tones
   module:
     - ai_translate
     - content_translation
@@ -42,8 +40,6 @@ permissions:
   - 'translate any entity'
   - 'translate editable entities'
   - 'translate interface'
-  - 'translate languages taxonomy_term'
-  - 'translate tones taxonomy_term'
   - 'update content translations'
   - 'use text format basic_html'
   - 'use text format headless_clean'

@@ -1,19 +1,19 @@
-uuid: acce0022-8464-4ad5-8098-0831b245c5ba
+uuid: c8ab30e6-6963-4161-b1d1-0bc66dea7d75
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_news_category
-    - node.type.article
+    - field.storage.node.field_categories
+    - node.type.solution
     - taxonomy.vocabulary.categories
-id: node.article.field_news_category
-field_name: field_news_category
+id: node.solution.field_categories
+field_name: field_categories
 entity_type: node
-bundle: article
-label: 'News Category'
-description: 'News category for this article.'
+bundle: solution
+label: Categories
+description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

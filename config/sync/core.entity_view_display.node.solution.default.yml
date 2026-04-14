@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.solution.body
+    - field.field.node.solution.field_ab_variant
     - field.field.node.solution.field_breadcrumb_label
     - field.field.node.solution.field_cache_tags
+    - field.field.node.solution.field_campaign
     - field.field.node.solution.field_canonical
+    - field.field.node.solution.field_categories
     - field.field.node.solution.field_compliance
     - field.field.node.solution.field_hero_image
     - field.field.node.solution.field_industries
@@ -15,14 +18,18 @@ dependencies:
     - field.field.node.solution.field_mission_impact
     - field.field.node.solution.field_noindex
     - field.field.node.solution.field_outcomes
+    - field.field.node.solution.field_parent
     - field.field.node.solution.field_personas
     - field.field.node.solution.field_platform
     - field.field.node.solution.field_preview_token
+    - field.field.node.solution.field_primary_capability
     - field.field.node.solution.field_primary_cta
     - field.field.node.solution.field_related
     - field.field.node.solution.field_revalidate_ttl
+    - field.field.node.solution.field_reviewed_on
     - field.field.node.solution.field_secondary_cta
     - field.field.node.solution.field_seo_title
+    - field.field.node.solution.field_show_toc
     - field.field.node.solution.field_social_image
     - field.field.node.solution.field_solutions
     - field.field.node.solution.field_summary
@@ -273,7 +280,14 @@ content:
     weight: 100
     region: content
 hidden:
+  field_ab_variant: true
+  field_campaign: true
+  field_categories: true
+  field_parent: true
   field_platform: true
+  field_primary_capability: true
+  field_reviewed_on: true
+  field_show_toc: true
   langcode: true
   preview_token: true
   search_api_attachments: true

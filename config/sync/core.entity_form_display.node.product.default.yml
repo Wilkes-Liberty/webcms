@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.product.field_preview_token
     - field.field.node.product.field_primary_capability
     - field.field.node.product.field_primary_cta
+    - field.field.node.product.field_read_time
     - field.field.node.product.field_related
     - field.field.node.product.field_revalidate_ttl
     - field.field.node.product.field_reviewed_on
@@ -622,6 +623,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_read_time: true
   promote: true
   publish_on: true
   sticky: true

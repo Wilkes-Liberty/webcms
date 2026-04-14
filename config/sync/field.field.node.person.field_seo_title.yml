@@ -1,0 +1,19 @@
+uuid: 5b7fb07c-03f5-46d2-9d7b-1bfd1cfa1c3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_title
+    - node.type.person
+id: node.person.field_seo_title
+field_name: field_seo_title
+entity_type: node
+bundle: person
+label: 'SEO Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

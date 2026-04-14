@@ -1,0 +1,23 @@
+uuid: d422c7bf-80a3-4b89-9e3a-b94b3709ac7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_revalidate_ttl
+    - node.type.person
+id: node.person.field_revalidate_ttl
+field_name: field_revalidate_ttl
+entity_type: node
+bundle: person
+label: 'Revalidate After'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

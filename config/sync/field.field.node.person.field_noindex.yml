@@ -1,0 +1,21 @@
+uuid: caaac8f1-080f-45b3-be26-a8ca29e2ea7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_noindex
+    - node.type.person
+id: node.person.field_noindex
+field_name: field_noindex
+entity_type: node
+bundle: person
+label: 'Robots noindex'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

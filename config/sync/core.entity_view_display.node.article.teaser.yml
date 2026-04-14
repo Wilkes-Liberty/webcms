@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.article.field_image
     - field.field.node.article.field_industries
     - field.field.node.article.field_meta_description
-    - field.field.node.article.field_news_category
     - field.field.node.article.field_noindex
     - field.field.node.article.field_parent
     - field.field.node.article.field_personas
@@ -99,7 +98,6 @@ hidden:
   field_hero_image: true
   field_industries: true
   field_meta_description: true
-  field_news_category: true
   field_noindex: true
   field_parent: true
   field_personas: true
