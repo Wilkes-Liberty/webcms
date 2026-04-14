@@ -13,7 +13,7 @@ dependencies:
     - field.field.node.resource.field_categories
     - field.field.node.resource.field_compliance
     - field.field.node.resource.field_hero_image
-    - field.field.node.resource.field_industry
+    - field.field.node.resource.field_industries
     - field.field.node.resource.field_meta_description
     - field.field.node.resource.field_noindex
     - field.field.node.resource.field_parent
@@ -32,7 +32,7 @@ dependencies:
     - field.field.node.resource.field_social_image
     - field.field.node.resource.field_solutions
     - field.field.node.resource.field_summary
-    - field.field.node.resource.field_taxonomy
+    - field.field.node.resource.field_target_sectors
     - field.field.node.resource.field_technologies
     - field.field.node.resource.field_template
     - field.field.node.resource.field_theme_variant
@@ -314,9 +314,9 @@ content:
       field_widget_display_settings: {  }
       selection_mode: selection_replace
     third_party_settings: {  }
-  field_industry:
-    type: entity_reference_autocomplete
-    weight: 208
+  field_industries:
+    type: entity_reference_autocomplete_tags
+    weight: 21
     region: content
     settings:
       match_operator: CONTAINS
@@ -482,16 +482,6 @@ content:
       allowed_formats:
         headless_clean: headless_clean
     third_party_settings: {  }
-  field_taxonomy:
-    type: entity_reference_autocomplete
-    weight: 274
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_technologies:
     type: entity_reference_autocomplete
     weight: 220
@@ -610,4 +600,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_target_sectors: true

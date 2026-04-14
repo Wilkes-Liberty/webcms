@@ -1,16 +1,16 @@
-uuid: 3ae3198f-6a78-4573-805f-f07b6fe62d97
+uuid: b7c67b21-a180-4061-b8a8-b458ec233b45
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_personas
+    - field.storage.node.field_categories
     - node.type.product
-    - taxonomy.vocabulary.persona
-id: node.product.field_personas
-field_name: field_personas
+    - taxonomy.vocabulary.categories
+id: node.product.field_categories
+field_name: field_categories
 entity_type: node
 bundle: product
-label: Personas
+label: Categories
 description: ''
 required: false
 translatable: true
@@ -20,5 +20,5 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      persona: persona
+      categories: categories
 field_type: entity_reference

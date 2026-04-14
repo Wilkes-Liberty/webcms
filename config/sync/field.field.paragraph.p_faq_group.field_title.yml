@@ -1,14 +1,14 @@
-uuid: 9a2db827-85af-4779-baf3-da7809d4e6d3
+uuid: 680c9be5-587e-45c7-9de0-d9b6eac28723
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_title
-    - paragraphs.paragraphs_type.p_faqs
-id: paragraph.p_faqs.field_title
+    - paragraphs.paragraphs_type.p_faq_group
+id: paragraph.p_faq_group.field_title
 field_name: field_title
 entity_type: paragraph
-bundle: p_faqs
+bundle: p_faq_group
 label: 'Section Title'
 description: ''
 required: false

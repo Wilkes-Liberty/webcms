@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.p_faq_group.field_items
+    - field.field.paragraph.p_faq_group.field_title
     - paragraphs.paragraphs_type.p_faq_group
 id: paragraph.p_faq_group.default
 targetEntityType: paragraph
@@ -13,4 +14,5 @@ content: {  }
 hidden:
   created: true
   field_items: true
+  field_title: true
   status: true

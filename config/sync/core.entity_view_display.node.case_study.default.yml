@@ -13,7 +13,6 @@ dependencies:
     - field.field.node.case_study.field_compliance
     - field.field.node.case_study.field_hero_image
     - field.field.node.case_study.field_industries
-    - field.field.node.case_study.field_industry
     - field.field.node.case_study.field_meta_description
     - field.field.node.case_study.field_noindex
     - field.field.node.case_study.field_parent
@@ -30,7 +29,7 @@ dependencies:
     - field.field.node.case_study.field_social_image
     - field.field.node.case_study.field_solutions
     - field.field.node.case_study.field_summary
-    - field.field.node.case_study.field_taxonomy
+    - field.field.node.case_study.field_target_sectors
     - field.field.node.case_study.field_technologies
     - field.field.node.case_study.field_template
     - field.field.node.case_study.field_theme_variant
@@ -101,14 +100,6 @@ content:
       link: false
     third_party_settings: {  }
     weight: 20
-    region: content
-  field_industry:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 140
     region: content
   field_primary_capability:
     type: entity_reference_label
@@ -193,7 +184,7 @@ hidden:
   field_seo_title: true
   field_show_toc: true
   field_social_image: true
-  field_taxonomy: true
+  field_target_sectors: true
   field_template: true
   field_theme_variant: true
   field_visibility: true

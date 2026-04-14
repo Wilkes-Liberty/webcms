@@ -1,15 +1,15 @@
-uuid: 3ae3198f-6a78-4573-805f-f07b6fe62d97
+uuid: 602f22ce-d97f-473c-b53a-2471f02fc237
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_personas
-    - node.type.product
+    - node.type.service
     - taxonomy.vocabulary.persona
-id: node.product.field_personas
+id: node.service.field_personas
 field_name: field_personas
 entity_type: node
-bundle: product
+bundle: service
 label: Personas
 description: ''
 required: false

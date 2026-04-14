@@ -33,7 +33,6 @@ dependencies:
     - field.field.node.career.field_social_image
     - field.field.node.career.field_solutions
     - field.field.node.career.field_summary
-    - field.field.node.career.field_taxonomy
     - field.field.node.career.field_technologies
     - field.field.node.career.field_template
     - field.field.node.career.field_theme_variant
@@ -224,7 +223,6 @@ hidden:
   field_seo_title: true
   field_show_toc: true
   field_social_image: true
-  field_taxonomy: true
   field_template: true
   field_theme_variant: true
   field_visibility: true

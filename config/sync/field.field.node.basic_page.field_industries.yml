@@ -1,19 +1,19 @@
-uuid: ddb3e11a-cd16-448c-9bc4-d1ee133b633c
+uuid: 839ab5c3-5bd6-46ec-9161-8aaa697b5340
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_industry
-    - node.type.case_study
+    - field.storage.node.field_industries
+    - node.type.basic_page
     - taxonomy.vocabulary.industries
-id: node.case_study.field_industry
-field_name: field_industry
+id: node.basic_page.field_industries
+field_name: field_industries
 entity_type: node
-bundle: case_study
-label: 'Primary Industry'
-description: 'Primary industry audience for this content.'
+bundle: basic_page
+label: Industries
+description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -21,4 +21,7 @@ settings:
   handler_settings:
     target_bundles:
       industries: industries
+    sort:
+      field: _none
+    auto_create: false
 field_type: entity_reference

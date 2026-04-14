@@ -15,7 +15,7 @@ dependencies:
     - field.field.node.article.field_compliance
     - field.field.node.article.field_hero_image
     - field.field.node.article.field_image
-    - field.field.node.article.field_industry
+    - field.field.node.article.field_industries
     - field.field.node.article.field_meta_description
     - field.field.node.article.field_news_category
     - field.field.node.article.field_noindex
@@ -35,7 +35,6 @@ dependencies:
     - field.field.node.article.field_solutions
     - field.field.node.article.field_summary
     - field.field.node.article.field_tags
-    - field.field.node.article.field_taxonomy
     - field.field.node.article.field_technologies
     - field.field.node.article.field_template
     - field.field.node.article.field_theme_variant
@@ -98,7 +97,7 @@ hidden:
   field_categories: true
   field_compliance: true
   field_hero_image: true
-  field_industry: true
+  field_industries: true
   field_meta_description: true
   field_news_category: true
   field_noindex: true
@@ -117,7 +116,6 @@ hidden:
   field_social_image: true
   field_solutions: true
   field_summary: true
-  field_taxonomy: true
   field_technologies: true
   field_template: true
   field_theme_variant: true

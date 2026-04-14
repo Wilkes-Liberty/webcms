@@ -1,16 +1,16 @@
-uuid: 3ae3198f-6a78-4573-805f-f07b6fe62d97
+uuid: 8f5de28c-06bd-4888-b58b-1172522ae4bb
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_personas
+    - field.storage.node.field_primary_capability
     - node.type.product
-    - taxonomy.vocabulary.persona
-id: node.product.field_personas
-field_name: field_personas
+    - taxonomy.vocabulary.capabilities
+id: node.product.field_primary_capability
+field_name: field_primary_capability
 entity_type: node
 bundle: product
-label: Personas
+label: 'Primary Capability'
 description: ''
 required: false
 translatable: true
@@ -20,5 +20,5 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      persona: persona
+      capabilities: capabilities
 field_type: entity_reference

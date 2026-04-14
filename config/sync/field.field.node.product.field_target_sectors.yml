@@ -1,16 +1,16 @@
-uuid: 3ae3198f-6a78-4573-805f-f07b6fe62d97
+uuid: 4756863a-4443-4c35-9f9a-4df75521c7eb
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_personas
+    - field.storage.node.field_target_sectors
     - node.type.product
-    - taxonomy.vocabulary.persona
-id: node.product.field_personas
-field_name: field_personas
+    - taxonomy.vocabulary.target_sectors
+id: node.product.field_target_sectors
+field_name: field_target_sectors
 entity_type: node
 bundle: product
-label: Personas
+label: 'Target Sectors'
 description: ''
 required: false
 translatable: true
@@ -20,5 +20,5 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      persona: persona
+      target_sectors: target_sectors
 field_type: entity_reference

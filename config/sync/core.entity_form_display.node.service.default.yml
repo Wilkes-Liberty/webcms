@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.service.field_canonical
     - field.field.node.service.field_capabilities
     - field.field.node.service.field_categories
+    - field.field.node.service.field_compliance
     - field.field.node.service.field_defense_relevance
     - field.field.node.service.field_deployment_options
     - field.field.node.service.field_hero_image
@@ -21,6 +22,7 @@ dependencies:
     - field.field.node.service.field_mission_impact
     - field.field.node.service.field_noindex
     - field.field.node.service.field_parent
+    - field.field.node.service.field_personas
     - field.field.node.service.field_preview_token
     - field.field.node.service.field_primary_cta
     - field.field.node.service.field_read_time
@@ -34,7 +36,7 @@ dependencies:
     - field.field.node.service.field_solutions
     - field.field.node.service.field_sovereignty_features
     - field.field.node.service.field_summary
-    - field.field.node.service.field_taxonomy
+    - field.field.node.service.field_target_sectors
     - field.field.node.service.field_technologies
     - field.field.node.service.field_template
     - field.field.node.service.field_theme_variant
@@ -450,16 +452,6 @@ content:
       allowed_formats:
         headless_clean: headless_clean
     third_party_settings: {  }
-  field_taxonomy:
-    type: entity_reference_autocomplete
-    weight: 247
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_technologies:
     type: entity_reference_autocomplete
     weight: 193
@@ -579,8 +571,11 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_compliance: true
   field_defense_relevance: true
   field_deployment_options: true
   field_key_capabilities: true
   field_mission_impact: true
+  field_personas: true
   field_sovereignty_features: true
+  field_target_sectors: true

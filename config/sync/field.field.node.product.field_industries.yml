@@ -1,19 +1,19 @@
-uuid: 29a87451-73ea-4d60-9cdb-daa54f1d68fe
+uuid: 4eb657e6-0455-47ce-8ce5-90b27bf35791
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_industry
-    - node.type.landing_page
+    - field.storage.node.field_industries
+    - node.type.product
     - taxonomy.vocabulary.industries
-id: node.landing_page.field_industry
-field_name: field_industry
+id: node.product.field_industries
+field_name: field_industries
 entity_type: node
-bundle: landing_page
-label: 'Primary Industry'
-description: 'Primary industry audience for this content.'
+bundle: product
+label: Industries
+description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

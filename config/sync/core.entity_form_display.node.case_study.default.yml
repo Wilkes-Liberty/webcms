@@ -14,7 +14,6 @@ dependencies:
     - field.field.node.case_study.field_compliance
     - field.field.node.case_study.field_hero_image
     - field.field.node.case_study.field_industries
-    - field.field.node.case_study.field_industry
     - field.field.node.case_study.field_meta_description
     - field.field.node.case_study.field_noindex
     - field.field.node.case_study.field_parent
@@ -31,7 +30,7 @@ dependencies:
     - field.field.node.case_study.field_social_image
     - field.field.node.case_study.field_solutions
     - field.field.node.case_study.field_summary
-    - field.field.node.case_study.field_taxonomy
+    - field.field.node.case_study.field_target_sectors
     - field.field.node.case_study.field_technologies
     - field.field.node.case_study.field_template
     - field.field.node.case_study.field_theme_variant
@@ -322,16 +321,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_industry:
-    type: entity_reference_autocomplete
-    weight: 200
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_meta_description:
     type: string_textfield
     weight: 251
@@ -470,16 +459,6 @@ content:
       allowed_formats:
         headless_clean: headless_clean
     third_party_settings: {  }
-  field_taxonomy:
-    type: entity_reference_autocomplete
-    weight: 264
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_technologies:
     type: entity_reference_autocomplete
     weight: 210
@@ -598,4 +577,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_target_sectors: true

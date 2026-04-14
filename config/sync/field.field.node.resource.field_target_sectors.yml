@@ -1,0 +1,24 @@
+uuid: ecfcdc56-f543-4838-a7ee-5f6ef1f811e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_target_sectors
+    - node.type.resource
+    - taxonomy.vocabulary.target_sectors
+id: node.resource.field_target_sectors
+field_name: field_target_sectors
+entity_type: node
+bundle: resource
+label: 'Target Sectors'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      target_sectors: target_sectors
+field_type: entity_reference

@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.service.field_canonical
     - field.field.node.service.field_capabilities
     - field.field.node.service.field_categories
+    - field.field.node.service.field_compliance
     - field.field.node.service.field_defense_relevance
     - field.field.node.service.field_deployment_options
     - field.field.node.service.field_hero_image
@@ -20,6 +21,7 @@ dependencies:
     - field.field.node.service.field_mission_impact
     - field.field.node.service.field_noindex
     - field.field.node.service.field_parent
+    - field.field.node.service.field_personas
     - field.field.node.service.field_preview_token
     - field.field.node.service.field_primary_cta
     - field.field.node.service.field_read_time
@@ -33,7 +35,7 @@ dependencies:
     - field.field.node.service.field_solutions
     - field.field.node.service.field_sovereignty_features
     - field.field.node.service.field_summary
-    - field.field.node.service.field_taxonomy
+    - field.field.node.service.field_target_sectors
     - field.field.node.service.field_technologies
     - field.field.node.service.field_template
     - field.field.node.service.field_theme_variant
@@ -170,6 +172,7 @@ hidden:
   field_breadcrumb_label: true
   field_cache_tags: true
   field_campaign: true
+  field_compliance: true
   field_defense_relevance: true
   field_deployment_options: true
   field_key_capabilities: true
@@ -177,6 +180,7 @@ hidden:
   field_mission_impact: true
   field_noindex: true
   field_parent: true
+  field_personas: true
   field_preview_token: true
   field_read_time: true
   field_revalidate_ttl: true
@@ -185,7 +189,7 @@ hidden:
   field_show_toc: true
   field_social_image: true
   field_sovereignty_features: true
-  field_taxonomy: true
+  field_target_sectors: true
   field_template: true
   field_theme_variant: true
   field_visibility: true

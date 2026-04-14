@@ -1,0 +1,24 @@
+uuid: 5d60fbe1-8e54-48bc-8013-9d27619e41ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_compliance
+    - node.type.service
+    - taxonomy.vocabulary.compliance
+id: node.service.field_compliance
+field_name: field_compliance
+entity_type: node
+bundle: service
+label: 'Compliance Frameworks'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      compliance: compliance
+field_type: entity_reference

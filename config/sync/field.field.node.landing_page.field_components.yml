@@ -8,10 +8,8 @@ dependencies:
     - paragraphs.paragraphs_type.capability
     - paragraphs.paragraphs_type.p_cta_banner
     - paragraphs.paragraphs_type.p_faq_group
-    - paragraphs.paragraphs_type.p_faqs
     - paragraphs.paragraphs_type.p_feature
     - paragraphs.paragraphs_type.p_hero
-    - paragraphs.paragraphs_type.p_hero_image
     - paragraphs.paragraphs_type.p_image_gallery
     - paragraphs.paragraphs_type.p_logo_wall
     - paragraphs.paragraphs_type.p_stat
@@ -44,9 +42,7 @@ settings:
       p_cta_banner: p_cta_banner
       p_text_block: p_text_block
       p_text_image: p_text_image
-      p_hero_image: p_hero_image
       p_image_gallery: p_image_gallery
-      p_faqs: p_faqs
       capability: capability
       use_case: use_case
     target_bundles_drag_drop:

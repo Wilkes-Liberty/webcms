@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.resource.field_categories
     - field.field.node.resource.field_compliance
     - field.field.node.resource.field_hero_image
-    - field.field.node.resource.field_industry
+    - field.field.node.resource.field_industries
     - field.field.node.resource.field_meta_description
     - field.field.node.resource.field_noindex
     - field.field.node.resource.field_parent
@@ -31,7 +31,7 @@ dependencies:
     - field.field.node.resource.field_social_image
     - field.field.node.resource.field_solutions
     - field.field.node.resource.field_summary
-    - field.field.node.resource.field_taxonomy
+    - field.field.node.resource.field_target_sectors
     - field.field.node.resource.field_technologies
     - field.field.node.resource.field_template
     - field.field.node.resource.field_theme_variant
@@ -94,14 +94,6 @@ content:
       link: false
     third_party_settings: {  }
     weight: 170
-    region: content
-  field_industry:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 148
     region: content
   field_personas:
     type: entity_reference_label
@@ -192,6 +184,7 @@ hidden:
   field_breadcrumb_label: true
   field_cache_tags: true
   field_campaign: true
+  field_industries: true
   field_meta_description: true
   field_noindex: true
   field_parent: true
@@ -202,7 +195,7 @@ hidden:
   field_seo_title: true
   field_show_toc: true
   field_social_image: true
-  field_taxonomy: true
+  field_target_sectors: true
   field_template: true
   field_theme_variant: true
   field_visibility: true

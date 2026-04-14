@@ -1,19 +1,19 @@
-uuid: 727b282a-4c03-4cf3-aa0b-f2e129cc3a74
+uuid: ba597e69-6be6-4b75-8a26-4c8e0dcbc808
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_industry
-    - node.type.event
+    - field.storage.node.field_industries
+    - node.type.resource
     - taxonomy.vocabulary.industries
-id: node.event.field_industry
-field_name: field_industry
+id: node.resource.field_industries
+field_name: field_industries
 entity_type: node
-bundle: event
-label: 'Primary Industry'
-description: 'Primary industry audience for this content.'
+bundle: resource
+label: Industries
+description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -21,4 +21,7 @@ settings:
   handler_settings:
     target_bundles:
       industries: industries
+    sort:
+      field: _none
+    auto_create: false
 field_type: entity_reference
