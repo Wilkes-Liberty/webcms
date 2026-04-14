@@ -5,5 +5,3 @@ settings:
 handlers:
   email_confirmation:
     label: 'Подтверждение почтой'
-  email_notification:
-    label: 'Уведомления по email'

@@ -1,4 +1,4 @@
-<?php
+  <?php
 /**
  * One-off utility: Sync top-level Capabilities/Industries terms with field_show_in_nav
  * into the Main menu. Safe to re-run. No need to enable wl_taxo_nav.

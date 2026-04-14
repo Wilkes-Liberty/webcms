@@ -154,3 +154,15 @@ wl_api.system_status:
     _access: 'TRUE'
   options:
     no_cache: TRUE
+
+# Public contact form submission endpoint — POST receives JSON, creates a
+# webform submission for the 'contact' webform, triggers email handler.
+wl_api.contact_submit:
+  path: '/api/contact'
+  defaults:
+    _controller: '\Drupal\wl_api\Controller\ContactController::submit'
+  methods: [POST, OPTIONS]
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE
