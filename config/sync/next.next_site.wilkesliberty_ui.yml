@@ -7,5 +7,5 @@ label: 'WilkesLiberty UI'
 base_url: 'https://wilkesliberty.com'
 preview_url: ''
 preview_secret: ''
-revalidate_url: 'https://wilkesliberty.com/api/revalidate'
-revalidate_secret: ''
+revalidate_url: 'https://www.wilkesliberty.com/api/revalidate'
+revalidate_secret: unFrvDWXv0jd/3WjhTNKYZ2uaGxadlwfkOcHjxZgM8Jb/P7U8sOJ1IBlRVlTd6vr

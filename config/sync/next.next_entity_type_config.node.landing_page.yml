@@ -1,0 +1,11 @@
+id: node.landing_page
+site_resolver: site_selector
+configuration:
+  sites:
+    wilkesliberty_ui: wilkesliberty_ui
+revalidator_configuration:
+  revalidate_page: true
+  additional_paths: |-
+    /
+    /homepage
+revalidate: revalidator.path
