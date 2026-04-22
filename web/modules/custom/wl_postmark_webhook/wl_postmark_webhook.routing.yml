@@ -7,3 +7,13 @@ wl_postmark_webhook.receive:
     _access: 'TRUE'
   options:
     no_cache: TRUE
+
+wl_postmark_webhook.settings:
+  path: '/admin/config/services/postmark-webhook'
+  defaults:
+    _form: '\Drupal\wl_postmark_webhook\Form\PostmarkWebhookSettingsForm'
+    _title: 'Postmark Webhook Settings'
+  requirements:
+    _permission: 'administer postmark webhook settings'
+  options:
+    _admin_route: TRUE

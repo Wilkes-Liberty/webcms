@@ -1,0 +1,5 @@
+services:
+  wl_postmark_webhook.commands:
+    class: \Drupal\wl_postmark_webhook\Commands\PostmarkWebhookCommands
+    tags:
+      - { name: drush.command }

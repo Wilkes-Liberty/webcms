@@ -1,0 +1,6 @@
+wl_postmark_webhook.settings:
+  title: 'Postmark Webhook'
+  description: 'Configure Postmark bounce/spam suppression and webhook endpoint settings.'
+  route_name: wl_postmark_webhook.settings
+  parent: system.admin_config_services
+  weight: 10
