@@ -1,0 +1,5 @@
+name: WL Postmark Webhook
+type: module
+description: 'Receives Postmark bounce/spam/delivery callbacks and logs them to the database.'
+core_version_requirement: ^11
+package: WilkesLiberty
