@@ -29,9 +29,11 @@ $settings['trusted_host_patterns'] = [
   // Production
   '^wilkesliberty\.com$',
   '^www\.wilkesliberty\.com$',
-  // Internal hostname (Tailscale / Docker service names)
+  // Public API hostname (VPS Caddy preserves Host header)
+  '^api\.wilkesliberty\.com$',
+  // Internal hostnames (Tailscale / Docker service names)
   '^drupal$',
-  '^drupal\.int\.wilkesliberty\.com$',
+  '^api\.int\.wilkesliberty\.com$',
   // Staging
   '^staging\.wilkesliberty\.com$',
   '^staging\.int\.wilkesliberty\.com$',
