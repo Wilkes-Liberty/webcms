@@ -1,1 +1,18 @@
 title: Подписаться
+elements: |-
+  first_name:
+    '#title': 'First Name'
+    '#type': textfield
+    '#required': true
+  last_name:
+    '#title': 'Last Name'
+    '#type': textfield
+    '#required': true
+  email:
+    '#title': Email
+    '#type': email
+    '#required': true
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': Subscribe

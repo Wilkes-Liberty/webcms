@@ -9,8 +9,6 @@ display:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       empty:
         area_text_custom:
           content: 'No se encontraron despidos.'
@@ -30,7 +28,6 @@ display:
           label: Activado
         name:
           label: Por
-          separator: ', '
         stale:
           label: 'Todavía en la página'
         page_path:
@@ -40,8 +37,6 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Primero'
             last: 'Último »'
           expose:
@@ -76,7 +71,6 @@ display:
     display_options:
       title: 'Despidos recientes de Editoria11y'
       block_description: 'Editoria11y - Descartes recientes'
-      block_category: Editoria11y
       fields:
         page_title:
           label: Página
@@ -86,7 +80,6 @@ display:
           label: Marcado
         name:
           label: Por
-          separator: ', '
         created:
           label: Activado
         stale:

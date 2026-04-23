@@ -1,6 +1,33 @@
 title: Contacto
+description: 'Inquiries from the Wilkes & Liberty landing page.'
+elements: |-
+  name:
+    '#type': textfield
+    '#title': 'Name'
+    '#required': true
+    '#maxlength': 120
+  email:
+    '#type': email
+    '#title': 'Email'
+    '#required': true
+  organization:
+    '#type': textfield
+    '#title': 'Organization'
+    '#maxlength': 200
+  subject:
+    '#type': textfield
+    '#title': 'Subject'
+    '#required': true
+    '#maxlength': 200
+  message:
+    '#type': textarea
+    '#title': 'Message'
+    '#required': true
+    '#rows': 6
 settings:
   confirmation_message: 'Su mensaje ha sido enviado.'
 handlers:
   email_confirmation:
     label: 'Confirmación por correo electrónico'
+  email_notification:
+    label: 'Aviso por correo electrónico'

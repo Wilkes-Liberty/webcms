@@ -2,9 +2,6 @@ display:
   default:
     display_title: 'По умолчанию'
     display_options:
-      fields:
-        id:
-          label: ID
       exposed_form:
         options:
           submit_button: Применить
@@ -45,8 +42,6 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Первая'
             last: 'Последняя »'
           expose:
@@ -67,8 +62,6 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Первая'
             last: 'Последняя »'
           expose:
@@ -92,9 +85,6 @@ display:
           label: Язык
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Элементов на страницу'
             items_per_page_options_all_label: '- Все -'
@@ -112,9 +102,6 @@ display:
           label: Страница
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Элементов на страницу'
             items_per_page_options_all_label: '- Все -'
@@ -138,9 +125,6 @@ display:
           label: Язык
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Элементов на страницу'
             items_per_page_options_all_label: '- Все -'

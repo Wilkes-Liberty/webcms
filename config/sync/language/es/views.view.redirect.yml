@@ -8,8 +8,6 @@ display:
           submit_button: Filtro
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       pager:
         options:
           tags:
@@ -26,10 +24,8 @@ display:
           action_title: 'Con selección'
         redirect_source__path:
           label: Desde
-          separator: ', '
         enabled:
           label: Activado
-          separator: ', '
         created:
           label: Creado
       filters:

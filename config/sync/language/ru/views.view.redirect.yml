@@ -26,10 +26,8 @@ display:
           action_title: 'С выделенным'
         redirect_source__path:
           label: От
-          separator: ', '
         enabled:
           label: Включено
-          separator: ', '
         created:
           label: Создано
       filters:

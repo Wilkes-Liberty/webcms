@@ -5,15 +5,12 @@ display:
       fields:
         state:
           label: Estado
-          separator: ', '
         label:
           label: Etiqueta
         source_language_1:
           label: Desde
-          separator: ', '
         target_language:
           label: Para
-          separator: ', '
         translator:
           label: Proveedor
         progress:
@@ -44,8 +41,6 @@ display:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       filters:
         state:
           expose:
@@ -61,5 +56,6 @@ display:
     display_options:
       menu:
         title: Empleos
+        description: 'Overview of Jobs.'
       tab_options:
         title: Empleos

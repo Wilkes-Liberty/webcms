@@ -3,12 +3,12 @@ _core:
 langcode: en
 uuid: f8a46c31-48b5-4b75-be60-1cdbaaf4deb8
 name: 'Wilkes & Liberty'
-mail: admin@wilkesliberty.com
+mail: noreply@wilkesliberty.com
 slogan: 'Information Technology'
 page:
   403: ''
   404: ''
-  front: /homepage
+  front: /node/1
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en

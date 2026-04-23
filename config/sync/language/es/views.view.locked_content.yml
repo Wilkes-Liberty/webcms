@@ -8,19 +8,13 @@ display:
           action_title: Acción
         title:
           label: Título
-          separator: ', '
         type:
           label: 'Tipo de contenido'
-          separator: ', '
-        name:
-          separator: ', '
         operations:
           label: Operaciones
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Primero'
             last: 'Último »'
           expose:
@@ -32,8 +26,6 @@ display:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       filters:
         status:
           expose:

@@ -4,16 +4,11 @@ display:
     display_title: 'Por defecto'
     display_options:
       title: 'Resultados principales'
-      fields:
-        id:
-          label: ID
       exposed_form:
         options:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       empty:
         area_text_custom:
           content: 'No se encontraron alertas.'
@@ -33,7 +28,6 @@ display:
           label: Página
       use_more_text: 'Problemas recientes'
       block_description: 'Editoria11y - Alertas recientes'
-      block_category: Editoria11y
   block_top_issues:
     display_title: 'Bloque: Alertas más frecuentes'
     display_options:
@@ -45,7 +39,6 @@ display:
           label: Número
       use_more_text: 'Todos los problemas'
       block_description: 'Editoria11y - Alertas más frecuentes'
-      block_category: Editoria11y
   block_top_results:
     display_title: 'Bloque: Páginas con más alertas'
     display_options:
@@ -59,7 +52,6 @@ display:
           label: 'Problemas en la página'
       use_more_text: 'Todas las páginas con problemas'
       block_description: 'Editoria11y - Páginas con más alertas'
-      block_category: Editoria11y
   issues__page:
     display_title: 'Todos los problemas'
     display_options:
@@ -72,8 +64,6 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Primero'
             last: 'Último »'
           expose:
@@ -104,8 +94,6 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Primero'
             last: 'Último »'
           expose:
@@ -130,9 +118,6 @@ display:
           label: Idioma
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Elementos por página'
             items_per_page_options_all_label: '- Todo -'
@@ -158,9 +143,6 @@ display:
           label: Detectado
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Elementos por página'
             items_per_page_options_all_label: '- Todo -'
@@ -187,9 +169,6 @@ display:
           label: Idioma
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Elementos por página'
             items_per_page_options_all_label: '- Todo -'

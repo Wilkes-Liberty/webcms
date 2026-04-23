@@ -5,15 +5,12 @@ display:
       fields:
         state:
           label: Состояние
-          separator: ', '
         label:
           label: Метка
         source_language_1:
           label: От
-          separator: ', '
         target_language:
           label: Кому
-          separator: ', '
         translator:
           label: Поставщик
         progress:
@@ -58,3 +55,6 @@ display:
             label: Поставщик
   page_1:
     display_title: Страница
+    display_options:
+      menu:
+        description: 'Overview of Jobs.'

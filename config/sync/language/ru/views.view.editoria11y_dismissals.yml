@@ -16,7 +16,6 @@ display:
           label: Вкл
         name:
           label: 'Автор:'
-          separator: ', '
         page_path:
           label: Путь
         nothing:
@@ -24,8 +23,6 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Первая'
             last: 'Последняя »'
           expose:
@@ -48,6 +45,5 @@ display:
           label: Проблема
         name:
           label: 'Автор:'
-          separator: ', '
         created:
           label: Вкл

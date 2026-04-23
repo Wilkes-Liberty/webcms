@@ -26,7 +26,6 @@ display:
           action_title: 'С выделенным'
         title:
           label: Заголовок
-          separator: ', '
         word_count:
           label: Слова
         item_count:
@@ -41,26 +40,18 @@ display:
           action_title: 'С выделенным'
         status:
           label: Статус
-          separator: ', '
         progress:
           label: Прогресс
-        tuid:
-          separator: ', '
         title:
           label: Заголовок
-          separator: ', '
         source_language:
           label: От
-          separator: ', '
         target_language:
           label: Кому
-          separator: ', '
         word_count:
           label: Слова
         item_count:
           label: Элементы
-        loop_count:
-          separator: ', '
         operations:
           label: Операции
       filters:
@@ -84,29 +75,20 @@ display:
           action_title: 'С выделенным'
         status:
           label: Статус
-          separator: ', '
         progress:
           label: Прогресс
         created:
           label: Создано
-          separator: ', '
-        tuid:
-          separator: ', '
         title:
           label: Заголовок
-          separator: ', '
         source_language:
           label: От
-          separator: ', '
         target_language:
           label: Кому
-          separator: ', '
         word_count:
           label: Слова
         item_count:
           label: Элементы
-        loop_count:
-          separator: ', '
         operations:
           label: Операции
       filters:
@@ -130,29 +112,20 @@ display:
           action_title: 'С выделенным'
         status:
           label: Статус
-          separator: ', '
         progress:
           label: Прогресс
         created:
           label: Создано
-          separator: ', '
-        tuid:
-          separator: ', '
         title:
           label: Заголовок
-          separator: ', '
         source_language:
           label: От
-          separator: ', '
         target_language:
           label: Кому
-          separator: ', '
         word_count:
           label: Слова
         item_count:
           label: Элементы
-        loop_count:
-          separator: ', '
         operations:
           label: Операции
       filters:
@@ -177,25 +150,18 @@ display:
         status:
           label: Статус
           format_plural_string: !!binary QGNvdW50A0Bjb3VudANAY291bnRbMl0=
-        tuid:
-          separator: ', '
         title:
           label: Заголовок
-          separator: ', '
         progress:
           label: Прогресс
         source_language:
           label: От
-          separator: ', '
         target_language:
           label: Кому
-          separator: ', '
         word_count:
           label: Слова
         item_count:
           label: Элементы
-        loop_count:
-          separator: ', '
         operations:
           label: Операции
       filters:
@@ -224,24 +190,16 @@ display:
           label: Прогресс
         created:
           label: Создано
-          separator: ', '
-        tuid:
-          separator: ', '
         title:
           label: Заголовок
-          separator: ', '
         source_language:
           label: От
-          separator: ', '
         target_language:
           label: Кому
-          separator: ', '
         word_count:
           label: Слова
         item_count:
           label: Элементы
-        loop_count:
-          separator: ', '
         operations:
           label: Операции
       filters:
@@ -265,18 +223,13 @@ display:
           format_plural_string: !!binary QGNvdW50A0Bjb3VudANAY291bnRbMl0=
         title:
           label: Заголовок
-          separator: ', '
         source_language:
           label: От
-          separator: ', '
         target_language:
           label: Кому
-          separator: ', '
         word_count:
           label: Слова
         item_count:
           label: Элементы
-        loop_count:
-          separator: ', '
         operations:
           label: Операции

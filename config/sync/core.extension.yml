@@ -8,7 +8,6 @@ module:
   ai_chatbot: 0
   ai_ckeditor: 0
   ai_content_suggestions: 0
-  ai_logging: 0
   ai_media_image: 0
   ai_observability: 0
   ai_search: 0
@@ -33,6 +32,7 @@ module:
   ckeditor5_plugin_pack_todo_document_list: 0
   ckeditor5_plugin_pack_word_count: 0
   config: 0
+  config_ignore: 0
   config_split: 0
   config_translation: 0
   config_update: 0
@@ -126,6 +126,7 @@ module:
   purge_ui: 0
   redirect: 0
   redirect_404: 0
+  redis: 0
   registration_role: 0
   require_login: 0
   rest: 0
@@ -182,6 +183,7 @@ module:
   webform_ui: 0
   wl_api: 0
   wl_language_switcher: 0
+  wl_postmark_webhook: 0
   wl_text_formats: 0
   workflows: 0
   pathauto: 1

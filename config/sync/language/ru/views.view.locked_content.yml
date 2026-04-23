@@ -8,19 +8,13 @@ display:
           action_title: Действие
         title:
           label: Заголовок
-          separator: ', '
         type:
           label: 'Тип материала'
-          separator: ', '
-        name:
-          separator: ', '
         operations:
           label: Операции
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Первая'
             last: 'Последняя »'
           expose:
