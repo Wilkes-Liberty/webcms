@@ -6,6 +6,6 @@ id: wilkesliberty_ui
 label: 'WilkesLiberty UI'
 base_url: 'https://wilkesliberty.com'
 preview_url: 'https://www.wilkesliberty.com/api/draft'
-preview_secret: ''
+preview_secret: v+uWcNxrgywEQWqgBdj/Ts04Q94Bsoz0WtAPHH6vaFQ=
 revalidate_url: 'https://www.wilkesliberty.com/api/revalidate'
 revalidate_secret: unFrvDWXv0jd/3WjhTNKYZ2uaGxadlwfkOcHjxZgM8Jb/P7U8sOJ1IBlRVlTd6vr
