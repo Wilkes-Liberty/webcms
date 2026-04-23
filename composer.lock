@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ee2705b52604c18b407df80a4f2d727",
+    "content-hash": "48ad064819e6c1cfea5cda0949bec977",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2727,7 +2727,7 @@
             ],
             "authors": [
                 {
-                    "name": "Tommy Lynge J\u00f8rgensen",
+                    "name": "Tommy Lynge Jørgensen",
                     "homepage": "https://www.drupal.org/u/tlyngej",
                     "email": "tlyngej@gmail.com",
                     "role": "Maintainer"
@@ -3149,16 +3149,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "11.3.6",
+            "version": "11.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "728d09ef108bcbadf06cf8f0a5984450e089de9b"
+                "reference": "d40f45fa436fb089cd54029d2dab387c3040fc2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/728d09ef108bcbadf06cf8f0a5984450e089de9b",
-                "reference": "728d09ef108bcbadf06cf8f0a5984450e089de9b",
+                "url": "https://api.github.com/repos/drupal/core/zipball/d40f45fa436fb089cd54029d2dab387c3040fc2c",
+                "reference": "d40f45fa436fb089cd54029d2dab387c3040fc2c",
                 "shasum": ""
             },
             "require": {
@@ -3316,13 +3316,13 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/11.3.6"
+                "source": "https://github.com/drupal/core/tree/11.3.8"
             },
-            "time": "2026-04-08T09:15:33+00:00"
+            "time": "2026-04-20T07:33:20+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "11.3.6",
+            "version": "11.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -3366,13 +3366,13 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/11.3.6"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/11.3.8"
             },
             "time": "2026-02-10T11:39:53+00:00"
         },
         {
             "name": "drupal/core-project-message",
-            "version": "11.3.6",
+            "version": "11.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-project-message.git",
@@ -3407,13 +3407,13 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-project-message/tree/11.3.6"
+                "source": "https://github.com/drupal/core-project-message/tree/11.3.8"
             },
             "time": "2025-02-03T10:59:29+00:00"
         },
         {
             "name": "drupal/core-recipe-unpack",
-            "version": "11.3.6",
+            "version": "11.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recipe-unpack.git",
@@ -3451,29 +3451,29 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-recipe-unpack/tree/11.3.6"
+                "source": "https://github.com/drupal/core-recipe-unpack/tree/11.3.8"
             },
             "time": "2025-10-28T11:20:22+00:00"
         },
         {
             "name": "drupal/core-recommended",
-            "version": "11.3.6",
+            "version": "11.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "1ec126c1608f7fdeb877599ec65436f008b61d5c"
+                "reference": "9c1fa4615a7542504be882eed0c6763b445fb852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/1ec126c1608f7fdeb877599ec65436f008b61d5c",
-                "reference": "1ec126c1608f7fdeb877599ec65436f008b61d5c",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/9c1fa4615a7542504be882eed0c6763b445fb852",
+                "reference": "9c1fa4615a7542504be882eed0c6763b445fb852",
                 "shasum": ""
             },
             "require": {
                 "asm89/stack-cors": "~v2.3.0",
                 "composer/semver": "~3.4.4",
                 "doctrine/lexer": "~3.0.1",
-                "drupal/core": "11.3.6",
+                "drupal/core": "11.3.8",
                 "egulias/email-validator": "~4.0.4",
                 "guzzlehttp/guzzle": "~7.10.0",
                 "guzzlehttp/promises": "~2.3.0",
@@ -3535,9 +3535,9 @@
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/11.3.6"
+                "source": "https://github.com/drupal/core-recommended/tree/11.3.8"
             },
-            "time": "2026-04-08T09:15:33+00:00"
+            "time": "2026-04-20T07:33:20+00:00"
         },
         {
             "name": "drupal/crop",
@@ -3845,7 +3845,7 @@
             ],
             "authors": [
                 {
-                    "name": "Mateu Aguil\u00f3 Bosch",
+                    "name": "Mateu Aguiló Bosch",
                     "homepage": "https://www.drupal.org/user/103796",
                     "email": "mateu.aguilo.bosch@gmail.com"
                 },
@@ -4014,7 +4014,7 @@
                     "homepage": "https://www.drupal.org/user/139189"
                 },
                 {
-                    "name": "r\u00f6tzi",
+                    "name": "rötzi",
                     "homepage": "https://www.drupal.org/user/73064"
                 },
                 {
@@ -4050,7 +4050,7 @@
                 "drupal/entity_browser": "^2.5"
             },
             "suggest": {
-                "enyo/dropzone": "Required to use drupal/dropzonejs. DropzoneJS is an open source library that provides drag\u2019n\u2019drop file uploads with image previews."
+                "enyo/dropzone": "Required to use drupal/dropzonejs. DropzoneJS is an open source library that provides drag’n’drop file uploads with image previews."
             },
             "type": "drupal-module",
             "extra": {
@@ -4110,7 +4110,7 @@
                     "homepage": "https://www.drupal.org/user/888644"
                 }
             ],
-            "description": "Drupal integration for DropzoneJS - An open source library that provides drag\u2019n\u2019drop file uploads with image previews.",
+            "description": "Drupal integration for DropzoneJS - An open source library that provides drag’n’drop file uploads with image previews.",
             "homepage": "https://www.drupal.org/project/dropzonejs",
             "keywords": [
                 "DropzoneJS",
@@ -4580,13 +4580,13 @@
                     "role": "Original author"
                 },
                 {
-                    "name": "Mateu Aguil\u00f3 Bosch (e0ipso)",
+                    "name": "Mateu Aguiló Bosch (e0ipso)",
                     "homepage": "https://www.drupal.org/u/e0ipso",
                     "email": "mateu@mateuaguilo.com",
                     "role": "Maintainer"
                 },
                 {
-                    "name": "Ignacio S\u00e1nchez (isholgueras)",
+                    "name": "Ignacio Sánchez (isholgueras)",
                     "homepage": "https://www.drupal.org/u/isholgueras",
                     "email": "nacho@isholgueras.com",
                     "role": "Co-maintainer"
@@ -7713,7 +7713,7 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "Viktor B\u00e1n (banviktor)",
+                    "name": "Viktor Bán (banviktor)",
                     "homepage": "https://www.drupal.org/u/banviktor",
                     "role": "Maintainer"
                 },
@@ -7772,7 +7772,7 @@
             ],
             "authors": [
                 {
-                    "name": "Mateu Aguil\u00f3 Bosch",
+                    "name": "Mateu Aguiló Bosch",
                     "homepage": "https://www.drupal.org/user/2801849",
                     "email": "mateu.aguilo.bosch@gmail.com"
                 },
@@ -8102,7 +8102,7 @@
             ],
             "authors": [
                 {
-                    "name": "Mateu Aguil\u00f3 Bosch",
+                    "name": "Mateu Aguiló Bosch",
                     "homepage": "https://www.drupal.org/user/550110",
                     "email": "mateu.aguilo.bosch@gmail.com"
                 },
@@ -8749,7 +8749,7 @@
             ],
             "authors": [
                 {
-                    "name": "D\u00c3\u00a9bora Antunes (dgaspara)",
+                    "name": "DÃ©bora Antunes (dgaspara)",
                     "homepage": "https://www.drupal.org/u/dgaspara"
                 },
                 {
@@ -8757,7 +8757,7 @@
                     "homepage": "https://www.drupal.org/u/imclean"
                 },
                 {
-                    "name": "Jo\u00c3\u00a3o Marques (joaomarques736)",
+                    "name": "JoÃ£o Marques (joaomarques736)",
                     "homepage": "https://www.drupal.org/u/joaomarques736"
                 },
                 {
@@ -8892,7 +8892,7 @@
                     "email": "greg.1.anderson@greenknowe.org"
                 },
                 {
-                    "name": "Jonathan Ara\u00f1a Cruz",
+                    "name": "Jonathan Araña Cruz",
                     "email": "jonhattan@faita.net"
                 },
                 {
@@ -9978,7 +9978,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -10173,7 +10173,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -10183,7 +10183,7 @@
                     "homepage": "https://github.com/Tobion"
                 },
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://sagikazarmark.hu"
                 }
@@ -10584,7 +10584,7 @@
             ],
             "authors": [
                 {
-                    "name": "Lu\u00eds Cobucci",
+                    "name": "Luís Cobucci",
                     "email": "lcobucci@gmail.com"
                 }
             ],
@@ -10652,7 +10652,7 @@
             ],
             "authors": [
                 {
-                    "name": "Lu\u00eds Cobucci",
+                    "name": "Luís Cobucci",
                     "email": "lcobucci@gmail.com",
                     "role": "Developer"
                 }
@@ -11235,7 +11235,7 @@
                     "email": "pabs@pablotron.org"
                 },
                 {
-                    "name": "Jonatan M\u00e4nnchen",
+                    "name": "Jonatan Männchen",
                     "email": "jonatan@maennchen.ch"
                 },
                 {
@@ -11243,7 +11243,7 @@
                     "email": "donatj@gmail.com"
                 },
                 {
-                    "name": "Andr\u00e1s Koles\u00e1r",
+                    "name": "András Kolesár",
                     "email": "kolesar@kolesar.hu"
                 }
             ],
@@ -11369,7 +11369,7 @@
             ],
             "authors": [
                 {
-                    "name": "Marco Marchi\u00f2",
+                    "name": "Marco Marchiò",
                     "email": "marco.mm89@gmail.com"
                 }
             ],
@@ -12180,7 +12180,7 @@
             ],
             "authors": [
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com"
                 }
             ],
@@ -13312,7 +13312,7 @@
                     "email": "ceesjank@gmail.com"
                 },
                 {
-                    "name": "Christian L\u00fcck",
+                    "name": "Christian Lück",
                     "email": "christian@clue.engineering"
                 },
                 {
@@ -15560,7 +15560,7 @@
         },
         {
             "name": "symfony/polyfill-php81",
-            "version": "v1.34.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php81.git",
@@ -15616,7 +15616,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php81/tree/v1.34.0"
+                "source": "https://github.com/symfony/polyfill-php81/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -15640,7 +15640,7 @@
         },
         {
             "name": "symfony/polyfill-php83",
-            "version": "v1.34.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php83.git",
@@ -15696,7 +15696,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php83/tree/v1.34.0"
+                "source": "https://github.com/symfony/polyfill-php83/tree/v1.36.0"
             },
             "funding": [
                 {
