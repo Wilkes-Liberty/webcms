@@ -1,3 +1,4 @@
 mode: simple
 ignored_config_entities:
   - smtp.settings
+  - wl_postmark_webhook.settings
