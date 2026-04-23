@@ -2117,112 +2117,6 @@
             }
         },
         {
-            "name": "drupal/ai_logging",
-            "version": "1.3.2",
-            "require": {
-                "drupal/ai": "*",
-                "drupal/core": "^10.4 || ^11"
-            },
-            "type": "metapackage",
-            "extra": {
-                "drupal": {
-                    "version": "1.3.2",
-                    "datestamp": "1775054214",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "a.dmitriiev",
-                    "homepage": "https://www.drupal.org/user/3235287"
-                },
-                {
-                    "name": "abhisekmazumdar",
-                    "homepage": "https://www.drupal.org/user/3557964"
-                },
-                {
-                    "name": "andrewbelcher",
-                    "homepage": "https://www.drupal.org/user/655282"
-                },
-                {
-                    "name": "anjaliprasannan",
-                    "homepage": "https://www.drupal.org/user/3637917"
-                },
-                {
-                    "name": "b_sharpe",
-                    "homepage": "https://www.drupal.org/user/2512258"
-                },
-                {
-                    "name": "fago",
-                    "homepage": "https://www.drupal.org/user/16747"
-                },
-                {
-                    "name": "gxleano",
-                    "homepage": "https://www.drupal.org/user/3591999"
-                },
-                {
-                    "name": "kevinquillen",
-                    "homepage": "https://www.drupal.org/user/317279"
-                },
-                {
-                    "name": "kristen pol",
-                    "homepage": "https://www.drupal.org/user/8389"
-                },
-                {
-                    "name": "marcus_johansson",
-                    "homepage": "https://www.drupal.org/user/385947"
-                },
-                {
-                    "name": "michaellander",
-                    "homepage": "https://www.drupal.org/user/636494"
-                },
-                {
-                    "name": "murz",
-                    "homepage": "https://www.drupal.org/user/157092"
-                },
-                {
-                    "name": "mxr576",
-                    "homepage": "https://www.drupal.org/user/315522"
-                },
-                {
-                    "name": "robloach",
-                    "homepage": "https://www.drupal.org/user/61114"
-                },
-                {
-                    "name": "scott_euser",
-                    "homepage": "https://www.drupal.org/user/3267594"
-                },
-                {
-                    "name": "seogow",
-                    "homepage": "https://www.drupal.org/user/3065779"
-                },
-                {
-                    "name": "valthebald",
-                    "homepage": "https://www.drupal.org/user/239562"
-                },
-                {
-                    "name": "wouters_f",
-                    "homepage": "https://www.drupal.org/user/721548"
-                },
-                {
-                    "name": "yautja_cetanu",
-                    "homepage": "https://www.drupal.org/user/626050"
-                }
-            ],
-            "description": "This enables you to log any AI request and response as well as additional contextual information.",
-            "homepage": "https://www.drupal.org/project/ai",
-            "support": {
-                "source": "https://git.drupalcode.org/project/ai"
-            }
-        },
-        {
             "name": "drupal/ai_media_image",
             "version": "1.0.0-alpha4",
             "source": {
@@ -2833,7 +2727,7 @@
             ],
             "authors": [
                 {
-                    "name": "Tommy Lynge Jørgensen",
+                    "name": "Tommy Lynge J\u00f8rgensen",
                     "homepage": "https://www.drupal.org/u/tlyngej",
                     "email": "tlyngej@gmail.com",
                     "role": "Maintainer"
@@ -3951,7 +3845,7 @@
             ],
             "authors": [
                 {
-                    "name": "Mateu Aguiló Bosch",
+                    "name": "Mateu Aguil\u00f3 Bosch",
                     "homepage": "https://www.drupal.org/user/103796",
                     "email": "mateu.aguilo.bosch@gmail.com"
                 },
@@ -4120,7 +4014,7 @@
                     "homepage": "https://www.drupal.org/user/139189"
                 },
                 {
-                    "name": "rötzi",
+                    "name": "r\u00f6tzi",
                     "homepage": "https://www.drupal.org/user/73064"
                 },
                 {
@@ -4156,7 +4050,7 @@
                 "drupal/entity_browser": "^2.5"
             },
             "suggest": {
-                "enyo/dropzone": "Required to use drupal/dropzonejs. DropzoneJS is an open source library that provides drag’n’drop file uploads with image previews."
+                "enyo/dropzone": "Required to use drupal/dropzonejs. DropzoneJS is an open source library that provides drag\u2019n\u2019drop file uploads with image previews."
             },
             "type": "drupal-module",
             "extra": {
@@ -4216,7 +4110,7 @@
                     "homepage": "https://www.drupal.org/user/888644"
                 }
             ],
-            "description": "Drupal integration for DropzoneJS - An open source library that provides drag’n’drop file uploads with image previews.",
+            "description": "Drupal integration for DropzoneJS - An open source library that provides drag\u2019n\u2019drop file uploads with image previews.",
             "homepage": "https://www.drupal.org/project/dropzonejs",
             "keywords": [
                 "DropzoneJS",
@@ -4686,13 +4580,13 @@
                     "role": "Original author"
                 },
                 {
-                    "name": "Mateu Aguiló Bosch (e0ipso)",
+                    "name": "Mateu Aguil\u00f3 Bosch (e0ipso)",
                     "homepage": "https://www.drupal.org/u/e0ipso",
                     "email": "mateu@mateuaguilo.com",
                     "role": "Maintainer"
                 },
                 {
-                    "name": "Ignacio Sánchez (isholgueras)",
+                    "name": "Ignacio S\u00e1nchez (isholgueras)",
                     "homepage": "https://www.drupal.org/u/isholgueras",
                     "email": "nacho@isholgueras.com",
                     "role": "Co-maintainer"
@@ -7819,7 +7713,7 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "Viktor Bán (banviktor)",
+                    "name": "Viktor B\u00e1n (banviktor)",
                     "homepage": "https://www.drupal.org/u/banviktor",
                     "role": "Maintainer"
                 },
@@ -7878,7 +7772,7 @@
             ],
             "authors": [
                 {
-                    "name": "Mateu Aguiló Bosch",
+                    "name": "Mateu Aguil\u00f3 Bosch",
                     "homepage": "https://www.drupal.org/user/2801849",
                     "email": "mateu.aguilo.bosch@gmail.com"
                 },
@@ -8208,7 +8102,7 @@
             ],
             "authors": [
                 {
-                    "name": "Mateu Aguiló Bosch",
+                    "name": "Mateu Aguil\u00f3 Bosch",
                     "homepage": "https://www.drupal.org/user/550110",
                     "email": "mateu.aguilo.bosch@gmail.com"
                 },
@@ -8855,7 +8749,7 @@
             ],
             "authors": [
                 {
-                    "name": "DÃ©bora Antunes (dgaspara)",
+                    "name": "D\u00c3\u00a9bora Antunes (dgaspara)",
                     "homepage": "https://www.drupal.org/u/dgaspara"
                 },
                 {
@@ -8863,7 +8757,7 @@
                     "homepage": "https://www.drupal.org/u/imclean"
                 },
                 {
-                    "name": "JoÃ£o Marques (joaomarques736)",
+                    "name": "Jo\u00c3\u00a3o Marques (joaomarques736)",
                     "homepage": "https://www.drupal.org/u/joaomarques736"
                 },
                 {
@@ -8998,7 +8892,7 @@
                     "email": "greg.1.anderson@greenknowe.org"
                 },
                 {
-                    "name": "Jonathan Araña Cruz",
+                    "name": "Jonathan Ara\u00f1a Cruz",
                     "email": "jonhattan@faita.net"
                 },
                 {
@@ -10084,7 +9978,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -10279,7 +10173,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -10289,7 +10183,7 @@
                     "homepage": "https://github.com/Tobion"
                 },
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://sagikazarmark.hu"
                 }
@@ -10690,7 +10584,7 @@
             ],
             "authors": [
                 {
-                    "name": "Luís Cobucci",
+                    "name": "Lu\u00eds Cobucci",
                     "email": "lcobucci@gmail.com"
                 }
             ],
@@ -10758,7 +10652,7 @@
             ],
             "authors": [
                 {
-                    "name": "Luís Cobucci",
+                    "name": "Lu\u00eds Cobucci",
                     "email": "lcobucci@gmail.com",
                     "role": "Developer"
                 }
@@ -11341,7 +11235,7 @@
                     "email": "pabs@pablotron.org"
                 },
                 {
-                    "name": "Jonatan Männchen",
+                    "name": "Jonatan M\u00e4nnchen",
                     "email": "jonatan@maennchen.ch"
                 },
                 {
@@ -11349,7 +11243,7 @@
                     "email": "donatj@gmail.com"
                 },
                 {
-                    "name": "András Kolesár",
+                    "name": "Andr\u00e1s Koles\u00e1r",
                     "email": "kolesar@kolesar.hu"
                 }
             ],
@@ -11475,7 +11369,7 @@
             ],
             "authors": [
                 {
-                    "name": "Marco Marchiò",
+                    "name": "Marco Marchi\u00f2",
                     "email": "marco.mm89@gmail.com"
                 }
             ],
@@ -12286,7 +12180,7 @@
             ],
             "authors": [
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
                     "email": "mark.sagikazar@gmail.com"
                 }
             ],
@@ -13418,7 +13312,7 @@
                     "email": "ceesjank@gmail.com"
                 },
                 {
-                    "name": "Christian Lück",
+                    "name": "Christian L\u00fcck",
                     "email": "christian@clue.engineering"
                 },
                 {
