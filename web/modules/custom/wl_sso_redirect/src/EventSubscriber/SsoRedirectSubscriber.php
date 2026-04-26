@@ -3,7 +3,6 @@
 namespace Drupal\wl_sso_redirect\EventSubscriber;
 
 use Drupal\Core\Session\AccountProxyInterface;
-use Drupal\Core\Url;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -40,14 +39,19 @@ class SsoRedirectSubscriber implements EventSubscriberInterface {
     '/user/register',
   ];
 
-  private const KC_INITIATE = '/openid-connect/sign_in_with_keycloak/initiate';
+  // /user/login with user_login_display=replace + autostart_login=true
+  // immediately triggers the KC authorize redirect — no form shown.
+  private const KC_INITIATE = '/user/login';
 
   public function __construct(
     private readonly AccountProxyInterface $account,
   ) {}
 
   public static function getSubscribedEvents(): array {
-    return [KernelEvents::REQUEST => ['onRequest', 30]];
+    // Priority 100: fires after Authentication (300) so isAnonymous() is
+    // accurate, but before RouterListener (32) so unknown routes (404s) are
+    // caught and redirected rather than surfaced to anonymous users.
+    return [KernelEvents::REQUEST => ['onRequest', 100]];
   }
 
   public function onRequest(RequestEvent $event): void {
@@ -90,8 +94,7 @@ class SsoRedirectSubscriber implements EventSubscriberInterface {
       }
     }
 
-    // Redirect to the KC initiate endpoint. This path is in BYPASS_PREFIXES
-    // (/openid-connect), so there is no redirect loop on subsequent requests.
+    // /user/login is in BYPASS_EXACT, so the next request does not loop.
     $base = $request->getSchemeAndHttpHost();
     $event->setResponse(new RedirectResponse($base . self::KC_INITIATE, 302));
   }
