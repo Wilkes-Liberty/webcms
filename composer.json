@@ -77,7 +77,6 @@
         "drupal/redirect": "1.x-dev",
         "drupal/redis": "^1.10",
         "drupal/registration_role": "^2.0",
-        "drupal/require_login": "^3.0",
         "drupal/scheduler": "^2.2",
         "drupal/schema_metatag": "^3.0",
         "drupal/search_api": "^1.38",

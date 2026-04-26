@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48ad064819e6c1cfea5cda0949bec977",
+    "content-hash": "ebd8f0a1b4ea0df19a5d8eb2457fb6e1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7131,50 +7131,6 @@
             "homepage": "https://www.drupal.org/project/registration_role",
             "support": {
                 "source": "https://git.drupalcode.org/project/registration_role"
-            }
-        },
-        {
-            "name": "drupal/require_login",
-            "version": "3.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/require_login.git",
-                "reference": "3.0.7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/require_login-3.0.7.zip",
-                "reference": "3.0.7",
-                "shasum": "790998d5181cada23e33ca331752db6c7d1d68ee"
-            },
-            "require": {
-                "drupal/core": "^9 || ^10 || ^11"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "3.0.7",
-                    "datestamp": "1733847518",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "robbiehobby",
-                    "homepage": "https://www.drupal.org/user/459772"
-                }
-            ],
-            "description": "Easily require user authentication on all pages.",
-            "homepage": "https://www.drupal.org/project/require_login",
-            "support": {
-                "source": "https://git.drupalcode.org/project/require_login"
             }
         },
         {
