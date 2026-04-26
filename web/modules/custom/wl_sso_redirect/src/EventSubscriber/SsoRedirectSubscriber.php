@@ -21,6 +21,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 class SsoRedirectSubscriber implements EventSubscriberInterface {
 
   private const BYPASS_PREFIXES = [
+    '/graphql',
     '/jsonapi',
     '/oauth',
     '/openid-connect',
