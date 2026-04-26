@@ -1,0 +1,23 @@
+uuid: 4b555a99-7b80-4995-a42d-23b9038ee58e
+langcode: en
+status: true
+dependencies: {  }
+id: sign_in_with_keycloak
+label: 'Sign in with Keycloak'
+plugin: generic
+settings:
+  client_id: drupal
+  client_secret: 5vr3wJrSz6CSrTztNV20FrzDUEK1dJEW
+  iss_allowed_domains: wilkesliberty.com
+  prompt:
+    - login
+  issuer_url: 'https://auth.wilkesliberty.com/realms/wilkesliberty/'
+  authorization_endpoint: 'https://auth.wilkesliberty.com/realms/wilkesliberty/protocol/openid-connect/auth'
+  token_endpoint: 'https://auth.wilkesliberty.com/realms/wilkesliberty/protocol/openid-connect/token'
+  userinfo_endpoint: 'https://auth.wilkesliberty.com/realms/wilkesliberty/protocol/openid-connect/userinfo'
+  end_session_endpoint: 'https://auth.wilkesliberty.com/realms/wilkesliberty/protocol/openid-connect/logout'
+  scopes:
+    - openid
+    - profile
+    - email
+    - groups
