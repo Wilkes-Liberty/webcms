@@ -1,0 +1,7 @@
+name: WL SSO Redirect
+type: module
+description: 'Redirects anonymous browser requests to Keycloak SSO. Excludes JSON:API, OAuth, file, and other non-browser paths.'
+core_version_requirement: ^11
+package: WilkesLiberty
+dependencies:
+  - drupal:openid_connect

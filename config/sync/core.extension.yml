@@ -184,6 +184,7 @@ module:
   wl_api: 0
   wl_language_switcher: 0
   wl_postmark_webhook: 0
+  wl_sso_redirect: 0
   wl_text_formats: 0
   workflows: 0
   pathauto: 1

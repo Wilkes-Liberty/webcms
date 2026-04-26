@@ -1,0 +1,21 @@
+display:
+  default:
+    display_title: Máster
+    display_options:
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elementos por página'
+            items_per_page_options_all_label: '- Todo -'
+            offset_label: Desplazamiento
+      exposed_form:
+        options:
+          submit_button: Aplicar
+          reset_button_label: Restablecer
+          exposed_sorts_label: 'Ordenar por'
+      arguments:
+        provider_field:
+          exception:
+            title: Todo(s)
+  page:
+    display_title: Página

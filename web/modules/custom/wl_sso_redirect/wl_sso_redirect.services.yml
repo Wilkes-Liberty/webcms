@@ -1,0 +1,6 @@
+services:
+  wl_sso_redirect.sso_redirect_subscriber:
+    class: Drupal\wl_sso_redirect\EventSubscriber\SsoRedirectSubscriber
+    arguments: ['@current_user']
+    tags:
+      - { name: event_subscriber }

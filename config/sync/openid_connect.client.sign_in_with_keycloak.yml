@@ -3,14 +3,13 @@ langcode: en
 status: true
 dependencies: {  }
 id: sign_in_with_keycloak
-label: 'Sign in with Keycloak'
+label: Keycloak
 plugin: generic
 settings:
   client_id: drupal
   client_secret: 5vr3wJrSz6CSrTztNV20FrzDUEK1dJEW
   iss_allowed_domains: wilkesliberty.com
-  prompt:
-    - login
+  prompt: {  }
   issuer_url: 'https://auth.wilkesliberty.com/realms/wilkesliberty/'
   authorization_endpoint: 'https://auth.wilkesliberty.com/realms/wilkesliberty/protocol/openid-connect/auth'
   token_endpoint: 'https://auth.wilkesliberty.com/realms/wilkesliberty/protocol/openid-connect/token'
