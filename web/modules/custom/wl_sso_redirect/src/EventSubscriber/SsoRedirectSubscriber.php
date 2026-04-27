@@ -69,6 +69,11 @@ class SsoRedirectSubscriber implements EventSubscriberInterface {
     if ($request->getMethod() !== 'GET') {
       return;
     }
+    // XHR requests (X-Requested-With: XMLHttpRequest) are Drupal AJAX calls.
+    // jQuery sets this header; Accept: */* would otherwise pass the html check.
+    if ($request->isXmlHttpRequest()) {
+      return;
+    }
     $accept = $request->headers->get('Accept', '');
     if (!str_contains($accept, 'text/html') && !str_contains($accept, '*/*')) {
       return;
