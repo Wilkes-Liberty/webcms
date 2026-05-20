@@ -9,7 +9,7 @@ This guide is the official reference for all content creators at Wilkes Liberty.
 
 ## Overview
 
-The CMS includes 10 content types supporting both marketing/operational needs and our core product and service offerings.
+The CMS includes 11 content types supporting both marketing/operational needs and our core product and service offerings.
 
 | Content Type | Purpose | Primary Use Cases |
 |---|---|---|
@@ -23,6 +23,7 @@ The CMS includes 10 content types supporting both marketing/operational needs an
 | **Resource** | Downloadable/gated content | Whitepapers, eBooks, guides, reports |
 | **Service** | Consulting and implementation offerings | Professional services and custom solutions |
 | **Product** *(new)* | Self-deployable sovereign technology platforms | Infrastructure platforms, CMS, Search, Identity, Data, Observability |
+| **Solution** *(new)* | Branded packages bundling Products + Services | Mission-aligned offerings (e.g., "Sovereign Mission Edge for Tactical Operations") — analogous to GDIT Digital Accelerators or Palantir Offerings |
 
 ---
 
@@ -442,6 +443,80 @@ All content types share these core field groups. New tabs added in v2.0 are mark
 
 ---
 
+## 11. 🧩 Solution *(new in v2.0)*
+
+**Purpose:** Branded, deployable solution packages that bundle one or more Products with one or more Services into a mission-aligned offering
+**Best for:** Productized go-to-market packages — analogous to GDIT Digital Accelerators or Palantir Offerings (e.g., "Sovereign Mission Edge for Tactical Operations" bundling Apex + Vigilance + integration services)
+
+### Solution vs. Product vs. Service
+
+The Service / Product / Solution trio describes three distinct things in the catalog. Pick the right one before drafting:
+
+| Type | What it is | Example |
+|---|---|---|
+| **Service** | The **doing** — a consulting, implementation, or managed engagement | "Headless CMS Implementation," "Zero-Trust Advisory" |
+| **Product** | The **thing** — a self-deployable sovereign platform we license or install | "Apex Secure Data Platform," "Fortis Zero-Trust Identity Platform" |
+| **Solution** | The **offering** — a branded package combining Products + Services applied to a specific outcome or sector | "Sovereign Mission Edge for Tactical Operations" (Apex + Vigilance + integration services) |
+
+Note: there is also a `solutions` **taxonomy** referenced by every content type via `field_solutions`. The taxonomy *tags* supporting content with the Solution it relates to; the **content type** documented here *is* the Solution page.
+
+### When to Use Solution Pages
+- ✅ Branded packages that bundle multiple Products and/or Services
+- ✅ Sector-specific or mission-specific offerings with a named go-to-market identity
+- ✅ Pages where the value prop is the combination, not any single Product or Service
+- ❌ A single Product (use Product instead)
+- ❌ A single consulting engagement (use Service instead)
+- ❌ Tagging existing content with a solution area (use the `field_solutions` taxonomy reference)
+
+### Solution-Specific Fields
+
+#### Content Tab
+
+**`field_mission_impact`** *(required pattern, matches Product/Service)*
+**Purpose:** How the bundled package enhances, streamlines, or facilitates the client's mission
+**Usage:** Lead with the combined outcome enabled by the package — not the individual components
+
+**`field_key_capabilities`** *(Paragraphs — `capability` bundle)*
+**Purpose:** Structured list of the capabilities the package delivers
+**Usage:** Use the Capability paragraph type. Each capability should name the bundled outcome, not just restate a Product or Service feature.
+
+#### Proof Points Tab *(unique to Solution / Case Study)*
+
+**`field_outcomes`** (Paragraphs — `outcome` bundle)
+**Purpose:** Quantifiable outcomes delivered by the package
+**Usage:** Add one Outcome paragraph per measurable result (e.g., "92% reduction in deployment time"). Pairs naturally with linked Case Studies.
+
+#### Classification Tab
+
+**`field_primary_capability`** — Entity reference to a single term in the Capabilities taxonomy. The dominant capability the package leads with.
+**`field_platform`** — Entity reference to a Platforms taxonomy term. Which platform brand this Solution belongs to (matches the field's use on Product / Service / Case Study).
+**`field_solutions`** — Entity reference to Solutions taxonomy terms (the cross-content tagging vocabulary). Use this to associate the Solution page with its parent solution area(s).
+**`field_industries`, `field_target_sectors`, `field_compliance`, `field_personas`, `field_technologies`, `field_categories`** — Standard classification, used identically to Product/Service.
+
+#### Layout Tab
+
+**`field_related`** — Entity reference for cross-linking. Use to surface the Products and Services bundled into this Solution (Drupal does not enforce the package composition; this field carries it).
+**`field_parent`** — Hierarchical relationship if the Solution belongs to a parent offering family.
+**`field_template`, `field_visibility`** — Standard layout controls.
+
+#### Other Tabs
+
+Solution shares the standard **Media, CTAs, SEO, Technical, and Editorial** tabs with Product and Service. Field set and behavior are identical — see those sections above.
+
+### Solution Content Strategy
+- Lead with the bundled outcome. The reader should understand within the first paragraph what is in the package and what it delivers.
+- Use `field_related` to surface the Products and Services included in the package — this is the field that carries the "what's in the box" relationship.
+- Use **Key Outcomes** (`field_outcomes`) for measurable proof. If you have a Case Study that proves an outcome, link it via `field_related`.
+- Every Solution should map to at least one Persona and at least one Target Sector — packages are sold to specific audiences.
+- Don't restate Product or Service copy verbatim. The Solution page sells the combination; the Product and Service pages sell the components.
+
+### Solution vs. `solutions` Taxonomy — quick disambiguation
+- **Solution content type** (this section) → the page that *is* the branded package.
+- **`solutions` taxonomy** → a tagging vocabulary that lets any Article, Case Study, Resource, etc. say "this content relates to Solution X."
+- Both exist intentionally and complement each other. A Solution page may reference its own taxonomy term via `field_solutions` to participate in cross-content listings.
+
+---
+
 # Field Reference
 
 For complete field specifications, usage guidelines, and examples across all 54+ fields, see [FIELD_REFERENCE.md](FIELD_REFERENCE.md).
@@ -455,6 +530,10 @@ For complete field specifications, usage guidelines, and examples across all 54+
 ### Service *(updated)*
 **Essential:** `field_mission_impact`, `field_key_capabilities`, `body`, `field_primary_cta`
 **Recommended:** `field_defense_relevance`, `field_related_products`, `field_meta_description`
+
+### Solution *(new)*
+**Essential:** `field_mission_impact`, `field_key_capabilities`, `field_outcomes`, `field_related`, `field_primary_cta`
+**Recommended:** `field_primary_capability`, `field_platform`, `field_industries`, `field_target_sectors`, `field_personas`, `field_meta_description`
 
 ### Article
 **Essential:** `body`, `field_hero_image`, `field_personas`, `field_meta_description`

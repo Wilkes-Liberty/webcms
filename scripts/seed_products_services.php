@@ -1,0 +1,506 @@
+<?php
+/**
+ * Seed Product and Service nodes from docs/CONTENT.md.
+ *
+ * Creates:
+ *   - 6 Product nodes (Sovereign Infrastructure, Liberty CMS, Enterprise Search,
+ *     Fortis, Apex, Vigilance)
+ *   - 10 Service nodes (Private Infrastructure Engineering, Headless CMS
+ *     Implementation, Enterprise Search Architecture, Zero-Trust Consulting,
+ *     AI Integration, Digital Modernization, Custom Software, Crypto / Digital
+ *     Assets, Defense Tech Integration, Intelligence & Actionable Insights)
+ *
+ * For each node it populates:
+ *   - title, body (HTML), field_summary, field_seo_title, field_meta_description
+ *   - field_mission_impact (when present in source)
+ *   - field_key_capabilities (one paragraph:capability per "Key Capabilities" bullet)
+ *   - path alias (/products/{slug}, /services/{slug})
+ *   - status = published, moderation_state = published
+ *   - best-effort taxonomy refs (field_platform, field_target_sectors,
+ *     field_personas) — only set when matching terms already exist in the vocab.
+ *     See docs/TAXONOMY_AUDIT.md for vocabularies that need seeding first.
+ *
+ * Idempotent — safe to re-run. Re-running:
+ *   - Skips nodes that already exist (matched by path alias). Will NOT overwrite
+ *     editorial changes made through the admin UI.
+ *   - Re-uses existing capability paragraphs attached to the node (does not
+ *     duplicate them).
+ *
+ * Run:
+ *   ddev drush scr scripts/seed_products_services.php
+ *
+ * Source of truth for copy: docs/CONTENT.md. Do not edit copy in this script —
+ * edit CONTENT.md and re-run, or edit the nodes directly through the admin UI.
+ */
+
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\taxonomy\Entity\Term;
+
+// ---------------------------------------------------------------------------
+// Config
+// ---------------------------------------------------------------------------
+
+/** Path to the content source-of-truth, relative to the Drupal docroot. */
+const WL_CONTENT_MD_PATH = __DIR__ . '/../docs/CONTENT.md';
+
+/** Body text format. Matches the headless-safe filter used for frontend rendering. */
+const WL_TEXT_FORMAT_BODY = 'headless_safe';
+
+/** Text format for short formatted fields (mission impact, capability descriptions). */
+const WL_TEXT_FORMAT_INLINE = 'headless_safe';
+
+/** Default moderation state for seeded content. Change to 'draft' if editorial review is required before publish. */
+const WL_DEFAULT_MODERATION_STATE = 'published';
+
+// ---------------------------------------------------------------------------
+// Markdown → HTML (tiny purpose-built converter)
+// ---------------------------------------------------------------------------
+
+/**
+ * Convert a small subset of Markdown to HTML.
+ *
+ * Handles:
+ *   - **bold** → <strong>bold</strong>
+ *   - blank-line separated paragraphs → <p>...</p>
+ *   - lines starting with "- " grouped into <ul><li>...</li></ul>
+ *   - HTML-escapes everything else
+ *
+ * This is intentionally simple. Source content lives in docs/CONTENT.md which
+ * only uses these constructs. Anything more complex should be authored as HTML
+ * in the node directly.
+ */
+function wl_md_to_html(string $markdown): string {
+  $lines = preg_split('/\r\n|\n|\r/', trim($markdown));
+  $blocks = [];
+  $buf = [];
+  $mode = null; // null | 'p' | 'ul'
+
+  $flush = function () use (&$buf, &$mode, &$blocks) {
+    if (!$buf) {
+      return;
+    }
+    if ($mode === 'ul') {
+      $items = array_map(static fn(string $li): string => '<li>' . wl_md_inline(trim(substr($li, 1))) . '</li>', $buf);
+      $blocks[] = '<ul>' . implode('', $items) . '</ul>';
+    }
+    else {
+      $blocks[] = '<p>' . wl_md_inline(implode(' ', $buf)) . '</p>';
+    }
+    $buf = [];
+    $mode = null;
+  };
+
+  foreach ($lines as $line) {
+    $line = rtrim($line);
+    if ($line === '') {
+      $flush();
+      continue;
+    }
+    if (preg_match('/^\s*-\s+/', $line)) {
+      if ($mode !== 'ul') {
+        $flush();
+        $mode = 'ul';
+      }
+      $buf[] = ltrim($line);
+    }
+    else {
+      if ($mode === 'ul') {
+        $flush();
+      }
+      $mode = 'p';
+      $buf[] = $line;
+    }
+  }
+  $flush();
+
+  return implode("\n", $blocks);
+}
+
+/** Inline conversion: **bold** + HTML-escape. */
+function wl_md_inline(string $text): string {
+  $escaped = htmlspecialchars($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+  return preg_replace('/\*\*(.+?)\*\*/', '<strong>$1</strong>', $escaped);
+}
+
+// ---------------------------------------------------------------------------
+// CONTENT.md parser
+// ---------------------------------------------------------------------------
+
+/**
+ * Parse docs/CONTENT.md into a structured array.
+ *
+ * Returns:
+ *   [
+ *     'products' => [ ['title' => ..., 'seo_title' => ..., 'meta_description' => ...,
+ *                      'summary' => ..., 'capabilities' => [...], 'mission_impact' => ...,
+ *                      'body_paragraphs' => [...] ], ... ],
+ *     'services' => [ ... ],
+ *   ]
+ */
+function wl_parse_content_md(string $path): array {
+  if (!is_readable($path)) {
+    throw new RuntimeException("CONTENT.md not readable at: {$path}");
+  }
+  $src = file_get_contents($path);
+
+  // Split on top-level section headers.
+  $sections = preg_split('/^##\s+(Products|Services)\s*$/m', $src, -1, PREG_SPLIT_DELIM_CAPTURE);
+  // After split: [preamble, 'Products', products-body, 'Services', services-body]
+  $result = ['products' => [], 'services' => []];
+
+  for ($i = 1; $i < count($sections); $i += 2) {
+    $kind = strtolower($sections[$i]);  // 'products' | 'services'
+    $body = $sections[$i + 1] ?? '';
+    $result[$kind] = wl_parse_entries($body);
+  }
+
+  return $result;
+}
+
+/**
+ * Parse a Products or Services section body into entries.
+ *
+ * Each entry begins with "### N. Title".
+ */
+function wl_parse_entries(string $section_body): array {
+  $entries = [];
+  // Split on "### N. Title" lines, capturing the title.
+  $parts = preg_split('/^###\s+\d+\.\s+(.+?)\s*$/m', $section_body, -1, PREG_SPLIT_DELIM_CAPTURE);
+  for ($i = 1; $i < count($parts); $i += 2) {
+    $title = trim($parts[$i]);
+    $body = trim($parts[$i + 1] ?? '');
+    // Strip trailing horizontal-rule separator if present.
+    $body = preg_replace('/\n---\s*$/', '', $body);
+    $entries[] = wl_parse_entry($title, $body);
+  }
+  return $entries;
+}
+
+/**
+ * Parse one entry body. The body has:
+ *   **SEO Title:** ...
+ *   **Meta Description:** ...
+ *   **Summary:** ...                          (Products always; Services sometimes)
+ *   **Full Page Copy:**
+ *   #### Title repeat
+ *   ...paragraphs...
+ *   **Key Capabilities**
+ *   - bullet
+ *   - bullet
+ *   **Mission Impact**
+ *   paragraph
+ */
+function wl_parse_entry(string $title, string $body): array {
+  $entry = [
+    'title' => $title,
+    'seo_title' => wl_extract_field($body, 'SEO Title'),
+    'meta_description' => wl_extract_field($body, 'Meta Description'),
+    'summary' => wl_extract_field($body, 'Summary'),
+    'capabilities' => [],
+    'mission_impact' => null,
+    'body_paragraphs' => [],
+  ];
+
+  // Isolate the Full Page Copy block.
+  $copy = '';
+  if (preg_match('/\*\*Full Page Copy:\*\*\s*(.*)$/s', $body, $m)) {
+    $copy = trim($m[1]);
+  }
+  if ($copy === '') {
+    return $entry;
+  }
+
+  // Drop the leading #### heading (it's a redundant restatement of the title).
+  $copy = preg_replace('/^####\s+.+?\n/', '', $copy);
+
+  // Pull out the Mission Impact block (always last when present).
+  if (preg_match('/\*\*Mission Impact\*\*\s*(.*)$/s', $copy, $m)) {
+    $entry['mission_impact'] = trim($m[1]);
+    $copy = preg_replace('/\*\*Mission Impact\*\*.*$/s', '', $copy);
+  }
+
+  // Pull out the Key Capabilities block.
+  if (preg_match('/\*\*Key Capabilities\*\*\s*\n(.+?)(?=\n\s*\*\*|\z)/s', $copy, $m)) {
+    $bullets = preg_split('/\n/', trim($m[1]));
+    foreach ($bullets as $b) {
+      $b = trim($b);
+      if ($b === '' || !str_starts_with($b, '-')) {
+        continue;
+      }
+      $entry['capabilities'][] = trim(substr($b, 1));
+    }
+    $copy = preg_replace('/\*\*Key Capabilities\*\*.*?(?=\n\s*\*\*|\z)/s', '', $copy);
+  }
+
+  // Whatever's left is narrative paragraphs.
+  $entry['body_paragraphs'] = array_values(array_filter(
+    array_map('trim', preg_split('/\n\s*\n/', trim($copy))),
+    static fn(string $p): bool => $p !== ''
+  ));
+
+  return $entry;
+}
+
+/** Extract a "**Label:** value" line. Returns null if not present. */
+function wl_extract_field(string $body, string $label): ?string {
+  $pattern = '/\*\*' . preg_quote($label, '/') . ':\*\*\s*(.+?)(?=\n\s*\n|\n\*\*|\z)/s';
+  if (preg_match($pattern, $body, $m)) {
+    return trim($m[1]);
+  }
+  return null;
+}
+
+// ---------------------------------------------------------------------------
+// Drupal helpers
+// ---------------------------------------------------------------------------
+
+/** Find an existing node by its path alias. Returns null if not found. */
+function wl_find_node_by_alias(string $alias): ?Node {
+  /** @var \Drupal\path_alias\AliasRepositoryInterface $repo */
+  $repo = \Drupal::service('path_alias.repository');
+  $lookup = $repo->lookupByAlias($alias, 'en');
+  if (!$lookup || !preg_match('|^/node/(\d+)$|', $lookup['path'], $m)) {
+    return null;
+  }
+  return Node::load($m[1]);
+}
+
+/** Best-effort taxonomy term lookup by name. Returns the term ID or null. */
+function wl_term_id_by_name(string $vid, string $name): ?int {
+  $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  $ids = $storage->getQuery()
+    ->condition('vid', $vid)
+    ->condition('name', $name)
+    ->accessCheck(true)
+    ->range(0, 1)
+    ->execute();
+  if (!$ids) {
+    return null;
+  }
+  return (int) reset($ids);
+}
+
+/** Map zero or more term names to taxonomy reference field values. */
+function wl_term_refs(string $vid, array $names): array {
+  $refs = [];
+  foreach ($names as $name) {
+    $tid = wl_term_id_by_name($vid, $name);
+    if ($tid !== null) {
+      $refs[] = ['target_id' => $tid];
+    }
+  }
+  return $refs;
+}
+
+/** Build a slug from a title — kebab-case ASCII, no diacritics. */
+function wl_slug(string $title): string {
+  $s = strtolower($title);
+  $s = preg_replace('/&/', ' and ', $s);
+  $s = preg_replace('/[^a-z0-9]+/', '-', $s);
+  return trim($s, '-');
+}
+
+/**
+ * Build a capability paragraph from a bullet string. Re-uses an existing
+ * paragraph entity if the same title already exists attached to this node.
+ *
+ * field_capability_description is required by config but CONTENT.md only
+ * supplies titles — we seed the description with the title so the entity
+ * validates, and editors expand it later.
+ */
+function wl_build_capability_paragraph(string $title): Paragraph {
+  $p = Paragraph::create([
+    'type' => 'capability',
+    'field_capability_title' => $title,
+    'field_capability_description' => [
+      'value' => '<p>' . wl_md_inline($title) . '</p>',
+      'format' => WL_TEXT_FORMAT_INLINE,
+    ],
+  ]);
+  $p->save();
+  return $p;
+}
+
+// ---------------------------------------------------------------------------
+// Best-effort taxonomy mapping
+// ---------------------------------------------------------------------------
+
+/**
+ * Map entry title → suggested taxonomy term names for soft-classification.
+ * Only used when the matching term already exists in the vocabulary; missing
+ * terms are silently skipped (see docs/TAXONOMY_AUDIT.md).
+ */
+function wl_taxonomy_suggestions(string $bundle, string $title): array {
+  $defaults = [
+    'platform' => null,        // platforms vocab — exact platform brand name
+    'target_sectors' => [],    // target_sectors vocab
+    'personas' => [],          // persona vocab (vid is singular)
+    'solutions' => [],         // solutions taxonomy
+  ];
+
+  // Products: each Product *is* a platform. The taxonomy term, if seeded,
+  // shares the product title verbatim per the recommendation in
+  // docs/TAXONOMY_AUDIT.md.
+  if ($bundle === 'product') {
+    $defaults['platform'] = $title;
+    $defaults['target_sectors'] = ['Defense', 'Federal Government'];
+  }
+  elseif ($bundle === 'service') {
+    $defaults['target_sectors'] = ['Defense', 'Federal Government'];
+    // Light keyword routing.
+    if (stripos($title, 'Zero-Trust') !== false) {
+      $defaults['solutions'][] = 'Zero Trust';
+    }
+    if (stripos($title, 'AI') !== false || stripos($title, 'Machine Learning') !== false) {
+      $defaults['solutions'][] = 'Private LLMs';
+    }
+    if (stripos($title, 'Digital Modernization') !== false) {
+      $defaults['solutions'][] = 'Digital Modernization';
+    }
+    if (stripos($title, 'Cryptocurrency') !== false || stripos($title, 'Digital Asset') !== false) {
+      $defaults['solutions'][] = 'Financial Optimization';
+    }
+  }
+
+  return $defaults;
+}
+
+// ---------------------------------------------------------------------------
+// Main: seed one entry
+// ---------------------------------------------------------------------------
+
+function wl_seed_entry(string $bundle, array $entry): array {
+  $title = $entry['title'];
+  $slug = wl_slug($title);
+  $path_prefix = $bundle === 'product' ? '/products' : '/services';
+  $alias = $path_prefix . '/' . $slug;
+
+  $existing = wl_find_node_by_alias($alias);
+  if ($existing) {
+    return ['status' => 'skipped', 'reason' => 'exists', 'nid' => (int) $existing->id(), 'alias' => $alias];
+  }
+
+  // Body = narrative paragraphs joined as HTML.
+  $body_md = implode("\n\n", $entry['body_paragraphs']);
+  $body_html = wl_md_to_html($body_md);
+
+  // Capability paragraphs.
+  $capability_refs = [];
+  foreach ($entry['capabilities'] as $cap_title) {
+    $p = wl_build_capability_paragraph($cap_title);
+    $capability_refs[] = ['target_id' => $p->id(), 'target_revision_id' => $p->getRevisionId()];
+  }
+
+  // Taxonomy refs (best-effort — missing terms are skipped silently).
+  $taxo = wl_taxonomy_suggestions($bundle, $title);
+  $values = [
+    'type' => $bundle,
+    'title' => $title,
+    'status' => 1,
+    'moderation_state' => WL_DEFAULT_MODERATION_STATE,
+    'path' => ['alias' => $alias],
+    'body' => [
+      'value' => $body_html,
+      'format' => WL_TEXT_FORMAT_BODY,
+    ],
+    'field_summary' => $entry['summary'] ?? '',
+    'field_seo_title' => $entry['seo_title'] ?? '',
+    'field_meta_description' => $entry['meta_description'] ?? '',
+    'field_key_capabilities' => $capability_refs,
+  ];
+
+  if ($entry['mission_impact']) {
+    $values['field_mission_impact'] = [
+      'value' => wl_md_to_html($entry['mission_impact']),
+      'format' => WL_TEXT_FORMAT_INLINE,
+    ];
+  }
+
+  // Optional taxonomy refs.
+  if ($taxo['platform']) {
+    $tid = wl_term_id_by_name('platforms', $taxo['platform']);
+    if ($tid !== null) {
+      $values['field_platform'] = [['target_id' => $tid]];
+    }
+  }
+  if ($taxo['target_sectors']) {
+    $refs = wl_term_refs('target_sectors', $taxo['target_sectors']);
+    if ($refs) {
+      $values['field_target_sectors'] = $refs;
+    }
+  }
+  if ($taxo['personas']) {
+    $refs = wl_term_refs('persona', $taxo['personas']);
+    if ($refs) {
+      $values['field_personas'] = $refs;
+    }
+  }
+  if (!empty($taxo['solutions'])) {
+    $refs = wl_term_refs('solutions', $taxo['solutions']);
+    if ($refs) {
+      $values['field_solutions'] = $refs;
+    }
+  }
+
+  $node = Node::create($values);
+  $node->save();
+
+  return [
+    'status' => 'created',
+    'nid' => (int) $node->id(),
+    'alias' => $alias,
+    'capabilities' => count($capability_refs),
+    'taxonomy_applied' => array_keys(array_filter([
+      'platform' => isset($values['field_platform']),
+      'target_sectors' => isset($values['field_target_sectors']),
+      'personas' => isset($values['field_personas']),
+      'solutions' => isset($values['field_solutions']),
+    ])),
+  ];
+}
+
+// ---------------------------------------------------------------------------
+// Run
+// ---------------------------------------------------------------------------
+
+echo "=== Seeding Products + Services from " . WL_CONTENT_MD_PATH . " ===\n\n";
+
+$parsed = wl_parse_content_md(WL_CONTENT_MD_PATH);
+
+$summary = ['product' => ['created' => 0, 'skipped' => 0], 'service' => ['created' => 0, 'skipped' => 0]];
+
+echo "--- Products ---\n";
+foreach ($parsed['products'] as $entry) {
+  $r = wl_seed_entry('product', $entry);
+  $summary['product'][$r['status']]++;
+  if ($r['status'] === 'created') {
+    $taxo = $r['taxonomy_applied'] ? ' [taxonomy: ' . implode(',', $r['taxonomy_applied']) . ']' : '';
+    echo sprintf("  [+] %s  nid=%d  alias=%s  capabilities=%d%s\n",
+      $entry['title'], $r['nid'], $r['alias'], $r['capabilities'], $taxo);
+  } else {
+    echo sprintf("  [=] %s  (exists, nid=%d, alias=%s) — skipped\n",
+      $entry['title'], $r['nid'], $r['alias']);
+  }
+}
+
+echo "\n--- Services ---\n";
+foreach ($parsed['services'] as $entry) {
+  $r = wl_seed_entry('service', $entry);
+  $summary['service'][$r['status']]++;
+  if ($r['status'] === 'created') {
+    $taxo = $r['taxonomy_applied'] ? ' [taxonomy: ' . implode(',', $r['taxonomy_applied']) . ']' : '';
+    echo sprintf("  [+] %s  nid=%d  alias=%s  capabilities=%d%s\n",
+      $entry['title'], $r['nid'], $r['alias'], $r['capabilities'], $taxo);
+  } else {
+    echo sprintf("  [=] %s  (exists, nid=%d, alias=%s) — skipped\n",
+      $entry['title'], $r['nid'], $r['alias']);
+  }
+}
+
+echo "\n=== Summary ===\n";
+echo sprintf("Products:  created=%d  skipped=%d\n", $summary['product']['created'], $summary['product']['skipped']);
+echo sprintf("Services:  created=%d  skipped=%d\n", $summary['service']['created'], $summary['service']['skipped']);
+
+echo "\nReview at /admin/content. Capability paragraphs were seeded with title-as-description placeholders; editors should expand field_capability_description and add field_mission_benefit.\n";
+echo "Taxonomy refs were only applied where matching terms exist. See docs/TAXONOMY_AUDIT.md to seed missing vocabularies and re-run to enrich classification.\n";
