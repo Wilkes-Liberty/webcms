@@ -2,6 +2,12 @@
 
 Headless Drupal 11 CMS serving as the API backend for [wilkesliberty.com](https://wilkesliberty.com). Content is delivered to a Next.js frontend via JSON:API and GraphQL. The system is multilingual (English, Spanish, Russian) and uses PostgreSQL 16.
 
+> **Deep guidance for developers and agents**: See [AGENTS.md](AGENTS.md) (and the root [../AGENTS.md](../AGENTS.md) for platform context).
+
+**Current focus**: Continued refinement of content modeling, GraphQL schema stability, and supporting the Keycloak SSO rollout on the infrastructure side.
+
+**New contributors**: Start with [docs/DEVELOPER_SETUP.md](docs/DEVELOPER_SETUP.md).
+
 ## Tech Stack
 
 | Component | Version | Role |

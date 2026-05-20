@@ -1,6 +1,10 @@
 # Contributing to Wilkes & Liberty Web CMS
 
-Welcome to the Wilkes & Liberty Web CMS project! This document covers contributing guidelines for our headless Drupal 11 CMS. For how this repo fits into the broader stack (infra, ui, staging, production), see [`ENVIRONMENT_OVERVIEW.md`](../infra/ENVIRONMENT_OVERVIEW.md) in the `infra` repo.
+Welcome to the Wilkes & Liberty Web CMS project! This document covers contributing guidelines for our headless Drupal 11 CMS.
+
+**Platform overview & agent guidance**: See the root [../AGENTS.md](../AGENTS.md) and [AGENTS.md](AGENTS.md) in this repo.
+
+For environment relationships, see [`ENVIRONMENT_OVERVIEW.md`](../infra/ENVIRONMENT_OVERVIEW.md) in the `infra` repo.
 
 ## Table of Contents
 

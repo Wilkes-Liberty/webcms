@@ -2,6 +2,8 @@
 
 Documentation for the Wilkes Liberty headless Drupal 11 CMS.
 
+**For developers and agents working in this repo**: Start with [../AGENTS.md](../AGENTS.md) for workflows, content modeling rules, and cross-repo coordination.
+
 ## For Content Creators
 
 | Document | Purpose |
@@ -16,7 +18,8 @@ Documentation for the Wilkes Liberty headless Drupal 11 CMS.
 
 | Document | Purpose |
 |----------|---------|
-| [local-development.md](local-development.md) | DDEV setup, PostgreSQL 16, daily workflow |
+| [DEVELOPER_SETUP.md](DEVELOPER_SETUP.md) | High-level onboarding and first-time setup |
+| [local-development.md](local-development.md) | Detailed DDEV setup, PostgreSQL 16, daily workflow, database & API testing |
 | [PATCHES.md](PATCHES.md) | Composer patch documentation and upstream issues |
 | [../web/modules/custom/wl_api/CHANGELOG.md](../web/modules/custom/wl_api/CHANGELOG.md) | API module changelog |
 
