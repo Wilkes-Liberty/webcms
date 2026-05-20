@@ -1,0 +1,492 @@
+# Wilkes & Liberty Brand Voice Guidelines
+
+**Version:** 1.0 (draft for Jeremy's review)
+**Last updated:** 2026-05-20
+**Source of truth:** `docs/CONTENT.md` (drafted page copy for 6 Products + 10 Services)
+**Status:** Initial extraction. Open questions in §11 require Jeremy's call before this can be considered final.
+
+---
+
+## 1. How to use this guide
+
+This document is the canonical brand voice reference for anyone writing public-facing copy for Wilkes & Liberty, LLC (W&L) — website, marketing assets, RFP responses, sales collateral, press releases, social posts, and case studies.
+
+**When to consult it:**
+
+- Before drafting a new Product or Service page
+- Before writing an article, case study, or press release
+- When reviewing copy from a contractor, freelancer, or AI assistant
+- When deciding between two phrasings that "both sound fine" — the answer is usually in §3 (messaging pillars) or §5 (vocabulary)
+
+**How to apply it:**
+
+1. Start with §3 (messaging pillars) and §4 (personas) to confirm what you're writing supports the right outcome for the right audience.
+2. Draft using §5 (vocabulary) and §6 (style rules).
+3. Self-edit against §9 (Do / Don't) — every Product/Service paragraph should pass that test.
+4. If you're unsure, check the parallel example in `docs/CONTENT.md` for the same content type and copy the pattern.
+
+**What this guide is not:**
+
+- Not a content strategy document. For *what* to write, see `docs/CONTENT_TYPES_GUIDE.md`.
+- Not a field reference. For field-level specs, see `docs/FIELD_REFERENCE.md`.
+- Not a final standard. v1.0 was extracted from existing marketing copy only — not from sales calls, customer research, or external brand work. Treat open questions in §11 as load-bearing.
+
+---
+
+## 2. Voice attributes
+
+Five attributes define how W&L sounds. Each is anchored on observed patterns in `docs/CONTENT.md`.
+
+| Attribute | Description | Why it's the right choice for W&L |
+|---|---|---|
+| **Mission-anchored** | Every claim ties to a mission outcome — resilience, decision velocity, sovereignty, operational continuity. We do not describe technology in isolation. | Audience (defense, federal civilian, mission-critical operations) judges vendors by mission impact, not feature lists. Memory note: W&L's real past performance is HHS/CMS via Scope Infotec; current direction is federal/defense work where this framing is table stakes. |
+| **Confident, restrained** | Declarative sentences. No hedging ("we believe," "we think we can"). No hype ("revolutionary," "game-changing"). | The audience reads consumer-startup hype as a credibility signal *against* you. Restraint reads as seriousness. |
+| **Sovereignty-forward** | Foregrounds independence, control, and self-determination — for the customer, not for us. | Differentiator vs. the dominant hyperscaler narrative. Aligns with defense/federal preference for on-prem, air-gapped, and private-cloud options. |
+| **Technically literate** | Uses terms like *zero-trust*, *Infrastructure-as-Code*, *air-gapped*, *zero-trust architecture*, *headless* without apology — but defines them in passing when used in marketing-facing copy. | Audience expects technical fluency; over-explaining looks junior. |
+| **Outcome-led, not feature-led** | Capability bullets describe *what the system does for the mission*, not *what the engineer configured*. | Buyers (mission owners, CIOs, contracting officers) make decisions on outcomes. Engineers see through feature-stuffing. |
+
+**Register and pace:**
+
+- **Formality:** High. Closer to government white-paper than SaaS blog. No contractions in body copy. No second-person breeziness ("you'll love how easy...").
+- **Sentence length:** Mid-to-long. Compound sentences with one subordinate clause are the norm. Short sentences are reserved for emphasis after a long one.
+- **Voice:** Active dominant. Passive only when the actor genuinely doesn't matter ("Backups are retained for...").
+
+---
+
+## 3. Messaging pillars
+
+Five pillars recur across every Product and Service page. New copy should explicitly carry at least one — usually two or three.
+
+### 3.1 Mission impact
+
+**Anchor quote (CONTENT.md, Sovereign Infrastructure Platform):**
+
+> "By removing reliance on external cloud providers and giving you full sovereignty over your infrastructure, we help defense contractors and government organizations maintain control, reduce risk, and focus resources on core mission objectives rather than technology maintenance."
+
+The "Mission Impact" block is a hard-required field on Product and Service content (per `docs/CONTENT_TYPES_GUIDE.md` §9, §10). It is also the rhetorical center of the voice: every other claim is in service of it.
+
+### 3.2 Sovereignty
+
+**Anchor quote (CONTENT.md, Apex Secure Data Platform):**
+
+> "A sovereign data foundation built to enhance data availability and support mission-critical applications."
+
+Sovereignty in W&L copy means: customer-controlled, deployable anywhere (on-prem, private cloud, hybrid, air-gapped), independent of any single vendor or hyperscaler, with data and identity under the customer's authority. It is *not* a political claim — it's an operational and architectural one.
+
+### 3.3 Security as enabler, not obstacle
+
+**Anchor quote (CONTENT.md, Fortis Zero-Trust Identity Platform):**
+
+> "Security and usability must work together in support of the mission. The Fortis Zero-Trust Identity Platform provides enterprise-grade single sign-on and access control while enforcing strict security standards."
+
+W&L's security pitch is *not* "we are paranoid and slow." It is "we make zero-trust operationally invisible." Always pair security claims with a velocity / usability claim.
+
+### 3.4 Defense & government readiness
+
+**Anchor quote (CONTENT.md, Cryptocurrency & Digital Asset Solutions):**
+
+> "All solutions are built with defense-grade security and regulatory standards in mind."
+
+Even outside defense-specific offerings (the crypto example above is not a defense product), copy ties back to defense-grade rigor as a quality bar. This is consistent across the source material.
+
+### 3.5 Force multiplier / operational independence
+
+**Anchor quote (CONTENT.md, Custom Software Development & Middleware Engineering):**
+
+> "Our custom solutions become force multipliers that increase efficiency and reduce reliance on fragmented commercial tools."
+
+The "force multiplier" framing — small, well-designed capability creates outsized operational leverage — recurs across the Services section. This is the voice's small-vendor advantage: W&L is not pretending to be a hyperscaler; it is positioned as the high-leverage specialist.
+
+---
+
+## 4. Personas (audience model)
+
+Four buyer personas, anchored in the language of `docs/CONTENT.md` and W&L's actual past-performance footprint (HHS/CMS, USPS OIG, EPA — see memory `project_wl_past_performance.md` and `user_federal_experience.md`).
+
+### 4.1 Mission Owner
+
+- **Examples:** program manager, mission director, branch chief, division chief, contracting officer's representative.
+- **Cares about:** mission execution, operational tempo, decision velocity, risk to mission objectives.
+- **Reads:** Mission Impact section first. Skips feature lists. Wants to understand outcome before architecture.
+- **Pet peeves:** vendors who talk about themselves before talking about the mission.
+
+### 4.2 Agency CIO / IT Director
+
+- **Examples:** federal civilian agency CIO, deputy CIO, IT services branch chief, enterprise architect.
+- **Cares about:** sovereignty, compliance posture, vendor lock-in risk, operations cost, total cost of ownership over multi-year procurement cycles.
+- **Reads:** Key Capabilities, Deployment Options, Sovereignty Features.
+- **Pet peeves:** hidden hyperscaler dependencies; "cloud-native" used as a substitute for "AWS-only."
+
+### 4.3 Defense Contractor IT / Security Lead
+
+- **Examples:** systems engineering lead at a prime or sub, CISO, security architect at a defense integrator.
+- **Cares about:** zero-trust architecture, air-gapped deployability, CMMC / NIST 800-171 / FedRAMP alignment, supply-chain risk.
+- **Reads:** zero-trust, identity, observability, and infrastructure copy.
+- **Pet peeves:** vague compliance claims without architectural evidence.
+
+### 4.4 Federal Contracting Officer / Procurement
+
+- **Examples:** contracting officer, procurement specialist, capture lead at a prime considering a sub.
+- **Cares about:** past performance, key personnel, capability statements, RFP-able language they can paste.
+- **Reads:** Services pages, capability bullets, and any "Defense & Government Relevance" language. Wants RFP-ready phrasing.
+- **Pet peeves:** marketing fluff in capability statements; superlatives without evidence.
+
+> **Note on persona scope.** These four are extracted from the existing content's stated audience ("defense contractors and government organizations") and W&L's federal past-performance footprint. The personas do *not* cover commercial / enterprise / SMB buyers. See §11.7 — open question on whether the brand pursues commercial work and how the voice would shift.
+
+---
+
+## 5. Vocabulary
+
+### 5.1 Preferred terms
+
+These appear repeatedly in `docs/CONTENT.md`. Reuse them — consistency builds the voice.
+
+| Term | Use it for |
+|---|---|
+| **Mission impact** | The named section on every Product/Service page. Also a noun used inline. |
+| **Mission-critical** | Adjective for systems, information, communications, workflows. |
+| **Mission resilience** | The capacity to keep executing under adverse conditions. |
+| **Mission execution** | The act of getting mission outcomes done. Preferred over "operations" alone. |
+| **Mission velocity** | The speed of mission throughput (used adjacent to security). |
+| **Mission readiness** | State of being prepared to execute. |
+| **Sovereignty / sovereign** | Customer control of data, infrastructure, identity. |
+| **Operational resilience / continuity / tempo / superiority** | Outcome-level descriptions of what the customer gains. |
+| **Decision velocity / decision cycles / decision speed** | The cognitive output of good information systems. |
+| **Zero-trust** | Always hyphenated, lowercase except when in a product name (e.g., *Fortis Zero-Trust Identity Platform*). |
+| **Air-gapped** | Hyphenated. Used in deployment options. |
+| **On-premises / on-prem** | Hyphenated. "On-prem" is acceptable shorthand inline; "on-premises" preferred in headings and meta descriptions. |
+| **Defense and government** | Canonical audience phrase. Sometimes "defense contractors and government organizations" for the longer form. |
+| **Defense-grade** | Quality bar adjective. Reserve for compliance / security claims. |
+| **Information superiority** | Borrowed from defense doctrine. Used sparingly. |
+| **Situational awareness** | Outcome of observability and intelligence offerings. |
+| **Force multiplier** | Small capability, outsized mission leverage. |
+| **Enhance / streamline / facilitate** | The three preferred outcome verbs in CONTENT.md. Use them. |
+| **Enterprise-grade** | Quality marker. Acceptable. |
+| **Headless** | Used without explanation in technical copy; explain in marketing copy ("a headless architecture — where content is managed centrally and delivered to any frontend"). |
+| **Infrastructure-as-Code** | Capitalized as in CONTENT.md. Spell out on first use in marketing copy. |
+
+### 5.2 Terms to avoid
+
+These conflict with the established voice. Either replace with a preferred term from §5.1 or restructure.
+
+| Term | Why to avoid | Replace with |
+|---|---|---|
+| Delight, magical, amazing, incredible | Consumer-SaaS hype; reads as unserious to federal buyers. | "Enhance," "streamline," or a concrete outcome. |
+| 10x, supercharge, turbocharge | Same. | Specific multiplier with evidence, or omit. |
+| Revolutionary, game-changing, disruptive, next-gen | Hype without substance. | Describe the actual change. |
+| Cutting-edge, bleeding-edge | Hype + suggests instability. | "Modern" or describe the specific capability. |
+| Best-in-class, world-class | Unsubstantiated superlative. | Specific evidence or omit. |
+| Ninja, rockstar, wizard | Casual tech-startup register. | Use the actual role title. |
+| AWS, Azure, GCP (as positive framing) | Conflicts with sovereignty pillar (§3.2) — implies hyperscaler dependence. Reference only when contrasting against sovereign alternatives. | Reframe around private cloud / on-prem / hybrid. |
+| Cloud-native (as a sole positioning claim) | Ambiguous and often means "hyperscaler-locked." | "Cloud-portable," "sovereign cloud," "private-cloud-native" where accurate. |
+| "Solutions" (used vaguely) | Filler. | A specific noun: "platform," "service," "capability." (Note: "solutions" as a real noun for a product line is fine — *Defense Technology Integration solutions*.) |
+| Synergy, leverage (as a verb) | Corporate jargon without meaning. | A concrete verb. |
+| "Empower" (used hollow) | Acceptable when followed by a concrete outcome; avoid when not. | Either follow with the outcome or replace with "enable." |
+| "Just," "simply," "easily" (as adjectives in body copy) | Undercuts seriousness; the work is rarely simple. | Omit. |
+| Emoji in body copy | The published voice is restrained; emoji breaks register. (Note: emoji used as visual section markers in internal docs like `CONTENT_TYPES_GUIDE.md` is fine — that is *internal* editorial UX, not public voice.) | Omit. |
+
+### 5.3 Acronyms
+
+CONTENT.md uses some technical acronyms without expansion (e.g., "CMS," "VPN," "AI/ML," "KPIs," "XRP"). The implicit rule: technical readers don't need first-use expansion for industry-standard acronyms.
+
+**Working rule (Jeremy to confirm in §11.2):** Spell out on first use in body copy if the acronym is (a) industry-specific to a niche the reader might not share or (b) a regulatory / compliance term. Examples: *FedRAMP (Federal Risk and Authorization Management Program)*, *CMMC (Cybersecurity Maturity Model Certification)*, *SBOM (Software Bill of Materials)*. Skip expansion for *CMS*, *VPN*, *AI/ML*, *KPI*, *SSO*, *API*.
+
+---
+
+## 6. Style rules
+
+### 6.1 Sentence and paragraph structure
+
+- **Sentence length.** Mid-to-long (15–35 words) is the default. Short sentences are reserved for emphasis after a longer one.
+- **Paragraph length.** 2–4 sentences. Single-sentence paragraphs are acceptable as the opening line of a Mission Impact block.
+- **Opening sentence.** Set context, not the company. Compare:
+  - ✅ "In high-stakes environments where mission success depends on technology you truly control, the Sovereign Infrastructure Platform delivers the foundation you need." (CONTENT.md)
+  - ❌ "Wilkes & Liberty is excited to announce..."
+
+### 6.2 Active vs. passive voice
+
+- Active by default. Use "We design, deploy, and continuously manage..." (CONTENT.md, Service 1) rather than "Sovereign infrastructure environments are designed, deployed, and managed by us."
+- Passive is acceptable when the actor is genuinely irrelevant or unknown (e.g., "Backups are retained for 90 days").
+
+### 6.3 First-person plural ("we")
+
+- "We" is the established W&L voice across CONTENT.md, even though W&L is a single-principal LLC at present (memory: `user_identity.md`). See §11.1 — open question for Jeremy on whether to refine this.
+
+### 6.4 Capitalization
+
+- **Product names:** Title Case, including the descriptive part (*Sovereign Infrastructure Platform*, *Liberty Headless CMS Platform*, *Fortis Zero-Trust Identity Platform*, *Apex Secure Data Platform*, *Vigilance Mission Observability Suite*).
+- **Service names:** Title Case (*Private Infrastructure Engineering & Managed Operations*).
+- **Section headings within page copy** (*Key Capabilities*, *Mission Impact*): Title Case, bolded.
+- **"Mission impact"** as an inline noun phrase: lowercase. As a section heading: Title Case ("Mission Impact").
+- **"Zero-trust"** as a descriptor: lowercase. As part of a product name (*Fortis Zero-Trust Identity Platform*): Title Case.
+- **"Sovereignty," "sovereign":** lowercase.
+
+### 6.5 Punctuation
+
+- **Em dashes (—):** Used liberally for parenthetical asides and emphasis. CONTENT.md uses spaces around them: "purpose-built to **enhance operational resilience**, **streamline infrastructure management**, and **facilitate uninterrupted mission execution**." Continue with spaces around em dashes.
+- **Serial (Oxford) comma:** Used in CONTENT.md ("maintain control, reduce risk, and focus resources"). Required.
+- **Bold for emphasis:** CONTENT.md uses `**bold**` inline to call out specific outcome phrases (e.g., **enhance operational resilience**). Use sparingly — 0–3 bolded phrases per page section. Never bold whole sentences.
+- **Quotation marks:** Straight double quotes in source Markdown; rendered as smart quotes in the published frontend.
+
+### 6.6 SEO title format
+
+CONTENT.md is consistent:
+
+> `[Product or Service Name] | [Tagline]`
+
+Examples:
+- "Sovereign Infrastructure Platform | Mission-Controlled Technology"
+- "Liberty Headless CMS Platform | Secure Content Sovereignty"
+- "Vigilance Mission Observability Suite | Real-Time System Intelligence"
+
+Pipe (`|`) separator with a space on each side. Tagline is 3–6 words, Title Case, anchored on a messaging pillar.
+
+### 6.7 Meta description format
+
+CONTENT.md pattern: ~150–160 characters, opens with an imperative verb, names the outcome, ends without a period in some examples and with one in others (inconsistent — see §11.5).
+
+> "Deploy secure, sovereign infrastructure anywhere. Designed to enhance mission resilience, eliminate vendor dependency, and give defense and government organizations full control over their technology environment."
+
+### 6.8 Page structure (Product / Service)
+
+The structural pattern from CONTENT.md is:
+
+1. **Context-setter** (one sentence, sometimes two). Frames the mission tension the product resolves.
+2. **Product description** (one paragraph). What it is, what it does at the level a non-engineer can repeat.
+3. **Key Capabilities** (bulleted list, 4–6 items). Each capability is a noun phrase, 4–10 words.
+4. **Mission Impact** (one paragraph). The named section. Ties back to mission outcomes for defense and government.
+
+Service pages compress this — sometimes only a single paragraph plus an optional Mission Impact block.
+
+---
+
+## 7. Tone-by-context matrix
+
+How the core voice (§2) adjusts across content types. All cells inherit the §2 attributes; this matrix shows the *delta*.
+
+| Content type | Formality | Sentence length | Mission framing | Persona lean | Notes |
+|---|---|---|---|---|---|
+| **Product page** | High | Mid-long | Required (named section) | Mission Owner + CIO | Lead with context tension, end with mission impact. |
+| **Service page** | High | Mid | Required (named section, even if brief) | Contracting Officer + IT Lead | Tighter than Product. Opens "We [verb]..." |
+| **Capability statement / RFP language** | Highest | Mid-long | Heavy | Contracting Officer | Maximum density of preferred vocabulary. Past performance language. |
+| **Article (thought leadership)** | High | Varied | Moderate (not every paragraph) | Mission Owner + CIO | Can carry a single argument over 600–1200 words. "We" voice still applies. |
+| **Article (news / press release)** | High | Short-mid | Light | All four personas | Inverted-pyramid; date and fact at top. Mission framing in the closing graf. |
+| **Case study** | High | Mid | Heavy (in Results / Mission Impact framing) | Contracting Officer + Mission Owner | Follow CONTENT_TYPES_GUIDE.md §4 structure: Challenge → Solution → Results → Metrics. |
+| **Landing page** | High | Short-mid | Moderate | Whichever persona the campaign targets | Single conversion goal. Subhead carries the pillar; body proves it. |
+| **Career posting** | Medium-high | Mid | Light | Candidates (out of persona scope) | Voice softens — see §11.6 for open question. |
+| **Person bio** | Medium-high | Mid | Light | All four personas | Third person. Lead with role + credentials. |
+| **Resource (whitepaper, guide)** | High | Long | Heavy | CIO + Defense IT Lead | Permission to go deep on architecture; still outcome-led at the section level. |
+| **Event** | Medium-high | Short-mid | Moderate | Whichever persona the event targets | Logistics blocks are utilitarian; framing copy follows the voice. |
+| **Social post (LinkedIn)** | Medium | Short | Moderate | Mission Owner + CIO | First sentence carries the pillar; no consumer-style emoji-as-hook. |
+
+---
+
+## 8. "We are / We are not" — fast positioning check
+
+| ✅ We are | ❌ We are not |
+|---|---|
+| A specialist firm anchored on mission-critical, sovereign technology. | A generalist consultancy. |
+| A high-leverage small vendor — a force multiplier. | A hyperscaler reseller or systems integrator at scale. |
+| Federal / defense-aware by default. | A commercial-first SaaS company. (See §11.7.) |
+| Confident, technically literate, restrained. | Hypey, casual, or consumer-startup-flavored. |
+| Outcome-led — every claim ties to mission impact. | Feature-led. |
+| Sovereignty-forward in posture and architecture. | Cloud-native-as-AWS-only. |
+| Direct and declarative. | Hedging, salesy, or jargon-stuffing without substance. |
+
+---
+
+## 9. Do / Don't — concrete before/after
+
+Every example below is anchored on `docs/CONTENT.md`. The "Don't" column is a rewrite that *violates* the established voice; the "Do" column is the source text.
+
+### 9.1 Opening sentence — set context, not yourself
+
+| ❌ Don't (off-voice rewrite) | ✅ Do (CONTENT.md source) |
+|---|---|
+| "Wilkes & Liberty is proud to introduce the Sovereign Infrastructure Platform, our exciting new infrastructure-as-code offering." | "In high-stakes environments where mission success depends on technology you truly control, the Sovereign Infrastructure Platform delivers the foundation you need." (Product 1) |
+
+**Why:** The opening sentence does work — it establishes the mission context the customer is in. Announcing the company before the customer's context fails the test.
+
+### 9.2 Capabilities — noun phrases tied to outcomes
+
+| ❌ Don't | ✅ Do (CONTENT.md, Product 1) |
+|---|---|
+| "Super-fast deployments that will blow you away" | "Automated deployment and configuration management" |
+| "Best-in-class security" | "Secure network segmentation and zero-trust architecture" |
+| "We back up your data magically" | "Encrypted backup systems with long-term retention" |
+
+**Why:** Capability bullets are nouns. They describe what the system *is or does*, not how impressive it is.
+
+### 9.3 Mission impact — outcome, not feature
+
+| ❌ Don't | ✅ Do (CONTENT.md, Product 6 — Vigilance) |
+|---|---|
+| "Vigilance has tons of cool dashboards and integrates with everything." | "We streamline operations by giving your teams immediate insight into system health, allowing faster response to issues and greater confidence that your infrastructure will support — rather than hinder — mission objectives." |
+
+**Why:** Mission Impact is where the customer learns *what changes for them*. Feature lists belong in Key Capabilities, not here.
+
+### 9.4 Security framing — pair with velocity
+
+| ❌ Don't | ✅ Do (CONTENT.md, Product 4 — Fortis) |
+|---|---|
+| "Lock down your network with our paranoid zero-trust architecture." | "Security and usability must work together in support of the mission. The Fortis Zero-Trust Identity Platform provides enterprise-grade single sign-on and access control while enforcing strict security standards." |
+
+**Why:** Security pitched as friction is a non-starter for mission owners. Always pair the security claim with what it *enables*.
+
+### 9.5 Service descriptions — open with "We [verb]..."
+
+| ❌ Don't | ✅ Do (CONTENT.md, Service 1) |
+|---|---|
+| "Our team has decades of experience helping clients with infrastructure projects." | "We design, deploy, and continuously manage sovereign infrastructure environments tailored to the unique requirements of defense contractors and government organizations." |
+
+**Why:** Service pages open with action — what we do — not credentials. Credentials belong in capability statements and Person pages.
+
+### 9.6 Force multiplier framing
+
+| ❌ Don't | ✅ Do (CONTENT.md, Service 7) |
+|---|---|
+| "We write a lot of custom software." | "Our custom solutions become force multipliers that increase efficiency and reduce reliance on fragmented commercial tools." |
+
+**Why:** "Force multiplier" is a doctrinal phrase that signals fluency with the audience's vocabulary. Use it.
+
+### 9.7 Sovereignty pitch — concrete, not abstract
+
+| ❌ Don't | ✅ Do (CONTENT.md, Product 1) |
+|---|---|
+| "Our platform respects your data and privacy." | "By removing reliance on external cloud providers and giving you full sovereignty over your infrastructure, we help defense contractors and government organizations maintain control, reduce risk, and focus resources on core mission objectives rather than technology maintenance." |
+
+**Why:** "Respects your data" is a consumer-grade claim. Sovereignty means: no external cloud provider dependency, customer-controlled, deployable anywhere.
+
+### 9.8 Emphasis — bold for outcome phrases, not whole sentences
+
+| ❌ Don't | ✅ Do (CONTENT.md, Product 1) |
+|---|---|
+| **"This is the best infrastructure platform on the market, with all the features you need!"** | "purpose-built to **enhance operational resilience**, **streamline infrastructure management**, and **facilitate uninterrupted mission execution**." |
+
+**Why:** Bold is for outcome phrases inside a sentence. Bolding a whole sentence breaks the visual rhythm and reads as shouting.
+
+---
+
+## 10. Quick-reference cheatsheet
+
+Use this when self-editing a draft.
+
+- [ ] Does the opening sentence set the customer's mission context (not announce W&L)?
+- [ ] Is at least one of the five messaging pillars (§3) explicit in the copy?
+- [ ] Are the Key Capabilities bullets noun phrases, not feature brags?
+- [ ] Does the Mission Impact paragraph describe an outcome, not a feature?
+- [ ] Are security claims paired with a velocity / enablement claim?
+- [ ] No banned vocabulary (§5.2)?
+- [ ] Preferred verbs (*enhance, streamline, facilitate*) used where appropriate?
+- [ ] Active voice as default?
+- [ ] Em dashes spaced; serial commas used; no contractions in body copy?
+- [ ] SEO title in `Name | Tagline` format?
+- [ ] Meta description 150–160 chars, opens with imperative verb?
+- [ ] No emoji in body copy?
+
+---
+
+## 11. Open questions for Jeremy
+
+These are the calls v1.0 could not make from the source material alone. Each one will sharpen the voice once decided.
+
+### 11.1 First-person plural ("we") vs. single-principal reality
+
+CONTENT.md uses "we" throughout (e.g., "We design, deploy, and continuously manage..."). Per memory (`user_identity.md`), W&L is currently a single-principal LLC — Jeremy is owner, CTO, security lead, privacy officer, DR lead, and operator.
+
+- **Option A:** Continue with "we" — it implies organizational capability, which is fair when subcontractor and partner relationships extend the principal's reach.
+- **Option B:** Shift to "I" or "Jeremy Cerda" in select contexts (founder posts, certain articles) to lean into the specialist-principal positioning.
+- **Recommendation:** Keep "we" in Product, Service, capability statement, and case study contexts. Allow "I" in personal-byline thought-leadership articles. Confirm.
+
+### 11.2 Acronym expansion rule
+
+§5.3 proposes: spell out on first use only if the acronym is niche-specific or regulatory. Skip expansion for industry-standard acronyms (*CMS*, *VPN*, *AI/ML*, *KPI*, *SSO*, *API*). Confirm or adjust.
+
+### 11.3 Product naming convention
+
+Some products have proper names with descriptive suffixes (*Fortis Zero-Trust Identity Platform*, *Apex Secure Data Platform*, *Vigilance Mission Observability Suite*). Others are purely descriptive (*Sovereign Infrastructure Platform*, *Enterprise Search Platform*).
+
+- **Question:** Should every product eventually have a proper name (e.g., would Sovereign Infrastructure Platform become *Bastion Sovereign Infrastructure Platform*)? Or is the current mix intentional?
+
+### 11.4 "Mission" density outside Product/Service
+
+Product/Service pages are saturated with "mission" framing — it's a required field. Should articles, case studies, blog posts, and resources match that density, or dial back?
+
+- **Recommendation:** Dial back to 1–2 mentions per piece outside of Product/Service. Use the messaging pillars (§3) implicitly rather than vocabulary-stuffing. Confirm.
+
+### 11.5 Meta description punctuation
+
+CONTENT.md is inconsistent on whether meta descriptions end with a period. Some do, some don't. Pick one and apply it everywhere.
+
+### 11.6 Career posting voice softening
+
+The high-formality, mission-anchored voice may read as cold for recruiting copy. Should career postings:
+
+- **Option A:** Hold the formal voice (signals seriousness to federal-cleared candidates).
+- **Option B:** Soften noticeably (signals approachability to broader engineering candidates).
+- **Recommendation:** Hold the voice on cleared / federal-facing roles; soften on commercial / engineering roles. Decide once W&L starts hiring.
+
+### 11.7 Commercial / non-federal audience
+
+The voice and persona model assume defense and government as primary audiences. If W&L pursues commercial work (which would be a notable strategic shift given the federal past performance and current direction):
+
+- Does "mission" framing translate? Probably not at the same density.
+- Does sovereignty still anchor the pitch? Yes, but differently (data residency, regulatory independence).
+- Should there be a commercial-specific addendum to this guide, or should the brand stay focused federal-only?
+
+### 11.8 CTA voice
+
+CONTENT.md does not include CTA examples. Need direction on phrasing:
+
+- "Schedule a consultation" vs. "Request a demo" vs. "Talk to our team"
+- "Read the brief" vs. "Download the whitepaper"
+- Imperative + outcome ("See how Fortis enforces zero-trust") vs. imperative only ("Get started")
+
+### 11.9 Case study and customer voice
+
+CONTENT.md has no case study examples. When a customer is quoted, do their words get edited to match this voice, or kept verbatim (acknowledging that some customer language will not match)?
+
+- **Recommendation:** Verbatim, with light editing for clarity only. Authenticity trumps voice consistency in customer quotes.
+
+### 11.10 UK vs. US English
+
+CONTENT.md uses US spellings throughout (*optimize, organization, customize*). Confirm US English as canonical, including for Russian and Spanish translation source files (which are sibling-translated, not separately authored — per `README.md`).
+
+### 11.11 Pronoun for the customer
+
+CONTENT.md mixes "your team," "your organization," "your infrastructure," "your data" — second-person possessive is dominant. No use of "their" referring to a hypothetical buyer. Confirm second-person as canonical (it is currently the de facto rule).
+
+### 11.12 How to introduce W&L by name
+
+CONTENT.md rarely names "Wilkes & Liberty" inside body copy — the company is the implied "we." When the name *is* introduced (e.g., in a press release lede or capability statement):
+
+- "Wilkes & Liberty, LLC" — first mention, formal contexts.
+- "Wilkes & Liberty" — second mention, marketing contexts.
+- "W&L" — internal docs only, or as a shorthand after first formal mention.
+
+Confirm this hierarchy.
+
+---
+
+## 12. Confidence notes (transparency on what v1.0 knows)
+
+| Section | Confidence | Why |
+|---|---|---|
+| §2 Voice attributes | High | Strong, consistent signal across 16 pieces of long-form copy in CONTENT.md. |
+| §3 Messaging pillars | High | Each pillar appears in 5+ CONTENT.md examples. |
+| §4 Personas | Medium | Personas extracted from stated audience ("defense contractors and government organizations") plus memory-confirmed federal footprint. Not validated against actual customer interviews. |
+| §5 Vocabulary | High (preferred) / Medium (avoid) | Preferred list directly extracted. Avoid list is inferred from the *absence* of consumer-startup register — a strong signal, but not an explicit prohibition by Jeremy. |
+| §6 Style rules | High | Patterns are visually consistent in CONTENT.md. Punctuation has minor inconsistencies (§11.5). |
+| §7 Tone-by-context matrix | Medium | Only Product, Service, and Article contexts have actual examples in CONTENT.md. Other rows are extrapolated from the voice attributes plus the editorial intent in `CONTENT_TYPES_GUIDE.md`. |
+| §8 We are / We are not | High | Synthesized directly from §2–§3. |
+| §9 Do / Don't | High | All "Do" examples are direct quotes from CONTENT.md. |
+| §11 Open questions | n/a | These exist *because* the source material did not settle them. |
+
+---
+
+## 13. Maintenance
+
+- **Re-anchor on new evidence.** When new long-form copy ships (a major article series, a published case study, a sales deck), re-read this doc and revise sections that drift.
+- **Resolve open questions in §11 incrementally.** As Jeremy makes calls, move them out of §11 and into the relevant section, deleting the question.
+- **Version this doc.** When a substantive change lands, bump the version number at the top and add a one-line entry under "Last updated."
+- **Source files** (not to be edited by this guide): `docs/CONTENT.md`, `docs/CONTENT_TYPES_GUIDE.md`, `docs/FIELD_REFERENCE.md`. This guide is downstream of those.
