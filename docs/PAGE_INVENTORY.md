@@ -1,0 +1,318 @@
+# Page Inventory
+
+A working IA punch-list for every public page on wilkesliberty.com. Use this to track what's drafted, what's seeded into Drupal, what's wired into the Next.js frontend, and what still needs to be written.
+
+**Last updated:** 2026-05-20
+**Owner (default):** Jeremy Cerda
+**Companion docs:** [CONTENT_TYPES_GUIDE.md](CONTENT_TYPES_GUIDE.md) · [FIELD_REFERENCE.md](FIELD_REFERENCE.md) · [PARAGRAPHS.md](PARAGRAPHS.md) · [CONTENT.md](CONTENT.md)
+
+---
+
+## How to read this doc
+
+**Status values**
+
+| Status | Meaning |
+|---|---|
+| `drafted` | Copy exists in `docs/CONTENT.md` (or elsewhere in repo) but is not yet in Drupal |
+| `seeded` | Node exists in Drupal (via setup script or manual creation) |
+| `wired` | Drupal node + Next.js render path both exist and the URL resolves end-to-end |
+| `todo` | Neither drafted nor seeded — needs writing |
+| `n/a` | Not a Drupal-backed page (Next.js-only, system, or external) |
+
+**Content type abbreviations** match the machine names in `config/sync/node.type.*.yml`:
+`article`, `basic_page`, `career`, `case_study`, `event`, `landing_page`, `person`, `product`, `resource`, `service`, `solution`, plus `dynamic-index` for Next.js-rendered listing pages and `nextjs` for routes with no Drupal node behind them.
+
+---
+
+## Site map
+
+```
+/                                    [Homepage — landing_page]
+├── /about                           [basic_page]
+├── /contact                         [Next.js + Drupal webform]
+│
+├── /products                        [dynamic-index]
+│   ├── /products/sovereign-infrastructure-platform
+│   ├── /products/liberty-headless-cms
+│   ├── /products/enterprise-search
+│   ├── /products/fortis-identity
+│   ├── /products/apex-data
+│   └── /products/vigilance-observability
+│
+├── /services                        [dynamic-index]
+│   ├── /services/private-infrastructure-engineering
+│   ├── /services/headless-cms-implementation
+│   ├── /services/enterprise-search-architecture
+│   ├── /services/zero-trust-identity-consulting
+│   ├── /services/ai-integration
+│   ├── /services/digital-modernization
+│   ├── /services/custom-software-development
+│   ├── /services/digital-asset-solutions
+│   ├── /services/defense-technology-integration
+│   └── /services/intelligence-actionable-insights
+│
+├── /solutions                       [dynamic-index]
+│   └── /solutions/{slug}            [solution — branded packages, see §4]
+│
+├── /case-studies                    [dynamic-index]
+│   └── /case-studies/{slug}         [case_study]
+│
+├── /resources                       [dynamic-index]
+│   └── /resources/{slug}            [resource — gated/downloadable]
+│
+├── /articles                        [dynamic-index — already wired]
+│   └── /articles/{slug}             [article]
+│
+├── /events                          [dynamic-index]
+│   └── /events/{slug}               [event]
+│
+├── /careers                         [dynamic-index]
+│   └── /careers/{slug}              [career]
+│
+├── /team                            [dynamic-index]
+│   └── /team/{slug}                 [person]
+│
+├── /press                           [dynamic-index — filtered Articles]
+│
+├── /legal/privacy-policy            [basic_page]
+├── /legal/terms-of-service          [basic_page]
+├── /legal/cookie-policy             [basic_page]
+├── /legal/accessibility-statement   [basic_page]
+│
+└── (system)
+    ├── /sitemap.xml                 [nextjs / drupal]
+    ├── /robots.txt                  [nextjs]
+    └── 404 / 500                    [nextjs — already exist]
+```
+
+URL convention: each node-type cluster uses its plural as the parent path (`/products/...`, `/services/...`, etc.), with the slug derived from the node title via Drupal's path-alias pattern. The `[...slug]` catch-all on the Next.js side already resolves any path back to a Drupal node — the missing piece is rendering for content types beyond `article` and `basic_page` (see §5).
+
+---
+
+## 1. Marketing & top-level pages
+
+| URL | Content type | Purpose | Status | Owner | Notes |
+|---|---|---|---|---|---|
+| `/` | landing_page | Homepage — hero, mission, status pill, CTA | **seeded** | Jeremy | Path alias `/homepage`; `system.site.page.front` set; fallback hard-coded in `ui/app/(marketing)/page.tsx` |
+| `/about` | basic_page | Company overview, mission, history | todo | Jeremy | Write before launch — no draft yet |
+| `/contact` | nextjs + webform | Contact form + inquiry email | seeded | Jeremy | Webform created by `scripts/create_contact_webform.php`; Next.js route at `app/(marketing)/contact/page.tsx` |
+
+## 2. Products
+
+Copy for all six products is drafted in [CONTENT.md §Products](CONTENT.md#products). Each needs a `product` node with `field_mission_impact`, `field_key_capabilities` (Paragraphs → Capability), and a Primary CTA per `CONTENT_TYPES_GUIDE.md §10`.
+
+| URL | Content type | Purpose | Status | Owner | Notes |
+|---|---|---|---|---|---|
+| `/products` | dynamic-index | All Products listing | todo | Jeremy | Needs Next.js route; consider grouping by deployment model |
+| `/products/sovereign-infrastructure-platform` | product | Sovereign IaC platform | **drafted** | Jeremy | Copy in CONTENT.md §1 |
+| `/products/liberty-headless-cms` | product | Headless CMS platform | **drafted** | Jeremy | Copy in CONTENT.md §2; SEO-critical (self-referential) |
+| `/products/enterprise-search` | product | Enterprise search platform | **drafted** | Jeremy | Copy in CONTENT.md §3 |
+| `/products/fortis-identity` | product | Zero-trust identity platform | **drafted** | Jeremy | Copy in CONTENT.md §4 |
+| `/products/apex-data` | product | Secure data platform | **drafted** | Jeremy | Copy in CONTENT.md §5 |
+| `/products/vigilance-observability` | product | Mission observability suite | **drafted** | Jeremy | Copy in CONTENT.md §6 |
+
+**Dependencies for all six:** Capability paragraph data must be authored (CONTENT.md has prose `Key Capabilities` bullets that need restructuring into `paragraph:capability` instances), `target_sectors` taxonomy terms must be seeded, hero imagery sourced.
+
+## 3. Services
+
+Copy for all ten services drafted in [CONTENT.md §Services](CONTENT.md#services). Each needs a `service` node — Mission Impact required (`CONTENT_TYPES_GUIDE.md §9`).
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/services` | dynamic-index | todo | Jeremy | All-services listing route |
+| `/services/private-infrastructure-engineering` | service | **drafted** | Jeremy | CONTENT.md §Services 1 |
+| `/services/headless-cms-implementation` | service | **drafted** | Jeremy | CONTENT.md §Services 2 |
+| `/services/enterprise-search-architecture` | service | **drafted** | Jeremy | CONTENT.md §Services 3 |
+| `/services/zero-trust-identity-consulting` | service | **drafted** | Jeremy | CONTENT.md §Services 4 |
+| `/services/ai-integration` | service | **drafted** | Jeremy | CONTENT.md §Services 5 |
+| `/services/digital-modernization` | service | **drafted** | Jeremy | CONTENT.md §Services 6 |
+| `/services/custom-software-development` | service | **drafted** | Jeremy | CONTENT.md §Services 7 |
+| `/services/digital-asset-solutions` | service | **drafted** | Jeremy | CONTENT.md §Services 8; check that "Cryptocurrency" framing aligns with brand voice doc when it lands |
+| `/services/defense-technology-integration` | service | **drafted** | Jeremy | CONTENT.md §Services 9 |
+| `/services/intelligence-actionable-insights` | service | **drafted** | Jeremy | CONTENT.md §Services 10 |
+
+**Cross-linking:** every Service should set `field_related_products` to the supporting Product nodes, per `CONTENT_TYPES_GUIDE.md §9`.
+
+## 4. Solutions (branded packages)
+
+The `solution` content type is **fully implemented** in config (33+ fields including `field_mission_impact`, `field_key_capabilities`, `field_outcomes`) but undocumented in `CONTENT_TYPES_GUIDE.md` (see §6 below). No copy drafted yet.
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/solutions` | dynamic-index | todo | Jeremy | Listing route |
+| `/solutions/{slug}` | solution | todo | Jeremy | First package(s) TBD — define naming + bundling before drafting copy |
+
+## 5. Case Studies
+
+Type defined, no copy drafted. Real client engagements only (HHS/CMS via Scope Infotec is the principal candidate per project memory — verify what's shareable under contract).
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/case-studies` | dynamic-index | todo | Jeremy | Listing route |
+| `/case-studies/{slug}` | case_study | todo | Jeremy | Follow Challenge → Solution → Results → Metrics structure (CONTENT_TYPES_GUIDE.md §4) |
+
+## 6. Resources (gated / downloadable)
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/resources` | dynamic-index | todo | Jeremy | Listing with filters by `resource_type` |
+| `/resources/{slug}` | resource | todo | Jeremy | Whitepapers, eBooks, checklists; gated form mechanism TBD |
+
+## 7. Articles & Press
+
+`/articles` is the only listing route currently wired in Next.js (`app/(app)/articles/page.tsx` — fetches first 10 via GraphQL). Article detail pages render via the catch-all and are the only working node-render path for non-landing content.
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/articles` | dynamic-index | **wired** | Jeremy | Lists 10 most recent articles |
+| `/articles/{slug}` | article | **wired** | Jeremy | Catch-all already handles `NodeArticle` |
+| `/press` | dynamic-index | todo | Jeremy | Filtered view of Articles where `field_news_category = "Press Release"` |
+| (article content) | article | todo | Jeremy | No actual articles authored yet |
+
+## 8. Events
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/events` | dynamic-index | todo | Jeremy | Default filter: upcoming first |
+| `/events/{slug}` | event | todo | Jeremy | Speaker engagements / webinars; honor `field_event_date` timezone |
+
+## 9. Careers
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/careers` | dynamic-index | todo | Jeremy | Job board listing |
+| `/careers/{slug}` | career | todo | Jeremy | Department / seniority / location filters; `field_apply_url` for external ATS |
+
+W&L is not actively hiring (per memory: business-continuity-only access patterns), so this can be deferred or render an empty-state until needed.
+
+## 10. Team / People
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/team` | dynamic-index | todo | Jeremy | Filter by `field_show_in_directory = true` |
+| `/team/{slug}` | person | todo | Jeremy | Jeremy's own bio is the first to draft |
+
+## 11. Legal & Compliance
+
+All `basic_page`. Sensitive — Jeremy should review/draft personally given defense/government audience expectations.
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/legal/privacy-policy` | basic_page | todo | Jeremy | Required pre-launch; coordinate with brand-voice scope |
+| `/legal/terms-of-service` | basic_page | todo | Jeremy | Required pre-launch |
+| `/legal/cookie-policy` | basic_page | todo | Jeremy | Required pre-launch if any analytics ship |
+| `/legal/accessibility-statement` | basic_page | todo | Jeremy | WCAG 2.1 AA commitment statement |
+
+## 12. System routes (Next.js, no Drupal node)
+
+| URL | Type | Status | Notes |
+|---|---|---|---|
+| `/404` | nextjs | **wired** | `app/not-found.tsx` |
+| `/_error` | nextjs | **wired** | `app/error.tsx` |
+| `/sitemap.xml` | nextjs | todo | Generate from JSON:API/GraphQL node enumeration |
+| `/robots.txt` | nextjs | todo | Public site rules + noindex for `field_noindex = true` nodes |
+| `/api/contact` | nextjs | **wired** | Contact form submission proxy |
+| `/api/revalidate` | nextjs | **wired** | Drupal → Next on-demand ISR |
+| `/api/draft` · `/api/disable-draft` | nextjs | **wired** | Preview mode |
+| `/api/status` | nextjs | **wired** | Healthcheck |
+
+---
+
+## Content type ↔ status rollup
+
+| Content type | Total pages planned | drafted | seeded | wired | todo |
+|---|---:|---:|---:|---:|---:|
+| product | 6 | 6 | 0 | 0 | 0 (all need seeding) |
+| service | 10 | 10 | 0 | 0 | 0 (all need seeding) |
+| solution | TBD | 0 | 0 | 0 | TBD |
+| article | n (open-ended) | 0 | 0 | listing+detail wired | content todo |
+| basic_page | ~5 (About, 4 legal) | 0 | 0 | detail wired | 5 |
+| landing_page | 1 (Homepage) | 1 | 1 | 1 | 0 |
+| case_study | TBD | 0 | 0 | 0 | TBD |
+| event | n (open-ended) | 0 | 0 | 0 | n |
+| career | n (deferred) | 0 | 0 | 0 | n |
+| person | ~team size | 0 | 0 | 0 | n |
+| resource | TBD | 0 | 0 | 0 | TBD |
+
+---
+
+## Next.js route mapping
+
+What's actually wired in `ui/app/` today:
+
+| Route | File | Handles |
+|---|---|---|
+| `/` | `app/(marketing)/page.tsx` | `NodeLandingPage` at path `/homepage` + hardcoded fallback paragraphs |
+| `/contact` | `app/(marketing)/contact/page.tsx` | Contact form (Next-rendered, posts to `/api/contact`) |
+| `/articles` | `app/(app)/articles/page.tsx` | Article listing via GraphQL `nodeArticles(first: 10)` |
+| `/{...any-slug}` | `app/(app)/[...slug]/page.tsx` | GraphQL `route(path:$path)` → renders `NodeArticle` or `NodePage` only |
+
+**Implication:** Of the 11 content types in config, only `article`, `basic_page` (NodePage), and the homepage `landing_page` have working frontend renderers. Before Product / Service / Solution / Case Study / Resource / Event / Career / Person pages can go live, the `[...slug]/page.tsx` switch needs new branches and matching components in `ui/components/drupal/`, plus GraphQL fields exposed for each typename.
+
+This is a coordinated webcms ↔ ui change — track it as a launch dependency.
+
+---
+
+## §4 resolution — `solution` content type drift
+
+**Decision: keep the `solution` content type. Document it. Do not retire.**
+
+**Evidence:**
+
+- `config/sync/node.type.solution.yml` exists with a clear, intentional description: *"Branded, deployable solution packages bridging Products and Services. Similar to GDIT Digital Accelerators or Palantir Offerings."*
+- 33 fields are attached, including the same Mission-Impact-first set used by Products and Services (`field_mission_impact`, `field_key_capabilities`, `field_outcomes`, `field_primary_cta`, `field_target_sectors`, `field_industries`, `field_personas`, etc.) plus differentiators like `field_outcomes` (Outcome paragraphs) and `field_primary_capability`.
+- `solution` is included in `workflows.workflow.editorial.yml` alongside the other ten node types.
+- Form display, view display, and base-field overrides are all present in config — this is a fully implemented type, not a stub.
+- A distinct **`solutions` taxonomy** also exists and is referenced by every other content type via `field_solutions`. The two are complementary: the **content type** holds the branded package; the **taxonomy** tags supporting content with the solution it relates to.
+
+**Why it's not a duplicate of Product or Service:**
+
+- Product = a self-deployable platform we license/install (the things — Sovereign Infrastructure, Fortis, Apex, etc.).
+- Service = a consulting/managed engagement (the doing — implementation, advisory, ops).
+- Solution = a packaged, branded combination of one or more Products + Services applied to a specific outcome or sector (the offering — e.g., "Sovereign Mission Edge for Tactical Operations" bundling Apex + Vigilance + integration services).
+
+**Required follow-up doc work** (not in this inventory's scope — flag for next pass):
+
+1. Add a §11 entry to `docs/CONTENT_TYPES_GUIDE.md` describing the Solution content type and when to use it vs. Product/Service.
+2. Update `docs/CONTENT_TYPES_GUIDE.md` Overview table to read "11 content types" (currently says 10).
+3. Define the first 2–3 Solution packages (naming + which Products/Services they bundle) before drafting copy.
+
+---
+
+## Gaps & follow-ups (punch-list)
+
+**Documentation gaps**
+
+1. `CONTENT_TYPES_GUIDE.md` doesn't document the `solution` content type (see §4 above).
+2. No brand voice / style guide doc yet (separate workstream in flight).
+3. CONTENT.md only covers Products + Services — no drafts for About, Legal, Case Studies, Resources, team bios.
+
+**Seeding / config gaps**
+
+4. Taxonomy term population unverified — `target_sectors`, `personas`, `industries`, `compliance` vocabularies are defined but term counts not confirmed. Run `ddev drush ev "print_r(\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['vid' => 'target_sectors']));"` (or similar) before authoring.
+5. No seed scripts exist for any non-homepage node — Products/Services will be authored either via admin UI or via a new `scripts/seed_products.php` + `scripts/seed_services.php`. Decision needed.
+6. Capability paragraphs need to be authored alongside each Product/Service — CONTENT.md has them as Markdown bullets and needs restructuring.
+
+**Frontend wiring gaps**
+
+7. `app/(app)/[...slug]/page.tsx` only resolves `NodeArticle` and `NodePage`. Needs branches for `NodeProduct`, `NodeService`, `NodeSolution`, `NodeCaseStudy`, `NodeResource`, `NodeEvent`, `NodeCareer`, `NodePerson`.
+8. No index routes exist for `/products`, `/services`, `/solutions`, `/case-studies`, `/resources`, `/events`, `/careers`, `/team`, `/press`. Each needs a Next.js page + a GraphQL collection query.
+9. No global navigation component published — header/footer link structure should follow this sitemap.
+10. `/sitemap.xml` and `/robots.txt` generators not implemented.
+
+**Other**
+
+11. Search results page — `enterprise_search` is one of the Products but no on-site search UX is planned in this inventory. Decide whether to ship a `/search` route at launch.
+12. i18n: site is multilingual (EN/ES/RU per CLAUDE.md) — every URL in this inventory needs a language-prefix plan (`/es/...`, `/ru/...`) before launch. Out of scope here; flag for IA v2.
+
+---
+
+## Working-doc protocol
+
+Update this file when:
+- A page moves between status states (todo → drafted → seeded → wired).
+- A new page is added to the plan.
+- A page is killed off (mark it explicitly rather than deleting — useful for audit).
+
+Keep the rollup table in sync. When the Solution packages are defined, replace `TBD` rows with named entries.

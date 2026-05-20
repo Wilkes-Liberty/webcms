@@ -13,6 +13,7 @@ Documentation for the Wilkes Liberty headless Drupal 11 CMS.
 | [FIELD_FORMATS_GUIDE.md](FIELD_FORMATS_GUIDE.md) | Text format options and AI-assisted features |
 | [PARAGRAPHS.md](PARAGRAPHS.md) | Component/paragraph types for Landing Pages |
 | [CONTENT.md](CONTENT.md) | Editorial workflows and content management |
+| [PAGE_INVENTORY.md](PAGE_INVENTORY.md) | Working IA punch-list — every public page, status, and owner |
 
 ## For Developers
 
