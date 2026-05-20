@@ -246,6 +246,59 @@ function wl_setup_taxonomy(): void {
         ['name' => 'Updates'],
       ],
     ],
+
+    'platforms' => [
+      'label' => 'Platforms',
+      'description' => 'W&L Product brand names (sovereign infrastructure stack).',
+      'terms' => [
+        ['name' => 'Liberty',                  'weight' => 10],
+        ['name' => 'Fortis',                   'weight' => 20],
+        ['name' => 'Apex',                     'weight' => 30],
+        ['name' => 'Vigilance',                'weight' => 40],
+        ['name' => 'Sovereign Infrastructure', 'weight' => 50],
+        ['name' => 'Enterprise Search',        'weight' => 60],
+      ],
+    ],
+
+    'persona' => [
+      'label' => 'Persona',
+      'description' => 'Primary buyer personas for federal / defense audiences.',
+      'terms' => [
+        ['name' => 'Mission Owner',                                'weight' => 10],
+        ['name' => 'Agency CIO / IT Director',                     'weight' => 20],
+        ['name' => 'Defense Contractor IT / Security Lead',        'weight' => 30],
+        ['name' => 'Federal Contracting Officer / Procurement',    'weight' => 40],
+      ],
+    ],
+
+    'target_sectors' => [
+      'label' => 'Target Sectors',
+      'description' => 'Federal / public-sector verticals targeted by W&L offerings.',
+      'terms' => [
+        ['name' => 'Federal Civilian',       'weight' => 10],
+        ['name' => 'Department of Defense',  'weight' => 20],
+        ['name' => 'Intelligence Community', 'weight' => 30],
+        ['name' => 'State and Local',        'weight' => 40],
+        ['name' => 'Federal Health',         'weight' => 50],
+        ['name' => 'Federal Financial',      'weight' => 60],
+      ],
+    ],
+
+    'compliance' => [
+      'label' => 'Compliance',
+      'description' => 'Compliance frameworks and accreditations referenced by products / services.',
+      'terms' => [
+        ['name' => 'FedRAMP Moderate', 'weight' => 10],
+        ['name' => 'FedRAMP High',     'weight' => 20],
+        ['name' => 'FISMA',            'weight' => 30],
+        ['name' => 'NIST 800-53',      'weight' => 40],
+        ['name' => 'NIST 800-171',     'weight' => 50],
+        ['name' => 'CMMC',             'weight' => 60],
+        ['name' => 'ITAR',             'weight' => 70],
+        ['name' => 'HIPAA',            'weight' => 80],
+        ['name' => 'SOC 2',            'weight' => 90],
+      ],
+    ],
   ];
 
   // Create vocabularies (skip 'tags' as it already exists in this site).
