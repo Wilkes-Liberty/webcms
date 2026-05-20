@@ -76,6 +76,41 @@ entity_config:
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
+    career:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    case_study:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    event:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    product:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    resource:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    service:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    solution:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
   taxonomy_term:
     department:
       enabled: true
@@ -103,6 +138,56 @@ entity_config:
       edges_enabled: true
       routes_enabled: true
     topics:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    persona:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    target_sectors:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    resource_type:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    event_type:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    seniority:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    compliance:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    platforms:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    capabilities:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    sections:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    categories:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
@@ -156,6 +241,9 @@ entity_config:
     use_case:
       enabled: true
       query_load_enabled: true
+    outcome:
+      enabled: true
+      query_load_enabled: true
 field_config:
   block_content:
     basic:
@@ -200,6 +288,225 @@ field_config:
       field_show_in_directory:
         enabled: true
       field_website:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_social_image:
+        enabled: true
+    career:
+      body:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_breadcrumb_label:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+      field_apply_url:
+        enabled: true
+      field_job_location:
+        enabled: true
+      field_job_type:
+        enabled: true
+      field_department:
+        enabled: true
+      field_seniority:
+        enabled: true
+      field_remote_policy:
+        enabled: true
+      field_clearance_level:
+        enabled: true
+      field_veteran_friendly:
+        enabled: true
+    case_study:
+      body:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_breadcrumb_label:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+      field_industries:
+        enabled: true
+      field_target_sectors:
+        enabled: true
+      field_outcomes:
+        enabled: true
+    event:
+      body:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_breadcrumb_label:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+      field_industries:
+        enabled: true
+      field_personas:
+        enabled: true
+      field_event_date:
+        enabled: true
+      field_event_type:
+        enabled: true
+    product:
+      body:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_breadcrumb_label:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+      field_industries:
+        enabled: true
+      field_personas:
+        enabled: true
+      field_mission_impact:
+        enabled: true
+      field_defense_relevance:
+        enabled: true
+      field_sovereignty_features:
+        enabled: true
+      field_deployment_options:
+        enabled: true
+      field_target_sectors:
+        enabled: true
+      field_key_capabilities:
+        enabled: true
+      field_platform:
+        enabled: true
+      field_compliance:
+        enabled: true
+    resource:
+      body:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_breadcrumb_label:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+      field_industries:
+        enabled: true
+      field_personas:
+        enabled: true
+      field_resource_type:
+        enabled: true
+    service:
+      body:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_breadcrumb_label:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+      field_industries:
+        enabled: true
+      field_personas:
+        enabled: true
+      field_mission_impact:
+        enabled: true
+      field_defense_relevance:
+        enabled: true
+      field_key_capabilities:
+        enabled: true
+      field_capabilities:
+        enabled: true
+    solution:
+      body:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_breadcrumb_label:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+      field_industries:
+        enabled: true
+      field_personas:
+        enabled: true
+      field_mission_impact:
+        enabled: true
+      field_key_capabilities:
+        enabled: true
+      field_outcomes:
         enabled: true
     landing_page:
       body:
@@ -318,6 +625,13 @@ field_config:
       field_solution:
         enabled: true
       field_results:
+        enabled: true
+    outcome:
+      field_metric_value:
+        enabled: true
+      field_metric_label:
+        enabled: true
+      field_mission_benefit:
         enabled: true
 settings:
   expose_entity_ids: false
