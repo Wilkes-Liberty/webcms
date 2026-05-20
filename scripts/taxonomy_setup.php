@@ -35,22 +35,10 @@ function wl_ensure_vocabulary(string $vid, string $label, string $description = 
     print "[+] Created vocabulary: {$vid} ({$label})\n";
   }
   else {
-    $changed = false;
-    if ($vocab->label() !== $label) {
-      $vocab->set('name', $label);
-      $changed = true;
-    }
-    if ((string) $vocab->get('description') !== (string) $description) {
-      $vocab->set('description', $description);
-      $changed = true;
-    }
-    if ($changed) {
-      $vocab->save();
-      print "[~] Updated vocabulary: {$vid}\n";
-    }
-    else {
-      print "[=] Vocabulary exists: {$vid}\n";
-    }
+    // For existing vocabularies, leave label / description alone:
+    // those are config-managed in config/sync and the source of truth
+    // is the YAML, not this seed script.
+    print "[=] Vocabulary exists: {$vid}\n";
   }
   return $vocab;
 }

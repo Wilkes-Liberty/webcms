@@ -388,5 +388,4 @@ text_files:
   accents: ''
   synonyms: |
     drupal, durpal
-  nouns: |
-
+  nouns: ''
