@@ -20,17 +20,37 @@
  *     field_personas) — only set when matching terms already exist in the vocab.
  *     See docs/TAXONOMY_AUDIT.md for vocabularies that need seeding first.
  *
- * Idempotent — safe to re-run. Re-running:
- *   - Skips nodes that already exist (matched by path alias). Will NOT overwrite
- *     editorial changes made through the admin UI.
- *   - Re-uses existing capability paragraphs attached to the node (does not
- *     duplicate them).
+ * Idempotent — safe to re-run. Re-running matches existing nodes by path alias
+ * and, by default, skips them. Will NOT overwrite editorial changes made
+ * through the admin UI.
+ *
+ * Modes:
+ *   (default)   skip-if-exists. Create missing nodes; leave existing ones alone.
+ *   --dry-run   report what would happen without writing anything to the DB.
+ *               Overrides --update.
+ *   --update    when a node already exists, overwrite its CONTENT.md-sourced
+ *               fields (title, body, field_summary, field_seo_title,
+ *               field_meta_description, field_mission_impact,
+ *               field_key_capabilities) with the latest values from
+ *               docs/CONTENT.md. Old capability paragraphs are deleted and
+ *               re-created. Taxonomy refs are NOT touched in update mode so
+ *               editor-applied classification is preserved. Emits a warning
+ *               when the existing node's `changed` timestamp drifted from its
+ *               `created` timestamp — that node has been edited since seed and
+ *               --update will clobber those edits.
  *
  * Run:
  *   ddev drush scr scripts/seed_products_services.php
+ *   ddev drush scr scripts/seed_products_services.php -- --dry-run
+ *   ddev drush scr scripts/seed_products_services.php -- --update
+ *   ddev drush scr scripts/seed_products_services.php -- --dry-run --update
+ *
+ * The `--` separator is required so Drush passes the flags through to the
+ * script as $extra instead of trying to parse them itself.
  *
  * Source of truth for copy: docs/CONTENT.md. Do not edit copy in this script —
- * edit CONTENT.md and re-run, or edit the nodes directly through the admin UI.
+ * edit CONTENT.md and re-run with --update, or edit the nodes directly through
+ * the admin UI.
  */
 
 use Drupal\node\Entity\Node;
@@ -52,6 +72,26 @@ const WL_TEXT_FORMAT_INLINE = 'headless_safe';
 
 /** Default moderation state for seeded content. Change to 'draft' if editorial review is required before publish. */
 const WL_DEFAULT_MODERATION_STATE = 'published';
+
+/**
+ * Tolerance in seconds when deciding whether a node has been edited since
+ * seed. Node::save() can update `changed` a moment after `created` even on a
+ * fresh entity, so we allow a small window before flagging the node as edited.
+ */
+const WL_EDIT_DRIFT_SECONDS = 5;
+
+// ---------------------------------------------------------------------------
+// CLI flag parsing
+// ---------------------------------------------------------------------------
+//
+// Drush passes positional script arguments to the included script in $extra
+// when invoked as `drush scr <script> -- --dry-run`. Fall back to scanning
+// $_SERVER['argv'] for the same flags so the script also works when run via
+// other PHP entry points.
+
+$wl_argv = isset($extra) && is_array($extra) ? $extra : array_slice($_SERVER['argv'] ?? [], 1);
+$WL_DRY_RUN = in_array('--dry-run', $wl_argv, true);
+$WL_UPDATE  = in_array('--update', $wl_argv, true);
 
 // ---------------------------------------------------------------------------
 // Markdown → HTML (tiny purpose-built converter)
@@ -370,33 +410,37 @@ function wl_taxonomy_suggestions(string $bundle, string $title): array {
 // Main: seed one entry
 // ---------------------------------------------------------------------------
 
-function wl_seed_entry(string $bundle, array $entry): array {
-  $title = $entry['title'];
-  $slug = wl_slug($title);
-  $path_prefix = $bundle === 'product' ? '/products' : '/services';
-  $alias = $path_prefix . '/' . $slug;
+/**
+ * True when the node's `changed` timestamp has drifted from `created` by more
+ * than WL_EDIT_DRIFT_SECONDS — i.e. it has been edited since the seed run.
+ */
+function wl_node_was_edited(Node $node): bool {
+  $created = (int) $node->getCreatedTime();
+  $changed = (int) $node->getChangedTime();
+  return ($changed - $created) > WL_EDIT_DRIFT_SECONDS;
+}
 
-  $existing = wl_find_node_by_alias($alias);
-  if ($existing) {
-    return ['status' => 'skipped', 'reason' => 'exists', 'nid' => (int) $existing->id(), 'alias' => $alias];
-  }
-
-  // Body = narrative paragraphs joined as HTML.
+/**
+ * Build the CONTENT.md-sourced field values for a node. Shared between create
+ * and update paths so both see the same parsing of CONTENT.md.
+ *
+ * Capability paragraphs are created up front and returned by reference so the
+ * caller can attach them to the node. Taxonomy is returned separately — it's
+ * only applied on create (update mode preserves editor-applied taxonomy).
+ */
+function wl_build_node_values(string $bundle, array $entry, string $alias): array {
   $body_md = implode("\n\n", $entry['body_paragraphs']);
   $body_html = wl_md_to_html($body_md);
 
-  // Capability paragraphs.
   $capability_refs = [];
   foreach ($entry['capabilities'] as $cap_title) {
     $p = wl_build_capability_paragraph($cap_title);
     $capability_refs[] = ['target_id' => $p->id(), 'target_revision_id' => $p->getRevisionId()];
   }
 
-  // Taxonomy refs (best-effort — missing terms are skipped silently).
-  $taxo = wl_taxonomy_suggestions($bundle, $title);
   $values = [
     'type' => $bundle,
-    'title' => $title,
+    'title' => $entry['title'],
     'status' => 1,
     'moderation_state' => WL_DEFAULT_MODERATION_STATE,
     'path' => ['alias' => $alias],
@@ -417,31 +461,129 @@ function wl_seed_entry(string $bundle, array $entry): array {
     ];
   }
 
-  // Optional taxonomy refs.
+  $taxo = wl_taxonomy_suggestions($bundle, $entry['title']);
+  $taxo_values = [];
   if ($taxo['platform']) {
     $tid = wl_term_id_by_name('platforms', $taxo['platform']);
     if ($tid !== null) {
-      $values['field_platform'] = [['target_id' => $tid]];
+      $taxo_values['field_platform'] = [['target_id' => $tid]];
     }
   }
   if ($taxo['target_sectors']) {
     $refs = wl_term_refs('target_sectors', $taxo['target_sectors']);
     if ($refs) {
-      $values['field_target_sectors'] = $refs;
+      $taxo_values['field_target_sectors'] = $refs;
     }
   }
   if ($taxo['personas']) {
     $refs = wl_term_refs('persona', $taxo['personas']);
     if ($refs) {
-      $values['field_personas'] = $refs;
+      $taxo_values['field_personas'] = $refs;
     }
   }
   if (!empty($taxo['solutions'])) {
     $refs = wl_term_refs('solutions', $taxo['solutions']);
     if ($refs) {
-      $values['field_solutions'] = $refs;
+      $taxo_values['field_solutions'] = $refs;
     }
   }
+
+  return [
+    'values' => $values,
+    'capability_refs' => $capability_refs,
+    'taxonomy' => $taxo_values,
+  ];
+}
+
+/**
+ * Update an existing node with the latest CONTENT.md values. Replaces the
+ * CONTENT.md-sourced fields and the capability paragraphs; leaves taxonomy
+ * fields untouched so editor classifications survive. Old capability paragraph
+ * entities are deleted to avoid orphans.
+ */
+function wl_update_existing_node(Node $node, array $built, string $alias): array {
+  // Collect old capability paragraphs so we can delete them after the node
+  // save commits the new references.
+  $old_caps = [];
+  if ($node->hasField('field_key_capabilities')) {
+    foreach ($node->get('field_key_capabilities')->referencedEntities() as $p) {
+      $old_caps[] = $p;
+    }
+  }
+
+  $values = $built['values'];
+  // Don't reset type or path on update — type is immutable, and resetting the
+  // alias would create a duplicate path_alias row.
+  unset($values['type'], $values['path'], $values['status'], $values['moderation_state']);
+
+  foreach ($values as $field => $value) {
+    if ($node->hasField($field)) {
+      $node->set($field, $value);
+    }
+  }
+
+  $node->save();
+
+  foreach ($old_caps as $p) {
+    try {
+      $p->delete();
+    }
+    catch (\Throwable $e) {
+      // Best-effort cleanup — leave orphan in place rather than failing the run.
+    }
+  }
+
+  return [
+    'status' => 'updated',
+    'nid' => (int) $node->id(),
+    'alias' => $alias,
+    'capabilities' => count($built['capability_refs']),
+  ];
+}
+
+function wl_seed_entry(string $bundle, array $entry, bool $dry_run, bool $update): array {
+  $title = $entry['title'];
+  $slug = wl_slug($title);
+  $path_prefix = $bundle === 'product' ? '/products' : '/services';
+  $alias = $path_prefix . '/' . $slug;
+
+  $existing = wl_find_node_by_alias($alias);
+
+  if ($existing) {
+    $edited = wl_node_was_edited($existing);
+
+    if (!$update) {
+      return [
+        'status' => $dry_run ? 'would-skip' : 'skipped',
+        'reason' => 'exists',
+        'nid' => (int) $existing->id(),
+        'alias' => $alias,
+        'edited_since_seed' => $edited,
+      ];
+    }
+
+    if ($dry_run) {
+      return [
+        'status' => 'would-update',
+        'nid' => (int) $existing->id(),
+        'alias' => $alias,
+        'edited_since_seed' => $edited,
+      ];
+    }
+
+    $built = wl_build_node_values($bundle, $entry, $alias);
+    $result = wl_update_existing_node($existing, $built, $alias);
+    $result['edited_since_seed'] = $edited;
+    return $result;
+  }
+
+  // No existing node — create or report would-create.
+  if ($dry_run) {
+    return ['status' => 'would-create', 'alias' => $alias];
+  }
+
+  $built = wl_build_node_values($bundle, $entry, $alias);
+  $values = $built['values'] + $built['taxonomy'];
 
   $node = Node::create($values);
   $node->save();
@@ -450,13 +592,8 @@ function wl_seed_entry(string $bundle, array $entry): array {
     'status' => 'created',
     'nid' => (int) $node->id(),
     'alias' => $alias,
-    'capabilities' => count($capability_refs),
-    'taxonomy_applied' => array_keys(array_filter([
-      'platform' => isset($values['field_platform']),
-      'target_sectors' => isset($values['field_target_sectors']),
-      'personas' => isset($values['field_personas']),
-      'solutions' => isset($values['field_solutions']),
-    ])),
+    'capabilities' => count($built['capability_refs']),
+    'taxonomy_applied' => array_keys($built['taxonomy']),
   ];
 }
 
@@ -464,43 +601,103 @@ function wl_seed_entry(string $bundle, array $entry): array {
 // Run
 // ---------------------------------------------------------------------------
 
-echo "=== Seeding Products + Services from " . WL_CONTENT_MD_PATH . " ===\n\n";
+$mode_label = $WL_DRY_RUN
+  ? ($WL_UPDATE ? 'DRY-RUN + UPDATE (no DB writes)' : 'DRY-RUN (no DB writes)')
+  : ($WL_UPDATE ? 'UPDATE (existing nodes will be overwritten)' : 'SKIP-IF-EXISTS (default)');
+
+echo "=== Seeding Products + Services from " . WL_CONTENT_MD_PATH . " ===\n";
+echo "Mode: {$mode_label}\n\n";
 
 $parsed = wl_parse_content_md(WL_CONTENT_MD_PATH);
 
-$summary = ['product' => ['created' => 0, 'skipped' => 0], 'service' => ['created' => 0, 'skipped' => 0]];
+$status_keys = ['created', 'skipped', 'updated', 'would-create', 'would-skip', 'would-update'];
+$summary = [
+  'product' => array_fill_keys($status_keys, 0),
+  'service' => array_fill_keys($status_keys, 0),
+];
+$warnings = [];
+
+$render = function (string $bundle, array $entry, array $r) use (&$warnings): void {
+  switch ($r['status']) {
+    case 'created':
+      $taxo = $r['taxonomy_applied'] ? ' [taxonomy: ' . implode(',', $r['taxonomy_applied']) . ']' : '';
+      echo sprintf("  [+] %s  nid=%d  alias=%s  capabilities=%d%s\n",
+        $entry['title'], $r['nid'], $r['alias'], $r['capabilities'], $taxo);
+      break;
+    case 'updated':
+      $note = !empty($r['edited_since_seed']) ? ' [WARN: editor changes overwritten]' : '';
+      echo sprintf("  [~] %s  nid=%d  alias=%s  capabilities=%d%s\n",
+        $entry['title'], $r['nid'], $r['alias'], $r['capabilities'], $note);
+      if (!empty($r['edited_since_seed'])) {
+        $warnings[] = sprintf('Updated %s node "%s" (nid=%d) had been edited since seed — those edits are now overwritten.',
+          $bundle, $entry['title'], $r['nid']);
+      }
+      break;
+    case 'skipped':
+      $note = !empty($r['edited_since_seed']) ? ' [edited since seed]' : '';
+      echo sprintf("  [=] %s  (exists, nid=%d, alias=%s) — skipped%s\n",
+        $entry['title'], $r['nid'], $r['alias'], $note);
+      break;
+    case 'would-create':
+      echo sprintf("  [+?] %s  alias=%s — WOULD CREATE\n", $entry['title'], $r['alias']);
+      break;
+    case 'would-update':
+      $note = !empty($r['edited_since_seed']) ? ' [WARN: would overwrite editor changes]' : '';
+      echo sprintf("  [~?] %s  nid=%d  alias=%s — WOULD UPDATE%s\n",
+        $entry['title'], $r['nid'], $r['alias'], $note);
+      if (!empty($r['edited_since_seed'])) {
+        $warnings[] = sprintf('WOULD overwrite editor changes on %s node "%s" (nid=%d) if --update were re-run without --dry-run.',
+          $bundle, $entry['title'], $r['nid']);
+      }
+      break;
+    case 'would-skip':
+      $note = !empty($r['edited_since_seed']) ? ' [edited since seed]' : '';
+      echo sprintf("  [=?] %s  (exists, nid=%d, alias=%s) — WOULD SKIP%s\n",
+        $entry['title'], $r['nid'], $r['alias'], $note);
+      break;
+    default:
+      echo sprintf("  [?] %s  status=%s\n", $entry['title'], $r['status']);
+  }
+};
 
 echo "--- Products ---\n";
 foreach ($parsed['products'] as $entry) {
-  $r = wl_seed_entry('product', $entry);
+  $r = wl_seed_entry('product', $entry, $WL_DRY_RUN, $WL_UPDATE);
   $summary['product'][$r['status']]++;
-  if ($r['status'] === 'created') {
-    $taxo = $r['taxonomy_applied'] ? ' [taxonomy: ' . implode(',', $r['taxonomy_applied']) . ']' : '';
-    echo sprintf("  [+] %s  nid=%d  alias=%s  capabilities=%d%s\n",
-      $entry['title'], $r['nid'], $r['alias'], $r['capabilities'], $taxo);
-  } else {
-    echo sprintf("  [=] %s  (exists, nid=%d, alias=%s) — skipped\n",
-      $entry['title'], $r['nid'], $r['alias']);
-  }
+  $render('product', $entry, $r);
 }
 
 echo "\n--- Services ---\n";
 foreach ($parsed['services'] as $entry) {
-  $r = wl_seed_entry('service', $entry);
+  $r = wl_seed_entry('service', $entry, $WL_DRY_RUN, $WL_UPDATE);
   $summary['service'][$r['status']]++;
-  if ($r['status'] === 'created') {
-    $taxo = $r['taxonomy_applied'] ? ' [taxonomy: ' . implode(',', $r['taxonomy_applied']) . ']' : '';
-    echo sprintf("  [+] %s  nid=%d  alias=%s  capabilities=%d%s\n",
-      $entry['title'], $r['nid'], $r['alias'], $r['capabilities'], $taxo);
-  } else {
-    echo sprintf("  [=] %s  (exists, nid=%d, alias=%s) — skipped\n",
-      $entry['title'], $r['nid'], $r['alias']);
-  }
+  $render('service', $entry, $r);
 }
 
 echo "\n=== Summary ===\n";
-echo sprintf("Products:  created=%d  skipped=%d\n", $summary['product']['created'], $summary['product']['skipped']);
-echo sprintf("Services:  created=%d  skipped=%d\n", $summary['service']['created'], $summary['service']['skipped']);
+$fmt = function (string $label, array $counts): string {
+  $parts = [];
+  foreach ($counts as $k => $v) {
+    if ($v > 0) {
+      $parts[] = "{$k}={$v}";
+    }
+  }
+  return sprintf("%-10s %s\n", $label . ':', $parts ? implode('  ', $parts) : '(none)');
+};
+echo $fmt('Products', $summary['product']);
+echo $fmt('Services', $summary['service']);
 
-echo "\nReview at /admin/content. Capability paragraphs were seeded with title-as-description placeholders; editors should expand field_capability_description and add field_mission_benefit.\n";
-echo "Taxonomy refs were only applied where matching terms exist. See docs/TAXONOMY_AUDIT.md to seed missing vocabularies and re-run to enrich classification.\n";
+if ($warnings) {
+  echo "\n=== Warnings ===\n";
+  foreach ($warnings as $w) {
+    echo "  ! {$w}\n";
+  }
+}
+
+if ($WL_DRY_RUN) {
+  echo "\nDry run: no nodes were created, updated, or deleted. Re-run without --dry-run to apply.\n";
+}
+else {
+  echo "\nReview at /admin/content. Capability paragraphs were seeded with title-as-description placeholders; editors should expand field_capability_description and add field_mission_benefit.\n";
+  echo "Taxonomy refs were only applied on create where matching terms exist (preserved as-is in update mode). See docs/TAXONOMY_AUDIT.md to seed missing vocabularies.\n";
+}
