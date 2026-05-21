@@ -352,9 +352,9 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-  field_personas:
+  field_parent:
     type: entity_reference_autocomplete
-    weight: 208
+    weight: 242
     region: content
     settings:
       match_operator: CONTAINS
@@ -362,9 +362,9 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_parent:
+  field_personas:
     type: entity_reference_autocomplete
-    weight: 242
+    weight: 208
     region: content
     settings:
       match_operator: CONTAINS
