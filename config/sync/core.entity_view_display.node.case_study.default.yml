@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.case_study.field_noindex
     - field.field.node.case_study.field_outcomes
     - field.field.node.case_study.field_parent
+    - field.field.node.case_study.field_personas
     - field.field.node.case_study.field_platform
     - field.field.node.case_study.field_preview_token
     - field.field.node.case_study.field_primary_capability
@@ -180,6 +181,7 @@ hidden:
   field_noindex: true
   field_outcomes: true
   field_parent: true
+  field_personas: true
   field_platform: true
   field_preview_token: true
   field_read_time: true

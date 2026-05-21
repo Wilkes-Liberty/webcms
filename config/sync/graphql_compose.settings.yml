@@ -63,9 +63,11 @@ entity_config:
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
-    page:
+    basic_page:
       enabled: true
       query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
     person:
       enabled: true
       query_load_enabled: true
@@ -270,6 +272,43 @@ field_config:
         enabled: true
       field_tags:
         enabled: true
+      field_summary:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_breadcrumb_label:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+    basic_page:
+      body:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_meta_description:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_breadcrumb_label:
+        enabled: true
+      field_hero_image:
+        enabled: true
+      field_social_image:
+        enabled: true
+      field_primary_cta:
+        enabled: true
+      field_secondary_cta:
+        enabled: true
+      field_noindex:
+        enabled: true
     person:
       field_bio:
         enabled: true
@@ -352,6 +391,8 @@ field_config:
       field_secondary_cta:
         enabled: true
       field_industries:
+        enabled: true
+      field_personas:
         enabled: true
       field_target_sectors:
         enabled: true
