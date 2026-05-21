@@ -1,0 +1,45 @@
+name: Sync branches from master
+
+# Keeps the three-branch / two-deploy model self-maintaining (see the
+# infra repo's docs/ENVIRONMENTS.md). On every push to master:
+#   - Fast-forward master -> staging (auto-triggers infra's
+#     deploy-staging.yml on its own staging push, via the staging
+#     branches across all three repos staying in lockstep).
+#   - Fast-forward master -> development (no deploy; just keeps the WIP
+#     integration baseline current).
+#
+# If branch protection rules block the default GITHUB_TOKEN from pushing,
+# replace the token below with a PAT secret that has bypass on staging
+# and development.
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-branches
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Push master to staging (fast-forward)
+        run: git push origin HEAD:staging
+
+      - name: Push master to development (fast-forward)
+        run: git push origin HEAD:development

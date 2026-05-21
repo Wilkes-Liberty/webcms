@@ -138,13 +138,14 @@ curl -H "Accept: application/vnd.api+json" https://api.wilkesliberty.dev/jsonapi
 | Env | Stack | Drupal URL | Notes |
 |-----|-------|-----------|-------|
 | Local | DDEV | `https://api.wilkesliberty.dev` | PostgreSQL 16 |
-| Staging | Docker (on-prem server) | `http://localhost:8090` | `staging` branch |
-| Production | Docker (on-prem server) | Internal; Tailscale to VPS | `main` branch |
+| Staging | Docker (on-prem server) | `http://localhost:8090` | `staging` branch (auto-synced from `master`) |
+| Production | Docker (on-prem server) | Internal; Tailscale to VPS | `master` branch |
 
 ## Branch Strategy
-- **main** — production-ready code
-- **staging** — staging environment deploys from this branch
-- **feature/** — feature branches, PR into main
+- **master** — production-ready code; feature/fix PRs target this branch.
+- **staging** — auto-synced from `master` via `.github/workflows/sync-branches.yml`. Push triggers the staging deploy in `infra`.
+- **development** — auto-synced from `master`. No deploy; WIP integration baseline.
+- **feature/** — feature branches off `master`; PR into `master`.
 
 ## Common Tasks
 

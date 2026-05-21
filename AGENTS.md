@@ -162,14 +162,18 @@ After changing translatable strings in code or config, run the appropriate expor
 
 | Branch | Environment | Drupal URL (from inside the network) |
 |--------|-------------|--------------------------------------|
-| `main` | Production | `https://api.wilkesliberty.com` (via VPS proxy) / internal Docker |
+| `master` | Production | `https://api.wilkesliberty.com` (via VPS proxy) / internal Docker |
 | `staging` | Staging | `https://stg-api.int.wilkesliberty.com` (Tailscale) |
+| `development` | WIP integration | (no shared deploy — pull and run in DDEV) |
 | `feature/*` | Local DDEV only | `https://api.wilkesliberty.dev` |
 
 **Contributing rule** (from CONTRIBUTING.md):
-- Branch from `staging`, not `main`.
-- Open PRs against `staging`.
-- Team leads promote `staging → main` when ready for production.
+- Branch from `master`. Open PRs against `master`.
+- `.github/workflows/sync-branches.yml` fast-forwards `master` into
+  `staging` and `development` on every push to `master`. The push to
+  `staging` triggers the staging deploy in the `infra` repo.
+- Production deploy is manual (`workflow_dispatch` on
+  `infra/deploy-production.yml`).
 
 See full GitHub flow, prerequisites, and PR checklist in `CONTRIBUTING.md`.
 

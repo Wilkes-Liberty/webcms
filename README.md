@@ -132,16 +132,22 @@ ddev drush cr
 | Environment | Access | Branch | Notes |
 |-------------|--------|--------|-------|
 | Local | `https://api.wilkesliberty.dev` | any | DDEV, PostgreSQL 16 |
-| Staging | `http://mac-mini:8090` (internal) | `staging` | Docker on on-prem server |
-| Production | Tailscale / Caddy proxy | `main` | Docker on on-prem server |
+| Staging | `https://stg-api.int.wilkesliberty.com` (Tailscale) | `staging` | Docker on on-prem server (auto-deploy) |
+| Production | `https://api.wilkesliberty.com` | `master` | Docker on on-prem server (manual deploy) |
 
 The Next.js frontend (in the `ui` repo) connects to Drupal at runtime. In production, the Next.js container runs on the Njalla VPS and reaches Drupal via Tailscale.
 
 ## Branch Strategy
 
-- `main` — production-ready code; protected branch
-- `staging` — deployed to staging environment on on-prem server
-- `feature/*` — feature development; pull requests target `main`
+Three branches, kept in lockstep automatically by
+[`.github/workflows/sync-branches.yml`](.github/workflows/sync-branches.yml):
+
+- `master` — production-ready code. Feature/fix PRs target this branch.
+- `staging` — auto-synced from `master` on every push. The push triggers
+  the staging deploy in the `infra` repo.
+- `development` — auto-synced from `master` on every push. No deploy;
+  WIP integration baseline.
+- `feature/*` — feature development; pull requests target `master`.
 
 ## Contributing
 
@@ -149,7 +155,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full development workflow, coding
 
 Quick reference:
 ```bash
-# Create a feature branch
+# Create a feature branch off master
+git checkout master
+git pull origin master
 git checkout -b feature/your-feature
 
 # Work locally, export config, then
@@ -157,7 +165,7 @@ ddev drush cex -y
 git add config/sync/
 git commit -m "feat: add new content type field"
 git push origin feature/your-feature
-# Open pull request → main
+# Open pull request → master (sync-branches.yml will FF staging + development on merge)
 ```
 
 ## Documentation
