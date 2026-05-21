@@ -3,3 +3,6 @@ type: module
 description: 'API/webhook utilities: Next.js revalidation for menus, content, taxonomy.'
 core_version_requirement: ^11
 package: WilkesLiberty
+dependencies:
+  - graphql_compose:graphql_compose
+  - smart_date:smart_date
