@@ -1,10 +1,11 @@
 # Migration: `field_deployment_options` → `list_string`
 
-**Status:** PLANNING ONLY. Nothing in this PR mutates data, config, or schema.
-The execution step requires Jeremy's explicit approval and a dedicated change window.
+**Status:** EXECUTED locally on 2026-05-21 (DDEV). Awaiting review + merge.
+After merge, the script is run once per non-local environment (staging, prod).
 
 **Owner:** Jeremy (3@wilkesliberty.com)
 **Drafted:** 2026-05-21
+**Executed (local):** 2026-05-21 — zero rows migrated (no data on the field anywhere).
 **Migration script:** [`scripts/migrate_deployment_options_to_list_string.php`](../../scripts/migrate_deployment_options_to_list_string.php)
 
 ---
@@ -246,10 +247,84 @@ If we ever want to expose the field as a true enum at the GraphQL layer, that is
 - **Escape hatch?** If product wants editors to be able to flag an unknown value without a config PR, add `'other' => 'Other'` to both the script and the storage YAML *before* `--apply`. Then build a follow-up review process for `Other` values.
 - **Existing content review:** since the migration normalises variants, editors should spot-check a sample of product/service nodes post-migration to confirm the mapping landed where they expect, especially for any ambiguous mappings flagged in the table above.
 
+## Execution log — 2026-05-21 (local DDEV)
+
+### Pre-flight
+
+- `node__field_deployment_options`: 0 rows
+- `node_revision__field_deployment_options`: 0 rows
+- Fresh DB dump taken at `/tmp/pre-deployment-options-migration.sql.gz` (5.4 MB) immediately before `--apply`.
+
+### What the script did
+
+1. Deleted `FieldConfig` on `node.product` and `node.service`. Drupal cascade-deleted the shared `FieldStorageConfig`.
+2. `field_purge_batch()` reported zero pending deletions on the first poll.
+3. Created the new `FieldStorageConfig` (type `list_string`, cardinality `-1`, translatable, allowed_values populated).
+4. Re-attached `FieldConfig` on both bundles with the original labels and descriptions.
+5. Switched form display widget to `options_buttons`; view formatter to `list_default`.
+6. Re-enabled the field in `graphql_compose.settings` under `field_config.node.{product,service}.field_deployment_options.enabled` — needed because graphql_compose listens for field deletes and strips its entries.
+7. `drupal_flush_all_caches()`.
+
+### Verification
+
+- `FieldStorageConfig::loadByName('node', 'field_deployment_options')` returns `type=list_string`, `cardinality=-1`, `translatable=true`, all seven allowed values present.
+- Form display: `options_buttons` widget on both bundles.
+- View display: `list_default` formatter on both bundles.
+- Programmatic Product create with `field_deployment_options = ['aws_govcloud', 'on_premises']` saved and reloaded with identical values.
+- Negative validation: `field_deployment_options.1: The value you selected is not a valid choice.` when attempting to save `'definitely_not_allowed'`.
+- GraphQL introspection: `NodeProduct.deploymentOptions` and `NodeService.deploymentOptions` both present as `[String!]` (LIST of NON_NULL String).
+- GraphQL query `{ nodeProduct(id: "<uuid>") { deploymentOptions } }` returned `["azure_government","hybrid","il5"]`.
+- JSON:API: module is not installed on this site; verification skipped.
+
+### Notable behaviour changes captured in the cex diff
+
+- `field_deployment_options` is now exposed on **NodeService** via GraphQL Compose as well as **NodeProduct**. Pre-migration it was only enabled on `product` in `graphql_compose.settings.yml`. The script enables both for consistency with the field itself being attached to both bundles. If this is unwanted, set `field_config.node.service.field_deployment_options.enabled: false` and re-export.
+- The UUIDs on the storage + bundle field configs are new (delete + recreate).
+- `dependencies.module` adds `options` (the field type module for `list_string`).
+- Form widget setting `size`/`placeholder` gone (string-only); view formatter setting `link_to_entity` gone.
+
+### Strict-config-schema gotcha encountered (now resolved)
+
+First `--apply` attempt failed with:
+
+```
+The configuration property settings.allowed_values.0.label.0 doesn't exist.
+```
+
+Root cause: at runtime the entity API expects `allowed_values` in the **simple** `[key => label]` form. Drupal's `ListItemBase::storageSettingsToConfigData()` converts it to the **structured** `[{value, label}]` form on save. Passing the structured form pre-converted causes a double-conversion that trips the config schema validator. The script now passes the simple form (`WL_ALLOWED_DEPLOYMENT_OPTIONS` directly).
+
+### Post-merge runbook for other environments
+
+`drush cim` alone will **not** apply this migration — Drupal blocks `type` changes via config import. The correct sequence is:
+
+```bash
+git pull origin master
+
+# Strongly recommended: take a fresh DB snapshot first.
+drush sql:dump --gzip --result-file=/backups/pre-deploy-opts-$(date +%Y%m%d).sql.gz
+
+# Pre-flight: confirm zero data (the script enforces this too)
+drush sql:query "SELECT COUNT(*) FROM node__field_deployment_options"
+drush sql:query "SELECT COUNT(*) FROM node_revision__field_deployment_options"
+
+# Dry run
+drush scr scripts/migrate_deployment_options_to_list_string.php
+
+# Real run
+drush scr scripts/migrate_deployment_options_to_list_string.php -- --apply --i-have-a-backup
+
+# Should report no drift
+drush cim -y
+drush cr
+```
+
+If any pre-flight count is non-zero, **stop** and contact Jeremy. The script will abort on its own, but it's worth surfacing to humans rather than re-running blindly.
+
 ## Pointers
 
 - Script: [`scripts/migrate_deployment_options_to_list_string.php`](../../scripts/migrate_deployment_options_to_list_string.php)
-- Current storage YAML (do not edit in this PR): [`config/sync/field.storage.node.field_deployment_options.yml`](../../config/sync/field.storage.node.field_deployment_options.yml)
+- Storage YAML: [`config/sync/field.storage.node.field_deployment_options.yml`](../../config/sync/field.storage.node.field_deployment_options.yml)
 - Bundle field YAMLs: [`config/sync/field.field.node.product.field_deployment_options.yml`](../../config/sync/field.field.node.product.field_deployment_options.yml), [`config/sync/field.field.node.service.field_deployment_options.yml`](../../config/sync/field.field.node.service.field_deployment_options.yml)
 - Form displays: `core.entity_form_display.node.{product,service}.default.yml`
 - View displays: `core.entity_view_display.node.{product,service}.default.yml`
+- GraphQL Compose settings: `graphql_compose.settings.yml` (entry under `field_config.node.{product,service}.field_deployment_options.enabled`)

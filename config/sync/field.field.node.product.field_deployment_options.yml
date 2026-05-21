@@ -1,10 +1,12 @@
-uuid: 44b13cb8-f4c8-48f9-a94b-74f3d71ff7b7
+uuid: bc09eebd-2b9c-4cb7-aaf6-dcfea9d2b8b1
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_deployment_options
     - node.type.product
+  module:
+    - options
 id: node.product.field_deployment_options
 field_name: field_deployment_options
 entity_type: node
@@ -16,4 +18,4 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: list_string

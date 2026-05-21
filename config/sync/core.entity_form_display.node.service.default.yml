@@ -301,6 +301,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_deployment_options:
+    type: options_buttons
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_hero_image:
     type: entity_browser_entity_reference
     weight: 248
@@ -584,7 +590,6 @@ content:
 hidden:
   field_compliance: true
   field_defense_relevance: true
-  field_deployment_options: true
   field_key_capabilities: true
   field_mission_impact: true
   field_personas: true

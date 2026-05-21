@@ -44,6 +44,7 @@ dependencies:
     - node.type.service
   module:
     - link
+    - options
     - text
     - user
 id: node.service.default
@@ -90,6 +91,13 @@ content:
       link: false
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_deployment_options:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_hero_image:
     type: entity_reference_entity_view
@@ -175,7 +183,6 @@ hidden:
   field_campaign: true
   field_compliance: true
   field_defense_relevance: true
-  field_deployment_options: true
   field_key_capabilities: true
   field_meta_description: true
   field_mission_impact: true

@@ -132,10 +132,9 @@ content:
     weight: 4
     region: content
   field_deployment_options:
-    type: string
+    type: list_default
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
     weight: 6
     region: content

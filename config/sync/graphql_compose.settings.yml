@@ -454,8 +454,6 @@ field_config:
         enabled: true
       field_sovereignty_features:
         enabled: true
-      field_deployment_options:
-        enabled: true
       field_target_sectors:
         enabled: true
       field_key_capabilities:
@@ -463,6 +461,8 @@ field_config:
       field_platform:
         enabled: true
       field_compliance:
+        enabled: true
+      field_deployment_options:
         enabled: true
     resource:
       body:
@@ -519,6 +519,8 @@ field_config:
       field_key_capabilities:
         enabled: true
       field_capabilities:
+        enabled: true
+      field_deployment_options:
         enabled: true
     solution:
       body:

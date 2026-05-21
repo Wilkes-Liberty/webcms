@@ -1,18 +1,39 @@
-uuid: 75c32cab-6541-4f59-92f5-60a3171b4d66
+uuid: d2d6ef8f-2f7e-469e-a466-f6a08ae37369
 langcode: en
 status: true
 dependencies:
   module:
     - node
+    - options
 id: node.field_deployment_options
 field_name: field_deployment_options
 entity_type: node
-type: string
+type: list_string
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+  allowed_values:
+    -
+      value: aws_govcloud
+      label: 'AWS GovCloud'
+    -
+      value: azure_government
+      label: 'Azure Government'
+    -
+      value: gcp_assured_workloads
+      label: 'Google Cloud GCP (Assured Workloads)'
+    -
+      value: on_premises
+      label: On-Premises
+    -
+      value: hybrid
+      label: Hybrid
+    -
+      value: il5
+      label: IL5
+    -
+      value: il6
+      label: IL6
+  allowed_values_function: ''
+module: options
 locked: false
 cardinality: -1
 translatable: true
