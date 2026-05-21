@@ -13,7 +13,7 @@ entity_type: node
 bundle: product
 label: 'Mission Impact'
 description: 'Frame the platform around operational outcomes for defense and government clients.'
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
