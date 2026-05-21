@@ -54,14 +54,17 @@ For environment relationships, see [`ENVIRONMENT_OVERVIEW.md`](../infra/ENVIRONM
 
 We use a simplified GitHub flow for all contributions, adapted for headless CMS development:
 
-### 1. Sync with Staging Branch
+### 1. Sync with master
 
-Branch from `staging`, not `master`. `master` is production — only team leads promote to it.
+Branch from `master`. PRs target `master`. `staging` and `development`
+are kept in lockstep with `master` automatically by
+`.github/workflows/sync-branches.yml` — they should not be branched from
+directly.
 
 ```bash
-# Switch to staging and pull latest changes
-git checkout staging
-git pull origin staging
+# Switch to master and pull latest changes
+git checkout master
+git pull origin master
 ```
 
 ### 2. Create Feature Branch
@@ -150,8 +153,8 @@ git commit -m "Add solution content type with API endpoints
 # Push feature branch
 git push origin feature/descriptive-name
 
-# Open PR on GitHub targeting: staging ← feature/descriptive-name
-# (Never target master directly)
+# Open PR on GitHub targeting: master ← feature/descriptive-name
+# (sync-branches.yml will FF master into staging + development on merge)
 ```
 
 ### 9. Code Review Process
@@ -166,8 +169,8 @@ git push origin feature/descriptive-name
 
 ```bash
 # After PR is merged, clean up local branches
-git checkout staging
-git pull origin staging
+git checkout master
+git pull origin master
 git branch -d feature/descriptive-name
 git push origin --delete feature/descriptive-name
 ```
@@ -229,24 +232,33 @@ ddev logs                # View container logs
 A staging stack runs on the on-prem server, built from the `staging` branch:
 
 - **URL**: `https://stg-api.int.wilkesliberty.com` (Tailscale required)
-- **Deployment**: Manual — team lead rebuilds Docker image after merging to `staging`
+- **Deployment**: Auto — `infra/.github/workflows/deploy-staging.yml` runs
+  on every push to `staging`. The push itself happens automatically:
+  `sync-branches.yml` fast-forwards `master` into `staging` on every push
+  to `master`.
 - **Purpose**: Integration testing before promoting to production
 
 ## Branch Structure
 
 ### Main Branches
 
-- **`master`**: Production-ready code — maps to what's running on the production Docker stack
-  - Protected: no direct pushes. All changes via PR from `staging`.
-  - Team lead merges only after staging verification.
+- **`master`**: Production-ready code — feature/fix PRs target this branch.
+  On every push, `.github/workflows/sync-branches.yml` fast-forwards
+  `master` into `staging` and `development`.
 
-- **`staging`**: Integration branch — maps to the staging Docker stack on on-prem
-  - Protected: no direct pushes. All changes via PR from feature branches.
-  - Team lead merges feature PRs here after review.
+- **`staging`**: Downstream mirror of `master`. Auto-updated by
+  `sync-branches.yml`. The push to `staging` triggers the staging
+  Docker stack rebuild on the on-prem server via the infra repo's
+  `deploy-staging.yml`. **Do not push to `staging` directly.**
+
+- **`development`**: WIP integration convention. Auto-updated by
+  `sync-branches.yml` to mirror `master`. No deploy — each contributor
+  can pull and run DDEV against this branch to test integration with
+  the latest code. **Do not push to `development` directly.**
 
 ### Feature Branches
 
-Create feature branches from `staging` using descriptive names:
+Create feature branches from `master` using descriptive names:
 
 - `content/add-new-content-type`
 - `api/graphql-endpoint`
@@ -413,30 +425,29 @@ The project includes comprehensive automated testing:
 
 ## Deployment Process
 
-### Deployment Process (Manual, Pre-CI/CD)
+Deployment is handled by GitHub Actions in the `infra` repo. See
+[`infra/docs/ENVIRONMENTS.md`](https://github.com/Wilkes-Liberty/infra/blob/master/docs/ENVIRONMENTS.md)
+for the full flow.
 
-All deployments are currently manual, triggered by a team lead after merging.
+**Staging deploy** runs automatically:
+1. PR merges into `master` here.
+2. `.github/workflows/sync-branches.yml` fast-forwards `master` into
+   `staging` (and `development`).
+3. The `staging` push in the `infra` repo triggers
+   `infra/.github/workflows/deploy-staging.yml`, which rebuilds the
+   staging Docker stack on the on-prem mac and runs
+   `drush cr → updb -y → cim -y → cr` against the staging Drupal
+   container.
 
-**To staging** (after merging feature PR → `staging`):
-```bash
-# On the on-prem server
-cd ~/nas_docker_staging
-git -C ~/Repositories/staging/webcms pull origin staging
-docker compose up -d --build drupal
-docker compose exec drupal drush deploy -y   # updatedb + cim + cr
-```
+**Production deploy** is manual:
+1. After staging validation, click **Run workflow** on
+   `infra/.github/workflows/deploy-production.yml`.
+2. Type `deploy` at the typed-confirmation prompt.
+3. The workflow rebuilds the production Drupal image and runs
+   `drush cr → updb -y → cim -y → cr` against the production container.
 
-**To production** (after merging `staging` → `master`):
-```bash
-# On the on-prem server
-cd ~/nas_docker
-git -C ~/Repositories/webcms pull origin master
-docker compose build --no-cache drupal
-docker compose up -d drupal
-docker compose exec drupal drush deploy -y
-```
-
-The `drush deploy` command runs `updatedb`, `config:import`, and `cache:rebuild` in sequence.
+Manual on-server deploys (`make onprem` in `infra/`) remain available
+for first-time setup and emergency recovery.
 
 ## Pull Request Process
 
