@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.case_study.field_noindex
     - field.field.node.case_study.field_outcomes
     - field.field.node.case_study.field_parent
+    - field.field.node.case_study.field_personas
     - field.field.node.case_study.field_platform
     - field.field.node.case_study.field_preview_token
     - field.field.node.case_study.field_primary_capability
@@ -350,6 +351,16 @@ content:
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: ''
+    third_party_settings: {  }
+  field_personas:
+    type: entity_reference_autocomplete
+    weight: 208
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_parent:
     type: entity_reference_autocomplete

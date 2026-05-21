@@ -1,0 +1,24 @@
+uuid: d6cc8266-8d28-4db6-a218-801559dff05c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_personas
+    - node.type.case_study
+    - taxonomy.vocabulary.persona
+id: node.case_study.field_personas
+field_name: field_personas
+entity_type: node
+bundle: case_study
+label: Personas
+description: 'Target personas for this case study.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      persona: persona
+field_type: entity_reference
