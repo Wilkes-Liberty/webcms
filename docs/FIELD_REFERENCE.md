@@ -28,12 +28,70 @@ This guide documents all 54+ fields in the CMS, filling the previously identifie
 
 ## Critical Fields
 
+### Mission, Sovereignty & Specialized Fields (Product / Service / Solution)
+
+These fields were introduced with the v2.0 Product/Service/Solution architecture.
+
+#### `field_mission_impact`
+**Type**: Text (Long)
+**Cardinality**: 1
+**Used by**: Product, Service, Solution
+
+**Purpose**: The primary framing for how the offering advances the client's mission. This is the most important field on Product/Service/Solution pages.
+
+**Usage**:
+- Must be written in the voice defined in `BRAND_VOICE.md`
+- Focus on operational outcomes, decision velocity, risk reduction, and sovereignty
+- Required for all Product, Service, and Solution pages
+
+#### `field_defense_relevance`
+**Type**: Text (Long)
+**Cardinality**: 1
+**Used by**: Product, Service, Solution
+
+**Purpose**: Specific articulation of value for defense contractors and federal government organizations.
+
+#### `field_key_capabilities`
+**Type**: Paragraphs (or multi-value text)
+**Cardinality**: Unlimited
+**Used by**: Product, Service, Solution
+
+**Purpose**: Structured, scannable list of the primary technical and operational capabilities.
+
+#### `field_deployment_options`
+**Type**: Text (Long)
+**Cardinality**: 1
+**Used by**: Product, Service, Solution
+
+**Purpose**: Documents supported deployment models (On-Premises, Private Cloud, Hybrid, Air-Gapped, etc.).
+
+#### `field_sovereignty_features`
+**Type**: Text (Long)
+**Cardinality**: 1
+**Used by**: Product, Service, Solution
+
+**Purpose**: Highlights data control, vendor independence, zero-trust posture, and resistance to foreign legal compulsion.
+
+#### `field_platform`
+**Type**: Entity Reference (Taxonomy → Platforms)
+**Used by**: Product, Service, Solution, Case Study
+
+**Purpose**: Links content to one of the core W&L technology platforms (Liberty, Fortis, Apex, etc.).
+
+#### `field_outcomes` (Solution only)
+**Type**: Text (Long) or Paragraphs
+**Used by**: Solution
+
+**Purpose**: Describes the measurable business/mission outcomes delivered by the bundled Solution.
+
+---
+
 ### Persona & Targeting
 
 #### `field_personas`
 **Type**: Entity Reference (Taxonomy Term)  
 **Cardinality**: Unlimited  
-**Used by**: Article, Basic Page, Event, Landing Page, Resource
+**Used by**: Article, Basic Page, Case Study, Event, Landing Page, Product, Resource, Service, Solution
 
 **Purpose**: Define target audiences for content to enable personalized experiences and targeted content delivery.
 
@@ -419,7 +477,32 @@ Secondary: "Browse Resources"
 **Tracking**: All UTM and conversion tracking fields
 
 ### Event
-**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_publish_date`  
+**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_publish_date`
+
+### Product (Sovereign Platforms)
+**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_mission_impact`, `field_key_capabilities`
+**Required for Product**:
+- `field_mission_impact`
+- `field_key_capabilities`
+- `field_deployment_options`
+- `field_sovereignty_features`
+**Classification**: `field_personas`, `field_target_sectors`, `field_compliance`, `field_industries`, `field_technologies`, `field_platform`, `field_categories`
+**SEO & CTAs**: Full suite (`field_seo_title`, `field_meta_description`, `field_social_image`, `field_primary_cta`, etc.)
+
+### Service
+**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_mission_impact`, `field_key_capabilities`
+**Strongly Recommended**: `field_deployment_options`, `field_sovereignty_features`, `field_defense_relevance`
+**Classification**: `field_personas`, `field_target_sectors`, `field_compliance`, `field_industries`, `field_technologies`, `field_platform`, `field_capabilities`
+**Note**: Focuses on professional services and implementation rather than self-deployable platforms.
+
+### Solution
+**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_mission_impact`, `field_key_capabilities`, `field_solutions`, `field_outcomes`
+**Classification**: `field_personas`, `field_target_sectors`, `field_compliance`, `field_industries`, `field_technologies`, `field_platform`
+**Focus**: Branded, outcome-oriented packages that combine one or more Products with Services. `field_outcomes` is particularly important.
+
+### Case Study
+**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_related` (link to Product/Service/Solution)
+**Special**: Strong emphasis on `field_industries`, `field_target_sectors`, `field_compliance`, and quantifiable outcomes.
 **SEO Fields**: `field_meta_description`, `field_seo_title`, `field_social_image`  
 **Organization**: `field_featured`, `field_status`  
 **CTAs**: `field_primary_cta`, `field_secondary_cta`
