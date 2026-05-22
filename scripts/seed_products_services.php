@@ -710,9 +710,9 @@ $fmt = function (string $label, array $counts): string {
   }
   return sprintf("%-10s %s\n", $label . ':', $parts ? implode('  ', $parts) : '(none)');
 };
-echo $fmt('Products', $summary['product']);
-echo $fmt('Services', $summary['service']);
-echo $fmt('Solutions', $summary['solutions']);
+echo $fmt('Products', $summary['product'] ?? []);
+echo $fmt('Services', $summary['service'] ?? []);
+echo $fmt('Solutions', $summary['solutions'] ?? []);
 
 if ($warnings) {
   echo "\n=== Warnings ===\n";
