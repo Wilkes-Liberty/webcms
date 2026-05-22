@@ -287,6 +287,56 @@ function wl_setup_taxonomy(): void {
         ['name' => 'SOC 2',            'weight' => 90],
       ],
     ],
+
+    'event_type' => [
+      'label' => 'Event Type',
+      'description' => 'Classification for events and webinars.',
+      'terms' => [
+        ['name' => 'Webinar', 'weight' => 10],
+        ['name' => 'Conference', 'weight' => 20],
+        ['name' => 'Workshop', 'weight' => 30],
+        ['name' => 'Networking Event', 'weight' => 40],
+        ['name' => 'Roundtable', 'weight' => 50],
+        ['name' => 'Briefing', 'weight' => 60],
+      ],
+    ],
+
+    'resource_type' => [
+      'label' => 'Resource Type',
+      'description' => 'Types of gated or downloadable resources.',
+      'terms' => [
+        ['name' => 'Whitepaper', 'weight' => 10],
+        ['name' => 'eBook', 'weight' => 20],
+        ['name' => 'Guide', 'weight' => 30],
+        ['name' => 'Checklist', 'weight' => 40],
+        ['name' => 'Template', 'weight' => 50],
+        ['name' => 'Report', 'weight' => 60],
+      ],
+    ],
+
+    'seniority' => [
+      'label' => 'Seniority',
+      'description' => 'Career levels for job postings and profiles.',
+      'terms' => [
+        ['name' => 'Entry Level', 'weight' => 10],
+        ['name' => 'Mid-Level', 'weight' => 20],
+        ['name' => 'Senior', 'weight' => 30],
+        ['name' => 'Lead', 'weight' => 40],
+        ['name' => 'Executive', 'weight' => 50],
+      ],
+    ],
+
+    'department' => [
+      'label' => 'Department',
+      'description' => 'Organizational units for careers and team.',
+      'terms' => [
+        ['name' => 'Engineering & Delivery', 'weight' => 10],
+        ['name' => 'Solutions & Consulting', 'weight' => 20],
+        ['name' => 'Growth & Partnerships', 'weight' => 30],
+        ['name' => 'Operations', 'weight' => 40],
+        ['name' => 'Leadership', 'weight' => 50],
+      ],
+    ],
   ];
 
   // Create vocabularies (skip 'tags' as it already exists in this site).
