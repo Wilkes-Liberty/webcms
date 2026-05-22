@@ -624,11 +624,11 @@ $status_keys = ['created', 'skipped', 'updated', 'would-create', 'would-skip', '
 $summary = [
   'product'   => array_fill_keys($status_keys, 0),
   'service'   => array_fill_keys($status_keys, 0),
-  'solution'  => array_fill_keys($status_keys, 0),
+  'solutions' => array_fill_keys($status_keys, 0),   // plural to match $parsed['solutions']
 ];
 
 // Ensure all three bundles are always present in the summary (prevents undefined key warnings)
-foreach (['product', 'service', 'solution'] as $b) {
+foreach (['product', 'service', 'solutions'] as $b) {
   if (!isset($summary[$b])) {
     $summary[$b] = array_fill_keys($status_keys, 0);
   }
