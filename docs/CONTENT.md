@@ -291,3 +291,90 @@ We help organizations derive timely, actionable intelligence from complex and se
 **Mission Impact**
 
 We equip your teams with the insights needed to anticipate threats, make faster decisions, and achieve mission objectives with greater precision and confidence.
+
+---
+
+## Solutions
+
+Branded, mission-aligned packages that combine Products and Services into deployable offerings. Each Solution is designed as a cohesive capability that can be procured and stood up as a unit.
+
+### 1. Sovereign Mission Edge
+
+**SEO Title:** Sovereign Mission Edge | Tactical Operations Platform
+
+**Meta Description:** A bundled, air-gappable solution combining secure data platforms, mission observability, and integration services for defense and tactical environments.
+
+**Full Page Copy:**
+
+Sovereign Mission Edge delivers a complete, sovereign tactical operations capability by integrating the Apex Secure Data Platform, Vigilance Mission Observability Suite, and specialized zero-trust identity and integration services. Designed for contested and disconnected environments, it provides the data foundation, real-time awareness, and secure access controls required for mission success at the edge.
+
+**Key Capabilities**
+- Air-gapped capable data platform with full sovereignty controls
+- Real-time mission observability and sensor fusion
+- Zero-trust identity and access at the tactical edge
+- Rapid deployment and configuration for austere environments
+
+**Mission Impact**
+
+Enables forces to maintain information superiority and decision advantage even when disconnected from strategic networks, directly improving operational tempo and survivability.
+
+**Outcomes**
+- 65% reduction in time-to-initial-operating-capability in disconnected environments
+- Full data sovereignty with no external dependencies
+- Seamless integration of existing sensors and C2 systems
+
+---
+
+### 2. Sovereign AI Command Fabric
+
+**SEO Title:** Sovereign AI Command Fabric | Private AI for Mission Operations
+
+**Meta Description:** A secure, air-gapped AI and machine learning platform that brings advanced analytics and automation inside your sovereign boundary.
+
+**Full Page Copy:**
+
+Sovereign AI Command Fabric combines the Apex Secure Data Platform with Private LLM capabilities and AI integration services to deliver classified, sovereign artificial intelligence at scale. All models, data, and inference remain fully under customer control with no external API calls or data exfiltration risks.
+
+**Key Capabilities**
+- On-premises and air-gapped large language model deployment
+- Secure fine-tuning and retrieval-augmented generation pipelines
+- Mission-specific agent development and orchestration
+- Full auditability and explainability for defense use cases
+
+**Mission Impact**
+
+Accelerates intelligence analysis, planning, and decision-making while eliminating the security and sovereignty risks associated with commercial AI services.
+
+**Outcomes**
+- 4× faster intelligence report generation with maintained classification integrity
+- Complete elimination of external data leakage vectors
+- Rapid stand-up of domain-specific AI capabilities in weeks instead of months
+
+---
+
+### 3. Sovereign Digital Modernization Platform
+
+**SEO Title:** Sovereign Digital Modernization Platform | Legacy-to-Modern Transformation
+
+**Meta Description:** An end-to-end, sovereign digital transformation offering that modernizes legacy systems while preserving security, compliance, and operational continuity.
+
+**Full Page Copy:**
+
+The Sovereign Digital Modernization Platform brings together Liberty Headless CMS, Enterprise Search, Fortis Identity, and our Digital Modernization and Custom Software Development services into a single, coherent transformation program. It enables organizations to retire fragile legacy systems and move to modern, maintainable, and sovereign platforms without the typical risks of large-scale modernization efforts.
+
+**Key Capabilities**
+- Low-risk, phased migration from legacy content and data systems
+- Sovereign content and data platforms with modern user experiences
+- Identity modernization with zero-trust principles
+- AI-assisted content migration, search, and workflow automation
+
+**Mission Impact**
+
+Reduces technical debt and operational risk while increasing agility, searchability, and the ability to deliver new capabilities quickly — all while maintaining full control over data and infrastructure.
+
+**Outcomes**
+- 70% reduction in legacy system maintenance costs within 24 months
+- 3× improvement in information findability for operators and analysts
+- Successful migration of mission-critical systems with zero data loss or extended downtime
+
+---
