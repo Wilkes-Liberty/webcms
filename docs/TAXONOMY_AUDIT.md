@@ -26,19 +26,19 @@ The CMS defines **18 vocabularies** in config.
 | 1 | `capabilities` | Capabilities | 9 | ✅ | `taxonomy_setup.php` | Matches seed |
 | 2 | `categories` | Categories | 10 | ✅ | `taxonomy_setup.php` | Matches seed |
 | 3 | `compliance` | Compliance Frameworks | 9 | ✅ (recent) | `taxonomy_setup.php` + extensions | Previously a major gap; now populated (FedRAMP, CMMC, SOC 2, etc.) |
-| 4 | `department` | Department | 0 | ❌ | — | Still empty. Used by Career and Person |
-| 5 | `event_type` | Event Type | 0 | ❌ | — | Still empty |
+| 4 | `department` | Department | 5 | ✅ | `taxonomy_setup.php` | Seeded on production |
+| 5 | `event_type` | Event Type | 6 | ✅ | `taxonomy_setup.php` | Seeded on production |
 | 6 | `industries` | Industries | 10 | ✅ | `taxonomy_setup.php` | Matches seed |
-| 7 | `persona` | Personas | 4 | ✅ (partial) | `taxonomy_setup.php` | Now seeded with the 4 buyer personas from BRAND_VOICE.md |
-| 8 | `platforms` | Platforms | 6 | ✅ (recent) | `taxonomy_setup.php` | Matches the 6 Products (Sovereign Infrastructure, Liberty, Enterprise Search, Fortis, Apex, Vigilance) |
-| 9 | `resource_type` | Resource Type | 0 | ❌ | — | Still empty |
+| 7 | `persona` | Personas | 4 | ✅ | `taxonomy_setup.php` | Matches the 4 buyer personas |
+| 8 | `platforms` | Platforms | 6 | ✅ | `taxonomy_setup.php` | Matches the 6 Products |
+| 9 | `resource_type` | Resource Type | 6 | ✅ | `taxonomy_setup.php` | Seeded on production |
 | 10 | `sections` | Sections | 6 | ✅ | `taxonomy_setup.php` | Matches seed |
-| 11 | `seniority` | Seniority | 0 | ❌ | — | Still empty |
+| 11 | `seniority` | Seniority | 5 | ✅ | `taxonomy_setup.php` | Seeded on production |
 | 12 | `services` | Services | 4 | ✅ | `taxonomy_setup.php` | Matches seed |
 | 13 | `solutions` | Solutions | 6 | ✅ | `taxonomy_setup.php` | Matches seed |
 | 14 | `tags` | Tags | 0 | n/a | Free-form | Intentionally not seeded |
-| 15 | `target_sectors` | Target Sectors | 11 (prod) / 9 (DDEV) | ✅ (prod has more) | `taxonomy_setup.php` | Prod has 11 terms (listed in query). DDEV has 9. Sync needed. |
-| 16 | `tech_stack` | Tech Stack | 0 | ⚠️ | — | Investigate usage before seeding |
+| 15 | `target_sectors` | Target Sectors | 11 | ✅ | `taxonomy_setup.php` | Production authoritative (11 terms) |
+| 16 | `tech_stack` | Tech Stack | 0 | ⚠️ | — | Still empty |
 | 17 | `technologies` | Technologies | 6 | ✅ | `taxonomy_setup.php` | Hierarchical |
 | 18 | `topics` | Topics | 0 | ❌ | — | Still empty (editorial) |
 
