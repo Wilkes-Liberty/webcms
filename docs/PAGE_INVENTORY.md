@@ -136,12 +136,22 @@ Copy for all ten services drafted in [CONTENT.md §Services](CONTENT.md#services
 
 ## 4. Solutions (branded packages)
 
-The `solution` content type is **fully implemented** in config (33+ fields including `field_mission_impact`, `field_key_capabilities`, `field_outcomes`) but undocumented in `CONTENT_TYPES_GUIDE.md` (see §6 below). No copy drafted yet.
+The `solution` content type is fully implemented in config. Three initial Solution nodes have been seeded via `seed_products_services.php` (May 2026):
+
+- Sovereign Mission Edge
+- Sovereign AI Command Fabric
+- Sovereign Digital Modernization Platform
+
+Copy for these lives in `CONTENT.md` under the new `## Solutions` section. More branded packages can be added over time.
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/solutions` | dynamic-index | todo | Jeremy | Listing route |
-| `/solutions/{slug}` | solution | todo | Jeremy | First package(s) TBD — define naming + bundling before drafting copy |
+| `/solutions` | dynamic-index | todo | Jeremy | Listing route (Next.js) |
+| `/solutions/sovereign-mission-edge` | solution | **seeded** (prod nid 21) | Jeremy | Seeded May 2026 |
+| `/solutions/sovereign-ai-command-fabric` | solution | **seeded** (prod nid 22) | Jeremy | Seeded May 2026 |
+| `/solutions/sovereign-digital-modernization-platform` | solution | **seeded** (prod nid 23) | Jeremy | Seeded May 2026 |
+
+**Next:** Flesh out `field_outcomes`, improve Key Capabilities paragraphs, and add `field_related` links to the underlying Products and Services.
 
 ## 5. Case Studies
 
@@ -221,12 +231,13 @@ All `basic_page`. Sensitive — Jeremy should review/draft personally given defe
 
 ## Content type ↔ status rollup
 
-| Content type | Total pages planned | drafted | seeded | wired | todo |
-|---|---:|---:|---:|---:|---:|
-| product | 6 | 6 | 0 | 0 | 0 (all need seeding) |
-| service | 10 | 10 | 0 | 0 | 0 (all need seeding) |
-| solution | TBD | 0 | 0 | 0 | TBD |
-| article | n (open-ended) | 0 | 0 | listing+detail wired | content todo |
+| Content type | Total pages planned | drafted | seeded (prod) | wired (frontend) | Notes |
+|---|---:|---:|---:|---:|---|
+| product | 6 | 6 | 6 | partial | Seeded on prod + DDEV |
+| service | 10 | 10 | 10 | partial | Seeded on prod + DDEV |
+| solution | 3+ | 3 | 3 | none | First 3 seeded May 2026 (Sovereign Mission Edge, AI Command Fabric, Digital Modernization Platform) |
+| article | open | many | some | listing+detail | Ongoing |
+| case_study | TBD | 0 | 0 | none | Real client work only |
 | basic_page | ~5 (About, 4 legal) | 0 | 0 | detail wired | 5 |
 | landing_page | 1 (Homepage) | 1 | 1 | 1 | 0 |
 | case_study | TBD | 0 | 0 | 0 | TBD |
