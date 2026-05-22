@@ -3,12 +3,9 @@
  * Seed Product and Service nodes from docs/CONTENT.md.
  *
  * Creates:
- *   - 6 Product nodes (Sovereign Infrastructure, Liberty CMS, Enterprise Search,
- *     Fortis, Apex, Vigilance)
- *   - 10 Service nodes (Private Infrastructure Engineering, Headless CMS
- *     Implementation, Enterprise Search Architecture, Zero-Trust Consulting,
- *     AI Integration, Digital Modernization, Custom Software, Crypto / Digital
- *     Assets, Defense Tech Integration, Intelligence & Actionable Insights)
+ *   - 6 Product nodes
+ *   - 10 Service nodes
+ *   - Solution nodes (from the "## Solutions" section in CONTENT.md)
  *
  * For each node it populates:
  *   - title, body (HTML), field_summary, field_seo_title, field_meta_description
@@ -44,6 +41,9 @@
  *   ddev drush scr scripts/seed_products_services.php -- --dry-run
  *   ddev drush scr scripts/seed_products_services.php -- --update
  *   ddev drush scr scripts/seed_products_services.php -- --dry-run --update
+ *
+ * On production:
+ *   docker compose exec drupal drush scr /var/www/html/scripts/seed_products_services.php -- --update
  *
  * The `--` separator is required so Drush passes the flags through to the
  * script as $extra instead of trying to parse them itself.
@@ -185,12 +185,12 @@ function wl_parse_content_md(string $path): array {
   $src = file_get_contents($path);
 
   // Split on top-level section headers.
-  $sections = preg_split('/^##\s+(Products|Services)\s*$/m', $src, -1, PREG_SPLIT_DELIM_CAPTURE);
-  // After split: [preamble, 'Products', products-body, 'Services', services-body]
-  $result = ['products' => [], 'services' => []];
+  $sections = preg_split('/^##\s+(Products|Services|Solutions)\s*$/m', $src, -1, PREG_SPLIT_DELIM_CAPTURE);
+  // After split: [preamble, 'Products', ..., 'Services', ..., 'Solutions', ...]
+  $result = ['products' => [], 'services' => [], 'solutions' => []];
 
   for ($i = 1; $i < count($sections); $i += 2) {
-    $kind = strtolower($sections[$i]);  // 'products' | 'services'
+    $kind = strtolower($sections[$i]);  // 'products' | 'services' | 'solutions'
     $body = $sections[$i + 1] ?? '';
     $result[$kind] = wl_parse_entries($body);
   }
@@ -402,6 +402,11 @@ function wl_taxonomy_suggestions(string $bundle, string $title): array {
       $defaults['solutions'][] = 'Financial Optimization';
     }
   }
+  elseif ($bundle === 'solution') {
+    // Solutions are the "branded package" — they can reference themselves in the solutions taxonomy
+    $defaults['solutions'][] = $title; // or map to a taxonomy term if naming differs
+    $defaults['target_sectors'] = ['Defense', 'Federal Government'];
+  }
 
   return $defaults;
 }
@@ -544,7 +549,12 @@ function wl_update_existing_node(Node $node, array $built, string $alias): array
 function wl_seed_entry(string $bundle, array $entry, bool $dry_run, bool $update): array {
   $title = $entry['title'];
   $slug = wl_slug($title);
-  $path_prefix = $bundle === 'product' ? '/products' : '/services';
+  $path_prefix = match($bundle) {
+    'product' => '/products',
+    'service' => '/services',
+    'solution' => '/solutions',
+    default => '/unknown',
+  };
   $alias = $path_prefix . '/' . $slug;
 
   $existing = wl_find_node_by_alias($alias);
@@ -674,6 +684,13 @@ foreach ($parsed['services'] as $entry) {
   $render('service', $entry, $r);
 }
 
+echo "\n--- Solutions ---\n";
+foreach ($parsed['solutions'] as $entry) {
+  $r = wl_seed_entry('solution', $entry, $WL_DRY_RUN, $WL_UPDATE);
+  $summary['solutions'][$r['status']]++;
+  $render('solution', $entry, $r);
+}
+
 echo "\n=== Summary ===\n";
 $fmt = function (string $label, array $counts): string {
   $parts = [];
@@ -686,6 +703,7 @@ $fmt = function (string $label, array $counts): string {
 };
 echo $fmt('Products', $summary['product']);
 echo $fmt('Services', $summary['service']);
+echo $fmt('Solutions', $summary['solutions']);
 
 if ($warnings) {
   echo "\n=== Warnings ===\n";
