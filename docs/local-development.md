@@ -248,6 +248,53 @@ ddev composer phpcbf
 ddev composer audit
 ```
 
+## Refreshing Production Data (Database + Files)
+
+For realistic development and testing you often want a recent copy of production content.
+
+**Canonical full staging refresh** (recommended when targeting the real staging environment):
+
+```bash
+cd ~/Repositories/infra
+make refresh-staging
+```
+
+This performs heavy sanitization (email rewriting, password invalidation, Postmark sandbox, Next.js URL rewriting, etc.) and is the production-grade path.
+
+**Quick local or lighter staging refresh** (new convenience script):
+
+```bash
+cd webcms
+./scripts/refresh-env.sh
+```
+
+The script is interactive by default and supports:
+
+- Target selection: **Local (DDEV)** or **Staging**
+- Granular choices: database only, files only, or both
+- Full sanitization of user data, custom email fields, webforms, watchdog, etc.
+- Non-interactive mode: `./scripts/refresh-env.sh --target local --db-only --yes`
+
+### Common examples
+
+```bash
+# Fully interactive (recommended first time)
+./scripts/refresh-env.sh
+
+# Local DB only, non-interactive (great in CI or scripts)
+./scripts/refresh-env.sh --target local --db-only -y --dump=/tmp/prod-latest.dump
+
+# Staging (lighter in-place path — still prefers the make target for full features)
+./scripts/refresh-env.sh --target staging --both
+```
+
+**Notes for local DDEV**:
+- You must first obtain a production dump (usually via the on-prem server + `pg_dump` or the infra tooling).
+- Pass it with `--dump=...` or the script will prompt.
+- Files sync is intentionally limited locally (most developers only need the DB).
+
+The sanitization PHP scripts (`sanitize_email_fields.php`, `sanitize_webform_emails.php`) live in `scripts/` and are shared with the infra refresh playbook.
+
 ## Troubleshooting
 
 | Problem | Solution |
