@@ -73,7 +73,7 @@ All content types share these core field groups. New tabs added in v2.0 are mark
 - **Tags** — Topic and technology tags
 - **Technologies** — Related technologies
 - **Compliance Frameworks** *(enhanced)* — Regulatory and compliance classification
-- **Target Sectors** *(new)* — Defense, Federal Government, State & Local, Critical Infrastructure, Enterprise
+- **Target Sectors** *(new)* — Current production terms (11): Defense, Federal Government, State & Local, Critical Infrastructure, Enterprise, Federal Civilian, Department of Defense, Intelligence Community, Federal Health, Federal Financial. (Note: "State & Local" appears twice in some queries — verify exact unique list.)
 
 ### 📐 Layout Tab
 - **Template/Layout** — Page template selection

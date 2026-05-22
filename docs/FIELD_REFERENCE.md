@@ -1,6 +1,6 @@
 # Comprehensive Field Reference Documentation
 
-**Last Updated**: December 8, 2025  
+**Last Updated**: May 21, 2026 (synced with live database and seeded content)  
 **Version**: 2.0  
 **Purpose**: Complete reference for all content management fields
 
