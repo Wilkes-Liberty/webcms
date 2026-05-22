@@ -615,16 +615,24 @@ $mode_label = $WL_DRY_RUN
   ? ($WL_UPDATE ? 'DRY-RUN + UPDATE (no DB writes)' : 'DRY-RUN (no DB writes)')
   : ($WL_UPDATE ? 'UPDATE (existing nodes will be overwritten)' : 'SKIP-IF-EXISTS (default)');
 
-echo "=== Seeding Products + Services from " . WL_CONTENT_MD_PATH . " ===\n";
+echo "=== Seeding Products, Services & Solutions from " . WL_CONTENT_MD_PATH . " ===\n";
 echo "Mode: {$mode_label}\n\n";
 
 $parsed = wl_parse_content_md(WL_CONTENT_MD_PATH);
 
 $status_keys = ['created', 'skipped', 'updated', 'would-create', 'would-skip', 'would-update'];
 $summary = [
-  'product' => array_fill_keys($status_keys, 0),
-  'service' => array_fill_keys($status_keys, 0),
+  'product'   => array_fill_keys($status_keys, 0),
+  'service'   => array_fill_keys($status_keys, 0),
+  'solution'  => array_fill_keys($status_keys, 0),
 ];
+
+// Ensure all three bundles are always present in the summary (prevents undefined key warnings)
+foreach (['product', 'service', 'solution'] as $b) {
+  if (!isset($summary[$b])) {
+    $summary[$b] = array_fill_keys($status_keys, 0);
+  }
+}
 $warnings = [];
 
 $render = function (string $bundle, array $entry, array $r) use (&$warnings): void {
@@ -693,6 +701,7 @@ foreach ($parsed['solutions'] as $entry) {
 
 echo "\n=== Summary ===\n";
 $fmt = function (string $label, array $counts): string {
+  $counts = $counts ?? [];
   $parts = [];
   foreach ($counts as $k => $v) {
     if ($v > 0) {
