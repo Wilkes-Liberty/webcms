@@ -496,9 +496,11 @@ Secondary: "Browse Resources"
 **Note**: Focuses on professional services and implementation rather than self-deployable platforms.
 
 ### Solution
-**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_mission_impact`, `field_key_capabilities`, `field_solutions`, `field_outcomes`
-**Classification**: `field_personas`, `field_target_sectors`, `field_compliance`, `field_industries`, `field_technologies`, `field_platform`
-**Focus**: Branded, outcome-oriented packages that combine one or more Products with Services. `field_outcomes` is particularly important.
+**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_mission_impact`, `field_key_capabilities`, `field_outcomes`, `field_related`
+**Strongly Recommended**: `field_solutions` (taxonomy), `field_primary_capability`, `field_platform`
+**Classification**: `field_personas`, `field_target_sectors`, `field_compliance`, `field_industries`, `field_technologies`
+**Special**: `field_outcomes` (Outcome paragraphs) for measurable results. `field_related` is used to declare which Products + Services are included in the package.
+**Focus**: Branded packages that combine Products and Services into a named offering (e.g., "Sovereign Mission Edge").
 
 ### Case Study
 **Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_related` (link to Product/Service/Solution)
