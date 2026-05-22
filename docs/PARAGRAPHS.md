@@ -45,7 +45,28 @@ Also enable **Paragraphs Library** if you want reusable paragraph templates late
 
 ---
 
-## Step 2: Create the "Use Case" Paragraph Type
+## Step 2: Create the "Outcome" Paragraph Type (for Solutions & Case Studies)
+
+**Machine Name:** `outcome`
+**Label:** Outcome
+**Purpose:** Quantifiable results / proof points used on Solution and Case Study pages.
+
+### Fields to Create
+
+| Field Label     | Machine Name          | Field Type          | Required | Notes |
+|-----------------|-----------------------|---------------------|----------|-------|
+| Metric Value    | `field_metric_value`  | Text (plain)        | No       | Big number, e.g. "65%" or "4×" |
+| Metric Label    | `field_metric_label`  | Text (plain)        | No       | Short description of the metric |
+| Mission Benefit | `field_mission_benefit` | Text (formatted, long) | No     | One or two sentences explaining the benefit |
+
+### Recommended Settings
+
+- Under **Manage Form Display**: Metric Value → Metric Label → Mission Benefit
+- Under **Manage Display**: Use "Default". The frontend (`OutcomeParagraph.tsx`) renders the metric very large with the label below it and the benefit as supporting text.
+
+---
+
+## Step 3: Create the "Use Case" Paragraph Type
 
 **Machine Name:** `use_case`
 **Label:** Use Case
