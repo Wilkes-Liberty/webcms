@@ -580,7 +580,7 @@ case "$TARGET" in
       log "Truncating watchdog..."
       $DRUSH sql:query "TRUNCATE watchdog" || true
 
-      log "Updating Next.js integration URLs for local..."
+      log "Updating Next.js integration URLs for local (https — DDEV serves trusted TLS via mkcert)..."
       $DRUSH config:set -y next.next_site.wilkesliberty_ui base_url "https://api.wilkesliberty.dev" || true
       $DRUSH config:set -y next.next_site.wilkesliberty_ui preview_url "https://api.wilkesliberty.dev/api/draft" || true
       $DRUSH config:set -y next.next_site.wilkesliberty_ui revalidate_url "https://api.wilkesliberty.dev/api/revalidate" || true
@@ -606,6 +606,7 @@ case "$TARGET" in
         success "Local database refresh complete (all sanitizers ran cleanly)."
       fi
       echo "  Login: https://api.wilkesliberty.dev/user/login"
+      echo "         https://api.ddev.site/user/login  (also valid)"
       echo "  user: admin / pass: admin   (change immediately!)"
 
       # Clean up any temporary prod dump we fetched (unless --keep-dump)
