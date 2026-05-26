@@ -86,6 +86,40 @@ $settings['container_yamls'][] = $app_root . '/sites/default/default.services.ym
 // Leaving it empty here causes a clear error if settings.local.php is missing.
 $databases = [];
 
+// ── OpenID Connect (Keycloak) — per-environment client overrides ─────────────
+//
+// Each environment has its own Keycloak client with redirect URIs whitelisted
+// only for that environment:
+//   - drupal-prod    — api.wilkesliberty.com + api.int.wilkesliberty.com
+//   - drupal-staging — api-stg.int.wilkesliberty.com
+//   - drupal-local   — api.ddev.site + api.wilkesliberty.dev
+//
+// A leaked staging or local client_secret can no longer be used against the
+// production Keycloak client (the legacy shared `drupal` client architecture
+// had this exposure, and its client_secret was committed in config_sync).
+//
+// Runtime client_id + client_secret are injected via container/host env vars:
+//   DRUPAL_OIDC_CLIENT_ID     — e.g. drupal-prod, drupal-staging, drupal-local
+//   DRUPAL_OIDC_CLIENT_SECRET — from SOPS-decrypted .env on prod/staging,
+//                               from .ddev/config.local.yaml on local DDEV
+//
+// $config[] takes precedence over imported config, so this override survives
+// `drush config:import` and refreshes pulled from prod data. The config_sync
+// file (openid_connect.client.sign_in_with_keycloak.yml) can therefore hold a
+// placeholder secret — runtime always wins.
+//
+// Note: the Drupal-side OIDC client entity ID is `sign_in_with_keycloak`. The
+// Keycloak `clientId` we are injecting below (drupal-prod / drupal-staging /
+// drupal-local) is a different identifier — do not conflate them.
+$oidc_client_id     = getenv('DRUPAL_OIDC_CLIENT_ID');
+$oidc_client_secret = getenv('DRUPAL_OIDC_CLIENT_SECRET');
+if (!empty($oidc_client_id)) {
+  $config['openid_connect.client.sign_in_with_keycloak']['settings']['client_id'] = $oidc_client_id;
+}
+if (!empty($oidc_client_secret)) {
+  $config['openid_connect.client.sign_in_with_keycloak']['settings']['client_secret'] = $oidc_client_secret;
+}
+
 // ── Load environment-specific overrides ──────────────────────────────────────
 // IMPORTANT: Keep these includes at the end of the file so local settings can
 // override anything defined above.
