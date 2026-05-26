@@ -197,6 +197,20 @@ is_onprem_staging_ready() {
   docker ps --format '{{.Names}}' | grep -q '^wl_stg_drupal$' 2>/dev/null
 }
 
+# Detect whether this script is running ON the on-prem host itself (as opposed
+# to a remote dev laptop SSHing into it). When true, the BOTH-mode remote
+# staging refresh skips the SSH dance entirely and runs `make` directly — which
+# is faster, more reliable, and avoids the SSH non-login-shell PATH problem
+# (Homebrew's /opt/homebrew/bin is not in default sshd PATH on macOS).
+#
+# Two required signals avoid false positives on dev machines that happen to
+# have ~/Repositories/infra cloned:
+#   1. The staging Drupal container is running on the LOCAL docker daemon
+#   2. The infra repo is checked out at the canonical path
+is_running_on_onprem() {
+  is_onprem_staging_ready && [[ -d "${HOME}/Repositories/infra/ansible/playbooks" ]]
+}
+
 # -----------------------------------------------------------------------------
 # Prod dump acquisition helpers (for --fetch on local/both)
 # -----------------------------------------------------------------------------
@@ -356,8 +370,20 @@ obtain_prod_dump_for_local() {
 }
 
 # Run a sanitizer PHP script safely inside the DDEV container.
-# The host path cannot be passed directly to `drush scr` because Drush
-# resolves it relative to the container's Drupal root.
+#
+# Implementation note: DDEV bind-mounts the host project tree at
+# /var/www/html in the web container, so the sanitizer at
+# <project>/scripts/<name>.php on the host is already visible inside the
+# container at /var/www/html/scripts/<name>.php — no copy is needed.
+#
+# Drush's `scr` resolves script paths against the Drupal root (it
+# concatenates the docroot to whatever path we pass — even absolute paths
+# get joined, producing things like `/var/www/html//tmp/foo.php`), so we
+# pass a project-relative path that resolves cleanly.
+#
+# Returns 1 (and increments SANITIZER_FAILURES) on failure so callers can
+# decide whether to abort or continue.
+SANITIZER_FAILURES=0
 run_ddev_sanitizer() {
   local host_script="$1"
   local script_name
@@ -365,13 +391,15 @@ run_ddev_sanitizer() {
 
   if [[ ! -f "$host_script" ]]; then
     warn "Sanitizer not found at $host_script — skipping"
-    return 0
+    SANITIZER_FAILURES=$((SANITIZER_FAILURES + 1))
+    return 1
   fi
 
-  # Copy into the container (DDEV mounts the project but drush scr + absolute host paths are fragile)
-  ddev exec cp "$host_script" /tmp/ >/dev/null 2>&1 || true
-  $DRUSH scr "/tmp/$script_name" || true
-  ddev exec rm -f "/tmp/$script_name" >/dev/null 2>&1 || true
+  if ! ddev drush scr "scripts/$script_name"; then
+    err "Sanitizer $script_name FAILED — local DB may still contain unsanitized PII for fields this script targets."
+    SANITIZER_FAILURES=$((SANITIZER_FAILURES + 1))
+    return 1
+  fi
 }
 
 # Securely remove a temporary prod dump we fetched during this run.
@@ -488,16 +516,43 @@ case "$TARGET" in
       log "Dropping local database..."
       $DRUSH sql:drop -y || true
 
+      # drush sql:drop only drops tables; user-defined functions (rand,
+      # substring_index, etc. — Drupal-on-Postgres compatibility shims)
+      # persist between refreshes and cause "function already exists"
+      # errors when the dump re-runs CREATE FUNCTION on import. Drop all
+      # user functions in public schema so the dump can recreate them
+      # cleanly. Idempotent and safe (only affects user-defined functions
+      # — built-in pg_catalog functions are untouched).
+      log "Dropping user-defined functions in public schema..."
+      ddev exec --service db psql -U db -d db -At -c "
+        DO \$\$
+        DECLARE r RECORD;
+        BEGIN
+          FOR r IN
+            SELECT n.nspname, p.proname,
+                   pg_get_function_identity_arguments(p.oid) AS args
+            FROM pg_proc p
+            JOIN pg_namespace n ON p.pronamespace = n.oid
+            WHERE n.nspname = 'public'
+          LOOP
+            EXECUTE 'DROP FUNCTION IF EXISTS '
+              || quote_ident(r.nspname) || '.' || quote_ident(r.proname)
+              || '(' || r.args || ') CASCADE';
+          END LOOP;
+        END
+        \$\$;" >/dev/null 2>&1 || warn "Function cleanup query returned non-zero (continuing)."
+
       log "Importing dump: $DUMP_FILE"
       # Support both plain SQL and custom-format (pg_dump -F c) or gzipped.
       # For large plain SQL .gz files we bypass drush sql:cli (which warns about
       # stdin performance) and use psql directly inside the db service. We also
-      # filter a few known harmless "function already exists" messages that appear
-      # when re-importing dumps that contain compatibility shims.
+      # defensively filter the "function already exists" messages — these
+      # should be eliminated by the pre-import function drop above, but the
+      # filter remains as a backstop in case the dump adds new compat shims.
       if [[ "$DUMP_FILE" == *.gz ]]; then
         gunzip -c "$DUMP_FILE" \
           | ddev exec --service db psql -U db -d db --quiet 2>&1 \
-          | grep -vE 'ERROR:  function (rand|substring_index) already exists with same argument types' \
+          | grep -vE 'ERROR:  function "[^"]+" already exists with same argument types' \
           || true
       elif file "$DUMP_FILE" | grep -q "PostgreSQL custom"; then
         # Custom format needs pg_restore inside the db container (already efficient)
@@ -537,7 +592,19 @@ case "$TARGET" in
       $DRUSH updatedb -y || true
       $DRUSH cr
 
-      success "Local database refresh complete."
+      if [[ $SANITIZER_FAILURES -gt 0 ]]; then
+        echo
+        err "Local DB refresh COMPLETED WITH SANITIZER FAILURES ($SANITIZER_FAILURES script(s) failed)."
+        warn "User emails + non-admin password hashes WERE sanitized (direct SQL above)."
+        warn "Custom email fields and/or webform submission emails may NOT have been sanitized."
+        warn "If those fields contain real prod data, your local DB is currently storing raw PII."
+        echo "  Investigate the error output above, then re-run the failed sanitizers manually:"
+        echo "    cd ~/Repositories/webcms && ddev drush scr scripts/sanitize_email_fields.php"
+        echo "    cd ~/Repositories/webcms && ddev drush scr scripts/sanitize_webform_emails.php"
+        echo
+      else
+        success "Local database refresh complete (all sanitizers ran cleanly)."
+      fi
       echo "  Login: https://api.wilkesliberty.dev/user/login"
       echo "  user: admin / pass: admin   (change immediately!)"
 
@@ -552,40 +619,93 @@ case "$TARGET" in
       echo "Then run: ddev drush cr"
     fi
 
-    # --- BOTH mode: after successful local, orchestrate remote staging refresh ---
+    # --- BOTH mode: after successful local, run the full staging refresh ---
     if [[ $DO_BOTH -eq 1 ]]; then
       echo
-      log "Local DDEV refresh finished. Proceeding to remote staging refresh (operator mode)..."
-      echo "  This will SSH to $SSH_HOST and run the full infra make refresh-staging"
-      echo "  (battle-tested path with SOPS secrets, Postmark sandbox, etc.)."
-      echo
+      INFRA_DIR="${HOME}/Repositories/infra"
 
-      # Quick reachability check (non-interactive)
-      if ! ssh -o BatchMode=yes -o ConnectTimeout=10 "$SSH_HOST" 'echo "SSH OK"' >/dev/null 2>&1; then
-        err "SSH to $SSH_HOST failed (BatchMode)."
-        echo "  Configure ~/.ssh/config alias 'wl-onprem' (or set WL_ONPREM_HOST / --ssh-host)."
-        echo "  Then run manually: ssh $SSH_HOST 'cd ~/Repositories/infra && make refresh-staging'"
-        REMOTE_STAGING_STATUS="failed"
-      else
-        if [[ $ASSUME_YES -eq 1 ]]; then
-          # Non-interactive path: feed the Makefile's confirmation prompt
-          log "Running non-interactive remote staging refresh..."
-          if ssh -T "$SSH_HOST" 'printf "yes\n" | make -C ~/Repositories/infra refresh-staging'; then
-            success "Remote staging refresh completed successfully."
+      # If we ARE the on-prem host, skip the SSH dance entirely. Running make
+      # in this same interactive shell inherits the proper PATH (Homebrew,
+      # ansible-playbook, sops, etc.) without needing a login shell wrapper.
+      if is_running_on_onprem; then
+        log "This machine IS the on-prem host (staging containers + infra repo local) — running make directly, no SSH."
+        echo "  Working dir: $INFRA_DIR"
+        echo
+
+        if [[ ! -d "$INFRA_DIR" ]]; then
+          err "Expected infra repo at $INFRA_DIR but it is missing."
+          REMOTE_STAGING_STATUS="failed"
+        elif [[ $ASSUME_YES -eq 1 ]]; then
+          if printf "yes\n" | make -C "$INFRA_DIR" refresh-staging; then
+            success "Staging refresh completed successfully (local make, no SSH)."
             REMOTE_STAGING_STATUS="success"
           else
-            warn "Remote staging refresh command returned non-zero (check output above)."
+            warn "Staging refresh command returned non-zero (check output above)."
             REMOTE_STAGING_STATUS="failed"
           fi
         else
-          # Interactive: let the remote prompt show through a pty
-          log "Starting interactive remote staging refresh (you will be prompted on the remote)..."
-          if ssh -t "$SSH_HOST" 'make -C ~/Repositories/infra refresh-staging'; then
-            success "Remote staging refresh completed."
+          if make -C "$INFRA_DIR" refresh-staging; then
+            success "Staging refresh completed."
             REMOTE_STAGING_STATUS="success"
           else
-            warn "Remote staging refresh did not finish cleanly."
+            warn "Staging refresh did not finish cleanly."
             REMOTE_STAGING_STATUS="failed"
+          fi
+        fi
+      else
+        # Remote operator path: SSH to the on-prem host.
+        log "Local DDEV refresh finished. Proceeding to remote staging refresh (operator mode)..."
+        echo "  This will SSH to $SSH_HOST and run the full infra make refresh-staging"
+        echo "  (battle-tested path with SOPS secrets, Postmark sandbox, etc.)."
+        echo
+
+        # Quick reachability check (non-interactive)
+        if ! ssh -o BatchMode=yes -o ConnectTimeout=10 "$SSH_HOST" 'echo "SSH OK"' >/dev/null 2>&1; then
+          err "SSH to $SSH_HOST failed (BatchMode)."
+          echo "  Configure ~/.ssh/config alias 'wl-onprem' (or set WL_ONPREM_HOST / --ssh-host)."
+          # If Tailscale is up, try to surface a known-good on-prem hostname.
+          if command -v tailscale >/dev/null 2>&1; then
+            ts_onprem=$(tailscale status 2>/dev/null \
+              | awk '/wl-(onprem|localhost|nas)/ && $5 != "offline" {print $2; exit}')
+            if [[ -n "$ts_onprem" ]]; then
+              echo
+              echo "  Tailscale shows an on-prem host reachable now: $ts_onprem"
+              echo "  Quick options:"
+              echo "    - One-off:   $0 --target both --fetch -y --ssh-host $ts_onprem"
+              echo "    - Per-shell: export WL_ONPREM_HOST=$ts_onprem"
+              echo "    - Permanent: add to ~/.ssh/config:"
+              echo "        Host wl-onprem"
+              echo "          HostName $ts_onprem"
+              echo "          User    \$YOUR_USER"
+            fi
+          fi
+          echo
+          echo "  Then run manually: ssh $SSH_HOST 'cd ~/Repositories/infra && make refresh-staging'"
+          REMOTE_STAGING_STATUS="failed"
+        else
+          # Wrap the remote command in `bash -lc` so it runs under a LOGIN
+          # shell. Without this, sshd hands /usr/bin:/bin:/usr/sbin:/sbin and
+          # Homebrew binaries (ansible-playbook, sops, etc.) are not on PATH
+          # — make refresh-staging then fails with
+          # "ansible-playbook: No such file or directory".
+          if [[ $ASSUME_YES -eq 1 ]]; then
+            log "Running non-interactive remote staging refresh..."
+            if ssh -T "$SSH_HOST" 'bash -lc "echo yes | make -C \"\$HOME/Repositories/infra\" refresh-staging"'; then
+              success "Remote staging refresh completed successfully."
+              REMOTE_STAGING_STATUS="success"
+            else
+              warn "Remote staging refresh command returned non-zero (check output above)."
+              REMOTE_STAGING_STATUS="failed"
+            fi
+          else
+            log "Starting interactive remote staging refresh (you will be prompted on the remote)..."
+            if ssh -t "$SSH_HOST" 'bash -lc "make -C \"\$HOME/Repositories/infra\" refresh-staging"'; then
+              success "Remote staging refresh completed."
+              REMOTE_STAGING_STATUS="success"
+            else
+              warn "Remote staging refresh did not finish cleanly."
+              REMOTE_STAGING_STATUS="failed"
+            fi
           fi
         fi
       fi
