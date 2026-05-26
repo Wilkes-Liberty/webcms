@@ -650,17 +650,32 @@ case "$TARGET" in
     docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
       pg_restore -U "$DB_USER" -d "$DB_NAME" --no-owner --no-acl "$DUMP_PATH" || true
 
-    log "Granting privileges to staging application user..."
+    log "Granting privileges to staging runtime user (belt + suspenders)..."
+    # Run as the real postgres superuser without forcing PGPASSWORD.
+    # This has proven most reliable. We grant broadly so drush cr / updatedb
+    # do not fail after a --no-owner --no-acl restore.
+    docker exec "$STG_PG" psql -U postgres -d "$DB_NAME" -v ON_ERROR_STOP=1 <<'EOSQL' || true
+-- Runtime application user (what the container actually connects as)
+GRANT ALL PRIVILEGES ON DATABASE "$DB_NAME" TO "wl_app";
+GRANT ALL ON SCHEMA public TO "wl_app";
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO "wl_app";
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO "wl_app";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO "wl_app";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO "wl_app";
+
+-- Owner / restore user
+GRANT ALL PRIVILEGES ON DATABASE "$DB_NAME" TO "$DB_USER";
+GRANT ALL ON SCHEMA public TO "$DB_USER";
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO "$DB_USER";
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO "$DB_USER";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO "$DB_USER";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO "$DB_USER";
+EOSQL
+
+    log "Verifying that the staging app user (wl_app) can read the config table..."
     docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
-      psql -U postgres -d "$DB_NAME" -c "GRANT USAGE ON SCHEMA public TO \"$DB_USER\";" || true
-    docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
-      psql -U postgres -d "$DB_NAME" -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO \"$DB_USER\";" || true
-    docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
-      psql -U postgres -d "$DB_NAME" -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO \"$DB_USER\";" || true
-    docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
-      psql -U postgres -d "$DB_NAME" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO \"$DB_USER\";" || true
-    docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
-      psql -U postgres -d "$DB_NAME" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE, SELECT ON SEQUENCES TO \"$DB_USER\";" || true
+      psql -U "wl_app" -d "$DB_NAME" -v ON_ERROR_STOP=0 \
+      -c "SELECT COUNT(*) FROM config WHERE name = 'core.extension';" || true
 
     if [[ $DO_FILES -eq 1 ]]; then
       log "Rsyncing public files (this may take a while)..."
