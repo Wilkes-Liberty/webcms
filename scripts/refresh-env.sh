@@ -55,36 +55,85 @@ DUMP_FILE=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --target=*)       TARGET="${1#*=}" ;;
-    -t)               TARGET="$2"; shift ;;
-    --db-only)        DO_FILES=0 ;;
-    --files-only)     DO_DB=0; DO_FILES=1 ;;
-    --both)           DO_DB=1; DO_FILES=1 ;;
-    --yes|-y)         ASSUME_YES=1 ;;
-    --dump=*)         DUMP_FILE="${1#*=}" ;;
-    -d)               DUMP_FILE="$2"; shift ;;
+    --target)
+      TARGET="$2"
+      shift 2
+      continue
+      ;;
+    --target=*)
+      TARGET="${1#*=}"
+      shift
+      continue
+      ;;
+    -t)
+      TARGET="$2"
+      shift 2
+      continue
+      ;;
+    --db-only)
+      DO_FILES=0
+      shift
+      continue
+      ;;
+    --files-only)
+      DO_DB=0
+      DO_FILES=1
+      shift
+      continue
+      ;;
+    --both)
+      DO_DB=1
+      DO_FILES=1
+      shift
+      continue
+      ;;
+    --yes|-y)
+      ASSUME_YES=1
+      shift
+      continue
+      ;;
+    --dump)
+      DUMP_FILE="$2"
+      shift 2
+      continue
+      ;;
+    --dump=*)
+      DUMP_FILE="${1#*=}"
+      shift
+      continue
+      ;;
+    -d)
+      DUMP_FILE="$2"
+      shift 2
+      continue
+      ;;
     -h|--help)
       cat <<EOF
 Usage: $0 [options]
 
 Options:
-  --target=local|staging     Target environment (interactive prompt if omitted)
+  --target local|staging     Target environment (also supports --target=local)
+  -t local|staging
   --db-only                  Only refresh the database (default for local)
   --files-only               Only sync public files
   --both                     Database + public files
-  --dump=/path/to/dump.sql   Path to a pre-existing prod DB dump (local only)
+  --dump /path/to/dump.sql   Path to a pre-existing prod DB dump (local only)
+  --dump=/path/to/dump.sql
   --yes, -y                  Skip interactive confirmation prompts
 
 Examples:
   ./scripts/refresh-env.sh
-  ./scripts/refresh-env.sh --target local --db-only
+  ./scripts/refresh-env.sh --target local --db-only -y
   ./scripts/refresh-env.sh --target staging --both -y
+  ./scripts/refresh-env.sh --target=local --dump=/tmp/prod.dump
 EOF
       exit 0
       ;;
-    *) err "Unknown option: $1"; exit 1 ;;
+    *)
+      err "Unknown option: $1"
+      exit 1
+      ;;
   esac
-  shift
 done
 
 # -----------------------------------------------------------------------------
