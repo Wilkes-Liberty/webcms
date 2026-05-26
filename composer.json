@@ -93,6 +93,7 @@
         "drupal/tfa": "^1.12",
         "drupal/tmgmt": "1.x-dev",
         "drupal/twig_tweak": "^3.4",
+        "drupal/views_bulk_operations": "^4.4",
         "drupal/webform_remote_handlers": "^3.0",
         "drupal/webform_rest": "^4.2",
         "drush/drush": "^13.6"

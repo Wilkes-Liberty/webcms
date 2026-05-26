@@ -20,7 +20,7 @@ Documentation for the Wilkes Liberty headless Drupal 11 CMS.
 | Document | Purpose |
 |----------|---------|
 | [DEVELOPER_SETUP.md](DEVELOPER_SETUP.md) | High-level onboarding and first-time setup |
-| [local-development.md](local-development.md) | Detailed DDEV setup, PostgreSQL 16, daily workflow, database & API testing, **refreshing prod data** via `scripts/refresh-env.sh` |
+| [local-development.md](local-development.md) | Detailed DDEV setup, PostgreSQL 16, daily workflow, database & API testing, **refreshing prod data** (`scripts/refresh-env.sh --fetch` + auto secure cleanup of live dumps, `--keep-dump`, `--target both`, etc.) |
 | [PATCHES.md](PATCHES.md) | Composer patch documentation and upstream issues |
 | [SOLR_CONFIG_DEPLOY.md](SOLR_CONFIG_DEPLOY.md) | Runbook for pushing Drupal-generated Solr configsets to the on-prem Solr container |
 | [../web/modules/custom/wl_api/CHANGELOG.md](../web/modules/custom/wl_api/CHANGELOG.md) | API module changelog |

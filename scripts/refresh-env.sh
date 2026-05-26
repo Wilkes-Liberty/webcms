@@ -8,6 +8,8 @@
 #   ./scripts/refresh-env.sh
 #   ./scripts/refresh-env.sh --target local --db-only --yes
 #   ./scripts/refresh-env.sh --target staging
+#   ./scripts/refresh-env.sh --target both --fetch -y          # operator: local + staging
+#   ./scripts/refresh-env.sh --target local --fetch           # auto-fetch latest backup or live prod
 #
 # This script is intentionally interactive by default and refuses to run
 # without explicit confirmation because it is destructive.
@@ -15,8 +17,18 @@
 # Requirements:
 #   - For "local": DDEV must be running (ddev start)
 #   - For "staging": You must be on the on-prem host with the Docker stacks up
+#   - For "--fetch" (local): SSH access to on-prem (Tailscale) or recent daily backups in ~/Backups/
 #   - Drush must be available in the target environment
 #   - PostgreSQL client tools (psql, pg_dump, pg_restore) for direct DB ops
+#
+# Security note for --fetch:
+#   The script now STRONGLY prefers sanitized developer snapshots (produced by
+#   infra/scripts/create-dev-snapshot.sh, ideally from the staging database).
+#   These contain far less sensitive data than raw production dumps.
+#   Only when no recent sanitized snapshot is available does it fall back to
+#   raw daily backups or a live production dump.
+#   Live-fetched raw dumps are auto-deleted after use (unless --keep-dump).
+#   Use of raw production data is logged as higher risk.
 #
 # The heavy sanitization logic lives in the companion PHP scripts in this
 # directory (also used by the infra/ansible refresh-staging playbook).
@@ -52,6 +64,13 @@ DO_DB=1
 DO_FILES=0
 ASSUME_YES=0
 DUMP_FILE=""
+FETCH=0
+SSH_HOST="${WL_ONPREM_HOST:-wl-onprem}"
+REMOTE_STAGING_STATUS="skipped"
+
+# Cleanup tracking for sensitive prod dumps
+KEEP_DUMP=0
+FETCHED_TEMP_DUMP=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -107,18 +126,44 @@ while [[ $# -gt 0 ]]; do
       shift 2
       continue
       ;;
+    --fetch)
+      FETCH=1
+      shift
+      continue
+      ;;
+    --ssh-host)
+      SSH_HOST="$2"
+      shift 2
+      continue
+      ;;
+    --ssh-host=*)
+      SSH_HOST="${1#*=}"
+      shift
+      continue
+      ;;
+    --keep-dump|--keep)
+      KEEP_DUMP=1
+      shift
+      continue
+      ;;
     -h|--help)
       cat <<EOF
 Usage: $0 [options]
 
 Options:
-  --target local|staging     Target environment (also supports --target=local)
-  -t local|staging
+  --target local|staging|both
+                             Target environment (both = local DDEV + remote staging)
+  -t local|staging|both
   --db-only                  Only refresh the database (default for local)
   --files-only               Only sync public files
   --both                     Database + public files
   --dump /path/to/dump.sql   Path to a pre-existing prod DB dump (local only)
   --dump=/path/to/dump.sql
+  --fetch                    For local/both: auto-obtain dump. Strongly prefers sanitized
+                             dev snapshots (see infra/scripts/create-dev-snapshot.sh).
+                             Falls back to raw daily backups, then live prod (with warnings).
+  --ssh-host HOST            SSH hostname/alias for on-prem (default: wl-onprem or \$WL_ONPREM_HOST)
+  --keep-dump, --keep        Do not delete temporary raw dumps fetched during this run
   --yes, -y                  Skip interactive confirmation prompts
 
 Examples:
@@ -126,6 +171,10 @@ Examples:
   ./scripts/refresh-env.sh --target local --db-only -y
   ./scripts/refresh-env.sh --target staging --both -y
   ./scripts/refresh-env.sh --target=local --dump=/tmp/prod.dump
+  ./scripts/refresh-env.sh --target both --fetch -y
+  ./scripts/refresh-env.sh --target local --fetch --ssh-host onprem
+  ./scripts/refresh-env.sh --target local --fetch --keep-dump
+  # Best practice: generate sanitized snapshots via infra/scripts/create-dev-snapshot.sh
 EOF
       exit 0
       ;;
@@ -149,6 +198,213 @@ is_onprem_staging_ready() {
 }
 
 # -----------------------------------------------------------------------------
+# Prod dump acquisition helpers (for --fetch on local/both)
+# -----------------------------------------------------------------------------
+find_latest_daily_backup() {
+  local base="${BACKUP_BASE_DIR:-$HOME/Backups/wilkesliberty/daily}"
+  # Newest drupal_postgres_*.sql.gz anywhere under the daily tree
+  find "$base" -path '*/database/drupal_postgres_*.sql.gz' -type f -print0 2>/dev/null \
+    | xargs -0 ls -t 2>/dev/null | head -1 || true
+}
+
+# Look for sanitized developer snapshots (preferred over raw prod data)
+find_latest_sanitized_dev_snapshot() {
+  local base="${DEV_SNAPSHOT_BASE_DIR:-$HOME/Backups/dev-snapshots}"
+  # Convention: drupal_dev_sanitized_*.sql.gz
+  find "$base" -name 'drupal_dev_sanitized_*.sql.gz' -type f -print0 2>/dev/null \
+    | xargs -0 ls -t 2>/dev/null | head -1 || true
+}
+
+# Try to fetch the latest sanitized dev snapshot from the remote server over SSH
+fetch_sanitized_dev_snapshot_over_ssh() {
+  local ssh_host="$1"
+  local dest_dir="${DEV_SNAPSHOT_BASE_DIR:-$HOME/Backups/dev-snapshots}"
+  mkdir -p "$dest_dir"
+
+  local remote_snapshot
+  remote_snapshot=$(ssh -o BatchMode=yes -o ConnectTimeout=15 "$ssh_host" \
+    'ls -t ~/Backups/dev-snapshots/drupal_dev_sanitized_*.sql.gz 2>/dev/null | head -1' 2>/dev/null || true)
+
+  if [[ -z "$remote_snapshot" ]]; then
+    return 1
+  fi
+
+  local local_name
+  local_name="$(basename "$remote_snapshot")"
+  local dest="$dest_dir/$local_name"
+
+  log "Downloading sanitized dev snapshot from $ssh_host: $remote_snapshot"
+  if scp -q -o BatchMode=yes "$ssh_host:$remote_snapshot" "$dest" 2>/dev/null; then
+    success "Downloaded sanitized snapshot: $dest"
+    echo "$dest"
+    return 0
+  else
+    err "Failed to download sanitized snapshot from $ssh_host"
+    return 1
+  fi
+}
+
+do_live_prod_dump_fetch() {
+  local ssh_host="$1"
+  local tmp_dump="/tmp/wl-prod-refresh-$(date +%Y%m%d-%H%M%S).sql.gz"
+
+  warn "LIVE PROD DUMP REQUESTED"
+  echo "  This will stream a fresh copy of the production database (including PII)"
+  echo "  over SSH to this machine. The dump will be sanitized on import."
+  echo "  Any temporary file created by this fetch will be automatically and"
+  echo "  securely deleted after the refresh (unless --keep-dump is used)."
+  echo
+  echo "  Target SSH host : $ssh_host"
+  echo "  Destination     : $tmp_dump"
+  echo
+
+  if [[ $ASSUME_YES -eq 0 ]]; then
+    confirm "Really fetch a live production dump now?" || { err "Fetch aborted."; return 1; }
+  fi
+
+  log "Connecting to $ssh_host and streaming pg_dump | gzip ..."
+  if ssh -o BatchMode=yes -o ConnectTimeout=15 -o StrictHostKeyChecking=accept-new \
+      "$ssh_host" 'docker exec wl_postgres pg_dump -U drupal -d drupal | gzip' > "$tmp_dump" 2>/tmp/wl-ssh-dump.err; then
+    local size
+    size=$(du -h "$tmp_dump" | cut -f1)
+    success "Live prod dump fetched: $size → $tmp_dump"
+    echo "  This file contains raw production data (PII). It will be securely"
+    echo "  deleted after the refresh completes (unless --keep-dump is used)."
+    FETCHED_TEMP_DUMP="$tmp_dump"
+    DUMP_FILE="$tmp_dump"
+    return 0
+  else
+    err "SSH fetch from $ssh_host failed (see /tmp/wl-ssh-dump.err for details)."
+    echo "  Common fixes:"
+    echo "    - Ensure Tailscale is up and you can: ssh $ssh_host 'echo ok'"
+    echo "    - Add an alias in ~/.ssh/config:  Host wl-onprem ... HostName <tailscale-ip>"
+    echo "    - Set WL_ONPREM_HOST or use --ssh-host"
+    echo "    - Or manually place a backup in ~/Backups/wilkesliberty/daily/"
+    rm -f "$tmp_dump"
+    return 1
+  fi
+}
+
+obtain_prod_dump_for_local() {
+  # If user already gave --dump, respect it
+  [[ -n "$DUMP_FILE" ]] && return 0
+  [[ $FETCH -eq 0 ]] && return 0   # only auto when --fetch (or interactive enhancement later)
+
+  log "Auto-fetch mode (--fetch) enabled for local target."
+
+  # 1. STRONGLY PREFERRED: Sanitized developer snapshot (least sensitive)
+  local latest_sanitized
+  latest_sanitized=$(find_latest_sanitized_dev_snapshot)
+  if [[ -n "$latest_sanitized" && -f "$latest_sanitized" ]]; then
+    local age_days=$(( ( $(date +%s) - $(stat -f %m "$latest_sanitized" 2>/dev/null || stat -c %Y "$latest_sanitized") ) / 86400 ))
+    log "Found local sanitized dev snapshot: $latest_sanitized (age: ${age_days}d)"
+    if [[ $age_days -le 14 || $ASSUME_YES -eq 1 ]]; then
+      DUMP_FILE="$latest_sanitized"
+      success "Using sanitized developer snapshot (recommended)."
+      return 0
+    else
+      warn "Sanitized snapshot is ${age_days} days old."
+      if confirm "Use this older sanitized snapshot?"; then
+        DUMP_FILE="$latest_sanitized"
+        return 0
+      fi
+    fi
+  fi
+
+  # 2. Try to fetch a recent sanitized snapshot from the server over SSH
+  if [[ -n "$SSH_HOST" ]]; then
+    local fetched_sanitized
+    if fetched_sanitized=$(fetch_sanitized_dev_snapshot_over_ssh "$SSH_HOST" 2>/dev/null); then
+      DUMP_FILE="$fetched_sanitized"
+      success "Using freshly downloaded sanitized dev snapshot."
+      return 0
+    fi
+  fi
+
+  # 3. Fall back to raw daily backup (still better than live prod)
+  local latest_backup
+  latest_backup=$(find_latest_daily_backup)
+  if [[ -n "$latest_backup" && -f "$latest_backup" ]]; then
+    local age_days=$(( ( $(date +%s) - $(stat -f %m "$latest_backup" 2>/dev/null || stat -c %Y "$latest_backup") ) / 86400 ))
+    log "Found local daily backup (raw prod data): $latest_backup (age: ${age_days}d)"
+    if [[ $age_days -le 7 || $ASSUME_YES -eq 1 ]]; then
+      warn "Using raw production backup (contains real PII until sanitized on import)."
+      DUMP_FILE="$latest_backup"
+      return 0
+    else
+      warn "Local raw backup is ${age_days} days old."
+      if confirm "Use this older raw production backup?"; then
+        DUMP_FILE="$latest_backup"
+        return 0
+      fi
+    fi
+  fi
+
+  # 4. Last resort: live fetch from production (highest risk)
+  echo
+  warn "No sanitized dev snapshot or recent daily backup found."
+  echo "  The only remaining option is a live dump directly from production."
+  echo "  This transfers raw PII to this machine temporarily."
+  echo
+
+  if ! confirm "Fetch a live raw production dump over SSH now?"; then
+    err "No acceptable data source available — aborting."
+    exit 1
+  fi
+
+  do_live_prod_dump_fetch "$SSH_HOST" || exit 1
+}
+
+# Run a sanitizer PHP script safely inside the DDEV container.
+# The host path cannot be passed directly to `drush scr` because Drush
+# resolves it relative to the container's Drupal root.
+run_ddev_sanitizer() {
+  local host_script="$1"
+  local script_name
+  script_name="$(basename "$host_script")"
+
+  if [[ ! -f "$host_script" ]]; then
+    warn "Sanitizer not found at $host_script — skipping"
+    return 0
+  fi
+
+  # Copy into the container (DDEV mounts the project but drush scr + absolute host paths are fragile)
+  ddev exec cp "$host_script" /tmp/ >/dev/null 2>&1 || true
+  $DRUSH scr "/tmp/$script_name" || true
+  ddev exec rm -f "/tmp/$script_name" >/dev/null 2>&1 || true
+}
+
+# Securely remove a temporary prod dump we fetched during this run.
+# We only ever delete files we created ourselves (in /tmp), never
+# pre-existing daily backups or user-supplied --dump paths.
+cleanup_fetched_dump() {
+  [[ -z "$FETCHED_TEMP_DUMP" ]] && return 0
+  [[ $KEEP_DUMP -eq 1 ]] && {
+    warn "Keeping temporary prod dump at $FETCHED_TEMP_DUMP (--keep-dump)"
+    return 0
+  }
+  [[ ! -f "$FETCHED_TEMP_DUMP" ]] && return 0
+
+  log "Securely removing temporary production dump (contains raw PII)..."
+
+  if command -v srm >/dev/null 2>&1; then
+    srm -v "$FETCHED_TEMP_DUMP" 2>/dev/null || true
+  else
+    # macOS rm -P overwrites before unlinking (good enough baseline)
+    rm -P "$FETCHED_TEMP_DUMP" 2>/dev/null || rm -f "$FETCHED_TEMP_DUMP"
+  fi
+
+  if [[ ! -f "$FETCHED_TEMP_DUMP" ]]; then
+    success "Temporary prod dump removed."
+  else
+    warn "Could not fully remove $FETCHED_TEMP_DUMP — please delete it manually."
+  fi
+}
+
+# Best-effort cleanup of any live-fetched sensitive dump, even on error/abort.
+trap cleanup_fetched_dump EXIT
+
+# -----------------------------------------------------------------------------
 # Target selection (interactive if not provided)
 # -----------------------------------------------------------------------------
 if [[ -z "$TARGET" ]]; then
@@ -160,13 +416,23 @@ if [[ -z "$TARGET" ]]; then
   echo "Select target environment:"
   echo "  1) Local development (DDEV)     — recommended for most developers"
   echo "  2) Staging (on-prem Docker)     — full production-grade sanitization"
+  echo "  3) Both (local + staging)       — operator workflow (requires SSH + DDEV)"
   echo
-  read -r -p "Choice [1-2]: " choice
+  read -r -p "Choice [1-3]: " choice
   case "$choice" in
     1) TARGET="local" ;;
     2) TARGET="staging" ;;
+    3) TARGET="both" ;;
     *) err "Invalid choice"; exit 1 ;;
   esac
+fi
+
+# Normalize "both" (operator convenience: local first, then remote staging via infra tooling)
+DO_BOTH=0
+if [[ "$TARGET" == "both" ]]; then
+  DO_BOTH=1
+  TARGET="local"
+  log "Target mode: BOTH (local DDEV + remote staging refresh)"
 fi
 
 # -----------------------------------------------------------------------------
@@ -193,18 +459,24 @@ case "$TARGET" in
     if [[ $ASSUME_YES -eq 0 ]]; then
       echo
       warn "You are about to WIPE your local DDEV database (and optionally files)."
+      echo "  Preferred data source: sanitized dev snapshots (least sensitive)."
       confirm "Really proceed with local refresh?" || { log "Aborted by user."; exit 0; }
     fi
 
     if [[ $DO_DB -eq 1 ]]; then
+      obtain_prod_dump_for_local
+
       if [[ -z "$DUMP_FILE" ]]; then
         echo
         echo "You did not provide a dump file."
-        echo "Common ways to obtain a prod dump:"
-        echo "  1. From the on-prem server: docker exec wl_postgres pg_dump -U drupal -F c drupal > prod.dump"
-        echo "  2. Then scp it to your machine and pass --dump=/path/to/prod.dump"
+        echo "Best practice: Use sanitized dev snapshots (generated by infra/scripts/create-dev-snapshot.sh)."
+        echo "  These are the least sensitive option for local development."
         echo
-        read -r -p "Path to existing prod dump file (or leave empty to abort): " DUMP_FILE
+        echo "Other options:"
+        echo "  - Recent daily backup from ~/Backups/wilkesliberty/daily/"
+        echo "  - Re-run with --fetch (will prefer sanitized snapshots)"
+        echo
+        read -r -p "Path to dump file (or leave empty to abort): " DUMP_FILE
         [[ -z "$DUMP_FILE" ]] && { err "No dump supplied — aborting."; exit 1; }
       fi
 
@@ -217,11 +489,18 @@ case "$TARGET" in
       $DRUSH sql:drop -y || true
 
       log "Importing dump: $DUMP_FILE"
-      # Support both plain SQL and custom-format (pg_dump -F c) or gzipped
+      # Support both plain SQL and custom-format (pg_dump -F c) or gzipped.
+      # For large plain SQL .gz files we bypass drush sql:cli (which warns about
+      # stdin performance) and use psql directly inside the db service. We also
+      # filter a few known harmless "function already exists" messages that appear
+      # when re-importing dumps that contain compatibility shims.
       if [[ "$DUMP_FILE" == *.gz ]]; then
-        gunzip -c "$DUMP_FILE" | $DRUSH sql:cli
+        gunzip -c "$DUMP_FILE" \
+          | ddev exec --service db psql -U db -d db --quiet 2>&1 \
+          | grep -vE 'ERROR:  function (rand|substring_index) already exists with same argument types' \
+          || true
       elif file "$DUMP_FILE" | grep -q "PostgreSQL custom"; then
-        # Custom format needs pg_restore inside the db container
+        # Custom format needs pg_restore inside the db container (already efficient)
         ddev exec -s db pg_restore -U db -d db --no-owner --no-acl < "$DUMP_FILE" || true
       else
         $DRUSH sql:cli < "$DUMP_FILE"
@@ -230,7 +509,7 @@ case "$TARGET" in
       log "Running initial cache rebuild (so Drush can bootstrap)..."
       $DRUSH cr
 
-      # Run sanitizers (they live next to this script)
+      # Compute once so the helper and any later code can use it
       SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
       log "Sanitizing user emails + password hashes..."
@@ -238,10 +517,10 @@ case "$TARGET" in
       $DRUSH sql:query "UPDATE users_field_data SET pass = '\$2y\$10\$local.locked.out.' || uid WHERE uid > 1"
 
       log "Running custom email field sanitizer..."
-      $DRUSH scr "$SCRIPT_DIR/sanitize_email_fields.php" || true
+      run_ddev_sanitizer "$SCRIPT_DIR/sanitize_email_fields.php"
 
       log "Running webform email sanitizer..."
-      $DRUSH scr "$SCRIPT_DIR/sanitize_webform_emails.php" || true
+      run_ddev_sanitizer "$SCRIPT_DIR/sanitize_webform_emails.php"
 
       log "Truncating watchdog..."
       $DRUSH sql:query "TRUNCATE watchdog" || true
@@ -261,6 +540,9 @@ case "$TARGET" in
       success "Local database refresh complete."
       echo "  Login: https://api.wilkesliberty.dev/user/login"
       echo "  user: admin / pass: admin   (change immediately!)"
+
+      # Clean up any temporary prod dump we fetched (unless --keep-dump)
+      cleanup_fetched_dump
     fi
 
     if [[ $DO_FILES -eq 1 ]]; then
@@ -268,6 +550,45 @@ case "$TARGET" in
       echo "If you have Tailscale + SSH access to the on-prem host you can do:"
       echo "  rsync -a --delete user@onprem:~/nas_docker/drupal/files/ web/sites/default/files/"
       echo "Then run: ddev drush cr"
+    fi
+
+    # --- BOTH mode: after successful local, orchestrate remote staging refresh ---
+    if [[ $DO_BOTH -eq 1 ]]; then
+      echo
+      log "Local DDEV refresh finished. Proceeding to remote staging refresh (operator mode)..."
+      echo "  This will SSH to $SSH_HOST and run the full infra make refresh-staging"
+      echo "  (battle-tested path with SOPS secrets, Postmark sandbox, etc.)."
+      echo
+
+      # Quick reachability check (non-interactive)
+      if ! ssh -o BatchMode=yes -o ConnectTimeout=10 "$SSH_HOST" 'echo "SSH OK"' >/dev/null 2>&1; then
+        err "SSH to $SSH_HOST failed (BatchMode)."
+        echo "  Configure ~/.ssh/config alias 'wl-onprem' (or set WL_ONPREM_HOST / --ssh-host)."
+        echo "  Then run manually: ssh $SSH_HOST 'cd ~/Repositories/infra && make refresh-staging'"
+        REMOTE_STAGING_STATUS="failed"
+      else
+        if [[ $ASSUME_YES -eq 1 ]]; then
+          # Non-interactive path: feed the Makefile's confirmation prompt
+          log "Running non-interactive remote staging refresh..."
+          if ssh -T "$SSH_HOST" 'printf "yes\n" | make -C ~/Repositories/infra refresh-staging'; then
+            success "Remote staging refresh completed successfully."
+            REMOTE_STAGING_STATUS="success"
+          else
+            warn "Remote staging refresh command returned non-zero (check output above)."
+            REMOTE_STAGING_STATUS="failed"
+          fi
+        else
+          # Interactive: let the remote prompt show through a pty
+          log "Starting interactive remote staging refresh (you will be prompted on the remote)..."
+          if ssh -t "$SSH_HOST" 'make -C ~/Repositories/infra refresh-staging'; then
+            success "Remote staging refresh completed."
+            REMOTE_STAGING_STATUS="success"
+          else
+            warn "Remote staging refresh did not finish cleanly."
+            REMOTE_STAGING_STATUS="failed"
+          fi
+        fi
+      fi
     fi
     ;;
 
@@ -329,6 +650,18 @@ case "$TARGET" in
     docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
       pg_restore -U "$DB_USER" -d "$DB_NAME" --no-owner --no-acl "$DUMP_PATH" || true
 
+    log "Granting privileges to staging application user..."
+    docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
+      psql -U postgres -d "$DB_NAME" -c "GRANT USAGE ON SCHEMA public TO \"$DB_USER\";" || true
+    docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
+      psql -U postgres -d "$DB_NAME" -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO \"$DB_USER\";" || true
+    docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
+      psql -U postgres -d "$DB_NAME" -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO \"$DB_USER\";" || true
+    docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
+      psql -U postgres -d "$DB_NAME" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO \"$DB_USER\";" || true
+    docker exec -e PGPASSWORD="${STG_DRUPAL_DB_PASSWORD:-}" "$STG_PG" \
+      psql -U postgres -d "$DB_NAME" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE, SELECT ON SEQUENCES TO \"$DB_USER\";" || true
+
     if [[ $DO_FILES -eq 1 ]]; then
       log "Rsyncing public files (this may take a while)..."
       rsync -a --delete ~/nas_docker/drupal/files/ ~/nas_docker_staging/drupal/files/
@@ -377,8 +710,18 @@ esac
 
 success "Refresh operation finished."
 echo
-echo "Next steps:"
-echo "  - Verify the site loads"
-echo "  - Change any default passwords you accepted"
-echo "  - Run 'ddev drush cex -y' (local) or equivalent if you need to capture config changes"
+if [[ $DO_BOTH -eq 1 ]]; then
+  if [[ "$REMOTE_STAGING_STATUS" == "success" ]]; then
+    echo "Both local DDEV and remote staging were refreshed successfully."
+  else
+    echo "Local DDEV refresh completed."
+    echo "Remote staging refresh was skipped or failed (see messages above)."
+    echo "  Manual command: ssh $SSH_HOST 'cd ~/Repositories/infra && make refresh-staging'"
+  fi
+else
+  echo "Next steps:"
+  echo "  - Verify the site loads"
+  echo "  - Change any default passwords you accepted"
+  echo "  - Run 'ddev drush cex -y' (local) or equivalent if you need to capture config changes"
+fi
 echo

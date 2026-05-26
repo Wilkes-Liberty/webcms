@@ -10,6 +10,7 @@ This guide covers setting up a local Drupal 11 development environment using DDE
 | DDEV | 1.22.0+ | https://ddev.readthedocs.io/en/stable/users/install/ |
 | Composer | 2.x | `brew install composer` |
 | Git | 2.30+ | `brew install git` |
+| secure-delete (optional) | — | `brew install secure-delete` (recommended for `--fetch` users; provides `srm` for secure deletion of prod dumps) |
 
 ### macOS Quick Install
 
@@ -270,8 +271,9 @@ cd webcms
 
 The script is interactive by default and supports:
 
-- Target selection: **Local (DDEV)** or **Staging**
+- Target selection: **Local (DDEV)**, **Staging**, or **Both** (local + remote staging in one invocation)
 - Granular choices: database only, files only, or both
+- `--fetch`: automatically obtain a prod dump (strongly preferred daily backup in `~/Backups/wilkesliberty/daily/`, with live SSH fallback)
 - Full sanitization of user data, custom email fields, webforms, watchdog, etc.
 - Non-interactive mode: `./scripts/refresh-env.sh --target local --db-only --yes`
 
@@ -281,16 +283,31 @@ The script is interactive by default and supports:
 # Fully interactive (recommended first time)
 ./scripts/refresh-env.sh
 
-# Local DB only, non-interactive (great in CI or scripts)
+# Local DB only, non-interactive, supply your own dump
 ./scripts/refresh-env.sh --target local --db-only -y --dump=/tmp/prod-latest.dump
+
+# Local DB only — auto-fetch (uses latest local daily backup if present, else live prod via SSH)
+./scripts/refresh-env.sh --target local --fetch -y
+
+# Operator: refresh BOTH local DDEV and staging in one go (requires Tailscale + SSH alias "wl-onprem")
+./scripts/refresh-env.sh --target both --fetch -y
+
+# Keep the raw fetched dump instead of automatic secure deletion
+./scripts/refresh-env.sh --target local --fetch --keep-dump
 
 # Staging (lighter in-place path — still prefers the make target for full features)
 ./scripts/refresh-env.sh --target staging --both
+
+# Override the SSH host used by --fetch / both
+./scripts/refresh-env.sh --target both --fetch --ssh-host onprem -y
 ```
 
-**Notes for local DDEV**:
-- You must first obtain a production dump (usually via the on-prem server + `pg_dump` or the infra tooling).
-- Pass it with `--dump=...` or the script will prompt.
+**Notes for local DDEV (with --fetch)**:
+- **Best practice**: Regularly generate sanitized developer snapshots on the server using `infra/scripts/create-dev-snapshot.sh` (ideally after `make refresh-staging`, sourcing from the already-sanitized staging database). Rsync these to `~/Backups/dev-snapshots/` on operator machines.
+- `--fetch` now **strongly prefers** sanitized dev snapshots over raw daily backups. Raw production data is only used as a last resort, with clear warnings.
+- You must have SSH access to the on-prem host (via Tailscale). The default alias is `wl-onprem`.
+- **Security & cleanup**: Temporary raw dumps fetched live are automatically and securely deleted after use (unless `--keep-dump`). Sanitized snapshots are the strongly preferred data source for local development.
+- Regular developers without on-prem SSH should continue providing a dump via `--dump` or the interactive prompt (or ask an operator for a sanitized excerpt if needed).
 - Files sync is intentionally limited locally (most developers only need the DB).
 
 The sanitization PHP scripts (`sanitize_email_fields.php`, `sanitize_webform_emails.php`) live in `scripts/` and are shared with the infra refresh playbook.

@@ -209,6 +209,19 @@ ddev export-db --file=backup-$(date +%Y%m%d).sql.gz
 ddev import-db --src=backup.sql.gz
 ```
 
+**Refreshing production data locally (or staging)**
+- See `docs/local-development.md` → "Refreshing Production Data"
+- **Best practice**: After `make refresh-staging`, run:
+  ```bash
+  ~/Repositories/infra/scripts/create-dev-snapshot.sh --from-staging
+  ```
+  Then on developer machines:
+  ```bash
+  ./scripts/refresh-env.sh --target local --fetch -y
+  ```
+  The script now strongly prefers these sanitized snapshots.
+- Canonical full staging refresh: `make -C ../infra refresh-staging`
+
 **Debugging**
 ```bash
 ddev drush watchdog:show          # recent logs

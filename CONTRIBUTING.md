@@ -220,6 +220,11 @@ ddev drush uli           # Generate one-time login link
 ddev import-db --src=backup.sql.gz
 ddev export-db --file=backup.sql.gz
 
+# Refresh local DDEV (or both local + staging) from production data
+./scripts/refresh-env.sh --target local --fetch
+./scripts/refresh-env.sh --target both --fetch -y   # operator workflow
+# (live-fetched dumps are auto-deleted after use unless --keep-dump is passed)
+
 # Access services
 ddev launch              # Open site in browser
 ddev launch /admin       # Open admin interface
