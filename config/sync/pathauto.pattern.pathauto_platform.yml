@@ -1,0 +1,20 @@
+uuid: bc6628a3-b5c4-41c8-9e22-e627b0cd885d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: pathauto_platform
+label: 'Platform pattern'
+type: 'canonical_entities:node'
+pattern: '/platforms/[node:title]'
+selection_criteria:
+  2c2bd9d0-9d48-4640-8c89-1577e6714cf0:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 2c2bd9d0-9d48-4640-8c89-1577e6714cf0
+    bundles:
+      - platform
+selection_logic: and
+weight: 0
+relationships: {  }
