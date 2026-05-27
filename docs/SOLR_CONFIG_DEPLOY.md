@@ -1,6 +1,6 @@
 # Solr Configset Deploy Runbook
 
-How to push Drupal-generated Solr configsets to the W&L Solr server when the
+How to push Drupal-generated Solr configsets to the WL Solr server when the
 `search_api_solr` module asks you to "deploy an updated `config.zip` to your
 Solr server."
 

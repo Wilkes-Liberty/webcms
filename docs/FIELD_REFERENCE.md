@@ -76,7 +76,7 @@ These fields were introduced with the v2.0 Product/Service/Solution architecture
 **Type**: Entity Reference (Taxonomy → Platforms)
 **Used by**: Product, Service, Solution, Case Study
 
-**Purpose**: Links content to one of the core W&L technology platforms (Liberty, Fortis, Apex, etc.).
+**Purpose**: Links content to one of the core WL technology platforms (Liberty, Fortis, Apex, etc.).
 
 #### `field_outcomes` (Solution only)
 **Type**: Text (Long) or Paragraphs

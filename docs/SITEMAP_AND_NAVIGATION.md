@@ -1,6 +1,6 @@
 # Sitemap, Navigation, and Page Hierarchy
 
-**Document:** Deliverable 2 of the W&L Content Architecture pass  
+**Document:** Deliverable 2 of the WL Content Architecture pass  
 **Owner:** Jeremy Cerda  
 **Last updated:** 2026-05-22  
 **Status:** Draft — awaiting Jeremy review before Deliverable 3  
@@ -35,7 +35,7 @@ These decisions underpin every structural choice in this document. Each is drive
 
 **Products and Services are the proof layer.** Every Solution page links back to the Products and Services it bundles. A buyer who wants to verify the underlying capability goes to the Product or Service page; the Solution page does not need to restate those details.
 
-**Case Studies anchor the credibility layer.** The W&L corporate past performance (HHS/CMS via Scope Infotec) and the principal's individual record (USPS OIG, pandemicoversight.gov) are the most credible assets the site has. Case Studies cross-link to both Solutions and the Federal hub.
+**Case Studies anchor the credibility layer.** The WL corporate past performance (HHS/CMS via Scope Infotec) and the principal's individual record (USPS OIG, pandemicoversight.gov) are the most credible assets the site has. Case Studies cross-link to both Solutions and the Federal hub.
 
 **Drupal Agency Partner Program** is recommended as a discreet `/partners` page (content type: `basic_page`) rather than a public Solution page. The audience (agency principals and teams considering a white-label or teaming relationship) is unlikely to find the site through broad search; they will be referred. A quiet page reachable from the footer and from a direct link in outreach is the right surface. No public Solution node needed.
 
@@ -92,7 +92,7 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 │   └── /solutions/sovereign-digital-modernization-platform [solution — seeded, nid 23]
 │
 ├── /case-studies ................................. [dynamic-index]
-│   ├── /case-studies/hhs-cms-web-platform               [case_study — W&L corporate]
+│   ├── /case-studies/hhs-cms-web-platform               [case_study — WL corporate]
 │   ├── /case-studies/usps-oig-drupal-distribution       [case_study — principal]
 │   └── /case-studies/pandemicoversight-gov              [case_study — principal]
 │
@@ -515,7 +515,7 @@ Federal Buyers
 ### Mobile header bar (always visible, narrow viewport)
 
 ```
-[W&L Logomark]    [Federal Buyers]    [☰]
+[WL Logomark]    [Federal Buyers]    [☰]
 ```
 
 - Logo: links to `/`
@@ -689,7 +689,7 @@ Four primary buyer journeys, mapped as 2–4 page paths from entry to the contac
 
 ### Journey 1 — Federal Contracting Officer / Prime BD Team
 
-**Goal:** Qualify W&L as a subcontractor candidate or team partner. Confirm past performance, NAICS, and capability alignment before reaching out.
+**Goal:** Qualify WL as a subcontractor candidate or team partner. Confirm past performance, NAICS, and capability alignment before reaching out.
 
 **Likely entry:** Direct URL from capability statement PDF, DSBS search result, referral from Scope Infotec or ECS Federal contact.
 
@@ -718,7 +718,7 @@ Step 4: /contact?audience=federal
 
 ### Journey 2 — Higher Education Web Services Director / IT Modernization PM
 
-**Goal:** Evaluate W&L as a vendor for a Drupal modernization, accessibility remediation, or headless architecture project.
+**Goal:** Evaluate WL as a vendor for a Drupal modernization, accessibility remediation, or headless architecture project.
 
 **Likely entry:** Organic search ("Drupal 7 to 11 migration higher education," "headless Drupal university"), referral from a Drupal community contact, LinkedIn.
 
@@ -748,7 +748,7 @@ Step 4: /contact
 
 ### Journey 3 — Mission-Driven Nonprofit Executive Director or CTO
 
-**Goal:** Evaluate W&L for a platform that preserves data sovereignty, is accessible, and does not lock the organization into a cloud vendor's terms.
+**Goal:** Evaluate WL for a platform that preserves data sovereignty, is accessible, and does not lock the organization into a cloud vendor's terms.
 
 **Likely entry:** Referral from a peer organization, LinkedIn, organic search ("self-hosted CMS nonprofit," "sovereign infrastructure nonprofit").
 
@@ -778,7 +778,7 @@ Step 4: /contact
 
 ### Journey 4 — Privacy-Conscious B2B SaaS CTO / Head of Platform
 
-**Goal:** Evaluate W&L for IAM/SSO consolidation, SOC 2 readiness support, or a move away from SaaS identity and monitoring tools that create audit risk.
+**Goal:** Evaluate WL for IAM/SSO consolidation, SOC 2 readiness support, or a move away from SaaS identity and monitoring tools that create audit risk.
 
 **Likely entry:** Organic search ("Keycloak consulting," "self-hosted SSO SOC 2," "zero-trust identity small team"), referral from security community.
 
@@ -800,7 +800,7 @@ Step 4: /contact
 
 **Conversion event:** "Schedule a Technical Briefing" CTA on the Fortis Identity product page or the Zero-Trust consulting service page.
 
-**Dropout risk:** Step 2. This buyer is technically sophisticated and will not be sold by feature lists. The Zero-Trust consulting service page must open with a specific, technically honest problem statement — not a general description of "zero-trust" — and must name the actual technologies (Keycloak, OIDC, mTLS, audit log configuration) that W&L works with.
+**Dropout risk:** Step 2. This buyer is technically sophisticated and will not be sold by feature lists. The Zero-Trust consulting service page must open with a specific, technically honest problem statement — not a general description of "zero-trust" — and must name the actual technologies (Keycloak, OIDC, mTLS, audit log configuration) that WL works with.
 
 ---
 

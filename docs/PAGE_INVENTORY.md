@@ -194,7 +194,7 @@ Type defined, no copy drafted. Real client engagements only (HHS/CMS via Scope I
 | `/careers` | dynamic-index | todo | Jeremy | Job board listing |
 | `/careers/{slug}` | career | todo | Jeremy | Department / seniority / location filters; `field_apply_url` for external ATS |
 
-W&L is not actively hiring (per memory: business-continuity-only access patterns), so this can be deferred or render an empty-state until needed.
+WL is not actively hiring (per memory: business-continuity-only access patterns), so this can be deferred or render an empty-state until needed.
 
 ## 10. Team / People
 
