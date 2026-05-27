@@ -1,14 +1,14 @@
 # Website Content Reference
 
-Content copy for all Products and Services pages. Use this as the source of truth when entering content into the CMS.
+Content copy for all Platforms, Services, and Solutions pages. Use this as the source of truth when entering content into the CMS.
 
 ---
 
-## Products
+## Platforms
 
-### 1. Sovereign Infrastructure Platform
+### 1. Sabal Infrastructure Platform
 
-**SEO Title:** Sovereign Infrastructure Platform | Mission-Controlled Technology
+**SEO Title:** Sabal Infrastructure Platform | Mission-Controlled Technology
 
 **Meta Description:** Deploy secure, sovereign infrastructure anywhere. Designed to enhance mission resilience, eliminate vendor dependency, and give defense and government organizations full control over their technology environment.
 
@@ -16,9 +16,9 @@ Content copy for all Products and Services pages. Use this as the source of trut
 
 **Full Page Copy:**
 
-#### Sovereign Infrastructure Platform
+#### Sabal Infrastructure Platform
 
-In high-stakes environments where mission success depends on technology you truly control, the Sovereign Infrastructure Platform delivers the foundation you need.
+In high-stakes environments where mission success depends on technology you truly control, the Sabal Infrastructure Platform delivers the foundation you need.
 
 This complete Infrastructure-as-Code solution enables rapid, repeatable deployment of secure environments — whether on-premises, in private clouds, or hybrid architectures. It is purpose-built to **enhance operational resilience**, **streamline infrastructure management**, and **facilitate uninterrupted mission execution**.
 
@@ -36,9 +36,9 @@ By removing reliance on external cloud providers and giving you full sovereignty
 
 ---
 
-### 2. Liberty Headless CMS Platform
+### 2. Keel CMS Platform
 
-**SEO Title:** Liberty Headless CMS Platform | Secure Content Sovereignty
+**SEO Title:** Keel CMS Platform | Secure Content Sovereignty
 
 **Meta Description:** Enterprise-grade headless content management that empowers your team to create, manage, and deliver critical information with full security and flexibility.
 
@@ -46,9 +46,9 @@ By removing reliance on external cloud providers and giving you full sovereignty
 
 **Full Page Copy:**
 
-#### Liberty Headless CMS Platform
+#### Keel CMS Platform
 
-Effective communication and information management are essential to mission success. The Liberty Headless CMS Platform gives defense and government organizations a secure, flexible foundation for managing complex content at scale.
+Effective communication and information management are essential to mission success. The Keel CMS Platform gives defense and government organizations a secure, flexible foundation for managing complex content at scale.
 
 **Key Capabilities**
 
@@ -64,9 +64,9 @@ We streamline your content operations so your teams can focus on strategic commu
 
 ---
 
-### 3. Enterprise Search Platform
+### 3. Alidade Search Platform
 
-**SEO Title:** Enterprise Search Platform | Mission-Critical Information Discovery
+**SEO Title:** Alidade Search Platform | Mission-Critical Information Discovery
 
 **Meta Description:** High-performance enterprise search that enables rapid, accurate discovery of critical information across your organization.
 
@@ -74,7 +74,7 @@ We streamline your content operations so your teams can focus on strategic commu
 
 **Full Page Copy:**
 
-#### Enterprise Search Platform
+#### Alidade Search Platform
 
 In mission-critical operations, the ability to find the right information at the right time can mean the difference between success and delay.
 
@@ -91,9 +91,9 @@ By dramatically reducing time spent searching for information, we help streamlin
 
 ---
 
-### 4. Fortis Zero-Trust Identity Platform
+### 4. Squawk Zero-Trust Identity Platform
 
-**SEO Title:** Fortis Zero-Trust Identity Platform | Secure Access Management
+**SEO Title:** Squawk Zero-Trust Identity Platform | Secure Access Management
 
 **Meta Description:** Modern zero-trust identity and access management that strengthens security while supporting seamless mission operations.
 
@@ -101,9 +101,9 @@ By dramatically reducing time spent searching for information, we help streamlin
 
 **Full Page Copy:**
 
-#### Fortis Zero-Trust Identity Platform
+#### Squawk Zero-Trust Identity Platform
 
-Security and usability must work together in support of the mission. The Fortis Zero-Trust Identity Platform provides enterprise-grade single sign-on and access control while enforcing strict security standards.
+Security and usability must work together in support of the mission. The Squawk Zero-Trust Identity Platform provides enterprise-grade single sign-on and access control while enforcing strict security standards.
 
 **Key Capabilities**
 
@@ -118,9 +118,9 @@ We streamline secure access across your systems so authorized personnel can focu
 
 ---
 
-### 5. Apex Secure Data Platform
+### 5. Manifest Data Platform
 
-**SEO Title:** Apex Secure Data Platform | Mission-Ready Data Management
+**SEO Title:** Manifest Data Platform | Mission-Ready Data Management
 
 **Meta Description:** Secure, high-performance data infrastructure that ensures your critical information is always available, protected, and under your control.
 
@@ -128,9 +128,9 @@ We streamline secure access across your systems so authorized personnel can focu
 
 **Full Page Copy:**
 
-#### Apex Secure Data Platform
+#### Manifest Data Platform
 
-Reliable, secure data is the lifeblood of modern missions. The Apex Secure Data Platform provides a robust, high-performance foundation for storing, protecting, and accessing your most sensitive information.
+Reliable, secure data is the lifeblood of modern missions. The Manifest Data Platform provides a robust, high-performance foundation for storing, protecting, and accessing your most sensitive information.
 
 **Key Capabilities**
 
@@ -145,9 +145,9 @@ By ensuring your data is always secure and readily available, we help facilitate
 
 ---
 
-### 6. Vigilance Mission Observability Suite
+### 6. Lighthouse Observability Platform
 
-**SEO Title:** Vigilance Mission Observability Suite | Real-Time System Intelligence
+**SEO Title:** Lighthouse Observability Platform | Real-Time System Intelligence
 
 **Meta Description:** Comprehensive monitoring and alerting that provides total visibility into your infrastructure, enabling proactive mission support.
 
@@ -155,9 +155,9 @@ By ensuring your data is always secure and readily available, we help facilitate
 
 **Full Page Copy:**
 
-#### Vigilance Mission Observability Suite
+#### Lighthouse Observability Platform
 
-True mission readiness requires complete visibility. The Vigilance Observability Suite delivers enterprise-grade monitoring, dashboards, and intelligent alerting across your entire technology environment.
+True mission readiness requires complete visibility. The Lighthouse Observability Platform delivers enterprise-grade monitoring, dashboards, and intelligent alerting across your entire technology environment.
 
 **Key Capabilities**
 
@@ -296,7 +296,65 @@ We equip your teams with the insights needed to anticipate threats, make faster 
 
 ## Solutions
 
-Branded, mission-aligned packages that combine Products and Services into deployable offerings. Each Solution is designed as a cohesive capability that can be procured and stood up as a unit.
+Branded, mission-aligned packages that combine Platforms and Services into deployable offerings. Each Solution is designed as a cohesive capability that can be procured and stood up as a unit.
+
+> **Note on seeded solutions below:** The three entries that follow (Sovereign Mission Edge, Sovereign AI Command Fabric, Sovereign Digital Modernization Platform) are pre-naming-session placeholders pending disposition review (§6.7 of NAMING_DECISIONS.md). The eight canonical solution names are listed in §6.9 below. Full copy for each is pending.
+
+---
+
+## Solutions — Canonical Entries (copy pending)
+
+The following are the eight locked solution names. Full page copy, SEO titles, and meta descriptions for each are to be written in a subsequent content session. Platform name references are included for content writers.
+
+### DotEDU — Higher Education
+*Builds on: Keel CMS Platform, Alidade Search Platform*
+Full copy pending.
+
+---
+
+### Accord — Nonprofit
+*Builds on: Keel CMS Platform*
+Full copy pending.
+
+---
+
+### Palisade — Privacy SaaS
+*Builds on: Manifest Data Platform, Squawk Identity Platform*
+Full copy pending.
+
+---
+
+### Bulkhead — Regulated Industries
+*Builds on: Sabal Infrastructure Platform, Squawk Identity Platform, Manifest Data Platform*
+Full copy pending.
+
+---
+
+### DotGov — Federal Civilian
+*Builds on: Keel CMS Platform (DotGov Drupal distribution), Alidade Search Platform, Squawk Identity Platform*
+Full copy pending.
+
+---
+
+### Gazette — IG Platforms (Fraud, Waste & Abuse)
+*Builds on: Keel CMS Platform, Manifest Data Platform*
+Full copy pending.
+
+---
+
+### Outpost — Defense Technology Modernization
+*Builds on: Sabal Infrastructure Platform, Coquina Software Factory Platform*
+Full copy pending.
+
+---
+
+### Software Factory
+*Builds on: Coquina Software Factory Platform*
+Full copy pending.
+
+---
+
+## Solutions — Legacy Seeded Entries (pending disposition)
 
 ### 1. Sovereign Mission Edge
 
@@ -306,7 +364,7 @@ Branded, mission-aligned packages that combine Products and Services into deploy
 
 **Full Page Copy:**
 
-Sovereign Mission Edge delivers a complete, sovereign tactical operations capability by integrating the Apex Secure Data Platform, Vigilance Mission Observability Suite, and specialized zero-trust identity and integration services. Designed for contested and disconnected environments, it provides the data foundation, real-time awareness, and secure access controls required for mission success at the edge.
+Sovereign Mission Edge delivers a complete, sovereign tactical operations capability by integrating the Manifest Data Platform, Lighthouse Observability Platform, and specialized zero-trust identity and integration services. Designed for contested and disconnected environments, it provides the data foundation, real-time awareness, and secure access controls required for mission success at the edge.
 
 **Key Capabilities**
 - Air-gapped capable data platform with full sovereignty controls
@@ -333,7 +391,7 @@ Enables forces to maintain information superiority and decision advantage even w
 
 **Full Page Copy:**
 
-Sovereign AI Command Fabric combines the Apex Secure Data Platform with Private LLM capabilities and AI integration services to deliver classified, sovereign artificial intelligence at scale. All models, data, and inference remain fully under customer control with no external API calls or data exfiltration risks.
+Sovereign AI Command Fabric combines the Manifest Data Platform with Private LLM capabilities and AI integration services to deliver classified, sovereign artificial intelligence at scale. All models, data, and inference remain fully under customer control with no external API calls or data exfiltration risks.
 
 **Key Capabilities**
 - On-premises and air-gapped large language model deployment
@@ -360,7 +418,7 @@ Accelerates intelligence analysis, planning, and decision-making while eliminati
 
 **Full Page Copy:**
 
-The Sovereign Digital Modernization Platform brings together Liberty Headless CMS, Enterprise Search, Fortis Identity, and our Digital Modernization and Custom Software Development services into a single, coherent transformation program. It enables organizations to retire fragile legacy systems and move to modern, maintainable, and sovereign platforms without the typical risks of large-scale modernization efforts.
+The Sovereign Digital Modernization Platform brings together Keel CMS Platform, Enterprise Search, Squawk Identity Platform, and our Digital Modernization and Custom Software Development services into a single, coherent transformation program. It enables organizations to retire fragile legacy systems and move to modern, maintainable, and sovereign platforms without the typical risks of large-scale modernization efforts.
 
 **Key Capabilities**
 - Low-risk, phased migration from legacy content and data systems
