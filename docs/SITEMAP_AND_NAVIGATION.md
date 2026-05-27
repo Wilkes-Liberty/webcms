@@ -2,8 +2,8 @@
 
 **Document:** Deliverable 2 of the WL Content Architecture pass  
 **Owner:** Jeremy Cerda  
-**Last updated:** 2026-05-22  
-**Status:** Draft — awaiting Jeremy review before Deliverable 3  
+**Last updated:** 2026-05-27  
+**Status:** Updated 2026-05-27 — platform names and solution names propagated from naming session  
 **Companion docs:** [PAGE_INVENTORY.md](PAGE_INVENTORY.md) · [CONTENT_TYPES_GUIDE.md](CONTENT_TYPES_GUIDE.md) · [CONTENT_DRAFT_V2.md](CONTENT_DRAFT_V2.md) *(forthcoming)*
 
 ---
@@ -27,19 +27,19 @@
 
 ## 1. Strategic Architecture Decisions
 
-These decisions underpin every structural choice in this document. Each is driven by the two-track revenue strategy (federal + commercial) and the site's architectural rules (Products and Services as canonical capability inventory; Solutions as audience-segmented packages).
+These decisions underpin every structural choice in this document. Each is driven by the two-track revenue strategy (federal + commercial) and the site's architectural rules (Platforms and Services as canonical capability inventory; Solutions as audience-segmented packages).
 
 **Solutions are the commercial entry point.** Buyers from higher education, nonprofits, B2B SaaS, and regulated industries enter through `/solutions`. The Solutions index is the primary disambiguation point — a visitor who lands anywhere other than a named Solution page should be able to reach the right Solution within one click.
 
 **`/federal` is a distinct conversion surface.** The federal buyers hub is not a Solutions page. It is a dedicated landing page with UEI, CAGE, NAICS, past performance summary, and capability statement download — copy scoped to contracting officers and prime BD teams. It is surfaced in utility navigation (always visible) and linked from every federal Solution page.
 
-**Products and Services are the proof layer.** Every Solution page links back to the Products and Services it bundles. A buyer who wants to verify the underlying capability goes to the Product or Service page; the Solution page does not need to restate those details.
+**Platforms and Services are the proof layer.** Every Solution page links back to the Platforms and Services it bundles. A buyer who wants to verify the underlying capability goes to the Platform or Service page; the Solution page does not need to restate those details.
 
 **Case Studies anchor the credibility layer.** The WL corporate past performance (HHS/CMS via Scope Infotec) and the principal's individual record (USPS OIG, pandemicoversight.gov) are the most credible assets the site has. Case Studies cross-link to both Solutions and the Federal hub.
 
 **Drupal Agency Partner Program** is recommended as a discreet `/partners` page (content type: `basic_page`) rather than a public Solution page. The audience (agency principals and teams considering a white-label or teaming relationship) is unlikely to find the site through broad search; they will be referred. A quiet page reachable from the footer and from a direct link in outreach is the right surface. No public Solution node needed.
 
-**Defense Technology Integration** is listed as both a Service and a proposed federal Solution. The Solution wraps the Service plus Products (Apex Data, Vigilance Observability, Sovereign Infrastructure Platform) into a package with defense-specific outcomes. Both nodes exist; the Solution page sells the combination, the Service page sells the engagement.
+**Defense Technology Integration** is listed as both a Service and a proposed federal Solution. The Solution wraps the Service plus Platforms (Manifest Data Platform, Lighthouse Observability Platform, Sabal Infrastructure Platform) into a package with defense-specific outcomes. Both nodes exist; the Solution page sells the combination, the Service page sells the engagement.
 
 ---
 
@@ -53,13 +53,13 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 ├── /contact ...................................... [nextjs + webform]
 ├── /federal ...................................... [landing_page — federal buyers hub]
 │
-├── /products ..................................... [dynamic-index]
-│   ├── /products/sovereign-infrastructure-platform   [product]
-│   ├── /products/liberty-headless-cms               [product]
-│   ├── /products/enterprise-search                  [product]
-│   ├── /products/fortis-identity                    [product]
-│   ├── /products/apex-data                          [product]
-│   └── /products/vigilance-observability            [product]
+├── /platforms .................................... [dynamic-index]
+│   ├── /platforms/sabal                             [platform]
+│   ├── /platforms/keel                              [platform]
+│   ├── /platforms/alidade                           [platform]
+│   ├── /platforms/squawk                            [platform]
+│   ├── /platforms/manifest                          [platform]
+│   └── /platforms/lighthouse                        [platform]
 │
 ├── /services ..................................... [dynamic-index]
 │   ├── /services/private-infrastructure-engineering   [service]
@@ -76,15 +76,16 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 ├── /solutions .................................... [dynamic-index]
 │   │
 │   │   ── Commercial Solutions ──
-│   ├── /solutions/higher-education-modernization        [solution]
-│   ├── /solutions/mission-driven-nonprofit-platforms    [solution]
-│   ├── /solutions/privacy-conscious-saas-platforms      [solution]
-│   ├── /solutions/sovereign-infrastructure-regulated    [solution]
+│   ├── /solutions/dotedu                                [solution]
+│   ├── /solutions/accord                                [solution]
+│   ├── /solutions/palisade                              [solution]
+│   ├── /solutions/bulkhead                              [solution]
 │   │
 │   │   ── Federal Solutions ──
-│   ├── /solutions/federal-civilian-modernization        [solution]
-│   ├── /solutions/inspector-general-platforms           [solution]
-│   ├── /solutions/defense-modernization                 [solution]
+│   ├── /solutions/dotgov                                [solution]
+│   ├── /solutions/gazette                               [solution]
+│   └── /solutions/outpost                               [solution]
+│   │
 │   │
 │   │   ── Existing seeded (tactical packages) ──
 │   ├── /solutions/sovereign-mission-edge                [solution — seeded, nid 21]
@@ -138,7 +139,7 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 
 **Seeded-vs-new notation:** Nodes currently seeded in Drupal are marked above. All others require authoring per Deliverable 3 and the rollout plan (Deliverable 5).
 
-**Solutions relationship note:** The three seeded Solutions (Sovereign Mission Edge, Sovereign AI Command Fabric, Sovereign Digital Modernization Platform) are tactical packages oriented toward defense/intelligence buyers. The seven new Solutions in this sitemap are audience-oriented packages for commercial and federal civilian segments. All ten coexist in the Solutions catalog. The `/solutions` index should group them: commercial first, then federal. The three tactical packages surface within the Defense & Intelligence and Federal Civilian groupings.
+**Solutions relationship note:** The three seeded Solutions (Sovereign Mission Edge, Sovereign AI Command Fabric, Sovereign Digital Modernization Platform) are tactical packages oriented toward defense/intelligence buyers. The seven new Solutions in this sitemap are audience-oriented packages for commercial and federal civilian segments. All ten coexist in the Solutions catalog. The `/solutions` index should group them: commercial first, then federal. The three tactical packages surface within the Outpost (Defense & Intelligence) and DotGov (Federal Civilian) groupings.
 
 ---
 
@@ -149,8 +150,8 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 | Content type | Breadcrumb path |
 |---|---|
 | Homepage | *(no breadcrumb)* |
-| Products index | Home |
-| Product detail | Home → Products → [Product Name] |
+| Platforms index | Home |
+| Platform detail | Home → Platforms → [Platform Name] |
 | Services index | Home |
 | Service detail | Home → Services → [Service Name] |
 | Solutions index | Home |
@@ -179,16 +180,16 @@ Use these overrides where the full page title is too long for the breadcrumb rai
 
 | Page | Full title | Breadcrumb label |
 |---|---|---|
-| `/products/sovereign-infrastructure-platform` | Sovereign Infrastructure Platform | Sovereign Infrastructure |
-| `/products/liberty-headless-cms` | Liberty Headless CMS | Liberty CMS |
+| `/platforms/sabal` | Sabal Infrastructure Platform | Sabal Infrastructure |
+| `/platforms/keel` | Keel CMS Platform | Keel CMS |
 | `/services/private-infrastructure-engineering` | Private Infrastructure Engineering | Infrastructure Engineering |
-| `/solutions/higher-education-modernization` | Higher Education Modernization | Higher Education |
-| `/solutions/mission-driven-nonprofit-platforms` | Mission-Driven Nonprofit Platforms | Nonprofits |
-| `/solutions/privacy-conscious-saas-platforms` | Privacy-Conscious B2B SaaS Platforms | B2B SaaS |
-| `/solutions/sovereign-infrastructure-regulated` | Sovereign Infrastructure for Regulated Industries | Regulated Industries |
-| `/solutions/federal-civilian-modernization` | Federal Civilian Modernization | Federal Civilian |
-| `/solutions/inspector-general-platforms` | Inspector General Platforms | IG Platforms |
-| `/solutions/defense-modernization` | Defense Technology Modernization | Defense |
+| `/solutions/dotedu` | DotEDU — Higher Education | Higher Education |
+| `/solutions/accord` | Accord — Nonprofit | Nonprofits |
+| `/solutions/palisade` | Palisade — Privacy SaaS | B2B SaaS |
+| `/solutions/bulkhead` | Bulkhead — Regulated Industries | Regulated Industries |
+| `/solutions/dotgov` | DotGov — Federal Civilian | Federal Civilian |
+| `/solutions/gazette` | Gazette — IG Platforms | IG Platforms |
+| `/solutions/outpost` | Outpost — Defense Tech | Defense |
 | `/case-studies/hhs-cms-web-platform` | HHS/CMS Web Platform Modernization | HHS/CMS |
 | `/case-studies/usps-oig-drupal-distribution` | USPS OIG Multi-Agency Drupal Distribution | USPS OIG |
 | `/case-studies/pandemicoversight-gov` | pandemicoversight.gov | Pandemic Oversight |
@@ -207,10 +208,10 @@ Use these overrides where the full page title is too long for the breadcrumb rai
 ### Item order and structure
 
 ```
-Solutions    Products    Services    Resources    About
+Solutions    Platforms    Services    Resources    About
 ```
 
-Rationale for ordering: Solutions first because it is the primary audience-disambiguation tool for both commercial and federal buyers. Products and Services follow as the capability proof layer. Resources clusters the content-marketing and credibility assets. About anchors the right side for visitors doing final validation before contact.
+Rationale for ordering: Solutions first because it is the primary audience-disambiguation tool for both commercial and federal buyers. Platforms and Services follow as the capability proof layer. Resources clusters the content-marketing and credibility assets. About anchors the right side for visitors doing final validation before contact.
 
 ---
 
@@ -223,15 +224,15 @@ Rationale for ordering: Solutions first because it is the primary audience-disam
 ```
 Solutions
 ├── ── Commercial ──────────────────
-│   ├── Higher Education Modernization     /solutions/higher-education-modernization
-│   ├── Nonprofit & Civic Platforms        /solutions/mission-driven-nonprofit-platforms
-│   ├── B2B SaaS & Regulated Industries    /solutions/privacy-conscious-saas-platforms
-│   └── Sovereign Infrastructure           /solutions/sovereign-infrastructure-regulated
+│   ├── DotEDU — Higher Education          /solutions/dotedu
+│   ├── Accord — Nonprofit                 /solutions/accord
+│   ├── Palisade — Privacy SaaS            /solutions/palisade
+│   └── Bulkhead — Regulated Industries    /solutions/bulkhead
 │
 ├── ── Federal ─────────────────────
-│   ├── Federal Civilian Agencies          /solutions/federal-civilian-modernization
-│   ├── Inspector General Platforms        /solutions/inspector-general-platforms
-│   └── Defense & Intelligence             /solutions/defense-modernization
+│   ├── DotGov — Federal Civilian          /solutions/dotgov
+│   ├── Gazette — IG Platforms             /solutions/gazette
+│   └── Outpost — Defense Tech             /solutions/outpost
 │
 └── View All Solutions →               /solutions
 ```
@@ -240,22 +241,22 @@ Solutions
 
 ---
 
-### MENU: Products (dropdown)
+### MENU: Platforms (dropdown)
 
-**URL:** `/products`
+**URL:** `/platforms`
 
 ```
-Products
-├── Sovereign Infrastructure Platform      /products/sovereign-infrastructure-platform
-├── Liberty Headless CMS                   /products/liberty-headless-cms
-├── Enterprise Search                      /products/enterprise-search
-├── Fortis Identity                        /products/fortis-identity
-├── Apex Data                              /products/apex-data
-├── Vigilance Observability                /products/vigilance-observability
-└── View All Products →                   /products
+Platforms
+├── Sabal Infrastructure Platform          /platforms/sabal
+├── Keel CMS Platform                      /platforms/keel
+├── Alidade Search Platform                /platforms/alidade
+├── Squawk Zero-Trust Identity Platform    /platforms/squawk
+├── Manifest Data Platform                 /platforms/manifest
+├── Lighthouse Observability Platform      /platforms/lighthouse
+└── View All Platforms →                  /platforms
 ```
 
-**Mobile:** Collapses to accordion. All 6 products listed.
+**Mobile:** Collapses to accordion. All 7 platforms listed.
 
 ---
 
@@ -338,14 +339,14 @@ Federal Buyers    Contact Us
 ┌─────────────────────────────────────────────────────────────────────────┐
 │  CAPABILITIES          SOLUTIONS              FEDERAL                    │
 │  ─────────────         ─────────              ───────                    │
-│  Products              Higher Education       Federal Buyers Hub         │
-│  · Sovereign Infra     Nonprofit & Civic      Past Performance           │
-│  · Liberty CMS         B2B SaaS & Regulated   Capability Statement       │
-│  · Enterprise Search   Regulated Industries   Contact for Federal        │
-│  · Fortis Identity                                                        │
-│  · Apex Data           Federal Civilian        COMPANY                   │
-│  · Vigilance           Inspector General       ───────                   │
-│                        Defense & Intelligence  About                     │
+│  Platforms             DotEDU — Higher Ed     Federal Buyers Hub         │
+│  · Sabal Infra         Accord — Nonprofit     Past Performance           │
+│  · Keel CMS            Palisade — Privacy     Capability Statement       │
+│  · Alidade Search      Bulkhead — Regulated   Contact for Federal        │
+│  · Squawk Identity                                                        │
+│  · Manifest Data       DotGov — Federal        COMPANY                   │
+│  · Lighthouse Obs      Gazette — IG            ───────                   │
+│                        Outpost — Defense       About                     │
 │  Services                                      Team                      │
 │  · Infrastructure Eng  RESOURCES               Careers                   │
 │  · Headless CMS        ─────────               Partners                  │
@@ -370,13 +371,13 @@ South Florida, USA  ·  wilkesliberty.com
 
 | Label | URL |
 |---|---|
-| Products *(section heading)* | `/products` |
-| Sovereign Infrastructure Platform | `/products/sovereign-infrastructure-platform` |
-| Liberty Headless CMS | `/products/liberty-headless-cms` |
-| Enterprise Search | `/products/enterprise-search` |
-| Fortis Identity | `/products/fortis-identity` |
-| Apex Data | `/products/apex-data` |
-| Vigilance Observability | `/products/vigilance-observability` |
+| Platforms *(section heading)* | `/platforms` |
+| Sabal Infrastructure Platform | `/platforms/sabal` |
+| Keel CMS Platform | `/platforms/keel` |
+| Alidade Search Platform | `/platforms/alidade` |
+| Squawk Zero-Trust Identity Platform | `/platforms/squawk` |
+| Manifest Data Platform | `/platforms/manifest` |
+| Lighthouse Observability Platform | `/platforms/lighthouse` |
 | Services *(section heading)* | `/services` |
 | Private Infrastructure Engineering | `/services/private-infrastructure-engineering` |
 | Headless CMS Implementation | `/services/headless-cms-implementation` |
@@ -392,13 +393,13 @@ South Florida, USA  ·  wilkesliberty.com
 
 | Label | URL |
 |---|---|
-| Higher Education Modernization | `/solutions/higher-education-modernization` |
-| Nonprofit & Civic Platforms | `/solutions/mission-driven-nonprofit-platforms` |
-| B2B SaaS & Regulated Industries | `/solutions/privacy-conscious-saas-platforms` |
-| Sovereign Infrastructure | `/solutions/sovereign-infrastructure-regulated` |
-| Federal Civilian Agencies | `/solutions/federal-civilian-modernization` |
-| Inspector General Platforms | `/solutions/inspector-general-platforms` |
-| Defense & Intelligence | `/solutions/defense-modernization` |
+| DotEDU — Higher Education | `/solutions/dotedu` |
+| Accord — Nonprofit | `/solutions/accord` |
+| Palisade — Privacy SaaS | `/solutions/palisade` |
+| Bulkhead — Regulated Industries | `/solutions/bulkhead` |
+| DotGov — Federal Civilian | `/solutions/dotgov` |
+| Gazette — IG Platforms | `/solutions/gazette` |
+| Outpost — Defense Tech | `/solutions/outpost` |
 
 **Section: Federal**
 
@@ -468,9 +469,9 @@ These are recommended secondary navigation and page-level wayfinding patterns fo
 Federal Buyers
 ├── Federal Capability Statement (PDF)    /resources/federal-capability-statement
 ├── Past Performance                      /federal#past-performance
-├── Federal Civilian Modernization        /solutions/federal-civilian-modernization
-├── Inspector General Platforms           /solutions/inspector-general-platforms
-├── Defense & Intelligence                /solutions/defense-modernization
+├── DotGov — Federal Civilian             /solutions/dotgov
+├── Gazette — IG Platforms                /solutions/gazette
+├── Outpost — Defense Tech                /solutions/outpost
 └── Contact for Federal Engagements       /contact?audience=federal
 ```
 
@@ -480,9 +481,9 @@ Federal Buyers
 
 **In-page wayfinding needed on:**
 
-- `/solutions/higher-education-modernization` — links to Liberty Headless CMS, Headless CMS Implementation, Fortis Identity, and the relevant case study (HHS/CMS is the best proxy for institutional-scale delivery)
-- `/products/liberty-headless-cms` — related panel linking to the Higher Education solution
-- `/services/headless-cms-implementation` — related panel linking to Higher Education and Drupal Modernization solutions
+- `/solutions/dotedu` — links to Keel CMS Platform, Headless CMS Implementation, Squawk Identity, and the relevant case study (HHS/CMS is the best proxy for institutional-scale delivery)
+- `/platforms/keel` — related panel linking to the DotEDU solution
+- `/services/headless-cms-implementation` — related panel linking to DotEDU and Drupal Modernization solutions
 
 **No separate nav machine required.** Related-content panels and in-page CTAs carry the wayfinding.
 
@@ -492,9 +493,9 @@ Federal Buyers
 
 **In-page wayfinding needed on:**
 
-- `/solutions/mission-driven-nonprofit-platforms` — links to Liberty Headless CMS, Sovereign Infrastructure Platform, Private Infrastructure Engineering, and contact
+- `/solutions/accord` — links to Keel CMS Platform, Sabal Infrastructure Platform, Private Infrastructure Engineering, and contact
 - Homepage hero or solutions module — must surface nonprofit framing within the first scroll
-- `/products/sovereign-infrastructure-platform` — related panel linking to Nonprofit solution
+- `/platforms/sabal` — related panel linking to Accord solution
 
 ### 7.4 Privacy-conscious B2B SaaS CTOs / heads of platform
 
@@ -502,9 +503,9 @@ Federal Buyers
 
 **In-page wayfinding needed on:**
 
-- `/solutions/privacy-conscious-saas-platforms` — links to Fortis Identity, Vigilance Observability, Zero-Trust Identity Consulting, Sovereign Infrastructure Platform
-- `/products/fortis-identity` — related panel linking to B2B SaaS solution and Zero-Trust consulting
-- `/services/zero-trust-identity-consulting` — related panel linking to B2B SaaS solution
+- `/solutions/palisade` — links to Squawk Identity, Lighthouse Observability, Zero-Trust Identity Consulting, Sabal Infrastructure Platform
+- `/platforms/squawk` — related panel linking to Palisade solution and Zero-Trust consulting
+- `/services/zero-trust-identity-consulting` — related panel linking to Palisade solution
 
 ---
 
@@ -530,25 +531,25 @@ Close [✕]
 Solutions
   └── [Accordion — tap to expand]
        Commercial
-        · Higher Education
-        · Nonprofit & Civic
-        · B2B SaaS & Regulated
-        · Regulated Industries
+        · DotEDU — Higher Education
+        · Accord — Nonprofit
+        · Palisade — Privacy SaaS
+        · Bulkhead — Regulated Industries
        Federal
-        · Federal Civilian
-        · Inspector General
-        · Defense & Intelligence
+        · DotGov — Federal Civilian
+        · Gazette — IG Platforms
+        · Outpost — Defense Tech
        View All Solutions →
 
-Products
+Platforms
   └── [Accordion — tap to expand]
-       · Sovereign Infrastructure Platform
-       · Liberty Headless CMS
-       · Enterprise Search
-       · Fortis Identity
-       · Apex Data
-       · Vigilance Observability
-       View All Products →
+       · Sabal Infrastructure Platform
+       · Keel CMS Platform
+       · Alidade Search Platform
+       · Squawk Zero-Trust Identity Platform
+       · Manifest Data Platform
+       · Lighthouse Observability Platform
+       View All Platforms →
 
 Services
   └── [Accordion — tap to expand]
@@ -577,35 +578,35 @@ Contact Us →
 
 ## 9. Internal Linking Pattern
 
-### How Solutions link to Products and Services
+### How Solutions link to Platforms and Services
 
-Every Solution page uses `field_related` to declare which Products and Services it bundles. Additionally, the Solution body copy must name the components inline and hyperlink them. Example pattern:
+Every Solution page uses `field_related` to declare which Platforms and Services it bundles. Additionally, the Solution body copy must name the components inline and hyperlink them. Example pattern:
 
-> "The Higher Education Modernization solution combines the [Liberty Headless CMS](/products/liberty-headless-cms) with our [Headless CMS Implementation service](/services/headless-cms-implementation) and [Fortis Identity](/products/fortis-identity) for centralized SSO across institutional systems."
+> "The DotEDU — Higher Education solution combines the [Keel CMS Platform](/platforms/keel) with our [Headless CMS Implementation service](/services/headless-cms-implementation) and [Squawk Zero-Trust Identity Platform](/platforms/squawk) for centralized SSO across institutional systems."
 
 Do not use anchor text like "click here" or "learn more." Use the product or service name as the link text.
 
-### How Case Studies link to Products, Services, and Solutions
+### How Case Studies link to Platforms, Services, and Solutions
 
-Each Case Study sets `field_related` to the Products, Services, and Solution(s) that the engagement demonstrates. In the body, cross-link specifically at first mention. At the bottom of each case study, surface a "Capabilities demonstrated" section listing all related nodes.
+Each Case Study sets `field_related` to the Platforms, Services, and Solution(s) that the engagement demonstrates. In the body, cross-link specifically at first mention. At the bottom of each case study, surface a "Capabilities demonstrated" section listing all related nodes.
 
-### How Products link to related Services and Solutions
+### How Platforms link to related Services and Solutions
 
-Each Product page uses `field_related_services` to surface its companion Services. Additionally, each Product should reference the Solution(s) it participates in via a "Deployed as part of" callout panel.
+Each Platform page uses `field_related_services` to surface its companion Services. Additionally, each Platform should reference the Solution(s) it participates in via a "Deployed as part of" callout panel.
 
 ### How Articles cluster around capabilities
 
-Articles are tagged with `field_solutions` (taxonomy) to associate them with Solution areas, and with `field_tags` for topical clustering. The articles listing and sidebar "Related reading" panels use these tags to surface relevant Product, Service, and Solution pages. An article about zero-trust architecture should link to both the Fortis Identity product page and the Zero-Trust Identity Consulting service page — in-body, at first substantive mention.
+Articles are tagged with `field_solutions` (taxonomy) to associate them with Solution areas, and with `field_tags` for topical clustering. The articles listing and sidebar "Related reading" panels use these tags to surface relevant Platform, Service, and Solution pages. An article about zero-trust architecture should link to both the Squawk Zero-Trust Identity Platform page and the Zero-Trust Identity Consulting service page — in-body, at first substantive mention.
 
 ### Cross-link minimums by content type
 
 | Content type | Minimum internal links |
 |---|---|
-| Solution | 2 Products + 1 Service + 1 Case Study (where available) |
-| Product | 2 Services + 1 Solution |
-| Service | 2 Products + 1 Solution |
-| Case Study | 2 Products + 1 Service + 1 Solution + `/federal` (for federal case studies) |
-| Article | 1 Product or Service + 1 Solution |
+| Solution | 2 Platforms + 1 Service + 1 Case Study (where available) |
+| Platform | 2 Services + 1 Solution |
+| Service | 2 Platforms + 1 Solution |
+| Case Study | 2 Platforms + 1 Service + 1 Solution + `/federal` (for federal case studies) |
+| Article | 1 Platform or Service + 1 Solution |
 | Resource | 1 Solution + 1 related Service |
 | Federal hub | 3 Case Studies + 3 Federal Solutions + capability statement download |
 
@@ -628,8 +629,8 @@ Articles are tagged with `field_solutions` (taxonomy) to associate them with Sol
 | Homepage hero | Schedule a Consultation | Explore Our Work |
 | Solution pages (commercial) | Start the Conversation | View Case Studies |
 | Solution pages (federal) | Request a Capability Briefing | Download Capability Statement |
-| Product pages | Schedule a Technical Briefing | View Related Services |
-| Service pages | Discuss Your Project | View Related Products |
+| Platform pages | Schedule a Technical Briefing | View Related Services |
+| Service pages | Discuss Your Project | View Related Platforms |
 | Case Studies | See How We Can Help | View All Case Studies |
 | Federal hub | Download Capability Statement | Contact for Federal |
 | Resources (gated) | Download [Resource Name] | Explore Our Solutions |
@@ -641,7 +642,7 @@ Articles are tagged with `field_solutions` (taxonomy) to associate them with Sol
 
 **Tier 1 — Primary conversion pages** (Homepage, /federal, Solution pages): One prominent primary CTA above the fold. One secondary CTA in the hero. Additional CTAs at natural break points in the body. Never more than two CTAs visible at once in any section.
 
-**Tier 2 — Capability detail pages** (Products, Services): Primary CTA after the Mission Impact section. Secondary CTA at page bottom. In-page cross-links to related nodes are informational, not CTAs.
+**Tier 2 — Capability detail pages** (Platforms, Services): Primary CTA after the Mission Impact section. Secondary CTA at page bottom. In-page cross-links to related nodes are informational, not CTAs.
 
 **Tier 3 — Credibility pages** (Case Studies, Articles, Resources): Primary CTA at bottom of page. In-body CTAs only where natural (e.g., end of results section in a case study → "See how we can replicate this for your organization").
 
@@ -663,9 +664,9 @@ Articles are tagged with `field_solutions` (taxonomy) to associate them with Sol
 
 | Content type | Pattern | Example |
 |---|---|---|
-| Product | `/products/{short-product-name}` | `/products/fortis-identity` |
+| Platform | `/platforms/{short-platform-name}` | `/platforms/squawk` |
 | Service | `/services/{short-service-name}` | `/services/zero-trust-identity-consulting` |
-| Solution | `/solutions/{audience-or-package-name}` | `/solutions/higher-education-modernization` |
+| Solution | `/solutions/{canonical-solution-name}` | `/solutions/dotedu` |
 | Case Study | `/case-studies/{client-or-project-descriptor}` | `/case-studies/usps-oig-drupal-distribution` |
 | Resource | `/resources/{type-topic}` | `/resources/federal-capability-statement` |
 | Article | `/articles/{topic-slug}` | `/articles/what-is-sovereignty-in-federal-it` |
@@ -704,7 +705,7 @@ Step 2: /case-studies/hhs-cms-web-platform
 
 Step 3: /solutions/federal-civilian-modernization  OR  /solutions/inspector-general-platforms
   — Confirms scope alignment with their pursuit
-  — Sees Products and Services bundled in the package
+  — Sees Platforms and Services bundled in the package
 
 Step 4: /contact?audience=federal
   — Submits inquiry with teaming interest or subcontract discussion request
@@ -723,12 +724,12 @@ Step 4: /contact?audience=federal
 **Likely entry:** Organic search ("Drupal 7 to 11 migration higher education," "headless Drupal university"), referral from a Drupal community contact, LinkedIn.
 
 ```
-Step 1: /solutions/higher-education-modernization
+Step 1: /solutions/dotedu
   — Lands directly on the solution page (high-intent search or referral)
   — Reads challenge framing: aging Drupal, accessibility debt, SSO sprawl
-  — Sees the package: Liberty CMS + Headless CMS Implementation + Fortis Identity
+  — Sees the package: Keel CMS + Headless CMS Implementation + Squawk Identity
 
-Step 2: /products/liberty-headless-cms
+Step 2: /platforms/keel
   — Validates the CMS platform in depth
   — Reads deployment options, sovereignty features, key capabilities
 
@@ -742,7 +743,7 @@ Step 4: /contact
 
 **Conversion event:** Contact form submission or "Start the Conversation" CTA on the Solution page.
 
-**Dropout risk:** Step 2 — if Liberty CMS product page is thin or reads as feature-list rather than mission/outcome framing, this buyer loses confidence. The product page must lead with the institutional accessibility and governance outcome, not the Drupal version number.
+**Dropout risk:** Step 2 — if Keel CMS platform page is thin or reads as feature-list rather than mission/outcome framing, this buyer loses confidence. The platform page must lead with the institutional accessibility and governance outcome, not the Drupal version number.
 
 ---
 
@@ -757,12 +758,12 @@ Step 1: Homepage
   — Likely first stop if referred generically to "wilkesliberty.com"
   — Reads mission framing; identifies the nonprofit solution path from Solutions nav
 
-Step 2: /solutions/mission-driven-nonprofit-platforms
+Step 2: /solutions/accord
   — Recognizes the challenge framing: donor-data sensitivity, accessibility mandates,
     vendor lock-in risk, sovereignty resonance
   — Sees the bundled package and pricing-free CTA
 
-Step 3: /products/sovereign-infrastructure-platform
+Step 3: /platforms/sabal
   — Validates that "sovereign" means what they think it means (on-prem, no hyperscaler lock)
   — Reads deployment options and sovereignty features
 
@@ -772,7 +773,7 @@ Step 4: /contact
 
 **Conversion event:** Contact form submission.
 
-**Dropout risk:** Step 1 → Step 2 transition. If the homepage does not clearly surface the nonprofit Solution path (either in the hero or in a Solutions module within the first two scrolls), this buyer may not self-identify and will exit. The homepage must include at minimum a Solutions teaser section that makes "Nonprofit & Civic Platforms" visible without requiring a nav interaction.
+**Dropout risk:** Step 1 → Step 2 transition. If the homepage does not clearly surface the nonprofit Solution path (either in the hero or in a Solutions module within the first two scrolls), this buyer may not self-identify and will exit. The homepage must include at minimum a Solutions teaser section that makes "Accord — Nonprofit" visible without requiring a nav interaction.
 
 ---
 
@@ -783,22 +784,22 @@ Step 4: /contact
 **Likely entry:** Organic search ("Keycloak consulting," "self-hosted SSO SOC 2," "zero-trust identity small team"), referral from security community.
 
 ```
-Step 1: /solutions/privacy-conscious-saas-platforms  OR  /products/fortis-identity
-  — Entry via solution (if referred) or product page (if searching for Keycloak/SSO specifically)
+Step 1: /solutions/palisade  OR  /platforms/squawk
+  — Entry via solution (if referred) or platform page (if searching for Keycloak/SSO specifically)
   — Reads challenge framing: IAM debt, audit logging gaps, SOC 2 mandates
 
 Step 2: /services/zero-trust-identity-consulting
   — Validates the engagement model — consulting, not just product licensing
   — Reads "We [verb]..." service framing; confirms it is a genuine engagement offering
 
-Step 3: /products/vigilance-observability  (optional — if audit logging is the primary pain)
+Step 3: /platforms/lighthouse  (optional — if audit logging is the primary pain)
   — May visit to validate the observability stack for compliance use cases
 
 Step 4: /contact
   — Schedules a technical briefing or sends a detailed inquiry describing their stack
 ```
 
-**Conversion event:** "Schedule a Technical Briefing" CTA on the Fortis Identity product page or the Zero-Trust consulting service page.
+**Conversion event:** "Schedule a Technical Briefing" CTA on the Squawk Zero-Trust Identity Platform page or the Zero-Trust consulting service page.
 
 **Dropout risk:** Step 2. This buyer is technically sophisticated and will not be sold by feature lists. The Zero-Trust consulting service page must open with a specific, technically honest problem statement — not a general description of "zero-trust" — and must name the actual technologies (Keycloak, OIDC, mTLS, audit log configuration) that WL works with.
 
@@ -806,30 +807,30 @@ Step 4: /contact
 
 ## Appendix A — Solutions Inventory and Relationship Map
 
-| Solution slug | Audience | Products bundled | Services bundled | Case study proof | Tactical package? |
-|---|---|---|---|---|---|
-| `/solutions/higher-education-modernization` | Higher-ed web teams | Liberty CMS, Enterprise Search, Fortis Identity | Headless CMS Implementation, Digital Modernization | HHS/CMS (proxy) | No |
-| `/solutions/mission-driven-nonprofit-platforms` | Nonprofit EDs, CTOs | Sovereign Infrastructure, Liberty CMS | Private Infrastructure Engineering, Headless CMS Implementation | — | No |
-| `/solutions/privacy-conscious-saas-platforms` | B2B SaaS CTOs | Fortis Identity, Vigilance Observability, Sovereign Infrastructure | Zero-Trust Identity Consulting, Custom Software Development | — | No |
-| `/solutions/sovereign-infrastructure-regulated` | CISO, Head of Compliance | Sovereign Infrastructure, Fortis Identity, Apex Data | Private Infrastructure Engineering, Zero-Trust Identity Consulting | — | No |
-| `/solutions/federal-civilian-modernization` | Federal civilian agencies | Liberty CMS, Enterprise Search, Fortis Identity | Headless CMS Implementation, Digital Modernization, Custom Software | HHS/CMS | No |
-| `/solutions/inspector-general-platforms` | Federal OIG offices | Liberty CMS, Enterprise Search | Headless CMS Implementation, Custom Software Development | USPS OIG, Pandemic Oversight | No |
-| `/solutions/defense-modernization` | Defense contractors, DoD adjacent | Sovereign Infrastructure, Apex Data, Vigilance Observability | Defense Technology Integration, Private Infrastructure Engineering, Intelligence Insights | — | No |
-| `/solutions/sovereign-mission-edge` | Defense / tactical edge | Apex Data, Vigilance Observability | Zero-Trust Identity Consulting, Defense Technology Integration | — | Yes — seeded |
-| `/solutions/sovereign-ai-command-fabric` | Defense / intelligence | Apex Data | AI Integration, Intelligence Insights | — | Yes — seeded |
-| `/solutions/sovereign-digital-modernization-platform` | Federal / regulated | Liberty CMS, Enterprise Search, Fortis Identity | Digital Modernization, Custom Software Development | HHS/CMS | Yes — seeded |
+| Solution slug | Audience | Platforms bundled | Services bundled | Case study proof |
+|---|---|---|---|---|
+| `/solutions/dotedu` | Higher-ed web teams | Keel CMS Platform, Alidade Search Platform, Squawk Identity Platform | Headless CMS Implementation, Digital Modernization | HHS/CMS (proxy) |
+| `/solutions/accord` | Nonprofit EDs, CTOs | Keel CMS Platform, Sabal Infrastructure Platform | Private Infrastructure Engineering, Headless CMS Implementation | — |
+| `/solutions/palisade` | B2B SaaS CTOs | Squawk Identity Platform, Lighthouse Observability Platform, Sabal Infrastructure Platform | Zero-Trust Identity Consulting, Custom Software Development | — |
+| `/solutions/bulkhead` | CISO, Head of Compliance | Sabal Infrastructure Platform, Squawk Identity Platform, Manifest Data Platform | Private Infrastructure Engineering, Zero-Trust Identity Consulting | — |
+| `/solutions/dotgov` | Federal civilian agencies | Keel CMS Platform, Alidade Search Platform, Squawk Identity Platform | Headless CMS Implementation, Digital Modernization, Custom Software | HHS/CMS |
+| `/solutions/gazette` | Federal OIG offices | Keel CMS Platform, Manifest Data Platform | Headless CMS Implementation, Custom Software Development | USPS OIG, Pandemic Oversight |
+| `/solutions/outpost` | Defense contractors, DoD adjacent | Sabal Infrastructure Platform, Coquina Software Factory Platform | Defense Technology Integration, Private Infrastructure Engineering | — |
+| (legacy seeded) `/solutions/sovereign-mission-edge` | Pending disposition | — | — | nid 21 |
+| (legacy seeded) `/solutions/sovereign-ai-command-fabric` | Pending disposition | — | — | nid 22 |
+| (legacy seeded) `/solutions/sovereign-digital-modernization-platform` | Pending disposition | — | — | nid 23 |
 
 ---
 
 ## Appendix B — Open Questions for Jeremy
 
-**[VERIFY-NAV-01]** The three seeded tactical Solutions (Sovereign Mission Edge, Sovereign AI Command Fabric, Sovereign Digital Modernization Platform) do not appear in the main nav dropdown by name — they are reachable via `/solutions` index and via cross-links from Product pages and the Defense & Intelligence Solution. Confirm this is the right depth for these nodes, or advise if any should be elevated to the primary nav.
+**[VERIFY-NAV-01]** The three seeded tactical Solutions (Sovereign Mission Edge, Sovereign AI Command Fabric, Sovereign Digital Modernization Platform) do not appear in the main nav dropdown by name — they are reachable via `/solutions` index and via cross-links from Platform pages and the Outpost (Defense Tech) Solution. Confirm this is the right depth for these nodes, or advise if any should be elevated to the primary nav.
 
 **[VERIFY-NAV-02]** The Drupal Agency Partner Program is scoped as a discreet `/partners` basic_page not in primary nav, reachable only from the footer and from direct outreach links. Confirm, or advise if a public Solution page is preferred.
 
 **[VERIFY-NAV-03]** `/federal` is surfaced in the utility nav (header) rather than the primary nav. This keeps the primary nav clean for commercial buyers while ensuring the federal link is always visible. Confirm this placement is correct, or advise if `/federal` should be elevated to a primary nav item.
 
-**[VERIFY-NAV-04]** The `Enterprise Search Architecture` service currently shares the name space with the `Enterprise Search` product. Confirm the service slug `/services/enterprise-search-architecture` is distinct enough, or advise on a rename (e.g., `/services/search-architecture-consulting`).
+**[VERIFY-NAV-04]** ~~Resolved.~~ The platform previously named Enterprise Search is now named **Alidade Search Platform** (slug: `/platforms/alidade`). The service slug `/services/enterprise-search-architecture` remains unchanged. The name-collision concern is resolved since the platform name (Alidade) no longer overlaps with the service name (Enterprise Search Architecture).
 
 **[VERIFY-NAV-05]** The footer lists `jmcerda@wilkesliberty.com` as the public contact email. Confirm this is the preferred email for inbound. If a contact alias (e.g., `hello@wilkesliberty.com`) is planned, update here.
 
@@ -839,4 +840,4 @@ Step 4: /contact
 
 ---
 
-*End of Deliverable 2. Awaiting review and approval before proceeding to Deliverable 3 — page-by-page content drafts.*
+*End of Deliverable 2. Updated 2026-05-27 — platform names and solution names propagated from naming session. Awaiting review and approval before proceeding to Deliverable 3 — page-by-page content drafts.*
