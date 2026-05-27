@@ -1,0 +1,22 @@
+uuid: 4e7e7f2b-58bc-4955-8e77-b3a0eb8e169d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_defense_relevance
+    - node.type.platform
+  module:
+    - text
+id: node.platform.field_defense_relevance
+field_name: field_defense_relevance
+entity_type: node
+bundle: platform
+label: 'Defense & Government Relevance'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

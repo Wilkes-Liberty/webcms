@@ -1,0 +1,21 @@
+uuid: dfff1369-39e7-4968-b4b5-8588db130ff6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_noindex
+    - node.type.platform
+id: node.platform.field_noindex
+field_name: field_noindex
+entity_type: node
+bundle: platform
+label: 'Robots noindex'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

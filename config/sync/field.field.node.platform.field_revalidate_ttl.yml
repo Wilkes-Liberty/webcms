@@ -1,0 +1,23 @@
+uuid: 4ddfbdc1-e491-451f-a51d-57933d0d494d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_revalidate_ttl
+    - node.type.platform
+id: node.platform.field_revalidate_ttl
+field_name: field_revalidate_ttl
+entity_type: node
+bundle: platform
+label: 'Revalidate After'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

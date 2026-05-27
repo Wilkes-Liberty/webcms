@@ -1,0 +1,19 @@
+uuid: 0c40e4d8-3310-4a8d-aec2-d8383f0c6d74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_breadcrumb_label
+    - node.type.platform
+id: node.platform.field_breadcrumb_label
+field_name: field_breadcrumb_label
+entity_type: node
+bundle: platform
+label: 'Breadcrumb Label'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

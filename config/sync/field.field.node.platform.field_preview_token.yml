@@ -1,0 +1,19 @@
+uuid: 5a52dab7-2e2e-43dc-8e23-2eac83a6d85f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_preview_token
+    - node.type.platform
+id: node.platform.field_preview_token
+field_name: field_preview_token
+entity_type: node
+bundle: platform
+label: 'Preview Token'
+description: 'Token for Next.js draft preview.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

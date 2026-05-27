@@ -1,0 +1,24 @@
+uuid: 85bfaa53-7c4d-4314-a8a5-ea2c41873d4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_primary_capability
+    - node.type.platform
+    - taxonomy.vocabulary.capabilities
+id: node.platform.field_primary_capability
+field_name: field_primary_capability
+entity_type: node
+bundle: platform
+label: 'Primary Capability'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      capabilities: capabilities
+field_type: entity_reference

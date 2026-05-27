@@ -1,0 +1,24 @@
+uuid: 7d2b826a-a329-4437-b4bf-919b271882aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_solutions
+    - node.type.platform
+    - taxonomy.vocabulary.solutions
+id: node.platform.field_solutions
+field_name: field_solutions
+entity_type: node
+bundle: platform
+label: Solutions
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      solutions: solutions
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: b33e98dc-101c-4dcc-9183-e189221cf6e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reviewed_on
+    - node.type.platform
+  module:
+    - datetime
+id: node.platform.field_reviewed_on
+field_name: field_reviewed_on
+entity_type: node
+bundle: platform
+label: 'Content Review Date'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

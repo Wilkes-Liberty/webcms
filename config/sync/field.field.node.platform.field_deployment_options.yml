@@ -1,0 +1,19 @@
+uuid: a671de20-abd4-49dd-adb0-de13328818f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_deployment_options
+    - node.type.platform
+id: node.platform.field_deployment_options
+field_name: field_deployment_options
+entity_type: node
+bundle: platform
+label: 'Deployment Options'
+description: 'E.g., on-premises, private cloud, hybrid, air-gapped'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

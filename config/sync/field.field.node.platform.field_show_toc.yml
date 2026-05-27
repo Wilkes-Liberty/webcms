@@ -1,0 +1,21 @@
+uuid: 9862a4df-f143-43ac-9064-02ee2048e111
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_toc
+    - node.type.platform
+id: node.platform.field_show_toc
+field_name: field_show_toc
+entity_type: node
+bundle: platform
+label: 'Show Table of Contents'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

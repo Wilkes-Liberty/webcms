@@ -1,0 +1,22 @@
+uuid: 93d7d2bd-8a08-4fb7-8301-7d6de13fcfe3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mission_impact
+    - node.type.platform
+  module:
+    - text
+id: node.platform.field_mission_impact
+field_name: field_mission_impact
+entity_type: node
+bundle: platform
+label: 'Mission Impact'
+description: 'Frame the platform around operational outcomes for defense and government clients.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long
