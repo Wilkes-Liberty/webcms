@@ -21,14 +21,14 @@ Headless Drupal 11 CMS serving as the API backend for [wilkesliberty.com](https:
 
 ## Local Development
 
-Local development uses **DDEV** with **PostgreSQL 16** (matching production). See [docs/local-development.md](docs/local-development.md) for full setup instructions.
+Local development uses **DDEV** with **PostgreSQL 16** (matching production) and trusted HTTPS via **mkcert**. See [docs/local-development.md](docs/local-development.md) for full setup instructions including the one-time `mkcert -install`.
 
 ```bash
-# Quick start
+# Quick start (after brew install mkcert nss && mkcert -install)
 ddev start
 ddev composer install
 ddev drush cim -y
-ddev launch  # Opens https://api.wilkesliberty.dev
+ddev launch  # Opens https://api.wilkesliberty.dev (also: https://api.ddev.site)
 ```
 
 ## Project Structure

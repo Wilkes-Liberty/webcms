@@ -29,6 +29,7 @@ For environment relationships, see [`ENVIRONMENT_OVERVIEW.md`](../infra/ENVIRONM
 - **GitHub account** with repository access
 - **PHP** (v8.1+) - Required for Drupal 11
 - **Node.js** (v18+) - For frontend build tools (optional)
+- **mkcert** - Locally-trusted HTTPS for DDEV (`brew install mkcert nss && mkcert -install`)
 
 ### Initial Setup
 

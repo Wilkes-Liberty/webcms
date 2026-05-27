@@ -10,6 +10,7 @@ This guide covers setting up a local Drupal 11 development environment using DDE
 | DDEV | 1.22.0+ | https://ddev.readthedocs.io/en/stable/users/install/ |
 | Composer | 2.x | `brew install composer` |
 | Git | 2.30+ | `brew install git` |
+| mkcert | latest | `brew install mkcert nss` — required for trusted local HTTPS (see below) |
 | secure-delete (optional) | — | `brew install secure-delete` (recommended for `--fetch` users; provides `srm` for secure deletion of prod dumps) |
 
 ### macOS Quick Install
@@ -18,7 +19,18 @@ This guide covers setting up a local Drupal 11 development environment using DDE
 brew install --cask docker
 brew install ddev
 brew install composer
+brew install mkcert nss
 ```
+
+### Trust the mkcert local CA (one-time)
+
+DDEV uses mkcert to issue locally-trusted TLS certificates so `https://api.ddev.site` and `https://api.wilkesliberty.dev` work without browser warnings. The mkcert CA must be installed into your **System keychain** before HTTPS will be trusted:
+
+```bash
+mkcert -install      # prompts for sudo to add the CA to System keychain (one-time)
+```
+
+If you skip this step, DDEV will still serve HTTPS but every request will get a TLS warning. After installing, `ddev restart` regenerates the project cert (which includes both DDEV hostnames in its SAN list).
 
 ## Initial Setup
 
@@ -66,9 +78,39 @@ composer_version: "2"
 
 ## Settings File Hierarchy
 
-1. `web/sites/default/settings.php` — base config (committed, no secrets)
+1. `web/sites/default/settings.php` — base config (committed, no secrets). Contains the OIDC `$config[]` override block that reads `DRUPAL_OIDC_CLIENT_ID` + `DRUPAL_OIDC_CLIENT_SECRET` env vars at runtime.
 2. `web/sites/default/settings.ddev.php` — DDEV auto-generates this (gitignored); sets DB connection
 3. `web/sites/default/settings.local.php` — your local overrides (gitignored)
+
+## Keycloak OIDC Configuration (per-environment client)
+
+Local DDEV uses the dedicated `drupal-local` Keycloak client (not the prod/staging clients). The client_id and client_secret are injected via DDEV's `web_environment`, sourced from a gitignored file:
+
+```yaml
+# .ddev/config.local.yaml  (gitignored per .ddev/.gitignore)
+web_environment:
+  - DRUPAL_OIDC_CLIENT_ID=drupal-local
+  - DRUPAL_OIDC_CLIENT_SECRET=<32-char secret from infra/ansible/inventory/group_vars/sso_secrets.yml>
+```
+
+To populate the secret:
+
+```bash
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
+sops -d --extract '["kc_drupal_local_client_secret"]' \
+  ~/Repositories/infra/ansible/inventory/group_vars/sso_secrets.yml
+# Copy that value into .ddev/config.local.yaml, then:
+ddev restart
+```
+
+After `ddev restart`, verify the runtime override is active:
+
+```bash
+ddev drush php:eval "echo \Drupal::config('openid_connect.client.sign_in_with_keycloak')->get('settings')['client_id'];"
+# expected output: drupal-local
+```
+
+If the output is anything other than `drupal-local`, the env vars are not being read (check `.ddev/config.local.yaml` perms, then `ddev exec env | grep DRUPAL_OIDC`).
 
 For development, you can add cache-disabling settings to `settings.local.php`:
 

@@ -137,9 +137,11 @@ curl -H "Accept: application/vnd.api+json" https://api.wilkesliberty.dev/jsonapi
 
 | Env | Stack | Drupal URL | Notes |
 |-----|-------|-----------|-------|
-| Local | DDEV | `https://api.wilkesliberty.dev` | PostgreSQL 16 |
-| Staging | Docker (on-prem server) | `http://localhost:8090` | `staging` branch (auto-synced from `master`) |
-| Production | Docker (on-prem server) | Internal; Tailscale to VPS | `master` branch |
+| Local | DDEV | `https://api.ddev.site` (and `https://api.wilkesliberty.dev`) | PostgreSQL 16; trusted HTTPS via mkcert |
+| Staging | Docker (on-prem server) | `https://api-stg.int.wilkesliberty.com` (Tailscale-only) | `staging` branch (auto-synced from `master`); port 8090 internally |
+| Production | Docker (on-prem server) | `https://api.int.wilkesliberty.com` (operators, Tailscale) · `https://api.wilkesliberty.com` (public, Caddy-locked-down to OIDC+files) | `master` branch; port 8080 internally |
+
+**OIDC** — each environment uses its own Keycloak client (`drupal-prod`/`drupal-staging`/`drupal-local`). `client_id` + `client_secret` injected via `DRUPAL_OIDC_CLIENT_ID` / `DRUPAL_OIDC_CLIENT_SECRET` env vars; `web/sites/default/settings.php` overrides the imported config_sync entity at runtime. The legacy shared `drupal` client was deleted 2026-05-26.
 
 ## Branch Strategy
 - **master** — production-ready code; feature/fix PRs target this branch.

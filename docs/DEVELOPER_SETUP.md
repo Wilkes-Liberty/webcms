@@ -27,6 +27,7 @@ This guide helps you get a local development environment running for the Wilkes 
 | Composer          | 2.x                 | PHP dependency management |
 | PHP               | 8.3+                | Matches production |
 | Git               | Recent              | — |
+| mkcert            | latest              | Locally-trusted HTTPS for DDEV |
 
 ### macOS Quick Install
 
@@ -34,6 +35,11 @@ This guide helps you get a local development environment running for the Wilkes 
 brew install --cask docker
 brew install ddev
 brew install composer
+brew install mkcert nss
+
+# One-time: install mkcert's CA into your System keychain so https://api.ddev.site
+# and https://api.wilkesliberty.dev are trusted without browser warnings.
+mkcert -install        # prompts for sudo
 ```
 
 After installing Docker Desktop, start it and wait for the daemon to be ready.
@@ -103,9 +109,30 @@ ddev drush cr
 
 ## Cross-Repo Considerations
 
-- When testing the Next.js frontend locally, point `ui/.env.local` at your DDEV URL (`https://api.wilkesliberty.dev`).
+- When testing the Next.js frontend locally, point `ui/.env.local` at your DDEV URL (`https://api.wilkesliberty.dev` or `https://api.ddev.site` — both work).
 - Some features in the UI (authenticated GraphQL queries, revalidation, preview mode) require OAuth2 consumer credentials created in Drupal.
 - Deployment of this codebase is handled from the `infra/` repository. See the root [AGENTS.md](../../AGENTS.md) and `infra/docs/DEVELOPER_SETUP.md` for how builds and deploys work.
+
+## Keycloak OIDC (per-environment client)
+
+Each environment uses its own Keycloak client. Local DDEV uses `drupal-local`. The client_id and client_secret are injected via env vars from a gitignored file:
+
+```yaml
+# .ddev/config.local.yaml  (gitignored)
+web_environment:
+  - DRUPAL_OIDC_CLIENT_ID=drupal-local
+  - DRUPAL_OIDC_CLIENT_SECRET=<from SOPS kc_drupal_local_client_secret>
+```
+
+Decrypt the secret with:
+
+```bash
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
+sops -d --extract '["kc_drupal_local_client_secret"]' \
+  ~/Repositories/infra/ansible/inventory/group_vars/sso_secrets.yml
+```
+
+Then `ddev restart`. See [local-development.md](local-development.md#keycloak-oidc-configuration-per-environment-client) for verification commands.
 
 ---
 
