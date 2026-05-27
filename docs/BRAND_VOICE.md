@@ -1,11 +1,21 @@
 # Wilkes & Liberty Brand Voice Guidelines
 
-**Version:** 1.1 (resolving §11 open questions incrementally)
+**Version:** 1.2 (eleven of twelve §11 open questions resolved; product/service/solution naming session pending)
 **Last updated:** 2026-05-27
 **Source of truth:** `docs/CONTENT.md` (drafted page copy for 6 Products + 10 Services)
-**Status:** §11.1 (use "we") and §11.10 (US English) resolved on 2026-05-27 — see §6.3 and §6.9. Remaining §11 questions are being worked through one-by-one; until each is resolved, treat that subsection as draft-only.
+**Status:** §11.1, .2, .3 (pattern), .4, .5, .7, .8, .9, .10, .11, .12 resolved on 2026-05-27. §11.6 (career posting voice) parked until first job posting is drafted. §11.3 specific product names deferred to dedicated naming session (Products + Services + Solutions in one sweep). The guide is otherwise considered v1.2-final and ready for editorial enforcement.
 
-**v1.1 changelog (2026-05-27):**
+**v1.2 changelog (2026-05-27 — second pass):**
+- §11.2 resolved → §5.3 rewritten with audience-layered acronym spell-out matrix (federal/expert audiences skip expansion; commercial/mission-driven audiences spell out engineering-niche + regulatory acronyms on first use).
+- §11.3 (pattern) resolved → §6.15 added: every product gets a proper name + descriptive suffix. Existing pure-descriptor products flagged for retrofit. **Specific proper names deferred** to dedicated Products + Services + Solutions naming session.
+- §11.4 resolved → §6.4 sub-rule added: dial back "mission" density to 1–2 mentions per piece outside of Product / Service pages.
+- §11.5 resolved → §6.7 updated: meta descriptions end with a period.
+- §11.6 PARKED → decision deferred until first job posting is drafted. Default if/when needed: hold formal voice on cleared roles, soften on commercial/engineering.
+- §11.7 resolved → §6.12 added: audience adaptation (federal vs. commercial register) — same voice attributes, vocabulary substitution table. No separate commercial brand voice.
+- §11.9 resolved → §6.13 added: customer quotes in case studies kept verbatim; three narrowly-allowed edits (transcription artifacts, >40-word tighten, bracket clarifications).
+- §11.12 resolved → §6.14 added: company name usage hierarchy. "Wilkes & Liberty, LLC" formal / "Wilkes & Liberty" public / "WL" internal-only. `W&L` is RETIRED — the ampersand abbreviation is banned. All instances in this guide have been swept to `WL`. Downstream docs (AGENTS.md, CLAUDE.md, business/, infra/, ui/) still contain legacy `W&L` references and will be swept in a follow-up.
+
+**v1.1 changelog (2026-05-27 — first pass):**
 - §11.1 resolved → §6.3 rewritten: "we" is canonical; "I"/"Jeremy Cerda" reserved for personal-byline pieces.
 - §11.8 resolved → §6.10 added: CTA voice rules with per-audience Primary CTA matrix (federal: "Open an inquiry" / "Request a capability brief"; commercial: "Open a conversation"; universal: "Schedule a working session"). "Demo" added to §5.2 banned vocabulary.
 - §11.10 resolved → §6.9 added: US English is canonical, with explicit date/number conventions.
@@ -15,7 +25,7 @@
 
 ## 1. How to use this guide
 
-This document is the canonical brand voice reference for anyone writing public-facing copy for Wilkes & Liberty, LLC (W&L) — website, marketing assets, RFP responses, sales collateral, press releases, social posts, and case studies.
+This document is the canonical brand voice reference for anyone writing public-facing copy for Wilkes & Liberty, LLC (WL) — website, marketing assets, RFP responses, sales collateral, press releases, social posts, and case studies.
 
 **When to consult it:**
 
@@ -41,11 +51,11 @@ This document is the canonical brand voice reference for anyone writing public-f
 
 ## 2. Voice attributes
 
-Five attributes define how W&L sounds. Each is anchored on observed patterns in `docs/CONTENT.md`.
+Five attributes define how WL sounds. Each is anchored on observed patterns in `docs/CONTENT.md`.
 
-| Attribute | Description | Why it's the right choice for W&L |
+| Attribute | Description | Why it's the right choice for WL |
 |---|---|---|
-| **Mission-anchored** | Every claim ties to a mission outcome — resilience, decision velocity, sovereignty, operational continuity. We do not describe technology in isolation. | Audience (defense, federal civilian, mission-critical operations) judges vendors by mission impact, not feature lists. Memory note: W&L's real past performance is HHS/CMS via Scope Infotec; current direction is federal/defense work where this framing is table stakes. |
+| **Mission-anchored** | Every claim ties to a mission outcome — resilience, decision velocity, sovereignty, operational continuity. We do not describe technology in isolation. | Audience (defense, federal civilian, mission-critical operations) judges vendors by mission impact, not feature lists. Memory note: WL's real past performance is HHS/CMS via Scope Infotec; current direction is federal/defense work where this framing is table stakes. |
 | **Confident, restrained** | Declarative sentences. No hedging ("we believe," "we think we can"). No hype ("revolutionary," "game-changing"). | The audience reads consumer-startup hype as a credibility signal *against* you. Restraint reads as seriousness. |
 | **Sovereignty-forward** | Foregrounds independence, control, and self-determination — for the customer, not for us. | Differentiator vs. the dominant hyperscaler narrative. Aligns with defense/federal preference for on-prem, air-gapped, and private-cloud options. |
 | **Technically literate** | Uses terms like *zero-trust*, *Infrastructure-as-Code*, *air-gapped*, *zero-trust architecture*, *headless* without apology — but defines them in passing when used in marketing-facing copy. | Audience expects technical fluency; over-explaining looks junior. |
@@ -77,7 +87,7 @@ The "Mission Impact" block is a hard-required field on Product and Service conte
 
 > "A sovereign data foundation built to enhance data availability and support mission-critical applications."
 
-Sovereignty in W&L copy means: customer-controlled, deployable anywhere (on-prem, private cloud, hybrid, air-gapped), independent of any single vendor or hyperscaler, with data and identity under the customer's authority. It is *not* a political claim — it's an operational and architectural one.
+Sovereignty in WL copy means: customer-controlled, deployable anywhere (on-prem, private cloud, hybrid, air-gapped), independent of any single vendor or hyperscaler, with data and identity under the customer's authority. It is *not* a political claim — it's an operational and architectural one.
 
 ### 3.3 Security as enabler, not obstacle
 
@@ -85,7 +95,7 @@ Sovereignty in W&L copy means: customer-controlled, deployable anywhere (on-prem
 
 > "Security and usability must work together in support of the mission. The Fortis Zero-Trust Identity Platform provides enterprise-grade single sign-on and access control while enforcing strict security standards."
 
-W&L's security pitch is *not* "we are paranoid and slow." It is "we make zero-trust operationally invisible." Always pair security claims with a velocity / usability claim.
+WL's security pitch is *not* "we are paranoid and slow." It is "we make zero-trust operationally invisible." Always pair security claims with a velocity / usability claim.
 
 ### 3.4 Defense & government readiness
 
@@ -101,13 +111,13 @@ Even outside defense-specific offerings (the crypto example above is not a defen
 
 > "Our custom solutions become force multipliers that increase efficiency and reduce reliance on fragmented commercial tools."
 
-The "force multiplier" framing — small, well-designed capability creates outsized operational leverage — recurs across the Services section. This is the voice's small-vendor advantage: W&L is not pretending to be a hyperscaler; it is positioned as the high-leverage specialist.
+The "force multiplier" framing — small, well-designed capability creates outsized operational leverage — recurs across the Services section. This is the voice's small-vendor advantage: WL is not pretending to be a hyperscaler; it is positioned as the high-leverage specialist.
 
 ---
 
 ## 4. Personas (audience model)
 
-Four buyer personas, anchored in the language of `docs/CONTENT.md` and W&L's actual past-performance footprint (HHS/CMS, USPS OIG, EPA — see memory `project_wl_past_performance.md` and `user_federal_experience.md`).
+Four buyer personas, anchored in the language of `docs/CONTENT.md` and WL's actual past-performance footprint (HHS/CMS, USPS OIG, EPA — see memory `project_wl_past_performance.md` and `user_federal_experience.md`).
 
 ### 4.1 Mission Owner
 
@@ -137,7 +147,7 @@ Four buyer personas, anchored in the language of `docs/CONTENT.md` and W&L's act
 - **Reads:** Services pages, capability bullets, and any "Defense & Government Relevance" language. Wants RFP-ready phrasing.
 - **Pet peeves:** marketing fluff in capability statements; superlatives without evidence.
 
-> **Note on persona scope.** These four are extracted from the existing content's stated audience ("defense contractors and government organizations") and W&L's federal past-performance footprint. The personas do *not* cover commercial / enterprise / SMB buyers. See §11.7 — open question on whether the brand pursues commercial work and how the voice would shift.
+> **Note on persona scope.** These four are extracted from the existing content's stated audience ("defense contractors and government organizations") and WL's federal past-performance footprint. The personas do *not* cover commercial / enterprise / SMB buyers. See §11.7 — open question on whether the brand pursues commercial work and how the voice would shift.
 
 ---
 
@@ -194,9 +204,26 @@ These conflict with the established voice. Either replace with a preferred term 
 
 ### 5.3 Acronyms
 
-CONTENT.md uses some technical acronyms without expansion (e.g., "CMS," "VPN," "AI/ML," "KPIs," "XRP"). The implicit rule: technical readers don't need first-use expansion for industry-standard acronyms.
+Spell-out behavior depends on **two axes**: the acronym category, AND the page's primary audience (per §6.11 audience taxonomy).
 
-**Working rule (Jeremy to confirm in §11.2):** Spell out on first use in body copy if the acronym is (a) industry-specific to a niche the reader might not share or (b) a regulatory / compliance term. Examples: *FedRAMP (Federal Risk and Authorization Management Program)*, *CMMC (Cybersecurity Maturity Model Certification)*, *SBOM (Software Bill of Materials)*. Skip expansion for *CMS*, *VPN*, *AI/ML*, *KPI*, *SSO*, *API*.
+**Acronym categories:**
+- **Industry-standard technical** — *CMS, VPN, AI/ML, KPI, SSO, API, REST, JSON, SQL, HTTP, TLS*. Never expanded.
+- **Engineering-niche / specialist** — *SBOM, OIDC, ATO, mTLS, OPA, RBAC, CSPM, EDR, SBOM, IaC*. Expand based on audience (see below).
+- **Regulatory / compliance** — *FedRAMP, CMMC, NIST 800-171, FISMA, HIPAA, SOC 2, GDPR, Section 508*. Expand based on audience.
+
+**Audience-layered spell-out rule:**
+
+| Page audience | Industry-standard | Engineering-niche | Regulatory |
+|---|---|---|---|
+| Federal CO + program-manager personas | Skip | Skip (assume technical fluency) | Skip (assume regulatory fluency) |
+| Higher ed / nonprofit / commercial / regulated SaaS | Skip | **Spell out on first use** | **Spell out on first use** |
+| Mixed audience | Skip | Spell out on first use (lowest-friction default) | Spell out on first use |
+
+Examples:
+- Federal capability statement: "Our FedRAMP-authorized deployment supports SBOM generation per EO 14028." — no expansions.
+- Higher-ed Solution page: "FedRAMP (Federal Risk and Authorization Management Program) authorization isn't required for higher-ed deployments, but the underlying controls — SBOM (Software Bill of Materials) provenance, NIST 800-171–aligned access controls — are equally valuable for audit readiness." — expansions on first use.
+
+Resolved 2026-05-27 (§11.2).
 
 ---
 
@@ -217,9 +244,9 @@ CONTENT.md uses some technical acronyms without expansion (e.g., "CMS," "VPN," "
 
 ### 6.3 First-person plural ("we") — canonical
 
-- **Use "we"** as W&L's voice across all public-facing copy: Products, Services, Solutions, capability statement, case studies, landing pages, and most articles. "We" implies organizational capability, which is honest when subcontractor and partner relationships extend the principal's reach for federal delivery.
+- **Use "we"** as WL's voice across all public-facing copy: Products, Services, Solutions, capability statement, case studies, landing pages, and most articles. "We" implies organizational capability, which is honest when subcontractor and partner relationships extend the principal's reach for federal delivery.
 - **Use "I" (or "Jeremy Cerda")** only in personal-byline thought-leadership articles or founder-narrative posts where the principal speaks in his own voice. These are the exception, not the default.
-- W&L is currently a single-principal LLC (memory: `user_identity.md`); "we" is forward-looking and inclusive of partners and future hires, not a fabrication.
+- WL is currently a single-principal LLC (memory: `user_identity.md`); "we" is forward-looking and inclusive of partners and future hires, not a fabrication.
 - Resolved 2026-05-27.
 
 ### 6.4 Capitalization
@@ -230,6 +257,14 @@ CONTENT.md uses some technical acronyms without expansion (e.g., "CMS," "VPN," "
 - **"Mission impact"** as an inline noun phrase: lowercase. As a section heading: Title Case ("Mission Impact").
 - **"Zero-trust"** as a descriptor: lowercase. As part of a product name (*Fortis Zero-Trust Identity Platform*): Title Case.
 - **"Sovereignty," "sovereign":** lowercase.
+
+#### "Mission" density rule (outside Product / Service pages)
+
+Product and Service pages saturate "mission" because Mission Impact is a required field. **All other content types dial back to 1–2 mentions per piece** — typically once in the opening hook or closing graf, optionally a second mention where it lands naturally. Use the messaging pillars from §3 implicitly (with concrete outcome language) rather than vocabulary-stuffing.
+
+Applies to: Articles, case studies, blog posts, resources, landing pages, Solution pages targeting commercial audiences (federal-audience Solutions retain higher density per §6.12), press releases, capability statement narrative sections that aren't named "Mission Impact."
+
+Resolved 2026-05-27 (§11.4).
 
 ### 6.5 Punctuation
 
@@ -253,9 +288,16 @@ Pipe (`|`) separator with a space on each side. Tagline is 3–6 words, Title Ca
 
 ### 6.7 Meta description format
 
-CONTENT.md pattern: ~150–160 characters, opens with an imperative verb, names the outcome, ends without a period in some examples and with one in others (inconsistent — see §11.5).
+- **Length:** 150–160 characters (SEO preview truncates beyond ~155).
+- **Opens with an imperative verb** that names the action the reader will take or the outcome they'll get.
+- **Ends with a period.** Always. Reads as a complete sentence; matches the formal register. Resolved 2026-05-27 (§11.5).
+- One or two sentences max. Prefer one well-built sentence; allow two when the first is the hook and the second names the outcome.
 
-> "Deploy secure, sovereign infrastructure anywhere. Designed to enhance mission resilience, eliminate vendor dependency, and give defense and government organizations full control over their technology environment."
+Example (one-sentence):
+> "Deploy secure, sovereign infrastructure anywhere — built to enhance mission resilience, eliminate vendor dependency, and give defense and government organizations full control over their technology environment."
+
+Example (two-sentence):
+> "Deploy secure, sovereign infrastructure anywhere. Designed to enhance mission resilience, eliminate vendor dependency, and give your organization full control over its technology environment."
 
 ### 6.8 Page structure (Product / Service)
 
@@ -346,6 +388,94 @@ Resolved 2026-05-27.
 **Pronoun-audience binding lives in page taxonomy.** Each page declares its primary audience (Federal Civilian, Higher Ed, Mission-Driven Nonprofit, etc.) in its persona / audience taxonomy field; the voice register follows from that.
 
 Resolved 2026-05-27.
+
+### 6.12 Audience adaptation (federal vs. commercial register)
+
+The brand voice attributes from §2 (mission-anchored, confident-restrained, sovereignty-forward, technically literate, outcome-led) are **identical across all audiences**. What adapts is vocabulary density and which messaging pillars (§3) are surfaced explicitly vs. implied.
+
+**On federal / defense pages**, the voice operates at full saturation:
+- "Mission" framing appears in every section, including the named Mission Impact block.
+- "Defense and government organizations" / "federal civilian agencies" appears as the canonical audience phrasing.
+- Sovereignty pillar is framed around **operational continuity in contested environments**, **air-gapped deployment**, **independence from hyperscaler dependencies**.
+- Federal-procurement primitives appear by name: *capability statement*, *capability brief*, *past performance*, *contracting officer*, *ATO sponsor*, *FedRAMP*, *CMMC*.
+
+**On commercial / mission-driven pages** (higher ed, nonprofits, privacy-conscious B2B SaaS, regulated industries), the voice is the same — only the vocabulary substitutes:
+
+| Federal phrasing | Commercial substitute |
+|---|---|
+| "defense and government organizations" | The specific vertical: "higher ed institutions," "mission-driven nonprofits," "regulated SaaS platforms," "legal-tech and fintech teams" |
+| "mission" (saturated) | "mission" appears 1–2 times per page max (see §6.4 mission density) — usually once in the hero context-setter, optionally once in the closing. Use the messaging pillars implicitly elsewhere. |
+| "operational continuity in contested environments" | "operational continuity through outages, vendor changes, and audit cycles" |
+| "sovereignty" framed as defense-independence | "sovereignty" framed as **data residency**, **regulatory independence**, **no hyperscaler lock-in**, **portable across CSPs** |
+| "in high-stakes environments where mission success depends on technology you truly control" | "in environments where data sensitivity, audit posture, and vendor lock-in are real business risks" |
+| "contracting officer" / "program manager" persona language | Vertical-specific buyer language: "web services director," "head of platform," "executive director," "CISO" |
+
+**Do not write a separate commercial brand voice.** Treat commercial copy as the same voice with a vocabulary substitution layer. A federal contracting officer landing on a commercial Solution page should still recognize WL by tone; a higher-ed CIO landing on a federal page should not bounce because the language is unreadable.
+
+**Page-level audience flag** (taxonomy field) is the canonical signal. The substitution rules above apply automatically to that page based on its declared audience.
+
+Resolved 2026-05-27 (§11.7).
+
+### 6.13 Customer quotes in case studies
+
+Customer voices are kept **verbatim**. Authenticity trumps voice consistency.
+
+**Allowed edits** (these only):
+1. Remove obvious transcription artifacts: "uh," "you know," repeated words, false starts.
+2. **Tighten if a quote runs >40 words** and a shorter version preserves the meaning. Prefer two short quotes over one long one.
+3. Add bracketed clarifications `[Drupal]`, `[FedRAMP]`, `[the migration]` where pronouns or context would confuse a reader who didn't witness the interview.
+
+**Never:**
+- Paraphrase a customer to match brand voice.
+- Insert WL vocabulary ("sovereignty," "mission impact," "outcome-led") into a customer's mouth.
+- Combine separate sentences into a synthetic single quote.
+- Edit for grammar unless the original is incomprehensible.
+
+The voice mismatch between brand and customer is the authenticity signal. Federal evaluators read manicured customer quotes as marketing-manufactured. Real quotes — slightly rough, in the customer's own register — carry more weight.
+
+Resolved 2026-05-27 (§11.9).
+
+### 6.14 Company name — usage hierarchy
+
+How to name the company across contexts:
+
+| Form | When to use |
+|---|---|
+| **Wilkes & Liberty, LLC** | Formal / legal / capability statement / press release / executed contracts / federal-procurement responses. First mention in any legal or formal context. |
+| **Wilkes & Liberty** | All other public-facing copy: website body, articles, marketing collateral, social media, case studies, Solution pages, public capability narratives. Second mention onward in formal docs. |
+| **WL** | **Internal docs only** — this brand voice guide, AGENTS.md / CLAUDE.md / README.md inside repos, runbooks, compliance docs, deployment guides. Never customer-facing. |
+| **"Wilkes Liberty"** (no ampersand) | Accepted informal alias when the ampersand causes URL or filename friction (e.g., domain `wilkesliberty.com`, GitHub org `Wilkes-Liberty`). Acceptable in domain/path contexts; do not use as a substitute for the formal name in copy. |
+
+**Banned form:** `W&L` (ampersand abbreviation) — retired 2026-05-27. Was the previous internal shorthand; replaced by `WL`. The ampersand version now appears nowhere — internal docs use `WL`, public copy uses `Wilkes & Liberty` (with ampersand, full name only).
+
+**Practical application:**
+- A capability statement opens with "Wilkes & Liberty, LLC" and uses "Wilkes & Liberty" thereafter.
+- An article on the public site uses "Wilkes & Liberty" throughout — never "WL."
+- A docs README at `webcms/docs/` may use "WL" once introduced (it's an internal doc).
+
+Resolved 2026-05-27 (§11.12).
+
+### 6.15 Product naming convention
+
+**Pattern (canonical):** Every product gets a **proper name + descriptive suffix**.
+
+Examples of the pattern:
+- *Liberty Headless CMS Platform* (proper name: Liberty)
+- *Fortis Zero-Trust Identity Platform* (proper name: Fortis) — **name TBD, see naming queue below**
+- *Apex Secure Data Platform* (proper name: Apex) — **name TBD, see naming queue below**
+- *Vigilance Mission Observability Suite* (proper name: Vigilance) — **name TBD, see naming queue below**
+
+**Existing pure-descriptor products to retrofit:**
+- *Sovereign Infrastructure Platform* → needs proper name (TBD)
+- *Enterprise Search Platform* → needs proper name (TBD)
+
+**Why the pattern:**
+- Proper names are trademarkable, memorable in conversation ("our Bastion platform" vs. "our Sovereign Infrastructure Platform"), and carry brand equity over time.
+- The descriptive suffix keeps the name navigable for federal evaluators who scan for capability category.
+
+**Naming session pending:** All current proper names (*Fortis*, *Apex*, *Vigilance*, *Liberty*) are flagged as **TBD pending dedicated naming session**. Liberty is the most defensible of the current set; the others may be replaced. Until that session lands, current names remain in CONTENT.md as placeholders.
+
+Resolved 2026-05-27 (§11.3) — pattern confirmed; specific names deferred to naming session.
 
 ---
 
@@ -460,7 +590,7 @@ Every example below is anchored on `docs/CONTENT.md`. The "Don't" column is a re
 
 Use this when self-editing a draft.
 
-- [ ] Does the opening sentence set the customer's mission context (not announce W&L)?
+- [ ] Does the opening sentence set the customer's mission context (not announce WL)?
 - [ ] Is at least one of the five messaging pillars (§3) explicit in the copy?
 - [ ] Are the Key Capabilities bullets noun phrases, not feature brags?
 - [ ] Does the Mission Impact paragraph describe an outcome, not a feature?
@@ -479,57 +609,15 @@ Use this when self-editing a draft.
 
 These are the calls v1.0 could not make from the source material alone. Each one will sharpen the voice once decided.
 
-### 11.2 Acronym expansion rule
+### 11.6 Career posting voice softening — **PARKED**
 
-§5.3 proposes: spell out on first use only if the acronym is niche-specific or regulatory. Skip expansion for industry-standard acronyms (*CMS*, *VPN*, *AI/ML*, *KPI*, *SSO*, *API*). Confirm or adjust.
+**Status:** Decision deferred until first job posting is drafted. No active career-posting copy exists, so the choice has no live impact.
 
-### 11.3 Product naming convention
+**Default if/when needed:** Hold the formal voice on cleared / federal-facing roles; soften noticeably on commercial / engineering roles. Revisit this question concretely when the first posting is written.
 
-Some products have proper names with descriptive suffixes (*Fortis Zero-Trust Identity Platform*, *Apex Secure Data Platform*, *Vigilance Mission Observability Suite*). Others are purely descriptive (*Sovereign Infrastructure Platform*, *Enterprise Search Platform*).
+### 11.X — Product / Service / Solution naming session (forthcoming)
 
-- **Question:** Should every product eventually have a proper name (e.g., would Sovereign Infrastructure Platform become *Bastion Sovereign Infrastructure Platform*)? Or is the current mix intentional?
-
-### 11.4 "Mission" density outside Product/Service
-
-Product/Service pages are saturated with "mission" framing — it's a required field. Should articles, case studies, blog posts, and resources match that density, or dial back?
-
-- **Recommendation:** Dial back to 1–2 mentions per piece outside of Product/Service. Use the messaging pillars (§3) implicitly rather than vocabulary-stuffing. Confirm.
-
-### 11.5 Meta description punctuation
-
-CONTENT.md is inconsistent on whether meta descriptions end with a period. Some do, some don't. Pick one and apply it everywhere.
-
-### 11.6 Career posting voice softening
-
-The high-formality, mission-anchored voice may read as cold for recruiting copy. Should career postings:
-
-- **Option A:** Hold the formal voice (signals seriousness to federal-cleared candidates).
-- **Option B:** Soften noticeably (signals approachability to broader engineering candidates).
-- **Recommendation:** Hold the voice on cleared / federal-facing roles; soften on commercial / engineering roles. Decide once W&L starts hiring.
-
-### 11.7 Commercial / non-federal audience
-
-The voice and persona model assume defense and government as primary audiences. If W&L pursues commercial work (which would be a notable strategic shift given the federal past performance and current direction):
-
-- Does "mission" framing translate? Probably not at the same density.
-- Does sovereignty still anchor the pitch? Yes, but differently (data residency, regulatory independence).
-- Should there be a commercial-specific addendum to this guide, or should the brand stay focused federal-only?
-
-### 11.9 Case study and customer voice
-
-CONTENT.md has no case study examples. When a customer is quoted, do their words get edited to match this voice, or kept verbatim (acknowledging that some customer language will not match)?
-
-- **Recommendation:** Verbatim, with light editing for clarity only. Authenticity trumps voice consistency in customer quotes.
-
-### 11.12 How to introduce W&L by name
-
-CONTENT.md rarely names "Wilkes & Liberty" inside body copy — the company is the implied "we." When the name *is* introduced (e.g., in a press release lede or capability statement):
-
-- "Wilkes & Liberty, LLC" — first mention, formal contexts.
-- "Wilkes & Liberty" — second mention, marketing contexts.
-- "W&L" — internal docs only, or as a shorthand after first formal mention.
-
-Confirm this hierarchy.
+§11.3 (product naming convention) is resolved → see §6.15: every product gets a proper name + descriptive suffix. **Specific proper names are flagged TBD pending a dedicated naming session.** Current names (*Fortis*, *Apex*, *Vigilance*, *Sovereign Infrastructure*, *Enterprise Search*) are placeholders and will be revisited together with Service and Solution naming as a single sweep.
 
 ---
 
