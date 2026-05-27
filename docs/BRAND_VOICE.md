@@ -1,9 +1,15 @@
 # Wilkes & Liberty Brand Voice Guidelines
 
-**Version:** 1.0 (draft for Jeremy's review)
-**Last updated:** 2026-05-20
+**Version:** 1.1 (resolving §11 open questions incrementally)
+**Last updated:** 2026-05-27
 **Source of truth:** `docs/CONTENT.md` (drafted page copy for 6 Products + 10 Services)
-**Status:** Initial extraction. Open questions in §11 require Jeremy's call before this can be considered final.
+**Status:** §11.1 (use "we") and §11.10 (US English) resolved on 2026-05-27 — see §6.3 and §6.9. Remaining §11 questions are being worked through one-by-one; until each is resolved, treat that subsection as draft-only.
+
+**v1.1 changelog (2026-05-27):**
+- §11.1 resolved → §6.3 rewritten: "we" is canonical; "I"/"Jeremy Cerda" reserved for personal-byline pieces.
+- §11.8 resolved → §6.10 added: CTA voice rules with per-audience Primary CTA matrix (federal: "Open an inquiry" / "Request a capability brief"; commercial: "Open a conversation"; universal: "Schedule a working session"). "Demo" added to §5.2 banned vocabulary.
+- §11.10 resolved → §6.9 added: US English is canonical, with explicit date/number conventions.
+- §11.11 resolved → §6.11 added: "you"/"your" canonical; elevation by audience (federal → institutional language; commercial → stay direct).
 
 ---
 
@@ -184,6 +190,7 @@ These conflict with the established voice. Either replace with a preferred term 
 | "Empower" (used hollow) | Acceptable when followed by a concrete outcome; avoid when not. | Either follow with the outcome or replace with "enable." |
 | "Just," "simply," "easily" (as adjectives in body copy) | Undercuts seriousness; the work is rarely simple. | Omit. |
 | Emoji in body copy | The published voice is restrained; emoji breaks register. (Note: emoji used as visual section markers in internal docs like `CONTENT_TYPES_GUIDE.md` is fine — that is *internal* editorial UX, not public voice.) | Omit. |
+| **"Demo"** (as a noun or verb in any customer-facing copy) | Reads SaaS-sales. Federal and mission-driven buyers expect substance, not a sales motion. | "Working session," "technical walk-through," "live deployment review." |
 
 ### 5.3 Acronyms
 
@@ -208,9 +215,12 @@ CONTENT.md uses some technical acronyms without expansion (e.g., "CMS," "VPN," "
 - Active by default. Use "We design, deploy, and continuously manage..." (CONTENT.md, Service 1) rather than "Sovereign infrastructure environments are designed, deployed, and managed by us."
 - Passive is acceptable when the actor is genuinely irrelevant or unknown (e.g., "Backups are retained for 90 days").
 
-### 6.3 First-person plural ("we")
+### 6.3 First-person plural ("we") — canonical
 
-- "We" is the established W&L voice across CONTENT.md, even though W&L is a single-principal LLC at present (memory: `user_identity.md`). See §11.1 — open question for Jeremy on whether to refine this.
+- **Use "we"** as W&L's voice across all public-facing copy: Products, Services, Solutions, capability statement, case studies, landing pages, and most articles. "We" implies organizational capability, which is honest when subcontractor and partner relationships extend the principal's reach for federal delivery.
+- **Use "I" (or "Jeremy Cerda")** only in personal-byline thought-leadership articles or founder-narrative posts where the principal speaks in his own voice. These are the exception, not the default.
+- W&L is currently a single-principal LLC (memory: `user_identity.md`); "we" is forward-looking and inclusive of partners and future hires, not a fabrication.
+- Resolved 2026-05-27.
 
 ### 6.4 Capitalization
 
@@ -257,6 +267,85 @@ The structural pattern from CONTENT.md is:
 4. **Mission Impact** (one paragraph). The named section. Ties back to mission outcomes for defense and government.
 
 Service pages compress this — sometimes only a single paragraph plus an optional Mission Impact block.
+
+### 6.9 English variant — US English (canonical)
+
+- **US English** is canonical across all public-facing copy: `optimize`, `organization`, `customize`, `defense`, `analyze`, `program` (verb), `behavior`, `color`. Not `optimise` / `organisation` / `defence` / `analyse` / `programme` / `behaviour` / `colour`.
+- Date format: ISO `2026-05-27` in technical/internal docs; `May 27, 2026` in body prose.
+- Number/currency format: US conventions (`$1,250.00`, not `1.250,00 €`).
+- The Spanish and Russian translation source files in `translations/` are sibling-translated from the US English source (per `README.md`); they are not separately authored.
+- Resolved 2026-05-27.
+
+### 6.10 Calls to action (CTAs)
+
+CTAs match the brand register: serious, direct, no consumer-SaaS reflexes. One Primary CTA per page; one Secondary; tertiary inline links as needed. Consistency across same-type pages is more important than per-page creativity.
+
+**Primary CTA — by audience:**
+
+| Audience | Primary CTA wording |
+|---|---|
+| Federal / defense pages (Federal landing, Capability Statement, federal-targeted Solutions) | **Request a capability brief** |
+| All other federal-adjacent touchpoints (general "contact" surface for federal buyers) | **Open an inquiry** |
+| Commercial Solution pages (higher ed, mission-driven nonprofits, privacy-conscious B2B, regulated industries) | **Open a conversation** |
+| Product / Service pages (any audience) | **Schedule a working session** |
+| RFP / proposal touchpoints | **Request past performance** |
+
+**Secondary CTA — alternate paths for buyers not ready for a meeting:**
+
+| Context | Secondary CTA wording |
+|---|---|
+| Federal pages | **Download the capability statement** (the 1–2 page PDF) |
+| Product pages | **Read the architecture overview** |
+| Service pages | **Read past performance** |
+| Solution pages (commercial) | **Download our capabilities overview** |
+| Case studies | **Read the case study** |
+
+**Important distinction (federal-procurement primitives):**
+- **Capability statement** = the 1–2 page PDF artifact (universal federal-procurement deliverable; lives at a stable URL).
+- **Capability brief** = the meeting / working session walking a customer through the statement and how it maps to their need.
+- The two are complementary, not redundant. Federal buyers know the difference. Use both on federal landing pages — brief as the Primary CTA, statement as the Secondary.
+
+**Tertiary / inline link CTAs:**
+
+- **Learn more about [Service]**
+- **See how it deploys**
+- **Read the technical deep-dive**
+- **Contact Jeremy directly** (used where single-principal honesty is the right signal — e.g., federal buyer page footer)
+
+**Rules:**
+
+1. **Imperative + outcome** preferred over imperative-only. "See how Fortis enforces zero-trust" beats "Get started."
+2. **No exclamation marks.** Ever.
+3. **No urgency language.** No "limited time," "act now," "today only."
+4. **No "free," "freemium," "no credit card required."** Consumer-SaaS register.
+5. **Sentence case** for buttons and links. Product names retain Title Case when embedded.
+6. **No "click here" / "this link" / "find out more."** Always verb + meaningful object.
+7. **CTA consistency across same-type pages.** All Product pages use the same Primary; all Service pages use the same Primary. Pattern recognition is a trust signal.
+8. **"Demo" is banned** (see §5.2). Replace with "working session," "technical walk-through," or "live deployment review."
+9. **No "let's talk"** — reads improvised. Use the canonical CTAs above.
+
+Resolved 2026-05-27.
+
+### 6.11 Pronoun for the customer
+
+**Default: "you" / "your"** (direct second-person address). This is already de facto across CONTENT.md.
+
+**Elevation by audience** (not by content type):
+
+- **Federal / defense pages:** layer in "your organization," "your mission," "your contracting team," "your evaluators," "your program office" when the addressee is the institutional decision-maker. Match the register of capability statements and RFP language.
+- **Commercial / mission-driven pages:** keep the default direct address — "your team," "your platform," "your users," "your members," "your audit needs." Same warmth as the default; no institutional layering.
+- **Mixed-audience pages** (rare): default to the buyer's pronoun ("you"); layer "your team" / "your mission" only where naturally fitting. Do not stack both registers in the same paragraph.
+
+**Banned:**
+
+- "The customer," "the client" — third-person abstraction reads cold. The buyer is right here.
+- "Users" as the buyer noun — depersonalizes. ("Users" can describe end users of the deployed system; never the buyer.)
+- "You guys" — too casual.
+- "The prospect," "the lead" — sales-CRM language; never in customer-facing copy.
+
+**Pronoun-audience binding lives in page taxonomy.** Each page declares its primary audience (Federal Civilian, Higher Ed, Mission-Driven Nonprofit, etc.) in its persona / audience taxonomy field; the voice register follows from that.
+
+Resolved 2026-05-27.
 
 ---
 
@@ -390,14 +479,6 @@ Use this when self-editing a draft.
 
 These are the calls v1.0 could not make from the source material alone. Each one will sharpen the voice once decided.
 
-### 11.1 First-person plural ("we") vs. single-principal reality
-
-CONTENT.md uses "we" throughout (e.g., "We design, deploy, and continuously manage..."). Per memory (`user_identity.md`), W&L is currently a single-principal LLC — Jeremy is owner, CTO, security lead, privacy officer, DR lead, and operator.
-
-- **Option A:** Continue with "we" — it implies organizational capability, which is fair when subcontractor and partner relationships extend the principal's reach.
-- **Option B:** Shift to "I" or "Jeremy Cerda" in select contexts (founder posts, certain articles) to lean into the specialist-principal positioning.
-- **Recommendation:** Keep "we" in Product, Service, capability statement, and case study contexts. Allow "I" in personal-byline thought-leadership articles. Confirm.
-
 ### 11.2 Acronym expansion rule
 
 §5.3 proposes: spell out on first use only if the acronym is niche-specific or regulatory. Skip expansion for industry-standard acronyms (*CMS*, *VPN*, *AI/ML*, *KPI*, *SSO*, *API*). Confirm or adjust.
@@ -434,27 +515,11 @@ The voice and persona model assume defense and government as primary audiences. 
 - Does sovereignty still anchor the pitch? Yes, but differently (data residency, regulatory independence).
 - Should there be a commercial-specific addendum to this guide, or should the brand stay focused federal-only?
 
-### 11.8 CTA voice
-
-CONTENT.md does not include CTA examples. Need direction on phrasing:
-
-- "Schedule a consultation" vs. "Request a demo" vs. "Talk to our team"
-- "Read the brief" vs. "Download the whitepaper"
-- Imperative + outcome ("See how Fortis enforces zero-trust") vs. imperative only ("Get started")
-
 ### 11.9 Case study and customer voice
 
 CONTENT.md has no case study examples. When a customer is quoted, do their words get edited to match this voice, or kept verbatim (acknowledging that some customer language will not match)?
 
 - **Recommendation:** Verbatim, with light editing for clarity only. Authenticity trumps voice consistency in customer quotes.
-
-### 11.10 UK vs. US English
-
-CONTENT.md uses US spellings throughout (*optimize, organization, customize*). Confirm US English as canonical, including for Russian and Spanish translation source files (which are sibling-translated, not separately authored — per `README.md`).
-
-### 11.11 Pronoun for the customer
-
-CONTENT.md mixes "your team," "your organization," "your infrastructure," "your data" — second-person possessive is dominant. No use of "their" referring to a hypothetical buyer. Confirm second-person as canonical (it is currently the de facto rule).
 
 ### 11.12 How to introduce W&L by name
 
