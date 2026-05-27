@@ -1,9 +1,17 @@
 # Wilkes & Liberty Brand Voice Guidelines
 
-**Version:** 1.2 (eleven of twelve §11 open questions resolved; product/service/solution naming session pending)
+**Version:** 1.3 (naming session complete; all platform and solution proper names resolved)
 **Last updated:** 2026-05-27
-**Source of truth:** `docs/CONTENT.md` (drafted page copy for 6 Products + 10 Services)
-**Status:** §11.1, .2, .3 (pattern), .4, .5, .7, .8, .9, .10, .11, .12 resolved on 2026-05-27. §11.6 (career posting voice) parked until first job posting is drafted. §11.3 specific product names deferred to dedicated naming session (Products + Services + Solutions in one sweep). The guide is otherwise considered v1.2-final and ready for editorial enforcement.
+**Source of truth:** `docs/CONTENT.md` (drafted page copy for 7 Platforms, 16 Services, 8 Solutions)
+**Status:** All §11 open questions resolved or parked. §11.3 proper names resolved 2026-05-27 in dedicated naming session — see `docs/NAMING_DECISIONS.md`. §11.6 (career posting voice) parked. The guide is v1.3-final and ready for editorial enforcement.
+
+**v1.3 changelog (2026-05-27 — naming session propagation):**
+- §6.4 updated: product name examples replaced with locked portfolio names (Sabal, Keel, Alidade, Squawk, Manifest, Lighthouse, Coquina).
+- §6.15 rewritten: "TBD pending naming session" status replaced with complete locked name list and rationale summary.
+- §11.X naming session question closed — resolved in full. Canonical reference: `docs/NAMING_DECISIONS.md`.
+- All old product name references (*Fortis*, *Apex*, *Vigilance*, *Liberty*, *Sovereign Infrastructure*, *Enterprise Search*) swept and replaced throughout.
+- §3 anchor quotes updated to reflect final names.
+- "Products" → "Platforms" in all internal references to the tier name.
 
 **v1.2 changelog (2026-05-27 — second pass):**
 - §11.2 resolved → §5.3 rewritten with audience-layered acronym spell-out matrix (federal/expert audiences skip expansion; commercial/mission-driven audiences spell out engineering-niche + regulatory acronyms on first use).
@@ -29,7 +37,7 @@ This document is the canonical brand voice reference for anyone writing public-f
 
 **When to consult it:**
 
-- Before drafting a new Product or Service page
+- Before drafting a new Platform or Service page
 - Before writing an article, case study, or press release
 - When reviewing copy from a contractor, freelancer, or AI assistant
 - When deciding between two phrasings that "both sound fine" — the answer is usually in §3 (messaging pillars) or §5 (vocabulary)
@@ -38,7 +46,7 @@ This document is the canonical brand voice reference for anyone writing public-f
 
 1. Start with §3 (messaging pillars) and §4 (personas) to confirm what you're writing supports the right outcome for the right audience.
 2. Draft using §5 (vocabulary) and §6 (style rules).
-3. Self-edit against §9 (Do / Don't) — every Product/Service paragraph should pass that test.
+3. Self-edit against §9 (Do / Don't) — every Platform/Service paragraph should pass that test.
 4. If you're unsure, check the parallel example in `docs/CONTENT.md` for the same content type and copy the pattern.
 
 **What this guide is not:**
@@ -71,19 +79,19 @@ Five attributes define how WL sounds. Each is anchored on observed patterns in `
 
 ## 3. Messaging pillars
 
-Five pillars recur across every Product and Service page. New copy should explicitly carry at least one — usually two or three.
+Five pillars recur across every Platform and Service page. New copy should explicitly carry at least one — usually two or three.
 
 ### 3.1 Mission impact
 
-**Anchor quote (CONTENT.md, Sovereign Infrastructure Platform):**
+**Anchor quote (CONTENT.md, Sabal Infrastructure Platform):**
 
 > "By removing reliance on external cloud providers and giving you full sovereignty over your infrastructure, we help defense contractors and government organizations maintain control, reduce risk, and focus resources on core mission objectives rather than technology maintenance."
 
-The "Mission Impact" block is a hard-required field on Product and Service content (per `docs/CONTENT_TYPES_GUIDE.md` §9, §10). It is also the rhetorical center of the voice: every other claim is in service of it.
+The "Mission Impact" block is a hard-required field on Platform and Service content (per `docs/CONTENT_TYPES_GUIDE.md` §9, §10). It is also the rhetorical center of the voice: every other claim is in service of it.
 
 ### 3.2 Sovereignty
 
-**Anchor quote (CONTENT.md, Apex Secure Data Platform):**
+**Anchor quote (CONTENT.md, Manifest Data Platform):**
 
 > "A sovereign data foundation built to enhance data availability and support mission-critical applications."
 
@@ -91,9 +99,9 @@ Sovereignty in WL copy means: customer-controlled, deployable anywhere (on-prem,
 
 ### 3.3 Security as enabler, not obstacle
 
-**Anchor quote (CONTENT.md, Fortis Zero-Trust Identity Platform):**
+**Anchor quote (CONTENT.md, Squawk Zero-Trust Identity Platform):**
 
-> "Security and usability must work together in support of the mission. The Fortis Zero-Trust Identity Platform provides enterprise-grade single sign-on and access control while enforcing strict security standards."
+> "Security and usability must work together in support of the mission. The Squawk Zero-Trust Identity Platform provides enterprise-grade single sign-on and access control while enforcing strict security standards."
 
 WL's security pitch is *not* "we are paranoid and slow." It is "we make zero-trust operationally invisible." Always pair security claims with a velocity / usability claim.
 
@@ -168,7 +176,7 @@ These appear repeatedly in `docs/CONTENT.md`. Reuse them — consistency builds 
 | **Sovereignty / sovereign** | Customer control of data, infrastructure, identity. |
 | **Operational resilience / continuity / tempo / superiority** | Outcome-level descriptions of what the customer gains. |
 | **Decision velocity / decision cycles / decision speed** | The cognitive output of good information systems. |
-| **Zero-trust** | Always hyphenated, lowercase except when in a product name (e.g., *Fortis Zero-Trust Identity Platform*). |
+| **Zero-trust** | Always hyphenated, lowercase except when in a product name (e.g., *Squawk Zero-Trust Identity Platform*). |
 | **Air-gapped** | Hyphenated. Used in deployment options. |
 | **On-premises / on-prem** | Hyphenated. "On-prem" is acceptable shorthand inline; "on-premises" preferred in headings and meta descriptions. |
 | **Defense and government** | Canonical audience phrase. Sometimes "defense contractors and government organizations" for the longer form. |
@@ -251,16 +259,17 @@ Resolved 2026-05-27 (§11.2).
 
 ### 6.4 Capitalization
 
-- **Product names:** Title Case, including the descriptive part (*Sovereign Infrastructure Platform*, *Liberty Headless CMS Platform*, *Fortis Zero-Trust Identity Platform*, *Apex Secure Data Platform*, *Vigilance Mission Observability Suite*).
+- **Platform names:** Title Case, including the descriptive suffix (*Sabal Infrastructure Platform*, *Keel CMS Platform*, *Alidade Search Platform*, *Squawk Zero-Trust Identity Platform*, *Manifest Data Platform*, *Lighthouse Observability Platform*, *Coquina Software Factory Platform*).
+- **Solution names:** Title Case for proper name (*DotGov*, *DotEDU*, *Accord*, *Palisade*, *Bulkhead*, *Gazette*, *Outpost*, *Software Factory*). When used with descriptor: *DotGov Federal Civilian Solution*, *Gazette IG Platform*.
 - **Service names:** Title Case (*Private Infrastructure Engineering & Managed Operations*).
 - **Section headings within page copy** (*Key Capabilities*, *Mission Impact*): Title Case, bolded.
 - **"Mission impact"** as an inline noun phrase: lowercase. As a section heading: Title Case ("Mission Impact").
-- **"Zero-trust"** as a descriptor: lowercase. As part of a product name (*Fortis Zero-Trust Identity Platform*): Title Case.
+- **"Zero-trust"** as a descriptor: lowercase. As part of a platform name (*Squawk Zero-Trust Identity Platform*): Title Case.
 - **"Sovereignty," "sovereign":** lowercase.
 
-#### "Mission" density rule (outside Product / Service pages)
+#### "Mission" density rule (outside Platform / Service pages)
 
-Product and Service pages saturate "mission" because Mission Impact is a required field. **All other content types dial back to 1–2 mentions per piece** — typically once in the opening hook or closing graf, optionally a second mention where it lands naturally. Use the messaging pillars from §3 implicitly (with concrete outcome language) rather than vocabulary-stuffing.
+Platform and Service pages saturate "mission" because Mission Impact is a required field. **All other content types dial back to 1–2 mentions per piece** — typically once in the opening hook or closing graf, optionally a second mention where it lands naturally. Use the messaging pillars from §3 implicitly (with concrete outcome language) rather than vocabulary-stuffing.
 
 Applies to: Articles, case studies, blog posts, resources, landing pages, Solution pages targeting commercial audiences (federal-audience Solutions retain higher density per §6.12), press releases, capability statement narrative sections that aren't named "Mission Impact."
 
@@ -277,12 +286,12 @@ Resolved 2026-05-27 (§11.4).
 
 CONTENT.md is consistent:
 
-> `[Product or Service Name] | [Tagline]`
+> `[Platform or Service Name] | [Tagline]`
 
 Examples:
-- "Sovereign Infrastructure Platform | Mission-Controlled Technology"
-- "Liberty Headless CMS Platform | Secure Content Sovereignty"
-- "Vigilance Mission Observability Suite | Real-Time System Intelligence"
+- "Sabal Infrastructure Platform | Mission-Controlled Technology"
+- "Keel CMS Platform | Secure Content Sovereignty"
+- "Lighthouse Observability Platform | Real-Time System Intelligence"
 
 Pipe (`|`) separator with a space on each side. Tagline is 3–6 words, Title Case, anchored on a messaging pillar.
 
@@ -299,12 +308,12 @@ Example (one-sentence):
 Example (two-sentence):
 > "Deploy secure, sovereign infrastructure anywhere. Designed to enhance mission resilience, eliminate vendor dependency, and give your organization full control over its technology environment."
 
-### 6.8 Page structure (Product / Service)
+### 6.8 Page structure (Platform / Service)
 
 The structural pattern from CONTENT.md is:
 
-1. **Context-setter** (one sentence, sometimes two). Frames the mission tension the product resolves.
-2. **Product description** (one paragraph). What it is, what it does at the level a non-engineer can repeat.
+1. **Context-setter** (one sentence, sometimes two). Frames the mission tension the platform resolves.
+2. **Platform description** (one paragraph). What it is, what it does at the level a non-engineer can repeat.
 3. **Key Capabilities** (bulleted list, 4–6 items). Each capability is a noun phrase, 4–10 words.
 4. **Mission Impact** (one paragraph). The named section. Ties back to mission outcomes for defense and government.
 
@@ -329,7 +338,7 @@ CTAs match the brand register: serious, direct, no consumer-SaaS reflexes. One P
 | Federal / defense pages (Federal landing, Capability Statement, federal-targeted Solutions) | **Request a capability brief** |
 | All other federal-adjacent touchpoints (general "contact" surface for federal buyers) | **Open an inquiry** |
 | Commercial Solution pages (higher ed, mission-driven nonprofits, privacy-conscious B2B, regulated industries) | **Open a conversation** |
-| Product / Service pages (any audience) | **Schedule a working session** |
+| Platform / Service pages (any audience) | **Schedule a working session** |
 | RFP / proposal touchpoints | **Request past performance** |
 
 **Secondary CTA — alternate paths for buyers not ready for a meeting:**
@@ -337,7 +346,7 @@ CTAs match the brand register: serious, direct, no consumer-SaaS reflexes. One P
 | Context | Secondary CTA wording |
 |---|---|
 | Federal pages | **Download the capability statement** (the 1–2 page PDF) |
-| Product pages | **Read the architecture overview** |
+| Platform pages | **Read the architecture overview** |
 | Service pages | **Read past performance** |
 | Solution pages (commercial) | **Download our capabilities overview** |
 | Case studies | **Read the case study** |
@@ -362,7 +371,7 @@ CTAs match the brand register: serious, direct, no consumer-SaaS reflexes. One P
 4. **No "free," "freemium," "no credit card required."** Consumer-SaaS register.
 5. **Sentence case** for buttons and links. Product names retain Title Case when embedded.
 6. **No "click here" / "this link" / "find out more."** Always verb + meaningful object.
-7. **CTA consistency across same-type pages.** All Product pages use the same Primary; all Service pages use the same Primary. Pattern recognition is a trust signal.
+7. **CTA consistency across same-type pages.** All Platform pages use the same Primary; all Service pages use the same Primary. Pattern recognition is a trust signal.
 8. **"Demo" is banned** (see §5.2). Replace with "working session," "technical walk-through," or "live deployment review."
 9. **No "let's talk"** — reads improvised. Use the canonical CTAs above.
 
@@ -455,27 +464,30 @@ How to name the company across contexts:
 
 Resolved 2026-05-27 (§11.12).
 
-### 6.15 Product naming convention
+### 6.15 Platform naming convention
 
-**Pattern (canonical):** Every product gets a **proper name + descriptive suffix**.
+**Pattern (canonical):** Every platform gets a **proper name + descriptive suffix**.
 
-Examples of the pattern:
-- *Liberty Headless CMS Platform* (proper name: Liberty)
-- *Fortis Zero-Trust Identity Platform* (proper name: Fortis) — **name TBD, see naming queue below**
-- *Apex Secure Data Platform* (proper name: Apex) — **name TBD, see naming queue below**
-- *Vigilance Mission Observability Suite* (proper name: Vigilance) — **name TBD, see naming queue below**
+**Locked portfolio (naming session complete 2026-05-27):**
 
-**Existing pure-descriptor products to retrofit:**
-- *Sovereign Infrastructure Platform* → needs proper name (TBD)
-- *Enterprise Search Platform* → needs proper name (TBD)
+| Proper name | Full platform name | Register |
+|---|---|---|
+| **Sabal** | Sabal Infrastructure Platform | South Florida botanical (Sabal palmetto — deeply rooted, hurricane-resistant) |
+| **Keel** | Keel CMS Platform | Maritime — the foundational spine of a ship; base layer beneath DotGov, DotEDU, AgencyOS |
+| **Alidade** | Alidade Search Platform | Surveying — a sighting instrument that gives the exact bearing to what you're looking for |
+| **Squawk** | Squawk Zero-Trust Identity Platform | Aviation — the transponder code that identifies every aircraft on the network |
+| **Manifest** | Manifest Data Platform | Maritime — the cargo manifest; authoritative record of everything aboard |
+| **Lighthouse** | Lighthouse Observability Platform | South Florida coastal — fixed navigational beacon (Hillsboro Inlet Lighthouse) |
+| **Coquina** | Coquina Software Factory Platform | South Florida geological — the shell-and-limestone composite that built Castillo de San Marcos |
+
+**Solution names (locked):** DotGov, DotEDU, Accord, Palisade, Bulkhead, Gazette, Outpost, Software Factory. See `docs/NAMING_DECISIONS.md §5.4` for full rationale and conflict-check status.
 
 **Why the pattern:**
-- Proper names are trademarkable, memorable in conversation ("our Bastion platform" vs. "our Sovereign Infrastructure Platform"), and carry brand equity over time.
-- The descriptive suffix keeps the name navigable for federal evaluators who scan for capability category.
+- Proper names are trademarkable, memorable in conversation ("our Keel deployment" vs. "our Liberty Headless CMS Platform"), and carry brand equity over time.
+- The descriptive suffix keeps the name navigable for federal evaluators scanning for capability category.
+- All names require attorney USPTO Class 42 review before public use — see `NAMING_DECISIONS.md §6.1`.
 
-**Naming session pending:** All current proper names (*Fortis*, *Apex*, *Vigilance*, *Liberty*) are flagged as **TBD pending dedicated naming session**. Liberty is the most defensible of the current set; the others may be replaced. Until that session lands, current names remain in CONTENT.md as placeholders.
-
-Resolved 2026-05-27 (§11.3) — pattern confirmed; specific names deferred to naming session.
+Resolved 2026-05-27 (§11.3) — pattern confirmed; names locked in dedicated naming session.
 
 ---
 
@@ -485,8 +497,8 @@ How the core voice (§2) adjusts across content types. All cells inherit the §2
 
 | Content type | Formality | Sentence length | Mission framing | Persona lean | Notes |
 |---|---|---|---|---|---|
-| **Product page** | High | Mid-long | Required (named section) | Mission Owner + CIO | Lead with context tension, end with mission impact. |
-| **Service page** | High | Mid | Required (named section, even if brief) | Contracting Officer + IT Lead | Tighter than Product. Opens "We [verb]..." |
+| **Platform page** | High | Mid-long | Required (named section) | Mission Owner + CIO | Lead with context tension, end with mission impact. |
+| **Service page** | High | Mid | Required (named section, even if brief) | Contracting Officer + IT Lead | Tighter than Platform. Opens "We [verb]..." |
 | **Capability statement / RFP language** | Highest | Mid-long | Heavy | Contracting Officer | Maximum density of preferred vocabulary. Past performance language. |
 | **Article (thought leadership)** | High | Varied | Moderate (not every paragraph) | Mission Owner + CIO | Can carry a single argument over 600–1200 words. "We" voice still applies. |
 | **Article (news / press release)** | High | Short-mid | Light | All four personas | Inverted-pyramid; date and fact at top. Mission framing in the closing graf. |
@@ -522,13 +534,13 @@ Every example below is anchored on `docs/CONTENT.md`. The "Don't" column is a re
 
 | ❌ Don't (off-voice rewrite) | ✅ Do (CONTENT.md source) |
 |---|---|
-| "Wilkes & Liberty is proud to introduce the Sovereign Infrastructure Platform, our exciting new infrastructure-as-code offering." | "In high-stakes environments where mission success depends on technology you truly control, the Sovereign Infrastructure Platform delivers the foundation you need." (Product 1) |
+| "Wilkes & Liberty is proud to introduce the Sabal Infrastructure Platform, our exciting new infrastructure-as-code offering." | "In high-stakes environments where mission success depends on technology you truly control, the Sabal Infrastructure Platform delivers the foundation you need." (Platform 1) |
 
 **Why:** The opening sentence does work — it establishes the mission context the customer is in. Announcing the company before the customer's context fails the test.
 
 ### 9.2 Capabilities — noun phrases tied to outcomes
 
-| ❌ Don't | ✅ Do (CONTENT.md, Product 1) |
+| ❌ Don't | ✅ Do (CONTENT.md, Platform 1 — Sabal) |
 |---|---|
 | "Super-fast deployments that will blow you away" | "Automated deployment and configuration management" |
 | "Best-in-class security" | "Secure network segmentation and zero-trust architecture" |
@@ -538,15 +550,15 @@ Every example below is anchored on `docs/CONTENT.md`. The "Don't" column is a re
 
 ### 9.3 Mission impact — outcome, not feature
 
-| ❌ Don't | ✅ Do (CONTENT.md, Product 6 — Vigilance) |
+| ❌ Don't | ✅ Do (CONTENT.md, Platform 6 — Lighthouse) |
 |---|---|
-| "Vigilance has tons of cool dashboards and integrates with everything." | "We streamline operations by giving your teams immediate insight into system health, allowing faster response to issues and greater confidence that your infrastructure will support — rather than hinder — mission objectives." |
+| "Lighthouse has tons of cool dashboards and integrates with everything." | "We streamline operations by giving your teams immediate insight into system health, allowing faster response to issues and greater confidence that your infrastructure will support — rather than hinder — mission objectives." |
 
 **Why:** Mission Impact is where the customer learns *what changes for them*. Feature lists belong in Key Capabilities, not here.
 
 ### 9.4 Security framing — pair with velocity
 
-| ❌ Don't | ✅ Do (CONTENT.md, Product 4 — Fortis) |
+| ❌ Don't | ✅ Do (CONTENT.md, Platform 4 — Squawk) |
 |---|---|
 | "Lock down your network with our paranoid zero-trust architecture." | "Security and usability must work together in support of the mission. The Fortis Zero-Trust Identity Platform provides enterprise-grade single sign-on and access control while enforcing strict security standards." |
 
@@ -570,7 +582,7 @@ Every example below is anchored on `docs/CONTENT.md`. The "Don't" column is a re
 
 ### 9.7 Sovereignty pitch — concrete, not abstract
 
-| ❌ Don't | ✅ Do (CONTENT.md, Product 1) |
+| ❌ Don't | ✅ Do (CONTENT.md, Platform 1 — Sabal) |
 |---|---|
 | "Our platform respects your data and privacy." | "By removing reliance on external cloud providers and giving you full sovereignty over your infrastructure, we help defense contractors and government organizations maintain control, reduce risk, and focus resources on core mission objectives rather than technology maintenance." |
 
@@ -578,7 +590,7 @@ Every example below is anchored on `docs/CONTENT.md`. The "Don't" column is a re
 
 ### 9.8 Emphasis — bold for outcome phrases, not whole sentences
 
-| ❌ Don't | ✅ Do (CONTENT.md, Product 1) |
+| ❌ Don't | ✅ Do (CONTENT.md, Platform 1 — Sabal) |
 |---|---|
 | **"This is the best infrastructure platform on the market, with all the features you need!"** | "purpose-built to **enhance operational resilience**, **streamline infrastructure management**, and **facilitate uninterrupted mission execution**." |
 
@@ -615,9 +627,17 @@ These are the calls v1.0 could not make from the source material alone. Each one
 
 **Default if/when needed:** Hold the formal voice on cleared / federal-facing roles; soften noticeably on commercial / engineering roles. Revisit this question concretely when the first posting is written.
 
-### 11.X — Product / Service / Solution naming session (forthcoming)
+### 11.X — Platform / Service / Solution naming session
 
-§11.3 (product naming convention) is resolved → see §6.15: every product gets a proper name + descriptive suffix. **Specific proper names are flagged TBD pending a dedicated naming session.** Current names (*Fortis*, *Apex*, *Vigilance*, *Sovereign Infrastructure*, *Enterprise Search*) are placeholders and will be revisited together with Service and Solution naming as a single sweep.
+**Status: RESOLVED — 2026-05-27.**
+
+All 15 proper names are locked. The dedicated naming session completed in full. Canonical reference: `docs/NAMING_DECISIONS.md`.
+
+**Locked names:**
+- Platforms (7): Sabal, Keel, Alidade, Squawk, Manifest, Lighthouse, Coquina
+- Solutions (8): DotEDU, Accord, Palisade, Bulkhead, DotGov, Gazette, Outpost, Software Factory
+
+Old placeholder names (*Fortis*, *Apex*, *Vigilance*, *Liberty*, *Sovereign Infrastructure*, *Enterprise Search*) are fully retired — swept from all documentation files as of 2026-05-27. See §6.15 for the complete locked name table with register rationale, and `docs/NAMING_DECISIONS.md §5.4` for the full decision log.
 
 ---
 
@@ -630,7 +650,7 @@ These are the calls v1.0 could not make from the source material alone. Each one
 | §4 Personas | Medium | Personas extracted from stated audience ("defense contractors and government organizations") plus memory-confirmed federal footprint. Not validated against actual customer interviews. |
 | §5 Vocabulary | High (preferred) / Medium (avoid) | Preferred list directly extracted. Avoid list is inferred from the *absence* of consumer-startup register — a strong signal, but not an explicit prohibition by Jeremy. |
 | §6 Style rules | High | Patterns are visually consistent in CONTENT.md. Punctuation has minor inconsistencies (§11.5). |
-| §7 Tone-by-context matrix | Medium | Only Product, Service, and Article contexts have actual examples in CONTENT.md. Other rows are extrapolated from the voice attributes plus the editorial intent in `CONTENT_TYPES_GUIDE.md`. |
+| §7 Tone-by-context matrix | Medium | Only Platform, Service, and Article contexts have actual examples in CONTENT.md. Other rows are extrapolated from the voice attributes plus the editorial intent in `CONTENT_TYPES_GUIDE.md`. |
 | §8 We are / We are not | High | Synthesized directly from §2–§3. |
 | §9 Do / Don't | High | All "Do" examples are direct quotes from CONTENT.md. |
 | §11 Open questions | n/a | These exist *because* the source material did not settle them. |
