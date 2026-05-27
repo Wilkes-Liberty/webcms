@@ -1,9 +1,9 @@
 <?php
 /**
- * Seed Product and Service nodes from docs/CONTENT.md.
+ * Seed Platform and Service nodes from docs/CONTENT.md.
  *
  * Creates:
- *   - 6 Product nodes
+ *   - 7 Platform nodes
  *   - 10 Service nodes
  *   - Solution nodes (from the "## Solutions" section in CONTENT.md)
  *
@@ -11,7 +11,7 @@
  *   - title, body (HTML), field_summary, field_seo_title, field_meta_description
  *   - field_mission_impact (when present in source)
  *   - field_key_capabilities (one paragraph:capability per "Key Capabilities" bullet)
- *   - path alias (/products/{slug}, /services/{slug})
+ *   - path alias (/platforms/{slug}, /services/{slug})
  *   - status = published, moderation_state = published
  *   - best-effort taxonomy refs (field_platform, field_target_sectors,
  *     field_personas) — only set when matching terms already exist in the vocab.
@@ -185,12 +185,16 @@ function wl_parse_content_md(string $path): array {
   $src = file_get_contents($path);
 
   // Split on top-level section headers.
-  $sections = preg_split('/^##\s+(Products|Services|Solutions)\s*$/m', $src, -1, PREG_SPLIT_DELIM_CAPTURE);
-  // After split: [preamble, 'Products', ..., 'Services', ..., 'Solutions', ...]
-  $result = ['products' => [], 'services' => [], 'solutions' => []];
+  $sections = preg_split('/^##\s+(Platforms|Products|Services|Solutions)\s*$/m', $src, -1, PREG_SPLIT_DELIM_CAPTURE);
+  // After split: [preamble, 'Platforms', ..., 'Services', ..., 'Solutions', ...]
+  $result = ['platforms' => [], 'services' => [], 'solutions' => []];
 
   for ($i = 1; $i < count($sections); $i += 2) {
-    $kind = strtolower($sections[$i]);  // 'products' | 'services' | 'solutions'
+    $kind = strtolower($sections[$i]);  // 'platforms' | 'products' (legacy) | 'services' | 'solutions'
+    // Support legacy 'products' header → map to 'platforms'.
+    if ($kind === 'products') {
+      $kind = 'platforms';
+    }
     $body = $sections[$i + 1] ?? '';
     $result[$kind] = wl_parse_entries($body);
   }
@@ -382,7 +386,7 @@ function wl_taxonomy_suggestions(string $bundle, string $title): array {
   // Products: each Product *is* a platform. The taxonomy term, if seeded,
   // shares the product title verbatim per the recommendation in
   // docs/TAXONOMY_AUDIT.md.
-  if ($bundle === 'product') {
+  if ($bundle === 'platform') {
     $defaults['platform'] = $title;
     $defaults['target_sectors'] = ['Defense', 'Federal Government'];
   }
@@ -550,7 +554,7 @@ function wl_seed_entry(string $bundle, array $entry, bool $dry_run, bool $update
   $title = $entry['title'];
   $slug = wl_slug($title);
   $path_prefix = match($bundle) {
-    'product' => '/products',
+    'platform' => '/platforms',
     'service' => '/services',
     'solution' => '/solutions',
     default => '/unknown',
@@ -615,20 +619,20 @@ $mode_label = $WL_DRY_RUN
   ? ($WL_UPDATE ? 'DRY-RUN + UPDATE (no DB writes)' : 'DRY-RUN (no DB writes)')
   : ($WL_UPDATE ? 'UPDATE (existing nodes will be overwritten)' : 'SKIP-IF-EXISTS (default)');
 
-echo "=== Seeding Products, Services & Solutions from " . WL_CONTENT_MD_PATH . " ===\n";
+echo "=== Seeding Platforms, Services & Solutions from " . WL_CONTENT_MD_PATH . " ===\n";
 echo "Mode: {$mode_label}\n\n";
 
 $parsed = wl_parse_content_md(WL_CONTENT_MD_PATH);
 
 $status_keys = ['created', 'skipped', 'updated', 'would-create', 'would-skip', 'would-update'];
 $summary = [
-  'product'   => array_fill_keys($status_keys, 0),
+  'platform'  => array_fill_keys($status_keys, 0),
   'service'   => array_fill_keys($status_keys, 0),
   'solutions' => array_fill_keys($status_keys, 0),   // plural to match $parsed['solutions']
 ];
 
 // Ensure all three bundles are always present in the summary (prevents undefined key warnings)
-foreach (['product', 'service', 'solutions'] as $b) {
+foreach (['platform', 'service', 'solutions'] as $b) {
   if (!isset($summary[$b])) {
     $summary[$b] = array_fill_keys($status_keys, 0);
   }
@@ -678,11 +682,11 @@ $render = function (string $bundle, array $entry, array $r) use (&$warnings): vo
   }
 };
 
-echo "--- Products ---\n";
-foreach ($parsed['products'] as $entry) {
-  $r = wl_seed_entry('product', $entry, $WL_DRY_RUN, $WL_UPDATE);
-  $summary['product'][$r['status']]++;
-  $render('product', $entry, $r);
+echo "--- Platforms ---\n";
+foreach ($parsed['platforms'] as $entry) {
+  $r = wl_seed_entry('platform', $entry, $WL_DRY_RUN, $WL_UPDATE);
+  $summary['platform'][$r['status']]++;
+  $render('platform', $entry, $r);
 }
 
 echo "\n--- Services ---\n";
@@ -710,7 +714,7 @@ $fmt = function (string $label, array $counts): string {
   }
   return sprintf("%-10s %s\n", $label . ':', $parts ? implode('  ', $parts) : '(none)');
 };
-echo $fmt('Products', $summary['product'] ?? []);
+echo $fmt('Platforms', $summary['platform'] ?? []);
 echo $fmt('Services', $summary['service'] ?? []);
 echo $fmt('Solutions', $summary['solutions'] ?? []);
 
