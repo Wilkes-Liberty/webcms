@@ -2,7 +2,7 @@
 
 A working IA punch-list for every public page on wilkesliberty.com. Use this to track what's drafted, what's seeded into Drupal, what's wired into the Next.js frontend, and what still needs to be written.
 
-**Last updated:** 2026-05-20
+**Last updated:** 2026-05-27
 **Owner (default):** Jeremy Cerda
 **Companion docs:** [CONTENT_TYPES_GUIDE.md](CONTENT_TYPES_GUIDE.md) · [FIELD_REFERENCE.md](FIELD_REFERENCE.md) · [PARAGRAPHS.md](PARAGRAPHS.md) · [CONTENT.md](CONTENT.md)
 
@@ -21,7 +21,9 @@ A working IA punch-list for every public page on wilkesliberty.com. Use this to 
 | `n/a` | Not a Drupal-backed page (Next.js-only, system, or external) |
 
 **Content type abbreviations** match the machine names in `config/sync/node.type.*.yml`:
-`article`, `basic_page`, `career`, `case_study`, `event`, `landing_page`, `person`, `product`, `resource`, `service`, `solution`, plus `dynamic-index` for Next.js-rendered listing pages and `nextjs` for routes with no Drupal node behind them.
+`article`, `basic_page`, `career`, `case_study`, `event`, `landing_page`, `person`, `platform`, `resource`, `service`, `solution`, plus `dynamic-index` for Next.js-rendered listing pages and `nextjs` for routes with no Drupal node behind them.
+
+> **Note:** The machine name `product` has been renamed to `platform` (F1-B decision, 2026-05-27). All config files, GraphQL typenames, and URL slugs use `platform` going forward. See `PORTFOLIO_AUDIT.md §G` for the full technical change log.
 
 ---
 
@@ -32,13 +34,14 @@ A working IA punch-list for every public page on wilkesliberty.com. Use this to 
 ├── /about                           [basic_page]
 ├── /contact                         [Next.js + Drupal webform]
 │
-├── /products                        [dynamic-index]
-│   ├── /products/sovereign-infrastructure-platform
-│   ├── /products/liberty-headless-cms
-│   ├── /products/enterprise-search
-│   ├── /products/fortis-identity
-│   ├── /products/apex-data
-│   └── /products/vigilance-observability
+├── /platforms                       [dynamic-index]
+│   ├── /platforms/sabal
+│   ├── /platforms/keel
+│   ├── /platforms/alidade
+│   ├── /platforms/squawk
+│   ├── /platforms/manifest
+│   ├── /platforms/lighthouse
+│   └── /platforms/coquina
 │
 ├── /services                        [dynamic-index]
 │   ├── /services/private-infrastructure-engineering
@@ -86,7 +89,7 @@ A working IA punch-list for every public page on wilkesliberty.com. Use this to 
     └── 404 / 500                    [nextjs — already exist]
 ```
 
-URL convention: each node-type cluster uses its plural as the parent path (`/products/...`, `/services/...`, etc.), with the slug derived from the node title via Drupal's path-alias pattern. The `[...slug]` catch-all on the Next.js side already resolves any path back to a Drupal node — the missing piece is rendering for content types beyond `article` and `basic_page` (see §5).
+URL convention: each node-type cluster uses its plural as the parent path (`/platforms/...`, `/services/...`, etc.), with the slug derived from the node title via Drupal's path-alias pattern. The `[...slug]` catch-all on the Next.js side already resolves any path back to a Drupal node — the missing piece is rendering for content types beyond `article` and `basic_page` (see §5).
 
 ---
 
@@ -98,21 +101,24 @@ URL convention: each node-type cluster uses its plural as the parent path (`/pro
 | `/about` | basic_page | Company overview, mission, history | todo | Jeremy | Write before launch — no draft yet |
 | `/contact` | nextjs + webform | Contact form + inquiry email | seeded | Jeremy | Webform created by `scripts/create_contact_webform.php`; Next.js route at `app/(marketing)/contact/page.tsx` |
 
-## 2. Products
+## 2. Platforms
 
-Copy for all six products is drafted in [CONTENT.md §Products](CONTENT.md#products). Each needs a `product` node with `field_mission_impact`, `field_key_capabilities` (Paragraphs → Capability), and a Primary CTA per `CONTENT_TYPES_GUIDE.md §10`.
+Copy for all seven platforms is drafted in [CONTENT.md §Platforms](CONTENT.md#platforms). Each needs a `platform` node with `field_mission_impact`, `field_key_capabilities` (Paragraphs → Capability), and a Primary CTA per `CONTENT_TYPES_GUIDE.md §10`.
+
+> **301 redirects required:** old `/products/*` slugs must redirect to new `/platforms/*` slugs — see `NAMING_DECISIONS.md §6.6`.
 
 | URL | Content type | Purpose | Status | Owner | Notes |
 |---|---|---|---|---|---|
-| `/products` | dynamic-index | All Products listing | todo | Jeremy | Needs Next.js route; consider grouping by deployment model |
-| `/products/sovereign-infrastructure-platform` | product | Sovereign IaC platform | **drafted** | Jeremy | Copy in CONTENT.md §1 |
-| `/products/liberty-headless-cms` | product | Headless CMS platform | **drafted** | Jeremy | Copy in CONTENT.md §2; SEO-critical (self-referential) |
-| `/products/enterprise-search` | product | Enterprise search platform | **drafted** | Jeremy | Copy in CONTENT.md §3 |
-| `/products/fortis-identity` | product | Zero-trust identity platform | **drafted** | Jeremy | Copy in CONTENT.md §4 |
-| `/products/apex-data` | product | Secure data platform | **drafted** | Jeremy | Copy in CONTENT.md §5 |
-| `/products/vigilance-observability` | product | Mission observability suite | **drafted** | Jeremy | Copy in CONTENT.md §6 |
+| `/platforms` | dynamic-index | All Platforms listing | todo | Jeremy | Needs Next.js route; consider grouping by deployment model |
+| `/platforms/sabal` | platform | Sabal Infrastructure Platform | **drafted** | Jeremy | Copy in CONTENT.md §1; redirects from `/products/sovereign-infrastructure-platform` |
+| `/platforms/keel` | platform | Keel CMS Platform | **drafted** | Jeremy | Copy in CONTENT.md §2; redirects from `/products/liberty-headless-cms`; SEO-critical |
+| `/platforms/alidade` | platform | Alidade Search Platform | **drafted** | Jeremy | Copy in CONTENT.md §3; redirects from `/products/enterprise-search` |
+| `/platforms/squawk` | platform | Squawk Identity Platform | **drafted** | Jeremy | Copy in CONTENT.md §4; redirects from `/products/fortis-identity` |
+| `/platforms/manifest` | platform | Manifest Data Platform | **drafted** | Jeremy | Copy in CONTENT.md §5; redirects from `/products/apex-data` |
+| `/platforms/lighthouse` | platform | Lighthouse Observability Platform | **drafted** | Jeremy | Copy in CONTENT.md §6; redirects from `/products/vigilance-observability` |
+| `/platforms/coquina` | platform | Coquina Software Factory Platform | todo | Jeremy | New entry — copy not yet written |
 
-**Dependencies for all six:** Capability paragraph data must be authored (CONTENT.md has prose `Key Capabilities` bullets that need restructuring into `paragraph:capability` instances), `target_sectors` taxonomy terms must be seeded, hero imagery sourced.
+**Dependencies for all seven:** Capability paragraph data must be authored (CONTENT.md has prose `Key Capabilities` bullets that need restructuring into `paragraph:capability` instances), `target_sectors` taxonomy terms must be seeded, hero imagery sourced.
 
 ## 3. Services
 
@@ -132,26 +138,35 @@ Copy for all ten services drafted in [CONTENT.md §Services](CONTENT.md#services
 | `/services/defense-technology-integration` | service | **drafted** | Jeremy | CONTENT.md §Services 9 |
 | `/services/intelligence-actionable-insights` | service | **drafted** | Jeremy | CONTENT.md §Services 10 |
 
-**Cross-linking:** every Service should set `field_related_products` to the supporting Product nodes, per `CONTENT_TYPES_GUIDE.md §9`.
+**Cross-linking:** every Service should set `field_related_platforms` to the supporting Platform nodes, per `CONTENT_TYPES_GUIDE.md §9`. (Field was previously named `field_related_products` — rename is part of the F1-B engineering task in `PORTFOLIO_AUDIT.md §G`.)
 
 ## 4. Solutions (branded packages)
 
-The `solution` content type is fully implemented in config. Three initial Solution nodes have been seeded via `seed_products_services.php` (May 2026):
+The `solution` content type is fully implemented in config. Eight canonical solutions are locked (naming session 2026-05-27). Three legacy seeded nodes exist and require disposition review per `NAMING_DECISIONS.md §6.7`.
 
-- Sovereign Mission Edge
-- Sovereign AI Command Fabric
-- Sovereign Digital Modernization Platform
-
-Copy for these lives in `CONTENT.md` under the new `## Solutions` section. More branded packages can be added over time.
+**Canonical solutions (copy pending — see CONTENT.md §Solutions):**
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
 | `/solutions` | dynamic-index | todo | Jeremy | Listing route (Next.js) |
-| `/solutions/sovereign-mission-edge` | solution | **seeded** (prod nid 21) | Jeremy | Seeded May 2026 |
-| `/solutions/sovereign-ai-command-fabric` | solution | **seeded** (prod nid 22) | Jeremy | Seeded May 2026 |
-| `/solutions/sovereign-digital-modernization-platform` | solution | **seeded** (prod nid 23) | Jeremy | Seeded May 2026 |
+| `/solutions/dotedu` | solution | todo | Jeremy | Higher Education — Keel + Alidade; DotEDU Drupal distribution |
+| `/solutions/accord` | solution | todo | Jeremy | Nonprofit — Keel |
+| `/solutions/palisade` | solution | todo | Jeremy | Privacy SaaS — Manifest + Squawk |
+| `/solutions/bulkhead` | solution | todo | Jeremy | Regulated Industries — Sabal + Squawk + Manifest |
+| `/solutions/dotgov` | solution | todo | Jeremy | Federal Civilian — Keel + Alidade + Squawk; DotGov Drupal distribution |
+| `/solutions/gazette` | solution | todo | Jeremy | IG Platforms / Fraud, Waste & Abuse — Keel + Manifest |
+| `/solutions/outpost` | solution | todo | Jeremy | Defense Tech Modernization — Sabal + Coquina; ⚠ AWS Outposts name flag — attorney review |
+| `/solutions/software-factory` | solution | todo | Jeremy | Software Factory — Coquina |
 
-**Next:** Flesh out `field_outcomes`, improve Key Capabilities paragraphs, and add `field_related` links to the underlying Products and Services.
+**Legacy seeded solutions (pending disposition — `NAMING_DECISIONS.md §6.7`):**
+
+| URL | Content type | Status | Owner | Notes |
+|---|---|---|---|---|
+| `/solutions/sovereign-mission-edge` | solution | **seeded** (prod nid 21) | Jeremy | Pre-naming placeholder; review against canonical list — map or retire |
+| `/solutions/sovereign-ai-command-fabric` | solution | **seeded** (prod nid 22) | Jeremy | Pre-naming placeholder; review against canonical list — map or retire |
+| `/solutions/sovereign-digital-modernization-platform` | solution | **seeded** (prod nid 23) | Jeremy | Pre-naming placeholder; review against canonical list — map or retire |
+
+**Next:** Resolve nid 21/22/23 disposition; flesh out `field_outcomes`, Key Capabilities paragraphs, and `field_related_platforms` / `field_related_services` links for canonical solutions.
 
 ## 5. Case Studies
 
@@ -233,9 +248,9 @@ All `basic_page`. Sensitive — Jeremy should review/draft personally given defe
 
 | Content type | Total pages planned | drafted | seeded (prod) | wired (frontend) | Notes |
 |---|---:|---:|---:|---:|---|
-| product | 6 | 6 | 6 | partial | Seeded on prod + DDEV |
+| platform | 7 | 7 (6 updated + 1 new) | 6 | partial | Machine name renamed from `product` to `platform` (F1-B, 2026-05-27); Coquina is new — needs creation |
 | service | 10 | 10 | 10 | partial | Seeded on prod + DDEV |
-| solution | 3+ | 3 | 3 | none | First 3 seeded May 2026 (Sovereign Mission Edge, AI Command Fabric, Digital Modernization Platform) |
+| solution | 8 canonical + 3 legacy | 8 stubs in CONTENT.md | 3 legacy | none | 8 canonical solutions locked 2026-05-27; 3 legacy nodes (nid 21/22/23) pending disposition |
 | article | open | many | some | listing+detail | Ongoing |
 | case_study | TBD | 0 | 0 | none | Real client work only |
 | basic_page | ~5 (About, 4 legal) | 0 | 0 | detail wired | 5 |
@@ -279,9 +294,9 @@ This is a coordinated webcms ↔ ui change — track it as a launch dependency.
 
 **Why it's not a duplicate of Product or Service:**
 
-- Product = a self-deployable platform we license/install (the things — Sovereign Infrastructure, Fortis, Apex, etc.).
+- Platform = a self-deployable technology platform we license/install (the things — Sabal, Keel, Alidade, Squawk, Manifest, Lighthouse, Coquina).
 - Service = a consulting/managed engagement (the doing — implementation, advisory, ops).
-- Solution = a packaged, branded combination of one or more Products + Services applied to a specific outcome or sector (the offering — e.g., "Sovereign Mission Edge for Tactical Operations" bundling Apex + Vigilance + integration services).
+- Solution = a packaged, branded combination of one or more Platforms + Services applied to a specific outcome or sector (the offering — e.g., DotGov bundling Keel + Alidade + Squawk for federal .gov modernization).
 
 **Required follow-up doc work** (not in this inventory's scope — flag for next pass):
 
@@ -307,14 +322,14 @@ This is a coordinated webcms ↔ ui change — track it as a launch dependency.
 
 **Frontend wiring gaps**
 
-7. `app/(app)/[...slug]/page.tsx` only resolves `NodeArticle` and `NodePage`. Needs branches for `NodeProduct`, `NodeService`, `NodeSolution`, `NodeCaseStudy`, `NodeResource`, `NodeEvent`, `NodeCareer`, `NodePerson`.
-8. No index routes exist for `/products`, `/services`, `/solutions`, `/case-studies`, `/resources`, `/events`, `/careers`, `/team`, `/press`. Each needs a Next.js page + a GraphQL collection query.
+7. `app/(app)/[...slug]/page.tsx` only resolves `NodeArticle` and `NodePage`. Needs branches for `NodePlatform`, `NodeService`, `NodeSolution`, `NodeCaseStudy`, `NodeResource`, `NodeEvent`, `NodeCareer`, `NodePerson`.
+8. No index routes exist for `/platforms`, `/services`, `/solutions`, `/case-studies`, `/resources`, `/events`, `/careers`, `/team`, `/press`. Each needs a Next.js page + a GraphQL collection query.
 9. No global navigation component published — header/footer link structure should follow this sitemap.
 10. `/sitemap.xml` and `/robots.txt` generators not implemented.
 
 **Other**
 
-11. Search results page — `enterprise_search` is one of the Products but no on-site search UX is planned in this inventory. Decide whether to ship a `/search` route at launch.
+11. Search results page — Alidade is one of the Platforms but no on-site search UX is planned in this inventory. Decide whether to ship a `/search` route at launch.
 12. i18n: site is multilingual (EN/ES/RU per CLAUDE.md) — every URL in this inventory needs a language-prefix plan (`/es/...`, `/ru/...`) before launch. Out of scope here; flag for IA v2.
 
 ---
