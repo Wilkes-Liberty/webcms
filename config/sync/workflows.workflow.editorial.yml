@@ -10,7 +10,7 @@ dependencies:
     - node.type.event
     - node.type.landing_page
     - node.type.person
-    - node.type.product
+    - node.type.platform
     - node.type.resource
     - node.type.service
     - node.type.solution
@@ -97,6 +97,6 @@ type_settings:
       - event
       - career
       - person
-      - product
+      - platform
       - solution
   default_moderation_state: draft

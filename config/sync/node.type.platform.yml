@@ -1,9 +1,9 @@
-uuid: 91c7772f-9f80-45b3-95f3-7d95131b47a3
+uuid: 4fd59284-0f15-4b7d-a985-30e08a230c06
 langcode: en
 status: true
 dependencies: {  }
-name: Product
-type: product
+name: Platform
+type: platform
 description: 'Self-deployable sovereign technology platforms.'
 help: null
 new_revision: true

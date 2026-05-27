@@ -93,7 +93,7 @@ entity_config:
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
-    product:
+    platform:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
@@ -425,7 +425,7 @@ field_config:
         enabled: true
       field_event_type:
         enabled: true
-    product:
+    platform:
       body:
         enabled: true
       field_summary:
