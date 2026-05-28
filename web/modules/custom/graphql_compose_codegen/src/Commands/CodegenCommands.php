@@ -53,7 +53,7 @@ class CodegenCommands extends DrushCommands {
    * @command graphql-compose-codegen:inspect
    * @aliases gqcc:inspect,gqcc:i
    *
-   * @option bundles     Comma-separated bundle IDs to inspect. Default: all.
+   * @option bundles     Comma-separated bundle IDs to inspect (omit for all bundles).
    * @option skip-fields Comma-separated additional field names to exclude.
    *
    * @usage drush gqcc:inspect
@@ -138,10 +138,10 @@ class CodegenCommands extends DrushCommands {
    * @command graphql-compose-codegen:generate
    * @aliases gqcc:generate,gqcc:gen
    *
-   * @option bundles     Comma-separated bundle IDs to generate for. Default: all.
+   * @option bundles     Comma-separated bundle IDs to generate for (omit for all bundles).
    * @option output-dir  Path to Next.js project root. Artefacts written to
    *                     {output-dir}/generated/. Omit to print to stdout.
-   * @option overwrite   Overwrite existing generated files. Default: false.
+   * @option overwrite   Overwrite existing generated files.
    * @option skip-fields Comma-separated extra field names to exclude.
    *
    * @usage drush gqcc:generate
