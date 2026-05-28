@@ -52,9 +52,9 @@ entity_config:
     admin:
       enabled: false
     footer:
-      enabled: false
+      enabled: true
     main:
-      enabled: false
+      enabled: true
     tools:
       enabled: false
   node:
