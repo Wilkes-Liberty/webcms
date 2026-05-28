@@ -18,3 +18,4 @@ services:
   wl_api.tag_resolver:
     class: Drupal\wl_api\Service\TagResolver
     arguments: ['@config.factory']
+
