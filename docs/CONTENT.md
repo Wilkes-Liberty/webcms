@@ -363,12 +363,6 @@ We equip your teams with the insights needed to anticipate threats, make faster 
 
 Branded, mission-aligned packages that combine Platforms and Services into deployable offerings. Each Solution is designed as a cohesive capability that can be procured and stood up as a unit.
 
-> **Note on seeded solutions below:** The three entries that follow (Sovereign Mission Edge, Sovereign AI Command Fabric, Sovereign Digital Modernization Platform) are pre-naming-session placeholders pending disposition review (§6.7 of NAMING_DECISIONS.md). The eight canonical solution names are listed in §6.9. Canonical copy for all eight is now complete and appears in the section immediately below.
-
----
-
-## Solutions — Canonical Entries
-
 ### DotEDU — Higher Education
 
 **SEO Title:** DotEDU | Sovereign Content and Search for Higher Education
@@ -620,89 +614,6 @@ Programs that lack a functioning software factory cannot build or maintain the s
 
 ---
 
-## Solutions — Legacy Seeded Entries (pending disposition)
-
-### 1. Sovereign Mission Edge
-
-**SEO Title:** Sovereign Mission Edge | Tactical Operations Platform
-
-**Meta Description:** A bundled, air-gappable solution combining secure data platforms, mission observability, and integration services for defense and tactical environments.
-
-**Full Page Copy:**
-
-Sovereign Mission Edge delivers a complete, sovereign tactical operations capability by integrating the Manifest Data Platform, Lighthouse Observability Platform, and specialized zero-trust identity and integration services. Designed for contested and disconnected environments, it provides the data foundation, real-time awareness, and secure access controls required for mission success at the edge.
-
-**Key Capabilities**
-- Air-gapped capable data platform with full sovereignty controls
-- Real-time mission observability and sensor fusion
-- Zero-trust identity and access at the tactical edge
-- Rapid deployment and configuration for austere environments
-
-**Mission Impact**
-
-Enables forces to maintain information superiority and decision advantage even when disconnected from strategic networks, directly improving operational tempo and survivability.
-
-**Outcomes**
-- 65% reduction in time-to-initial-operating-capability in disconnected environments
-- Full data sovereignty with no external dependencies
-- Seamless integration of existing sensors and C2 systems
-
----
-
-### 2. Sovereign AI Command Fabric
-
-**SEO Title:** Sovereign AI Command Fabric | Private AI for Mission Operations
-
-**Meta Description:** A secure, air-gapped AI and machine learning platform that brings advanced analytics and automation inside your sovereign boundary.
-
-**Full Page Copy:**
-
-Sovereign AI Command Fabric combines the Manifest Data Platform with Private LLM capabilities and AI integration services to deliver classified, sovereign artificial intelligence at scale. All models, data, and inference remain fully under customer control with no external API calls or data exfiltration risks.
-
-**Key Capabilities**
-- On-premises and air-gapped large language model deployment
-- Secure fine-tuning and retrieval-augmented generation pipelines
-- Mission-specific agent development and orchestration
-- Full auditability and explainability for defense use cases
-
-**Mission Impact**
-
-Accelerates intelligence analysis, planning, and decision-making while eliminating the security and sovereignty risks associated with commercial AI services.
-
-**Outcomes**
-- 4× faster intelligence report generation with maintained classification integrity
-- Complete elimination of external data leakage vectors
-- Rapid stand-up of domain-specific AI capabilities in weeks instead of months
-
----
-
-### 3. Sovereign Digital Modernization Platform
-
-**SEO Title:** Sovereign Digital Modernization Platform | Legacy-to-Modern Transformation
-
-**Meta Description:** An end-to-end, sovereign digital transformation offering that modernizes legacy systems while preserving security, compliance, and operational continuity.
-
-**Full Page Copy:**
-
-The Sovereign Digital Modernization Platform brings together Keel CMS Platform, Enterprise Search, Squawk Identity Platform, and our Digital Modernization and Custom Software Development services into a single, coherent transformation program. It enables organizations to retire fragile legacy systems and move to modern, maintainable, and sovereign platforms without the typical risks of large-scale modernization efforts.
-
-**Key Capabilities**
-- Low-risk, phased migration from legacy content and data systems
-- Sovereign content and data platforms with modern user experiences
-- Identity modernization with zero-trust principles
-- AI-assisted content migration, search, and workflow automation
-
-**Mission Impact**
-
-Reduces technical debt and operational risk while increasing agility, searchability, and the ability to deliver new capabilities quickly — all while maintaining full control over data and infrastructure.
-
-**Outcomes**
-- 70% reduction in legacy system maintenance costs within 24 months
-- 3× improvement in information findability for operators and analysts
-- Successful migration of mission-critical systems with zero data loss or extended downtime
-
----
-
 ## Legal Pages
 
 ### Privacy Policy
@@ -942,7 +853,7 @@ Wilkes & Liberty is a South Florida technology firm that designs, builds, and op
 
 Wilkes & Liberty was founded on a specific conviction: that sovereign, independently operated technology is the correct foundation for any organization that cannot afford to outsource control. The commercial cloud ecosystem was built for convenience. Defense and government organizations — and the commercial sectors that mirror their rigor — need something different. They need infrastructure they own, platforms they operate, and architecture that does not require a vendor's permission to function. That philosophy informs every engagement.
 
-Jeremy Cerda, Founder and Principal Engineer, brings deep federal digital infrastructure experience to every project. His past performance spans some of the most consequential federal web platforms in operation: web modernization at HHS/CMS supporting one of the highest-traffic federal health information properties in the country, a multi-agency Drupal distribution for the USPS Office of Inspector General, and platform contributions to pandemicoversight.gov — the federal pandemic spending oversight site. Each engagement was high-visibility, high-stakes, and delivered on a federal timeline with measurable impact on the public's ability to access and use government information.
+Jeremy Michael Cerda, Founder and Principal Engineer, brings deep federal digital infrastructure experience to every project. His past performance spans some of the most consequential federal web platforms in operation: web modernization at HHS/CMS supporting one of the highest-traffic federal health information properties in the country, a multi-agency Drupal distribution for the USPS Office of Inspector General, and platform contributions to pandemicoversight.gov — the federal pandemic spending oversight site. Each engagement was high-visibility, high-stakes, and delivered on a federal timeline with measurable impact on the public's ability to access and use government information.
 
 Our approach is engineering-first, open-source-native, and driven by Infrastructure-as-Code from the first line. We do not lead with vendor recommendations. We lead with architecture, and the platforms we recommend — or build — are the ones that place operational authority in your hands. If you are evaluating a technology partner for a federal engagement or a mission-critical commercial deployment, we are ready to discuss the specifics.
 
@@ -1031,12 +942,12 @@ Open a conversation about teaming → /contact
 
 ---
 
-### Jeremy Cerda
+### Jeremy Michael Cerda
 
-**Path:** /team/jeremy-cerda
+**Path:** /team/jeremy-michael-cerda
 **Content type:** person
-**SEO Title:** Jeremy Cerda | Founder & Principal Engineer, Wilkes & Liberty
-**Meta Description:** Jeremy Cerda is the Founder and Principal Engineer of Wilkes & Liberty, LLC. Senior federal web architect with past performance at HHS/CMS, USPS OIG, and pandemicoversight.gov.
+**SEO Title:** Jeremy Michael Cerda | Founder & Principal Engineer, Wilkes & Liberty
+**Meta Description:** Jeremy Michael Cerda is the Founder and Principal Engineer of Wilkes & Liberty, LLC. Senior federal web architect with past performance at HHS/CMS, USPS OIG, and pandemicoversight.gov.
 
 **Fields:**
 
@@ -1044,9 +955,119 @@ Open a conversation about teaming → /contact
 
 **Full Page Copy (Bio):**
 
-Jeremy Cerda is a senior federal web architect and technology practitioner with extensive experience in Drupal, headless CMS architecture, and federal digital infrastructure. His federal past performance spans three high-visibility engagements: web platform modernization at HHS/CMS in partnership with Scope Infotec, where he served as principal engineer on a headless Drupal implementation supporting one of the country's highest-traffic federal health information properties; a multi-agency Drupal distribution for the USPS Office of Inspector General; and platform engineering contributions to pandemicoversight.gov, the federal pandemic spending oversight site that served as a primary public accountability resource during one of the largest emergency spending periods in federal history. Each engagement was delivered against federal compliance, accessibility, and security requirements — on timeline, at scale, and with measurable public impact.
+Jeremy Michael Cerda is a senior federal web architect and technology practitioner with extensive experience in Drupal, headless CMS architecture, and federal digital infrastructure. His federal past performance spans three high-visibility engagements: web platform modernization at HHS/CMS in partnership with Scope Infotec, where he served as principal engineer on a headless Drupal implementation supporting one of the country's highest-traffic federal health information properties; a multi-agency Drupal distribution for the USPS Office of Inspector General; and platform engineering contributions to pandemicoversight.gov, the federal pandemic spending oversight site that served as a primary public accountability resource during one of the largest emergency spending periods in federal history. Each engagement was delivered against federal compliance, accessibility, and security requirements — on timeline, at scale, and with measurable public impact.
 
 Beyond CMS and content platform work, Cerda's technical range extends across Infrastructure-as-Code, DevSecOps pipeline implementation, zero-trust identity and access management, enterprise search architecture, and sovereign data platforms. He founded Wilkes & Liberty, LLC to bring this depth of federal engineering experience to defense contractors, federal program offices, and mission-critical commercial organizations that need engineering-first technology leadership — not vendor-driven recommendations or hyperscaler dependency. Every platform and engagement at Wilkes & Liberty reflects the same standard: architecture that places operational authority in the client's hands.
+
+---
+
+### Platforms
+
+**Path:** /platforms
+**Content type:** landing_page
+**SEO Title:** Platforms | Wilkes & Liberty — Sovereign Technology Infrastructure
+**Meta Description:** Seven sovereign technology platforms built for defense contractors, federal agencies, and mission-critical organizations. Self-deployable. Independently operated. No vendor lock-in.
+**Summary:** Seven sovereign platforms covering infrastructure, CMS, search, identity, data, observability, and software delivery — each designed to place operational authority in your hands.
+
+**Full Page Copy:**
+
+#### Sovereign Technology Platforms
+
+Wilkes & Liberty builds and deploys sovereign technology platforms designed for organizations where infrastructure ownership is not optional. Each platform is engineered for independent operation — no hyperscaler dependency, no commercial SaaS licensing required to function at scale, no shared-tenant risk. Seven platforms cover the full operational stack: infrastructure and DevSecOps, headless CMS, enterprise search, zero-trust identity, data, observability, and software factory delivery. They are deployable individually or in combination, and each integrates with the others as a coherent architecture rather than a collection of unrelated tools.
+
+Platforms are the foundation. Solutions package them. Services implement and sustain them. If you are evaluating sovereign technology for a federal or defense engagement, start here.
+
+---
+
+### Services
+
+**Path:** /services
+**Content type:** landing_page
+**SEO Title:** Services | Wilkes & Liberty — Federal Technology Engineering
+**Meta Description:** Eleven specialized technology services for defense contractors and federal agencies: infrastructure engineering, headless CMS, zero-trust identity, DevSecOps, AI integration, and more.
+**Summary:** Engineering-first technology services across infrastructure, CMS implementation, enterprise search, identity, AI, and digital modernization — built for federal and defense requirements.
+
+**Full Page Copy:**
+
+#### Engineering-First Technology Services
+
+Wilkes & Liberty delivers specialized technology services across eleven practice areas aligned to the infrastructure and platform needs of defense contractors, federal agencies, and mission-critical commercial organizations. Services are designed to complement our platform portfolio and address the full engagement lifecycle: architecture and implementation, systems integration, operational handoff, and sustained technical support. Every engagement is engineering-led — we do not front-run engagements with vendor recommendations or framework preferences. Architecture decisions follow requirements, not the reverse.
+
+Services range from private infrastructure engineering and DevSecOps pipeline implementation to headless CMS development, zero-trust identity consulting, enterprise search architecture, AI integration, and digital modernization. Whether the requirement is a new capability, a legacy migration, or an operational uplift, we engage at the technical level required to deliver — not to project-manage from a distance.
+
+---
+
+### Solutions
+
+**Path:** /solutions
+**Content type:** landing_page
+**SEO Title:** Solutions | Wilkes & Liberty — Sovereign Technology Packages
+**Meta Description:** Eight branded solution packages that combine Wilkes & Liberty platforms and services for specific sectors and outcomes: federal civilian, defense, higher education, oversight, and more.
+**Summary:** Eight packaged solutions combining platforms and services for specific sectors and outcomes — federal civilian, defense, higher education, nonprofit, regulated industries, and oversight.
+
+**Full Page Copy:**
+
+#### Packaged Solutions for Specific Sectors and Outcomes
+
+Solutions are branded technology packages that combine one or more Wilkes & Liberty platforms with the services required to implement and operate them — aligned to a specific sector, compliance environment, or mission outcome. They are not product bundles in the commercial sense: each solution represents a validated combination of architecture and services that we have delivered, or are designed to deliver, in a defined operational context.
+
+Eight canonical solutions cover higher education, nonprofit, privacy, regulated industries, federal civilian, oversight and accountability, defense technology modernization, and software factory delivery. If your requirement maps to a specific sector or compliance framework, a solution gives you a faster path to architecture than assembling capabilities from scratch. If your situation is more complex, solutions are a starting point for a scoped engagement, not a constraint on what we can deliver.
+
+---
+
+### Resources
+
+**Path:** /resources
+**Content type:** landing_page
+**SEO Title:** Resources | Wilkes & Liberty — Technical Guides & Reference Material
+**Meta Description:** Technical guides, whitepapers, and reference material from Wilkes & Liberty covering sovereign infrastructure, headless CMS, zero-trust identity, and federal technology architecture.
+**Summary:** Technical reference material, capability statements, and guides covering sovereign infrastructure, headless CMS, federal DevSecOps, and related practice areas. [STUB — expand as content is published]
+
+**Full Page Copy:**
+
+#### Technical Resources
+
+Wilkes & Liberty publishes technical reference material for practitioners working on federal digital infrastructure, sovereign platform deployments, and headless CMS architecture. Resources include capability statements, technical guides, and in-depth articles on the engineering patterns we apply across client engagements.
+
+[STUB — additional content will be added as whitepapers and reference materials are published. Prioritize: federal capability statement, IaC reference guide, headless Drupal architecture overview.]
+
+---
+
+### Downloads & Guides
+
+**Path:** /resources/downloads-guides
+**Content type:** landing_page
+**SEO Title:** Downloads & Guides | Wilkes & Liberty — Technical Reference Material
+**Meta Description:** Download capability statements, technical guides, and reference materials from Wilkes & Liberty covering federal infrastructure, headless CMS, zero-trust identity, and sovereign platform deployments.
+**Summary:** Capability statements, technical guides, and reference materials for practitioners evaluating Wilkes & Liberty platforms and services. [STUB — populate as materials are published]
+
+**Full Page Copy:**
+
+#### Technical Guides & Reference Material
+
+Wilkes & Liberty publishes reference material for federal practitioners, prime contractors, and technical evaluators. Downloads include capability statements, architecture guides, and technical white papers on sovereign infrastructure, headless CMS deployment, and zero-trust identity engineering.
+
+[STUB — add individual download entries as materials are finalized. Initial targets: Federal Capability Statement (PDF), IaC Reference Guide, Headless Drupal for Federal Agencies (technical brief).]
+
+---
+
+### Contact
+
+**Path:** /contact
+**Content type:** landing_page
+**SEO Title:** Contact Wilkes & Liberty | Federal Technology Inquiries
+**Meta Description:** Contact Wilkes & Liberty to discuss a federal or defense technology engagement, teaming arrangement, or technical inquiry. Direct response from the principal engineer.
+**Summary:** Direct inquiries welcome from federal agencies, defense contractors, primes evaluating teaming partners, and commercial organizations with mission-critical technology requirements.
+
+**Full Page Copy:**
+
+#### Start a Conversation
+
+Wilkes & Liberty engages directly with contracting officers, program managers, prime contractors evaluating teaming arrangements, and commercial organizations with serious technology requirements. There is no sales queue. Inquiries go directly to the principal engineer.
+
+Relevant inquiry types: federal procurement and direct award, subcontracting and teaming arrangements, platform evaluation and technical scoping, headless CMS and infrastructure architecture, and general consulting engagements where technical depth is the requirement.
+
+If your organization has a specific engagement in mind, we will respond with a direct assessment of fit — not a sales pitch. Use the form below or reach out directly.
 
 ---
 
@@ -1057,7 +1078,7 @@ Beyond CMS and content platform work, Cerda's technical range extends across Inf
 **Path:** /articles/drupal-headless-cms-federal-agencies
 **SEO Title:** Why Federal Agencies Are Moving to Headless Drupal | Wilkes & Liberty
 **Meta Description:** Headless Drupal separates content management from content delivery, giving federal agencies the flexibility, security, and performance their digital infrastructure demands.
-**Author:** Jeremy Cerda
+**Author:** Jeremy Michael Cerda
 **Category:** Technical
 
 **Full Article:**
@@ -1111,7 +1132,7 @@ Wilkes & Liberty builds headless Drupal deployments for federal civilian agencie
 **Path:** /articles/what-is-sovereignty-in-federal-it
 **SEO Title:** What Sovereignty Means in Federal IT | Wilkes & Liberty
 **Meta Description:** "Digital sovereignty" has become overused. Here is a precise definition — and a framework for evaluating whether your technology stack actually achieves it.
-**Author:** Jeremy Cerda
+**Author:** Jeremy Michael Cerda
 **Category:** Technical
 
 **Full Article:**
@@ -1163,7 +1184,7 @@ Wilkes & Liberty builds technology stacks — from the Sabal Infrastructure Plat
 **Path:** /articles/iac-driven-infrastructure-for-government
 **SEO Title:** Infrastructure-as-Code for Government Technology | Wilkes & Liberty
 **Meta Description:** Infrastructure-as-Code makes government technology infrastructure reproducible, auditable, and faster to deploy. Here is what it means for federal and defense programs.
-**Author:** Jeremy Cerda
+**Author:** Jeremy Michael Cerda
 **Category:** Technical
 
 **Full Article:**
@@ -1208,7 +1229,7 @@ Wilkes & Liberty's Sabal Infrastructure Platform formalizes this approach for de
 
 ## Case Studies
 
-> Case study content reflects work performed by Jeremy Cerda as principal engineer. Sections marked [VERIFY: ...] require confirmation of specific metrics, dates, or client details before publication. Client quotes, if any, require written authorization.
+> Case study content reflects work performed by Jeremy Michael Cerda as principal engineer. Sections marked [VERIFY: ...] require confirmation of specific metrics, dates, or client details before publication. Client quotes, if any, require written authorization.
 
 ---
 
@@ -1220,7 +1241,7 @@ Wilkes & Liberty's Sabal Infrastructure Platform formalizes this approach for de
 
 **Full Page Copy:**
 
-> **Editorial note:** This case study describes work performed by Jeremy Cerda as principal engineer, subcontracted through Scope Infotec as prime. Specific metrics and client quotes require verification before publication.
+> **Editorial note:** This case study describes work performed by Jeremy Michael Cerda as principal engineer, subcontracted through Scope Infotec as prime. Specific metrics and client quotes require verification before publication.
 
 #### Challenge
 

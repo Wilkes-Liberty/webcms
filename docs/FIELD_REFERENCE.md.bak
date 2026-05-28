@@ -28,55 +28,55 @@ This guide documents all 54+ fields in the CMS, filling the previously identifie
 
 ## Critical Fields
 
-### Mission, Sovereignty & Specialized Fields (Platform / Service / Solution)
+### Mission, Sovereignty & Specialized Fields (Product / Service / Solution)
 
-These fields were introduced with the v2.0 Platform/Service/Solution architecture.
+These fields were introduced with the v2.0 Product/Service/Solution architecture.
 
 #### `field_mission_impact`
 **Type**: Text (Long)
 **Cardinality**: 1
-**Used by**: Platform, Service, Solution
+**Used by**: Product, Service, Solution
 
-**Purpose**: The primary framing for how the offering advances the client's mission. This is the most important field on Platform/Service/Solution pages.
+**Purpose**: The primary framing for how the offering advances the client's mission. This is the most important field on Product/Service/Solution pages.
 
 **Usage**:
 - Must be written in the voice defined in `BRAND_VOICE.md`
 - Focus on operational outcomes, decision velocity, risk reduction, and sovereignty
-- Required for all Platform, Service, and Solution pages
+- Required for all Product, Service, and Solution pages
 
 #### `field_defense_relevance`
 **Type**: Text (Long)
 **Cardinality**: 1
-**Used by**: Platform, Service, Solution
+**Used by**: Product, Service, Solution
 
 **Purpose**: Specific articulation of value for defense contractors and federal government organizations.
 
 #### `field_key_capabilities`
 **Type**: Paragraphs (or multi-value text)
 **Cardinality**: Unlimited
-**Used by**: Platform, Service, Solution
+**Used by**: Product, Service, Solution
 
 **Purpose**: Structured, scannable list of the primary technical and operational capabilities.
 
 #### `field_deployment_options`
 **Type**: Text (Long)
 **Cardinality**: 1
-**Used by**: Platform, Service, Solution
+**Used by**: Product, Service, Solution
 
 **Purpose**: Documents supported deployment models (On-Premises, Private Cloud, Hybrid, Air-Gapped, etc.).
 
 #### `field_sovereignty_features`
 **Type**: Text (Long)
 **Cardinality**: 1
-**Used by**: Platform, Service, Solution
+**Used by**: Product, Service, Solution
 
 **Purpose**: Highlights data control, vendor independence, zero-trust posture, and resistance to foreign legal compulsion.
 
 #### `field_platform`
 **Type**: Entity Reference (Taxonomy → Platforms)
-**Used by**: Platform, Service, Solution, Case Study
+**Used by**: Product, Service, Solution, Case Study
 
-**Purpose**: Links content to one of the core WL technology platforms (Sabal, Keel, Alidade, Squawk, Manifest, Lighthouse, Coquina).
+**Purpose**: Links content to one of the core WL technology platforms (Liberty, Fortis, Apex, etc.).
 
 #### `field_outcomes` (Solution only)
 **Type**: Text (Long) or Paragraphs
@@ -91,7 +91,7 @@ These fields were introduced with the v2.0 Platform/Service/Solution architectur
 #### `field_personas`
 **Type**: Entity Reference (Taxonomy Term)  
 **Cardinality**: Unlimited  
-**Used by**: Article, Basic Page, Case Study, Event, Landing Page, Platform, Resource, Service, Solution
+**Used by**: Article, Basic Page, Case Study, Event, Landing Page, Product, Resource, Service, Solution
 
 **Purpose**: Define target audiences for content to enable personalized experiences and targeted content delivery.
 
@@ -317,7 +317,7 @@ Breadcrumb Label: "TechCorp Case Study"
 
 **Examples**:
 ```
-Primary: "Schedule a Technical Briefing" 
+Primary: "Schedule Demo" 
 Secondary: "View Case Studies"
 
 Primary: "Download Whitepaper"
@@ -479,9 +479,9 @@ Secondary: "Browse Resources"
 ### Event
 **Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_publish_date`
 
-### Platform
+### Product (Sovereign Platforms)
 **Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_mission_impact`, `field_key_capabilities`
-**Required for Platform**:
+**Required for Product**:
 - `field_mission_impact`
 - `field_key_capabilities`
 - `field_deployment_options`
@@ -499,11 +499,11 @@ Secondary: "Browse Resources"
 **Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_mission_impact`, `field_key_capabilities`, `field_outcomes`, `field_related`
 **Strongly Recommended**: `field_solutions` (taxonomy), `field_primary_capability`, `field_platform`
 **Classification**: `field_personas`, `field_target_sectors`, `field_compliance`, `field_industries`, `field_technologies`
-**Special**: `field_outcomes` (Outcome paragraphs) for measurable results. `field_related` is used to declare which Platforms + Services are included in the package.
-**Focus**: Branded packages that combine Platforms and Services into a named offering (e.g., "Outpost — Defense Tech").
+**Special**: `field_outcomes` (Outcome paragraphs) for measurable results. `field_related` is used to declare which Products + Services are included in the package.
+**Focus**: Branded packages that combine Products and Services into a named offering (e.g., "Sovereign Mission Edge").
 
 ### Case Study
-**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_related` (link to Platform/Service/Solution)
+**Primary Fields**: `body`, `field_hero_image`, `field_personas`, `field_related` (link to Product/Service/Solution)
 **Special**: Strong emphasis on `field_industries`, `field_target_sectors`, `field_compliance`, and quantifiable outcomes.
 **SEO Fields**: `field_meta_description`, `field_seo_title`, `field_social_image`  
 **Organization**: `field_featured`, `field_status`  
@@ -836,7 +836,7 @@ Secondary: "Browse Resources"
 1. **Choose appropriate field types** for your content needs
 2. **Use correct text formats** based on content purpose
 3. **Fill required fields** before optional ones
-4. **Use AI assistance** where available
+4. **Leverage AI assistance** where available
 5. **Optimize for SEO** in summary and title fields
 6. **Tag compliance content** appropriately for governance
 7. **Set up A/B testing** for high-impact pages

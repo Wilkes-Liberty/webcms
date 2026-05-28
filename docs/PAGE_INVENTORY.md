@@ -3,7 +3,7 @@
 A working IA punch-list for every public page on wilkesliberty.com. Use this to track what's drafted, what's seeded into Drupal, what's wired into the Next.js frontend, and what still needs to be written.
 
 **Last updated:** 2026-05-27
-**Owner (default):** Jeremy Cerda
+**Owner (default):** Jeremy Michael Cerda
 **Companion docs:** [CONTENT_TYPES_GUIDE.md](CONTENT_TYPES_GUIDE.md) · [FIELD_REFERENCE.md](FIELD_REFERENCE.md) · [PARAGRAPHS.md](PARAGRAPHS.md) · [CONTENT.md](CONTENT.md)
 
 ---
@@ -32,9 +32,11 @@ A working IA punch-list for every public page on wilkesliberty.com. Use this to 
 ```
 /                                    [Homepage — landing_page]
 ├── /about                           [basic_page]
+├── /federal                         [landing_page]
+├── /partners                        [basic_page]
 ├── /contact                         [Next.js + Drupal webform]
 │
-├── /platforms                       [dynamic-index]
+├── /platforms                       [landing_page + dynamic listing]
 │   ├── /platforms/sabal
 │   ├── /platforms/keel
 │   ├── /platforms/alidade
@@ -43,7 +45,7 @@ A working IA punch-list for every public page on wilkesliberty.com. Use this to 
 │   ├── /platforms/lighthouse
 │   └── /platforms/coquina
 │
-├── /services                        [dynamic-index]
+├── /services                        [landing_page + dynamic listing]
 │   ├── /services/private-infrastructure-engineering
 │   ├── /services/headless-cms-implementation
 │   ├── /services/enterprise-search-architecture
@@ -51,6 +53,7 @@ A working IA punch-list for every public page on wilkesliberty.com. Use this to 
 │   ├── /services/ai-integration
 │   ├── /services/digital-modernization
 │   ├── /services/custom-software-development
+│   ├── /services/integration-engineering
 │   ├── /services/digital-asset-solutions
 │   ├── /services/defense-technology-integration
 │   └── /services/intelligence-actionable-insights
@@ -61,7 +64,7 @@ A working IA punch-list for every public page on wilkesliberty.com. Use this to 
 ├── /case-studies                    [dynamic-index]
 │   └── /case-studies/{slug}         [case_study]
 │
-├── /resources                       [dynamic-index]
+├── /resources                       [landing_page + dynamic listing]
 │   └── /resources/{slug}            [resource — gated/downloadable]
 │
 ├── /articles                        [dynamic-index — already wired]
@@ -97,9 +100,11 @@ URL convention: each node-type cluster uses its plural as the parent path (`/pla
 
 | URL | Content type | Purpose | Status | Owner | Notes |
 |---|---|---|---|---|---|
-| `/` | landing_page | Homepage — hero, mission, status pill, CTA | **seeded** | Jeremy | Path alias `/homepage`; `system.site.page.front` set; fallback hard-coded in `ui/app/(marketing)/page.tsx` |
-| `/about` | basic_page | Company overview, mission, history | todo | Jeremy | Write before launch — no draft yet |
-| `/contact` | nextjs + webform | Contact form + inquiry email | seeded | Jeremy | Webform created by `scripts/create_contact_webform.php`; Next.js route at `app/(marketing)/contact/page.tsx` |
+| `/` | landing_page | Homepage — hero, mission, status pill, CTA | **seeded** | Jeremy Michael Cerda | Path alias `/homepage`; `system.site.page.front` set; fallback hard-coded in `ui/app/(marketing)/page.tsx` |
+| `/about` | basic_page | Company overview, mission, history | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Pages — About; pending seeding via `seed_products_services.php` |
+| `/federal` | landing_page | Federal sector hub / landing page | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Pages — Federal Hub; pending seeding |
+| `/partners` | basic_page | Partner ecosystem page | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Pages — Partners; pending seeding |
+| `/contact` | landing_page + webform | Contact page intro + inquiry form | **drafted** | Jeremy Michael Cerda | landing_page node provides intro section; webform created by `scripts/create_contact_webform.php`; Next.js route at `app/(marketing)/contact/page.tsx`; pending seeding |
 
 ## 2. Platforms
 
@@ -109,80 +114,76 @@ Copy for all seven platforms is drafted in [CONTENT.md §Platforms](CONTENT.md#p
 
 | URL | Content type | Purpose | Status | Owner | Notes |
 |---|---|---|---|---|---|
-| `/platforms` | dynamic-index | All Platforms listing | todo | Jeremy | Needs Next.js route; consider grouping by deployment model |
-| `/platforms/sabal` | platform | Sabal Infrastructure Platform | **drafted** | Jeremy | Copy in CONTENT.md §1; redirects from `/products/sovereign-infrastructure-platform` |
-| `/platforms/keel` | platform | Keel CMS Platform | **drafted** | Jeremy | Copy in CONTENT.md §2; redirects from `/products/liberty-headless-cms`; SEO-critical |
-| `/platforms/alidade` | platform | Alidade Search Platform | **drafted** | Jeremy | Copy in CONTENT.md §3; redirects from `/products/enterprise-search` |
-| `/platforms/squawk` | platform | Squawk Identity Platform | **drafted** | Jeremy | Copy in CONTENT.md §4; redirects from `/products/fortis-identity` |
-| `/platforms/manifest` | platform | Manifest Data Platform | **drafted** | Jeremy | Copy in CONTENT.md §5; redirects from `/products/apex-data` |
-| `/platforms/lighthouse` | platform | Lighthouse Observability Platform | **drafted** | Jeremy | Copy in CONTENT.md §6; redirects from `/products/vigilance-observability` |
-| `/platforms/coquina` | platform | Coquina Software Factory Platform | todo | Jeremy | New entry — copy not yet written |
+| `/platforms` | landing_page | Platforms hub — intro, listing | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Pages — Platforms; pending seeding; Next.js listing renders below Drupal intro content |
+| `/platforms/sabal` | platform | Sabal Infrastructure Platform | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §1; redirects from `/products/sovereign-infrastructure-platform` |
+| `/platforms/keel` | platform | Keel CMS Platform | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §2; redirects from `/products/liberty-headless-cms`; SEO-critical |
+| `/platforms/alidade` | platform | Alidade Search Platform | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §3; redirects from `/products/enterprise-search` |
+| `/platforms/squawk` | platform | Squawk Identity Platform | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §4; redirects from `/products/fortis-identity` |
+| `/platforms/manifest` | platform | Manifest Data Platform | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §5; redirects from `/products/apex-data` |
+| `/platforms/lighthouse` | platform | Lighthouse Observability Platform | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §6; redirects from `/products/vigilance-observability` |
+| `/platforms/coquina` | platform | Coquina Software Factory Platform | todo | Jeremy Michael Cerda | New entry — copy not yet written |
 
 **Dependencies for all seven:** Capability paragraph data must be authored (CONTENT.md has prose `Key Capabilities` bullets that need restructuring into `paragraph:capability` instances), `target_sectors` taxonomy terms must be seeded, hero imagery sourced.
 
 ## 3. Services
 
-Copy for all ten services drafted in [CONTENT.md §Services](CONTENT.md#services). Each needs a `service` node — Mission Impact required (`CONTENT_TYPES_GUIDE.md §9`).
+Copy for all eleven services drafted in [CONTENT.md §Services](CONTENT.md#services). Each needs a `service` node — Mission Impact required (`CONTENT_TYPES_GUIDE.md §9`).
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/services` | dynamic-index | todo | Jeremy | All-services listing route |
-| `/services/private-infrastructure-engineering` | service | **drafted** | Jeremy | CONTENT.md §Services 1 |
-| `/services/headless-cms-implementation` | service | **drafted** | Jeremy | CONTENT.md §Services 2 |
-| `/services/enterprise-search-architecture` | service | **drafted** | Jeremy | CONTENT.md §Services 3 |
-| `/services/zero-trust-identity-consulting` | service | **drafted** | Jeremy | CONTENT.md §Services 4 |
-| `/services/ai-integration` | service | **drafted** | Jeremy | CONTENT.md §Services 5 |
-| `/services/digital-modernization` | service | **drafted** | Jeremy | CONTENT.md §Services 6 |
-| `/services/custom-software-development` | service | **drafted** | Jeremy | CONTENT.md §Services 7 |
-| `/services/digital-asset-solutions` | service | **drafted** | Jeremy | CONTENT.md §Services 8; check that "Cryptocurrency" framing aligns with brand voice doc when it lands |
-| `/services/defense-technology-integration` | service | **drafted** | Jeremy | CONTENT.md §Services 9 |
-| `/services/intelligence-actionable-insights` | service | **drafted** | Jeremy | CONTENT.md §Services 10 |
+| `/services` | landing_page | Services hub — intro, listing | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Pages — Services; pending seeding |
+| `/services/private-infrastructure-engineering` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 1 |
+| `/services/headless-cms-implementation` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 2 |
+| `/services/enterprise-search-architecture` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 3 |
+| `/services/zero-trust-identity-consulting` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 4 |
+| `/services/ai-integration` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 5 |
+| `/services/digital-modernization` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 6 |
+| `/services/custom-software-development` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 7 |
+| `/services/integration-engineering` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 8 |
+| `/services/digital-asset-solutions` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 9; check that "Cryptocurrency" framing aligns with brand voice doc |
+| `/services/defense-technology-integration` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 10 |
+| `/services/intelligence-actionable-insights` | service | **drafted** | Jeremy Michael Cerda | CONTENT.md §Services 11 |
 
 **Cross-linking:** every Service should set `field_related_platforms` to the supporting Platform nodes, per `CONTENT_TYPES_GUIDE.md §9`. (Field was previously named `field_related_products` — rename is part of the F1-B engineering task in `PORTFOLIO_AUDIT.md §G`.)
 
 ## 4. Solutions (branded packages)
 
-The `solution` content type is fully implemented in config. Eight canonical solutions are locked (naming session 2026-05-27). Three legacy seeded nodes exist and require disposition review per `NAMING_DECISIONS.md §6.7`.
+The `solution` content type is fully implemented in config. Eight canonical solutions are locked (naming session 2026-05-27). Three legacy Sovereign placeholder nodes have been **deleted** from Drupal.
 
-**Canonical solutions (copy pending — see CONTENT.md §Solutions):**
-
-| URL | Content type | Status | Owner | Notes |
-|---|---|---|---|---|
-| `/solutions` | dynamic-index | todo | Jeremy | Listing route (Next.js) |
-| `/solutions/dotedu` | solution | todo | Jeremy | Higher Education — Keel + Alidade; DotEDU Drupal distribution |
-| `/solutions/accord` | solution | todo | Jeremy | Nonprofit — Keel |
-| `/solutions/palisade` | solution | todo | Jeremy | Privacy SaaS — Manifest + Squawk |
-| `/solutions/bulkhead` | solution | todo | Jeremy | Regulated Industries — Sabal + Squawk + Manifest |
-| `/solutions/dotgov` | solution | todo | Jeremy | Federal Civilian — Keel + Alidade + Squawk; DotGov Drupal distribution |
-| `/solutions/gazette` | solution | todo | Jeremy | IG Platforms / Fraud, Waste & Abuse — Keel + Manifest |
-| `/solutions/outpost` | solution | todo | Jeremy | Defense Tech Modernization — Sabal + Coquina; ⚠ AWS Outposts name flag — attorney review |
-| `/solutions/software-factory` | solution | todo | Jeremy | Software Factory — Coquina |
-
-**Legacy seeded solutions (pending disposition — `NAMING_DECISIONS.md §6.7`):**
+**Canonical solutions (copy in CONTENT.md §Solutions; seeded as drafts pending editorial review):**
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/solutions/sovereign-mission-edge` | solution | **seeded** (prod nid 21) | Jeremy | Pre-naming placeholder; review against canonical list — map or retire |
-| `/solutions/sovereign-ai-command-fabric` | solution | **seeded** (prod nid 22) | Jeremy | Pre-naming placeholder; review against canonical list — map or retire |
-| `/solutions/sovereign-digital-modernization-platform` | solution | **seeded** (prod nid 23) | Jeremy | Pre-naming placeholder; review against canonical list — map or retire |
+| `/solutions` | landing_page | Solutions hub — intro, listing | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Pages — Solutions; pending seeding |
+| `/solutions/dotedu` | solution | **seeded** | Jeremy Michael Cerda | Higher Education — Keel + Alidade; DotEDU Drupal distribution |
+| `/solutions/accord` | solution | **seeded** | Jeremy Michael Cerda | Nonprofit — Keel |
+| `/solutions/palisade` | solution | **seeded** | Jeremy Michael Cerda | Privacy SaaS — Manifest + Squawk |
+| `/solutions/bulkhead` | solution | **seeded** | Jeremy Michael Cerda | Regulated Industries — Sabal + Squawk + Manifest |
+| `/solutions/dotgov` | solution | **seeded** | Jeremy Michael Cerda | Federal Civilian — Keel + Alidade + Squawk; DotGov Drupal distribution |
+| `/solutions/gazette` | solution | **seeded** | Jeremy Michael Cerda | IG Platforms / Fraud, Waste & Abuse — Keel + Manifest |
+| `/solutions/outpost` | solution | **seeded** | Jeremy Michael Cerda | Defense Tech Modernization — Sabal + Coquina; ⚠ AWS Outposts name flag — attorney review |
+| `/solutions/software-factory` | solution | **seeded** | Jeremy Michael Cerda | Software Factory — Coquina |
 
-**Next:** Resolve nid 21/22/23 disposition; flesh out `field_outcomes`, Key Capabilities paragraphs, and `field_related_platforms` / `field_related_services` links for canonical solutions.
+**Next:** Flesh out `field_outcomes`, Key Capabilities paragraphs, and `field_related_platforms` / `field_related_services` links for all eight canonical solutions.
 
 ## 5. Case Studies
 
-Type defined, no copy drafted. Real client engagements only (HHS/CMS via Scope Infotec is the principal candidate per project memory — verify what's shareable under contract).
+Three case studies are drafted in CONTENT.md §Case Studies and seeded in Drupal as `draft` (content moderation state = `draft`, status = unpublished). They remain gated pending [VERIFY] editorial review before publication. Real client engagements only.
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/case-studies` | dynamic-index | todo | Jeremy | Listing route |
-| `/case-studies/{slug}` | case_study | todo | Jeremy | Follow Challenge → Solution → Results → Metrics structure (CONTENT_TYPES_GUIDE.md §4) |
+| `/case-studies` | dynamic-index | todo | Jeremy Michael Cerda | Listing route (Next.js) |
+| `/case-studies/hhs-cms-web-platform` | case_study | **drafted** | Jeremy Michael Cerda | HHS/CMS — Keel headless CMS migration; copy in CONTENT.md §Case Studies 1; seeded as draft |
+| `/case-studies/usps-oig-drupal-distribution` | case_study | **drafted** | Jeremy Michael Cerda | USPS OIG — Drupal distribution; copy in CONTENT.md §Case Studies 2; seeded as draft |
+| `/case-studies/pandemicoversight-gov` | case_study | **drafted** | Jeremy Michael Cerda | PandemicOversight.gov — Keel + Alidade; copy in CONTENT.md §Case Studies 3; seeded as draft |
 
 ## 6. Resources (gated / downloadable)
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/resources` | dynamic-index | todo | Jeremy | Listing with filters by `resource_type` |
-| `/resources/{slug}` | resource | todo | Jeremy | Whitepapers, eBooks, checklists; gated form mechanism TBD |
+| `/resources` | landing_page | **drafted** | Jeremy Michael Cerda | Hub intro stub in CONTENT.md §Pages — Resources; pending seeding; listing below renders dynamically |
+| `/resources/downloads-guides` | landing_page | **drafted** | Jeremy Michael Cerda | Downloads & Guides landing page stub in CONTENT.md §Pages; add to seed run; pending seeding |
+| `/resources/{slug}` | resource | todo | Jeremy Michael Cerda | Whitepapers, eBooks, checklists; gated form mechanism TBD |
 
 ## 7. Articles & Press
 
@@ -190,24 +191,26 @@ Type defined, no copy drafted. Real client engagements only (HHS/CMS via Scope I
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/articles` | dynamic-index | **wired** | Jeremy | Lists 10 most recent articles |
-| `/articles/{slug}` | article | **wired** | Jeremy | Catch-all already handles `NodeArticle` |
-| `/press` | dynamic-index | todo | Jeremy | Filtered view of Articles where `field_news_category = "Press Release"` |
-| (article content) | article | todo | Jeremy | No actual articles authored yet |
+| `/articles` | dynamic-index | **wired** | Jeremy Michael Cerda | Lists 10 most recent articles |
+| `/articles/{slug}` | article | **wired** | Jeremy Michael Cerda | Catch-all already handles `NodeArticle` |
+| `/articles/drupal-headless-cms-federal-agencies` | article | **seeded** | Jeremy Michael Cerda | Copy in CONTENT.md §Articles 1 |
+| `/articles/what-is-sovereignty-in-federal-it` | article | **seeded** | Jeremy Michael Cerda | Copy in CONTENT.md §Articles 2 |
+| `/articles/iac-driven-infrastructure-for-government` | article | **seeded** | Jeremy Michael Cerda | Copy in CONTENT.md §Articles 3 |
+| `/press` | dynamic-index | todo | Jeremy Michael Cerda | Filtered view of Articles where `field_news_category = "Press Release"` |
 
 ## 8. Events
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/events` | dynamic-index | todo | Jeremy | Default filter: upcoming first |
-| `/events/{slug}` | event | todo | Jeremy | Speaker engagements / webinars; honor `field_event_date` timezone |
+| `/events` | dynamic-index | todo | Jeremy Michael Cerda | Default filter: upcoming first |
+| `/events/{slug}` | event | todo | Jeremy Michael Cerda | Speaker engagements / webinars; honor `field_event_date` timezone |
 
 ## 9. Careers
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/careers` | dynamic-index | todo | Jeremy | Job board listing |
-| `/careers/{slug}` | career | todo | Jeremy | Department / seniority / location filters; `field_apply_url` for external ATS |
+| `/careers` | dynamic-index | todo | Jeremy Michael Cerda | Job board listing |
+| `/careers/{slug}` | career | todo | Jeremy Michael Cerda | Department / seniority / location filters; `field_apply_url` for external ATS |
 
 WL is not actively hiring (per memory: business-continuity-only access patterns), so this can be deferred or render an empty-state until needed.
 
@@ -215,8 +218,8 @@ WL is not actively hiring (per memory: business-continuity-only access patterns)
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/team` | dynamic-index | todo | Jeremy | Filter by `field_show_in_directory = true` |
-| `/team/{slug}` | person | todo | Jeremy | Jeremy's own bio is the first to draft |
+| `/team` | dynamic-index | todo | Jeremy Michael Cerda | Filter by `field_show_in_directory = true` |
+| `/team/jeremy-michael-cerda` | person | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Pages — Jeremy Michael Cerda; pending seeding via `seed_products_services.php` |
 
 ## 11. Legal & Compliance
 
@@ -224,10 +227,10 @@ All `basic_page`. Sensitive — Jeremy should review/draft personally given defe
 
 | URL | Content type | Status | Owner | Notes |
 |---|---|---|---|---|
-| `/legal/privacy-policy` | basic_page | todo | Jeremy | Required pre-launch; coordinate with brand-voice scope |
-| `/legal/terms-of-service` | basic_page | todo | Jeremy | Required pre-launch |
-| `/legal/cookie-policy` | basic_page | todo | Jeremy | Required pre-launch if any analytics ship |
-| `/legal/accessibility-statement` | basic_page | todo | Jeremy | WCAG 2.1 AA commitment statement |
+| `/legal/privacy-policy` | basic_page | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Legal Pages; pending seeding via `seed_products_services.php` |
+| `/legal/terms-of-service` | basic_page | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Legal Pages; pending seeding |
+| `/legal/cookie-policy` | basic_page | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Legal Pages; pending seeding |
+| `/legal/accessibility-statement` | basic_page | **drafted** | Jeremy Michael Cerda | Copy in CONTENT.md §Legal Pages; pending seeding |
 
 ## 12. System routes (Next.js, no Drupal node)
 
@@ -246,20 +249,19 @@ All `basic_page`. Sensitive — Jeremy should review/draft personally given defe
 
 ## Content type ↔ status rollup
 
-| Content type | Total pages planned | drafted | seeded (prod) | wired (frontend) | Notes |
+| Content type | Total pages planned | drafted | seeded | wired (frontend) | Notes |
 |---|---:|---:|---:|---:|---|
-| platform | 7 | 7 (6 updated + 1 new) | 6 | partial | Machine name renamed from `product` to `platform` (F1-B, 2026-05-27); Coquina is new — needs creation |
-| service | 10 | 10 | 10 | partial | Seeded on prod + DDEV |
-| solution | 8 canonical + 3 legacy | 8 stubs in CONTENT.md | 3 legacy | none | 8 canonical solutions locked 2026-05-27; 3 legacy nodes (nid 21/22/23) pending disposition |
-| article | open | many | some | listing+detail | Ongoing |
-| case_study | TBD | 0 | 0 | none | Real client work only |
-| basic_page | ~5 (About, 4 legal) | 0 | 0 | detail wired | 5 |
-| landing_page | 1 (Homepage) | 1 | 1 | 1 | 0 |
-| case_study | TBD | 0 | 0 | 0 | TBD |
-| event | n (open-ended) | 0 | 0 | 0 | n |
-| career | n (deferred) | 0 | 0 | 0 | n |
-| person | ~team size | 0 | 0 | 0 | n |
-| resource | TBD | 0 | 0 | 0 | TBD |
+| platform | 7 | 7 | 6 | partial | Coquina not yet seeded; machine name renamed from `product` (F1-B, 2026-05-27) |
+| service | 11 | 11 | 11 | partial | All 11 seeded via `seed_products_services.php` |
+| solution | 8 canonical | 8 | 8 | none | 8 canonical solutions seeded; 3 legacy Sovereign nodes deleted (2026-05-27) |
+| article | 3 (+ open-ended) | 3 | 3 | listing+detail | 3 seed articles seeded; additional articles can be authored ongoing |
+| case_study | 3 (gated) | 3 | 3 (draft) | none | Seeded as `moderation_state=draft`; unpublished pending [VERIFY] editorial review |
+| basic_page | ~6 (About, Partners, 4 legal) | 6 | 0 | detail wired | Seeding pending `seed_products_services.php` run |
+| landing_page | 8 (Home, Federal, Platforms, Services, Solutions, Resources, Downloads & Guides, Contact) | 8 | 2 | 1 | Home + Federal seeded; 6 hub pages drafted (incl. Downloads & Guides), pending seeding via `seed_products_services.php` |
+| person | 1 (Jeremy Michael Cerda) | 1 | 0 | none | Seeding pending `seed_products_services.php` run |
+| event | open-ended | 0 | 0 | none | Deferred |
+| career | open-ended | 0 | 0 | none | Deferred — WL not actively hiring |
+| resource | TBD | 0 | 0 | none | Deferred |
 
 ---
 
@@ -312,12 +314,12 @@ This is a coordinated webcms ↔ ui change — track it as a launch dependency.
 
 1. `CONTENT_TYPES_GUIDE.md` doesn't document the `solution` content type (see §4 above).
 2. No brand voice / style guide doc yet (separate workstream in flight).
-3. CONTENT.md only covers Products + Services — no drafts for About, Legal, Case Studies, Resources, team bios.
+3. CONTENT.md covers Platforms, Services, Solutions, Articles, Case Studies, Legal Pages, About, Federal hub, Partners, and Jeremy Michael Cerda bio. Resources copy not yet written.
 
 **Seeding / config gaps**
 
 4. Taxonomy term population unverified — `target_sectors`, `personas`, `industries`, `compliance` vocabularies are defined but term counts not confirmed. Run `ddev drush ev "print_r(\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['vid' => 'target_sectors']));"` (or similar) before authoring.
-5. No seed scripts exist for any non-homepage node — Products/Services will be authored either via admin UI or via a new `scripts/seed_products.php` + `scripts/seed_services.php`. Decision needed.
+5. `scripts/seed_products_services.php` handles Platforms, Services, Solutions, Articles, Case Studies, Legal Pages, basic_page, landing_page, and person bundles. Run `ddev drush scr scripts/seed_products_services.php` (dry-run first) to seed all drafted content, then `ddev drush scr scripts/audit_content.php -- --apply` to set publish states.
 6. Capability paragraphs need to be authored alongside each Product/Service — CONTENT.md has them as Markdown bullets and needs restructuring.
 
 **Frontend wiring gaps**

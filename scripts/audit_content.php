@@ -83,20 +83,22 @@ const WL_CANONICAL_PUBLISHED = [
   '/about',
   '/federal',
   '/partners',
-  '/about/jeremy-cerda',
+  '/team/jeremy-michael-cerda',
   // Legal pages
-  '/privacy-policy',
-  '/terms-of-service',
-  '/cookie-policy',
-  '/accessibility-statement',
-  // Hub/listing pages (if seeded as nodes rather than views)
-  '/solutions',
+  '/legal/privacy-policy',
+  '/legal/terms-of-service',
+  '/legal/cookie-policy',
+  '/legal/accessibility-statement',
+  // Hub landing pages — Drupal landing_page nodes providing editorial
+  // intro/hero sections above the Next.js dynamic listings.
   '/platforms',
   '/services',
+  '/solutions',
   '/resources',
-  '/press',
-  '/case-studies',
-  '/articles',
+  '/resources/downloads-guides',
+  '/contact',
+  // Note: /press /case-studies /articles /about are handled separately above or
+  // are pure Next.js routes with no Drupal node.
   // Homepage
   '/home',
 ];

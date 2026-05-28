@@ -188,9 +188,9 @@ The "Software Factory" is Jeremy's primary new solution. Everything else maps to
 | 7 | Inspector General Platforms | [EXISTING PROPOSAL] | Audience: federal OIG offices. Anchored on Jeremy's OIG Drupal distribution + pandemicoversight.gov lineage. |
 | 8 | Defense Technology Modernization | [EXISTING PROPOSAL] | Audience: defense contractors, DoD-adjacent |
 | — | Drupal Agency Partner Program | [REMOVE] | Placeholder — Jeremy confirmed remove |
-| — | Sovereign Mission Edge | [SEEDED — PLACEHOLDER] | nid 21; URL locked. Review after services/products settled. |
-| — | Sovereign AI Command Fabric | [SEEDED — PLACEHOLDER] | nid 22; URL locked. Review after services/products settled. |
-| — | Sovereign Digital Modernization Platform | [SEEDED — PLACEHOLDER] | nid 23; URL locked. Review after services/products settled. |
+| — | Sovereign Mission Edge | [DELETED 2026-05-27] | Was nid 21; deleted via cleanup_duplicates.php --apply; alias not in canonical set. |
+| — | Sovereign AI Command Fabric | [DELETED 2026-05-27] | Was nid 22; deleted via cleanup_duplicates.php --apply; alias not in canonical set. |
+| — | Sovereign Digital Modernization Platform | [DELETED 2026-05-27] | Was nid 23; deleted via cleanup_duplicates.php --apply; alias not in canonical set. |
 
 ### Software Factory — expansion note
 
@@ -200,9 +200,9 @@ In federal technology, a "Software Factory" is a recognized pattern — a fully 
 - Built on: WL's Sabal Infrastructure Platform + DevSecOps pipelines + Keel CMS Platform (for documentation/content layers) + Squawk Identity (for access controls) + Lighthouse Observability Platform
 - Applicable to: defense contractors building internal software delivery, federal civilian agencies modernizing legacy delivery, and sophisticated private-sector orgs (regulated industries, large nonprofits)
 - Differentiator: sovereign — no SaaS CI/CD dependency, no hyperscaler lock-in, deployable inside a customer's authorization boundary
-- Named product: needs a proper name. Strong candidates for the name register: foundational/industrial (Foundry, Mill, Forge) — "Forge" and "Foundry" are the obvious anchors here, both connoting structured manufacturing of durable things
+- **Named (2026-05-27):** Coquina Software Factory Platform (platform) + Software Factory (solution built on Coquina). Decision locked.
 
-**`[DECIDE-D1]`** Confirm Software Factory as a primary solution. Should it be positioned as a Solution (audience-packaged offering) or a Platform (deployable product)? Or both — a Platform that is deployed as part of a Solution?
+**`[DECIDE-D1]`** ~~Confirm Software Factory as a primary solution.~~ **RESOLVED (2026-05-27):** Platform = Coquina Software Factory Platform; Solution = Software Factory (Coquina + Sabal + Defense Technology Integration). Both are in canonical lists.
 
 ---
 
@@ -214,8 +214,8 @@ In federal technology, a "Software Factory" is a recognized pattern — a fully 
 | `DECIDE-B1` | CloudOps / DevOps / DevSecOps: combined or separate? | **Split into two services: (1) DevOps & DevSecOps combined; (2) Cloud Operations separate.** | |
 | `DECIDE-B2` | Crypto/Digital Assets: retire, keep, or fold? | **Fold into Emerging Technologies.** | |
 | `DECIDE-B3` | Defense Tech Integration: keep or fold? | **Fold into Emerging Technologies.** | |
-| `DECIDE-B4` | Intelligence + Cyber Intelligence + Full Spectrum Cybersecurity: separate or combined? | **Fold Cyber Intelligence under Full Spectrum Cybersecurity. Open question: fold Intelligence & Actionable Insights in too?** | See Section F, question F2. |
-| `DECIDE-D1` | Software Factory: Solution, Platform, or both? | **Both.** | Toolchain = Platform; audience-packaged offering = Solution built on that Platform. |
+| `DECIDE-B4` | Intelligence + Cyber Intelligence + Full Spectrum Cybersecurity: separate or combined? | **RESOLVED (2026-05-27):** Canonical service is "Intelligence & Actionable Insights" (single service). Cyber Intelligence and Full Spectrum Cybersecurity folded in. | Locked in canonical services list. |
+| `DECIDE-D1` | Software Factory: Solution, Platform, or both? | **RESOLVED (2026-05-27):** Platform = Coquina Software Factory Platform; Solution = Software Factory. | Both in canonical lists. |
 
 ---
 

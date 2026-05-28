@@ -22,8 +22,8 @@ The CMS includes 11 content types supporting both marketing/operational needs an
 | **Person** | Staff profiles | Team bios and author profiles |
 | **Resource** | Downloadable/gated content | Whitepapers, eBooks, guides, reports |
 | **Service** | Consulting and implementation offerings | Professional services and custom solutions |
-| **Platform** *(new)* | Self-deployable sovereign technology platforms | Infrastructure platforms, CMS, Search, Identity, Data, Observability |
-| **Solution** *(new)* | Branded packages bundling Platforms + Services | Mission-aligned offerings (e.g., "Outpost — Defense Tech (Sabal + Coquina + Defense Technology Integration)") — analogous to GDIT Digital Accelerators or Palantir Offerings |
+| **Product** *(new)* | Self-deployable sovereign technology platforms | Infrastructure platforms, CMS, Search, Identity, Data, Observability |
+| **Solution** *(new)* | Branded packages bundling Products + Services | Mission-aligned offerings (e.g., "Sovereign Mission Edge for Tactical Operations") — analogous to GDIT Digital Accelerators or Palantir Offerings |
 
 ---
 
@@ -52,13 +52,13 @@ All content types share these core field groups. New tabs added in v2.0 are mark
 - **Robots: noindex** — Hide from search engines
 
 ### 🎖️ Mission Impact Tab *(new in v2.0)*
-- **Mission Impact** (`field_mission_impact`) — Formatted long text. Describes how the offering enhances, streamlines, or facilitates the client's mission. **Required for all Platform and Service pages.**
+- **Mission Impact** (`field_mission_impact`) — Formatted long text. Describes how the offering enhances, streamlines, or facilitates the client's mission. **Required for all Product and Service pages.**
 - **Defense & Government Relevance** (`field_defense_relevance`) — Formatted text. Specific value proposition for defense contractors and government organizations.
 
 ### ⚡ Key Capabilities Tab *(new in v2.0)*
-- **Key Capabilities** (`field_key_capabilities`) — Paragraphs field (recommended) or multi-value text. Structured list of primary capabilities. **Required for Platform pages; strongly recommended for Service pages.**
+- **Key Capabilities** (`field_key_capabilities`) — Paragraphs field (recommended) or multi-value text. Structured list of primary capabilities. **Required for Product pages; strongly recommended for Service pages.**
 
-### 🚀 Deployment & Sovereignty Tab *(new in v2.0 — Platform content type primarily)*
+### 🚀 Deployment & Sovereignty Tab *(new in v2.0 — Product content type primarily)*
 - **Deployment Options** (`field_deployment_options`) — Multi-value text or Paragraphs. Supported environments: On-Premises, Private Cloud, Hybrid, Air-Gapped, etc.
 - **Sovereignty Features** (`field_sovereignty_features`) — Formatted text. Highlights data control, zero-trust architecture, and independence from third-party vendors.
 
@@ -359,7 +359,7 @@ All content types share these core field groups. New tabs added in v2.0 are mark
 - ✅ Consulting and advisory engagements
 - ✅ Implementation and delivery services
 - ✅ Managed operations offerings
-- ❌ Self-deployable technology platforms (use Platform instead)
+- ❌ Self-deployable technology platforms (use Product instead)
 
 ### Service-Specific Fields *(updated)*
 
@@ -377,36 +377,36 @@ All content types share these core field groups. New tabs added in v2.0 are mark
 **Usage:** Use the Capability paragraph type for consistent formatting
 
 #### `field_related_products`
-**Purpose:** Entity reference to related Platform content
-**Usage:** Link to any platforms that support or complement this service
+**Purpose:** Entity reference to related Product content
+**Usage:** Link to any products that support or complement this service
 
 ### Service Content Best Practices
 - Lead every page with Mission Impact — frame benefits around the client's mission, not our capabilities
-- Always link to relevant Platforms and Case Studies
+- Always link to relevant Products and Case Studies
 - Focus on outcomes and sovereignty, not feature lists
 - Include clear next steps for prospects
 
 ---
 
-## 10. 🚀 Platform *(new in v2.0)*
+## 10. 🚀 Product *(new in v2.0)*
 
 **Purpose:** Dedicated pages for self-deployable sovereign technology platforms
-**Best for:** Sabal Infrastructure Platform, Keel CMS Platform, Alidade Search Platform, Squawk Zero-Trust Identity Platform, Manifest Data Platform, Lighthouse Observability Platform, Coquina Software Factory Platform
+**Best for:** Sovereign Infrastructure Platform, Liberty Headless CMS Platform, Enterprise Search Platform, Fortis Zero-Trust Identity Platform, Apex Secure Data Platform, Vigilance Mission Observability Suite
 
-### When to Use Platform Pages
+### When to Use Product Pages
 - ✅ Permanent platform and product pages
 - ✅ Self-deployable Infrastructure-as-Code solutions
 - ✅ Technology platforms clients can license or deploy themselves
 - ❌ One-time consulting engagements (use Service instead)
 - ❌ General service descriptions (use Service instead)
 
-### Platform-Specific Fields
+### Product-Specific Fields
 
 #### Mission Impact Tab
 
 **`field_mission_impact`** *(required)*
 **Purpose:** How the product enhances, streamlines, and facilitates the client's mission
-**Usage:** Required on all Platform pages. Use language that connects the platform to operational outcomes — mission resilience, decision velocity, sovereignty.
+**Usage:** Required on all Product pages. Use language that connects the platform to operational outcomes — mission resilience, decision velocity, sovereignty.
 
 **`field_defense_relevance`**
 **Purpose:** Specific value for defense contractors and government organizations
@@ -417,7 +417,7 @@ All content types share these core field groups. New tabs added in v2.0 are mark
 **`field_key_capabilities`** *(required)*
 **Purpose:** Structured list of platform capabilities
 **Type:** Paragraphs — use the Capability paragraph type
-**Usage:** Required on all Platform pages. Each capability should be named, described in 1–3 sentences, and include a Mission Benefit statement.
+**Usage:** Required on all Product pages. Each capability should be named, described in 1–3 sentences, and include a Mission Benefit statement.
 
 #### Deployment & Sovereignty Tab
 
@@ -434,37 +434,37 @@ All content types share these core field groups. New tabs added in v2.0 are mark
 **`field_related_services`** — Entity reference to related Service pages
 **`field_related_case_studies`** — Entity reference to supporting Case Studies
 
-### Platform Content Strategy
+### Product Content Strategy
 - Emphasize sovereignty, mission resilience, and operational independence
 - Clearly communicate deployability anywhere (on-prem, private cloud, hybrid, air-gapped)
-- Every platform page must have a strong Mission Impact statement
-- Include CTAs for technical briefings and consultations
+- Every product page must have a strong Mission Impact statement
+- Include CTAs for demos and consultations
 - Link to related Services and Case Studies
 
 ---
 
 ## 11. 🧩 Solution *(new in v2.0)*
 
-**Purpose:** Branded, deployable solution packages that bundle one or more Platforms with one or more Services into a mission-aligned offering
-**Best for:** Productized go-to-market packages — analogous to GDIT Digital Accelerators or Palantir Offerings (e.g., "Outpost — Defense Tech (Sabal + Coquina + Defense Technology Integration)")
+**Purpose:** Branded, deployable solution packages that bundle one or more Products with one or more Services into a mission-aligned offering
+**Best for:** Productized go-to-market packages — analogous to GDIT Digital Accelerators or Palantir Offerings (e.g., "Sovereign Mission Edge for Tactical Operations" bundling Apex + Vigilance + integration services)
 
-### Solution vs. Platform vs. Service
+### Solution vs. Product vs. Service
 
-The Service / Platform / Solution trio describes three distinct things in the catalog. Pick the right one before drafting:
+The Service / Product / Solution trio describes three distinct things in the catalog. Pick the right one before drafting:
 
 | Type | What it is | Example |
 |---|---|---|
 | **Service** | The **doing** — a consulting, implementation, or managed engagement | "Headless CMS Implementation," "Zero-Trust Advisory" |
-| **Platform** | The **thing** — a self-deployable sovereign platform we license or install | "Manifest Data Platform," "Squawk Zero-Trust Identity Platform" |
-| **Solution** | The **offering** — a branded package combining Platforms + Services applied to a specific outcome or sector | "Outpost — Defense Tech (Sabal + Coquina + Defense Technology Integration)" |
+| **Product** | The **thing** — a self-deployable sovereign platform we license or install | "Apex Secure Data Platform," "Fortis Zero-Trust Identity Platform" |
+| **Solution** | The **offering** — a branded package combining Products + Services applied to a specific outcome or sector | "Sovereign Mission Edge for Tactical Operations" (Apex + Vigilance + integration services) |
 
 Note: there is also a `solutions` **taxonomy** referenced by every content type via `field_solutions`. The taxonomy *tags* supporting content with the Solution it relates to; the **content type** documented here *is* the Solution page.
 
 ### When to Use Solution Pages
-- ✅ Branded packages that bundle multiple Platforms and/or Services
+- ✅ Branded packages that bundle multiple Products and/or Services
 - ✅ Sector-specific or mission-specific offerings with a named go-to-market identity
-- ✅ Pages where the value prop is the combination, not any single Platform or Service
-- ❌ A single Platform (use Platform instead)
+- ✅ Pages where the value prop is the combination, not any single Product or Service
+- ❌ A single Product (use Product instead)
 - ❌ A single consulting engagement (use Service instead)
 - ❌ Tagging existing content with a solution area (use the `field_solutions` taxonomy reference)
 
@@ -472,13 +472,13 @@ Note: there is also a `solutions` **taxonomy** referenced by every content type 
 
 #### Content Tab
 
-**`field_mission_impact`** *(required pattern, matches Platform/Service)*
+**`field_mission_impact`** *(required pattern, matches Product/Service)*
 **Purpose:** How the bundled package enhances, streamlines, or facilitates the client's mission
 **Usage:** Lead with the combined outcome enabled by the package — not the individual components
 
 **`field_key_capabilities`** *(Paragraphs — `capability` bundle)*
 **Purpose:** Structured list of the capabilities the package delivers
-**Usage:** Use the Capability paragraph type. Each capability should name the bundled outcome, not just restate a Platform or Service feature.
+**Usage:** Use the Capability paragraph type. Each capability should name the bundled outcome, not just restate a Product or Service feature.
 
 #### Proof Points Tab *(unique to Solution / Case Study)*
 
@@ -489,26 +489,26 @@ Note: there is also a `solutions` **taxonomy** referenced by every content type 
 #### Classification Tab
 
 **`field_primary_capability`** — Entity reference to a single term in the Capabilities taxonomy. The dominant capability the package leads with.
-**`field_platform`** — Entity reference to a Platforms taxonomy term. Which platform brand this Solution belongs to (matches the field's use on Platform / Service / Case Study).
+**`field_platform`** — Entity reference to a Platforms taxonomy term. Which platform brand this Solution belongs to (matches the field's use on Product / Service / Case Study).
 **`field_solutions`** — Entity reference to Solutions taxonomy terms (the cross-content tagging vocabulary). Use this to associate the Solution page with its parent solution area(s).
-**`field_industries`, `field_target_sectors`, `field_compliance`, `field_personas`, `field_technologies`, `field_categories`** — Standard classification, used identically to Platform/Service.
+**`field_industries`, `field_target_sectors`, `field_compliance`, `field_personas`, `field_technologies`, `field_categories`** — Standard classification, used identically to Product/Service.
 
 #### Layout Tab
 
-**`field_related`** — Entity reference for cross-linking. Use to surface the Platforms and Services bundled into this Solution (Drupal does not enforce the package composition; this field carries it).
+**`field_related`** — Entity reference for cross-linking. Use to surface the Products and Services bundled into this Solution (Drupal does not enforce the package composition; this field carries it).
 **`field_parent`** — Hierarchical relationship if the Solution belongs to a parent offering family.
 **`field_template`, `field_visibility`** — Standard layout controls.
 
 #### Other Tabs
 
-Solution shares the standard **Media, CTAs, SEO, Technical, and Editorial** tabs with Platform and Service. Field set and behavior are identical — see those sections above.
+Solution shares the standard **Media, CTAs, SEO, Technical, and Editorial** tabs with Product and Service. Field set and behavior are identical — see those sections above.
 
 ### Solution Content Strategy
 - Lead with the bundled outcome. The reader should understand within the first paragraph what is in the package and what it delivers.
-- Use `field_related` to surface the Platforms and Services included in the package — this is the field that carries the "what's in the box" relationship.
+- Use `field_related` to surface the Products and Services included in the package — this is the field that carries the "what's in the box" relationship.
 - Use **Key Outcomes** (`field_outcomes`) for measurable proof. If you have a Case Study that proves an outcome, link it via `field_related`.
 - Every Solution should map to at least one Persona and at least one Target Sector — packages are sold to specific audiences.
-- Don't restate Platform or Service copy verbatim. The Solution page sells the combination; the Platform and Service pages sell the components.
+- Don't restate Product or Service copy verbatim. The Solution page sells the combination; the Product and Service pages sell the components.
 
 ### Solution vs. `solutions` Taxonomy — quick disambiguation
 - **Solution content type** (this section) → the page that *is* the branded package.
@@ -523,7 +523,7 @@ For complete field specifications, usage guidelines, and examples across all 54+
 
 ## Most Important Fields by Content Type
 
-### Platform *(new)*
+### Product *(new)*
 **Essential:** `field_mission_impact`, `field_key_capabilities`, `field_hero_image`, `field_primary_cta`
 **Recommended:** `field_defense_relevance`, `field_deployment_options`, `field_sovereignty_features`, `field_related_services`
 
@@ -558,7 +558,7 @@ For complete field specifications, usage guidelines, and examples across all 54+
 ### Field Usage Tips
 1. **Start with core fields** — body content, personas, and primary CTA first
 2. **SEO** — always complete `field_meta_description` and `field_seo_title` for public content
-3. **Mission framing** — for Platform and Service pages, complete Mission Impact before anything else
+3. **Mission framing** — for Product and Service pages, complete Mission Impact before anything else
 4. **Visuals** — use `field_hero_image` consistently; set focal points for responsive display
 5. **Audience targeting** — select appropriate personas and target sectors to enable personalization
 6. **Conversion** — every piece of content should have a clear primary CTA
@@ -578,7 +578,7 @@ For complete field specifications, usage guidelines, and examples across all 54+
 2. Optimize for SEO (title, meta description, summary)
 3. Add relevant classifications, personas, and target sectors
 4. Include appropriate media and CTAs
-5. For Platform and Service: complete Mission Impact tab
+5. For Product and Service: complete Mission Impact tab
 
 ## Before Publishing
 1. Preview content on different devices
@@ -634,12 +634,12 @@ For complete field specifications, usage guidelines, and examples across all 54+
 6. Set publication date and author
 7. Preview and publish
 
-## Creating a Platform Page
-1. Choose Platform content type
+## Creating a Product Page
+1. Choose Product content type
 2. Draft the Mission Impact statement first — this frames everything else
 3. Add Key Capabilities using the Capability paragraph type
 4. Complete Deployment Options and Sovereignty Features
-5. Add hero image and Primary CTA (technical briefing/consultation)
+5. Add hero image and Primary CTA (demo/consultation)
 6. Link to related Services and Case Studies
 7. Complete SEO fields and Target Sectors
 8. Preview and publish

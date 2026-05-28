@@ -59,7 +59,8 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 │   ├── /platforms/alidade                           [platform]
 │   ├── /platforms/squawk                            [platform]
 │   ├── /platforms/manifest                          [platform]
-│   └── /platforms/lighthouse                        [platform]
+│   ├── /platforms/lighthouse                        [platform]
+│   └── /platforms/coquina                           [platform]
 │
 ├── /services ..................................... [dynamic-index]
 │   ├── /services/private-infrastructure-engineering   [service]
@@ -85,13 +86,8 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 │   │   ── Federal Solutions ──
 │   ├── /solutions/dotgov                                [solution]
 │   ├── /solutions/gazette                               [solution]
-│   └── /solutions/outpost                               [solution]
-│   │
-│   │
-│   │   ── Existing seeded (tactical packages) ──
-│   ├── /solutions/sovereign-mission-edge                [solution — seeded, nid 21]
-│   ├── /solutions/sovereign-ai-command-fabric           [solution — seeded, nid 22]
-│   └── /solutions/sovereign-digital-modernization-platform [solution — seeded, nid 23]
+│   ├── /solutions/outpost                               [solution]
+│   └── /solutions/software-factory                      [solution]
 │
 ├── /case-studies ................................. [dynamic-index]
 │   ├── /case-studies/hhs-cms-web-platform               [case_study — WL corporate]
@@ -117,7 +113,7 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 │   └── /careers/{slug}              [career]
 │
 ├── /team ......................................... [dynamic-index]
-│   └── /team/jeremy-cerda           [person]
+│   └── /team/jeremy-michael-cerda   [person]
 │
 ├── /partners ..................................... [basic_page — discreet, not in primary nav]
 │
@@ -137,10 +133,6 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 ```
 
 **Total public pages planned:** 52 named pages + open-ended article/event/career/resource streams.
-
-**Seeded-vs-new notation:** Nodes currently seeded in Drupal are marked above. All others require authoring per Deliverable 3 and the rollout plan (Deliverable 5).
-
-**Solutions relationship note:** The three seeded Solutions (Sovereign Mission Edge, Sovereign AI Command Fabric, Sovereign Digital Modernization Platform) are tactical packages oriented toward defense/intelligence buyers. The seven new Solutions in this sitemap are audience-oriented packages for commercial and federal civilian segments. All ten coexist in the Solutions catalog. The `/solutions` index should group them: commercial first, then federal. The three tactical packages surface within the Outpost (Defense & Intelligence) and DotGov (Federal Civilian) groupings.
 
 ---
 
@@ -235,6 +227,9 @@ Solutions
 │   ├── Gazette — IG Platforms             /solutions/gazette
 │   └── Outpost — Defense Tech             /solutions/outpost
 │
+├── ── Infrastructure ──────────────
+│   └── Software Factory                   /solutions/software-factory
+│
 └── View All Solutions →               /solutions
 ```
 
@@ -254,6 +249,7 @@ Platforms
 ├── Squawk Zero-Trust Identity Platform    /platforms/squawk
 ├── Manifest Data Platform                 /platforms/manifest
 ├── Lighthouse Observability Platform      /platforms/lighthouse
+├── Coquina Software Factory Platform      /platforms/coquina
 └── View All Platforms →                  /platforms
 ```
 
@@ -556,7 +552,7 @@ Platforms
 
 Services
   └── [Accordion — tap to expand]
-       All 10 services listed
+       All 11 services listed
        View All Services →
 
 Resources
@@ -675,13 +671,13 @@ Articles are tagged with `field_solutions` (taxonomy) to associate them with Sol
 | Article | `/articles/{topic-slug}` | `/articles/what-is-sovereignty-in-federal-it` |
 | Event | `/events/{YYYY-MM-short-name}` | `/events/2026-09-drupal-govtech-summit` |
 | Career | `/careers/{role-title}` | `/careers/senior-drupal-engineer` |
-| Person | `/team/{first-last}` | `/team/jeremy-cerda` |
+| Person | `/team/{first-middle-last}` | `/team/jeremy-michael-cerda` |
 | Basic Page | `/about`, `/contact`, `/partners`, `/federal` | Flat, one word where possible |
 | Legal | `/legal/{page-name}` | `/legal/privacy-policy` |
 
 ### URL stability rule
 
-**Do not change existing slugs** after a node is published (even if the title changes). Redirect old slugs with HTTP 301 if a rename is unavoidable. The three seeded Solution slugs (`/solutions/sovereign-mission-edge`, etc.) are authoritative and must not change.
+**Do not change existing slugs** after a node is published (even if the title changes). Redirect old slugs with HTTP 301 if a rename is unavoidable.
 
 ---
 
@@ -819,15 +815,13 @@ Step 4: /contact
 | `/solutions/dotgov` | Federal civilian agencies | Keel CMS Platform, Alidade Search Platform, Squawk Identity Platform | Headless CMS Implementation, Digital Modernization, Custom Software | HHS/CMS |
 | `/solutions/gazette` | Federal OIG offices | Keel CMS Platform, Manifest Data Platform | Headless CMS Implementation, Custom Software Development | USPS OIG, Pandemic Oversight |
 | `/solutions/outpost` | Defense contractors, DoD adjacent | Sabal Infrastructure Platform, Coquina Software Factory Platform | Defense Technology Integration, Private Infrastructure Engineering | — |
-| (legacy seeded) `/solutions/sovereign-mission-edge` | Pending disposition | — | — | nid 21 |
-| (legacy seeded) `/solutions/sovereign-ai-command-fabric` | Pending disposition | — | — | nid 22 |
-| (legacy seeded) `/solutions/sovereign-digital-modernization-platform` | Pending disposition | — | — | nid 23 |
+| `/solutions/software-factory` | Engineering teams, DevSecOps leads | Coquina Software Factory Platform | Custom Software Development, Integration Engineering | — |
 
 ---
 
 ## Appendix B — Open Questions for Jeremy
 
-**[VERIFY-NAV-01]** The three seeded tactical Solutions (Sovereign Mission Edge, Sovereign AI Command Fabric, Sovereign Digital Modernization Platform) do not appear in the main nav dropdown by name — they are reachable via `/solutions` index and via cross-links from Platform pages and the Outpost (Defense Tech) Solution. Confirm this is the right depth for these nodes, or advise if any should be elevated to the primary nav.
+**[VERIFY-NAV-01]** ~~Resolved.~~ The three legacy Sovereign solution nodes (Sovereign Mission Edge, Sovereign AI Command Fabric, Sovereign Digital Modernization Platform) have been deleted from Drupal. The eight canonical solutions are the only solution nodes in the system.
 
 **[VERIFY-NAV-02]** The Drupal Agency Partner Program is scoped as a discreet `/partners` basic_page not in primary nav, reachable only from the footer and from direct outreach links. Confirm, or advise if a public Solution page is preferred.
 

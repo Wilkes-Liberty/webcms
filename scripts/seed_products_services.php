@@ -1,13 +1,16 @@
 <?php
 /**
- * Seed Platform, Service, Solution, Article, and Case Study nodes from docs/CONTENT.md.
+ * Seed Platform, Service, Solution, Article, Case Study, Page, and Person nodes from docs/CONTENT.md.
  *
  * Creates:
  *   - 7 Platform nodes
  *   - 11 Service nodes
- *   - 8+ Solution nodes (canonical + legacy)
+ *   - 8 Solution nodes (canonical)
  *   - 3 Article nodes (published)
  *   - 3 Case Study nodes (draft — contain [VERIFY: ...] placeholders)
+ *   - 4 Legal Page nodes (basic_page, published)
+ *   - 3 Basic Page nodes (About, Partners — basic_page; Federal — landing_page, published)
+ *   - 1 Person node (Jeremy Cerda, published)
  *
  * For each node it populates:
  *   - title, body (HTML), field_summary, field_seo_title, field_meta_description
@@ -79,13 +82,14 @@ const WL_TEXT_FORMAT_INLINE = 'headless_safe';
  * All other bundles seed as 'published'.
  */
 const WL_MODERATION_BY_BUNDLE = [
-  'platform'   => 'published',
-  'service'    => 'published',
-  'solution'   => 'published',
-  'case_study' => 'draft',
-  'article'    => 'published',
-  'basic_page' => 'published',
-  'person'     => 'published',
+  'platform'     => 'published',
+  'service'      => 'published',
+  'solution'     => 'published',
+  'case_study'   => 'draft',
+  'article'      => 'published',
+  'basic_page'   => 'published',
+  'landing_page' => 'published',
+  'person'       => 'published',
 ];
 
 /** Return the correct moderation state for a given bundle. */
@@ -205,19 +209,36 @@ function wl_parse_content_md(string $path): array {
   $src = file_get_contents($path);
 
   // Split on top-level section headers.
-  $sections = preg_split('/^##\s+(Platforms|Products|Services|Solutions|Articles|Case Studies)\s*$/m', $src, -1, PREG_SPLIT_DELIM_CAPTURE);
-  $result = ['platforms' => [], 'services' => [], 'solutions' => [], 'articles' => [], 'case_studies' => []];
+  $sections = preg_split(
+    '/^##\s+(Platforms|Products|Services|Solutions|Legal Pages|Pages|Articles|Case Studies)\s*$/m',
+    $src, -1, PREG_SPLIT_DELIM_CAPTURE
+  );
+  $result = [
+    'platforms'   => [],
+    'services'    => [],
+    'solutions'   => [],
+    'legal_pages' => [],
+    'pages'       => [],
+    'articles'    => [],
+    'case_studies'=> [],
+  ];
+
+  // Sections that use unnumbered "### Title" headings (no "### N. Title" prefix).
+  $unnumbered_kinds = ['solutions', 'case_studies', 'articles', 'legal_pages', 'pages'];
 
   for ($i = 1; $i < count($sections); $i += 2) {
     $header = $sections[$i];
-    $kind = strtolower(str_replace(' ', '_', $header)); // 'platforms' | 'services' | 'solutions' | 'articles' | 'case_studies'
+    // Normalise header text to a $result array key.
+    $kind = strtolower(str_replace(' ', '_', $header));
     // Support legacy 'products' header → map to 'platforms'.
     if ($kind === 'products') {
       $kind = 'platforms';
     }
+    if (!array_key_exists($kind, $result)) {
+      continue; // unrecognised section — skip
+    }
     $body = $sections[$i + 1] ?? '';
-    // Case Studies use unnumbered ### headings; all others use "### N. Title".
-    $result[$kind] = ($kind === 'case_studies' || $kind === 'articles')
+    $result[$kind] = in_array($kind, $unnumbered_kinds, true)
       ? wl_parse_unnumbered_entries($body)
       : wl_parse_entries($body);
   }
@@ -262,14 +283,24 @@ function wl_parse_unnumbered_entries(string $section_body): array {
     $body  = trim($parts[$i + 1] ?? '');
     // Strip trailing horizontal-rule separator if present.
     $body = preg_replace('/\n---\s*$/', '', $body);
-    // Normalise **Full Article:** → **Full Page Copy:** so wl_parse_entry() handles both.
+    // Normalise label variants so wl_parse_entry() handles them uniformly.
     $body = str_replace('**Full Article:**', '**Full Page Copy:**', $body);
+    $body = str_replace('**Full Page Copy (Bio):**', '**Full Page Copy:**', $body);
     $entry = wl_parse_entry($title, $body);
-    // Use the **Path:** field as the canonical alias — avoids WL_SLUG_OVERRIDES entries
-    // for articles and case studies whose CONTENT.md titles don't match their URL slugs.
+    // Use the **Path:** field as the canonical alias — avoids WL_SLUG_OVERRIDES entries.
     $path = wl_extract_field($body, 'Path');
     if ($path !== null) {
       $entry['path'] = trim($path);
+    }
+    // **Content type:** field — used by page/person seeding loops to pick the bundle.
+    $content_type = wl_extract_field($body, 'Content type');
+    if ($content_type !== null) {
+      $entry['content_type'] = trim($content_type);
+    }
+    // **Title/Role:** — person bundle job title.
+    $role = wl_extract_field($body, 'Title/Role');
+    if ($role !== null) {
+      $entry['role'] = trim($role);
     }
     $entries[] = $entry;
   }
@@ -508,7 +539,7 @@ function wl_build_node_values(string $bundle, array $entry, string $alias): arra
     'title' => $entry['title'],
     'status' => ($moderation === 'published') ? 1 : 0,
     'moderation_state' => $moderation,
-    'path' => ['alias' => $alias],
+    'path' => ['alias' => $alias, 'pathauto' => 0],
     'body' => [
       'value' => $body_html,
       'format' => WL_TEXT_FORMAT_BODY,
@@ -524,6 +555,12 @@ function wl_build_node_values(string $bundle, array $entry, string $alias): arra
       'value' => wl_md_to_html($entry['mission_impact']),
       'format' => WL_TEXT_FORMAT_INLINE,
     ];
+  }
+
+  // Person bundle: map Title/Role → field_job_title.
+  // Adjust the field name here if the Drupal content type uses a different machine name.
+  if ($bundle === 'person' && !empty($entry['role'])) {
+    $values['field_job_title'] = $entry['role'];
   }
 
   $taxo = wl_taxonomy_suggestions($bundle, $entry['title']);
@@ -644,19 +681,18 @@ const WL_SLUG_OVERRIDES = [
   'Intelligence & Actionable Insights Services'             => ['service', 'intelligence-actionable-insights'],
 
   // Solutions — slug = canonical nav slug
-  'DotEDU — Higher Education'       => ['solution', 'dotedu'],
-  'Accord — Nonprofit'              => ['solution', 'accord'],
-  'Palisade — Privacy SaaS'         => ['solution', 'palisade'],
-  'Bulkhead — Regulated Industries' => ['solution', 'bulkhead'],
-  'DotGov — Federal Civilian'       => ['solution', 'dotgov'],
-  'Gazette — IG Platforms'          => ['solution', 'gazette'],
-  'Outpost — Defense Tech'          => ['solution', 'outpost'],
-  'Software Factory'                => ['solution', 'software-factory'],
+  // Keys must match CONTENT.md titles exactly (full verbose title).
+  'DotEDU — Higher Education'                      => ['solution', 'dotedu'],
+  'Accord — Nonprofit'                             => ['solution', 'accord'],
+  'Palisade — Privacy SaaS'                        => ['solution', 'palisade'],
+  'Bulkhead — Regulated Industries'                => ['solution', 'bulkhead'],
+  'DotGov — Federal Civilian'                      => ['solution', 'dotgov'],
+  'Gazette — IG Platforms (Fraud, Waste & Abuse)'  => ['solution', 'gazette'],
+  'Outpost — Defense Tech Modernization'           => ['solution', 'outpost'],
+  'Software Factory'                               => ['solution', 'software-factory'],
 
-  // Legacy seeded solutions — keep existing slugs so we don't break nid 21/22/23
-  'Sovereign Mission Edge'                      => ['solution', 'sovereign-mission-edge'],
-  'Sovereign AI Command Fabric'                 => ['solution', 'sovereign-ai-command-fabric'],
-  'Sovereign Digital Modernization Platform'    => ['solution', 'sovereign-digital-modernization-platform'],
+  // Note: Sovereign-* legacy solutions have been removed from the site and
+  // should NOT be reseeded. Entries removed intentionally.
 ];
 
 function wl_seed_entry(string $bundle, array $entry, bool $dry_run, bool $update): array {
@@ -744,18 +780,22 @@ $mode_label = $WL_DRY_RUN
   ? ($WL_UPDATE ? 'DRY-RUN + UPDATE (no DB writes)' : 'DRY-RUN (no DB writes)')
   : ($WL_UPDATE ? 'UPDATE (existing nodes will be overwritten)' : 'SKIP-IF-EXISTS (default)');
 
-echo "=== Seeding Platforms, Services, Solutions, Articles & Case Studies from " . WL_CONTENT_MD_PATH . " ===\n";
+echo "=== Seeding all content types from " . WL_CONTENT_MD_PATH . " ===\n";
 echo "Mode: {$mode_label}\n\n";
 
 $parsed = wl_parse_content_md(WL_CONTENT_MD_PATH);
 
 $status_keys = ['created', 'skipped', 'updated', 'would-create', 'would-skip', 'would-update'];
 $summary = [
-  'platform'   => array_fill_keys($status_keys, 0),
-  'service'    => array_fill_keys($status_keys, 0),
-  'solutions'  => array_fill_keys($status_keys, 0),  // plural to match $parsed['solutions']
-  'article'    => array_fill_keys($status_keys, 0),
-  'case_study' => array_fill_keys($status_keys, 0),
+  'platform'     => array_fill_keys($status_keys, 0),
+  'service'      => array_fill_keys($status_keys, 0),
+  'solutions'    => array_fill_keys($status_keys, 0),  // plural to match $parsed['solutions']
+  'article'      => array_fill_keys($status_keys, 0),
+  'case_study'   => array_fill_keys($status_keys, 0),
+  'legal_page'   => array_fill_keys($status_keys, 0),
+  'basic_page'   => array_fill_keys($status_keys, 0),
+  'landing_page' => array_fill_keys($status_keys, 0),
+  'person'       => array_fill_keys($status_keys, 0),
 ];
 $warnings = [];
 
@@ -837,6 +877,27 @@ foreach ($parsed['case_studies'] as $entry) {
   $render('case_study', $entry, $r);
 }
 
+echo "\n--- Legal Pages (basic_page) ---\n";
+foreach ($parsed['legal_pages'] as $entry) {
+  $r = wl_seed_entry('basic_page', $entry, $WL_DRY_RUN, $WL_UPDATE);
+  $summary['legal_page'][$r['status']]++;
+  $render('basic_page', $entry, $r);
+}
+
+echo "\n--- Pages ---\n";
+foreach ($parsed['pages'] as $entry) {
+  // Determine bundle from **Content type:** field in CONTENT.md.
+  $bundle = $entry['content_type'] ?? 'basic_page';
+  // Validate — only allow known page bundles.
+  if (!in_array($bundle, ['basic_page', 'landing_page', 'person'], true)) {
+    echo sprintf("  [!] %s — unrecognised content_type '%s', skipping.\n", $entry['title'], $bundle);
+    continue;
+  }
+  $r = wl_seed_entry($bundle, $entry, $WL_DRY_RUN, $WL_UPDATE);
+  $summary[$bundle][$r['status']]++;
+  $render($bundle, $entry, $r);
+}
+
 echo "\n=== Summary ===\n";
 $fmt = function (string $label, array $counts): string {
   $counts = $counts ?? [];
@@ -848,11 +909,15 @@ $fmt = function (string $label, array $counts): string {
   }
   return sprintf("%-12s %s\n", $label . ':', $parts ? implode('  ', $parts) : '(none)');
 };
-echo $fmt('Platforms',    $summary['platform']   ?? []);
-echo $fmt('Services',     $summary['service']    ?? []);
-echo $fmt('Solutions',    $summary['solutions']  ?? []);
-echo $fmt('Articles',     $summary['article']    ?? []);
-echo $fmt('Case Studies', $summary['case_study'] ?? []);
+echo $fmt('Platforms',    $summary['platform']     ?? []);
+echo $fmt('Services',     $summary['service']      ?? []);
+echo $fmt('Solutions',    $summary['solutions']    ?? []);
+echo $fmt('Articles',     $summary['article']      ?? []);
+echo $fmt('Case Studies', $summary['case_study']   ?? []);
+echo $fmt('Legal Pages',  $summary['legal_page']   ?? []);
+echo $fmt('Basic Pages',  $summary['basic_page']   ?? []);
+echo $fmt('Landing Pgs',  $summary['landing_page'] ?? []);
+echo $fmt('People',       $summary['person']       ?? []);
 
 if ($warnings) {
   echo "\n=== Warnings ===\n";
@@ -869,4 +934,6 @@ else {
   echo "  • Capability paragraphs were seeded with title-as-description placeholders; editors should expand field_capability_description.\n";
   echo "  • Taxonomy refs were only applied on create where matching terms exist (preserved as-is in update mode). See docs/TAXONOMY_AUDIT.md to seed missing vocabularies.\n";
   echo "  • Case studies were seeded as DRAFT (status=0, moderation_state=draft). Publish each at /admin/content after verifying [VERIFY: ...] placeholders.\n";
+  echo "  • Person nodes: field_job_title is set from CONTENT.md's Title/Role field. If the Drupal person content type uses a different machine name, update wl_build_node_values().\n";
+  echo "  • Legal/legal placeholders (e.g. [EFFECTIVE DATE]) in legal page body copy should be filled via the admin UI before publishing to production.\n";
 }

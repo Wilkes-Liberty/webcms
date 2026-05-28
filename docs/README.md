@@ -8,7 +8,7 @@ Documentation for the Wilkes Liberty headless Drupal 11 CMS.
 
 | Document | Purpose |
 |----------|---------|
-| [CONTENT_TYPES_GUIDE.md](CONTENT_TYPES_GUIDE.md) | All 9 content types, their purpose and field usage |
+| [CONTENT_TYPES_GUIDE.md](CONTENT_TYPES_GUIDE.md) | All 11 content types, their purpose and field usage |
 | [FIELD_REFERENCE.md](FIELD_REFERENCE.md) | Authoritative field specifications (names, formats, requirements) |
 | [FIELD_FORMATS_GUIDE.md](FIELD_FORMATS_GUIDE.md) | Text format options and AI-assisted features |
 | [PARAGRAPHS.md](PARAGRAPHS.md) | Component/paragraph types for Landing Pages |

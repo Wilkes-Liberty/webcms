@@ -115,7 +115,7 @@ Even outside defense-specific offerings (the crypto example above is not a defen
 
 ### 3.5 Force multiplier / operational independence
 
-**Anchor quote (CONTENT.md, Custom Software Development & Middleware Engineering):**
+**Anchor quote (CONTENT.md, Custom Software Development):**
 
 > "Our custom solutions become force multipliers that increase efficiency and reduce reliance on fragmented commercial tools."
 
