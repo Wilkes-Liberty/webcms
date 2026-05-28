@@ -69,6 +69,7 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 │   ├── /services/ai-integration                       [service]
 │   ├── /services/digital-modernization                [service]
 │   ├── /services/custom-software-development          [service]
+│   ├── /services/integration-engineering                  [service]
 │   ├── /services/digital-asset-solutions              [service]
 │   ├── /services/defense-technology-integration       [service]
 │   └── /services/intelligence-actionable-insights     [service]
@@ -278,6 +279,7 @@ Services
 │   ├── AI Integration                       /services/ai-integration
 │   ├── Digital Modernization                /services/digital-modernization
 │   ├── Custom Software Development          /services/custom-software-development
+│   ├── Integration Engineering /services/integration-engineering
 │   ├── Digital Asset Solutions              /services/digital-asset-solutions
 │   └── Intelligence & Actionable Insights   /services/intelligence-actionable-insights
 │
@@ -385,6 +387,7 @@ South Florida, USA  ·  wilkesliberty.com
 | AI Integration | `/services/ai-integration` |
 | Digital Modernization | `/services/digital-modernization` |
 | Custom Software Development | `/services/custom-software-development` |
+| Integration Engineering | `/services/integration-engineering` |
 | Digital Asset Solutions | `/services/digital-asset-solutions` |
 | Defense Technology Integration | `/services/defense-technology-integration` |
 | Intelligence & Actionable Insights | `/services/intelligence-actionable-insights` |
