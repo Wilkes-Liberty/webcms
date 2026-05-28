@@ -1,0 +1,5 @@
+services:
+  wl_api.commands:
+    class: Drupal\wl_api\Commands\WlApiCommands
+    tags:
+      - { name: drush.command }
