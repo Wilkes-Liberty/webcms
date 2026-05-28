@@ -196,15 +196,17 @@ Use these overrides where the full page title is too long for the breadcrumb rai
 
 **Machine name:** `main`  
 **Placement:** Global header, persists across all pages.  
-**Structure:** Five top-level items, two of which have flyout/dropdown panels.
+**Structure:** Seven top-level items. Solutions, Platforms, Services, and Resources have flyout/dropdown panels. About, Federal, and Contact are flat single links.
 
 ### Item order and structure
 
 ```
-Solutions    Platforms    Services    Resources    About
+Solutions    Platforms    Services    Resources    About    Federal    Contact
 ```
 
-Rationale for ordering: Solutions first because it is the primary audience-disambiguation tool for both commercial and federal buyers. Platforms and Services follow as the capability proof layer. Resources clusters the content-marketing and credibility assets. About anchors the right side for visitors doing final validation before contact.
+Rationale for ordering: Solutions first because it is the primary audience-disambiguation tool for both commercial and federal buyers. Platforms and Services follow as the capability proof layer. Resources clusters the content-marketing and credibility assets. About anchors company context. Federal surfaces the federal buyers hub as a standalone top-level destination — not buried in a dropdown — because federal contracting officers are a primary revenue audience. Contact closes the nav as a conversion point.
+
+**Note:** Federal and Contact also appear as visually distinct CTA buttons in the header utility area (see §5). Their presence as both main nav items *and* utility buttons ensures maximum discoverability across breakpoints.
 
 ---
 
@@ -286,13 +288,13 @@ Services
 
 ### MENU: Resources (dropdown)
 
-**URL:** *(no index page — dropdown only)*
+**URL:** `/resources`
 
 ```
 Resources
 ├── Case Studies                    /case-studies
 ├── Articles & Insights             /articles
-├── Downloads & Guides              /resources
+├── Downloads & Guides              /resources/downloads-guides
 └── Press                           /press
 ```
 
@@ -305,6 +307,28 @@ Resources
 
 ```
 About → /about
+```
+
+---
+
+### MENU: Federal
+
+**URL:** `/federal`  
+**No dropdown.** Single link. Standalone top-level item targeting federal buyers and contracting officers. Also rendered as a pill-style CTA button in the utility nav area (see §5).
+
+```
+Federal → /federal
+```
+
+---
+
+### MENU: Contact
+
+**URL:** `/contact`  
+**No dropdown.** Single link. Final conversion point in the nav. Also rendered as a filled button in the utility nav area (see §5).
+
+```
+Contact → /contact
 ```
 
 ---
