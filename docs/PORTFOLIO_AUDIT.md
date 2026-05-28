@@ -2,7 +2,7 @@
 
 **Purpose:** Pre-naming audit. Map Jeremy's new service/platform/solution ideas against the existing catalog. Surface overlaps, gaps, and the Products-vs-Solutions architectural question. All decisions made here flow into NAMING_DECISIONS.md.
 
-**Status:** Portfolio audit complete 2026-05-27. All decisions resolved. Final services catalog: 16 services. See Section I.6 for locked list.
+**Status:** Portfolio audit complete 2026-05-27. All decisions resolved. Final services catalog: 17 services. See Section I.6 for locked list.
 **Last updated:** 2026-05-27
 
 ---
@@ -140,7 +140,8 @@ This is the consolidated list after removing duplicates and applying the recomme
 | # | Service name (working title) | Status | Notes |
 |---|---|---|---|
 | 1 | Platform Engineering & DevSecOps | [RESTRUCTURED] | Combines / restructures Service 1 (Private Infrastructure Engineering) + CloudOps/DevOps/DevSecOps. `[DECIDE-B1]` |
-| 2 | Software Development | [RESTRUCTURED] | Expands Service 7 (Custom Software Development & Middleware Engineering). Name tightened. |
+| 3 | Custom Software Development | [RESTRUCTURED] | Expands Service 7 (Custom Software Dev & Middleware Engineering). Application-layer custom development for defense/government environments. |
+| 3b | Integration Engineering | [SPLIT FROM 7] | Split from Service 7. Integration layer: legacy-to-API, ETL, API gateways, event-driven patterns. |
 | 3 | Human Centered Design | [NEW] | Design, UX, CX arm. No existing equivalent. |
 | 4 | Digital Modernization | [RESTRUCTURED] | Trims Service 6 (Digital Modernization & Legacy Systems Migration). |
 | 5 | AI Strategy & Integration | [RESTRUCTURED] | Expands Service 5 (AI Integration & Machine Learning Services). |
@@ -338,7 +339,8 @@ This is the services list as it stands with all confirmed decisions applied. Two
 |---|---|---|---|
 | 1 | Cloud Operations | From Service 1 (Private Infrastructure Engineering) — CloudOps split | Restructured |
 | 2 | DevOps & DevSecOps | From Service 1 — DevOps/DevSecOps split | Restructured |
-| 3 | Software Development | From Service 7 (Custom Software Dev & Middleware Engineering) — scope expanded | Restructured |
+| 3 | Custom Software Development | From Service 7 (Custom Software Dev & Middleware Engineering) — application-layer custom development for defense/government environments | Restructured |
+| 3b | Integration Engineering | Split from Service 7 — integration layer: legacy-to-API, ETL, API gateways, event-driven patterns | Restructured |
 | 4 | Human Centered Design | New | New |
 | 5 | Digital Modernization | From Service 6 — name tightened | Restructured |
 | 6 | AI Strategy & Integration | From Service 5 — scope expanded | Restructured |
@@ -362,7 +364,7 @@ This is the services list as it stands with all confirmed decisions applied. Two
 | Zero-Trust Identity & Security Consulting (Service 4) | Zero Trust Architecture |
 | AI Integration & Machine Learning Services (Service 5) | AI Strategy & Integration |
 | Digital Modernization & Legacy Systems Migration (Service 6) | Digital Modernization |
-| Custom Software Development & Middleware Engineering (Service 7) | Software Development |
+| Custom Software Development & Middleware Engineering (Service 7) | Split into two services: Custom Software Development (#3) + Integration Engineering (#3b) |
 | Cryptocurrency & Digital Asset Solutions (Service 8) | Emerging Technologies |
 | Defense Technology Integration — Aviation & Drone Systems (Service 9) | Emerging Technologies |
 | Intelligence & Actionable Insights Services (Service 10) | Intelligence & Cyber Intelligence (if F2 = separate) OR Full Spectrum Cybersecurity (if F2 = combine) |
@@ -520,7 +522,8 @@ The confirmed 13-service catalog from Section H expands to 16 services with thre
 |---|---|---|---|
 | 1 | Cloud Operations | Restructured + expanded | Explicitly covers both cloud-native (AWS/GCP/Azure EKS/ECS/GitLab) and sovereign/private infrastructure ops environments. |
 | 2 | DevOps & DevSecOps | Restructured | |
-| 3 | Software Development | Restructured | |
+| 3 | Custom Software Development | Restructured | |
+| 3b | Integration Engineering | New (split from Service 7) | Distinct buyer: integration architects, platform engineers connecting legacy systems to modern APIs |
 | 4 | Human Centered Design | New | |
 | 5 | Digital Modernization | Restructured | |
 | 6 | AI Strategy & Integration | Restructured | Includes Private AI Infrastructure as a named delivery pattern/sub-offering. |
@@ -535,4 +538,4 @@ The confirmed 13-service catalog from Section H expands to 16 services with thre
 | 15 | Managed Identity & Access Management | **New — from infra audit** | Standalone service; also cross-referenced as sub-capability of Zero Trust Architecture. Self-hosted IAM deployment and operations (Keycloak-based). |
 | 16 | Sovereign Infrastructure Operations | **New — from infra audit** | Standalone service; Cloud Operations expanded scope also covers this. Managed ops for organizations running on their own hardware, privacy-first VPS, or off-hyperscaler environments. |
 
-**Note on catalog size:** 16 services is a substantial catalog for a small firm. This list reflects the full scope of what WL *can* do, grounded in real infrastructure and past performance — not an inflated pitch list. As WL grows, lower-priority services can be surfaced only in proposals and removed from the public website. The naming session (Deliverable 2+) will address whether all 16 need full pages or whether some should be grouped under parent services for the public-facing catalog.
+**Note on catalog size:** 17 services is a substantial catalog for a small firm. This list reflects the full scope of what WL *can* do, grounded in real infrastructure and past performance — not an inflated pitch list. As WL grows, lower-priority services can be surfaced only in proposals and removed from the public website. The naming session (Deliverable 2+) will address whether all 16 need full pages or whether some should be grouped under parent services for the public-facing catalog.
