@@ -1,11 +1,13 @@
 <?php
 /**
- * Seed Platform and Service nodes from docs/CONTENT.md.
+ * Seed Platform, Service, Solution, Article, and Case Study nodes from docs/CONTENT.md.
  *
  * Creates:
  *   - 7 Platform nodes
- *   - 10 Service nodes
- *   - Solution nodes (from the "## Solutions" section in CONTENT.md)
+ *   - 11 Service nodes
+ *   - 8+ Solution nodes (canonical + legacy)
+ *   - 3 Article nodes (published)
+ *   - 3 Case Study nodes (draft — contain [VERIFY: ...] placeholders)
  *
  * For each node it populates:
  *   - title, body (HTML), field_summary, field_seo_title, field_meta_description
@@ -70,8 +72,26 @@ const WL_TEXT_FORMAT_BODY = 'headless_safe';
 /** Text format for short formatted fields (mission impact, capability descriptions). */
 const WL_TEXT_FORMAT_INLINE = 'headless_safe';
 
-/** Default moderation state for seeded content. Change to 'draft' if editorial review is required before publish. */
-const WL_DEFAULT_MODERATION_STATE = 'published';
+/**
+ * Moderation state per bundle.
+ * Case studies seed as 'draft' because they contain [VERIFY: ...] placeholders
+ * that require editorial review before publication.
+ * All other bundles seed as 'published'.
+ */
+const WL_MODERATION_BY_BUNDLE = [
+  'platform'   => 'published',
+  'service'    => 'published',
+  'solution'   => 'published',
+  'case_study' => 'draft',
+  'article'    => 'published',
+  'basic_page' => 'published',
+  'person'     => 'published',
+];
+
+/** Return the correct moderation state for a given bundle. */
+function wl_moderation_state(string $bundle): string {
+  return WL_MODERATION_BY_BUNDLE[$bundle] ?? 'published';
+}
 
 /**
  * Tolerance in seconds when deciding whether a node has been edited since
@@ -185,18 +205,21 @@ function wl_parse_content_md(string $path): array {
   $src = file_get_contents($path);
 
   // Split on top-level section headers.
-  $sections = preg_split('/^##\s+(Platforms|Products|Services|Solutions)\s*$/m', $src, -1, PREG_SPLIT_DELIM_CAPTURE);
-  // After split: [preamble, 'Platforms', ..., 'Services', ..., 'Solutions', ...]
-  $result = ['platforms' => [], 'services' => [], 'solutions' => []];
+  $sections = preg_split('/^##\s+(Platforms|Products|Services|Solutions|Articles|Case Studies)\s*$/m', $src, -1, PREG_SPLIT_DELIM_CAPTURE);
+  $result = ['platforms' => [], 'services' => [], 'solutions' => [], 'articles' => [], 'case_studies' => []];
 
   for ($i = 1; $i < count($sections); $i += 2) {
-    $kind = strtolower($sections[$i]);  // 'platforms' | 'products' (legacy) | 'services' | 'solutions'
+    $header = $sections[$i];
+    $kind = strtolower(str_replace(' ', '_', $header)); // 'platforms' | 'services' | 'solutions' | 'articles' | 'case_studies'
     // Support legacy 'products' header → map to 'platforms'.
     if ($kind === 'products') {
       $kind = 'platforms';
     }
     $body = $sections[$i + 1] ?? '';
-    $result[$kind] = wl_parse_entries($body);
+    // Case Studies use unnumbered ### headings; all others use "### N. Title".
+    $result[$kind] = ($kind === 'case_studies' || $kind === 'articles')
+      ? wl_parse_unnumbered_entries($body)
+      : wl_parse_entries($body);
   }
 
   return $result;
@@ -205,18 +228,50 @@ function wl_parse_content_md(string $path): array {
 /**
  * Parse a Products or Services section body into entries.
  *
- * Each entry begins with "### N. Title".
+ * Each entry begins with "### N. Title" or "### Nb. Title" (e.g. "### 7b. Integration Engineering").
  */
 function wl_parse_entries(string $section_body): array {
   $entries = [];
-  // Split on "### N. Title" lines, capturing the title.
-  $parts = preg_split('/^###\s+\d+\.\s+(.+?)\s*$/m', $section_body, -1, PREG_SPLIT_DELIM_CAPTURE);
+  // Split on "### N. Title" lines (whole-number or alphanumeric suffixes like 7b).
+  $parts = preg_split('/^###\s+[\d]+[a-z]?\.\s+(.+?)\s*$/m', $section_body, -1, PREG_SPLIT_DELIM_CAPTURE);
   for ($i = 1; $i < count($parts); $i += 2) {
     $title = trim($parts[$i]);
     $body = trim($parts[$i + 1] ?? '');
     // Strip trailing horizontal-rule separator if present.
     $body = preg_replace('/\n---\s*$/', '', $body);
     $entries[] = wl_parse_entry($title, $body);
+  }
+  return $entries;
+}
+
+/**
+ * Parse an Articles or Case Studies section body into entries.
+ *
+ * Each entry begins with "### Title" (no number prefix, unlike platforms/services).
+ * The **Path:** field present in each entry is extracted directly so the canonical
+ * alias is used without needing a WL_SLUG_OVERRIDES entry.
+ * Articles use "**Full Article:**" for the copy block; this is normalised to
+ * "**Full Page Copy:**" before wl_parse_entry() processes it.
+ */
+function wl_parse_unnumbered_entries(string $section_body): array {
+  $entries = [];
+  // Split on "### Title" lines — no number prefix.
+  $parts = preg_split('/^###\s+(.+?)\s*$/m', $section_body, -1, PREG_SPLIT_DELIM_CAPTURE);
+  for ($i = 1; $i < count($parts); $i += 2) {
+    $title = trim($parts[$i]);
+    $body  = trim($parts[$i + 1] ?? '');
+    // Strip trailing horizontal-rule separator if present.
+    $body = preg_replace('/\n---\s*$/', '', $body);
+    // Normalise **Full Article:** → **Full Page Copy:** so wl_parse_entry() handles both.
+    $body = str_replace('**Full Article:**', '**Full Page Copy:**', $body);
+    $entry = wl_parse_entry($title, $body);
+    // Use the **Path:** field as the canonical alias — avoids WL_SLUG_OVERRIDES entries
+    // for articles and case studies whose CONTENT.md titles don't match their URL slugs.
+    $path = wl_extract_field($body, 'Path');
+    if ($path !== null) {
+      $entry['path'] = trim($path);
+    }
+    $entries[] = $entry;
   }
   return $entries;
 }
@@ -447,11 +502,12 @@ function wl_build_node_values(string $bundle, array $entry, string $alias): arra
     $capability_refs[] = ['target_id' => $p->id(), 'target_revision_id' => $p->getRevisionId()];
   }
 
+  $moderation = wl_moderation_state($bundle);
   $values = [
     'type' => $bundle,
     'title' => $entry['title'],
-    'status' => 1,
-    'moderation_state' => WL_DEFAULT_MODERATION_STATE,
+    'status' => ($moderation === 'published') ? 1 : 0,
+    'moderation_state' => $moderation,
     'path' => ['alias' => $alias],
     'body' => [
       'value' => $body_html,
@@ -550,16 +606,85 @@ function wl_update_existing_node(Node $node, array $built, string $alias): array
   ];
 }
 
+/**
+ * Explicit slug overrides keyed by bundle → title.
+ *
+ * CONTENT.md uses full descriptive titles (e.g. "Sabal Infrastructure Platform")
+ * but the canonical URL slugs are short brand names (e.g. "sabal"). Without this
+ * map wl_slug() would produce "/platforms/sabal-infrastructure-platform" which
+ * does not match the URL convention in SITEMAP_AND_NAVIGATION.md or the nav menu.
+ *
+ * Services similarly have subtitles in CONTENT.md that are trimmed in the nav.
+ *
+ * Add entries here whenever a CONTENT.md title diverges from the intended slug.
+ */
+const WL_SLUG_OVERRIDES = [
+  // Platforms — slug = brand name only
+  'Sabal Infrastructure Platform'                  => ['platform', 'sabal'],
+  'Keel CMS Platform'                              => ['platform', 'keel'],
+  'Alidade Search Platform'                        => ['platform', 'alidade'],
+  'Squawk Zero-Trust Identity Platform'            => ['platform', 'squawk'],
+  'Manifest Data Platform'                         => ['platform', 'manifest'],
+  'Lighthouse Observability Platform'              => ['platform', 'lighthouse'],
+  'Coquina Software Factory Platform'              => ['platform', 'coquina'],
+
+  // Services — slug = trimmed nav label
+  'Private Infrastructure Engineering & Managed Operations' => ['service', 'private-infrastructure-engineering'],
+  'Headless CMS Implementation & Drupal Development'        => ['service', 'headless-cms-implementation'],
+  'Headless CMS Implementation'                             => ['service', 'headless-cms-implementation'],
+  'Enterprise Search Architecture & Optimization'           => ['service', 'enterprise-search-architecture'],
+  'Zero-Trust Identity & Security Consulting'               => ['service', 'zero-trust-identity-consulting'],
+  'AI Integration & Machine Learning Services'              => ['service', 'ai-integration'],
+  'Digital Modernization & Legacy Systems Migration'        => ['service', 'digital-modernization'],
+  'Custom Software Development'                             => ['service', 'custom-software-development'],
+  'Integration Engineering'                                 => ['service', 'integration-engineering'],
+  'Cryptocurrency & Digital Asset Solutions'                => ['service', 'digital-asset-solutions'],
+  'Defense Technology Integration (Aviation & Drone Systems)' => ['service', 'defense-technology-integration'],
+  'Defense Technology Integration'                          => ['service', 'defense-technology-integration'],
+  'Intelligence & Actionable Insights Services'             => ['service', 'intelligence-actionable-insights'],
+
+  // Solutions — slug = canonical nav slug
+  'DotEDU — Higher Education'       => ['solution', 'dotedu'],
+  'Accord — Nonprofit'              => ['solution', 'accord'],
+  'Palisade — Privacy SaaS'         => ['solution', 'palisade'],
+  'Bulkhead — Regulated Industries' => ['solution', 'bulkhead'],
+  'DotGov — Federal Civilian'       => ['solution', 'dotgov'],
+  'Gazette — IG Platforms'          => ['solution', 'gazette'],
+  'Outpost — Defense Tech'          => ['solution', 'outpost'],
+  'Software Factory'                => ['solution', 'software-factory'],
+
+  // Legacy seeded solutions — keep existing slugs so we don't break nid 21/22/23
+  'Sovereign Mission Edge'                      => ['solution', 'sovereign-mission-edge'],
+  'Sovereign AI Command Fabric'                 => ['solution', 'sovereign-ai-command-fabric'],
+  'Sovereign Digital Modernization Platform'    => ['solution', 'sovereign-digital-modernization-platform'],
+];
+
 function wl_seed_entry(string $bundle, array $entry, bool $dry_run, bool $update): array {
   $title = $entry['title'];
-  $slug = wl_slug($title);
-  $path_prefix = match($bundle) {
-    'platform' => '/platforms',
-    'service' => '/services',
-    'solution' => '/solutions',
-    default => '/unknown',
-  };
-  $alias = $path_prefix . '/' . $slug;
+
+  if (isset($entry['path'])) {
+    // Articles and case studies carry their canonical path directly from CONTENT.md's
+    // **Path:** field — use it verbatim instead of running the slug-override map.
+    $alias = $entry['path'];
+  }
+  else {
+    // Use explicit slug override when available; fall back to auto-generation.
+    if (isset(WL_SLUG_OVERRIDES[$title]) && WL_SLUG_OVERRIDES[$title][0] === $bundle) {
+      $slug = WL_SLUG_OVERRIDES[$title][1];
+    }
+    else {
+      $slug = wl_slug($title);
+    }
+    $path_prefix = match($bundle) {
+      'platform'   => '/platforms',
+      'service'    => '/services',
+      'solution'   => '/solutions',
+      'case_study' => '/case-studies',
+      'article'    => '/articles',
+      default      => '/unknown',
+    };
+    $alias = $path_prefix . '/' . $slug;
+  }
 
   $existing = wl_find_node_by_alias($alias);
 
@@ -619,30 +744,25 @@ $mode_label = $WL_DRY_RUN
   ? ($WL_UPDATE ? 'DRY-RUN + UPDATE (no DB writes)' : 'DRY-RUN (no DB writes)')
   : ($WL_UPDATE ? 'UPDATE (existing nodes will be overwritten)' : 'SKIP-IF-EXISTS (default)');
 
-echo "=== Seeding Platforms, Services & Solutions from " . WL_CONTENT_MD_PATH . " ===\n";
+echo "=== Seeding Platforms, Services, Solutions, Articles & Case Studies from " . WL_CONTENT_MD_PATH . " ===\n";
 echo "Mode: {$mode_label}\n\n";
 
 $parsed = wl_parse_content_md(WL_CONTENT_MD_PATH);
 
 $status_keys = ['created', 'skipped', 'updated', 'would-create', 'would-skip', 'would-update'];
 $summary = [
-  'platform'  => array_fill_keys($status_keys, 0),
-  'service'   => array_fill_keys($status_keys, 0),
-  'solutions' => array_fill_keys($status_keys, 0),   // plural to match $parsed['solutions']
+  'platform'   => array_fill_keys($status_keys, 0),
+  'service'    => array_fill_keys($status_keys, 0),
+  'solutions'  => array_fill_keys($status_keys, 0),  // plural to match $parsed['solutions']
+  'article'    => array_fill_keys($status_keys, 0),
+  'case_study' => array_fill_keys($status_keys, 0),
 ];
-
-// Ensure all three bundles are always present in the summary (prevents undefined key warnings)
-foreach (['platform', 'service', 'solutions'] as $b) {
-  if (!isset($summary[$b])) {
-    $summary[$b] = array_fill_keys($status_keys, 0);
-  }
-}
 $warnings = [];
 
 $render = function (string $bundle, array $entry, array $r) use (&$warnings): void {
   switch ($r['status']) {
     case 'created':
-      $taxo = $r['taxonomy_applied'] ? ' [taxonomy: ' . implode(',', $r['taxonomy_applied']) . ']' : '';
+      $taxo = !empty($r['taxonomy_applied']) ? ' [taxonomy: ' . implode(',', $r['taxonomy_applied']) . ']' : '';
       echo sprintf("  [+] %s  nid=%d  alias=%s  capabilities=%d%s\n",
         $entry['title'], $r['nid'], $r['alias'], $r['capabilities'], $taxo);
       break;
@@ -703,6 +823,20 @@ foreach ($parsed['solutions'] as $entry) {
   $render('solution', $entry, $r);
 }
 
+echo "\n--- Articles ---\n";
+foreach ($parsed['articles'] as $entry) {
+  $r = wl_seed_entry('article', $entry, $WL_DRY_RUN, $WL_UPDATE);
+  $summary['article'][$r['status']]++;
+  $render('article', $entry, $r);
+}
+
+echo "\n--- Case Studies (seeded as draft) ---\n";
+foreach ($parsed['case_studies'] as $entry) {
+  $r = wl_seed_entry('case_study', $entry, $WL_DRY_RUN, $WL_UPDATE);
+  $summary['case_study'][$r['status']]++;
+  $render('case_study', $entry, $r);
+}
+
 echo "\n=== Summary ===\n";
 $fmt = function (string $label, array $counts): string {
   $counts = $counts ?? [];
@@ -712,11 +846,13 @@ $fmt = function (string $label, array $counts): string {
       $parts[] = "{$k}={$v}";
     }
   }
-  return sprintf("%-10s %s\n", $label . ':', $parts ? implode('  ', $parts) : '(none)');
+  return sprintf("%-12s %s\n", $label . ':', $parts ? implode('  ', $parts) : '(none)');
 };
-echo $fmt('Platforms', $summary['platform'] ?? []);
-echo $fmt('Services', $summary['service'] ?? []);
-echo $fmt('Solutions', $summary['solutions'] ?? []);
+echo $fmt('Platforms',    $summary['platform']   ?? []);
+echo $fmt('Services',     $summary['service']    ?? []);
+echo $fmt('Solutions',    $summary['solutions']  ?? []);
+echo $fmt('Articles',     $summary['article']    ?? []);
+echo $fmt('Case Studies', $summary['case_study'] ?? []);
 
 if ($warnings) {
   echo "\n=== Warnings ===\n";
@@ -729,6 +865,8 @@ if ($WL_DRY_RUN) {
   echo "\nDry run: no nodes were created, updated, or deleted. Re-run without --dry-run to apply.\n";
 }
 else {
-  echo "\nReview at /admin/content. Capability paragraphs were seeded with title-as-description placeholders; editors should expand field_capability_description and add field_mission_benefit.\n";
-  echo "Taxonomy refs were only applied on create where matching terms exist (preserved as-is in update mode). See docs/TAXONOMY_AUDIT.md to seed missing vocabularies.\n";
+  echo "\nReview at /admin/content.\n";
+  echo "  • Capability paragraphs were seeded with title-as-description placeholders; editors should expand field_capability_description.\n";
+  echo "  • Taxonomy refs were only applied on create where matching terms exist (preserved as-is in update mode). See docs/TAXONOMY_AUDIT.md to seed missing vocabularies.\n";
+  echo "  • Case studies were seeded as DRAFT (status=0, moderation_state=draft). Publish each at /admin/content after verifying [VERIFY: ...] placeholders.\n";
 }
