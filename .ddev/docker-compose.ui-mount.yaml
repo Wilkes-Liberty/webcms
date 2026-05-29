@@ -1,0 +1,21 @@
+# Mount ~/Repositories/ui into the DDEV web container so that
+# `drush gqcc:generate --output-dir=/var/www/ui` writes directly to the
+# Next.js project on your host without any manual copy step.
+#
+# After adding this file, run: ddev restart
+#
+# Usage inside DDEV:
+#   ddev drush gqcc:generate --output-dir=/var/www/ui
+#   ddev drush gqcc:generate --bundles=article --output-dir=/var/www/ui --overwrite
+#
+# The generated files will appear immediately at ~/Repositories/ui/generated/
+# on your host machine.
+
+version: "3.6"
+
+services:
+  web:
+    volumes:
+      - type: bind
+        source: ${DDEV_APPROOT}/../ui
+        target: /var/www/ui

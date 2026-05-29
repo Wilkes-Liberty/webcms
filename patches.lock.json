@@ -37,18 +37,6 @@
                 }
             }
         ],
-        "drupal/config_update": [
-            {
-                "package": "drupal/config_update",
-                "description": "Fix InvalidParameterException when generating URLs with empty config names",
-                "url": "patches/config_update-fix-url-generation-empty-config-names-2025-01-14.patch",
-                "sha256": "53526cb326af24aa14b07cb48c42de9e879fb55acf5a418e2dde1cc970cd2683",
-                "depth": 1,
-                "extra": {
-                    "provenance": "root"
-                }
-            }
-        ],
         "tmgmt/tmgmt_local": [
             {
                 "package": "tmgmt/tmgmt_local",
