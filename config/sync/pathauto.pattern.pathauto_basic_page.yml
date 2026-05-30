@@ -2,29 +2,28 @@ uuid: 6a8fbe4d-cab8-43e4-be65-2c434f266dc6
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.basic_page
   module:
     - node
 id: pathauto_basic_page
 label: 'Basic page pattern'
 type: 'canonical_entities:node'
-pattern: '[menu:path]/[node:title]'
+pattern: '/[menu:path]/[node:title]'
 selection_criteria:
   8e14f57a-bb22-49f0-8d9b-38a2b5260ee7:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 8e14f57a-bb22-49f0-8d9b-38a2b5260ee7
     bundles:
       - basic_page
   3c92e152-9ee7-412c-a0de-c3f6b176d2e6:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 3c92e152-9ee7-412c-a0de-c3f6b176d2e6
     bundles:
       - basic_page
   31e51b15-9385-4068-8a33-3692db60cd1f:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 31e51b15-9385-4068-8a33-3692db60cd1f
     bundles:
       - basic_page
 selection_logic: and
