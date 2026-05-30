@@ -651,6 +651,42 @@ Programs that lack a functioning software factory cannot build or maintain the s
 
 ---
 
+### Meridian — AI-Accelerated Content Operations
+
+**SEO Title:** Meridian | AI-Accelerated Content Operations for Drupal
+
+**Meta Description:** The AI-native content operations package for sovereign Drupal deployments — combining the Keel CMS Platform with Sentinel's governed AI interface for defense, federal, and enterprise content teams.
+
+**Summary:** A governed AI content operations layer for organizations that run Drupal at scale — pairing a sovereign headless CMS with an auditable AI interface that accelerates editorial workflows without sacrificing control or auditability.
+
+**Full Page Copy:**
+
+#### Meridian — AI-Accelerated Content Operations
+
+Content operations at scale — managing hundreds of nodes across multiple content types, maintaining SEO coverage, enforcing taxonomy consistency, accelerating publishing workflows — demand tooling that works at the speed editorial teams actually move. Most organizations address this with commercial SaaS AI tools that touch their content through external API connections, adding vendor exposure, data handling risk, and audit gaps to the very systems they depend on for communication and information delivery.
+
+Meridian takes a different approach. By pairing the Keel CMS Platform with the Sentinel AI-Native CMS Platform, Meridian delivers an AI-augmented content operations environment in which every AI action is governed by the same zero-trust access controls and audit standards as human operations. Content editors work faster. Bulk operations that previously required hours of manual UI work complete in minutes. SEO gaps close automatically. Taxonomy stays consistent. And every AI operation — every read, every write, every bulk update — is logged, scoped, and revocable.
+
+For defense and government organizations running Drupal, Meridian answers the question security officers ask about AI content tools: who can see what, what did it change, and can we prove it. For commercial organizations managing large Drupal content estates, Meridian is the editorial force multiplier that makes AI access to the CMS operational rather than experimental.
+
+**Key Capabilities**
+
+- Governed AI access to the full Keel CMS content surface — content CRUD, taxonomy, users, media, and reporting — through a security-preseted, auditable interface
+- Four security presets (read-only, auditor, content-editor, production-strict) that map AI capabilities to the appropriate operational context without per-deployment configuration work
+- Bulk content operations that AI agents execute through natural-language instructions — SEO gap closure, stale content identification, taxonomy cleanup, meta description generation, field completeness audits
+- Complete audit log of every AI operation with user identity, IP address, entity context, and operation type — satisfying the evidentiary requirements of compliance reviews and incident response
+- Content locks that prevent AI edits on content actively being edited by human staff — eliminating version conflicts and write collisions in shared editorial environments
+- Multi-site operation for organizations managing Drupal content across multiple sites — independent security configurations per site, unified AI interface across the portfolio
+- HMAC-signed webhooks on AI-triggered content changes for downstream system notification with cryptographic change verification
+
+**Mission Impact**
+
+Editorial teams at organizations with large, complex Drupal content estates spend significant operational capacity on work that is repetitive, manual, and low-judgment — bulk field updates, SEO remediation, taxonomy normalization, stale content triage. Meridian removes that overhead by putting AI to work on exactly those tasks while keeping human editorial judgment where it belongs: on content strategy, accuracy review, and publication decisions. For defense and government organizations, Meridian does this without the governance exposure that commercial AI content tools create — every AI operation is bounded, logged, and auditable from day one.
+
+**Builds on:** Keel CMS Platform, Sentinel AI-Native CMS Platform
+
+---
+
 ## Legal Pages
 
 ### Privacy Policy
