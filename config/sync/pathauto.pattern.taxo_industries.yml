@@ -2,6 +2,8 @@ uuid: 53e213bb-22b1-484d-a9cb-f54954a355f5
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.industries
   module:
     - taxonomy
 id: taxo_industries
@@ -12,7 +14,6 @@ selection_criteria:
   fa6ae86f-f070-424c-8aeb-c1aced9fff88:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: fa6ae86f-f070-424c-8aeb-c1aced9fff88
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

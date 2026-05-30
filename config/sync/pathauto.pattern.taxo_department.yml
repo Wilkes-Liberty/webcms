@@ -2,6 +2,8 @@ uuid: 10c53a53-9d97-4391-a617-0f87a5f141ef
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.department
   module:
     - taxonomy
 id: taxo_department
@@ -12,7 +14,6 @@ selection_criteria:
   9d7d9ddf-3432-4e1b-a6d6-c6d3c715a9cf:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 9d7d9ddf-3432-4e1b-a6d6-c6d3c715a9cf
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

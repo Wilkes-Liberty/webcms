@@ -14,7 +14,6 @@ selection_criteria:
   2f12c93b-31c7-4dd7-934b-9f2dbe8b6b91:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 2f12c93b-31c7-4dd7-934b-9f2dbe8b6b91
     bundles:
       - person
 selection_logic: and

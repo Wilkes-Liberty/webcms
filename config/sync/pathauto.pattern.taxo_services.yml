@@ -2,6 +2,8 @@ uuid: 2696c7ba-e83f-458e-82ee-2e0c3ef721f0
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.services
   module:
     - taxonomy
 id: taxo_services
@@ -12,7 +14,6 @@ selection_criteria:
   81d4ff7b-51c1-48a7-a465-50dac5e20c0f:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 81d4ff7b-51c1-48a7-a465-50dac5e20c0f
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

@@ -2,6 +2,8 @@ uuid: f0c1d5d4-f10b-4ebb-9984-50dfb3b4656d
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.seniority
   module:
     - taxonomy
 id: taxo_seniority
@@ -12,7 +14,6 @@ selection_criteria:
   df43d5e5-64d6-4e17-b8e4-f222f251ca8f:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: df43d5e5-64d6-4e17-b8e4-f222f251ca8f
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

@@ -2,6 +2,8 @@ uuid: ee744110-93ce-4a90-a921-8f6a1afc12ff
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.capabilities
   module:
     - taxonomy
 id: taxo_capabilities
@@ -12,7 +14,6 @@ selection_criteria:
   -
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 6ddf0b18-fd68-495b-8ef0-28116daca996
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

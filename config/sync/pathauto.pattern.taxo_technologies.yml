@@ -2,6 +2,8 @@ uuid: fbbeefe1-cdaf-4a46-a2ce-dc4a7efd6b26
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.technologies
   module:
     - taxonomy
 id: taxo_technologies
@@ -12,7 +14,6 @@ selection_criteria:
   60304343-799a-47fc-aae3-fd592fdbc8e4:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 60304343-799a-47fc-aae3-fd592fdbc8e4
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

@@ -2,6 +2,8 @@ uuid: 0abca174-3bd8-4165-bed2-2f90a9f9e12c
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.persona
   module:
     - taxonomy
 id: taxo_persona
@@ -12,7 +14,6 @@ selection_criteria:
   81cd18cf-a99c-450b-adbc-e98444758583:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 81cd18cf-a99c-450b-adbc-e98444758583
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:
