@@ -6,11 +6,6 @@ id: sign_in_with_keycloak
 label: Keycloak
 plugin: generic
 settings:
-  # client_id + client_secret are intentionally placeholders here.
-  # The real per-environment values are injected at runtime by the $config[]
-  # override block in web/sites/default/settings.php, which reads:
-  #   DRUPAL_OIDC_CLIENT_ID     (drupal-prod / drupal-staging / drupal-local)
-  #   DRUPAL_OIDC_CLIENT_SECRET (SOPS-encrypted, per environment)
   client_id: PLACEHOLDER_OVERRIDDEN_BY_ENV
   client_secret: ''
   iss_allowed_domains: wilkesliberty.com
