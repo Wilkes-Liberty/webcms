@@ -2,29 +2,28 @@ uuid: 5f3ebf54-8ad9-448d-9b56-22d61802e695
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.article
   module:
     - node
 id: pathauto_article
 label: 'Article pattern'
 type: 'canonical_entities:node'
-pattern: '/news/[node:created:custom:Y]/[node:created:custom:m]/[node:title]'
+pattern: '/articles/[node:title:clean]'
 selection_criteria:
   99daddaf-995a-4ad3-8062-8c9debfa22e6:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 99daddaf-995a-4ad3-8062-8c9debfa22e6
     bundles:
       - article
   b4053e71-b891-4141-9511-786d1b5c3dd8:
     id: 'entity_bundle:node'
     negate: false
-    uuid: b4053e71-b891-4141-9511-786d1b5c3dd8
     bundles:
       - article
   31125038-a6a9-48df-83cc-7ee785f06e22:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 31125038-a6a9-48df-83cc-7ee785f06e22
     bundles:
       - article
 selection_logic: and
