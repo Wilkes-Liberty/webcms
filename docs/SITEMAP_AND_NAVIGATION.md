@@ -60,7 +60,8 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 │   ├── /platforms/squawk                            [platform]
 │   ├── /platforms/manifest                          [platform]
 │   ├── /platforms/lighthouse                        [platform]
-│   └── /platforms/coquina                           [platform]
+│   ├── /platforms/coquina                           [platform]
+│   └── /platforms/sentinel                          [platform]
 │
 ├── /services ..................................... [dynamic-index]
 │   ├── /services/private-infrastructure-engineering   [service]
@@ -87,7 +88,10 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
 │   ├── /solutions/dotgov                                [solution]
 │   ├── /solutions/gazette                               [solution]
 │   ├── /solutions/outpost                               [solution]
-│   └── /solutions/software-factory                      [solution]
+│   ├── /solutions/software-factory                      [solution]
+│   │
+│   │   ── AI & Developer ──
+│   └── /solutions/meridian                              [solution]
 │
 ├── /case-studies ................................. [dynamic-index]
 │   ├── /case-studies/hhs-cms-web-platform               [case_study — WL corporate]
@@ -132,7 +136,7 @@ Content type abbreviations follow `PAGE_INVENTORY.md` conventions.
     └── /api/status                  [nextjs — wired]
 ```
 
-**Total public pages planned:** 52 named pages + open-ended article/event/career/resource streams.
+**Total public pages planned:** 54 named pages + open-ended article/event/career/resource streams.
 
 ---
 
@@ -183,6 +187,8 @@ Use these overrides where the full page title is too long for the breadcrumb rai
 | `/solutions/dotgov` | DotGov — Federal Civilian | Federal Civilian |
 | `/solutions/gazette` | Gazette — IG Platforms | IG Platforms |
 | `/solutions/outpost` | Outpost — Defense Tech | Defense |
+| `/platforms/sentinel` | Sentinel AI-Native CMS Platform | Sentinel AI-Native CMS |
+| `/solutions/meridian` | Meridian — AI-Accelerated Content Operations | AI Content Operations |
 | `/case-studies/hhs-cms-web-platform` | HHS/CMS Web Platform Modernization | HHS/CMS |
 | `/case-studies/usps-oig-drupal-distribution` | USPS OIG Multi-Agency Drupal Distribution | USPS OIG |
 | `/case-studies/pandemicoversight-gov` | pandemicoversight.gov | Pandemic Oversight |
@@ -232,6 +238,9 @@ Solutions
 ├── ── Infrastructure ──────────────
 │   └── Software Factory                   /solutions/software-factory
 │
+├── ── AI & Developer ──────────────
+│   └── Meridian — AI Content Operations   /solutions/meridian
+│
 └── View All Solutions →               /solutions
 ```
 
@@ -252,6 +261,7 @@ Platforms
 ├── Manifest Data Platform                 /platforms/manifest
 ├── Lighthouse Observability Platform      /platforms/lighthouse
 ├── Coquina Software Factory Platform      /platforms/coquina
+├── Sentinel AI-Native CMS Platform        /platforms/sentinel
 └── View All Platforms →                  /platforms
 ```
 
@@ -368,6 +378,7 @@ Federal Buyers    Contact Us
 │  · Squawk Identity                                                        │
 │  · Manifest Data       DotGov — Federal        COMPANY                   │
 │  · Lighthouse Obs      Gazette — IG            ───────                   │
+│  · Sentinel AI-CMS     Meridian — AI Ops                                 │
 │                        Outpost — Defense       About                     │
 │  Services                                      Team                      │
 │  · Infrastructure Eng  RESOURCES               Careers                   │
@@ -400,6 +411,7 @@ South Florida, USA  ·  wilkesliberty.com
 | Squawk Zero-Trust Identity Platform | `/platforms/squawk` |
 | Manifest Data Platform | `/platforms/manifest` |
 | Lighthouse Observability Platform | `/platforms/lighthouse` |
+| Sentinel AI-Native CMS Platform | `/platforms/sentinel` |
 | Services *(section heading)* | `/services` |
 | Private Infrastructure Engineering | `/services/private-infrastructure-engineering` |
 | Headless CMS Implementation | `/services/headless-cms-implementation` |
@@ -423,6 +435,7 @@ South Florida, USA  ·  wilkesliberty.com
 | DotGov — Federal Civilian | `/solutions/dotgov` |
 | Gazette — IG Platforms | `/solutions/gazette` |
 | Outpost — Defense Tech | `/solutions/outpost` |
+| Meridian — AI Content Operations | `/solutions/meridian` |
 
 **Section: Federal**
 
@@ -562,6 +575,8 @@ Solutions
         · DotGov — Federal Civilian
         · Gazette — IG Platforms
         · Outpost — Defense Tech
+       AI & Developer
+        · Meridian — AI Content Operations
        View All Solutions →
 
 Platforms
@@ -572,6 +587,8 @@ Platforms
        · Squawk Zero-Trust Identity Platform
        · Manifest Data Platform
        · Lighthouse Observability Platform
+       · Coquina Software Factory Platform
+       · Sentinel AI-Native CMS Platform
        View All Platforms →
 
 Services
@@ -840,6 +857,7 @@ Step 4: /contact
 | `/solutions/gazette` | Federal OIG offices | Keel CMS Platform, Manifest Data Platform | Headless CMS Implementation, Custom Software Development | USPS OIG, Pandemic Oversight |
 | `/solutions/outpost` | Defense contractors, DoD adjacent | Sabal Infrastructure Platform, Coquina Software Factory Platform | Defense Technology Integration, Private Infrastructure Engineering | — |
 | `/solutions/software-factory` | Engineering teams, DevSecOps leads | Coquina Software Factory Platform | Custom Software Development, Integration Engineering | — |
+| `/solutions/meridian` | Drupal content teams, defense/federal programs running Keel CMS | Keel CMS Platform, Sentinel AI-Native CMS Platform | AI Integration, Headless CMS Implementation, Integration Engineering | — |
 
 ---
 
