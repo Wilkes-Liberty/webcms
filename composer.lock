@@ -24142,10 +24142,12 @@
         "drupal/inline_entity_form": 5,
         "drupal/jwt": 20,
         "drupal/matomo": 15,
+        "drupal/mcp_server": 20,
         "drupal/openid_connect": 15,
         "drupal/redirect": 20,
         "drupal/simple_sitemap_extensions": 20,
-        "drupal/tmgmt": 20
+        "drupal/tmgmt": 20,
+        "drupal/tool": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,

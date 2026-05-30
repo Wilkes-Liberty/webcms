@@ -94,6 +94,7 @@
         "drupal/telephone_validation": "^2.5",
         "drupal/tfa": "^1.12",
         "drupal/tmgmt": "1.x-dev",
+        "drupal/tool": "^1.0@beta",
         "drupal/twig_tweak": "^3.4",
         "drupal/views_bulk_operations": "^4.4",
         "drupal/webform_remote_handlers": "^3.0",
