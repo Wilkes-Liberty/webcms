@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eed9fbcdf38e44312837ca8b000f178b",
+    "content-hash": "32391ab757ce02197af17b8ddfaaf142",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9229,6 +9229,45 @@
                 }
             ],
             "time": "2026-03-20T19:18:11+00:00"
+        },
+        {
+            "name": "e0ipso/simple_oauth_21",
+            "version": "v1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/e0ipso/simple_oauth_21.git",
+                "reference": "9ed04e9b181bc34c6a6505825fbdcc1c2289b966"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/e0ipso/simple_oauth_21/zipball/9ed04e9b181bc34c6a6505825fbdcc1c2289b966",
+                "reference": "9ed04e9b181bc34c6a6505825fbdcc1c2289b966",
+                "shasum": ""
+            },
+            "require-dev": {
+                "drupal/coder": "^8",
+                "mglaman/phpstan-drupal": "^2.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Mateu Aguiló Bosch",
+                    "email": "mateu@mateuaguilo.com"
+                }
+            ],
+            "description": "Implements OAuth 2.1 on top of Simple OAuth for Drupal",
+            "support": {
+                "issues": "https://github.com/e0ipso/simple_oauth_21/issues",
+                "source": "https://github.com/e0ipso/simple_oauth_21/tree/v1.13.0"
+            },
+            "time": "2025-11-03T17:00:51+00:00"
         },
         {
             "name": "egulias/email-validator",

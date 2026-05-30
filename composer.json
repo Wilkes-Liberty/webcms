@@ -99,7 +99,8 @@
         "drupal/views_bulk_operations": "^4.4",
         "drupal/webform_remote_handlers": "^3.0",
         "drupal/webform_rest": "^4.2",
-        "drush/drush": "^13.6"
+        "drush/drush": "^13.6",
+        "e0ipso/simple_oauth_21": "^1.13"
     },
     "conflict": {
         "drupal/drupal": "*"
