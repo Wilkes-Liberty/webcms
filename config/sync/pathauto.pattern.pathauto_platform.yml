@@ -2,6 +2,8 @@ uuid: bc6628a3-b5c4-41c8-9e22-e627b0cd885d
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.platform
   module:
     - node
 id: pathauto_platform

@@ -2,6 +2,8 @@ uuid: 15eac644-78c7-4983-9836-77e1f9bb436d
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.service
   module:
     - node
 id: pathauto_service

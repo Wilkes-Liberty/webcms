@@ -2,6 +2,8 @@ uuid: d86179e9-e57b-4950-a726-da96595a801a
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.resource
   module:
     - node
 id: pathauto_resource

@@ -2,6 +2,8 @@ uuid: 7fc72027-56a1-4fb6-9551-66a3a1e2e743
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.career
   module:
     - node
 id: pathauto_career

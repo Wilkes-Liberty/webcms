@@ -2,6 +2,8 @@ uuid: 9f0617e9-54e3-4b3e-8d77-9d2f2a5f0a21
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.person
   module:
     - node
 id: pathauto_person

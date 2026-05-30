@@ -2,6 +2,8 @@ uuid: 5df9731a-5722-4ef0-aeea-12646f74389e
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.landing_page
   module:
     - node
 id: pathauto_landing_page

@@ -2,6 +2,8 @@ uuid: ab57a5d1-8080-449e-b970-7d3d2416a061
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.case_study
   module:
     - node
 id: pathauto_case_study
