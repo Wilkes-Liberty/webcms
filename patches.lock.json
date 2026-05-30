@@ -1,5 +1,5 @@
 {
-    "_hash": "1136ac15416281d7e527b858cc3ee2a9ffc32020a12443b98006e12664680fbe",
+    "_hash": "ccda324717ae0b6cc371e8819076608f83e87d3148b2ca17c050e748c4f1e465",
     "patches": {
         "drupal/entity_redirect": [
             {
@@ -55,6 +55,18 @@
                 "description": "Fix simple_sitemap 4.2+ compatibility - typed properties and method signatures",
                 "url": "patches/simple_sitemap_extensions-fix-simple-sitemap-4.2-compatibility.patch",
                 "sha256": "e35635de7543616312f8c7750a3d95dcdaa4acc8c716aff54aeff1d8465c1935",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "mcp/sdk": [
+            {
+                "package": "mcp/sdk",
+                "description": "Add runtime-resolved element handlers (php-sdk PR #294, required by mcp_server 2.x)",
+                "url": "web/modules/contrib/mcp_server/.gitlab-ci/patches/mcp-sdk-runtime-handlers.patch",
+                "sha256": "112dbe870dbbbca5e7f54b2cecaf35e2cf82460b14e2fa9c19087951d500df6e",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"
