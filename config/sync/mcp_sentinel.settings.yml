@@ -1,0 +1,19 @@
+_core:
+  default_config_hash: fY_25oM3Mtdd4McMEJD_HUv01WJaHy3s3i5BfLsGZf0
+enabled: true
+allow_read: true
+allow_write: true
+allow_delete: false
+allow_graphql_mutations: false
+allowed_entity_types: {  }
+denied_entity_types:
+  - user
+redacted_fields:
+  - pass
+  - mail
+audit_enabled: true
+audit_log_reads: false
+audit_retention_days: 90
+webhook_enabled: false
+webhook_url: ''
+webhook_secret: ''
