@@ -1,0 +1,7 @@
+uuid: 0094fc4e-ee9c-4718-988b-e9cfb8ded633
+langcode: en
+status: true
+dependencies: {  }
+id: mcp_sentinel_graphql_schema
+tool_id: mcp_sentinel_graphql_schema
+description: null

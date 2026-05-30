@@ -1,0 +1,7 @@
+uuid: dc92aa47-beb3-469b-9f60-d2cc7629dee0
+langcode: en
+status: true
+dependencies: {  }
+id: mcp_sentinel_node_operations
+tool_id: mcp_sentinel_node_operations
+description: null

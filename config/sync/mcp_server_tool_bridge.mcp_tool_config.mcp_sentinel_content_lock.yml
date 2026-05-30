@@ -1,0 +1,7 @@
+uuid: eb1112a2-9e6b-4270-ac8b-a0287d66a4ed
+langcode: en
+status: true
+dependencies: {  }
+id: mcp_sentinel_content_lock
+tool_id: mcp_sentinel_content_lock
+description: null

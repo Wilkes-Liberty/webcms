@@ -1,0 +1,7 @@
+uuid: cd4caf75-76c5-480f-9075-e7a427d6d7cb
+langcode: en
+status: true
+dependencies: {  }
+id: mcp_sentinel_site_context
+tool_id: mcp_sentinel_site_context
+description: null

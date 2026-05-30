@@ -1,0 +1,7 @@
+uuid: ffd8705f-aad9-4d17-b5b5-d9e447d8267a
+langcode: en
+status: true
+dependencies: {  }
+id: mcp_sentinel_workflow_transition
+tool_id: mcp_sentinel_workflow_transition
+description: null

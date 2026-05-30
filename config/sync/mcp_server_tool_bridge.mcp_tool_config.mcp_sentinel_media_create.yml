@@ -1,0 +1,7 @@
+uuid: 83e70fe7-4d60-480c-b1c6-a50355c55e52
+langcode: en
+status: true
+dependencies: {  }
+id: mcp_sentinel_media_create
+tool_id: mcp_sentinel_media_create
+description: null

@@ -1,0 +1,7 @@
+uuid: fefbbeef-9473-4d85-b26e-8bbde2ee83de
+langcode: en
+status: true
+dependencies: {  }
+id: mcp_sentinel_bulk_operations
+tool_id: mcp_sentinel_bulk_operations
+description: null
