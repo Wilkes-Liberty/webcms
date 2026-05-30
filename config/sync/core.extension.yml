@@ -73,6 +73,7 @@ module:
   graphql: 0
   graphql_compose: 0
   graphql_compose_blocks: 0
+  graphql_compose_codegen: 0
   graphql_compose_edges: 0
   graphql_compose_image_style: 0
   graphql_compose_menus: 0
@@ -96,6 +97,7 @@ module:
   image: 0
   inline_entity_form: 0
   inline_form_errors: 0
+  jsonapi: 0
   key: 0
   language: 0
   link: 0
@@ -103,6 +105,11 @@ module:
   locale: 0
   login_security: 0
   masquerade: 0
+  mcp_sentinel: 0
+  mcp_sentinel_graphql: 0
+  mcp_sentinel_server: 0
+  mcp_server: 0
+  mcp_server_tool_bridge: 0
   media: 0
   media_library: 0
   menu_link_content: 0
@@ -149,6 +156,7 @@ module:
   smart_date_recur: 0
   smtp: 0
   subrequests: 0
+  symfony_http_client: 0
   syslog: 0
   system: 0
   taxonomy: 0
@@ -165,6 +173,7 @@ module:
   tmgmt_locale: 0
   tmgmt_session_fix: 0
   token: 0
+  tool: 0
   toolbar: 0
   twig_tweak: 0
   typed_data: 0
