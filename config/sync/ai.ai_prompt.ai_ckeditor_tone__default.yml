@@ -1,0 +1,8 @@
+uuid: 8f2e3955-20cc-4a95-a3a1-ddf5095450dd
+langcode: en
+status: true
+dependencies: {  }
+id: ai_ckeditor_tone__default
+label: 'Default prompt for changing the tone of CKEditor text'
+type: ai_ckeditor_tone
+prompt: "Change the tone of the following text to be {tone} using the same language as the following text.\r\n\n{% if use_description %}\n  That tone can described as: {toneDescription}\n{% endif %}\nThe text that we want to change is the following:\n{inputText}"

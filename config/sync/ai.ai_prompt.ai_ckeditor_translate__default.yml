@@ -1,0 +1,8 @@
+uuid: ac3db12b-cbd0-4585-9479-81a7d82b9a1e
+langcode: en
+status: true
+dependencies: {  }
+id: ai_ckeditor_translate__default
+label: 'Default prompt for translating CKEditor text'
+type: ai_ckeditor_translate
+prompt: "Do not respond, only respond with the translated text, no pleasantries.\r\nTranslate the following text into {lang}\r\n\n{% if use_description %}\n  Translation context: {context}\n{% endif %}\nThe text that we want to translate is the following:\n{inputText}"
