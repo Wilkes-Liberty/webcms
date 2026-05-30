@@ -1,0 +1,19 @@
+_core:
+  default_config_hash: BOH53LdVKiNhLr0fzo8rL9jvZE93xao5VieHVmwBnp0
+base_type_fields:
+  - title
+  - path
+  - body
+  - field_summary
+  - field_hero_image
+  - field_social_image
+  - field_meta_description
+  - field_seo_title
+  - field_primary_cta
+  - field_secondary_cta
+  - field_breadcrumb_label
+  - field_industries
+  - field_personas
+  - field_target_sectors
+base_ts_type: NodeCommonFields
+output_dir: ''
