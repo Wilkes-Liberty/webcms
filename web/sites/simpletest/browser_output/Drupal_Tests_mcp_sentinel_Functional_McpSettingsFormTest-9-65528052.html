@@ -1,0 +1,250 @@
+<hr />ID #9 (<a href="Drupal_Tests_mcp_sentinel_Functional_McpSettingsFormTest-8-65528052.html">Previous</a> | <a href="Drupal_Tests_mcp_sentinel_Functional_McpSettingsFormTest-10-65528052.html">Next</a>)<hr />Called from GuzzleHttp\Promise\FulfilledPromise::GuzzleHttp\Promise\{closure}() line 48<hr />POST request to: http://127.0.0.1/admin/config/services/mcp-sentinel<hr /><!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+<meta name="Generator" content="Drupal 11 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/core/misc/favicon.ico" type="image/vnd.microsoft.icon" />
+
+    <title>MCP Sentinel Settings | Drupal</title>
+    <link rel="stylesheet" media="all" href="/core/misc/components/resize.module.css?tftkqn" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/align.module.css?tftkqn" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/container-inline.module.css?tftkqn" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/clearfix.module.css?tftkqn" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/hidden.module.css?tftkqn" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/js.module.css?tftkqn" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/system.admin.css?tftkqn" />
+
+    
+  </head>
+  <body>
+        <a href="#main-content" class="visually-hidden focusable">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="layout-container">
+
+  <header role="banner">
+    
+  </header>
+
+  
+  
+
+  
+
+  
+
+  
+
+  <main role="main">
+    <a id="main-content" tabindex="-1"></a>
+    <div class="layout-content">
+        <div>
+    <div data-drupal-messages-fallback class="hidden"></div><div data-drupal-messages>
+  <div role="contentinfo" aria-label="Error message">
+          <div role="alert">
+              <h2 class="visually-hidden">Error message</h2>
+              Webhook URL must use HTTPS.
+              </div>
+      </div>
+</div>
+
+  <h1>MCP Sentinel Settings</h1>
+
+<form class="mcp-sentinel-settings" data-drupal-selector="mcp-sentinel-settings" action="/admin/config/services/mcp-sentinel" method="post" id="mcp-sentinel-settings" accept-charset="UTF-8">
+  <fieldset data-drupal-selector="edit-status" id="edit-status" class="js-form-item form-item js-form-wrapper form-wrapper">
+      <legend>
+    <span class="fieldset-legend">MCP Access</span>
+  </legend>
+  <div class="fieldset-wrapper">
+                <div class="js-form-item form-item form-type-checkbox js-form-type-checkbox form-item-enabled js-form-item-enabled">
+        <input data-drupal-selector="edit-enabled" aria-describedby="edit-enabled--description" type="checkbox" id="edit-enabled" name="enabled" value="1" checked="checked" class="form-checkbox" />
+
+        <label for="edit-enabled" class="option">Enable MCP API access</label>
+          <div id="edit-enabled--description" class="description">
+      When disabled, all MCP requests receive 403 regardless of credentials.
+    </div>
+  </div>
+
+          </div>
+</fieldset>
+<fieldset data-drupal-selector="edit-operations" id="edit-operations" class="js-form-item form-item js-form-wrapper form-wrapper">
+      <legend>
+    <span class="fieldset-legend">Allowed Operations</span>
+  </legend>
+  <div class="fieldset-wrapper">
+                <div class="js-form-item form-item form-type-checkbox js-form-type-checkbox form-item-allow-read js-form-item-allow-read">
+        <input data-drupal-selector="edit-allow-read" type="checkbox" id="edit-allow-read" name="allow_read" value="1" checked="checked" class="form-checkbox" />
+
+        <label for="edit-allow-read" class="option">Allow read operations</label>
+      </div>
+<div class="js-form-item form-item form-type-checkbox js-form-type-checkbox form-item-allow-write js-form-item-allow-write">
+        <input data-drupal-selector="edit-allow-write" type="checkbox" id="edit-allow-write" name="allow_write" value="1" checked="checked" class="form-checkbox" />
+
+        <label for="edit-allow-write" class="option">Allow write operations (create, update)</label>
+      </div>
+<div class="js-form-item form-item form-type-checkbox js-form-type-checkbox form-item-allow-delete js-form-item-allow-delete">
+        <input data-drupal-selector="edit-allow-delete" aria-describedby="edit-allow-delete--description" type="checkbox" id="edit-allow-delete" name="allow_delete" value="1" class="form-checkbox" />
+
+        <label for="edit-allow-delete" class="option">Allow delete operations</label>
+          <div id="edit-allow-delete--description" class="description">
+      Strongly recommended to leave this disabled in production.
+    </div>
+  </div>
+<div class="js-form-item form-item form-type-checkbox js-form-type-checkbox form-item-allow-graphql-mutations js-form-item-allow-graphql-mutations">
+        <input data-drupal-selector="edit-allow-graphql-mutations" type="checkbox" id="edit-allow-graphql-mutations" name="allow_graphql_mutations" value="1" class="form-checkbox" />
+
+        <label for="edit-allow-graphql-mutations" class="option">Allow GraphQL mutations</label>
+      </div>
+
+          </div>
+</fieldset>
+<fieldset data-drupal-selector="edit-entity-access" id="edit-entity-access" class="js-form-item form-item js-form-wrapper form-wrapper">
+      <legend>
+    <span class="fieldset-legend">Entity Type Access</span>
+  </legend>
+  <div class="fieldset-wrapper">
+                <div class="js-form-item form-item form-type-textarea js-form-type-textarea form-item-denied-entity-types-raw js-form-item-denied-entity-types-raw">
+      <label for="edit-denied-entity-types-raw">Denied entity types (always blocked)</label>
+        <div>
+  <textarea data-drupal-selector="edit-denied-entity-types-raw" aria-describedby="edit-denied-entity-types-raw--description" id="edit-denied-entity-types-raw" name="denied_entity_types_raw" rows="4" cols="60" class="form-textarea resize-vertical">user</textarea>
+</div>
+
+            <div id="edit-denied-entity-types-raw--description" class="description">
+      One machine name per line. E.g. user
+    </div>
+  </div>
+<div class="js-form-item form-item form-type-textarea js-form-type-textarea form-item-allowed-entity-types-raw js-form-item-allowed-entity-types-raw">
+      <label for="edit-allowed-entity-types-raw">Allowed entity types (leave empty to allow all)</label>
+        <div>
+  <textarea data-drupal-selector="edit-allowed-entity-types-raw" aria-describedby="edit-allowed-entity-types-raw--description" id="edit-allowed-entity-types-raw" name="allowed_entity_types_raw" rows="4" cols="60" class="form-textarea resize-vertical"></textarea>
+</div>
+
+            <div id="edit-allowed-entity-types-raw--description" class="description">
+      One machine name per line. Creates an allowlist when non-empty.
+    </div>
+  </div>
+
+          </div>
+</fieldset>
+<fieldset data-drupal-selector="edit-pii" id="edit-pii" class="js-form-item form-item js-form-wrapper form-wrapper">
+      <legend>
+    <span class="fieldset-legend">Field Redaction</span>
+  </legend>
+  <div class="fieldset-wrapper">
+                <div class="js-form-item form-item form-type-textarea js-form-type-textarea form-item-redacted-fields-raw js-form-item-redacted-fields-raw">
+      <label for="edit-redacted-fields-raw">Globally redacted fields</label>
+        <div>
+  <textarea data-drupal-selector="edit-redacted-fields-raw" aria-describedby="edit-redacted-fields-raw--description" id="edit-redacted-fields-raw" name="redacted_fields_raw" rows="5" cols="60" class="form-textarea resize-vertical">pass
+mail</textarea>
+</div>
+
+            <div id="edit-redacted-fields-raw--description" class="description">
+      One field machine name per line. For MCP requests these fields are stripped from JSON:API/REST responses and shown as [REDACTED] in GraphQL. Requires the relevant submodule for GraphQL.
+    </div>
+  </div>
+
+          </div>
+</fieldset>
+<fieldset data-drupal-selector="edit-audit" id="edit-audit" class="js-form-item form-item js-form-wrapper form-wrapper">
+      <legend>
+    <span class="fieldset-legend">Audit Logging</span>
+  </legend>
+  <div class="fieldset-wrapper">
+                <div class="js-form-item form-item form-type-checkbox js-form-type-checkbox form-item-audit-enabled js-form-item-audit-enabled">
+        <input data-drupal-selector="edit-audit-enabled" type="checkbox" id="edit-audit-enabled" name="audit_enabled" value="1" checked="checked" class="form-checkbox" />
+
+        <label for="edit-audit-enabled" class="option">Enable audit logging</label>
+      </div>
+<div class="js-form-item form-item form-type-checkbox js-form-type-checkbox form-item-audit-log-reads js-form-item-audit-log-reads">
+        <input data-drupal-selector="edit-audit-log-reads" type="checkbox" id="edit-audit-log-reads" name="audit_log_reads" value="1" class="form-checkbox" data-drupal-states="{&quot;visible&quot;:{&quot;[name=\u0022audit_enabled\u0022]&quot;:{&quot;checked&quot;:true}}}" />
+
+        <label for="edit-audit-log-reads" class="option">Log read operations (high volume)</label>
+      </div>
+<div class="js-form-item form-item form-type-number js-form-type-number form-item-audit-retention-days js-form-item-audit-retention-days">
+      <label for="edit-audit-retention-days">Retention (days, 0 = forever)</label>
+        <input data-drupal-selector="edit-audit-retention-days" type="number" id="edit-audit-retention-days" name="audit_retention_days" value="90" step="1" min="0" max="3650" class="form-number" data-drupal-states="{&quot;visible&quot;:{&quot;[name=\u0022audit_enabled\u0022]&quot;:{&quot;checked&quot;:true}}}" />
+
+        </div>
+
+          </div>
+</fieldset>
+<fieldset data-drupal-selector="edit-webhooks" id="edit-webhooks" class="js-form-item form-item js-form-wrapper form-wrapper">
+      <legend>
+    <span class="fieldset-legend">HTTPS Webhooks</span>
+  </legend>
+  <div class="fieldset-wrapper">
+                <div class="js-form-item form-item form-type-checkbox js-form-type-checkbox form-item-webhook-enabled js-form-item-webhook-enabled">
+        <input data-drupal-selector="edit-webhook-enabled" type="checkbox" id="edit-webhook-enabled" name="webhook_enabled" value="1" checked="checked" class="form-checkbox" />
+
+        <label for="edit-webhook-enabled" class="option">Enable webhook notifications</label>
+      </div>
+<div class="js-form-item form-item form-type-url js-form-type-url form-item-webhook-url js-form-item-webhook-url">
+      <label for="edit-webhook-url">Webhook URL (HTTPS required)</label>
+        <input data-drupal-selector="edit-webhook-url" type="url" id="edit-webhook-url" name="webhook_url" value="http://example.com/hook" size="60" maxlength="255" class="form-url error" aria-invalid="true" data-drupal-states="{&quot;visible&quot;:{&quot;[name=\u0022webhook_enabled\u0022]&quot;:{&quot;checked&quot;:true}}}" />
+
+        </div>
+<div class="js-form-item form-item form-type-password js-form-type-password form-item-webhook-secret js-form-item-webhook-secret">
+      <label for="edit-webhook-secret">Webhook signing secret (HMAC-SHA256)</label>
+        <input data-drupal-selector="edit-webhook-secret" type="password" id="edit-webhook-secret" name="webhook_secret" size="60" maxlength="128" class="form-text" data-drupal-states="{&quot;visible&quot;:{&quot;[name=\u0022webhook_enabled\u0022]&quot;:{&quot;checked&quot;:true}}}" />
+
+        </div>
+
+          </div>
+</fieldset>
+<input autocomplete="off" data-drupal-selector="form-vtm5bobbsb0eyg4xgngtx3tj9rx-jqqdgzvttikunzc" type="hidden" name="form_build_id" value="form-Vtm5boBbsB0eyG4xGngTx3tj9RX-JQQDgZVTTIkuNzc" />
+<input data-drupal-selector="edit-mcp-sentinel-settings-form-token" type="hidden" name="form_token" value="SGXs_PypUlsuMs4rNTRyaGspZihlGXkJYr_nigZo938" />
+<input data-drupal-selector="edit-mcp-sentinel-settings" type="hidden" name="form_id" value="mcp_sentinel_settings" />
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Save configuration" class="button button--primary js-form-submit form-submit" />
+</div>
+
+
+</form>
+
+  </div>
+
+    </div>
+    
+    
+  </main>
+
+  
+</div>
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"admin\/config\/services\/mcp-sentinel","currentPathIsAdmin":true,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":"2","permissionsHash":"bec2714115a1fef76ff52e4b7e5d94b9e23862e155d6550fb572ba36a0e66d28"}}</script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=4.0.0"></script>
+<script src="/core/assets/vendor/once/once.min.js?v=1.0.1"></script>
+<script src="/core/misc/drupalSettingsLoader.js?v=11.3.11"></script>
+<script src="/core/misc/drupal.js?v=11.3.11"></script>
+<script src="/core/misc/drupal.init.js?v=11.3.11"></script>
+<script src="/core/misc/active-link.js?v=11.3.11"></script>
+<script src="/core/misc/states.js?v=11.3.11"></script>
+
+  </body>
+</html>
+<hr />Headers: <pre>array (
+  &#039;Server&#039; =&gt; &#039;nginx&#039;,
+  &#039;Content-Type&#039; =&gt; &#039;text/html; charset=UTF-8&#039;,
+  &#039;Content-Length&#039; =&gt; &#039;13144&#039;,
+  &#039;Connection&#039; =&gt; &#039;keep-alive&#039;,
+  &#039;Vary&#039; =&gt; &#039;Accept-Encoding&#039;,
+  &#039;X-Drupal-Assertion-0&#039; =&gt; &#039;a%3A3%3A%7Bi%3A0%3BO%3A25%3A%22Drupal%5CCore%5CRender%5CMarkup%22%3A1%3A%7Bs%3A9%3A%22%00%2A%00string%22%3Bs%3A166%3A%22The%20%22cache.static%22%20service%20is%20deprecated%20in%20drupal%3A11.3.0%20and%20is%20removed%20from%20drupal%3A13.0.0.%20Use%20the%20cache.memory%20bin%20instead.%20See%20https%3A%2F%2Fwww.drupal.org%2Fnode%2F3546856%22%3B%7Di%3A1%3Bs%3A24%3A%22User%20deprecated%20function%22%3Bi%3A2%3Ba%3A3%3A%7Bs%3A8%3A%22function%22%3Bs%3A53%3A%22Drupal%5CComponent%5CDependencyInjection%5CContainer-%3Eget%28%29%22%3Bs%3A4%3A%22file%22%3Bs%3A77%3A%22%2Fvar%2Fwww%2Fhtml%2Fweb%2Fcore%2Flib%2FDrupal%2FComponent%2FDependencyInjection%2FContainer.php%22%3Bs%3A4%3A%22line%22%3Bi%3A130%3B%7D%7D&#039;,
+  &#039;X-Drupal-Assertion-1&#039; =&gt; &#039;a%3A3%3A%7Bi%3A0%3BO%3A25%3A%22Drupal%5CCore%5CRender%5CMarkup%22%3A1%3A%7Bs%3A9%3A%22%00%2A%00string%22%3Bs%3A181%3A%22The%20%22cache.backend.memory%22%20service%20is%20deprecated%20in%20drupal%3A11.3.0%20and%20is%20removed%20from%20drupal%3A13.0.0.%20Use%20cache.backend.memory.memory%20instead.%20See%20https%3A%2F%2Fwww.drupal.org%2Fnode%2F3546856%22%3B%7Di%3A1%3Bs%3A24%3A%22User%20deprecated%20function%22%3Bi%3A2%3Ba%3A3%3A%7Bs%3A8%3A%22function%22%3Bs%3A53%3A%22Drupal%5CComponent%5CDependencyInjection%5CContainer-%3Eget%28%29%22%3Bs%3A4%3A%22file%22%3Bs%3A77%3A%22%2Fvar%2Fwww%2Fhtml%2Fweb%2Fcore%2Flib%2FDrupal%2FComponent%2FDependencyInjection%2FContainer.php%22%3Bs%3A4%3A%22line%22%3Bi%3A130%3B%7D%7D&#039;,
+  &#039;X-Drupal-Assertion-2&#039; =&gt; &#039;a%3A3%3A%7Bi%3A0%3BO%3A25%3A%22Drupal%5CCore%5CRender%5CMarkup%22%3A1%3A%7Bs%3A9%3A%22%00%2A%00string%22%3Bs%3A131%3A%22Since%20symfony%2Fhttp-foundation%207.4%3A%20Request%3A%3Aget%28%29%20is%20deprecated%2C%20use%20properties%20-%26gt%3Battributes%2C%20query%20or%20request%20directly%20instead.%22%3B%7Di%3A1%3Bs%3A24%3A%22User%20deprecated%20function%22%3Bi%3A2%3Ba%3A3%3A%7Bs%3A8%3A%22function%22%3Bs%3A21%3A%22trigger_deprecation%28%29%22%3Bs%3A4%3A%22file%22%3Bs%3A63%3A%22%2Fvar%2Fwww%2Fhtml%2Fvendor%2Fsymfony%2Fdeprecation-contracts%2Ffunction.php%22%3Bs%3A4%3A%22line%22%3Bi%3A25%3B%7D%7D&#039;,
+  &#039;Cache-Control&#039; =&gt; &#039;must-revalidate, no-cache, private&#039;,
+  &#039;Date&#039; =&gt; &#039;Fri, 29 May 2026 22:20:49 GMT&#039;,
+  &#039;Content-language&#039; =&gt; &#039;en&#039;,
+  &#039;X-Content-Type-Options&#039; =&gt; &#039;nosniff&#039;,
+  &#039;X-Frame-Options&#039; =&gt; &#039;SAMEORIGIN&#039;,
+  &#039;X-Drupal-Cache-Tags&#039; =&gt; &#039;CACHE_MISS_IF_UNCACHEABLE_HTTP_METHOD:form config:mcp_sentinel.settings http_response rendered&#039;,
+  &#039;X-Drupal-Cache-Contexts&#039; =&gt; &#039;languages:language_interface session theme url.path url.query_args user.permissions user.roles:authenticated&#039;,
+  &#039;X-Drupal-Cache-Max-Age&#039; =&gt; &#039;0 (Uncacheable)&#039;,
+  &#039;Expires&#039; =&gt; &#039;Sun, 19 Nov 1978 05:00:00 GMT&#039;,
+  &#039;X-Generator&#039; =&gt; &#039;Drupal 11 (https://www.drupal.org)&#039;,
+)</pre>
