@@ -1,0 +1,15 @@
+uuid: de858e5d-b91f-478e-bba4-29a2753f680e
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ai_ckeditor
+id: ai_ckeditor_reformat
+label: 'AI CKEditor reformat prompt'
+variables:
+  -
+    name: inputText
+    help_text: 'The input text to reformat'
+    required: true
+tokens: {  }
